@@ -2388,8 +2388,10 @@ a.card:focus-visible { outline: 2px solid var(--forest-bright); outline-offset: 
 
 /* Zero-tracking site-wide page comments & critique section */
 .page-comments {
-  margin-top: 3.2rem;
+  margin-top: 3rem;
   margin-bottom: 2.8rem;
+}
+.page-comments-card {
   padding: 1.75rem 1.85rem;
   background: var(--card);
   border: 1px solid var(--border);
@@ -2407,6 +2409,14 @@ a.card:focus-visible { outline: 2px solid var(--forest-bright); outline-offset: 
   color: var(--ink-2);
   font-size: 0.98rem;
   line-height: 1.6;
+}
+.page-comments .comment-intro a {
+  color: var(--forest);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.page-comments .comment-intro a:hover {
+  color: var(--forest-mid);
 }
 .page-comments .comment-list {
   list-style: none;
@@ -2469,40 +2479,13 @@ a.card:focus-visible { outline: 2px solid var(--forest-bright); outline-offset: 
   border-color: var(--forest);
 }
 @media (max-width: 600px) {
-  .page-comments {
-    padding: 1.25rem 1.15rem;
+  .page-comments-card {
+    padding: 1.35rem 1.25rem;
     border-radius: 18px;
   }
 }
-@media (prefers-color-scheme: dark) {
-  .page-comments {
-    background: #221F2A;
-    border-color: #322E3D;
-  }
-  .page-comments h2,
-  .page-comments .comment-body {
-    color: #EDE6DC;
-  }
-  .page-comments .comment-intro,
-  .page-comments .comment-meta {
-    color: #B4ACA1;
-  }
-  .page-comments .comment-card {
-    background: #18161E;
-    border-color: #322E3D;
-  }
-  .page-comments .comment-btn-primary {
-    background: #8FD4B6;
-    border-color: #8FD4B6;
-    color: #131014;
-  }
-  .page-comments .comment-btn-secondary {
-    color: #8FD4B6;
-    border-color: #3D4A45;
-  }
-}
-:root[data-theme="dark"] .page-comments,
-[data-theme="dark"] .page-comments {
+:root[data-theme="dark"] .page-comments-card,
+[data-theme="dark"] .page-comments-card {
   background: #221F2A;
   border-color: #322E3D;
 }
@@ -2517,6 +2500,10 @@ a.card:focus-visible { outline: 2px solid var(--forest-bright); outline-offset: 
 [data-theme="dark"] .page-comments .comment-intro,
 [data-theme="dark"] .page-comments .comment-meta {
   color: #B4ACA1;
+}
+:root[data-theme="dark"] .page-comments .comment-intro a,
+[data-theme="dark"] .page-comments .comment-intro a {
+  color: #8FD4B6;
 }
 :root[data-theme="dark"] .page-comments .comment-card,
 [data-theme="dark"] .page-comments .comment-card {

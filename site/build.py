@@ -683,6 +683,7 @@ def render_comments(meta: dict, discussions_index: dict | None = None) -> str:
 
     return (
         '<section class="page-comments wrap-narrow" id="comments" aria-labelledby="comments-heading">'
+        '<div class="page-comments-card">'
         '<h2 id="comments-heading">Questions, critiques, and comments</h2>'
         '<p class="comment-intro">Spotted an error, a missing primary source, or an angle we should test next? '
         'Add a public comment on GitHub Discussions or send an email. '
@@ -692,6 +693,7 @@ def render_comments(meta: dict, discussions_index: dict | None = None) -> str:
         '<div class="comment-actions">'
         f'<a class="comment-btn comment-btn-primary" href="{esc(gh_url)}" rel="noopener noreferrer">{esc(gh_label)}</a>'
         f'<a class="comment-btn comment-btn-secondary" href="{esc(mail_url)}">Send feedback by email</a>'
+        '</div>'
         '</div>'
         '</section>'
     )
