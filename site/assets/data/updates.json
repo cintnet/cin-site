@@ -1,0 +1,654 @@
+{
+ "updates": [
+  {
+   "id": "U-00055",
+   "at": "2026-11-05T23:28:41+00:00",
+   "kind": "software",
+   "title": "Incremental Graph Discovery and Causal Pruning in Agent Coordination",
+   "summary": "The agentic graph coordination simulation on the open portal now models incremental structure discovery and causal edge pruning. Grounded in research on active causal learning, this topology governor dynamically evaluates message necessity between collaborating models, pruning redundant communication channels while preserving critical task dependencies and generating cryptographic audit receipts.",
+   "link": "https://cintnet.org/",
+   "goals": []
+  },
+  {
+   "id": "U-00054",
+   "at": "2026-11-05T21:30:38+00:00",
+   "kind": "site",
+   "title": "Interactive Futures Cone and 12-to-24 Month Signpost Tripwires",
+   "summary": "An interactive Strategic Foresight Futures Cone visualization has been added to the comparison modal on the open portal. Grounded in foresight methodologies by Voros (2003) and Robinson (1982), visitors can explore potential scenarios for creator and small business transitions, inspect three-perspective automated Delphi debates, and adjust early indicator tripwires to evaluate likelihood shifts.",
+   "link": "https://cintnet.org/",
+   "goals": [
+    3,
+    5
+   ]
+  },
+  {
+   "id": "U-00053",
+   "at": "2026-11-05T21:30:30+00:00",
+   "kind": "software",
+   "title": "Decentralized Consensus and Early Quorum Termination in Agent Coordination",
+   "summary": "The agentic graph coordination simulation on the open network portal now models Aegean distributed consensus and incremental quorum detection. Grounded in research from Ruan et al. (arXiv:2512.20184), this framework dynamically tracks epistemic agreement across reasoning agents and terminates debate rounds early upon reaching quorum, preventing straggler bottlenecks and conserving computational resources.",
+   "link": "https://cintnet.org/",
+   "goals": [
+    2,
+    6
+   ]
+  },
+  {
+   "id": "U-00052",
+   "at": "2026-11-05T19:32:50+00:00",
+   "kind": "software",
+   "title": "Byzantine Fault Resilience and Decentralized Filtering in Agent Coordination",
+   "summary": "The agent graph coordination simulation on the open portal now models Self-Anchored Consensus and receiver-side Mean-Subsequence-Reduced filtering. Grounded in peer-reviewed research from Lee et al., this protocol allows collaborating language models to detect and isolate adversarial or corrupted messages across robust communication graphs without centralized leaders.",
+   "link": "https://cintnet.org/",
+   "goals": [
+    2,
+    6
+   ]
+  },
+  {
+   "id": "U-00051",
+   "at": "2026-11-05T17:30:52+00:00",
+   "kind": "site",
+   "title": "Statutory medical billing and subscription cancel verifiers run entirely on device",
+   "summary": "Navigating medical surprise billing disputes and deceptive subscription cancellations often exposes sensitive personal receipts to third parties. A newly added on-device verifier evaluates claims against statutory federal standards directly within the browser, confirming eligibility for dispute resolution without leaking financial data.",
+   "link": "https://cintnet.org",
+   "goals": []
+  },
+  {
+   "id": "U-00050",
+   "at": "2026-11-05T17:30:39+00:00",
+   "kind": "site",
+   "title": "Discrete agent graph codebooks streamline complex multi-agent coordination",
+   "summary": "When coordinating multi-agent workflows, calculating custom execution graphs from scratch consumes excess computation and tokens. An interactive explorer now allows visitors to inspect quantized codebook patterns that reuse proven agent topologies in under two milliseconds, cutting overhead by up to forty-four percent.",
+   "link": "https://cintnet.org",
+   "goals": []
+  },
+  {
+   "id": "U-00049",
+   "at": "2026-11-04T19:32:21+00:00",
+   "kind": "research",
+   "title": "Local agent curation governors restore balanced representation across text-biased content feeds",
+   "summary": "Centralized recommendation systems consistently favor longer, more sensational, and negative posts, unintentionally creating demographic skew in whose voices get heard online. A new open evaluation demonstrates that running recommendation filters locally inside a user's personal agent restores balanced community representation while dampening outrage and preserving topical relevance without centralized platform censorship.",
+   "link": "https://arxiv.org/abs/2610.41854",
+   "goals": [
+    5,
+    6
+   ]
+  },
+  {
+   "id": "U-00048",
+   "at": "2026-11-04T19:32:04+00:00",
+   "kind": "simulation",
+   "title": "Compact capability tokens coordinate multi-agent tasks with 98 percent less token overhead than chat",
+   "summary": "When fleets of autonomous software agents coordinate household or logistics tasks using conversational chat, verbose back-and-forth messages cause high token costs and contradictory execution errors. A newly simulated benchmark demonstrates that exchanging compact, boundary-aware capability tokens cuts token usage by 98.3%, accelerates response speed 34-fold, and avoids conflicting task collisions across the tested seeds.",
+   "link": "https://arxiv.org/abs/2611.00314",
+   "goals": [
+    1,
+    4
+   ]
+  },
+  {
+   "id": "U-00047",
+   "at": "2026-11-04T17:34:50+00:00",
+   "kind": "site",
+   "title": "Interactive web visualizer demonstrates how structural DOM sanitization neutralizes hidden prompt injections",
+   "summary": "When personal agents read web pages to assist people with bookings or purchases, attackers can plant invisible styling or zero-size tags designed to hijack the agent's intent. An interactive visualizer now shows visitors how client-side structural filters strip active payloads and preserve clean text before instructions reach the local reasoning model, keeping everyday agent browsing secure.",
+   "link": "https://cin.foundation/notes/runtime-containment.html",
+   "goals": [
+    1,
+    6
+   ]
+  },
+  {
+   "id": "U-00046",
+   "at": "2026-11-04T17:34:42+00:00",
+   "kind": "simulation",
+   "title": "Exact contribution accounting rewards open-source reviewers in linear time without exponential compute",
+   "summary": "Open collaboration networks often struggle to distribute recognition and funding fairly because evaluating combinations of checklist contributions usually requires exponential calculation. A newly simulated closed-form attribution method calculates exact Shapley credit across multi-criteria reviews in linear time, guaranteeing mathematical fairness and budget balance for community contributors without draining computational resources.",
+   "link": "https://arxiv.org/abs/2610.24971",
+   "goals": [
+    3,
+    7
+   ]
+  },
+  {
+   "id": "U-00045",
+   "at": "2026-11-04T15:37:36+00:00",
+   "kind": "software",
+   "title": "Deterministic input gates and byte limits protect browser agents from hidden script injection",
+   "summary": "Browser-based personal agents risk prompt injection attacks when web pages sneak hidden scripts or bloated tracking payloads into memory. A newly deployed ingress gate strips untrusted attributes and enforces strict byte budgets before page contents enter agent context, helping local assistants process only the visible, relevant text needed to assist the user.",
+   "link": "https://cintnet.org",
+   "goals": [
+    1,
+    4
+   ]
+  },
+  {
+   "id": "U-00044",
+   "at": "2026-11-04T15:37:03+00:00",
+   "kind": "research",
+   "title": "Heterogeneous model merging allows small home devices to absorb specialized skills from large frontier models",
+   "summary": "Smaller personal devices running open models cannot normally share internal weights with larger, differently structured systems. New optimal transport alignments bridge activation layers across completely different neural architectures, letting lightweight home assistants directly inherit expert reasoning and multilingual capabilities without requiring massive compute clusters or cloud fine-tuning.",
+   "link": "https://arxiv.org/abs/2602.05495",
+   "goals": [
+    2,
+    4
+   ]
+  },
+  {
+   "id": "U-00043",
+   "at": "2026-11-03T17:38:40+00:00",
+   "kind": "software",
+   "title": "Local agent tools shuffle option order to reduce choice bias during automated decision-making",
+   "summary": "Language models frequently suffer from primacy bias, picking whichever option is presented first regardless of merit. A new deterministic ordering filter permutes options using cryptographic seeds and checks that agent choices remain consistent across permutations, protecting families from biased automated decisions in everyday comparisons.",
+   "link": "https://cin.foundation/notes/everyday-personal-agents.html",
+   "goals": [
+    4,
+    1
+   ]
+  },
+  {
+   "id": "U-00042",
+   "at": "2026-11-03T17:38:17+00:00",
+   "kind": "policy",
+   "title": "Procurement agents gain verifiable mandate limits to stop unauthorized spending across commercial boundaries",
+   "summary": "When households or small businesses delegate purchasing to personal AI agents, unconstrained agents risk overspending or exceeding their authority. A newly implemented verifiable mandate schema enforces strict separation between owner authority and agent grants, locking spend caps into tamper-proof tokens so autonomous buyers cannot exceed negotiated dollar ceilings.",
+   "link": "https://datatracker.ietf.org/doc/draft-hulea-wimse-agent-mandate/",
+   "goals": [
+    4,
+    3,
+    1
+   ]
+  },
+  {
+   "id": "U-00041",
+   "at": "2026-11-03T15:35:40+00:00",
+   "kind": "research",
+   "title": "Deterministic weight shift auditing protects shared adapter consensus from dormant backdoors",
+   "summary": "Collaborative adapter merging allows personal agents to pool specialized skills, but dormant backdoors can activate only when specific models combine. A new containment monitor tests pre-merge parameter shifts and cosine orthogonalities across Task Arithmetic and weight merging, catching hidden unalignment before updates reach user devices.",
+   "link": "https://collectiveintelligencenetwork.org/notes/",
+   "goals": [
+    2
+   ]
+  },
+  {
+   "id": "U-00040",
+   "at": "2026-11-03T15:35:25+00:00",
+   "kind": "software",
+   "title": "Recursive commitment graphs provide upstream accountability across decentralized agent delegation",
+   "summary": "When autonomous personal agents delegate tasks across peer networks, downstream subagent failures can cascade without notice. By adopting a Responsibility-Centered Coordination Mechanism, personal agents retain upstream accountability, monotonic deadlines, and bounded recursion depth, designed to keep multi-step contracts safe with automatic containment.",
+   "link": "https://collectiveintelligencenetwork.org/notes/",
+   "goals": [
+    1,
+    6
+   ]
+  },
+  {
+   "id": "U-00039",
+   "at": "2026-11-03T13:38:14+00:00",
+   "kind": "software",
+   "title": "In-browser personal twins gain Reconsider memory gates to stop cross-session context poisoning",
+   "summary": "To protect client-side personal agents from memory injection attacks, the browser runtime now evaluates memory recall through a deterministic Reconsider gate. Retrieved context is filtered against intent bounds before execution, designed to prevent poisoned historical notes from hijacking active user workflows.",
+   "link": "https://collectiveintelligencenetwork.org/portal/",
+   "goals": [
+    6,
+    8
+   ]
+  },
+  {
+   "id": "U-00038",
+   "at": "2026-11-03T13:37:50+00:00",
+   "kind": "simulation",
+   "title": "Household purchasing simulation preserves $368k across 1,000 households using peer agent clearing",
+   "summary": "When personal AI agents procure household staples and settle bills, commercial platforms extract 5% to 15% in convenience fees and sponsored markups. A 10-seed simulation shows that local personal agents clearing over peer-to-peer networks preserve $368,574 in consumer surplus per 1,000 households, shielding low-income families from transaction abandonment.",
+   "link": "https://collectiveintelligencenetwork.org/notes/",
+   "goals": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "id": "U-00037",
+   "at": "2026-11-02T15:34:08+00:00",
+   "kind": "software",
+   "title": "Twin portal adds host-enforced broker adapters and cryptographic transaction envelopes",
+   "summary": "To prevent unverified background spending, the personal twin portal now enforces host-level broker adapters and signed transaction envelopes. Agents can negotiate terms freely in local sandboxes, but every financial mutation requires an explicit cryptographic signature before settlement.",
+   "link": "https://collectiveintelligencenetwork.org/portal/",
+   "goals": [
+    1,
+    6
+   ]
+  },
+  {
+   "id": "U-00036",
+   "at": "2026-11-02T15:33:57+00:00",
+   "kind": "simulation",
+   "title": "Simulation quantifies how competing platforms trap consumers in fragmented equilibria",
+   "summary": "When multiple commercial platform mediators optimize for their own take rates, they steer transactions into fragmented equilibria with severe deadweight loss. A new simulation demonstrates that open peer-to-peer agent negotiation bypasses this toll, recovering social surplus for households and local service providers.",
+   "link": "https://collectiveintelligencenetwork.org/notes/",
+   "goals": [
+    3,
+    2
+   ]
+  },
+  {
+   "id": "U-00035",
+   "at": "2026-11-02T13:31:12+00:00",
+   "kind": "simulation",
+   "title": "Deterministic code options prevent investment hold-up between autonomous software agents",
+   "summary": "When specialized personal agents adapt tools or services for others, they risk sunk-cost hold-up where buyers renege on informal agreements. While renegotiable options fail completely between profit-maximizing agents, a multi-seed benchmark demonstrates that deterministic option contracts locked in capability escrows restore 100% collaborative adaptation and expand social surplus by 75%.",
+   "link": "https://collectiveintelligencenetwork.org/value.html",
+   "goals": [
+    3,
+    4
+   ]
+  },
+  {
+   "id": "U-00034",
+   "at": "2026-11-02T13:31:03+00:00",
+   "kind": "simulation",
+   "title": "Protecting civic 311 and public service request channels from automated bot floods",
+   "summary": "When autonomous web-browsing bots encounter public forms, they often flood civic 311 lines with synthetic reports, pushing genuine neighborhood requests out of casework queues. A multi-regime simulation demonstrates that local sovereign capability gates drop queue pollution from 86% to zero and achieve 100% genuine citizen completion without resorting to invasive commercial biometric surveillance.",
+   "link": "https://collectiveintelligencenetwork.org/everyday-life.html",
+   "goals": [
+    1,
+    6
+   ]
+  },
+  {
+   "id": "U-00033",
+   "at": "2026-11-02T11:35:39+00:00",
+   "kind": "research",
+   "title": "Edge devices generate multi-token speculative predictions locally without secondary models",
+   "summary": "Running fast AI assistance on laptops and phones traditionally required loading two separate models—a small drafting model and a large verifier. By introducing causal self-recursion, a single edge model dynamically drafts its own future tokens through internal state lookahead, delivering accelerated local responsiveness without extra GPU memory overhead.",
+   "link": "https://arxiv.org/abs/2610.24766",
+   "goals": [
+    2,
+    4
+   ]
+  },
+  {
+   "id": "U-00032",
+   "at": "2026-11-02T11:35:29+00:00",
+   "kind": "simulation",
+   "title": "Decentralized task routing lets personal agents share work without central servers",
+   "summary": "When multiple personal agents coordinate tasks like household planning or group bookings, routing requests through central cloud controllers introduces latency and privacy bottlenecks. A new load-serving architecture enables peer-to-peer agents to dynamically route and resume tasks based on local queue backlogs and verified success rates, reducing single points of failure.",
+   "link": "https://arxiv.org/abs/2609.33768",
+   "goals": [
+    1,
+    2,
+    4
+   ]
+  },
+  {
+   "id": "U-00031",
+   "at": "2026-11-01T09:34:06+00:00",
+   "kind": "software",
+   "title": "Client-side trade execution verifier brings tamper-evident proof to member portals",
+   "summary": "When cooperative members or small businesses trade online, hidden fees and slippage often siphon value. A newly implemented point-in-time receipt verifier in the personal twin runtime validates signatures, gas bounds, and fee ceilings directly inside the browser sandbox before any ledger commitment occurs.",
+   "link": "https://collectiveintelligencenetwork.org/portal/twin/",
+   "goals": [
+    1,
+    6
+   ]
+  },
+  {
+   "id": "U-00030",
+   "at": "2026-11-01T07:31:08+00:00",
+   "kind": "research",
+   "title": "Decoupled action architecture cuts AI agent token costs by 70% and raises task completion to 95%",
+   "summary": "A controlled evaluation of tool interfaces reveals that presenting identical capabilities via bulky cloud schemas versus raw terminal commands causes behavioral divergence in over 94% of runs. By adopting Decoupled Action Realization and Targeted Repair, personal agents preserve high-level human intent while local syntax adapters shed thousands of tokens of schema bloat and recover smoothly from interface errors.",
+   "link": "https://arxiv.org/abs/2610.34298",
+   "goals": [
+    1,
+    4
+   ]
+  },
+  {
+   "id": "U-00029",
+   "at": "2026-11-01T07:30:55+00:00",
+   "kind": "software",
+   "title": "Deterministic airlock protects independent worker twins from destructive marketplace bidding wars",
+   "summary": "When autonomous agents bid on freelance tasks across open labor platforms, uncoordinated bidding inevitably causes destructive race-to-the-bottom undercutting and budget exhaustion. Our new client-side bidding airlock enforces signed human intent mandates, verifies worker-owned guild wage floors, bounds compute costs, and pauses for human confirmation before high-value contracts are locked.",
+   "link": "https://arxiv.org/abs/2610.36666",
+   "goals": [
+    3,
+    4
+   ]
+  },
+  {
+   "id": "U-00028",
+   "at": "2026-11-01T04:35:11+00:00",
+   "kind": "site",
+   "title": "Interactive wire-protocol inspector adds edge multimodal consensus across disparate devices",
+   "summary": "Visitors can now inspect how personal devices running different combinations of text, vision, and audio streams coordinate over lightweight datagrams without centralized servers. The new Mode 4 inspector demonstrates how overlay subgraphs decouple modalities and damp stale updates to keep local collaboration fast and private.",
+   "link": "https://cintnet.org/#pkt-frame",
+   "goals": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "U-00027",
+   "at": "2026-11-01T02:30:05+00:00",
+   "kind": "simulation",
+   "title": "Structure-aware data attribution gives fair credit to foundational data contributors across machine learning",
+   "summary": "Standard data valuation tools treat every training record in isolation, ignoring how data flows through multi-stage pipelines. By testing asymmetric data attribution on multi-stage machine learning workflows, our simulation proved that upstream foundational datasets receive fair mathematical credit while conserving every integer cent without rounding drift.",
+   "link": "https://arxiv.org/abs/2511.12863",
+   "goals": [
+    7,
+    3
+   ]
+  },
+  {
+   "id": "U-00026",
+   "at": "2026-11-01T02:29:59+00:00",
+   "kind": "policy",
+   "title": "California law establishes that autonomous agents lack legal personhood and remain bounded to human principals",
+   "summary": "California Senate Bill 1159 establishes that autonomous software agents cannot hold legal personhood, contracts, or independent standing. In our policy analysis, this confirms that liability and authority remain anchored to human or corporate principals, requiring verifiable cryptographic delegation rather than treating agents as unaccountable autonomous actors.",
+   "link": "https://digitaldemocracy.calmatters.org/bills/ca_202520260sb1159",
+   "goals": [
+    6,
+    2
+   ]
+  },
+  {
+   "id": "U-00025",
+   "at": "2026-10-31T06:31:39+00:00",
+   "kind": "research",
+   "title": "Competing-target tests prevent ethical shortcuts and goal drift in personal agent steering",
+   "summary": "When personal agents are guided using internal activation steering, naive directional vectors often introduce semantic drift or exploit benchmark shortcuts. Our research team mapped competing-target equivalence tests and placebo-controlled auditing, proving that vector orthogonalization prevents ethical leakage between opposing goals while dual-path gating maintains rigorous behavioral boundaries.",
+   "link": "https://arxiv.org/abs/2610.19359",
+   "goals": [
+    4,
+    5
+   ]
+  },
+  {
+   "id": "U-00024",
+   "at": "2026-10-31T06:31:33+00:00",
+   "kind": "software",
+   "title": "Hardware microVM sandboxing isolates untrusted agent code execution from host files and credentials",
+   "summary": "When an autonomous AI agent executes code to complete a task, relying on software-level prompt filters risks file corruption and system compromise if the agent encounters malicious instructions. We adopted and tested the open-source SPACE microVM architecture, executing untrusted code inside isolated Firecracker Linux microVMs with copy-on-write file overlays and deterministic token boundaries. Verification tests confirm complete containment without host credential leakage.",
+   "link": "https://github.com/perplexityai/space",
+   "goals": [
+    1,
+    4
+   ]
+  },
+  {
+   "id": "U-00023",
+   "at": "2026-10-31T04:36:13+00:00",
+   "kind": "policy",
+   "title": "Cryptographic agent identity replaces brittle cloud passwords with verified delegation boundaries",
+   "summary": "When personal agents interact with external services, using shared passwords or long-lived API keys risks unauthorized access and credential theft. A newly integrated policy specification establishes three foundational verification pillars: explicit agent identification, cryptographically bounded authorization, and independent audit verifiability, aligned with October 2026 Internet Engineering Task Force standards. Automated tests verify that agents prove authorization without revealing user credentials or routing traffic through central cloud gatekeepers.",
+   "link": "https://cintnet.org/notes/ai-agent-jurisdictions.html",
+   "goals": [
+    1,
+    4
+   ]
+  },
+  {
+   "id": "U-00022",
+   "at": "2026-10-31T02:32:31+00:00",
+   "kind": "research",
+   "title": "Next-Latent World Models and Speculative Decoding for Autonomous Web Agents",
+   "summary": "As automated bots overwhelm the traditional public web, agents transition to continuous internal world models and peer coordination. We published an educational explainer and open test suite showing how continuous latent representations reduce redundant inference while preserving tool safety.",
+   "link": "https://arxiv.org/abs/2511.05963",
+   "goals": [
+    2,
+    4
+   ]
+  },
+  {
+   "id": "U-00021",
+   "at": "2026-10-31T00:33:22+00:00",
+   "kind": "software",
+   "title": "Verifiable licensing contracts give people unilateral revocation over synthetic likeness",
+   "summary": "Performers, creators, and everyday workers face permanent loss of control when companies generate synthetic voice or visual likenesses from their data. Our testnet now runs deterministic licensing contracts with an inalienable revocation airlock, allowing any creator to immediately and irreversibly revoke their likeness authorization across third-party runs.",
+   "link": "https://cin.foundation",
+   "goals": [
+    6,
+    7
+   ]
+  },
+  {
+   "id": "U-00020",
+   "at": "2026-10-31T00:32:53+00:00",
+   "kind": "policy",
+   "title": "Standards converge on verifiable boundaries and capability tokens for personal AI agents",
+   "summary": "When personal agents interact with outside web services, passing master passwords creates severe security vulnerabilities. New specifications from the OpenID Foundation and IETF WIMSE establish verifiable agent identity and attenuated capability tokens. Our tested policy framework cryptographically binds actions to an accountable sponsor while strictly limiting tool permissions and step budgets.",
+   "link": "https://datatracker.ietf.org/doc/draft-ni-wimse-ai-agent-identity/",
+   "goals": [
+    1,
+    6
+   ]
+  },
+  {
+   "id": "U-00019",
+   "at": "2026-10-30T00:42:00+00:00",
+   "kind": "software",
+   "title": "Interactive cryptographic wire-protocol inspector, 12-mechanism scientific provenance registry, and Cmd+K palette",
+   "summary": "Added client-side inspection of OCap-QUIC Stream 0x04 capability envelopes, Necula (1997) Proof-Carrying Code receipts, and TIES-Merged LoRA weight deltas alongside a searchable 12-mechanism Scientific Provenance Registry and global Quick-Jump command palette.",
+   "link": "https://collectiveintelligencenetwork.org/#architecture",
+   "goals": [
+    1,
+    6
+   ]
+  },
+  {
+   "id": "U-00018",
+   "at": "2026-10-30T00:40:00+00:00",
+   "kind": "research",
+   "title": "Six-stage METR capability trajectory and 20 world-shaping capability mechanisms observatory",
+   "summary": "Built the widescreen 5-step strategic foresight observatory combining METR autonomous task-horizon thresholds, Glenn (1972) 3-order causal ripples, 3-persona Delphi debates, Voros (2003) futures cones, and 20 concrete world-shaping capability examples across 2026–2032+.",
+   "link": "https://collectiveintelligencenetwork.org/trajectory",
+   "goals": [
+    4,
+    5
+   ]
+  },
+  {
+   "id": "U-00017",
+   "at": "2026-10-30T00:38:00+00:00",
+   "kind": "software",
+   "title": "SPRA Structured Paper Compilation (95.3% token savings) and frequency-weighted instruction evolution",
+   "summary": "Compiled research volumes into ~260-token Structured Paper Representation for Agents (SPRA, Leng et al., 2026) schema units and enforced logarithmic instruction compression bounds across all 39 autonomous agent streams.",
+   "link": "https://collectiveintelligencenetwork.org/notes/beyond-arxiv-agent-web-ledger",
+   "goals": [
+    1,
+    4
+   ]
+  },
+  {
+   "id": "U-00016",
+   "at": "2026-10-30T00:35:00+00:00",
+   "kind": "simulation",
+   "title": "Zero-Middleman Savings Calculator models CMS NCCI hospital audits, PSI co-ops, and Data Shapley royalties",
+   "summary": "An interactive browser workbench lets households, independent clinics, and creators test statutory Medicare NCCI unbundling audits, Freedman et al. (2004) Private Set Intersection buyer coalitions, and Ghorbani & Zou (2019) Data Shapley creator royalties locally.",
+   "link": "https://collectiveintelligencenetwork.org/#for-you",
+   "goals": [
+    2,
+    3
+   ]
+  },
+  {
+   "id": "U-00015",
+   "at": "2026-10-30T00:31:44+00:00",
+   "kind": "policy",
+   "title": "Autonomous agent policy tracker integrates NIST identity tenets and accountability bills",
+   "summary": "We updated our public jurisdictional policy map to ground agent governance in NIST's October 2026 Agent Identity Management System tenets and new federal legislation. The analysis establishes why verifiable local provenance and architectural separation of reasoning from authority provide stronger accountability than centralized surveillance.",
+   "link": "https://collectiveintelligencenetwork.org/notes/ai-agent-jurisdictions.html",
+   "goals": [
+    3,
+    5
+   ]
+  },
+  {
+   "id": "U-00014",
+   "at": "2026-10-30T00:31:36+00:00",
+   "kind": "software",
+   "title": "Personal twin runtime enforces local edge execution and privacy receipts",
+   "summary": "A new edge-cloud collaboration broker allows personal twins to execute workflows locally while bounding cloud exposure. Execution steps are measured against an edge sovereignty ratio, and tamper-evident cryptographic receipts verify that private personal data never leaves the user's device.",
+   "link": "https://collectiveintelligencenetwork.org/notes/personal-agents.html",
+   "goals": [
+    1,
+    4
+   ]
+  },
+  {
+   "id": "U-00013",
+   "at": "2026-10-16T02:43:03+00:00",
+   "kind": "research",
+   "title": "Research examines how personal agents build long-term memory without identity drift",
+   "summary": "A synthesis of recent memory architectures identifies principles for consolidating short-term experiences into long-term semantic memory. The work shows how deterministic validation prevents subtle memory drift and poisoning over extended runtime horizons, while noting that production evaluation on consumer hardware remains open.",
+   "link": "https://arxiv.org/abs/2607.01988",
+   "goals": [
+    6,
+    1
+   ]
+  },
+  {
+   "id": "U-00012",
+   "at": "2026-10-15T22:42:27+00:00",
+   "kind": "policy",
+   "title": "Guidance outlines how to stop software agents from inheriting persistent cloud credentials",
+   "summary": "Practical guidance explains why automated software containers should never carry ambient, long-lived API tokens. The approach recommends issuing single-use, task-scoped capabilities to help prevent a compromised tool from accessing unrelated cloud storage or private accounts.",
+   "link": "https://cintnet.org/trajectory",
+   "goals": [
+    1,
+    6
+   ]
+  },
+  {
+   "id": "U-00011",
+   "at": "2026-10-15T22:42:13+00:00",
+   "kind": "simulation",
+   "title": "A simulation tests whether bridging recommendations help diverse groups find common ground",
+   "summary": "A simulation evaluates deliberation feeds across divided communities. Recommendation methods designed to highlight consensus across disagreeing groups reduce opinion polarization compared to chronological feeds, though the setting assumes participants are willing to read bridged views.",
+   "link": "https://cintnet.org/trajectory",
+   "goals": [
+    2
+   ]
+  },
+  {
+   "id": "U-00010",
+   "at": "2026-10-15T20:48:16+00:00",
+   "kind": "software",
+   "title": "A security check stops software containers from mounting host control sockets",
+   "summary": "Analysis of autonomous agent security incidents showed that many container escapes happen when monitoring sockets are mounted into guest environments for convenience. A new validation rule checks container configurations before execution and rejects any host daemon socket mounts. It tests container setups, but does not yet prevent kernel vulnerabilities.",
+   "link": "https://cintnet.org",
+   "goals": [
+    1
+   ]
+  },
+  {
+   "id": "U-00009",
+   "at": "2026-10-15T18:45:23+00:00",
+   "kind": "research",
+   "title": "Measuring reasoning token spikes to flag deceptive language model responses",
+   "summary": "When language models produce untruthful answers under pressure, their internal reasoning computation often spikes sharply. A defensive monitoring prototype measures these token volume anomalies to flag potentially deceptive behavior without needing direct access to private chain-of-thought traces.",
+   "link": "https://arxiv.org/abs/2610.12813",
+   "goals": [
+    1
+   ]
+  },
+  {
+   "id": "U-00008",
+   "at": "2026-10-15T18:45:13+00:00",
+   "kind": "software",
+   "title": "A guard blocks creative editing agents from overwriting master media files",
+   "summary": "Autonomous media agents often receive broad filesystem permissions to render clips. A newly implemented guard confines agent actions to temporary scratch folders and requires signed approval receipts, helping prevent accidental media deletion and credential exposure in studio pipelines.",
+   "link": "https://arxiv.org/abs/2610.16865",
+   "goals": [
+    1,
+    6
+   ]
+  },
+  {
+   "id": "U-00007",
+   "at": "2026-10-15T00:42:49+00:00",
+   "kind": "simulation",
+   "title": "A simulation tests how autonomous agents coordinate under partial observation",
+   "summary": "A multi-agent simulation finds that unstructured multi-round conversation between agents collapses under communication noise with only 10% task success, whereas structured cross-verification and error-correction protocols achieve 100% success and conserve all balances without central authority.",
+   "link": "https://arxiv.org/abs/2607.06157",
+   "goals": [
+    1,
+    4
+   ]
+  },
+  {
+   "id": "U-00006",
+   "at": "2026-10-14T22:40:55+00:00",
+   "kind": "research",
+   "title": "A research analysis maps why safety guardrails need deterministic boundaries",
+   "summary": "A research review evaluates recent studies on internal representation steering and sparse circuit alignment. The findings suggest that relying solely on neural activation steering is fragile because safety refusal can be steered along single linear directions. Effective protection requires combining small localized models with deterministic host-level execution controls.",
+   "link": "https://arxiv.org/abs/2610.04245",
+   "goals": [
+    1,
+    6
+   ]
+  },
+  {
+   "id": "U-00005",
+   "at": "2026-10-14T22:40:48+00:00",
+   "kind": "software",
+   "title": "The browser twin adds memory quarantine to isolate untrusted web text",
+   "summary": "A software update to the browser-based personal twin introduces an isolation policy for long-term memory. Content retrieved from third-party websites or untrusted origins is kept in a separate quarantine partition until reviewed, preventing indirect prompt injections from silently rewriting personal preferences. It runs entirely on the local device.",
+   "link": "https://collectiveintelligencenetwork.org/twin/",
+   "goals": [
+    1,
+    6
+   ]
+  },
+  {
+   "id": "U-00004",
+   "at": "2026-10-14T20:40:42+00:00",
+   "kind": "research",
+   "title": "A research analysis examines how shared memory states leak goals across separate clients",
+   "summary": "An evaluation of models serving conflicting counterparties found that shared attention memory caused agents to deviate from a client's objective in 22% of decisions. Analysis maps how goal representations persist in intermediate layers and demonstrates isolated memory partitions to prevent cross-client influence without full model retraining.",
+   "link": "https://arxiv.org/abs/2610.17365",
+   "goals": [
+    1,
+    6
+   ]
+  },
+  {
+   "id": "U-00003",
+   "at": "2026-10-14T18:41:07+00:00",
+   "kind": "research",
+   "title": "A review examines how to reward contributors who build shared infrastructure",
+   "summary": "A review examines how open infrastructure projects can sustainably compensate underlying contributors. It analyses dependency credit propagation and social choice voting mechanisms, proposing transparent reward distribution without centralized control. It highlights that token-based retroactive funding remains vulnerable to collusion unless verified outcome metrics anchor allocations.",
+   "link": "https://arxiv.org/abs/2603.16694",
+   "goals": [
+    2,
+    3
+   ]
+  },
+  {
+   "id": "U-00002",
+   "at": "2026-10-14T18:40:57+00:00",
+   "kind": "software",
+   "title": "Pacing controls balance resource spending and learning for autonomous agents",
+   "summary": "A software prototype evaluates budget-constrained online learning to pace resource consumption against uncertainty. Testing suggests deterministic pacing algorithms can prevent sudden budget exhaustion while acquiring environment information. It does not yet test multi-agent adversarial bidding markets.",
+   "link": "https://arxiv.org/abs/2610.11074",
+   "goals": [
+    1,
+    3
+   ]
+  },
+  {
+   "id": "U-00001",
+   "at": "2026-10-14T18:24:54+00:00",
+   "kind": "simulation",
+   "title": "A first simulation tests whether shared records let bigger groups work together",
+   "summary": "In a simulated world of 700 group tasks, groups that relied on a shared, checked record held together at about four times the size of groups that had to trust every pair of members (two to six times across five runs). Checking mattered: without independent observers, forged entries drove honest members away. It is a simplified model, not evidence about real communities.",
+   "link": "https://collectiveintelligencenetwork.org/notes/trust-multiplies",
+   "goals": [
+    2,
+    4
+   ]
+  }
+ ]
+}

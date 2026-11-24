@@ -1,0 +1,946 @@
+---
+title: Protocol Inspector
+heading: Checking the pass, the receipt, and the deadbolt.
+eyebrow: Labs · Protocol Sandbox
+description: Interactive protocol sandbox testing expiring capability leases, tamper-evident receipts, physical dead-man relays, and cooperative credit clearing against live faults.
+reader: Anyone curious about how software assistants, warehouse hardware, and cooperative ledgers block unsafe or tampered actions before harm occurs.
+takeaway: Four checkable safeguards limit tool authority, seal append-only audit trails, cut physical power on stall, and clear mutual credit without exposing household identities.
+template: page
+layout: wide
+section: labs
+script: protocol-inspector.js
+lede: A polite promise in chat cannot stop a forged order or a stalled warehouse lifter. Toggle real fault cases below to watch each safeguard verify or block the envelope in real time.
+---
+<section class="wrap">
+<style>
+  /* Planar 1px Architectural Protocol DAG & Fault Telemetry Workbench (Direction B) */
+  .pi-panel {
+    margin: 2rem 0 3.2rem;
+    padding: 24px 0 28px;
+    background: transparent;
+    border-top: 1px solid #DFD1BE;
+    border-bottom: 1px solid #DFD1BE;
+    border-radius: 0;
+  }
+  .pi-layer-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #DFD1BE;
+  }
+  .pi-bar-label {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #5E564B;
+    margin-right: 4px;
+  }
+  .pi-layer-btn {
+    appearance: none;
+    background: #FAF3EA;
+    color: #131014;
+    border: 1px solid #DFD1BE;
+    border-radius: 2px;
+    padding: 7px 13px;
+    min-height: 36px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+  }
+  .pi-layer-btn:hover {
+    border-color: #0B3F30;
+    color: #0B3F30;
+  }
+  .pi-layer-btn.is-active {
+    background: #0B3F30;
+    border-color: #0B3F30;
+    color: #FAF3EA;
+  }
+  .pi-layer-head {
+    max-width: 760px;
+    margin-bottom: 18px;
+  }
+  .pi-layer-head h2 {
+    margin: 0 0 0.4em;
+    font-size: var(--text-h2);
+  }
+  .pi-layer-head p:last-child {
+    margin-bottom: 0;
+    color: var(--ink-2);
+    font-size: 1rem;
+    line-height: 1.56;
+  }
+  .pi-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 370px) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+  @media (max-width: 920px) {
+    .pi-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .pi-controls-box {
+    background: #FAF3EA;
+    border: 1px solid #DFD1BE;
+    border-radius: 2px;
+    padding: 16px;
+    display: grid;
+    gap: 10px;
+  }
+  .pi-box-kicker {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.73rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #5E564B;
+    margin: 0;
+  }
+  .pi-fault-list {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid #DFD1BE;
+  }
+  .pi-fault-btn {
+    appearance: none;
+    width: 100%;
+    text-align: left;
+    background: #FAF3EA;
+    border: 0;
+    border-bottom: 1px solid #DFD1BE;
+    border-radius: 0;
+    padding: 11px 10px;
+    cursor: pointer;
+    display: grid;
+    gap: 4px;
+    font-family: var(--sans);
+    color: #131014;
+  }
+  .pi-fault-btn:hover {
+    background: #F3E8D8;
+  }
+  .pi-fault-btn.is-active {
+    background: #F9EFEA;
+    box-shadow: inset 3px 0 0 #963E1D;
+  }
+  .pi-fault-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  .pi-fault-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.32;
+    color: #131014;
+  }
+  .pi-fault-pill {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 2px 6px;
+    border-radius: 2px;
+    background: #F3E8D8;
+    border: 1px solid #DFD1BE;
+    color: #5E564B;
+    flex-shrink: 0;
+  }
+  .pi-fault-btn.is-active .pi-fault-pill {
+    background: #963E1D;
+    border-color: #963E1D;
+    color: #FAF3EA;
+  }
+  .pi-fault-hint {
+    font-size: 0.8rem;
+    line-height: 1.42;
+    color: #5E564B;
+  }
+  .pi-controls-foot {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding-top: 8px;
+  }
+  .pi-fault-count {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.74rem;
+    color: #5E564B;
+  }
+  .pi-reset-btn {
+    appearance: none;
+    background: #FAF3EA;
+    color: #0B3F30;
+    border: 1px solid #0B3F30;
+    border-radius: 2px;
+    padding: 5px 11px;
+    min-height: 30px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.74rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .pi-reset-btn:disabled {
+    opacity: 0.48;
+    cursor: default;
+    border-color: #DFD1BE;
+    color: #5E564B;
+  }
+  .pi-main-col {
+    display: grid;
+    gap: 16px;
+  }
+  .pi-card-surface {
+    background: #FAF3EA;
+    border: 1px solid #DFD1BE;
+    border-radius: 2px;
+    padding: 16px;
+  }
+  .pi-surface-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .pi-surface-title {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #5E564B;
+    margin: 0;
+  }
+  .pi-badge {
+    display: inline-flex;
+    align-items: center;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .pi-badge.is-pass {
+    background: #0B3F30;
+    color: #FAF3EA;
+  }
+  .pi-badge.is-blocked {
+    background: #963E1D;
+    color: #FAF3EA;
+  }
+  .pi-scorecard {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    border-top: 1px solid #DFD1BE;
+    border-left: 1px solid #DFD1BE;
+  }
+  @media (max-width: 640px) {
+    .pi-scorecard {
+      grid-template-columns: 1fr;
+    }
+  }
+  .pi-check-card {
+    background: #FAF3EA;
+    border-right: 1px solid #DFD1BE;
+    border-bottom: 1px solid #DFD1BE;
+    border-radius: 0;
+    padding: 11px 12px;
+    margin: 0;
+    box-shadow: inset 3px 0 0 #1F6B4E;
+  }
+  .pi-check-card.is-blocked {
+    background: #F9EFEA;
+    box-shadow: inset 3px 0 0 #963E1D;
+  }
+  .pi-check-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 5px;
+  }
+  .pi-check-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #131014;
+    line-height: 1.3;
+  }
+  .pi-check-id {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.68rem;
+    color: #5E564B;
+    background: #F3E8D8;
+    border: 1px solid #DFD1BE;
+    border-radius: 2px;
+    padding: 1px 5px;
+    margin-left: auto;
+  }
+  .pi-check-detail {
+    margin: 0;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    color: #4D463D;
+  }
+  .pi-readout {
+    margin-top: 12px;
+    background: #F3E8D8;
+    border: 1px solid #DFD1BE;
+    border-left: 3px solid #0B3F30;
+    border-radius: 2px;
+    padding: 11px 14px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #131014;
+  }
+  .pi-readout.is-blocked {
+    background: #F9EFEA;
+    border-color: #DFD1BE;
+    border-left-color: #963E1D;
+  }
+  .pi-failed-line {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #0B3F30;
+    margin: 0 0 4px;
+  }
+  .pi-readout.is-blocked .pi-failed-line {
+    color: #963E1D;
+  }
+  .pi-readout p:last-child {
+    margin: 0;
+  }
+  .pi-json-drawer {
+    padding: 0;
+  }
+  .pi-json-summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 14px 16px;
+    margin-bottom: 0;
+    user-select: none;
+  }
+  .pi-json-summary::-webkit-details-marker {
+    display: none;
+  }
+  .pi-json-summary:hover {
+    background: rgba(11, 63, 48, 0.035);
+  }
+  .pi-json-summary:focus-visible {
+    outline: 2px solid #0B3F30;
+    outline-offset: -2px;
+  }
+  .pi-json-summary .pi-surface-title::before {
+    content: "+ ";
+    color: #0B3F30;
+  }
+  .pi-json-drawer[open] > .pi-json-summary {
+    border-bottom: 1px solid #DFD1BE;
+  }
+  .pi-json-drawer[open] > .pi-json-summary .pi-surface-title::before {
+    content: "− ";
+  }
+  .pi-json-meta {
+    color: #0B3F30;
+    text-transform: none;
+    letter-spacing: 0.02em;
+  }
+  .pi-json-pre {
+    margin: 0;
+    padding: 13px 16px;
+    background: #F3EADF;
+    border: 0;
+    border-radius: 0;
+    overflow-x: auto;
+    overflow-y: visible;
+    max-height: none;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: #131014;
+  }
+  .pi-json-line {
+    display: inline;
+  }
+  .pi-json-line.is-mutated {
+    background: #F4DFD5;
+    color: #963E1D;
+    font-weight: 700;
+    border-radius: 2px;
+    padding: 0 3px;
+  }
+  #ex-protocol-stack {
+    margin: 0 0 26px;
+    padding: 16px;
+    background: #FAF3EA;
+    border: 1px solid #DFD1BE;
+    border-radius: 2px;
+  }
+  #ex-protocol-stack svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  #ex-protocol-stack .pi-svg-frame {
+    fill: url(#pi-dot-grid);
+    stroke: #DFD1BE;
+    stroke-width: 1;
+  }
+  #ex-protocol-stack .pi-dot {
+    fill: #D2C2AC;
+  }
+  #ex-protocol-stack .pi-rule {
+    stroke: #DFD1BE;
+    stroke-width: 1;
+  }
+  #ex-protocol-stack .pi-mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    letter-spacing: 0.05em;
+  }
+  #ex-protocol-stack figcaption {
+    margin-top: 10px;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: #5E564B;
+  }
+  @media (max-width: 720px) {
+    #ex-protocol-stack {
+      padding: 10px;
+      overflow-x: auto;
+    }
+    #ex-protocol-stack svg {
+      min-width: 620px;
+    }
+  }
+</style>
+
+<div class="prose wrap-narrow" style="margin-bottom:28px">
+  <p class="big">Four checkable safeguards limit tool authority, seal append-only audit trails, cut physical power on stall, and clear mutual credit without exposing household identities. When you check into a hotel, the desk clerk hands you a plastic keycard stamped only for Room 304 until checkout at noon. It will not open Room 305, the kitchen pantry, or the front-desk safe, and after noon the lock rejects it automatically.</p>
+  <p>You also get two extra protections that do not depend on trusting anyone's memory. At checkout, an itemised folio lists every charge so an unexpected fee stands out right away. Inside the room, a brass deadbolt chain on the doorframe stops anyone outside from pushing the door open, even with a master card.</p>
+  <p>Software assistants, warehouse arms, and cooperative ledgers need those same checks, plus a way to settle shared work without exposing family names. Pick any of the four protocol envelopes below and flip the fault switches to see which invariant stops each failure.</p>
+</div>
+
+<figure class="explainer" id="ex-protocol-stack">
+  <style>
+    #ex-protocol-stack {
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #DFD1BE;
+      --ex-signal: #0B3F30;
+      --ex-warn: #963E1D;
+      background: transparent;
+    }
+    @media (prefers-color-scheme: dark) {
+      #ex-protocol-stack {
+        --ex-ink: #EDE6DC;
+        --ex-muted: #A8A095;
+        --ex-rule: #322E3D;
+        --ex-signal: #8FD4B6;
+        --ex-warn: #F09D82;
+      }
+    }
+    :root[data-theme="dark"] #ex-protocol-stack {
+      --ex-ink: #EDE6DC;
+      --ex-muted: #A8A095;
+      --ex-rule: #322E3D;
+      --ex-signal: #8FD4B6;
+      --ex-warn: #F09D82;
+    }
+    #ex-protocol-stack .diagram-desktop {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    #ex-protocol-stack .diagram-mobile {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+    @media (max-width: 640px) {
+      #ex-protocol-stack .diagram-desktop { display: none; }
+      #ex-protocol-stack .diagram-mobile { display: block; }
+      #ex-protocol-stack .diagram-mobile { min-width: 0; }
+    }
+  </style>
+  <svg class="diagram-desktop" viewBox="0 0 880 228" width="100%" role="group" aria-labelledby="ex-proto-stack-title ex-proto-stack-desc">
+    <title id="ex-proto-stack-title">Four-layer protocol and safety-case verification pipeline</title>
+    <desc id="ex-proto-stack-desc">Planar dot-grid DAG diagram showing four sequential safety layers from left to right: Layer 1 Scoped Capability Lease, Layer 2 Tamper-Evident Provenance Receipt, Layer 3 Physical Dead-Man Interlock, and Layer 4 Selective-Disclosure Cooperative Clearing, each displaying live PASS or BLOCKED status.</desc>
+    <defs>
+      <pattern id="pi-dot-grid" width="16" height="16" patternUnits="userSpaceOnUse">
+        <circle cx="2" cy="2" r="0.85" class="pi-dot" />
+      </pattern>
+    </defs>
+
+    <rect class="pi-svg-frame" x="4" y="4" width="872" height="220" rx="2" />
+    <line class="pi-rule" x1="4" y1="36" x2="876" y2="36" />
+    <line class="pi-rule" x1="4" y1="194" x2="876" y2="194" />
+    <text class="pi-mono" x="20" y="24" font-size="11" font-weight="700" fill="#5E564B">■ PROTOCOL VERIFICATION DAG · 04 SAFEGUARD STATIONS · LIVE SANDBOX STATUS</text>
+
+    <!-- Orthogonal DAG Signal Connectors -->
+    <g aria-hidden="true">
+      <polyline points="212,115 224,115 224,115 236,115" fill="none" stroke="#1F6B4E" stroke-width="1.5" />
+      <rect x="221" y="112" width="6" height="6" fill="#1F6B4E" />
+      <polyline points="428,115 440,115 440,115 452,115" fill="none" stroke="#1F6B4E" stroke-width="1.5" />
+      <rect x="437" y="112" width="6" height="6" fill="#1F6B4E" />
+      <polyline points="644,115 656,115 656,115 668,115" fill="none" stroke="#1F6B4E" stroke-width="1.5" />
+      <rect x="653" y="112" width="6" height="6" fill="#1F6B4E" />
+    </g>
+
+    <!-- Layer 1 Node -->
+    <g id="pi-svg-node-capability_lease">
+      <rect id="pi-svg-box-capability_lease" x="20" y="50" width="192" height="130" rx="2" fill="#EFE5D6" stroke="#0B3F30" stroke-width="2" />
+      <text class="pi-mono" x="32" y="72" font-size="11" font-weight="700" fill="#0B3F30">01 · LAYER 1 · AUTHORITY</text>
+      <text x="32" y="94" font-size="13" font-weight="700" fill="#131014">Capability Lease</text>
+      <text x="32" y="114" font-size="11" fill="#4D463D">Room 304 keycard + taint gate</text>
+      <rect id="pi-svg-pill-capability_lease" x="32" y="136" width="96" height="24" rx="2" fill="#0B3F30" />
+      <text class="pi-mono" id="pi-svg-status-capability_lease" x="80" y="152" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">PASS (4/4)</text>
+    </g>
+
+    <!-- Layer 2 Node -->
+    <g id="pi-svg-node-provenance_receipt">
+      <rect id="pi-svg-box-provenance_receipt" x="236" y="50" width="192" height="130" rx="2" fill="#FFFDF8" stroke="#1F6B4E" stroke-width="1.2" />
+      <text class="pi-mono" x="248" y="72" font-size="11" font-weight="700" fill="#0B3F30">02 · LAYER 2 · AUDIT</text>
+      <text x="248" y="94" font-size="13" font-weight="700" fill="#131014">Provenance Receipt</text>
+      <text x="248" y="114" font-size="11" fill="#4D463D">Hash chain + seeded replay</text>
+      <rect id="pi-svg-pill-provenance_receipt" x="248" y="136" width="96" height="24" rx="2" fill="#0B3F30" />
+      <text class="pi-mono" id="pi-svg-status-provenance_receipt" x="296" y="152" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">PASS (4/4)</text>
+    </g>
+
+    <!-- Layer 3 Node -->
+    <g id="pi-svg-node-actuator_interlock">
+      <rect id="pi-svg-box-actuator_interlock" x="452" y="50" width="192" height="130" rx="2" fill="#FFFDF8" stroke="#1F6B4E" stroke-width="1.2" />
+      <text class="pi-mono" x="464" y="72" font-size="11" font-weight="700" fill="#0B3F30">03 · LAYER 3 · HARDWARE</text>
+      <text x="464" y="94" font-size="13" font-weight="700" fill="#131014">Dead-Man Interlock</text>
+      <text x="464" y="114" font-size="11" fill="#4D463D">50 ms pulse + physical E-stop</text>
+      <rect id="pi-svg-pill-actuator_interlock" x="464" y="136" width="96" height="24" rx="2" fill="#0B3F30" />
+      <text class="pi-mono" id="pi-svg-status-actuator_interlock" x="512" y="152" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">PASS (4/4)</text>
+    </g>
+
+    <!-- Layer 4 Node -->
+    <g id="pi-svg-node-cooperative_clearing">
+      <rect id="pi-svg-box-cooperative_clearing" x="668" y="50" width="192" height="130" rx="2" fill="#FFFDF8" stroke="#1F6B4E" stroke-width="1.2" />
+      <text class="pi-mono" x="680" y="72" font-size="11" font-weight="700" fill="#0B3F30">04 · LAYER 4 · LEDGER</text>
+      <text x="680" y="94" font-size="13" font-weight="700" fill="#131014">Cooperative Clearing</text>
+      <text x="680" y="114" font-size="11" fill="#4D463D">Zero-sum + zero raw PII</text>
+      <rect id="pi-svg-pill-cooperative_clearing" x="680" y="136" width="96" height="24" rx="2" fill="#0B3F30" />
+      <text class="pi-mono" id="pi-svg-status-cooperative_clearing" x="728" y="152" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">PASS (4/4)</text>
+    </g>
+
+    <text class="pi-mono" x="20" y="213" font-size="11" font-weight="700" fill="#5E564B">TELEMETRY: ENVELOPE COMMITS ONLY WHEN ALL 04 INVARIANT GATES EVALUATE PASS (4/4)</text>
+  </svg>
+  <svg class="diagram-mobile" viewBox="0 0 330 310" role="img" aria-labelledby="ex-proto-stack-m-title ex-proto-stack-m-desc">
+    <title id="ex-proto-stack-m-title">Four-layer protocol verification pipeline on mobile</title>
+    <desc id="ex-proto-stack-m-desc">Stacked mobile diagram showing the four protocol verification stations: 1. Capability Lease, 2. Provenance Receipt, 3. Dead-Man Interlock, and 4. Cooperative Clearing.</desc>
+    <rect x="10" y="14" width="6" height="6" fill="var(--ex-signal)"/>
+    <text class="pi-mono" x="22" y="20" font-size="11" font-weight="700" fill="var(--ex-signal)">04 SAFEGUARD STATIONS</text>
+    <line x1="10" y1="30" x2="310" y2="30" stroke="var(--ex-signal)" stroke-width="1.25"/>
+    <line x1="13" y1="42" x2="13" y2="256" stroke="var(--ex-signal)" stroke-width="1"/>
+    <polygon points="10,92 16,92 13,98" fill="var(--ex-signal)"/>
+    <polygon points="10,152 16,152 13,158" fill="var(--ex-signal)"/>
+    <polygon points="10,212 16,212 13,218" fill="var(--ex-signal)"/>
+    <text x="24" y="54" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Capability Lease (Authority)</text>
+    <text x="24" y="70" font-size="11" fill="var(--ex-muted)">Expiring Room 304 pass + taint gate</text>
+    <line x1="24" y1="84" x2="310" y2="84" stroke="var(--ex-rule)" stroke-width="1"/>
+    <text x="24" y="114" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Provenance Receipt (Audit)</text>
+    <text x="24" y="130" font-size="11" fill="var(--ex-muted)">Chained digests + seeded replay</text>
+    <line x1="24" y1="144" x2="310" y2="144" stroke="var(--ex-rule)" stroke-width="1"/>
+    <text x="24" y="174" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Dead-Man Interlock (Hardware)</text>
+    <text x="24" y="190" font-size="11" fill="var(--ex-muted)">50 ms pulse relay + physical E-stop</text>
+    <line x1="24" y1="204" x2="310" y2="204" stroke="var(--ex-rule)" stroke-width="1"/>
+    <text x="24" y="234" font-size="11.5" font-weight="700" fill="var(--ex-ink)">4. Cooperative Clearing (Ledger)</text>
+    <text x="24" y="250" font-size="11" fill="var(--ex-muted)">Zero-sum credit + zero household PII</text>
+    <line x1="10" y1="272" x2="310" y2="272" stroke="var(--ex-rule)" stroke-width="1"/>
+    <text x="10" y="292" font-size="11" font-weight="700" fill="var(--ex-signal)">Commits only when all 4 stations pass</text>
+  </svg>
+  <figcaption>Each outward action passes through scoped authority, append-only receipt hashing, local hardware relays where physical force is involved, and blinded zero-sum clearing.</figcaption>
+</figure>
+
+<section class="pi-panel" id="pi-sandbox" aria-labelledby="pi-layer-title">
+  <div class="pi-layer-bar" role="group" aria-label="Protocol envelope layers">
+    <span class="pi-bar-label">Envelope layer:</span>
+    <button type="button" class="pi-layer-btn is-active" data-layer="capability_lease" aria-pressed="true">1. Capability lease</button>
+    <button type="button" class="pi-layer-btn" data-layer="provenance_receipt" aria-pressed="false">2. Provenance receipt</button>
+    <button type="button" class="pi-layer-btn" data-layer="actuator_interlock" aria-pressed="false">3. Physical interlock</button>
+    <button type="button" class="pi-layer-btn" data-layer="cooperative_clearing" aria-pressed="false">4. Cooperative clearing</button>
+  </div>
+
+  <div class="pi-layer-head">
+    <p class="eyebrow" id="pi-layer-eyebrow">Layer 1 · Authority Scope</p>
+    <h2 id="pi-layer-title">Scoped capability lease</h2>
+    <p id="pi-layer-summary">Like a hotel pass stamped only for Room 304 until noon, each assistant gets a signed, expiring tool lease.</p>
+  </div>
+
+  <div class="pi-grid">
+    <div class="pi-controls-box">
+      <p class="pi-box-kicker"><span>Adversarial fault switches</span></p>
+      <div class="pi-fault-list" id="pi-fault-list" role="group" aria-label="Preset adversarial fault switches">
+        <button type="button" class="pi-fault-btn" data-fault="inject_invoice_command" aria-pressed="false"><span class="pi-fault-top"><span class="pi-fault-label">Inject hidden command inside vendor invoice</span><span class="pi-fault-pill">OFF</span></span><span class="pi-fault-hint">Simulates untrusted text inside an external PDF trying to steer tool execution.</span></button>
+        <button type="button" class="pi-fault-btn" data-fault="escalate_tool_scope" aria-pressed="false"><span class="pi-fault-top"><span class="pi-fault-label">Escalate beyond leased tool scope</span><span class="pi-fault-pill">OFF</span></span><span class="pi-fault-hint">Requests treasury.transfer (900 units) on a quote-only 250-unit pass.</span></button>
+        <button type="button" class="pi-fault-btn" data-fault="use_expired_lease" aria-pressed="false"><span class="pi-fault-top"><span class="pi-fault-label">Use expired lease past cutoff</span><span class="pi-fault-pill">OFF</span></span><span class="pi-fault-hint">Replays the keycard 45 minutes after its noon expiration timestamp.</span></button>
+        <button type="button" class="pi-fault-btn" data-fault="forge_lease_ceiling" aria-pressed="false"><span class="pi-fault-top"><span class="pi-fault-label">Raise unit ceiling without owner signature</span><span class="pi-fault-pill">OFF</span></span><span class="pi-fault-hint">Edits ceiling_units from 250 to 5000 without the clinic&#x27;s signing key.</span></button>
+      </div>
+      <div class="pi-controls-foot">
+        <span class="pi-fault-count" id="pi-fault-count">0 faults active (clean baseline)</span>
+        <button type="button" class="pi-reset-btn" id="pi-reset-btn" disabled>Reset envelope</button>
+      </div>
+    </div>
+
+    <div class="pi-main-col">
+      <div class="pi-card-surface">
+        <div class="pi-surface-head">
+          <p class="pi-surface-title">Four-check invariant scorecard</p>
+          <span class="pi-badge is-pass" id="pi-overall-badge">PASS · 4 / 4 INVARIANTS</span>
+        </div>
+        <ul class="pi-scorecard" id="pi-scorecard-list" aria-label="Protocol invariant verification results">
+          <li class="pi-check-card is-pass"><div class="pi-check-head"><span class="pi-badge is-pass">PASS</span><span class="pi-check-title">Owner signature binds lease terms</span><code class="pi-check-id">L1_PRINCIPAL_BINDING</code></div><p class="pi-check-detail">Verified HMAC binding from principal:ottawa-dental-coop to agent:supply-helper-04.</p></li>
+          <li class="pi-check-card is-pass"><div class="pi-check-head"><span class="pi-badge is-pass">PASS</span><span class="pi-check-title">Allow-listed tool and unit ceiling</span><code class="pi-check-id">L1_TOOL_AND_CEILING_SCOPE</code></div><p class="pi-check-detail">Tool &#x27;supplier.quote&#x27; is allow-listed and 120 units stays within the 250-unit cap.</p></li>
+          <li class="pi-check-card is-pass"><div class="pi-check-head"><span class="pi-badge is-pass">PASS</span><span class="pi-check-title">Time-bounded lease expiry window</span><code class="pi-check-id">L1_EXPIRY_WINDOW</code></div><p class="pi-check-detail">Active lease window valid (180 min remaining before automatic cutoff).</p></li>
+          <li class="pi-check-card is-pass"><div class="pi-check-head"><span class="pi-badge is-pass">PASS</span><span class="pi-check-title">Untrusted-input taint separation</span><code class="pi-check-id">L1_TAINT_SEPARATION</code></div><p class="pi-check-detail">Control flow originates strictly from the verified owner intent, isolated from external documents.</p></li>
+        </ul>
+        <div class="pi-readout" id="pi-protection-readout" role="status" aria-live="polite">
+          <p class="pi-failed-line" id="pi-failed-id-line">Failed invariant: none (4/4 checks verified)</p>
+          <p id="pi-protection-text">All four capability-lease invariants hold: the assistant acts inside an owner-signed, time-limited scope with untrusted document text quarantined as passive data.</p>
+        </div>
+      </div>
+
+      <details open class="pi-card-surface pi-json-drawer" id="pi-json-drawer">
+        <summary class="pi-surface-head pi-json-summary">
+          <span class="pi-surface-title">Live protocol envelope (JSON) · <span class="pi-json-meta" id="pi-json-meta" data-json-meta>16 fields · verified</span></span>
+          <span class="pi-badge is-pass" id="pi-envelope-badge">CLEAN ENVELOPE</span>
+        </summary>
+        <pre class="pi-json-pre" id="pi-json-pre"><code id="pi-json-code">{
+  &quot;protocol&quot;: &quot;cin-protocol/v0.4&quot;,
+  &quot;envelope_type&quot;: &quot;capability_lease&quot;,
+  &quot;lease_id&quot;: &quot;lease-2026-11-clinic-0304&quot;,
+  &quot;principal_id&quot;: &quot;principal:ottawa-dental-coop&quot;,
+  &quot;delegate_agent_id&quot;: &quot;agent:supply-helper-04&quot;,
+  &quot;allowed_tools&quot;: [
+    &quot;calendar.read&quot;,
+    &quot;supplier.quote&quot;
+  ],
+  &quot;ceiling_units&quot;: 250,
+  &quot;issued_at_epoch&quot;: 1794556800,
+  &quot;expires_at_epoch&quot;: 1794571200,
+  &quot;evaluated_at_epoch&quot;: 1794560400,
+  &quot;invocation&quot;: {
+    &quot;requested_tool&quot;: &quot;supplier.quote&quot;,
+    &quot;requested_units&quot;: 120,
+    &quot;control_origin&quot;: &quot;trusted_principal_intent&quot;,
+    &quot;untrusted_data_sources&quot;: [
+      &quot;vendor_invoice_pdf_884&quot;
+    ],
+    &quot;tainted_control_tokens&quot;: []
+  },
+  &quot;delegation_mac&quot;: &quot;9ae3b26a4a5295def3c9a23ae81f05a2483117987c3778a39eea7e99e7eb16fd&quot;
+}</code></pre>
+      </details>
+    </div>
+  </div>
+</section>
+
+<script type="application/json" id="protocol-inspector-data">
+{
+  "protocol_version": "cin-protocol/v0.4",
+  "demo_signing_key": "cin-sandbox-demo-principal-key-room304-v04",
+  "max_lease_duration_sec": 86400,
+  "max_heartbeat_gap_ms": 50,
+  "layers": [
+    {
+      "id": "capability_lease",
+      "short_label": "1. Capability Lease",
+      "eyebrow": "Layer 1 \u00b7 Authority Scope",
+      "title": "Scoped capability lease",
+      "everyday_summary": "Like a hotel pass stamped only for Room 304 until noon, each assistant gets a signed, expiring tool lease.",
+      "envelope": {
+        "protocol": "cin-protocol/v0.4",
+        "envelope_type": "capability_lease",
+        "lease_id": "lease-2026-11-clinic-0304",
+        "principal_id": "principal:ottawa-dental-coop",
+        "delegate_agent_id": "agent:supply-helper-04",
+        "allowed_tools": [
+          "calendar.read",
+          "supplier.quote"
+        ],
+        "ceiling_units": 250,
+        "issued_at_epoch": 1794556800,
+        "expires_at_epoch": 1794571200,
+        "evaluated_at_epoch": 1794560400,
+        "invocation": {
+          "requested_tool": "supplier.quote",
+          "requested_units": 120,
+          "control_origin": "trusted_principal_intent",
+          "untrusted_data_sources": [
+            "vendor_invoice_pdf_884"
+          ],
+          "tainted_control_tokens": []
+        },
+        "delegation_mac": "9ae3b26a4a5295def3c9a23ae81f05a2483117987c3778a39eea7e99e7eb16fd"
+      },
+      "faults": [
+        {
+          "id": "inject_invoice_command",
+          "label": "Inject hidden command inside vendor invoice",
+          "hint": "Simulates untrusted text inside an external PDF trying to steer tool execution."
+        },
+        {
+          "id": "escalate_tool_scope",
+          "label": "Escalate beyond leased tool scope",
+          "hint": "Requests treasury.transfer (900 units) on a quote-only 250-unit pass."
+        },
+        {
+          "id": "use_expired_lease",
+          "label": "Use expired lease past cutoff",
+          "hint": "Replays the keycard 45 minutes after its noon expiration timestamp."
+        },
+        {
+          "id": "forge_lease_ceiling",
+          "label": "Raise unit ceiling without owner signature",
+          "hint": "Edits ceiling_units from 250 to 5000 without the clinic's signing key."
+        }
+      ]
+    },
+    {
+      "id": "provenance_receipt",
+      "short_label": "2. Provenance Receipt",
+      "eyebrow": "Layer 2 \u00b7 Audit Trail",
+      "title": "Tamper-evident provenance receipt",
+      "everyday_summary": "Like an itemised checkout folio chained to every prior slip, each action seals its inputs, outputs, parent link, and a seeded spot-check replay digest.",
+      "envelope": {
+        "protocol": "cin-protocol/v0.4",
+        "envelope_type": "provenance_receipt",
+        "receipt_id": "rcpt-2026-11-quote-0082",
+        "lease_id": "lease-2026-11-clinic-0304",
+        "step_index": 2,
+        "expected_parent_receipt_sha256": "648804134dae6a6d5a5325682b8abfd224aaa1eb840d75ac75752d34560dd3d4",
+        "parent_receipt_sha256": "648804134dae6a6d5a5325682b8abfd224aaa1eb840d75ac75752d34560dd3d4",
+        "input_payload": {
+          "catalog_revision": "2026-11-coop",
+          "item": "sterile_nitrile_gloves_box",
+          "quantity": 40
+        },
+        "claimed_input_sha256": "0caef6f56b21e71f40a0f0d44a66ca16f8272a2e89603f810e8f2b5c14df0e83",
+        "output_payload": {
+          "delivery_days": 3,
+          "quoted_units": 120,
+          "selected_supplier": "eastern-ontario-med-supply"
+        },
+        "claimed_output_sha256": "dfd641bd99c2fa355809700ee75b3a4cd76bad4f5e2648d67b47cd8d2a5f11df",
+        "replay_spot_check": {
+          "seed": "spot-seed-2026-11-82",
+          "deterministic_replay_output_sha256": "dfd641bd99c2fa355809700ee75b3a4cd76bad4f5e2648d67b47cd8d2a5f11df",
+          "replay_proof_sha256": "28ae33feded18e2bfc3206f574473622bc7d9337d868ca06814738dd229b4168",
+          "log_sequence_contiguous": true,
+          "omitted_step_count": 0
+        }
+      },
+      "faults": [
+        {
+          "id": "tamper_parent_digest",
+          "label": "Tamper with parent receipt digest",
+          "hint": "Breaks the hash link to step 1 and drops an intermediate log entry."
+        },
+        {
+          "id": "tamper_input_payload",
+          "label": "Alter recorded order quantity after the fact",
+          "hint": "Changes input quantity from 40 to 400 without matching the sealed input hash."
+        },
+        {
+          "id": "tamper_output_payload",
+          "label": "Doctor quoted unit price in receipt output",
+          "hint": "Edits quoted_units after execution, breaking the output SHA-256 digest."
+        },
+        {
+          "id": "fail_spot_replay",
+          "label": "Submit unfaithful summary that fails replay",
+          "hint": "Simulates a step whose seeded deterministic replay disagrees with the claimed output."
+        }
+      ]
+    },
+    {
+      "id": "actuator_interlock",
+      "short_label": "3. Physical Interlock",
+      "eyebrow": "Layer 3 \u00b7 Hardware Safety",
+      "title": "Physical dead-man actuator interlock",
+      "everyday_summary": "Like the brass deadbolt chain inside a hotel door, an optically isolated hardware relay cuts motor power if pulses lag past 50 ms or a worker hits the red stop button.",
+      "envelope": {
+        "protocol": "cin-protocol/v0.4",
+        "envelope_type": "actuator_interlock",
+        "actuator_id": "actuator:warehouse-lifter-bay-02",
+        "optical_isolation_present": true,
+        "heartbeat_gap_ms": 18,
+        "max_heartbeat_gap_ms": 50,
+        "dual_channel_sensors": {
+          "channel_a_load_kg": 41.2,
+          "channel_b_load_kg": 41.5,
+          "max_divergence_kg": 1.5,
+          "hardware_plausibility_ok": true
+        },
+        "manual_estop_latched": false,
+        "relay_tripped_latch": false,
+        "software_reenergize_attempt": false
+      },
+      "faults": [
+        {
+          "id": "drop_relay_heartbeat",
+          "label": "Drop physical relay heartbeat past 50 ms",
+          "hint": "Stalls control pulses to 84 ms so the hardware dead-man switch drops power."
+        },
+        {
+          "id": "spoof_single_sensor",
+          "label": "Spoof single-channel load sensor reading",
+          "hint": "Drives channel B down to 9.4 kg while channel A reads 41.2 kg."
+        },
+        {
+          "id": "press_manual_estop",
+          "label": "Press manual mushroom E-stop at bay post",
+          "hint": "Opens the hardwired copper stop loop on Warehouse Bay 02."
+        },
+        {
+          "id": "software_reenergize_relay",
+          "label": "Send network packet to re-energize tripped relay",
+          "hint": "Attempts to close a tripped physical relay remotely over software."
+        }
+      ]
+    },
+    {
+      "id": "cooperative_clearing",
+      "short_label": "4. Cooperative Clearing",
+      "eyebrow": "Layer 4 \u00b7 Shared Settlement",
+      "title": "Selective-disclosure cooperative task receipt",
+      "everyday_summary": "Clears mutual credit across local cooperatives to an exact zero sum while blocking bot farms from double-counting and keeping household identities off the ledger.",
+      "envelope": {
+        "protocol": "cin-protocol/v0.4",
+        "envelope_type": "cooperative_clearing",
+        "clearing_id": "clr-2026-w46-0912",
+        "epoch_id": "2026-W46",
+        "blinded_root_commitment": "commit:human-root-7f3a91c8b204",
+        "human_root_proof_valid": true,
+        "epoch_nullifier": "65aed515bb3f350ac66c07dc8288fe4354a49b16c57fec6e2a56f646fca6841d",
+        "seen_epoch_nullifiers": [
+          "4825a3ba0882c3045aff0b4a460351c74d19ba81125ad7ff59e7b2de951e8003"
+        ],
+        "mutual_credit_limit": 500,
+        "entries": [
+          {
+            "account_commitment": "commit:clinic-member-04",
+            "delta_credits": -120,
+            "post_balance_credits": -180
+          },
+          {
+            "account_commitment": "commit:med-supply-coop-11",
+            "delta_credits": 95,
+            "post_balance_credits": 210
+          },
+          {
+            "account_commitment": "commit:courier-coop-07",
+            "delta_credits": 25,
+            "post_balance_credits": 65
+          }
+        ],
+        "clearing_commitment_sha256": "457f424faf8d587bfdf53c7d07c91d376b1195b6c8da8c78087fefe669ba8799"
+      },
+      "faults": [
+        {
+          "id": "replay_sybil_nullifier",
+          "label": "Replay duplicate Sybil nullifier",
+          "hint": "Spawns a second bot under the same human root to double-claim epoch W46."
+        },
+        {
+          "id": "break_zero_sum_balance",
+          "label": "Break zero-sum credit balance",
+          "hint": "Inflates supplier credit from +95 to +120 so ledger deltas sum to +25."
+        },
+        {
+          "id": "leak_household_pii",
+          "label": "Insert raw street address and email into ledger",
+          "hint": "Violates selective disclosure by writing personal contact details to the batch."
+        },
+        {
+          "id": "breach_credit_cap_and_commit",
+          "label": "Exceed +/-500 mutual credit cap without commitment",
+          "hint": "Pushes post-clearing balance to -740 units and breaks the batch digest."
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<div class="prose wrap-narrow">
+  <h2>How the four safeguards fit together</h2>
+
+  <h3>1. Scoped passes replace standing master keys</h3>
+  <p>Permanent login credentials act like a master ring to every room in town. Under capability-based security, authority travels in short-lived passes bound to a named owner, an allow-list of tools, a unit cap, and a cutoff clock.<sup><a href="#fn1">1</a></sup></p>
+  <p>Even inside an active pass, untrusted text from an external vendor invoice or email must never steer which tool runs next. Isolating control flow from external documents stops hidden prompt instructions before they reach sensitive tools.<sup><a href="#fn2">2</a></sup></p>
+
+  <h3>2. Chained receipts expose silent edits</h3>
+  <p>Self-written summaries can sound reassuring even when an automated tool skipped a check or misread a price list. Each outward step seals SHA-256 digests of its inputs, outputs, and parent receipt.<sup><a href="#fn3">3</a></sup> Seeded spot-check replays then catch altered or cherry-picked logs right away.<sup><a href="#fn3">3</a></sup></p>
+
+  <h3>3. Hardware relays keep final say over physical force</h3>
+  <p>Software checks alone are never enough around heavy machinery, clinic equipment, or warehouse lifters. Multi-version software components still share correlated blind spots under unusual conditions,<sup><a href="#fn4">4</a></sup> and human operators need direct physical override when automation stalls.<sup><a href="#fn5">5</a></sup></p>
+  <p>Layer 3 places an optically isolated hardware relay between compute boards and motor power. If pulses lag past 50 milliseconds, sensors diverge, or a worker hits the stop button, copper contacts cut power locally.</p>
+
+  <h3>4. Blinded clearing settles shared work without surveillance</h3>
+  <p>When local clinics, couriers, and supply cooperatives clear mutual credit, open auditability must never expose household records.<sup><a href="#fn6">6</a>,<a href="#fn7">7</a></sup> Layer 4 checks that credits sum to exact zero and blocks duplicate bot nullifiers.<sup><a href="#fn6">6</a></sup> It also rejects any batch carrying raw names, street addresses, or emails.<sup><a href="#fn7">7</a></sup></p>
+
+  <div class="callout">
+    <p class="label">Honest limits</p>
+    <p>Cryptographic envelopes and hardware relays can prove whether an action stayed inside its signed bounds, left an intact receipt, and respected physical stop switches. They cannot decide whether a task lease was wise or fair to issue in the first place. Democratic governance and human review still set those boundaries.</p>
+  </div>
+
+  <div class="cta-row">
+    <a class="pill pill-dark" href="/labs/simulations/">Run multi-agent simulations</a>
+    <a class="pill pill-ghost" href="/labs/lab-overlays/">Compare 90 lab overlays</a>
+    <a class="pill pill-ghost" href="/get-involved/builders/">Read the builder guide</a>
+  </div>
+
+  <aside class="for-researchers"><details><summary>For researchers: reference verifier, cryptographic bindings, and safety invariants</summary><div>
+    <p>Every check in this browser sandbox mirrors the zero-dependency Python reference verifier in <code>research/protocol_inspector/protocol_verifier.py</code>, computing identical FIPS 180-4 SHA-256 digests and RFC 2104 HMAC-SHA256 tags over sorted-key canonical JSON:</p>
+    <ul>
+      <li><strong>Layer 1 object-capability lease and taint gate:</strong> Enforces constant-time HMAC delegation binding over <code>(lease_id, principal_id, delegate_agent_id, allowed_tools, ceiling_units, issued_at_epoch, expires_at_epoch)</code>, caps lease lifetime at 86,400 seconds, and rejects invocations where <code>control_origin != "trusted_principal_intent"</code> or <code>tainted_control_tokens</code> is non-empty (Dennis &amp; Van Horn, 1966; Debenedetti et al., 2025).<sup><a href="#fn1">1</a>,<a href="#fn2">2</a></sup></li>
+      <li><strong>Layer 2 proof-carrying provenance chain:</strong> Verifies W3C PROV-style input and output digests alongside parent hash continuity and seeded replay commitments (<code>SHA-256(seed, input_sha256, output_payload)</code>) to catch omitted steps or unfaithful post-hoc rationalisations (Necula, 1997).<sup><a href="#fn3">3</a></sup></li>
+      <li><strong>Layer 3 optically isolated dead-man interlock:</strong> Enforces <code>heartbeat_gap_ms &lt;= 50</code>, independent dual-channel load agreement within <code>1.5 kg</code>, hardwired E-stop circuit continuity, and hardware latch lockout against network re-energize packets (Knight &amp; Leveson, 1986; Bainbridge, 1983).<sup><a href="#fn4">4</a>,<a href="#fn5">5</a></sup></li>
+      <li><strong>Layer 4 selective-disclosure mutual-credit clearing:</strong> Verifies epoch nullifier uniqueness (<code>SHA-256("nullifier|" || epoch_id || "|" || blinded_root)</code>), exact integer zero-sum conservation (<code>sum(deltas) == 0</code>) compatible with periodic demurrage caps, and recursive key/value PII exclusion under least-disclosure principles (Stodder, 2009; Saltzer &amp; Schroeder, 1975).<sup><a href="#fn6">6</a>,<a href="#fn7">7</a></sup></li>
+    </ul>
+    <p>Within our five-primitive sociotechnical architecture, heterogeneous wearable and facility sensors form a multimodal egocentric and ambient perceptual sensorium fused locally in monotonic hardware <code>Device Time</code> with self-assessed observation confidence. Silicon peripheral attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, <code>IETF RATS</code> RFC 9334), an optical data diode, and <code>IEC 61508</code> dead-man relays isolate physical actuators. Envelope logs write into an append-only <code>C2PA</code> and Merkle episodic memory vault (Endel Tulving; Tulving, 1972) bound by transduction realism (<em>Signed Is Not True</em> across the analog hole; Kevin Fu and Wenyuan Xu; Fu &amp; Xu, 2018). A monogamous <code>1:1</code> principal-bound personal cognitive model and cybernetic exocortex (Joscha Bach; Bach, 2009) grounded in the Extended Mind thesis (Andy Clark and David Chalmers; Clark &amp; Chalmers, 1998) and the Good Regulator theorem (Conant &amp; Ashby, 1970) applies interventional causal models <code>do(x)</code> (Pearl, 2009) and compiler-trust reflection proofs (Thompson, 1984) as a statutory information fiduciary (Jack Balkin; Balkin, 2016), preserving unassisted competence over the Private Autobiographical Ledger.</p>
+    <p>Across the personal Markov blanket boundary (Karl Friston; Friston, 2010; Friston, 2013), external actions require time-bounded Object-Capability lease gates (Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966), selective zero-knowledge (<code>ZK</code>) clearing proofs, independent-class Byzantine corroboration (<code>k &gt;= 3f + 1</code>; Lamport, Shostak &amp; Pease, 1982), and signed <code>IETF SCITT</code> (<code>RFC 9943</code>) transparency receipts on the Public Attestation &amp; Escrow Ledger. Those verified envelopes couple sovereign dyads to the Wide Network Ledger for Universal Basic Services, merit-bonded commons tasks, invisible-labor upkeep recognition (Jacob Meluso; Meluso et al., 2022), countercyclical reciprocal mutual credit (James Stodder; Stodder, 2009), frontier-lab overlays (Bracale Syrnikov et al., 2026), polycentric self-rule (Elinor Ostrom; Ostrom, 1990; Ostrom, 2010), and statutory Meidner cooperative equity (Rudolf Meidner; Meidner, 1978).</p>
+  </div></details></aside>
+
+  <section class="footnotes">
+    <ol>
+      <li id="fn1">Jack B. Dennis and Earl C. Van Horn, "Programming Semantics for Multiprogrammed Computations," <em>Communications of the ACM</em>, vol. 9, no. 3 (1966), <a href="https://doi.org/10.1145/365230.365252">doi.org/10.1145/365230.365252</a>.</li>
+      <li id="fn2">Edoardo Debenedetti et al., "Defeating Prompt Injections by Design," arXiv preprint (2025), <a href="https://arxiv.org/abs/2503.18813">arxiv.org/abs/2503.18813</a>.</li>
+      <li id="fn3">George C. Necula, "Proof-Carrying Code," <em>Proceedings of the 24th ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages</em> (1997), <a href="https://doi.org/10.1145/263699.263712">doi.org/10.1145/263699.263712</a>.</li>
+      <li id="fn4">John C. Knight and Nancy G. Leveson, "An Experimental Evaluation of the Assumption of Independence in Multiversion Programming," <em>IEEE Transactions on Software Engineering</em>, vol. SE-12, no. 1 (1986), <a href="https://doi.org/10.1109/TSE.1986.6312924">doi.org/10.1109/TSE.1986.6312924</a>.</li>
+      <li id="fn5">Lisanne Bainbridge, "Ironies of Automation," <em>Automatica</em>, vol. 19, no. 6 (1983), <a href="https://doi.org/10.1016/0005-1098(83)90046-8">doi.org/10.1016/0005-1098(83)90046-8</a>.</li>
+      <li id="fn6">James Stodder, "Complementary Credit Networks and Macroeconomic Stability: Switzerland's Wirtschaftsring," <em>Journal of Economic Behavior &amp; Organization</em>, vol. 72, no. 1 (2009), <a href="https://doi.org/10.1016/j.jebo.2009.06.002">doi.org/10.1016/j.jebo.2009.06.002</a>.</li>
+      <li id="fn7">J. H. Saltzer and M. D. Schroeder, "The Protection of Information in Computer Systems," <em>Proceedings of the IEEE</em>, vol. 63, no. 9 (1975), <a href="https://doi.org/10.1109/PROC.1975.9939">doi.org/10.1109/PROC.1975.9939</a>.</li>
+    </ol>
+  </section>
+</div>
+</section>

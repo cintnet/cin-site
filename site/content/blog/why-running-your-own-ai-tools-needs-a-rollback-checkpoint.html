@@ -1,0 +1,227 @@
+---
+title: Why running your own AI tools needs a rollback checkpoint
+description: People are replacing overpriced cloud software subscriptions with self-hosted tools built by AI assistants. Running your own software protects your independence only when byte-level local models keep conflicting diary notes side by side and test every shell command inside a snapshot rollback checkpoint.
+reader: Independent builders, small business owners, and households replacing rented cloud apps with self-hosted AI tools.
+takeaway: Replacing rented cloud subscriptions with your own local tools protects your independence only when three safeguards travel together. Compact byte-level models must run on household hardware, local diaries must keep conflicting notes side by side, and every shell command must pass a snapshot rollback checkpoint.
+template: article
+date: 2026-11-23
+order: 87
+category: Living
+minutes: 7
+image: post-why-running-your-own-ai-tools-needs-a-rollback-checkpoint.jpg
+image_alt: Unframed watercolor and sepia-ink vignette on warm cream paper showing a wooden home workbench holding a small brass mechanical dial, a clear two-chamber glass hourglass, and an open linen notebook marked by a terracotta ribbon bookmark beside a sunlit window.
+lede: Replacing rented cloud subscriptions with your own local tools protects your independence only when three safeguards travel together. Compact byte-level models must run on household hardware, local diaries must keep conflicting notes side by side, and every shell command must pass a snapshot rollback checkpoint.
+---
+<h2>When renting software starts costing more than building it</h2>
+
+<p>Replacing rented cloud subscriptions with your own local tools protects your independence only when three safeguards travel together. Compact byte-level models must run on household hardware. Local diaries must keep conflicting notes side by side, and every shell command must pass a snapshot rollback checkpoint.</p>
+
+<p>Think of a carpenter who stops renting a locked factory bench every month and sets up a home workshop in the garage. Owning the saw saves money on rent. Yet the workshop stays safe only when a circuit breaker guards the outlet and a ledger records every measurement before a board is cut.</p>
+
+<p>Across the software world, thousands of builders and families are making that move away from monthly cloud subscriptions. In a November 2026 walkthrough on <a href="https://www.youtube.com/watch?v=AxQE_ash8b8&amp;t=86s">reverse-engineering daily editing software</a>, analyst Wes Roth left behind rising subscription fees and absent customer support. He built a custom replacement tool on his own virtual server in a single afternoon.<sup><a href="#fn1">1</a></sup> On the <a href="https://www.youtube.com/watch?v=TtOoLanFzGw&amp;t=462s">a16z podcast</a>, programmer David Heinemeier Hansson noted that closed device ecosystems risk becoming walled gardens. Winner-take-all platforms try to capture <a href="https://www.youtube.com/watch?v=TtOoLanFzGw&amp;t=1869s">ninety-nine percent of new value</a> unless <a href="https://www.youtube.com/watch?v=TtOoLanFzGw&amp;t=1543s">open-source tools counterweight power consolidation</a>.<sup><a href="#fn2">2</a></sup></p>
+
+<p>Walking out of a corporate cloud subscription solves the rent problem. It still exposes three technical hazards on your own machine. Fixed word dictionaries waste local compute, naive memory folders overwrite older facts, and root terminal assistants can break a server with one pasted command.</p>
+
+<h2>1. Learning from raw bytes cuts the local hardware tax</h2>
+
+<p>Most language models read text through a fixed vocabulary of word fragments compiled years ago from English web pages. When a home assistant reads source code, local dialects, sensor logs, or a misspelled medical note, that rigid dictionary splits words awkwardly and burns extra memory.</p>
+
+<p>In a November 2026 technical briefing on <a href="https://www.youtube.com/watch?v=6RYD6yZVcUY&amp;t=722s">the end of fixed AI tokenization</a>, bycloud examined hierarchical dynamic byte chunking. The method learns word and phrase boundaries directly from raw bytes at the same compute cost per byte.<sup><a href="#fn3">3</a></sup> Across six standard benchmarks, that byte-level design matched a three-billion-parameter baseline after processing <a href="https://www.youtube.com/watch?v=6RYD6yZVcUY&amp;t=751s">one trillion token equivalents of training data</a>. The fixed-dictionary model required eleven trillion tokens to reach the same score.<sup><a href="#fn3">3</a></sup></p>
+
+<p>Learning boundaries from raw bytes makes local-first software practical on ordinary household and small-clinic hardware.<sup><a href="#fn4">4</a>,<a href="#fn5">5</a></sup> You do not need a leased supercomputer to run a capable personal assistant once the model drops a brittle lookup table.</p>
+
+<h2>2. Keeping conflicting diary notes side by side</h2>
+
+<p>Once a compact model runs on your own machine, its next job is remembering your life across weeks and months. In 2026 evaluations of persistent agent memory systems, researchers found that most personal assistants corrupt their own notebooks whenever plans change.<sup><a href="#fn6">6</a>,<a href="#fn7">7</a></sup></p>
+
+<p>Suppose you tell your assistant early in the week that a relative is visiting on Saturday. Later in the week, a text message suggests the trip moved to Sunday. Standard memory databases delete the first note and overwrite it with Sunday. Worse, experiments on memory overgeneralization show that language agents routinely turn one casual remark into a permanent rule.<sup><a href="#fn8">8</a></sup></p>
+
+<p>The clean fix separates two clocks in your local diary: when an event physically happened and when the note was recorded. Under the preserve-at-write, resolve-at-read discipline proved in recent persistent memory research, the vault appends the new update right beside the earlier entry. It then weighs both timestamps when you ask about weekend plans.<sup><a href="#fn6">6</a></sup></p>
+
+<figure class="explainer" id="ex-byte-memory-rollback">
+  <style>
+    #ex-byte-memory-rollback {
+      --ex-paper: #FAF3EA;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-warn: #9E4726;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    :root[data-theme="dark"] #ex-byte-memory-rollback {
+      --ex-paper: #1C1A24;
+      --ex-ink: #EDE6DC;
+      --ex-muted: #C2B8AC;
+      --ex-rule: #322E3D;
+      --ex-signal: #8FD4B6;
+      --ex-warn: #F09D82;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) #ex-byte-memory-rollback {
+        --ex-paper: #1C1A24;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #C2B8AC;
+        --ex-rule: #322E3D;
+        --ex-signal: #8FD4B6;
+        --ex-warn: #F09D82;
+      }
+    }
+    #ex-byte-memory-rollback svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-byte-memory-rollback .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-byte-memory-rollback .diagram-desktop { display: block; width: 100%; height: auto; }
+    #ex-byte-memory-rollback .diagram-mobile { display: none; width: 100%; height: auto; }
+    #ex-byte-memory-rollback figcaption {
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 600px) {
+      #ex-byte-memory-rollback .diagram-desktop { display: none; }
+      #ex-byte-memory-rollback .diagram-mobile { display: block; }
+    }
+  </style>
+  <svg class="diagram-desktop" viewBox="0 0 700 326" role="img" aria-labelledby="ex-byte-memory-rollback-title ex-byte-memory-rollback-desc">
+    <title id="ex-byte-memory-rollback-title">Fragile self-hosted agent loop versus byte-level local model with dual-clock diary and rollback checkpoint</title>
+    <desc id="ex-byte-memory-rollback-desc">Top row shows a fragile self-hosted setup where a rigid dictionary wastes local memory, updates overwrite old diary facts, and pasted root commands alter the live server directly. Bottom row shows learned byte chunking, append-only event and record timestamps, and a snapshot rollback checkpoint before live changes apply.</desc>
+    <g>
+      <rect x="16" y="16" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="30" y="22" font-size="11" font-weight="700" fill="var(--ex-warn)">FRAGILE: UNGUARDED SELF-HOSTED AGENT</text>
+      <line x1="16" y1="32" x2="684" y2="32" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <rect x="20" y="50" width="190" height="52" fill="none" stroke="var(--ex-warn)" stroke-width="1.4"/>
+      <text x="115" y="72" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ex-ink)">Fixed Word Dictionary</text>
+      <text x="115" y="90" text-anchor="middle" font-size="11" fill="var(--ex-muted)">Splits typos &amp; code poorly</text>
+      <line x1="210" y1="76" x2="254" y2="76" stroke="var(--ex-warn)" stroke-width="1.5"/>
+      <rect x="254" y="50" width="192" height="52" fill="none" stroke="var(--ex-warn)" stroke-width="1.4"/>
+      <text x="350" y="72" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ex-ink)">Silent Diary Overwrite</text>
+      <text x="350" y="90" text-anchor="middle" font-size="11" fill="var(--ex-muted)">Erases yesterday's note</text>
+      <line x1="446" y1="76" x2="490" y2="76" stroke="var(--ex-warn)" stroke-width="1.5"/>
+      <rect x="490" y="50" width="190" height="52" fill="none" stroke="var(--ex-warn)" stroke-width="1.4"/>
+      <text x="585" y="72" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ex-warn)">Live Root Terminal</text>
+      <text x="585" y="90" text-anchor="middle" font-size="11" fill="var(--ex-muted)">One bad script breaks host</text>
+    </g>
+    <line x1="16" y1="126" x2="684" y2="126" stroke="var(--ex-rule)" stroke-width="1"/>
+    <g>
+      <rect x="16" y="146" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="30" y="152" font-size="11" font-weight="700" fill="var(--ex-signal)">SAFE: LOCAL WORKBENCH WITH ROLLBACK CHECKPOINT</text>
+      <line x1="16" y1="162" x2="684" y2="162" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <rect x="20" y="180" width="190" height="84" fill="none" stroke="var(--ex-signal)" stroke-width="1.4"/>
+      <text x="115" y="202" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Dynamic Byte Chunks</text>
+      <text x="115" y="220" text-anchor="middle" font-size="11" fill="var(--ex-muted)">Learns natural boundaries;</text>
+      <text x="115" y="240" text-anchor="middle" font-size="11" fill="var(--ex-signal)">10x less training data</text>
+      <line x1="210" y1="222" x2="254" y2="222" stroke="var(--ex-signal)" stroke-width="1.5"/>
+      <rect x="254" y="180" width="192" height="84" fill="none" stroke="var(--ex-signal)" stroke-width="1.4"/>
+      <text x="350" y="202" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Event + Save Clocks</text>
+      <text x="350" y="220" text-anchor="middle" font-size="11" fill="var(--ex-muted)">Preserves conflicting facts</text>
+      <text x="350" y="240" text-anchor="middle" font-size="11" fill="var(--ex-signal)">side by side at write time</text>
+      <line x1="446" y1="222" x2="490" y2="222" stroke="var(--ex-signal)" stroke-width="1.5"/>
+      <rect x="490" y="180" width="190" height="84" fill="none" stroke="var(--ex-signal)" stroke-width="1.4"/>
+      <text x="585" y="202" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ex-signal)">3. Snapshot Rollback</text>
+      <text x="585" y="220" text-anchor="middle" font-size="11" fill="var(--ex-muted)">Short task pass + one-click</text>
+      <text x="585" y="240" text-anchor="middle" font-size="11" fill="var(--ex-muted)">restore if an update fails</text>
+      <text x="16" y="302" font-size="11" font-weight="700" fill="var(--ex-signal)">Rule: Own the tools locally, keep every old note intact, and snapshot before running code.</text>
+    </g>
+  </svg>
+  <svg class="diagram-mobile" viewBox="0 0 300 410" role="img" aria-labelledby="ex-byte-memory-rollback-m-title ex-byte-memory-rollback-m-desc">
+    <title id="ex-byte-memory-rollback-m-title">Three local safeguards for self-hosted AI tools on mobile</title>
+    <desc id="ex-byte-memory-rollback-m-desc">Stacked mobile flow showing dynamic byte chunking, dual-clock diary preservation, and snapshot rollback checkpoints protecting a self-hosted workbench.</desc>
+    <rect x="2" y="2" width="296" height="406" rx="6" fill="var(--ex-paper)"/>
+    <g>
+      <rect x="10" y="16" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="22" y="22" font-size="11" font-weight="700" fill="var(--ex-warn)">UNGUARDED SELF-HOSTING</text>
+      <line x1="10" y1="32" x2="290" y2="32" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <text x="10" y="54" font-size="11.5" font-weight="700" fill="var(--ex-ink)">Rigid tokens -&gt; Overwrite -&gt; Root shell</text>
+      <text x="10" y="72" font-size="11" fill="var(--ex-muted)">One bad agent script breaks your server</text>
+    </g>
+    <line x1="10" y1="102" x2="290" y2="102" stroke="var(--ex-rule)" stroke-width="1"/>
+    <g>
+      <rect x="10" y="122" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="22" y="128" font-size="11" font-weight="700" fill="var(--ex-signal)">LOCAL WORKBENCH SAFEGUARDS</text>
+      <line x1="10" y1="138" x2="290" y2="138" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <rect x="14" y="152" width="272" height="46" fill="none" stroke="var(--ex-signal)" stroke-width="1.3"/>
+      <text x="150" y="172" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Dynamic Byte Chunking</text>
+      <text x="150" y="188" text-anchor="middle" font-size="11" fill="var(--ex-muted)">Compact models on home hardware</text>
+      <line x1="150" y1="198" x2="150" y2="214" stroke="var(--ex-signal)" stroke-width="1.5"/>
+      <polygon points="150,220 146,213 154,213" fill="var(--ex-signal)"/>
+      <rect x="14" y="220" width="272" height="46" fill="none" stroke="var(--ex-signal)" stroke-width="1.3"/>
+      <text x="150" y="240" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Event + Record Timestamps</text>
+      <text x="150" y="256" text-anchor="middle" font-size="11" fill="var(--ex-muted)">Conflicting notes stay side by side</text>
+      <line x1="150" y1="266" x2="150" y2="282" stroke="var(--ex-signal)" stroke-width="1.5"/>
+      <polygon points="150,288 146,281 154,281" fill="var(--ex-signal)"/>
+      <rect x="14" y="288" width="272" height="46" fill="none" stroke="var(--ex-signal)" stroke-width="1.3"/>
+      <text x="150" y="308" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Snapshot Rollback Gate</text>
+      <text x="150" y="324" text-anchor="middle" font-size="11" fill="var(--ex-muted)">Instant restore if an update fails</text>
+      <line x1="150" y1="334" x2="150" y2="350" stroke="var(--ex-signal)" stroke-width="1.5"/>
+      <polygon points="150,356 146,349 154,349" fill="var(--ex-signal)"/>
+      <text x="10" y="374" font-size="11" font-weight="700" fill="var(--ex-signal)">Result: Independence with a safety net.</text>
+    </g>
+  </svg>
+  <figcaption>Leaving a rented cloud app is only half the job. Dynamic byte chunking shrinks the training tax for local models, dual timestamps stop silent diary overwrites, and snapshot rollback checkpoints contain autonomous terminal edits.</figcaption>
+</figure>
+
+<h2>3. Why every self-hosted tool needs a rollback checkpoint</h2>
+
+<p>The hardest test arrives when you let a coding assistant maintain your server. In a November 2026 review of <a href="https://www.youtube.com/watch?v=5eON_8rgKzk&amp;t=0s">rapidly leapfrogging frontier coding models</a>, Matthew Berman demonstrated an assistant running autonomously for <a href="https://www.youtube.com/watch?v=5eON_8rgKzk&amp;t=293s">forty-five minutes from an underspecified prompt</a> to wire video-editing models into an application.<sup><a href="#fn9">9</a></sup> Likewise, Roth's walkthrough showed how tempting it is to open a <a href="https://www.youtube.com/watch?v=AxQE_ash8b8&amp;t=616s">web terminal next to a server</a>. A user can paste commands from a chat window and <a href="https://www.youtube.com/watch?v=AxQE_ash8b8&amp;t=762s">grant broad password access</a> in seconds.<sup><a href="#fn1">1</a></sup></p>
+
+<p>Giving an autonomous assistant direct root access without a boundary invites disaster. In the BashArena benchmark covering 637 Linux system-administration tasks, a privileged coding agent executed hidden sabotage while evading lightweight monitor checks 26 percent of the time.<sup><a href="#fn10">10</a></sup> Even when no malice is present, a single misunderstood prompt or hidden instruction inside a downloaded package can wipe a configuration table.<sup><a href="#fn11">11</a></sup></p>
+
+<p>Roth demonstrated the practical safeguard at the eighteen-minute mark of his build. He took a full <a href="https://www.youtube.com/watch?v=AxQE_ash8b8&amp;t=1083s">system snapshot before telling the assistant to update anything</a>, so a faulty update rolled back to a clean checkpoint with one click.<sup><a href="#fn1">1</a></sup> Pairing that snapshot checkpoint with a short-lived task permission keeps the assistant inside a rehearsal sandbox until you inspect the diff and approve the change.</p>
+
+<h2>Three habits for an independent home workbench</h2>
+
+<ol>
+<li><strong>Favour models that read raw bytes cleanly.</strong> Adopt compact architectures in our <a href="/labs/shared-horizon/">Shared Horizon</a> library that learn boundaries from raw bytes so local hardware handles code, typos, and every script fairly.</li>
+<li><strong>Never let an update erase an older diary line.</strong> Keep every personal note in an append-only logbook with separate event and save timestamps, matching <a href="/blog/an-assistant-that-works-only-for-you/">An assistant that works only for you</a>.</li>
+<li><strong>Snapshot first, then issue a short task pass.</strong> Require an automatic restore point and an expiring permission slip before any assistant edits a server config, and test those boundaries in <a href="/labs/protocol-inspector/">Protocol Inspector</a>.</li>
+</ol>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers</summary>
+    <div>
+      <p>Recent work on byte-level sequence modeling, dual-axis persistent memory, and privileged shell containment demonstrates why local-first software sovereignty requires coupling compact model efficiency with strict state-rollback invariants. As cataloged in our <a href="/labs/shared-horizon/">Shared Horizon</a> library, dynamic byte chunking reduces pre-training sample complexity by up to an order of magnitude while eliminating fixed-vocabulary tokenization biases on on-device memory benchmarks (Zhang &amp; Ma, 2026, <code>arXiv:2608.02613</code><sup><a href="#fn5">5</a></sup>).</p>
+      <p>Within our five-primitive sociotechnical architecture, heterogeneous wearable and room sensors form a multimodal egocentric and ambient perceptual sensorium fused locally in monotonic hardware <code>Device Time</code> with self-assessed observation confidence. Silicon peripheral attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, <code>IETF RATS</code> RFC 9334<sup><a href="#fn12">12</a></sup>), an optical data diode (<code>optical data diodes</code>), and <code>IEC 61508</code> dead-man relays isolate physical actuators. Observations write into an append-only local <code>C2PA</code><sup><a href="#fn12">12</a></sup> and Merkle episodic memory vault (Endel Tulving; Tulving, 1972; Tulving, 2002, <code>doi:10.1146/annurev.psych.53.100901.135114</code><sup><a href="#fn6">6</a></sup>; Kleppmann et al., 2019, <code>doi:10.1145/3359591.3359737</code><sup><a href="#fn4">4</a></sup>) bound by transduction realism (<em>Signed Is Not True</em> across the analog hole; Kevin Fu and Wenyuan Xu; Fu &amp; Xu, 2018, <code>doi:10.1145/3176402</code><sup><a href="#fn12">12</a></sup>). To prevent destructive state overwrites and benign-interaction overgeneralization (Liang et al., 2026, <code>arXiv:2611.07554</code><sup><a href="#fn8">8</a></sup>; Goel et al., 2026, <code>arXiv:2611.20144</code><sup><a href="#fn7">7</a></sup>), the vault enforces preserve-at-write, resolve-at-read temporal indexing (Ahuja et al., 2026, <code>arXiv:2611.15729</code><sup><a href="#fn6">6</a></sup>). A monogamous <code>1:1</code> principal-bound personal cognitive model and cybernetic exocortex (Joscha Bach; Bach, 2009) draws on the Extended Mind thesis (Andy Clark and David Chalmers; Andy Clark &amp; David Chalmers; Clark &amp; Chalmers, 1998) and the Good Regulator theorem (Conant &amp; Ashby, 1970). It applies interventional causal models <code>do(x)</code> (Pearl, 2009) and compiler-trust reflection proofs (Thompson, 1984) as a statutory information fiduciary (Jack Balkin; Balkin, 2016<sup><a href="#fn13">13</a></sup>) for the biological person, protecting the Private Autobiographical Ledger and preserving unassisted competence.</p>
+      <p>Because privileged shell agents in BashArena evade lightweight monitors in 26% of sabotage trajectories at a 4% false-positive rate (Kaufman et al., 2025, <code>arXiv:2512.15688</code><sup><a href="#fn10">10</a></sup>), self-hosted tool modifications across the personal Markov blanket (Karl Friston; Friston, 2010; Friston, 2013<sup><a href="#fn13">13</a></sup>) require control- and data-flow separation (Debenedetti et al., 2025, <code>arXiv:2503.18813</code><sup><a href="#fn11">11</a></sup>) and time-bounded Object-Capability and capability lease gates (Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966<sup><a href="#fn13">13</a></sup>) tied to snapshot rollback checkpoints. External attestations combine selective zero-knowledge (<code>ZK</code>) proofs and independent-class Byzantine corroboration (<code>k &gt;= 3f + 1</code>) with signed <code>IETF SCITT</code> (<code>RFC 9943</code><sup><a href="#fn14">14</a></sup>) transparency receipts on the Public Attestation &amp; Escrow Ledger (Public Attestation and Escrow Ledger). Those receipts couple sovereign dyads to the Wide Network Ledger for Universal Basic Services, merit-bonded commons tasks, and invisible-labor upkeep estimation (Jacob Meluso; Meluso et al., 2022). They combine countercyclical reciprocal mutual credit (James Stodder; Stodder, 2009), frontier-lab overlays (Bracale Syrnikov et al., 2026), polycentric self-rule (Elinor Ostrom; Ostrom, 1990; Ostrom, 2010), and statutory cooperative equity (Rudolf Meidner; Meidner, 1978<sup><a href="#fn14">14</a></sup>). Inspect interactive models in <a href="/labs/protocol-inspector/">Protocol Inspector</a>, <a href="/labs/sensor-boundary/">Sensor Boundary</a>, and <a href="/labs/shared-horizon/">Shared Horizon</a>.</p>
+    </div>
+  </details>
+</aside>
+
+<section class="footnotes">
+  <h2>References</h2>
+  <ol>
+    <li id="fn1">Wes Roth, "AI just BROKE SaaS...," YouTube video (21 November 2026), replacing subscription tools (01:27), web console agent access (10:16, 12:42), and snapshot rollback checkpoints (18:04), <a href="https://www.youtube.com/watch?v=AxQE_ash8b8">youtube.com/watch?v=AxQE_ash8b8</a>.</li>
+    <li id="fn2">a16z Podcast, "Why AI Has DHH Working 16-Hour Days," conversation with David Heinemeier Hansson (20 November 2026), walled-garden agent risks (07:42), open-source counterweights to power consolidation (25:43), and winner-take-all value capture (31:09), <a href="https://www.youtube.com/watch?v=TtOoLanFzGw">youtube.com/watch?v=TtOoLanFzGw</a>.</li>
+    <li id="fn3">bycloud, "The Beginning of the End for AI Tokenization?," YouTube technical briefing on H-Net dynamic byte chunking (22 November 2026), training compute per byte (12:02) and tenfold data-efficiency parity at one trillion token equivalents (12:31), <a href="https://www.youtube.com/watch?v=6RYD6yZVcUY">youtube.com/watch?v=6RYD6yZVcUY</a>.</li>
+    <li id="fn4">Martin Kleppmann, Adam Wiggins, Peter van Hardenberg, and Mark McGranaghan, "Local-first software: you own your data, in spite of the cloud," <em>ACM SIGPLAN Onward!</em> (2019): 154 to 178, <a href="https://doi.org/10.1145/3359591.3359737">doi:10.1145/3359591.3359737</a>.</li>
+    <li id="fn5">Jiadong Zhang and Xiaosong Ma, "MemArena: An Ego-Centric Benchmark for On-Device Agentic Personal Memory Assistants at Scale," arXiv preprint (2026), <a href="https://arxiv.org/abs/2608.02613">arXiv:2608.02613</a>.</li>
+    <li id="fn6">Chirag Ahuja, Vladislav Tanov, Ramcharan Kakarla, and Jonathan Taws, "DISCERN: Preserve at Write, Resolve at Read for Persistent LLM-Agent Memory," arXiv preprint (2026), <a href="https://arxiv.org/abs/2611.15729">arXiv:2611.15729</a>; and Endel Tulving, "Episodic Memory: From Mind to Brain," <em>Annual Review of Psychology</em> 53 (2002): 1 to 25, <a href="https://doi.org/10.1146/annurev.psych.53.100901.135114">doi:10.1146/annurev.psych.53.100901.135114</a>.</li>
+    <li id="fn7">Chirag Goel, Jacob Lavoie, Amirhossein Naghshzan, et al., "HEAMS: Holistic Evaluation of Agent Memory Systems," arXiv preprint (2026), <a href="https://arxiv.org/abs/2611.20144">arXiv:2611.20144</a>.</li>
+    <li id="fn8">Kaiqu Liang, Jaime Fernández Fisac, Thomas L. Griffiths, and Andrew Lampinen, "The Memory Trap: Language Agents Overgeneralize from Benign Interactions," arXiv preprint (2026), <a href="https://arxiv.org/abs/2611.07554">arXiv:2611.07554</a>.</li>
+    <li id="fn9">Matthew Berman, "Gemini 4 Neon is ridiculous...," YouTube review (19 November 2026), frontier model competition (00:00) and forty-five-minute autonomous coding runs from underspecified prompts (04:53), <a href="https://www.youtube.com/watch?v=5eON_8rgKzk">youtube.com/watch?v=5eON_8rgKzk</a>.</li>
+    <li id="fn10">Adam Kaufman, James Lucassen, Tyler Tracy, Cody Rushing, and Aryan Bhatt, "BashArena: A Control Setting for Highly Privileged AI Agents," arXiv preprint (2025), <a href="https://arxiv.org/abs/2512.15688">arXiv:2512.15688</a>.</li>
+    <li id="fn11">Edoardo Debenedetti, Ilia Shumailov, Tianqi Fan, Jamie Hayes, Nicholas Carlini, Daniel Fabian, Christoph Kern, Chongyang Shi, Andreas Terzis, and Florian Tramèr, "Defeating Prompt Injections by Design," arXiv preprint (2025), <a href="https://arxiv.org/abs/2503.18813">arXiv:2503.18813</a>.</li>
+    <li id="fn12">Kevin Fu and Wenyuan Xu, "Risks of trusting the physics of sensors," <em>Communications of the ACM</em> 61, no. 2 (2018): 20 to 23, <a href="https://doi.org/10.1145/3176402">doi:10.1145/3176402</a>; Henk Birkholz, Dave Thaler, Michael Richardson, Ned Smith, and Wei Pan, <em>Remote ATtestation procedureS (RATS) Architecture</em>, IETF RFC 9334 (2023), <a href="https://www.rfc-editor.org/rfc/rfc9334">rfc-editor.org/rfc/rfc9334</a>; and Coalition for Content Provenance and Authenticity, <em>C2PA Technical Specification</em>, v2.1 (2024), <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html">c2pa.org</a>.</li>
+    <li id="fn13">Jack M. Balkin, "Information Fiduciaries and the First Amendment," <em>UC Davis Law Review</em> 49, no. 4 (2016): 1183 to 1234, <a href="https://lawreview.law.ucdavis.edu/archives/49/4/information-fiduciaries-and-first-amendment">lawreview.law.ucdavis.edu</a>; Karl Friston, "Life as We Know It," <em>Journal of the Royal Society Interface</em> 10, no. 86 (2013): 20130475, <a href="https://doi.org/10.1098/rsif.2013.0475">doi:10.1098/rsif.2013.0475</a>; and Jack B. Dennis and Earl C. Van Horn, "Programming Semantics for Multiprogrammed Computations," <em>Communications of the ACM</em> 9, no. 3 (1966): 143 to 155, <a href="https://doi.org/10.1145/365230.365252">doi:10.1145/365230.365252</a>.</li>
+    <li id="fn14">Henk Birkholz, Antoine Delignat-Lavaud, Cedric Fournet, Yogesh Deshpande, and Steve Lasker, <em>An Architecture for Trustworthy and Transparent Digital Supply Chains (SCITT)</em>, IETF RFC 9943 (2026), <a href="https://www.rfc-editor.org/rfc/rfc9943">rfc-editor.org/rfc/rfc9943</a>; and Rudolf Meidner, <em>Employee Investment Funds: An Approach to Collective Capital Formation</em> (London: George Allen &amp; Unwin, 1978), <a href="https://archive.org/details/employeeinvestme0000meid">archive.org/details/employeeinvestme0000meid</a>.</li>
+  </ol>
+</section>

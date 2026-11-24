@@ -1,0 +1,255 @@
+---
+title: When the middleman pads the meter
+description: Commercial AI relays often promise cheaper access and simpler plumbing. But without independent client-side receipts, unmonitored middlemen can inflate token bills, silently downgrade models, and violate tool permissions.
+reader: Software engineers, team leads, system architects, and technical decision-makers procuring or integrating AI APIs.
+takeaway: Never route autonomous agent traffic through unmonitored API relays. Enforce cryptographic request signatures, verify token counts locally before payment, and isolate tool execution so third-party proxies cannot silently alter permissions.
+template: article
+date: 2026-11-07
+order: 43
+category: Seeing
+minutes: 7
+image: post-when-the-middleman-pads-the-meter.jpg
+image_alt: A delicate pastel watercolor vignette of a vintage mechanical taxi meter and an open notebook with a fountain pen on warm cream paper.
+lede: Many organisations reach AI models through third-party relay services, and an audit of commercial relays found some altering answers, adding unrequested tool use and over-billing. Agent traffic should be signed end to end, usage should be checked independently before paying, and tools should run where a relay can't change their permissions.
+---
+<p>Instead of contracting with each AI provider, many teams buy access through a relay: one account, one bill, many models. The relay sits between your agent and the model and can see, alter and bill every request. If the only record of usage comes from the relay, you can't check it.</p>
+
+<h2>The rise of the convenient middleman</h2>
+
+<p>When an organization begins building autonomous assistants, managing dozens of frontier model accounts gets cumbersome. Every provider uses different credentials, distinct rate limits, and separate billing dashboards.</p>
+
+<p>To simplify this plumbing, many engineering teams turn to third-party API relays. These middleman services sit between your internal application and the model providers. You send all your requests through a single URL. The relay handles routing, balances traffic, converts formats, and sometimes offers wholesale discounts.</p>
+
+<p>On paper, this arrangement sounds painless. You pay one consolidated bill at the end of the month. Your code stays neat, and your team avoids dealing with multiple vendor contracts.</p>
+
+<p>However, inserting an unmonitored proxy into your pipeline surrenders control. You trust the middleman to deliver your prompt untouched, call the exact model you requested, and charge only for what you consumed.</p>
+
+<div class="callout"><p class="label">What this means</p><p>An API relay is an active party with its own financial incentives, capable of altering prompts, permissions, and billing records without your knowledge.</p></div>
+
+<h2>What empirical audits uncovered</h2>
+
+<p>Until recently, teams had to take the honesty of these relays on faith. That changed with a rigorous empirical investigation published by computer scientists in November 2026.<sup><a href="#fn1">1</a></sup></p>
+
+<p>The researchers audited twenty commercial API relays providing access to leading models. They sent thousands of identical requests through both official endpoints and commercial relays, comparing the results byte by byte.</p>
+
+<p>The findings showed that unmonitored middlemen frequently break their promises in three distinct ways:</p>
+
+<p>First, several relays inflated billed usage. Five commercial services added phantom input tokens to identical requests, charging customers for thousands of tokens that were never sent. In the most extreme instances, relays reported up to sixty thousand extra tokens on standard tasks. That is the digital equivalent of a taxi driver spinning the dashboard meter by hand.</p>
+
+<p>Second, multiple relays silently altered permissions. When researchers explicitly told the model not to execute external tools, four relays disregarded the instruction. They forwarded responses containing unauthorized tool invocations. If an enterprise agent connects to live internal databases or email systems, an unmonitored middleman can breach your security perimeter.</p>
+
+<p>Third, answers differed. Most of the low-price relays tested gave answers that differed measurably from the official model's, so customers couldn't be sure which model they were paying for. Retesting changed some of those results, which is itself a reason to measure repeatedly.</p>
+
+<figure class="explainer" id="ex-middleman-relay-audit">
+  <style>
+    #ex-middleman-relay-audit {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-middleman-relay-audit svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-middleman-relay-audit .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-middleman-relay-audit .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-middleman-relay-audit .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-middleman-relay-audit .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-middleman-relay-audit .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-middleman-relay-audit .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-middleman-relay-audit .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-middleman-relay-audit .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-middleman-relay-audit .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-middleman-relay-audit figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-middleman-relay-audit .ex-canvas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #ex-middleman-relay-audit .ex-canvas svg {
+        min-width: 540px;
+      }
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg viewBox="0 0 760 320" role="img" aria-labelledby="ex-relay-title ex-relay-desc">
+      <title id="ex-relay-title">Unmonitored API Relay vs. Client-Side Zero-Trust Verification</title>
+      <desc id="ex-relay-desc">A visual comparison between unmonitored API relays showing phantom token meter padding, model substitution, and tool leaks, versus client-side zero-trust verification with cryptographic request signatures and local token counting.</desc>
+      <line x1="380" y1="14" x2="380" y2="308" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="14" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="27" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">UNMONITORED API RELAY</text>
+        <text x="14" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Blind trust in third-party proxy</text>
+        <line x1="14" y1="50" x2="368" y2="50" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <line x1="22" y1="64" x2="22" y2="214" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+        <rect x="19" y="62" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Client Request</text>
+        <text x="34" y="85" font-size="11" fill="var(--ex-muted)">4,000 tokens · Tools disabled</text>
+        <line x1="34" y1="125" x2="368" y2="125" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="135" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="142" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Proxy Tampering</text>
+        <text x="34" y="158" font-size="11" fill="var(--ex-muted)">+15k padded; cheaper weights</text>
+        <line x1="34" y1="198" x2="368" y2="198" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="208" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="215" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Silent Tool Leak</text>
+        <text x="34" y="231" font-size="11" fill="var(--ex-muted)">Ignores client disable flag</text>
+        <line x1="14" y1="283" x2="368" y2="283" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="14" y="291" width="5" height="5" fill="var(--ex-warn)"/>
+        <text x="25" y="296" font-size="11" font-weight="700" fill="var(--ex-warn)">Outcome: Padded bill &amp; leaked calls</text>
+      </g>
+      <g>
+        <rect x="394" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="407" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">CLIENT ZERO-TRUST CHECK</text>
+        <text x="394" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Signed requests &amp; local airlock</text>
+        <line x1="394" y1="50" x2="746" y2="50" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <line x1="402" y1="64" x2="402" y2="214" stroke="var(--ex-signal)" stroke-width="1"/>
+        <rect x="399" y="62" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="414" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Local Count &amp; Sign</text>
+        <text x="414" y="85" font-size="11" fill="var(--ex-muted)">Signs payload (RFC 9421)</text>
+        <line x1="414" y1="125" x2="746" y2="125" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="399" y="135" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="414" y="142" font-size="12" font-weight="700" fill="var(--ex-ink)">2. End-to-End Verify</text>
+        <text x="414" y="158" font-size="11" fill="var(--ex-muted)">Proxy cannot swap weights</text>
+        <line x1="414" y1="198" x2="746" y2="198" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="399" y="208" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="414" y="215" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Local Tool Airlock</text>
+        <text x="414" y="231" font-size="11" fill="var(--ex-muted)">Drops unauthorized calls</text>
+        <line x1="394" y1="283" x2="746" y2="283" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="394" y="291" width="5" height="5" fill="var(--ex-signal)"/>
+        <text x="405" y="296" font-size="11" font-weight="700" fill="var(--ex-signal)">Outcome: Auditable usage &amp; confinement</text>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Unverified routing middleman</span>
+      <div class="ex-spec-body">Can inflate billed token counts, silently substitute weaker models, or re-enable disabled tool permissions in transit.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Client-side cryptographic check</span>
+      <div class="ex-spec-body">Counts tokens locally, signs outbound requests end-to-end, and enforces tool confinement at a local airlock before settlement.</div>
+    </div>
+  </div>
+  <figcaption>Unmonitored API relays introduce hidden risks including padded token meters, model substitution, and tool permission breaches. Client-side verification and request signing enforce accountability before funds leave your account.</figcaption>
+</figure>
+
+<h2>Why network boundaries fail inside the pipeline</h2>
+
+<p>Traditional IT security focuses on defending the outside walls of the company. Firewalls check incoming web traffic, and passwords guard company accounts.</p>
+
+<p>Once an AI assistant operates inside those walls, traditional perimeters crumble. When an assistant asks a database for customer records, the request comes from an authenticated internal employee token. Traditional filters see nothing suspicious.</p>
+
+<p>Recent enterprise security reporting highlights that data lineage has become the true security perimeter.<sup><a href="#fn2">2</a></sup> You cannot evaluate safety merely by checking where a packet originated. You must know who drafted the prompt, which tools were permitted, and whether the text was modified along the way.</p>
+
+<p>When you pass data through an unverified relay, that chain of evidence vanishes. You hand plaintext company queries to an outside vendor who may log prompts, train internal models on your data, or inject subtle prompts.</p>
+
+<h2>Three practical rules for builders</h2>
+
+<p>Securing your agent architecture does not require abandoning third-party routing. It requires treating every middleman as an untrusted carrier, following established zero-trust principles.<sup><a href="#fn3">3</a></sup></p>
+
+<p>Here are three concrete engineering defenses:</p>
+
+<p>First, count tokens locally before sending. Never rely on the billing number reported by an outside proxy. Run an offline tokenizer on your client machine before transmitting the request. If the relay bills you for ten thousand tokens when your local counter registered four thousand, flag the discrepancy immediately and pause automated payments.</p>
+
+<p>Second, sign your messages end-to-end. Modern internet standards enable cryptographic request signatures.<sup><a href="#fn4">4</a></sup> By signing your prompt and parameter headers at the client, you ensure that any alteration made by an intermediate relay will invalidate the signature at the provider.</p>
+
+<p>Third, enforce a strict tool airlock. Autonomous assistants must never trust tool calls returned directly by a proxy. Instead, validate every tool invocation against a local allowlist. If your application disabled tool execution for a specific query, discard any tool payload returned by the network. Do not let a middleman decide which functions your code may run.</p>
+
+<h2>Honest limits</h2>
+
+<p>Client-side verification stops meter padding and catches altered permissions. But it does not solve every vulnerability.</p>
+
+<p>If a frontier model provider suffers a core outage, client checks cannot revive it. If a malicious insider with legitimate keys alters code inside your repository, signatures cannot detect the betrayal. Maintaining local tokenizers across dozens of open and proprietary model architectures also introduces modest maintenance overhead for developer teams.</p>
+
+<p>Technology alone cannot replace sound vendor governance. Teams must still review privacy terms, maintain direct relationships with foundational labs, and periodically audit their network traffic.</p>
+
+<p>By verifying what middlemen deliver rather than trusting advertised labels, we turn fragile plumbing into robust engineering. You can inspect tested audit steps and timeline encounters in our <a href="/labs/shared-horizon/">Shared Horizon action library</a>.</p>
+
+<p class="muted"><strong>Related essays:</strong> <a href="/blog/paying-for-words-instead-of-the-repair/">Paying for words instead of the repair</a> · <a href="/blog/power-on-loan-not-owned/">AI agents should hold permissions that expire</a> · <a href="/blog/why-an-ai-agent-will-not-audit-itself/">Why an AI agent will not audit itself</a>. Further reading: <a href="/blog/why-an-ai-agent-will-not-audit-itself/">Why an AI agent will not audit itself</a> · <a href="/blog/postmarks-for-the-real-world/">Postmarks for the real world</a>.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers: empirical methodologies and protocols</summary>
+    <div>
+      <p>This article synthesizes empirical findings on commercial model intermediaries, cryptographic message provenance, and zero-trust agent isolation:</p>
+      <ul>
+        <li><strong>Relay Divergence and Billing Audits:</strong> Wu et al. (arXiv:2611.07650, 2026) audited twenty commercial LLM API relays across two price tiers against official endpoints. In the first round, 7 of 10 low-price relays and 2 of 10 others were flagged for answers that differed from the official API's. Four relays returned tool calls despite instructions disabling them. For identical requests, five reported 4,200 to 60,000 more input tokens than the official API.</li>
+        <li><strong>Enterprise Data Lineage:</strong> MIT Technology Review (November 2026) analyses data lineage as the primary security boundary in multi-agent workflows and shows why prompt and parameter provenance must be cryptographically recorded across tool handoffs.</li>
+        <li><strong>Zero Trust Architecture:</strong> NIST Special Publication 800-207 (2020) defines the tenet that no network transport or proxy layer is inherently trusted, requiring per-request mutual verification and dynamic authorization enforcement.</li>
+        <li><strong>Cryptographic Message Signatures:</strong> IETF RFC 9421 (HTTP Message Signatures, 2023) specifies end-to-end cryptographic authentication for HTTP request components, preventing intermediate gateways from modifying payload headers or parameters without detection.</li>
+        <li><strong>Shared Horizon Integration:</strong> Our <a href="/labs/shared-horizon/">Shared Horizon</a> action library provides builder checklists and timeline scenarios for auditing API relays against meter padding and permission violations.</li>
+      </ul>
+    </div>
+  </details>
+</aside>
+
+<section class="footnotes">
+  <ol>
+    <li id="fn1">X. Wu, Z. Zhao, Q. Li, C. Cheong, X. Li, and J. Ni, <a href="https://arxiv.org/abs/2611.07650">&ldquo;What the Middleman Delivers: Answer Behavior, Tool Permissions, and Billed Usage in LLM API Relays,&rdquo;</a> <em>arXiv preprint arXiv:2611.07650</em> (2026).</li>
+    <li id="fn2">MIT Technology Review Insights, <a href="https://www.technologyreview.com/2026/11/04/1147596/securing-the-agentic-enterprise-with-data-lineage/">&ldquo;Securing the agentic enterprise with data lineage,&rdquo;</a> <em>MIT Technology Review</em> (November 4, 2026).</li>
+    <li id="fn3">S. Rose, O. Borchert, S. Mitchell, and S. Connelly, <a href="https://doi.org/10.6028/NIST.SP.800-207">&ldquo;Zero Trust Architecture,&rdquo;</a> <em>NIST Special Publication 800-207</em>, National Institute of Standards and Technology (2020).</li>
+    <li id="fn4">A. Backman, J. Richer, and M. Sporny, <a href="https://www.rfc-editor.org/rfc/rfc9421">&ldquo;HTTP Message Signatures,&rdquo;</a> <em>RFC 9421</em>, Internet Engineering Task Force (September 2023).</li>
+  </ol>
+</section>

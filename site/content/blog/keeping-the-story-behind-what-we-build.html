@@ -1,0 +1,250 @@
+---
+title: Keeping the story behind what we build
+description: When AI assistants write code faster than we can read, we risk losing why choices were made. Here is how we keep the map while the machine builds.
+reader: Anyone who works with AI assistants to write software, draft policy or build shared systems.
+takeaway: Software changes need checkable waypoints that link human goals, trade-offs and tests together, so teams never lose the reasons behind their work.
+template: article
+date: 2026-11-06
+order: 1
+category: Building
+minutes: 7
+image: post-keeping-the-story-behind-the-system.jpg
+image_alt: A sunlit wooden drafting table holding an unrolled architectural floorplan sketch, a brass divider compass, a potted fern, and a ceramic teacup.
+lede: When AI writes code faster than people can read it, teams can end up with systems that run but that nobody understands. We propose keeping a checkable record that links each change to the goal it serves, the trade-off it made and the test that shows it works.
+---
+<p>AI coding assistants can now change a whole codebase overnight. The code runs, but the reasons behind each change are lost: which requirement it served, what alternative was rejected, what it might break. When something fails a week later, nobody on the team knows where to look.</p>
+
+<h2>Speed without a map</h2>
+
+<p>That is the risk facing software teams today. AI coding assistants can now draft hundreds of lines in seconds. They fix typos, wire up connections, and write tests before you finish your morning coffee. A single developer can now produce the volume of code that used to take an entire department.</p>
+
+<p>Yet as code pours in, something vital begins to slip away. Nobody on the team can explain why a particular choice was made. Nobody remembers which trade-offs were weighed or why an earlier design was rejected. The machine generates answers, but human understanding gets left behind.</p>
+
+<h2>The trail of reasons</h2>
+
+<figure class="explainer" id="ex-cognitive-tours">
+  <style>
+    #ex-cognitive-tours {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-cognitive-tours svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-cognitive-tours .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    #ex-cognitive-tours [role="button"] {
+      cursor: pointer;
+      transition: opacity 160ms ease;
+    }
+    #ex-cognitive-tours [role="button"]:hover,
+    #ex-cognitive-tours [role="button"]:focus-visible {
+      opacity: 0.88;
+      outline: 2px solid var(--ex-accent);
+      outline-offset: 2px;
+    }
+    #ex-cognitive-tours .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.5rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-cognitive-tours .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-cognitive-tours .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-cognitive-tours .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-cognitive-tours .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.25rem;
+    }
+    #ex-cognitive-tours .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 640px) {
+      #ex-cognitive-tours .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+      #ex-cognitive-tours .ex-canvas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #ex-cognitive-tours .ex-canvas svg {
+        min-width: 540px;
+      }
+    }
+    #ex-cognitive-tours figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg viewBox="0 0 680 320" role="group" aria-labelledby="ex-cognitive-tours-title ex-cognitive-tours-desc">
+      <title id="ex-cognitive-tours-title">Comparison of blind code generation versus an inspectable tour of waypoints and intent</title>
+      <desc id="ex-cognitive-tours-desc">Side-by-side comparison showing opaque code generation on the left that produces cognitive debt and lost rationale, versus an inspectable cognitive tour on the right connecting user goals, architecture trade-offs, and verified tests.</desc>
+      <line x1="340" y1="14" x2="340" y2="306" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="16" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="30" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">BLIND GENERATION</text>
+        <line x1="16" y1="34" x2="328" y2="34" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <line x1="23" y1="52" x2="23" y2="225" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+        <rect x="20" y="48" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="34" y="54" font-size="10.5" font-weight="600" fill="var(--ex-muted)">1. Intent</text>
+        <text x="34" y="70" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Original user need lost in chat scroll</text>
+        <line x1="34" y1="95" x2="328" y2="95" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="20" y="105" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="34" y="111" font-size="10.5" font-weight="600" fill="var(--ex-muted)">2. Trade-offs</text>
+        <text x="34" y="127" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Rejected design paths go unrecorded</text>
+        <line x1="34" y1="152" x2="328" y2="152" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="20" y="162" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="34" y="168" font-size="10.5" font-weight="600" fill="var(--ex-muted)">3. Verification</text>
+        <text x="34" y="184" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Tests pass without documented reason</text>
+        <line x1="34" y1="209" x2="328" y2="209" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="20" y="219" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="34" y="225" font-size="10.5" font-weight="600" fill="var(--ex-muted)">4. Long-term health</text>
+        <text x="34" y="241" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Cognitive debt stalls future edits</text>
+        <line x1="16" y1="282" x2="328" y2="282" stroke="var(--ex-rule)" stroke-width="1"/>
+        <text x="16" y="298" font-size="11" font-weight="700" fill="var(--ex-warn)">Outcome: Fragile system paralysis</text>
+      </g>
+      <g>
+        <rect x="356" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="370" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">INSPECTABLE WAYPOINT TOUR</text>
+        <line x1="356" y1="34" x2="664" y2="34" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <line x1="363" y1="52" x2="363" y2="225" stroke="var(--ex-signal)" stroke-width="1"/>
+        <g id="ex-tour-row-1">
+        <rect x="360" y="48" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="374" y="54" font-size="10.5" font-weight="600" fill="var(--ex-accent)">1. Goal waypoint</text>
+        <text x="374" y="70" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Links code diff directly to user problem</text>
+        </g>
+        <line x1="374" y1="95" x2="664" y2="95" stroke="var(--ex-rule)" stroke-width="1"/>
+        <g id="ex-tour-row-2">
+        <rect x="360" y="105" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="374" y="111" font-size="10.5" font-weight="600" fill="var(--ex-accent)">2. Rationale waypoint</text>
+        <text x="374" y="127" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Records chosen design &amp; rejected paths</text>
+        </g>
+        <line x1="374" y1="152" x2="664" y2="152" stroke="var(--ex-rule)" stroke-width="1"/>
+        <g id="ex-tour-row-3">
+        <rect x="360" y="162" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="374" y="168" font-size="10.5" font-weight="600" fill="var(--ex-accent)">3. Test waypoint</text>
+        <text x="374" y="184" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Ties assertions to architectural intent</text>
+        </g>
+        <line x1="374" y1="209" x2="664" y2="209" stroke="var(--ex-rule)" stroke-width="1"/>
+        <g id="ex-tour-row-4">
+        <rect x="360" y="219" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="374" y="225" font-size="10.5" font-weight="600" fill="var(--ex-accent)">4. Long-term health</text>
+        <text x="374" y="241" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Shared understanding stays deliverable</text>
+        </g>
+        <line x1="356" y1="282" x2="664" y2="282" stroke="var(--ex-rule)" stroke-width="1"/>
+        <text id="ex-tour-status" x="356" y="298" font-size="11.5" font-weight="700" fill="var(--ex-signal)">Status: 3 Waypoints Linked</text>
+        <g id="ex-tour-inspect-btn" role="button" tabindex="0" aria-pressed="false" aria-controls="ex-tour-status" aria-label="Inspect waypoints">
+          <rect x="572" y="285" width="92" height="22" rx="2" fill="#9E4726" stroke="var(--ex-signal)" stroke-width="1"/>
+          <text id="ex-tour-btn-text" x="618" y="300" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">Inspect</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Unexplained diff dumps</span>
+      <div class="ex-spec-body">Shipping thousands of generated lines without recorded rationale leaves maintainers afraid to touch fragile modules.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Linked cognitive tour</span>
+      <div class="ex-spec-body">Structured waypoints bind user need, design trade-offs, and test invariants into an inspectable trail.</div>
+    </div>
+  </div>
+  <figcaption>When an assistant produces thousands of lines without context, teams lose track of how things work; keeping a tour of waypoints links human goals to verified tests so understanding remains a shared deliverable.</figcaption>
+</figure>
+
+<p>To keep our footing, we need more than raw speed. We need the machine to produce understanding as an explicit deliverable alongside its code.<sup><a href="#fn1">1</a></sup></p>
+
+<p>Think of it like blazing a trail through a dense forest. A machine can clear trees at blinding speed. But if it leaves no markers on the trunks, anyone following behind will quickly get lost. A good trail keeps clear waypoints that answer three simple questions.</p>
+
+<p><strong>1. What human problem were we trying to solve?</strong> Every change begins with a need. Linking code back to that original need keeps the project anchored in reality.</p>
+
+<p><strong>2. What other choices were weighed?</strong> Good engineering is about trade-offs. Recording which options were rejected prevents teams from repeating old dead ends months later.</p>
+
+<p><strong>3. What test proves it still works?</strong> Passing tests should verify the original intent, not just confirm that the code runs without crashing.</p>
+
+<h2>Why productive friction matters</h2>
+
+<p>When tools make generation effortless, the temptation is to accept every suggestion on faith. Clicking confirm is easy. Stopping to understand what changed takes patience.</p>
+
+<p>Yet preserving that small pause is what keeps human teams in control. Software researchers describe this pause as productive friction.<sup><a href="#fn1">1</a></sup> It is the deliberate habit of slowing down just enough to verify the reasons behind a change.</p>
+
+<p>An assistant should help organize the map, flag stale notes, or point out unverified assumptions. But the human maintainer must still walk the trail and confirm that the path makes sense.</p>
+
+<h2>Shared records nobody can erase</h2>
+
+<p>This discipline becomes even more critical when software assistants coordinate across different organizations. When an assistant at a clinic schedules lab work with an assistant at an insurer, decisions happen in milliseconds. If an appointment is cancelled, who explains why?</p>
+
+<p>A shared system cannot rely on one company's private database to settle disputes. We need shared records where every change points directly to the permission that authorized it.<sup><a href="#fn2">2</a></sup></p>
+
+<p>Each shared record forms an immutable tree of actions that any party can independently check. When every step leaves a verifiable receipt, truth no longer depends on whichever platform is biggest.<sup><a href="#fn3">3</a></sup></p>
+
+<div class="callout"><p class="label">What this means</p><p>You do not have to choose between fast development and clear understanding. By requiring software assistants to leave checkable waypoints, teams keep their systems inspectable and resilient over the long haul.</p></div>
+
+<h2>Where this leaves us</h2>
+
+<p>Generative tools will only become faster and more capable. That speed can either bury us under opaque software or free us to focus on higher craft. The difference comes down to whether we demand understanding alongside our output.</p>
+
+<p>Before accepting large automated changes into your codebase or organization, ask a simple question. Can someone new to the project read the reasons behind this change six months from now? Keeping the story behind what we build is how we make sure technology serves human understanding, rather than replacing it.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers</summary>
+    <div>
+      <p>Our approach integrates Margaret-Anne Storey's Cognitive Tours framework (Storey, 2026, arXiv:2611.08456), which formalizes waypoints linking user goals, design rationale, and test assertions to mitigate cognitive debt and intent debt in AI-assisted development.</p>
+      <p>For verifiable distributed coordination, we connect these waypoints to the CoordX protocol (Hyland-Wood &amp; Ewin, 2026, arXiv:2611.06034), structuring records as causal trees of cryptographically signed entries where each action cites its governing capability grant. Execution containment relies on hardware-isolated Object-Capability sandboxes (Dennis &amp; Van Horn, 1966) and Proof-Carrying Code attestation (Necula, 1997).</p>
+    </div>
+  </details>
+</aside>
+
+<section class="footnotes">
+  <p id="fn1">1. Margaret-Anne Storey, "Cognitive Tours: Making Understanding a Deliverable in AI-Assisted Development" (2026), <a href="https://arxiv.org/abs/2611.08456">arXiv:2611.08456</a> (introducing cognitive tours, waypoints, and productive friction to combat cognitive debt and intent debt in automated software development).</p>
+  <p id="fn2">2. David Hyland-Wood and Rob Ewin, "CoordX Protocol: Peer to Peer Cryptographically Verified Shared Records" (2026), <a href="https://arxiv.org/abs/2611.06034">arXiv:2611.06034</a> (specifying serverless, cryptographically verified shared records structured as causal trees of signed immutable entries).</p>
+  <p id="fn3">3. Jack B. Dennis and Earl C. Van Horn, "Programming Semantics for Multiprogrammed Computations," <em>Communications of the ACM</em> 9, no. 3 (1966): 143–155, <a href="https://doi.org/10.1145/365230.365252">doi:10.1145/365230.365252</a>; and George C. Necula, "Proof-Carrying Code," <em>POPL '97</em> (1997): 106–119, <a href="https://doi.org/10.1145/263699.263712">doi:10.1145/263699.263712</a>.</p>
+</section>

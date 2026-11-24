@@ -1,0 +1,222 @@
+---
+title: Why parallel agents need transaction locks
+description: When multiple automated assistants act at once on shared public records or municipal budgets, checking each one in isolation causes race conditions and double-spending. We explain why safety needs stateful transactional locks.
+reader: Software engineers, public-sector procurement leads, and agency teams deploying concurrent automated workflows.
+takeaway: Stateless prompt guards inspect each agent action in a vacuum; preventing race conditions and budget overruns across parallel agents requires external stateful transaction locks.
+template: article
+date: 2026-11-11
+category: Governing
+minutes: 6
+image: post-why-parallel-agents-need-transaction-locks.jpg
+image_alt: Watercolour of two clerks at a wooden counter reviewing a shared ledger book.
+lede: When dozens of automated assistants act at once on shared databases or agency funds, checking each one in isolation creates a dangerous illusion of control. Real safety requires external transaction locks that serialize state changes before actions take effect.
+---
+<div class="prose wrap-narrow">
+<p class="big">When an automated assistant operates on its own, testing whether it follows instructions looks straightforward. You test whether the prompt denies unauthorized commands, check the outgoing message against safety filters, and inspect the response before sending it. In a demo with one user and one task, this setup often works well.</p>
+
+<p>That simple picture breaks down as soon as multiple assistants run at the same time. In public agencies, hospitals, and municipal offices, dozens of automated workflows read and update the same databases simultaneously. When each assistant checks only its own prompt rules, the system develops race conditions, double allocations, and budget overruns.</p>
+
+<p>Safety cannot live inside the language model alone. If the underlying data store lacks transactional locks and external state governance, valid individual decisions can combine into an administrative disaster.</p>
+
+<h2>The concert ticket problem</h2>
+
+<p>Imagine a small theatre selling tickets for an evening show. Two ticket sellers stand at separate windows, each holding a blank notebook. A customer walks up to the first window and asks for front-row seat four. The seller checks their own notebook, sees no record for seat four, and takes the payment.</p>
+
+<p>At the exact same second, another customer approaches the second window and asks for the same seat. The second seller checks their blank notebook, confirms the seat looks open, and takes the payment. Both sellers followed their instructions perfectly. Neither made an error. Yet two families now hold tickets for the exact same seat.</p>
+
+<p>In traditional software, engineers solved this problem decades ago through database transactions. Before a seller can write to the ledger, the database places a lock on seat four. The second seller must wait until the first sale finishes or aborts. The transaction completes cleanly, the lock releases, and the second customer gets a prompt notice that the seat is taken.<sup><a href="#fn1">1</a></sup></p>
+
+<h2>Why stateless prompt guards fail in the wild</h2>
+
+<p>Many modern agent platforms forget this hard-won lesson. They wrap each assistant in extensive prompt instructions, guardrails, and output classification filters. These safeguards inspect each incoming command and outgoing tool call in isolation, asking whether the request seems polite, helpful, and within scope.</p>
+
+<p>What an isolated prompt check cannot see is what another assistant is doing three milliseconds away. Consider a municipal housing fund with a remaining balance of ten thousand dollars. Assistant A receives an emergency grant application for eight thousand dollars and verifies the applicant qualifies. Assistant B receives a separate application for seven thousand dollars and verifies that applicant qualifies too.</p>
+
+<p>Both assistants read the available balance as ten thousand dollars. Both safety filters confirm that eight thousand and seven thousand are each below the ten-thousand-dollar ceiling. Both assistants fire their disbursement tools simultaneously. The municipal bank account overdraws by five thousand dollars. Researchers studying agent governance call this stale authorization: the approval was correct when given and wrong by the time the money moved.<sup><a href="#fn2">2</a></sup></p>
+
+<p>No prompt engineering fixes this failure mode. The failure happened in the gap between reading the shared state and committing the external effect.</p>
+
+<figure class="explainer" id="ex-transaction-locks">
+  <style>
+    #ex-transaction-locks {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-transaction-locks svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-transaction-locks .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-transaction-locks .diagram-desktop {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    #ex-transaction-locks .diagram-mobile {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+    #ex-transaction-locks figcaption {
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-transaction-locks .diagram-desktop { display: none; }
+      #ex-transaction-locks .diagram-mobile { display: block; }
+    }
+  </style>
+  <svg class="diagram-desktop" viewBox="0 0 680 340" role="group" aria-labelledby="ex-tl-desk-title ex-tl-desk-desc">
+    <title id="ex-tl-desk-title">Stateless prompt guards versus stateful transactional governance</title>
+    <desc id="ex-tl-desk-desc">Diagram showing how stateless prompt guards permit concurrent race conditions and budget overdraws, while an external stateful governance proxy uses locks and validation to serialize operations safely.</desc>
+    <line x1="340" y1="14" x2="340" y2="326" stroke="var(--ex-rule)" stroke-width="1"/>
+    <g>
+      <rect x="16" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="30" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">STATELESS PROMPT GUARDS</text>
+      <text x="16" y="42" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Race hazard under concurrent runs</text>
+      <line x1="16" y1="52" x2="328" y2="52" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <line x1="25" y1="68" x2="25" y2="228" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+      <rect x="22" y="67" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="74" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Isolated Ingestion</text>
+      <text x="38" y="91" font-size="11" fill="var(--ex-muted)">Requests evaluated in separate contexts</text>
+      <line x1="38" y1="133" x2="328" y2="133" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="22" y="144" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="151" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Blind Preconditions</text>
+      <text x="38" y="168" font-size="11" fill="var(--ex-muted)">Checks prompt text without locking state</text>
+      <line x1="38" y1="210" x2="328" y2="210" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="22" y="221" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="228" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Concurrent Writes</text>
+      <text x="38" y="245" font-size="11" fill="var(--ex-muted)">Simultaneous updates commit in parallel</text>
+      <line x1="16" y1="298" x2="328" y2="298" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="16" y="307" width="5" height="5" fill="var(--ex-warn)"/>
+      <text x="28" y="312" font-size="11" font-weight="700" fill="var(--ex-warn)">No locks: double spend &amp; corrupted ledger</text>
+    </g>
+    <g>
+      <rect x="356" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="370" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">STATEFUL GOVERNANCE PROXY</text>
+      <text x="356" y="42" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Serialized locks &amp; atomic commits</text>
+      <line x1="356" y1="52" x2="664" y2="52" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <line x1="365" y1="68" x2="365" y2="228" stroke="var(--ex-signal)" stroke-width="1"/>
+      <rect x="362" y="67" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="378" y="74" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Brokered Interception</text>
+      <text x="378" y="91" font-size="11" fill="var(--ex-muted)">External proxy intercepts all tool calls</text>
+      <line x1="378" y1="133" x2="664" y2="133" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="362" y="144" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="378" y="151" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Exclusive Record Lock</text>
+      <text x="378" y="168" font-size="11" fill="var(--ex-muted)">Acquires lock &amp; checks live state preconditions</text>
+      <line x1="378" y1="210" x2="664" y2="210" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="362" y="221" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="378" y="228" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Atomic Commit or Rollback</text>
+      <text x="378" y="245" font-size="11" fill="var(--ex-muted)">Writes cleanly in order with signed receipt</text>
+      <line x1="356" y1="298" x2="664" y2="298" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="356" y="307" width="5" height="5" fill="var(--ex-signal)"/>
+      <text x="368" y="312" font-size="11" font-weight="700" fill="var(--ex-signal)">Locks active: auditable agency ledger</text>
+    </g>
+  </svg>
+  <svg class="diagram-mobile" viewBox="0 0 330 676" role="group" aria-labelledby="ex-tl-mob-title ex-tl-mob-desc">
+    <title id="ex-tl-mob-title">Stateless prompt guards versus stateful transactional governance (Mobile view)</title>
+    <desc id="ex-tl-mob-desc">Stacked mobile diagram showing how stateless prompt guards cause race conditions on top, while stateful governance proxies serialize actions below.</desc>
+    <g>
+      <rect x="8" y="14" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="20" y="20" font-size="11" font-weight="700" fill="var(--ex-warn)">STATELESS PROMPT GUARDS</text>
+      <text x="8" y="38" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Race hazard under concurrent runs</text>
+      <line x1="8" y1="47" x2="318" y2="47" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <line x1="12" y1="62" x2="12" y2="226" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+      <rect x="9" y="60" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="24" y="67" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Isolated Ingestion</text>
+      <text x="24" y="84" font-size="11" fill="var(--ex-muted)">Evaluated in separate contexts</text>
+      <line x1="24" y1="131" x2="318" y2="131" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="140" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="24" y="147" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Blind Preconditions</text>
+      <text x="24" y="164" font-size="11" fill="var(--ex-muted)">Checks rules without locking state</text>
+      <line x1="24" y1="211" x2="318" y2="211" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="220" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="24" y="227" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Concurrent Writes</text>
+      <text x="24" y="244" font-size="11" fill="var(--ex-muted)">Parallel writes collide on ledger</text>
+      <line x1="8" y1="304" x2="318" y2="304" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="8" y="313" width="5" height="5" fill="var(--ex-warn)"/>
+      <text x="19" y="318" font-size="11" font-weight="700" fill="var(--ex-warn)">No locks: double spend &amp; corrupted ledger</text>
+    </g>
+    <line x1="8" y1="338" x2="318" y2="338" stroke="var(--ex-rule)" stroke-width="1.25"/>
+    <g>
+      <rect x="8" y="352" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="20" y="358" font-size="11" font-weight="700" fill="var(--ex-signal)">STATEFUL GOVERNANCE PROXY</text>
+      <text x="8" y="376" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Serialized locks &amp; atomic commits</text>
+      <line x1="8" y1="385" x2="318" y2="385" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <line x1="12" y1="400" x2="12" y2="566" stroke="var(--ex-signal)" stroke-width="1"/>
+      <rect x="9" y="398" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="24" y="405" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Brokered Interception</text>
+      <text x="24" y="422" font-size="11" fill="var(--ex-muted)">External proxy catches tool calls</text>
+      <line x1="24" y1="470" x2="318" y2="470" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="479" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="24" y="486" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Exclusive Record Lock</text>
+      <text x="24" y="503" font-size="11" fill="var(--ex-muted)">Locks shared state &amp; verifies rules</text>
+      <line x1="24" y1="551" x2="318" y2="551" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="560" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="24" y="567" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Atomic Commit</text>
+      <text x="24" y="584" font-size="11" fill="var(--ex-muted)">Clean commit or automatic rollback</text>
+      <line x1="8" y1="644" x2="318" y2="644" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="8" y="653" width="5" height="5" fill="var(--ex-signal)"/>
+      <text x="19" y="658" font-size="11" font-weight="700" fill="var(--ex-signal)">Locks active: auditable agency ledger</text>
+    </g>
+  </svg>
+  <figcaption>Stateless prompt guards examine requests in isolation and cause race conditions when parallel agents read stale state. A stateful governance proxy locks shared records, verifies preconditions, and serializes updates before tool calls take effect.</figcaption>
+</figure>
+
+<h2>What stateful governance adds</h2>
+
+<p>To make concurrent assistants safe, organizations need an external stateful governance proxy. This proxy sits outside the language model and mediates every tool execution that reads or alters shared resources. It brings three classic database guarantees into agent architectures.</p>
+
+<p>First, it enforces strict concurrency control. When an assistant attempts an irreversible action, such as spending funds or changing a legal status, the proxy acquires an explicit lock on the affected records. Competing actions must wait in an orderly queue until the first transaction completes.</p>
+
+<p>Second, it verifies state serializability before committing external effects. The proxy checks that the facts the assistant relied on when planning its action remain true at the moment of execution. If another process modified the budget balance in the meantime, the proxy aborts the transaction safely.</p>
+
+<p>Third, it provides automated rollbacks and signed transaction receipts. When a multi-step workflow fails midway through execution, the proxy rolls back partial updates to restore the agency ledger to a known clean state. It hands the user and the administrator an auditable receipt proving who acted and what changed.</p>
+
+<h2>What public agencies should require</h2>
+
+<p>Public procurement rules for artificial intelligence often focus on model benchmarks and ethics guidelines. While responsible guidelines matter, they cannot replace rigorous operational safeguards. Public officials buying or building agentic systems should require three concrete technical commitments from vendors.</p>
+
+<p>Tenders should mandate external stateful proxies for all consequential tool calls, forbidding systems that rely solely on prompt-based self-policing. Contracts should require explicit transaction isolation levels, so that concurrent automated processes do not corrupt shared public registries or overspend communal budgets. Finally, agencies should require verifiable transaction receipts saved to independent storage. The Council of Europe's AI convention already asks states to keep AI systems accountable and open to oversight; these commitments are one practical way to do that.<sup><a href="#fn3">3</a></sup></p>
+
+<p>Software that serves the public must handle the rush of everyday civic life without collapsing under simultaneous demands. Grounding automated agents in stateful transaction locks helps our institutions stay steady, predictable, and fair.</p>
+
+<p class="muted small">This analysis pairs with our public official guidance in <a href="/labs/shared-horizon/">Shared Horizon</a>, which details actionable procurement cards for stateful governance and concurrency controls.</p>
+
+<aside class="for-researchers"><details><summary>For researchers</summary><div>
+<p>In distributed database theory, concurrent execution is correct if and only if it is equivalent to some serial execution (serializability), the standard correctness condition for databases; Berenson et al. show how the common isolation levels fall short of it.<sup><a href="#fn1">1</a></sup> Peng and Wu carry the idea to agents as policy-state serializability: each committed effect must be explainable as authorized against the policy state immediately before it happens. Their MasuGate prototype prevented stale authorizations that baselines passing policy state as request context missed.<sup><a href="#fn2">2</a></sup></p>
+</div></details></aside>
+
+<section class="footnotes">
+<h2>Sources</h2>
+<p id="fn1">1. Hal Berenson, Philip A. Bernstein, Jim Gray, Jim Melton, Elizabeth O'Neil and Patrick O'Neil, "A Critique of ANSI SQL Isolation Levels," in <em>Proceedings of the 1995 ACM SIGMOD International Conference on Management of Data</em> (1995), 1–10, <a href="https://doi.org/10.1145/223784.223785">doi:10.1145/223784.223785</a>.</p>
+<p id="fn2">2. Yuxiang Peng and Xiaodi Wu, "Stateful Governance for Concurrent Agentic Systems," arXiv preprint <a href="https://arxiv.org/abs/2608.02764">arXiv:2608.02764</a> (2026).</p>
+<p id="fn3">3. Council of Europe, "Framework Convention on Artificial Intelligence and Human Rights, Democracy and the Rule of Law (CETS No. 225)," Council of Europe Treaty Series (2024), <a href="https://www.coe.int/en/web/conventions/full-list?module=treaty-detail&treatynum=225">coe.int</a>.</p>
+</section>
+</div>

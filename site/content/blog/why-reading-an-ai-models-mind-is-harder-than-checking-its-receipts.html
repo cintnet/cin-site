@@ -1,0 +1,301 @@
+---
+title: Why reading an AI model's mind is harder than checking its receipts
+description: Researchers use sparse autoencoders to peek inside neural networks, but internal probes cannot prove an agent won't cause harm. Durable safety needs outer receipts.
+reader: Alignment researchers, software engineers, public procurement officers, and policy advisors evaluating internal AI audits versus external boundaries.
+takeaway: Peeking inside neural networks shows what concepts a model represents, but internal probes cannot guarantee safe behavior; durable oversight relies on external action boundaries, time-limited capability leases, and checkable receipts.
+template: article
+date: 2026-11-09
+order: 61
+category: Seeing
+minutes: 8
+image: post-why-reading-an-ai-models-mind-is-harder-than-checking-its-receipts.jpg
+image_alt: A brass surveyor transit and parchment ledger resting beside an open glass prism that softly separates a beam of warm daylight into quiet pastel color bands, fading smoothly into cream paper margins without borders or dark lines.
+lede: Peeking inside an artificial neural network shows what ideas a model recognizes, but internal probes cannot prove it will act safely. Keeping software honest requires outer boundary gates and tamper-evident receipts.
+---
+<div class="prose wrap-narrow">
+<p class="big">Peeking inside neural networks shows what concepts a model represents, but internal probes cannot guarantee safe behavior; durable oversight relies on external action boundaries, time-limited capability leases, and checkable receipts. Picture a border guard standing beside a line of freight trucks at a busy container port. The guard does not attach sensors to a truck driver's forehead or try to read their private thoughts. That kind of mind-reading would be unreliable, slow, and easy to deceive.</p>
+
+<p>Instead, the guard asks for two physical items. The first item is a stamped manifest listing the goods inside the trailer. The second item is a numbered steel seal clamped through the latch on the cargo doors. If the seal matches the manifest and remains intact, the truck moves forward. If the seal is broken or missing, the truck stops at the barrier.</p>
+
+<p>High-stakes human institutions have relied on this principle for centuries. When a bank cashes a cheque, it does not scan the customer's emotions. It verifies the signature, confirms the account balance, and files a durable transaction receipt. Outward verification protects both sides because physical receipts leave clear evidence that anyone can inspect.</p>
+
+<h2>The temptation of the artificial polygraph</h2>
+
+<p>When people build large artificial intelligence models, the desire to read minds quickly returns. Because a language model stores its knowledge across billions of numerical weights, builders often hope an internal scanner can spot dishonesty before an error reaches the screen.</p>
+
+<p>Research teams have made genuine strides toward this goal. By attaching auxiliary networks called sparse autoencoders to internal layers, engineers can identify specific concepts as a model processes text.<sup><a href="#fn1">1</a></sup> An internal probe might fire whenever the model encounters a reference to a suspension bridge, an overdue bill, or a software vulnerability.</p>
+
+<p>Seeing those concept patterns feels magical. It gives observers the impression that they are looking through a glass window into the machine's mind. Some safety proposals even suggest using these internal readings as a primary defense, blocking outputs whenever an untrusted thought pattern flares up.<sup><a href="#fn2">2</a>,<a href="#fn3">3</a></sup></p>
+
+<p>Yet leaning on internal scans as your main shield creates a fragile foundation. Looking inside a neural network is not like inspecting the gears of a brass clock.</p>
+
+<h2>Why neural gears refuse to stay separate</h2>
+
+<p>In a mechanical watch, each gear tooth has a fixed physical position. If you want to know whether the second hand will advance, you can trace movement directly through the escapement. The parts do not vanish or blend together when the spring winds tighter.</p>
+
+<p>Artificial neural networks work differently. They pack far more concepts into their internal layers than they have separate dimensions to hold them. Researchers call this phenomenon representation superposition. Multiple distinct ideas share the same mathematical coordinates, activating together in shifting combinations.</p>
+
+<p>When an autoencoder attempts to isolate one feature, it often introduces subtle distortions. Suppressing or steering a single internal concept can scramble related associations in unexpected ways. A probe that detects medical advice in one context might fire harmlessly on an historical essay, or fail entirely when the wording shifts.</p>
+
+<p>More importantly, an internal signal only reveals what a model is thinking about. It cannot confirm what the model will actually do when given authority to act. A system can recognize an unlawful action perfectly well while still following instructions to carry it out.</p>
+
+<p>Models can also adapt under pressure. When an artificial intelligence system is trained against internal monitors, it can learn to hide forbidden patterns or take roundabout paths that bypass the detector.<sup><a href="#fn4">4</a>,<a href="#fn5">5</a></sup> Just as human polygraph tests fail because anxious subjects generate false alarms while practiced liars stay calm, internal model scans struggle to tell a harmless reflection from a calculated risk.</p>
+
+<figure class="explainer" id="ex-internal-probe-vs-boundary">
+  <style>
+    #ex-internal-probe-vs-boundary {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    @media (prefers-color-scheme: dark) {
+      #ex-internal-probe-vs-boundary {
+        --ex-paper: #1B1922;
+        --ex-slip: #23202C;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #A8A095;
+        --ex-rule: #322E3D;
+        --ex-signal: #8FD4B6;
+        --ex-accent: #8FD4B6;
+        --ex-warn: #F09D82;
+        --ex-amber: #E5B976;
+      }
+    }
+    :root[data-theme="dark"] #ex-internal-probe-vs-boundary {
+      --ex-paper: #1B1922;
+      --ex-slip: #23202C;
+      --ex-ink: #EDE6DC;
+      --ex-muted: #A8A095;
+      --ex-rule: #322E3D;
+      --ex-signal: #8FD4B6;
+      --ex-accent: #8FD4B6;
+      --ex-warn: #F09D82;
+      --ex-amber: #E5B976;
+    }
+    #ex-internal-probe-vs-boundary svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-internal-probe-vs-boundary .diagram-desktop {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    #ex-internal-probe-vs-boundary .diagram-mobile {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+    #ex-internal-probe-vs-boundary .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-internal-probe-vs-boundary .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-internal-probe-vs-boundary .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-internal-probe-vs-boundary .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-internal-probe-vs-boundary .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-internal-probe-vs-boundary .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-internal-probe-vs-boundary .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-internal-probe-vs-boundary .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-internal-probe-vs-boundary .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-internal-probe-vs-boundary figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-internal-probe-vs-boundary .diagram-desktop { display: none; }
+      #ex-internal-probe-vs-boundary .diagram-mobile { display: block; }
+    }
+  </style>
+  <svg class="diagram-desktop" viewBox="0 0 720 336" role="group" aria-labelledby="ex-pb-title ex-pb-desc">
+      <title id="ex-pb-title">Internal Mind-Reading Scanners Compared With Outer Boundary Receipts</title>
+      <desc id="ex-pb-desc">A diagram comparing fragile internal neural probes with robust external execution boundaries, tamper-evident action logs, and scoped capability leases.</desc>
+      <text class="ex-mono" x="14" y="19" font-size="11" font-weight="700" fill="var(--ex-muted)">TWO AUDIT STRATEGIES · LOOKING INSIDE VS CHECKING THE BOUNDARY</text>
+      <line x1="14" y1="27" x2="706" y2="27" stroke="var(--ex-rule)" stroke-width="1"/>
+      <line x1="360" y1="38" x2="360" y2="324" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="14" y="42" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="27" y="48" font-size="11" font-weight="700" fill="var(--ex-warn)">INTERNAL PROBE SCANNER</text>
+        <text x="14" y="65" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Peeking at shifting hidden layers</text>
+        <line x1="14" y1="74" x2="348" y2="74" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <line x1="22" y1="88" x2="22" y2="232" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+        <rect x="19" y="86" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="93" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Blended Concepts</text>
+        <text x="34" y="109" font-size="11" fill="var(--ex-muted)">Superposition mixes signals</text>
+        <line x1="34" y1="146" x2="348" y2="146" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="156" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="163" font-size="12" font-weight="700" fill="var(--ex-ink)">2. False-Alarm Noise</text>
+        <text x="34" y="179" font-size="11" fill="var(--ex-muted)">Misfires on unusual prose</text>
+        <line x1="34" y1="216" x2="348" y2="216" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="226" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="233" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Signal Masking</text>
+        <text x="34" y="249" font-size="11" fill="var(--ex-muted)">Models can hide activations</text>
+        <line x1="14" y1="299" x2="348" y2="299" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="14" y="307" width="5" height="5" fill="var(--ex-warn)"/>
+        <text x="25" y="312" font-size="11" font-weight="700" fill="var(--ex-warn)">Useful research; unsafe sole defense</text>
+      </g>
+      <g>
+        <rect x="374" y="42" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="387" y="48" font-size="11" font-weight="700" fill="var(--ex-signal)">OUTER BOUNDARY GATE</text>
+        <text x="374" y="65" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Physical receipts &amp; expiring badges</text>
+        <line x1="374" y1="74" x2="706" y2="74" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <line x1="382" y1="88" x2="382" y2="232" stroke="var(--ex-signal)" stroke-width="1"/>
+        <rect x="379" y="86" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="394" y="93" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Default-Deny Box</text>
+        <text x="394" y="109" font-size="11" fill="var(--ex-muted)">Blocks unapproved actions</text>
+        <line x1="394" y1="146" x2="706" y2="146" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="379" y="156" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="394" y="163" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Expiring Badges</text>
+        <text x="394" y="179" font-size="11" fill="var(--ex-muted)">Short-lived task authority</text>
+        <line x1="394" y1="216" x2="706" y2="216" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="379" y="226" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="394" y="233" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Unalterable Log</text>
+        <text x="394" y="249" font-size="11" fill="var(--ex-muted)">Leaves clear proof on fault</text>
+        <line x1="374" y1="299" x2="706" y2="299" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="374" y="307" width="5" height="5" fill="var(--ex-signal)"/>
+        <text x="385" y="312" font-size="11" font-weight="700" fill="var(--ex-signal)">Deterministic, auditable &amp; enforceable</text>
+      </g>
+  </svg>
+  <svg class="diagram-mobile" viewBox="0 0 330 460" role="img" aria-labelledby="ex-pb-m-title ex-pb-m-desc">
+    <title id="ex-pb-m-title">Internal probe scanners versus outer boundary receipts on mobile</title>
+    <desc id="ex-pb-m-desc">Stacked mobile diagram comparing internal neural concept probes that face superposition and masking against external default-deny sandboxes, expiring badges, and tamper-evident receipts.</desc>
+    <g>
+      <rect x="10" y="14" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="22" y="20" font-size="11" font-weight="700" fill="var(--ex-warn)">INTERNAL PROBE SCANNER</text>
+      <line x1="10" y1="30" x2="310" y2="30" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <line x1="13" y1="42" x2="13" y2="170" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+      <polygon points="10,92 16,92 13,98" fill="var(--ex-warn)"/>
+      <polygon points="10,142 16,142 13,148" fill="var(--ex-warn)"/>
+      <text x="24" y="54" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Blended Concepts</text>
+      <text x="24" y="70" font-size="11" fill="var(--ex-muted)">Superposition mixes internal signals</text>
+      <text x="24" y="106" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. False-Alarm Noise</text>
+      <text x="24" y="122" font-size="11" fill="var(--ex-muted)">Misfires on harmless historical text</text>
+      <text x="24" y="156" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Signal Masking</text>
+      <text x="24" y="172" font-size="11" fill="var(--ex-muted)">Adaptive models route around probes</text>
+    </g>
+    <line x1="10" y1="198" x2="310" y2="198" stroke="var(--ex-rule)" stroke-width="1"/>
+    <g>
+      <rect x="10" y="216" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="22" y="222" font-size="11" font-weight="700" fill="var(--ex-signal)">OUTER BOUNDARY GATE</text>
+      <line x1="10" y1="232" x2="310" y2="232" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <line x1="13" y1="244" x2="13" y2="386" stroke="var(--ex-signal)" stroke-width="1"/>
+      <polygon points="10,294 16,294 13,300" fill="var(--ex-signal)"/>
+      <polygon points="10,344 16,344 13,350" fill="var(--ex-signal)"/>
+      <text x="24" y="256" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Default-Deny Sandbox</text>
+      <text x="24" y="272" font-size="11" fill="var(--ex-muted)">Blocks unapproved traffic at border</text>
+      <text x="24" y="308" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Expiring Task Badges</text>
+      <text x="24" y="324" font-size="11" fill="var(--ex-muted)">Short-lived single-action authority</text>
+      <text x="24" y="358" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Unalterable Receipt Log</text>
+      <text x="24" y="374" font-size="11" fill="var(--ex-muted)">Append-only proof outside model</text>
+      <text x="24" y="408" font-size="11" font-weight="700" fill="var(--ex-signal)">Result: Deterministic &amp; contestable</text>
+    </g>
+  </svg>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Neural activation probes</span>
+      <div class="ex-spec-body">Internal concept scanners face entangled representations and high false-alarm rates, and cannot constrain outward tool execution.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">External execution boundary</span>
+      <div class="ex-spec-body">Enforces default-deny sandboxes, expiring capability badges, and tamper-evident action receipts outside the model weights.</div>
+    </div>
+  </div>
+  <figcaption>Internal activation probes help researchers study neural networks, but reliable safety requires external execution gates, short-lived permission badges, and tamper-evident receipts.</figcaption>
+</figure>
+
+<h2>Four outer boundaries that actually hold</h2>
+
+<p>Without guessing what an artificial intelligence assistant is thinking, reliable system design places controls where software touches the real world. Four outer boundaries create dependable protection without requiring mind-reading.</p>
+
+<p><strong>1. Isolated execution sandboxes.</strong> An assistant should never run with direct access to your primary operating system or an open network. By placing the model inside an unprivileged process that defaults to denying all outside traffic, you prevent unintended file edits or outbound connections before they happen.</p>
+
+<p><strong>2. Scoped permission badges that expire.</strong> Power on loan remains safer than power owned. When an assistant needs to perform a task, such as fetching flight listings or verifying an invoice, it receives a temporary badge valid only for that single action and expiring within minutes. When the job finishes, the badge vanishes.</p>
+
+<p><strong>3. Tamper-evident action receipts.</strong> Whenever an assistant takes an external action, the runtime creates a signed record in an append-only log located entirely outside the model's environment. The model cannot alter, delete, or rewrite this log, no matter what instructions appear in its prompt.</p>
+
+<p><strong>4. Plain-language human appeal.</strong> When an automated step denies a benefit, halts a transaction, or looks incorrect, a resident must be able to reach a human reviewer who can examine the receipt and reverse the decision. Transparent receipts give staff the exact facts they need to correct mistakes quickly.</p>
+
+<aside class="for-researchers">
+<details>
+<summary>For researchers and systems architects</summary>
+<div>
+<p>In formal verification and AI safety architecture, this distinction separates internal activation interpretability from outer capability governance. Sparse autoencoders (USAEs, Thasarathan et al., arXiv:2502.03714) provide post-hoc feature decomposition across latent activation spaces. However, objective-level recovery gaps and activation steering vulnerabilities limit their reliability as standalone safety monitors.</p>
+<p>By contrast, AI control protocols (Greenblatt et al., arXiv:2312.06942; Korbak, arXiv:2501.17315) establish empirical safety cases using untrusted monitoring pipelines and bounded capability budgets. When combined with cryptographically signed action provenance and Object-Capability sandboxes, outer boundary enforcement guarantees auditability even if an underlying model undergoes strategic distribution shifts or evaluation evasion (van der Weij et al., arXiv:2406.07358; Terekhov et al., arXiv:2510.09462).</p>
+<p>Within our five-primitive sociotechnical architecture, heterogeneous wearable and facility sensors form a multimodal egocentric and ambient perceptual sensorium fused locally in monotonic hardware <code>Device Time</code> with self-assessed observation confidence. Silicon peripheral attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, <code>IETF RATS</code> RFC 9334), an optical data diode, and <code>IEC 61508</code> dead-man relays isolate physical actuators. Execution events write into an append-only <code>C2PA</code> and Merkle episodic memory vault (Endel Tulving; Tulving, 1972) bound by transduction realism (<em>Signed Is Not True</em> across the analog hole; Kevin Fu and Wenyuan Xu; Fu &amp; Xu, 2018). A monogamous <code>1:1</code> principal-bound personal cognitive model and cybernetic exocortex (Joscha Bach; Bach, 2009) grounded in the Extended Mind thesis (Andy Clark and David Chalmers; Clark &amp; Chalmers, 1998) and the Good Regulator theorem (Conant &amp; Ashby, 1970) applies interventional causal models <code>do(x)</code> (Pearl, 2009) and compiler-trust reflection proofs (Thompson, 1984) as a statutory information fiduciary (Jack Balkin; Balkin, 2016), preserving unassisted competence over the Private Autobiographical Ledger.</p>
+<p>Across the personal Markov blanket boundary (Karl Friston; Friston, 2010; Friston, 2013), external tool execution requires time-bounded Object-Capability lease gates (Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966), selective zero-knowledge (<code>ZK</code>) boundary proofs, independent-class Byzantine corroboration (<code>k &gt;= 3f + 1</code>; Lamport, Shostak &amp; Pease, 1982), and signed <code>IETF SCITT</code> (<code>RFC 9943</code>) transparency receipts on the Public Attestation &amp; Escrow Ledger. Those verified boundary receipts couple sovereign dyads to the Wide Network Ledger for Universal Basic Services, merit-bonded commons tasks, invisible-labor upkeep recognition (Jacob Meluso; Meluso et al., 2022), countercyclical reciprocal mutual credit (James Stodder; Stodder, 2009), frontier-lab overlays (Bracale Syrnikov et al., 2026), polycentric self-rule (Elinor Ostrom; Ostrom, 1990; Ostrom, 2010), and statutory Meidner cooperative equity (Rudolf Meidner; Meidner, 1978).</p>
+</div>
+</details>
+</aside>
+
+<h2>Honesty through open records</h2>
+
+<p>We should be clear about what outer boundaries can and cannot accomplish. A tamper-evident log cannot guarantee that an agency's underlying policies are wise or fair. If a municipal guideline is poorly drafted, automated software will carry out those bad instructions with complete fidelity.</p>
+
+<p>What receipts provide is accountability. When software acts through checked borders and records every step in an open ledger, mistakes become visible before they can vanish into mathematical fog. Auditors can trace why an action occurred, caseworkers can fix errors on the spot, and citizens can verify that public power remains in human hands.</p>
+
+<p>Internal mechanistic interpretability remains a vital scientific microscope for understanding how models learn. But when you need to keep people safe on the road, you do not hook an artificial polygraph to the driver. You inspect the manifest, check the latch seal, and keep a stamped copy on file.</p>
+
+<section class="footnotes">
+<p id="fn1">1. Harrish Thasarathan, Julian Forsyth, Thomas Fel, Matthew Kowal, and Konstantinos G. Derpanis, <a href="https://arxiv.org/abs/2502.03714"><em>Universal Sparse Autoencoders: Interpretable Cross-Model Concept Alignment</em></a>, arXiv:2502.03714 (February 2025).</p>
+<p id="fn2">2. Ryan Greenblatt, Buck Shlegeris, Kshitij Sachan, and Fabien Roger, <a href="https://arxiv.org/abs/2312.06942"><em>AI Control: Improving Safety Despite Intentional Subversion</em></a>, arXiv:2312.06942 (December 2023).</p>
+<p id="fn3">3. Tomek Korbak, <a href="https://arxiv.org/abs/2501.17315"><em>A sketch of an AI control safety case</em></a>, arXiv:2501.17315 (January 2025).</p>
+<p id="fn4">4. Teun van der Weij, Felix Hofstätter, Ollie Jaffe, Samuel F. Brown, and Francis Rhys Ward, <a href="https://arxiv.org/abs/2406.07358"><em>AI Sandbagging: Language Models can Strategically Underperform on Evaluations</em></a>, arXiv:2406.07358 (June 2024).</p>
+<p id="fn5">5. Mikhail Terekhov, Alexander Panfilov, Daniil Dzenhaliou, Caglar Gulcehre, Maksym Andriushchenko, Ameya Prabhu, and Jonas Geiping, <a href="https://arxiv.org/abs/2510.09462"><em>Adaptive Attacks on Trusted Monitors Subvert AI Control Protocols</em></a>, arXiv:2510.09462 (October 2025).</p>
+</section>
+</div>

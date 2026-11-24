@@ -1,0 +1,224 @@
+---
+title: When an assistant reads the rules
+description: Automated agents deployed to check regulations or approve public benefits cannot simply predict the next fluent word. Grounding compliance in verified statutes and human caseworker escalation protects real people from polite mistakes.
+reader: Public servants, municipal administrators, compliance officers and citizens navigating automated public decisions.
+takeaway: Language models predict fluent sentences, not legal truth. When public agencies deploy AI agents to check permits, benefits, or regulatory filings, they must anchor every decision in authoritative statutory texts and guarantee automatic escalation to human caseworkers whenever rules conflict.
+template: article
+date: 2026-11-07
+order: 42
+category: Governing
+minutes: 8
+image: post-when-an-assistant-reads-the-rules.jpg
+image_alt: A delicate pastel watercolor vignette of a municipal clerk at a sunlit wooden desk with rolled blueprints and an open rulebook, fading into warm cream paper.
+lede: Language models produce fluent text, not legal judgments. When public agencies use AI agents to check permits, benefits or filings, every decision should cite the specific statutory text it relied on. The file must go to a human caseworker whenever rules conflict or the system is unsure.
+---
+<p>An agent asked whether an applicant qualifies for a heating grant can produce a paragraph that sounds like the regulation without being grounded in it. A human inspector checks the measurement against the exact clause and, when two bylaws disagree, hands the file to someone with authority. Agents that decide public matters need the same discipline.</p>
+
+<h2>Fluent guessing</h2>
+
+<p>When a modern language model reads an official application, it does not consult a physical rulebook. It calculates probabilities across words. It predicts which phrases usually follow one another in government reports.</p>
+
+<p>Most of the time, this produces answers that sound astonishingly polished. The assistant quotes administrative phrases with flawless grammar. It drafts formal denial letters that read like they came from a seasoned legal clerk. It cites section numbers with total confidence.</p>
+
+<p>Yet under the hood, the model is guessing. If a regional statute changed three months ago, or if two clauses contain a delicate exception, a general language model often invents a plausible-sounding compromise. In public administration, this is dangerous. A machine does not need to sound angry to harm a family. A polite, fluent hallucination can deny a winter heating subsidy or block an accessible wheelchair ramp just as effectively as a broken furnace.</p>
+
+<div class="callout"><p class="label">What this means</p><p>Fluency is not accuracy. A software assistant that writes like a lawyer is still guessing unless every sentence is mechanically anchored to an official legal text.</p></div>
+
+<h2>Grounding decisions in the statute</h2>
+
+<figure class="explainer" id="ex-statutory-vs-probabilistic">
+  <style>
+    #ex-statutory-vs-probabilistic {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-statutory-vs-probabilistic svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-statutory-vs-probabilistic .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-statutory-vs-probabilistic .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-statutory-vs-probabilistic .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-statutory-vs-probabilistic .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-statutory-vs-probabilistic .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-statutory-vs-probabilistic .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-statutory-vs-probabilistic .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-statutory-vs-probabilistic .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-statutory-vs-probabilistic .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-statutory-vs-probabilistic figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-statutory-vs-probabilistic .ex-canvas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #ex-statutory-vs-probabilistic .ex-canvas svg {
+        min-width: 540px;
+      }
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg viewBox="0 0 760 330" role="img" aria-labelledby="ex-stat-title ex-stat-desc">
+      <title id="ex-stat-title">Probabilistic Guessing versus Statutory Grounding and Escalation</title>
+      <desc id="ex-stat-desc">A visual comparison between ungrounded language model compliance checks that invent legal interpretations, versus verified statutory corpus grounding with automatic human caseworker escalation.</desc>
+      <line x1="380" y1="14" x2="380" y2="318" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="14" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="27" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">PROBABILISTIC WORD GUESS</text>
+        <text x="14" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Generates replies from training weights</text>
+        <line x1="14" y1="50" x2="368" y2="50" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <line x1="22" y1="64" x2="22" y2="183" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+        <rect x="19" y="62" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Citizen Filing</text>
+        <text x="34" y="85" font-size="11" fill="var(--ex-muted)">Benefit or permit application</text>
+        <line x1="34" y1="167" x2="368" y2="167" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="177" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="184" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Statistical Guess</text>
+        <text x="34" y="200" font-size="11" fill="var(--ex-muted)">Invents phantom exceptions</text>
+        <line x1="14" y1="293" x2="368" y2="293" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="14" y="301" width="5" height="5" fill="var(--ex-warn)"/>
+        <text x="25" y="306" font-size="11" font-weight="700" fill="var(--ex-warn)">Result: Fluent, unaccountable denial</text>
+      </g>
+      <g>
+        <rect x="394" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="407" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">STATUTORY CORPUS GROUNDING</text>
+        <text x="394" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Bound to enacted text &amp; human review</text>
+        <line x1="394" y1="50" x2="746" y2="50" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <line x1="402" y1="64" x2="402" y2="183" stroke="var(--ex-signal)" stroke-width="1"/>
+        <rect x="399" y="62" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="414" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Verified Statute</text>
+        <text x="414" y="85" font-size="11" fill="var(--ex-muted)">Checks exact enacted clauses</text>
+        <line x1="414" y1="167" x2="746" y2="167" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="399" y="177" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="414" y="184" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Ambiguity Trigger</text>
+        <text x="414" y="200" font-size="11" fill="var(--ex-muted)">Escalates edge case to staff</text>
+        <line x1="394" y1="293" x2="746" y2="293" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="394" y="301" width="5" height="5" fill="var(--ex-signal)"/>
+        <text x="405" y="306" font-size="11" font-weight="700" fill="var(--ex-signal)">Result: Exact citation or staff review</text>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Ungrounded language generation</span>
+      <div class="ex-spec-body">Synthesizes plausible-sounding legal clauses from training memory, smoothing away statutory exceptions in benefit or permit cases.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Authoritative statutory binding</span>
+      <div class="ex-spec-body">Anchors every check to verified statutory sections and routes ambiguous edge cases directly to a human caseworker.</div>
+    </div>
+  </div>
+  <figcaption>Ungrounded language models fabricate legal justifications from probabilistic memory. By contrast, statutory grounding ties every assessment to authoritative law and escalates complex edge cases to human caseworkers.</figcaption>
+</figure>
+
+<p>To prevent these harms, public bodies cannot deploy raw commercial chatbots as legal decision-makers. They need two concrete engineering boundaries.</p>
+
+<p>First, the assistant must be bound to an authoritative statutory corpus.<sup><a href="#fn1">1</a></sup> When a municipal agent evaluates a permit, it cannot pull legal interpretations from its training weights. It must retrieve the official text of the relevant bylaws directly from an authenticated public repository. Every conclusion must include an exact section citation, a verbatim excerpt, and a verifiable hash proving which version of the law was in effect that morning.</p>
+
+<p>In one small evaluation, a compliance agent built this way separated every conforming text from every non-conforming one in a 15-text test set.<sup><a href="#fn1">1</a></sup> When models are restricted to retrieving and comparing verified legal paragraphs, they stop hallucinating imaginary exemptions. The software acts less like an unguided author and more like the building inspector&rsquo;s scale ruler.</p>
+
+<h2>When the algorithm must hand the file back</h2>
+
+<p>The second safeguard is even more important: mandatory human escalation.</p>
+
+<p>No statutory code covers every human situation. Life is messy. A family applying for childcare relief might have a non-standard employment contract. A community centre renovating its roof might sit across two zoning boundaries.</p>
+
+<p>In standard commercial software, an agent is rewarded for giving a final answer quickly. But in public administration, giving a fast answer is far less important than giving a fair one. When a compliance agent encounters conflicting bylaws or uncertainty above a defined threshold, it must not guess. It must stop immediately and hand the complete file to a human caseworker.<sup><a href="#fn1">1</a></sup></p>
+
+<p>This escalation cannot be optional. Public procurement rules should require automated systems to include deterministic stop switches. Whenever an applicant would be denied a vital public service, a human officer must personally review the evidence and sign the determination.<sup><a href="#fn2">2</a></sup></p>
+
+<p>This principle is already entering public policy. Guidelines from international standards bodies and public directives now mandate that automated systems provide clear human override controls and meaningful explanations for adverse decisions.<sup><a href="#fn3">3</a></sup></p>
+
+<h2>Honest limits</h2>
+
+<p>We should be realistic about what technology can and cannot do. Binding an assistant to a statutory corpus prevents hallucinations, but it does not make bad laws fair.</p>
+
+<p>If a city bylaw is written ambiguously, or if an administrative rule unfairly excludes migrant workers, software will simply enforce that injustice with mechanical precision. Maintaining verified digital repositories of municipal codes across thousands of jurisdictions is also an enormous civic challenge.</p>
+
+<p>Technology cannot replace political accountability. It cannot relieve citizens of the duty to attend council meetings, question procurement budgets, and demand fair rules. But by demanding statutory grounding and human caseworker escalation, we can ensure that public algorithms remain humble tools rather than unaccountable judges.</p>
+
+<p>You can explore how community leaders and public officials put these boundaries into practice in our <a href="/labs/shared-horizon/">Shared Horizon action library</a>.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers: formal mechanisms and grounding</summary>
+    <div>
+      <p>This article builds on recent empirical research into legal compliance agents and administrative law safeguards:</p>
+      <ul>
+        <li><strong>Statutory Corpus Grounding:</strong> Alaoui Ismaili and Dessureault (arXiv:2610.27347, 2026) describe a compliance agent that grounds its judgement in a fixed corpus of thirteen federal, Quebec and municipal instruments, and escalates to a human reviewer when its score falls below a threshold. On a hand-annotated set of fifteen texts it separated every conforming text from every non-conforming one. That is a small test set.</li>
+        <li><strong>Public Administration Directives:</strong> The Treasury Board of Canada <em>Directive on Automated Decision-Making</em> (2024/2026) establishes mandatory human review tiers for high-impact decisions, requiring verifiable logs of automated recommendations.</li>
+        <li><strong>EU Artificial Intelligence Act (Regulation EU 2024/1689):</strong> Article 27 mandates fundamental rights impact assessments for high-risk public deployment, while Article 14 requires operational human oversight measures including manual overrides and stop switches.</li>
+      </ul>
+    </div>
+  </details>
+</aside>
+
+<section class="footnotes">
+  <ol>
+    <li id="fn1">Soukaina Alaoui Ismaili and Jean-Sebastien Dessureault, <a href="https://arxiv.org/abs/2610.27347">&ldquo;An LLM-Based Agent for Legal Compliance Assessment: Architecture, Memory, and Evaluation in a Canadian and Quebec Context,&rdquo;</a> <em>arXiv preprint arXiv:2610.27347</em> (2026).</li>
+    <li id="fn2">Treasury Board of Canada Secretariat, <a href="https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32592">&ldquo;Directive on Automated Decision-Making&rdquo;</a> (2024).</li>
+    <li id="fn3">European Parliament and Council, <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj">&ldquo;Regulation (EU) 2024/1689 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act),&rdquo;</a> <em>Official Journal of the European Union</em> (2024).</li>
+  </ol>
+</section>

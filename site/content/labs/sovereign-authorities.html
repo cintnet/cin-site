@@ -1,0 +1,811 @@
+---
+title: Sovereign and Global AI Governance Authorities
+heading: Where twenty nations and ten global bodies protect the public interest, and where capture wins.
+eyebrow: Labs · Sovereign & Global Governance
+description: Interactive five-axis workbench comparing 20 national jurisdictions and 10 multilateral bodies on frontier safety airlocks, anti-capture appeals, citizen privacy, public compute, and verifiable treaties.
+reader: Public officials, treaty negotiators, civil-society advocates, researchers, and citizens checking how national AI laws and multilateral treaties guard against corporate capture and state surveillance.
+takeaway: Accountable AI governance pairs statutory frontier airlocks, shared public compute, encrypted single-user privacy, and cross-bloc treaties while rejecting private lobbying capture and mass surveillance.
+template: page
+layout: wide
+section: labs
+script: sovereign-authorities.js
+lede: A live comparison workbench across 20 national jurisdictions and 10 global bodies, testing five public-interest safeguards from frontier safety airlocks to encrypted home privacy and cross-bloc treaties.
+---
+<section class="wrap">
+<style>
+  /* Planar 1px Architectural Sovereign Governance Workbench & 30-Authority Directory */
+  .sa-intro {
+    margin-bottom: 2rem;
+  }
+  .sa-section {
+    margin: 2.6rem 0 3.2rem;
+    padding: 24px 0 28px;
+    border-top: 1px solid #DFD1BE;
+    border-bottom: 1px solid #DFD1BE;
+    border-radius: 0;
+    background: transparent;
+  }
+  .sa-section-head {
+    margin-bottom: 18px;
+  }
+  .sa-section-head h2 {
+    margin: 0 0 6px;
+  }
+  .sa-section-head p {
+    margin: 0;
+    color: var(--ink-2);
+    max-width: 68ch;
+  }
+  #ex-sovereign-authorities-topology {
+    margin: 0 0 28px;
+    padding: 16px;
+    background: #FAF3EA;
+    border: 1px solid #DFD1BE;
+    border-radius: 0;
+  }
+  #ex-sovereign-authorities-topology svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  #ex-sovereign-authorities-topology .sa-svg-frame {
+    fill: url(#sa-dot-grid);
+    stroke: #DFD1BE;
+    stroke-width: 1;
+  }
+  #ex-sovereign-authorities-topology .sa-dot {
+    fill: #D2C2AC;
+  }
+  #ex-sovereign-authorities-topology .sa-rule {
+    stroke: #DFD1BE;
+    stroke-width: 1;
+  }
+  #ex-sovereign-authorities-topology .sa-bus {
+    fill: none;
+    stroke: #0B3F30;
+    stroke-width: 1.5;
+  }
+  #ex-sovereign-authorities-topology .sa-bus-warn {
+    fill: none;
+    stroke: #B85C38;
+    stroke-width: 1.5;
+  }
+  #ex-sovereign-authorities-topology .sa-node {
+    fill: #FAF3EA;
+    stroke: #C8B79E;
+    stroke-width: 1;
+  }
+  #ex-sovereign-authorities-topology .sa-mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  #ex-sovereign-authorities-topology .sa-sans {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  #ex-sovereign-authorities-topology figcaption {
+    margin-top: 10px;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: #5E564B;
+  }
+
+  /* Shared Typography & 5-Pip Readiness Meter */
+  .sa-kicker {
+    margin: 0 0 6px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #0B3F30;
+  }
+  .sa-kicker--warn {
+    color: #963E1D;
+  }
+  .sa-cell-copy {
+    margin: 0;
+    font-size: 0.91rem;
+    line-height: 1.52;
+    color: #2C2721;
+  }
+  .sa-pip-meter {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  .sa-pip-cell {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border: 1px solid #6B5F50;
+    background: transparent;
+  }
+  .sa-pip-cell.is-filled {
+    background: #0B3F30;
+    border-color: #0B3F30;
+  }
+  .sa-pip-num {
+    margin-left: 5px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: #0B3F30;
+  }
+
+  /* 5-Axis Switchboard & Sovereign Pair Comparator */
+  .sa-axis-banner {
+    padding: 14px 16px;
+    background: #F4EBDD;
+    border-bottom: 1px solid #DFD1BE;
+  }
+  .sa-axis-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px 16px;
+    margin-bottom: 6px;
+  }
+  .sa-tracks-ref {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #5E564B;
+  }
+  .sa-axis-desc {
+    margin: 0 0 12px;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: #2C2721;
+  }
+  .sa-axis-poles {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    padding-top: 10px;
+    border-top: 1px solid #DFD1BE;
+  }
+  .sa-axis-pole {
+    padding: 10px 12px;
+    background: #FAF3EA;
+    border: 1px solid #DFD1BE;
+  }
+  .sa-axis-pole--warn {
+    background: rgba(184, 92, 56, 0.05);
+  }
+  .sa-comp-controls {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 12px;
+    align-items: end;
+    padding: 16px;
+    background: #FAF3EA;
+    border-bottom: 1px solid #DFD1BE;
+  }
+  .sa-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .sa-label {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #5E564B;
+  }
+  .sa-select,
+  .sa-input {
+    width: 100%;
+    min-height: 40px;
+    padding: 8px 11px;
+    font: inherit;
+    font-size: 0.9rem;
+    color: #131014;
+    background: #FAF3EA;
+    border: 1px solid #B8A790;
+    border-radius: 0;
+  }
+  .sa-btn {
+    min-height: 40px;
+    padding: 8px 14px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #0B3F30;
+    background: #FAF3EA;
+    border: 1px solid #0B3F30;
+    border-radius: 0;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .sa-btn:hover,
+  .sa-btn:focus-visible {
+    background: #0B3F30;
+    color: #FAF3EA;
+  }
+  .sa-pair-stage {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    background: #FAF3EA;
+  }
+  .sa-comp-col {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .sa-comp-col--a {
+    border-right: 1px solid #DFD1BE;
+  }
+  .sa-col-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #DFD1BE;
+  }
+  .sa-org-title {
+    margin: 0;
+    font-size: 1.2rem;
+    line-height: 1.26;
+    color: #131014;
+  }
+  .sa-org-meta {
+    margin: -8px 0 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.74rem;
+    color: #5E564B;
+  }
+  .sa-org-focus {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #3F3931;
+  }
+  .sa-mini-axes {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    border-top: 1px solid #DFD1BE;
+    border-left: 1px solid #DFD1BE;
+  }
+  .sa-axis-chip {
+    appearance: none;
+    padding: 6px 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    background: transparent;
+    border: 0;
+    border-right: 1px solid #DFD1BE;
+    border-bottom: 1px solid #DFD1BE;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    cursor: pointer;
+    color: #3F3931;
+  }
+  .sa-axis-chip.is-active {
+    background: #0B3F30;
+    color: #FAF3EA;
+  }
+  .sa-axis-chip-code {
+    font-size: 0.68rem;
+    font-weight: 700;
+  }
+  .sa-axis-chip-val {
+    font-size: 0.72rem;
+  }
+  .sa-agent-box {
+    padding: 12px 14px;
+    background: #F4EBDD;
+    border-left: 2px solid #0B3F30;
+  }
+  .sa-impact-pair {
+    display: grid;
+    grid-template-columns: 1fr;
+    border-top: 1px solid #DFD1BE;
+    border-bottom: 1px solid #DFD1BE;
+  }
+  .sa-impact-block {
+    padding: 12px 0;
+  }
+  .sa-impact-block--org {
+    border-top: 1px dashed #DFD1BE;
+  }
+  .sa-conv-dev {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .sa-point-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.88rem;
+    line-height: 1.48;
+    color: #2C2721;
+  }
+  .sa-point-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .sa-engage-block {
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid #DFD1BE;
+  }
+  .sa-links-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .sa-paper-btn {
+    background: #0B3F30;
+    color: #FAF3EA;
+    border-color: #0B3F30;
+    font-weight: 700;
+  }
+  .sa-paper-btn:hover,
+  .sa-paper-btn:focus-visible {
+    background: #131014;
+    color: #FAF3EA;
+    border-color: #131014;
+  }
+
+  /* 30-Authority Planar Hairline Directory */
+  .sa-cohort-bar {
+    display: flex;
+    flex-wrap: wrap;
+    border-top: 1px solid #DFD1BE;
+    border-left: 1px solid #DFD1BE;
+    margin-bottom: 14px;
+  }
+  .sa-cohort-btn {
+    appearance: none;
+    padding: 9px 14px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #3F3931;
+    background: #FAF3EA;
+    border: 0;
+    border-right: 1px solid #DFD1BE;
+    border-bottom: 1px solid #DFD1BE;
+    cursor: pointer;
+  }
+  .sa-cohort-btn.is-active {
+    background: #0B3F30;
+    color: #FAF3EA;
+  }
+  .sa-filter-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr);
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .sa-status-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0 12px;
+    border-bottom: 1px solid #B8A790;
+  }
+  .sa-count-status {
+    margin: 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: #5E564B;
+  }
+  .sa-dir-item {
+    border-bottom: 1px solid #DFD1BE;
+  }
+  .sa-dir-item.is-open {
+    background: rgba(11, 63, 48, 0.025);
+  }
+  .sa-dir-row {
+    display: grid;
+    grid-template-columns: 92px minmax(0, 1fr) 144px auto;
+    gap: 14px;
+    align-items: start;
+    padding: 14px 4px;
+  }
+  .sa-dir-code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #0B3F30;
+    padding-top: 2px;
+  }
+  .sa-dir-name {
+    margin: 0 0 3px;
+    font-size: 1.04rem;
+    line-height: 1.28;
+    color: #131014;
+  }
+  .sa-dir-sub {
+    margin: 0 0 5px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.73rem;
+    color: #5E564B;
+  }
+  .sa-dir-role {
+    margin: 0;
+    font-size: 0.89rem;
+    line-height: 1.48;
+    color: #3F3931;
+  }
+  .sa-dir-readiness {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 2px;
+  }
+  .sa-readiness-tag {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #5E564B;
+  }
+  .sa-dir-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: flex-end;
+  }
+  .sa-dir-actions .st-action-btn,
+  .sa-links-row .st-action-btn,
+  .sa-drawer-foot .st-action-btn {
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 11px;
+  }
+  .sa-drawer {
+    padding: 14px 12px 18px;
+    border-top: 1px dashed #C8B79E;
+    background: #FAF3EA;
+  }
+  .sa-drawer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #DFD1BE;
+  }
+  .sa-drawer-split {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid #DFD1BE;
+  }
+  .sa-drawer-foot {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px 16px;
+    padding-top: 12px;
+  }
+  .sa-more-wrap {
+    margin-top: 16px;
+  }
+  .sa-empty {
+    padding: 20px 0;
+    font-size: 0.92rem;
+    color: #5E564B;
+  }
+
+  @media (max-width: 920px) {
+    .sa-pair-stage,
+    .sa-axis-poles,
+    .sa-drawer-grid,
+    .sa-drawer-split,
+    .sa-filter-grid,
+    .sa-comp-controls {
+      grid-template-columns: 1fr;
+    }
+    .sa-comp-col--a {
+      border-right: 0;
+      border-bottom: 1px solid #DFD1BE;
+    }
+    .sa-dir-row {
+      grid-template-columns: 84px minmax(0, 1fr);
+    }
+    .sa-dir-readiness,
+    .sa-dir-actions {
+      grid-column: 2;
+      justify-content: flex-start;
+    }
+  }
+  @media (max-width: 720px) {
+    #ex-sovereign-authorities-topology {
+      padding: 12px 0;
+    }
+    .sa-mini-axes {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>
+
+<div class="prose wrap-narrow sa-intro">
+  <p class="big">Accountable AI governance pairs statutory frontier airlocks, shared public compute, encrypted single-user privacy, and cross-bloc treaties while rejecting private lobbying capture and mass surveillance. Before a city connects high-voltage substations to neighbourhood homes, municipal inspectors test the circuit breakers at the fence line and seal the meter. No honest utility lets power-plant owners grade their own safety valves in secret, or demands a master key to your house.</p>
+  <p>Public AI governance faces that same test across twenty leading national jurisdictions and ten global standards and treaty bodies. In some capitals, cloud and defense lobbyists push governments toward voluntary corporate self-grading while keeping agency procurement rules hidden behind trade secrets.<sup><a href="#fn1">1</a>,<a href="#fn2">2</a></sup> In other capitals, strong safety registries come bundled with real-name surveillance, mandatory decryption backdoors, or sudden regional internet shutdowns.</p>
+  <p>We evaluate each authority across five public-interest safeguards, spanning statutory safety airlocks, anti-capture appeals, citizen privacy, public compute commons, and cross-bloc treaties.<sup><a href="#fn4">4</a>,<a href="#fn5">5</a></sup> Every score defends a clear household boundary where one encrypted home memory vault and one loyal assistant serve one living person.<sup><a href="#fn3">3</a>,<a href="#fn6">6</a></sup></p>
+  <div class="callout" style="margin-top:18px">
+    <p class="label">Companion hubs · Sovereign Papers &amp; AI Lab Overlays</p>
+    <p>Inspect statutory, compute-commons, and treaty blueprints for eight major jurisdictions in our <a href="/labs/sovereign-papers/"><strong>8 Flagship Sovereign Papers Hub ↗</strong></a>. To compare private model builders and evaluation institutes directly, open the <a href="/labs/lab-overlays/"><strong>43 AI Labs &amp; 50 Safety Groups Workbench ↗</strong></a>.</p>
+  </div>
+</div>
+
+<figure class="explainer" id="ex-sovereign-authorities-topology">
+  <style>
+    #ex-sovereign-authorities-topology {
+      margin: 0 0 28px;
+      padding: 16px 0;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid #DFD1BE;
+      border-bottom: 1px solid #DFD1BE;
+      border-radius: 0;
+    }
+    #ex-sovereign-authorities-topology .diagram-desktop { display: block; width: 100%; height: auto; }
+    #ex-sovereign-authorities-topology .diagram-mobile { display: none; width: 100%; height: auto; }
+    @media (max-width: 640px) {
+      #ex-sovereign-authorities-topology .diagram-desktop { display: none; }
+      #ex-sovereign-authorities-topology .diagram-mobile { display: block; }
+    }
+    [data-theme="dark"] #ex-sovereign-authorities-topology { border-color: #3D352B; }
+    [data-theme="dark"] #ex-sovereign-authorities-topology .sa-svg-frame { stroke: #3D352B; }
+    [data-theme="dark"] #ex-sovereign-authorities-topology .sa-dot { fill: #4E4438; }
+    [data-theme="dark"] #ex-sovereign-authorities-topology .sa-rule { stroke: #3D352B; }
+    [data-theme="dark"] #ex-sovereign-authorities-topology .sa-bus { stroke: #8FD4B6; }
+    [data-theme="dark"] #ex-sovereign-authorities-topology .sa-bus-warn { stroke: #F09D82; }
+    [data-theme="dark"] #ex-sovereign-authorities-topology .sa-node { fill: #26211B; stroke: #4E4438; }
+    [data-theme="dark"] #ex-sovereign-authorities-topology rect[fill="#F3EADF"] { fill: #2B251F; stroke: #8FD4B6; }
+    [data-theme="dark"] #ex-sovereign-authorities-topology text[fill="#131014"],
+    [data-theme="dark"] #ex-sovereign-authorities-topology text[fill="#2C2721"] { fill: #F3ECE0; }
+    [data-theme="dark"] #ex-sovereign-authorities-topology text[fill="#0B3F30"] { fill: #8FD4B6; }
+    [data-theme="dark"] #ex-sovereign-authorities-topology text[fill="#963E1D"] { fill: #F09D82; }
+    [data-theme="dark"] #ex-sovereign-authorities-topology text[fill="#5E564B"],
+    [data-theme="dark"] #ex-sovereign-authorities-topology text[fill="#5A5247"],
+    [data-theme="dark"] #ex-sovereign-authorities-topology figcaption { fill: #C8BCA9; color: #C8BCA9; }
+  </style>
+  <svg class="diagram-desktop" viewBox="0 0 920 282" width="100%" role="img" aria-labelledby="ex-sa-title ex-sa-desc">
+    <title id="ex-sa-title">Thirty national and global sovereign authorities evaluated across five public-interest governance axes</title>
+    <desc id="ex-sa-desc">Planar schematic routing 20 national jurisdictions and 10 multilateral bodies through five public-interest versus private-capture axes to compare citizen sanctuary and verifiable treaty outcomes.</desc>
+    <defs>
+      <pattern id="sa-dot-grid" width="16" height="16" patternUnits="userSpaceOnUse">
+        <circle cx="2" cy="2" r="0.85" class="sa-dot" />
+      </pattern>
+    </defs>
+
+    <rect class="sa-svg-frame" x="4" y="4" width="912" height="274" />
+    <line class="sa-rule" x1="4" y1="34" x2="916" y2="34" />
+    <line class="sa-rule" x1="4" y1="248" x2="916" y2="248" />
+
+    <text class="sa-mono" x="18" y="23" font-size="11" font-weight="700" fill="#0B3F30">■ 30 SOVEREIGN &amp; GLOBAL AUTHORITIES</text>
+    <text class="sa-mono" x="460" y="23" text-anchor="middle" font-size="11" font-weight="700" fill="#5E564B">■ 5 PUBLIC-INTEREST VS. CAPTURE AXES</text>
+    <text class="sa-mono" x="902" y="23" text-anchor="end" font-size="11" font-weight="700" fill="#0B3F30">■ CITIZEN &amp; TREATY OUTCOMES</text>
+
+    <polyline class="sa-bus" points="282,92 322,92 322,126 348,126" />
+    <polyline class="sa-bus-warn" points="282,188 322,188 322,154 348,154" />
+    <polyline class="sa-bus" points="572,126 608,126 608,92 642,92" />
+    <polyline class="sa-bus-warn" points="572,154 608,154 608,188 642,188" />
+
+    <rect class="sa-node" x="20" y="54" width="262" height="76" />
+    <line x1="20" y1="54" x2="282" y2="54" stroke="#0B3F30" stroke-width="2.5" />
+    <text class="sa-mono" x="32" y="76" font-size="11" font-weight="700" fill="#0B3F30">COHORT A · 20 NATIONAL JURISDICTIONS</text>
+    <text class="sa-sans" x="32" y="96" font-size="11" fill="#2C2721">Statutes, AISIs, privacy watchdogs &amp; grids</text>
+    <text class="sa-mono" x="32" y="116" font-size="11" fill="#5E564B">SOV-01..SOV-20 · 7 state papers</text>
+
+    <rect class="sa-node" x="20" y="150" width="262" height="76" />
+    <line x1="20" y1="150" x2="282" y2="150" stroke="#963E1D" stroke-width="2.5" />
+    <text class="sa-mono" x="32" y="172" font-size="11" font-weight="700" fill="#963E1D">COHORT B · 10 MULTILATERAL BODIES</text>
+    <text class="sa-sans" x="32" y="192" font-size="11" fill="#2C2721">UN, IN-AISI, CoE, ILO, IETF &amp; BRICS+</text>
+    <text class="sa-mono" x="32" y="212" font-size="11" fill="#5A5247">MUL-01..MUL-10 · 1 UN global paper</text>
+
+    <rect x="348" y="54" width="224" height="172" fill="#F3EADF" stroke="#0B3F30" stroke-width="1.5" />
+    <text class="sa-mono" x="460" y="76" text-anchor="middle" font-size="11" font-weight="700" fill="#0B3F30">5 PUBLIC-INTEREST AXES</text>
+    <line x1="362" y1="86" x2="558" y2="86" stroke="#C8B79E" stroke-width="1" />
+    <text class="sa-mono" x="362" y="106" font-size="11" fill="#131014">AX-01 · Frontier Safety Teeth</text>
+    <text class="sa-mono" x="362" y="126" font-size="11" fill="#131014">AX-02 · Anti-Capture &amp; Appeals</text>
+    <text class="sa-mono" x="362" y="146" font-size="11" fill="#131014">AX-03 · 1:1 Citizen Privacy</text>
+    <text class="sa-mono" x="362" y="166" font-size="11" fill="#131014">AX-04 · Public Compute &amp; Co-ops</text>
+    <text class="sa-mono" x="362" y="186" font-size="11" fill="#131014">AX-05 · Treaties &amp; Agent Road</text>
+    <text class="sa-mono" x="460" y="212" text-anchor="middle" font-size="11" font-weight="700" fill="#963E1D">PUBLIC GOOD vs. CAPTURE</text>
+
+    <rect class="sa-node" x="642" y="54" width="258" height="76" />
+    <line x1="642" y1="54" x2="900" y2="54" stroke="#0B3F30" stroke-width="2.5" />
+    <text class="sa-mono" x="654" y="76" font-size="11" font-weight="700" fill="#0B3F30">CITIZEN SANCTUARY OUTCOMES</text>
+    <text class="sa-sans" x="654" y="100" font-size="11" fill="#2C2721">Encrypted 1:1 vaults, appeal receipts</text>
+    <text class="sa-sans" x="654" y="116" font-size="11" fill="#2C2721">&amp; cooperative compute access</text>
+
+    <rect class="sa-node" x="642" y="150" width="258" height="76" />
+    <line x1="642" y1="150" x2="900" y2="150" stroke="#963E1D" stroke-width="2.5" />
+    <text class="sa-mono" x="654" y="172" font-size="11" font-weight="700" fill="#963E1D">SOVEREIGN TREATY OUTCOMES</text>
+    <text class="sa-sans" x="654" y="196" font-size="11" fill="#2C2721">ZK compute proofs, dead-man relays</text>
+    <text class="sa-sans" x="654" y="212" font-size="11" fill="#2C2721">&amp; signed agent transport roads</text>
+
+    <text class="sa-mono" x="18" y="266" font-size="11" font-weight="700" fill="#5E564B">INVARIANT: STATUTORY SAFETY TEETH · ZERO CORPORATE CAPTURE · ZERO STATE BACKDOORS</text>
+  </svg>
+
+  <svg class="diagram-mobile" viewBox="0 0 310 436" width="100%" role="img" aria-labelledby="ex-sa-m-title ex-sa-m-desc">
+    <title id="ex-sa-m-title">Mobile topology of 30 national and global sovereign authorities</title>
+    <desc id="ex-sa-m-desc">Stacked mobile diagram connecting 20 national jurisdictions and 10 multilateral bodies through five public-interest versus capture axes to compare citizen sanctuary and treaty outcomes.</desc>
+    <rect class="sa-svg-frame" x="6" y="6" width="298" height="424" />
+    <text class="sa-mono" x="18" y="26" font-size="11" font-weight="700" fill="#0B3F30">■ 30 SOVEREIGN AUTHORITIES</text>
+    <line class="sa-rule" x1="6" y1="36" x2="304" y2="36" />
+
+    <rect class="sa-node" x="18" y="48" width="274" height="58" />
+    <text class="sa-mono" x="28" y="68" font-size="11" font-weight="700" fill="#0B3F30">COHORT A · 20 NATIONAL STATES</text>
+    <text class="sa-sans" x="28" y="88" font-size="11" fill="#2C2721">Statutes, AISIs &amp; compute grids</text>
+
+    <line x1="155" y1="106" x2="155" y2="112" stroke="#0B3F30" stroke-width="1.5" />
+    <polygon points="155,114 152,109 158,109" fill="#0B3F30" />
+
+    <rect class="sa-node" x="18" y="114" width="274" height="58" />
+    <text class="sa-mono" x="28" y="134" font-size="11" font-weight="700" fill="#963E1D">COHORT B · 10 GLOBAL BODIES</text>
+    <text class="sa-sans" x="28" y="154" font-size="11" fill="#2C2721">UN, IN-AISI, CoE, ILO &amp; IETF</text>
+
+    <line x1="155" y1="172" x2="155" y2="180" stroke="#963E1D" stroke-width="1.5" />
+    <polygon points="155,182 152,177 158,177" fill="#963E1D" />
+
+    <rect x="18" y="182" width="274" height="106" fill="#F3EADF" stroke="#0B3F30" stroke-width="1.5" />
+    <text class="sa-mono" x="28" y="202" font-size="11" font-weight="700" fill="#0B3F30">5 PUBLIC-INTEREST AXES</text>
+    <text class="sa-mono" x="28" y="222" font-size="11" fill="#131014">AX-01 Frontier Safety Teeth</text>
+    <text class="sa-mono" x="28" y="242" font-size="11" fill="#131014">AX-02 Appeals · AX-03 Privacy</text>
+    <text class="sa-mono" x="28" y="262" font-size="11" fill="#131014">AX-04 Compute · AX-05 Treaties</text>
+    <text class="sa-mono" x="28" y="280" font-size="11" font-weight="700" fill="#963E1D">PUBLIC GOOD vs. CAPTURE</text>
+
+    <line x1="155" y1="288" x2="155" y2="296" stroke="#0B3F30" stroke-width="1.5" />
+    <polygon points="155,298 152,293 158,293" fill="#0B3F30" />
+
+    <rect class="sa-node" x="18" y="298" width="274" height="54" />
+    <text class="sa-mono" x="28" y="318" font-size="11" font-weight="700" fill="#0B3F30">CITIZEN SANCTUARY OUTCOMES</text>
+    <text class="sa-sans" x="28" y="338" font-size="11" fill="#2C2721">Encrypted 1:1 vaults &amp; appeal receipts</text>
+
+    <line x1="155" y1="352" x2="155" y2="358" stroke="#963E1D" stroke-width="1.5" />
+    <polygon points="155,360 152,355 158,355" fill="#963E1D" />
+
+    <rect class="sa-node" x="18" y="360" width="274" height="54" />
+    <text class="sa-mono" x="28" y="380" font-size="11" font-weight="700" fill="#963E1D">SOVEREIGN TREATY OUTCOMES</text>
+    <text class="sa-sans" x="28" y="400" font-size="11" fill="#2C2721">ZK compute proofs &amp; signed roads</text>
+  </svg>
+  <figcaption>Twenty national jurisdictions and ten global authorities pass through five public-interest versus capture axes to compare household sanctuary and verifiable treaty outcomes.</figcaption>
+</figure>
+
+<section class="sa-section" id="sa-workbench" aria-labelledby="sa-wb-heading">
+  <div class="sa-section-head">
+    <p class="eyebrow">Interactive Comparator · 5 Axes × 30 Authorities.</p>
+    <h2 id="sa-wb-heading">Compare two national or global authorities across five public-interest axes.</h2>
+    <p>Switch across the five public-interest axes below to test where each authority protects ordinary citizens and where corporate lobbying or state overreach dominates today.<sup><a href="#fn1">1</a>,<a href="#fn2">2</a></sup> Compare the United States and China side by side by default, or select any two jurisdictions and multilateral bodies.</p>
+  </div>
+
+  <div class="st-stage">
+    <div class="st-stage-bar">
+      <span class="st-tag"><span class="st-pip"></span> PUBLIC-INTEREST GOVERNANCE SWITCHBOARD · CITIZEN VS. AGENCY IMPACT</span>
+      <span id="sa-wb-status">AX-01 · PRE-DEPLOYMENT FRONTIER SAFETY &amp; AIRLOCK TEETH</span>
+    </div>
+    <ol class="st-station-bar" id="sa-axis-bar" aria-label="Select one of five public-interest governance axes">
+      <li><button type="button" class="st-station-btn is-active" data-axis-id="a1_frontier_safety_teeth" aria-pressed="true"><span class="st-pip" aria-hidden="true"></span> AX-01 · Frontier Safety Teeth</button></li>
+    </ol>
+    <div class="sa-axis-banner" id="sa-axis-banner" aria-live="polite">
+      <p class="sa-axis-desc">Loading active governance axis benchmark...</p>
+    </div>
+
+    <div class="sa-comp-controls">
+      <div class="sa-field">
+        <label class="sa-label" for="sa-select-a">Slot A · Sovereign or global authority</label>
+        <select class="sa-select" id="sa-select-a">
+          <option value="united_states">SOV-01 · United States</option>
+        </select>
+      </div>
+      <button type="button" class="sa-btn" id="sa-swap-btn">⇄ Swap A / B</button>
+      <div class="sa-field">
+        <label class="sa-label" for="sa-select-b">Slot B · Sovereign or global authority</label>
+        <select class="sa-select" id="sa-select-b">
+          <option value="china">SOV-02 · China</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="sa-pair-stage" id="sa-pair-stage">
+      <div class="sa-comp-col"><p class="sa-cell-copy">Loading side-by-side sovereign governance comparison...</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sa-section" id="sa-directory" aria-labelledby="sa-dir-heading">
+  <div class="sa-section-head">
+    <p class="eyebrow">Full Directory · 20 National Jurisdictions + 10 Multilateral Bodies</p>
+    <h2 id="sa-dir-heading">Search and inspect all 30 sovereign and multilateral authority profiles.</h2>
+    <p>Filter between the twenty national and supranational jurisdictions and the ten global treaty and standards bodies. Search by statute, safety institute, or public supercomputer, open any row's brief, or jump straight into the eight <a href="/labs/sovereign-papers/">flagship sovereign papers</a> and the <a href="/labs/institutions/">348-organisation Institutional Atlas</a>.</p>
+  </div>
+
+  <div class="sa-cohort-bar" id="sa-cohort-bar" role="group" aria-label="Filter by national or multilateral cohort">
+    <button type="button" class="sa-cohort-btn is-active" data-cohort="all" aria-pressed="true">■ All 30 authorities</button>
+    <button type="button" class="sa-cohort-btn" data-cohort="national_authority" aria-pressed="false">■ 20 National Jurisdictions</button>
+    <button type="button" class="sa-cohort-btn" data-cohort="multilateral_authority" aria-pressed="false">■ 10 Global &amp; Multilateral Bodies</button>
+  </div>
+
+  <div class="sa-filter-grid">
+    <div class="sa-field">
+      <label class="sa-label" for="sa-search">Search statutes, safety institutes, compute clusters, or treaties</label>
+      <input type="search" class="sa-input" id="sa-search" placeholder="NIST, CAC, EuroHPC, LUMI, Bhashini, BetrVG, CETS 225, IETF...">
+    </div>
+    <div class="sa-field">
+      <label class="sa-label" for="sa-region">Filter by region</label>
+      <select class="sa-select" id="sa-region">
+        <option value="all" selected>All regions (30)</option>
+      </select>
+    </div>
+    <div class="sa-field">
+      <label class="sa-label" for="sa-sort">Sort authorities</label>
+      <select class="sa-select" id="sa-sort">
+        <option value="index" selected>Cohort order (SOV-01 to MUL-10)</option>
+        <option value="readiness">Active-axis readiness (high to low)</option>
+        <option value="name">Authority name (A to Z)</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="sa-status-bar">
+    <p class="sa-count-status" id="sa-count-status" role="status" aria-live="polite">Showing 30 of 30 matched authorities</p>
+    <button type="button" class="sa-btn" id="sa-reset">Reset filters</button>
+  </div>
+
+  <div id="sa-rows">
+    <p class="sa-empty">Enable JavaScript to filter, compare, and expand all 30 national and multilateral governance profiles.</p>
+  </div>
+
+  <div class="sa-more-wrap" id="sa-more-wrap" hidden>
+    <button type="button" class="sa-btn" id="sa-more-btn">Show more authorities</button>
+  </div>
+</section>
+
+<div class="prose wrap-narrow">
+  <div class="callout">
+    <p class="label">Public accountability &amp; statutory updates</p>
+    <p>Every score and policy brief on this page draws on enacted statutes, published safety-institute frameworks, supercomputing charters, and ratified treaties. Perhaps you serve in a ministry, regulator, or standards working group and enacted a new public safeguard. Write to us via our guide <a href="/get-involved/policy/">for policymakers</a> or <a href="/get-involved/civil-society/">for civil society</a>, and track every revision on our <a href="/corrections/">corrections page</a>.</p>
+  </div>
+
+  <aside class="for-researchers"><details><summary>For researchers: statutory, compute-governance, and treaty mappings across the five public-interest axes</summary><div>
+    <p>Each record in <code>research/institutions/sovereign_overlays_30.json</code> evaluates sovereign and multilateral governance across five structural dimensions anchored in primary administrative, economic, and protocol scholarship:</p>
+    <ul>
+      <li><strong>Axis 01 (Pre-Deployment Frontier Safety &amp; Airlock Teeth):</strong> Evaluates compute-indexed regulatory thresholds, hardware-enforced workload containment, and independent pre-release red-teaming against commercial self-certification (Sastry et al., 2024<sup><a href="#fn1">1</a></sup>; Kolt, 2025<sup><a href="#fn4">4</a></sup>).</li>
+      <li><strong>Axis 02 (Public Interest Over Private Lobbying Capture):</strong> Measures administrative reason-giving, inspectable rule receipts for automated state decisions, whistleblower safe harbor, and fundamental-rights impact duties (Caputo, 2026<sup><a href="#fn2">2</a></sup>; Mantelero, 2024<sup><a href="#fn3">3</a></sup>).</li>
+      <li><strong>Axis 03 (Citizen 1:1 Privacy vs. Surveillance &amp; Shutdowns):</strong> Tests statutory protection for user-held end-to-end encryption, local autobiographical memory vaults, and continuous network availability against mandatory scanning backdoors or regional blackouts.</li>
+      <li><strong>Axes 04 &amp; 05 (Public Compute Commons, Cooperative Economy &amp; Verifiable Treaties):</strong> Assesses public supercomputing and broad-based cooperative distribution against automation rent concentration (Korinek &amp; Stiglitz, 2017<sup><a href="#fn6">6</a></sup>), paired with polycentric cross-bloc verification and signed agent transport protocols (Ostrom, 2010<sup><a href="#fn5">5</a></sup>).</li>
+      <li><strong>Five-primitive sociotechnical architecture mapping:</strong> Governance axes trace five primitives across all 30 authorities. A multimodal sensorium fuses signals in hardware <code>Device Time</code> with self-assessed observation confidence, silicon attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, <code>IETF RATS</code> <code>RFC 9334</code>), an optical data diode (<code>optical data diodes</code>), and <code>IEC 61508</code> dead-man relays. A local append-only <code>C2PA</code> and Merkle episodic memory vault (Endel Tulving; Tulving, 1972) enforces transduction realism (<em>Signed Is Not True</em> across the <code>analog hole</code>; Kevin Fu and Wenyuan Xu; Fu &amp; Xu, 2018; <a href="/labs/sensor-boundary/">/labs/sensor-boundary/</a>), paired with a monogamous <code>1:1</code> personal cognitive model and cybernetic exocortex (Joscha Bach; Bach, 2009; Andy Clark and David Chalmers; Clark &amp; Chalmers, 1998) acting as a statutory <code>information fiduciary</code> (Jack Balkin; Balkin, 2016) that preserves unassisted competence. Bifurcated ledgers across the personal <code>Markov blanket</code> (Karl Friston; Friston, 2013) separate the <code>Private Autobiographical Ledger</code> from the <code>Public Attestation &amp; Escrow Ledger</code> (Public Attestation and Escrow Ledger) using selective <code>ZK</code> proofs, <code>IETF SCITT</code> (<code>RFC 9943</code>) receipts, expiring Object-Capability and capability lease gates (Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966; <a href="/labs/protocol-inspector/">/labs/protocol-inspector/</a>), and independent-class Byzantine corroboration (<code>k &gt;= 3f + 1</code>). Polycentric coordination on the <code>Wide Network Ledger</code> supports <code>Universal Basic Services</code>, invisible-labor upkeep estimation (Jacob Meluso; Meluso et al., 2022), reciprocal mutual credit clearing (James Stodder; Stodder, 2009), statutory <code>Meidner</code> cooperative equity (Rudolf Meidner; Meidner, 1978), and bottom-up <code>Ostrom</code> self-rule (Elinor Ostrom; Ostrom, 1990; <a href="/labs/shared-horizon/">/labs/shared-horizon/</a>).</li>
+    </ul>
+  </div></details></aside>
+
+  <section class="footnotes">
+    <ol>
+      <li id="fn1">Girish Sastry et al., "Computing Power and the Governance of Artificial Intelligence" (2024), <a href="https://arxiv.org/abs/2402.08797">arxiv.org/abs/2402.08797</a>.</li>
+      <li id="fn2">Nicholas Caputo, "Administrative Law's Fourth Settlement: AI and the Scrutable State" (2026), <a href="https://arxiv.org/abs/2602.09678">arxiv.org/abs/2602.09678</a>.</li>
+      <li id="fn3">Alessandro Mantelero, "The Fundamental Rights Impact Assessment (FRIA) in the AI Act: Roots, legal obligations and key elements for a model template" (2024), <a href="https://arxiv.org/abs/2411.15149">arxiv.org/abs/2411.15149</a>.</li>
+      <li id="fn4">Noam Kolt, "Governing AI Agents" (2025), <a href="https://arxiv.org/abs/2501.07913">arxiv.org/abs/2501.07913</a>.</li>
+      <li id="fn5">Elinor Ostrom, "Beyond Markets and States: Polycentric Governance of Complex Economic Systems" (2010), <a href="https://doi.org/10.1257/aer.100.3.641">doi.org/10.1257/aer.100.3.641</a>.</li>
+      <li id="fn6">Anton Korinek and Joseph E. Stiglitz, "Artificial Intelligence and Its Implications for Income Distribution and Unemployment" (2017), <a href="https://doi.org/10.3386/w24174">doi.org/10.3386/w24174</a>.</li>
+    </ol>
+  </section>
+</div>
+
+<script type="application/json" id="sovereign-authorities-data">{"schema_version":"1.0","generated_date":"2026-11-17","title":"CIN 30-Authority National & Global Sovereign AI Governance Workbench","summary":{"total_entities":30,"national_authority_count":20,"multilateral_authority_count":10,"flagship_sovereign_paper_count":8,"axis_count":5,"atlas_linked_count":20,"region_counts":{"United States":1,"European Union":6,"United Kingdom":1,"Canada":1,"Americas":2,"Asia-Pacific":7,"Middle East & Africa":3,"Global / Multilateral":9},"cohort_axis_mean_scores":{"national_authority":{"a1_frontier_safety_teeth":3.05,"a2_public_over_private_capture":3.35,"a3_citizen_vault_vs_surveillance":2.85,"a4_public_compute_and_shared_economy":3.75,"a5_treaty_verification_and_second_road":3.9},"multilateral_authority":{"a1_frontier_safety_teeth":3.2,"a2_public_over_private_capture":3.5,"a3_citizen_vault_vs_surveillance":3.3,"a4_public_compute_and_shared_economy":3.2,"a5_treaty_verification_and_second_road":4.1}}},"axes":[{"id":"a1_frontier_safety_teeth","code":"AX-01","title":"AX-01 · Pre-Deployment Frontier Safety & Airlock Teeth","short_label":"AX-01 · Frontier Safety Teeth","track_reference":"Tracks 2 & 4 · M10-M18, M33-M40","summary":"Evaluates statutory pre-release red-line testing, physical actuator dead-man relays, and sealed compute-vault containment against voluntary corporate self-grading.","public_interest_benchmark":"Independent statutory evaluators test dangerous biological, cyber, and agentic capabilities before deployment while hardware relays isolate physical actuators.","capture_or_overreach_risk":"Commercial labs grade their own safety homework in private or rush unverified actuation weights onto public networks."},{"id":"a2_public_over_private_capture","code":"AX-02","title":"AX-02 · Public Interest Over Private Lobbying Capture","short_label":"AX-02 · Anti-Capture & Appeals","track_reference":"Tracks 1, 6 & 7 · M05-M09, M49-M59","summary":"Measures regulatory independence from cloud and defense lobbying, revolving-door firewalls, engineer whistleblower safe harbor, and checkable citizen appeal receipts.","public_interest_benchmark":"Public agencies publish verifiable rule receipts for automated decisions and protect engineers who report secret red-line breaches.","capture_or_overreach_risk":"Hyperscaler lobbyists write statutory exemptions behind closed doors while procurement contracts block public inspection under trade-secret claims."},{"id":"a3_citizen_vault_vs_surveillance","code":"AX-03","title":"AX-03 · Citizen 1:1 Privacy vs. Surveillance & Shutdowns","short_label":"AX-03 · Citizen Privacy vs. Surveillance","track_reference":"Tracks 1 & 3 · M01-M09, M20-M32","summary":"Tests legal protection for encrypted local home memory vaults and single-user agent loyalty against mandatory decryption backdoors, mass surveillance, or internet blackouts.","public_interest_benchmark":"Every person holds sole hardware keys to a private home memory vault and a loyal 1:1 personal assistant immune to warrantless bulk scanning.","capture_or_overreach_risk":"States mandate client-side scanning backdoors, link biometric registries to personal prompts, or sever regional telecom networks during civic protests."},{"id":"a4_public_compute_and_shared_economy","code":"AX-04","title":"AX-04 · Public Compute Commons & Cooperative Economy","short_label":"AX-04 · Public Compute & Co-op Economy","track_reference":"Track 5 · M41-M48","summary":"Tracks investment in public hospital and university GPU commons, local customer-built software, cooperative equity shares, and mutual credit over private cloud subsidies.","public_interest_benchmark":"Public supercomputers, open regional language models, and cooperative share rules spread automation gains across workers, clinics, schools, and small builders.","capture_or_overreach_risk":"Taxpayer grants funnel public money into private cloud rentiers while productivity gains concentrate inside a handful of platform monopolies."},{"id":"a5_treaty_verification_and_second_road","code":"AX-05","title":"AX-05 · Verifiable Cross-Bloc Treaties & Signed Agent Roads","short_label":"AX-05 · Treaties & Signed Agent Road","track_reference":"Tracks 2, 6 & 7 · M13-M18, M49-M69","summary":"Assesses support for zero-knowledge compute, substation megawatt, and red-line treaties across rival blocs alongside a separate signed transport road for agent traffic.","public_interest_benchmark":"Rival states verify frontier compute ceilings and safety red lines through hardware-attested zero-knowledge receipts without demanding raw domestic weights.","capture_or_overreach_risk":"Zero-sum arms races discard cross-border verification while unauthenticated bot swarms flood civilian web infrastructure."}],"entities":[{"id":"united_states","code":"SOV-01","cohort":"national_authority","name":"United States","subsector_label":"Federal Executive, Standards & Export Authority","region":"United States","url":"https://www.nist.gov/aisi","sovereign_paper_url":"/labs/sovereign-papers/united-states/","atlas_id":"us-nist","atlas_alignment_score":88,"key_institutions_and_statutes":"OMB M-24-10, NIST CAISI, Commerce BIS export controls, NSF NAIRR pilot, state frontier safety statutes","where_they_converge":["NIST CAISI pre-deployment testing protocols and Commerce BIS chip telemetry build technical foundations for compute-threshold governance.","OMB M-24-10 rights-impacting agency inventories and state whistleblower statutes advance scrutable public-sector automation baselines."],"where_they_deviate":["Federal oversight relies heavily on revocable executive guidance and voluntary lab pledges while hyperscaler lobbying stalls binding federal statutes.","Foreign-intelligence cloud collection authorities and absent federal consumer privacy law leave hosted personal assistant memories exposed."],"specialized_agent_id":"cin.sovereign.united_states","sovereign_liaison_role":"Pairs NIST CAISI evaluation harnesses and NAIRR public research allocations with signed local capability leases and hardware-attested compute receipts.","statutory_and_treaty_step":"Codify statutory subpoena-backed CAISI pre-release airlocks, enact federal fiduciary protection for encrypted home memory vaults, and scale NAIRR into permanent public compute.","mean_axis_score":2.6,"axis_overlays":{"a1_frontier_safety_teeth":{"score":3,"citizen_impact":"American households gain early red-team screening from NIST CAISI, yet voluntary federal lab agreements still leave unleased cloud agents live.","state_and_lab_impact":"US frontier labs navigate state transparency statutes and BIS compute reporting thresholds without uniform federal dead-man airlock mandates."},"a2_public_over_private_capture":{"score":2,"citizen_impact":"Benefits claimants gain partial notice under OMB M-24-10 rules while intense campaign and trade-group lobbying weakens statutory appeal remedies.","state_and_lab_impact":"Federal procurement offices face vendor trade-secret shields that block independent code and capability audits unless agencies enforce open receipt clauses."},"a3_citizen_vault_vs_surveillance":{"score":3,"citizen_impact":"Constitutional speech and device encryption norms protect local tools, yet commercial data brokers and cloud warrants expose hosted assistant histories.","state_and_lab_impact":"Domestic platforms retain broad monetization rights over user interaction logs in the absence of a federal 1:1 information-fiduciary statute."},"a4_public_compute_and_shared_economy":{"score":2,"citizen_impact":"University clinics and civic builders share small NSF NAIRR pilot grants while hyperscale private clouds capture most domestic AI equity.","state_and_lab_impact":"National laboratories operate strong scientific supercomputers, yet federal industrial policy channels subsidies predominantly toward investor-owned cloud operators."},"a5_treaty_verification_and_second_road":{"score":3,"citizen_impact":"Residents benefit from IETF and NIST provenance standards, though bilateral US-China arms distrust slows mutual frontier red-line treaties.","state_and_lab_impact":"Commerce export controls track global accelerator flows unilaterally while IN-AISI testing partnerships build allied safety verification plumbing."}}},{"id":"china","code":"SOV-02","cohort":"national_authority","name":"China","subsector_label":"Centralized Cyberspace, Standards & Compute Grid State","region":"Asia-Pacific","url":"https://www.cac.gov.cn","sovereign_paper_url":"/labs/sovereign-papers/china/","atlas_id":"","atlas_alignment_score":null,"key_institutions_and_statutes":"Cyberspace Administration CAC generative and deep-synthesis registries, TC260 safety standards, MIIT, NDRC National Integrated Compute Network","where_they_converge":["CAC algorithm registries, mandatory deep-synthesis provenance labels, and TC260 red-line evaluations enforce binding pre-release checks before public rollout.","NDRC Eastern Data Western Computing corridors and municipal compute vouchers widen industrial, hospital, and university access to shared GPU clusters."],"where_they_deviate":["Mandatory real-name identity linkage, state inspection of domestic cloud vaults, and speech filtering conflict directly with encrypted 1:1 citizen privacy.","Party-state administrative discretion leaves engineers and ordinary citizens without independent judicial safe harbor when contesting state directives."],"specialized_agent_id":"cin.sovereign.china","sovereign_liaison_role":"Connects TC260 embodied-safety and substation power telemetry into zero-knowledge cross-bloc treaty proofs without routing citizen personal vaults through state registries.","statutory_and_treaty_step":"Co-verify bilateral zero-knowledge megawatt and cyber-bio red-line proofs with rival blocs while separating industrial safety registries from personal home memory inspection.","mean_axis_score":2.8,"axis_overlays":{"a1_frontier_safety_teeth":{"score":4,"citizen_impact":"Chinese users interact with public chatbots only after CAC security filings, synthetic media labeling, and TC260 benchmark checks clear deployment.","state_and_lab_impact":"Domestic frontier labs submit training provenance and red-team reports to provincial and central CAC offices prior to public API launch."},"a2_public_over_private_capture":{"score":2,"citizen_impact":"Consumers see swift state crackdowns on deceptive platform pricing algorithms, yet citizens lack independent courts to contest state-run scoring.","state_and_lab_impact":"Regulators curb private tech-giant monopoly power decisively while insulating state administrative ministries from external public audit."},"a3_citizen_vault_vs_surveillance":{"score":1,"citizen_impact":"Mandatory mobile number registration and state data-security inspection powers prevent residents from keeping unmonitored cloud or network vaults.","state_and_lab_impact":"Service providers must log user prompts, filter prohibited political topics, and retain identity records for public-security inspection."},"a4_public_compute_and_shared_economy":{"score":4,"citizen_impact":"Regional clinics, vocational schools, and small manufacturers tap subsidized municipal compute vouchers and permissive domestic open-weight models.","state_and_lab_impact":"NDRC coordinates inland renewable datacenter hubs with coastal research labs to lower inference costs across public and industrial sectors."},"a5_treaty_verification_and_second_road":{"score":3,"citizen_impact":"Public researchers join UN capacity dialogues and ITU protocol groups while semiconductor sanctions heighten domestic supply-chain defensive secrecy.","state_and_lab_impact":"Diplomatic envoys back UN multilateral governance resolutions and bilateral safety talks while rejecting intrusive foreign inspection of domestic clusters."}}},{"id":"european_union","code":"SOV-03","cohort":"national_authority","name":"European Union","subsector_label":"Statutory Supranational Single-Market Regulator","region":"European Union","url":"https://digital-strategy.ec.europa.eu/en/policies/ai-office","sovereign_paper_url":"/labs/sovereign-papers/european-union/","atlas_id":"ec-dg-cnect","atlas_alignment_score":89,"key_institutions_and_statutes":"EU AI Act Reg. 2024/1689, European AI Office, EuroHPC Joint Undertaking JUPITER, LUMI, and MareNostrum 5, GDPR, Digital Markets Act","where_they_converge":["Regulation 2024/1689 bans manipulative social scoring and mandates Fundamental Rights Impact Assessments plus systemic-risk evaluations for frontier GPAI models.","EuroHPC AI Factories give European universities, public hospitals, and cooperatives shared exascale supercomputing outside private hyperscaler lock-in."],"where_they_deviate":["Compliance paperwork burdens small civic and cooperative builders unless paired with automated open-protocol attestation templates.","Recurring Council proposals for client-side messaging scanning threaten the end-to-end encryption needed for sovereign personal memory vaults."],"specialized_agent_id":"cin.sovereign.european_union","sovereign_liaison_role":"Translates EU AI Act systemic-risk duties and Fundamental Rights Impact Assessments into automated cryptographic receipts and EuroHPC public-commons leases.","statutory_and_treaty_step":"Publish machine-verifiable EU AI Office capability-airlock profiles, permanently bar client-side encryption backdoors, and reserve EuroHPC capacity for cooperative civic models.","mean_axis_score":4.0,"axis_overlays":{"a1_frontier_safety_teeth":{"score":4,"citizen_impact":"Residents across twenty-seven member states gain binding statutory bans on biometric categorization and mandatory incident reporting on systemic GPAI models.","state_and_lab_impact":"The European AI Office holds statutory fining and recall powers over frontier providers crossing systemic compute thresholds."},"a2_public_over_private_capture":{"score":4,"citizen_impact":"Patients, students, and welfare applicants can invoke Fundamental Rights Impact Assessments and GDPR Article 22 contestability against automated denials.","state_and_lab_impact":"Public deployers must register high-risk systems in an EU-wide public database despite heavy industrial lobbying over GPAI codes of practice."},"a3_citizen_vault_vs_surveillance":{"score":4,"citizen_impact":"GDPR data-minimization rules and Digital Markets Act portability protect personal records, provided lawmakers reject client-side scanning mandates.","state_and_lab_impact":"Data protection authorities fine unlawful training scrapes while interior ministries debate law-enforcement access to encrypted channels."},"a4_public_compute_and_shared_economy":{"score":4,"citizen_impact":"European researchers, cooperatives, and regional hospitals train open models on JUPITER, LUMI, and MareNostrum 5 public supercomputers.","state_and_lab_impact":"EuroHPC Joint Undertaking pools union and member-state budgets into shared AI Factories serving science and small enterprises."},"a5_treaty_verification_and_second_road":{"score":4,"citizen_impact":"Cross-border travellers and workers rely on harmonized eIDAS cryptographic wallets and CETS 225 human-rights treaty protections.","state_and_lab_impact":"Brussels anchors international regulatory Brussels-effect baselines and IN-AISI evaluations while seeking hardware-verifiable compute treaty tools."}}},{"id":"united_kingdom","code":"SOV-04","cohort":"national_authority","name":"United Kingdom","subsector_label":"Frontier Security Evaluation & Sovereign Compute State","region":"United Kingdom","url":"https://www.aisi.gov.uk","sovereign_paper_url":"/labs/sovereign-papers/united-kingdom/","atlas_id":"uk-dsit","atlas_alignment_score":84,"key_institutions_and_statutes":"DSIT, UK AI Security Institute Inspect and ControlArena suites, AI Research Resource Isambard-AI and Dawn, ICO","where_they_converge":["UK AI Security Institute open-sourced the Inspect evaluation harness and ControlArena scheming benchmarks used by safety teams worldwide.","Bristol Isambard-AI and Cambridge Dawn sovereign supercomputers supply public GPU clusters directly to academic and civic researchers."],"where_they_deviate":["Pre-deployment model access for UK AISI still rests on voluntary agreements while binding statutory frontier legislation awaits Parliamentary passage.","Investigatory Powers Act Technical Capability Notices risk pressuring encrypted personal device backups and private local memory vaults."],"specialized_agent_id":"cin.sovereign.united_kingdom","sovereign_liaison_role":"Integrates UK AISI Inspect and ControlArena evaluations directly into expiring hardware capability leases and public Isambard-AI safety verification runs.","statutory_and_treaty_step":"Place UK AISI pre-deployment red-line gates onto statutory footing, shield 1:1 local encryption from Technical Capability Notices, and expand AIRR community allocations.","mean_axis_score":3.4,"axis_overlays":{"a1_frontier_safety_teeth":{"score":4,"citizen_impact":"British residents benefit from rigorous empirical cyber, bio, and agent-control testing at UK AISI, though labs participate without statutory compulsion.","state_and_lab_impact":"DSIT and UK AISI run reproducible Inspect and ControlArena suites against pre-release frontier checkpoints before major launches."},"a2_public_over_private_capture":{"score":3,"citizen_impact":"Public-law judicial review and Algorithmic Transparency Recording Standard notices expose agency tools, while City growth lobbying resists hard statutory vetoes.","state_and_lab_impact":"Civil-service evaluators maintain strong technical independence inside UK AISI alongside big-cloud outsourcing contracts across Whitehall."},"a3_citizen_vault_vs_surveillance":{"score":3,"citizen_impact":"ICO enforcement curbs unlawful biometric scraping, yet Home Office encryption notices threaten sovereign local backup guarantees for households.","state_and_lab_impact":"Consumer device and messaging vendors face statutory secrecy orders when contesting Investigatory Powers Act capability demands."},"a4_public_compute_and_shared_economy":{"score":3,"citizen_impact":"University clinics and environmental scientists run open workloads on Isambard-AI and Dawn while NHS cloud contracts still favor foreign hyperscalers.","state_and_lab_impact":"UKRI allocates thousands of public accelerators through the AI Research Resource alongside traditional venture-backed lab incentives."},"a5_treaty_verification_and_second_road":{"score":4,"citizen_impact":"Citizens gain cross-border safety spillovers from Bletchley Summit diplomacy and joint multinational pre-release model evaluations.","state_and_lab_impact":"London coordinates cross-jurisdiction red-teaming protocols across IN-AISI partners and Council of Europe treaty signatories."}}},{"id":"canada","code":"SOV-05","cohort":"national_authority","name":"Canada","subsector_label":"Federal Parliamentary & Public AI Institute Jurisdiction","region":"Canada","url":"https://ised-isde.canada.ca","sovereign_paper_url":"/labs/sovereign-papers/canada/","atlas_id":"tbs-canada","atlas_alignment_score":77,"key_institutions_and_statutes":"ISED, Canadian AI Safety Institute CAISI, Treasury Board Directive on Automated Decision-Making, Pan-Canadian AI Strategy, Quebec Law 25","where_they_converge":["Canada's Treasury Board Directive mandates public Algorithmic Impact Assessments and peer review before federal agencies deploy automated decision systems.","Publicly funded institutes Mila, Vector, and Amii alongside CAISI anchor world-leading safety and cooperative governance research."],"where_they_deviate":["Federal private-sector AI safety legislation stalled with Bill C-27, leaving commercial frontier deployments governed by voluntary codes.","Sovereign compute funding allocates large tranches to commercial cloud buildouts alongside smaller shared academic and cooperative pools."],"specialized_agent_id":"cin.sovereign.canada","sovereign_liaison_role":"Links Treasury Board Algorithmic Impact Assessments and CAISI LawZero verification research to signed citizen appeal receipts and cooperative compute grants.","statutory_and_treaty_step":"Enact a standalone statutory frontier safety and citizen-fiduciary AI Act separated from surveillance exemptions, and dedicate Sovereign Compute funds to public commons.","mean_axis_score":3.4,"axis_overlays":{"a1_frontier_safety_teeth":{"score":3,"citizen_impact":"Canadians benefit from CAISI and Mila safety evaluation work, while commercial AI products still launch under voluntary ISED conduct codes.","state_and_lab_impact":"CAISI partners with academic alignment labs on non-agentic verification research while awaiting statutory pre-release enforcement powers."},"a2_public_over_private_capture":{"score":4,"citizen_impact":"Applicants facing federal immigration or benefits automation can inspect published Algorithmic Impact Assessments and request human administrative review.","state_and_lab_impact":"Federal departments must disclose training data summaries and impact tiers publicly before putting automated decision tools into service."},"a3_citizen_vault_vs_surveillance":{"score":3,"citizen_impact":"Quebec Law 25 and federal privacy commissioners enforce meaningful consent, though modernized federal statutory rules for personal AI agents remain pending.","state_and_lab_impact":"Enterprises operating across provinces must conduct privacy impact assessments before transferring personal histories across borders."},"a4_public_compute_and_shared_economy":{"score":3,"citizen_impact":"Graduate labs and credit-union ecosystems draw on Pan-Canadian AI institutes and Desjardins-style cooperative traditions amid rising commercial cloud dependence.","state_and_lab_impact":"ISED's Sovereign AI Compute Strategy blends public research supercomputing upgrades with private domestic datacenter co-investment."},"a5_treaty_verification_and_second_road":{"score":4,"citizen_impact":"Bilingual civic and research networks connect Canadian safety benchmarks directly into G7, OECD, Francophonie, and IN-AISI standards.","state_and_lab_impact":"Ottawa bridges North American, European, and Indo-Pacific safety institutes in joint multilateral evaluation exercises."}}},{"id":"japan","code":"SOV-06","cohort":"national_authority","name":"Japan","subsector_label":"Agile Statutory Promotion & Public Supercomputing State","region":"Asia-Pacific","url":"https://aisi.go.jp","sovereign_paper_url":"/labs/sovereign-papers/japan/","atlas_id":"japan-digital-agency","atlas_alignment_score":73,"key_institutions_and_statutes":"Cabinet Office AI Strategy, Japan AI Safety Institute J-AISI under IPA, AI Promotion Act, RIKEN Fugaku and AIST ABCI supercomputers","where_they_converge":["RIKEN Fugaku, FugakuNEXT, and AIST ABCI demonstrate sustained public investment in shared scientific and domestic-language supercomputing.","Japan architected the G7 Hiroshima AI Process and operates J-AISI cross-lingual safety evaluations across more than fifty partner nations."],"where_they_deviate":["The AI Promotion Act relies on administrative guidance and name-and-shame investigations without statutory pre-deployment stop-orders on dangerous weights.","Permissive commercial TDM copyright exceptions under Article 30-4 let large labs scrape creative works without collective creator bargaining."],"specialized_agent_id":"cin.sovereign.japan","sovereign_liaison_role":"Pairs Fugaku and ABCI public scientific compute with J-AISI evaluation receipts and Hiroshima Process cross-border provenance verification.","statutory_and_treaty_step":"Add binding hardware dead-man relays for industrial robotics and frontier agents onto J-AISI evaluations, and pair creator provenance opt-ins with ABCI commons.","mean_axis_score":3.8,"axis_overlays":{"a1_frontier_safety_teeth":{"score":3,"citizen_impact":"Japanese residents gain structured safety guidance from J-AISI and IPA, though frontier labs face administrative inquiries over hard pre-release bans.","state_and_lab_impact":"Robotics and model builders follow Cabinet Office safety checklists while retaining broad latitude for rapid industrial deployment."},"a2_public_over_private_capture":{"score":3,"citizen_impact":"Advisory councils bring university scholars and industry together openly, while individual citizens have limited statutory receipts to contest private scoring.","state_and_lab_impact":"METI and the Digital Agency coordinate standards through consensus working groups with light adversarial litigation pressure."},"a3_citizen_vault_vs_surveillance":{"score":4,"citizen_impact":"Constitutional secrecy-of-communication guarantees, APPI enforcement, and uninterrupted domestic internet access support encrypted local personal devices.","state_and_lab_impact":"The Personal Information Protection Commission issues administrative warnings when foreign chat platforms scrape sensitive resident records without notice."},"a4_public_compute_and_shared_economy":{"score":4,"citizen_impact":"Hospitals, earthquake labs, and domestic language projects train open checkpoints on RIKEN Fugaku and AIST ABCI public clusters.","state_and_lab_impact":"Public ministries fund sovereign Japanese-language corpora and shared national supercomputers accessible to universities and regional firms."},"a5_treaty_verification_and_second_road":{"score":5,"citizen_impact":"Everyday users benefit from C2PA media provenance adoption and Hiroshima Process international reporting norms championed by Tokyo.","state_and_lab_impact":"J-AISI anchors multilateral evaluation interoperability across G7, OECD, ASEAN, and IN-AISI diplomatic channels."}}},{"id":"south_korea","code":"SOV-07","cohort":"national_authority","name":"South Korea","subsector_label":"Statutory AI Basic Act & Semiconductor Powerhouse","region":"Asia-Pacific","url":"https://www.msit.go.kr","sovereign_paper_url":"","atlas_id":"","atlas_alignment_score":null,"key_institutions_and_statutes":"MSIT, AI Basic Act statutory framework, Personal Information Protection Commission PIPC, Korea AI Safety Institute, National AI Computing Center","where_they_converge":["South Korea enacted the comprehensive AI Basic Act creating statutory duties for high-impact AI, generative provenance notices, and Korea AISI oversight.","PIPC actively penalizes unauthorized personal data transfers while MSIT builds a shared National AI Computing Center for researchers."],"where_they_deviate":["Large domestic chaebol conglomerates wield outsized influence over industrial implementation decrees and compute-subsidy allocations.","Legacy real-name mobile identity verification norms create friction for anonymous zero-knowledge civic participation."],"specialized_agent_id":"cin.sovereign.south_korea","sovereign_liaison_role":"Couples Korean high-bandwidth memory silicon roots of trust and Korea AISI evaluations with statutory high-impact AI appeal receipts.","statutory_and_treaty_step":"Embed cryptographic wafer-level attestation into HBM memory supply chains for global compute treaties and guarantee union co-governance at the National AI Computing Center.","mean_axis_score":3.6,"axis_overlays":{"a1_frontier_safety_teeth":{"score":4,"citizen_impact":"Korean residents gain statutory high-impact AI risk assessments and mandatory synthetic content notices enforced by MSIT and Korea AISI.","state_and_lab_impact":"Domestic and foreign frontier providers crossing compute thresholds must designate local legal representatives and submit safety documentation."},"a2_public_over_private_capture":{"score":3,"citizen_impact":"Affected individuals can request explanations on high-impact automated decisions, though chaebol trade groups lobby heavily to narrow enforcement decrees.","state_and_lab_impact":"MSIT balances statutory safety supervision with aggressive national industrial promotion for domestic platform and chip champions."},"a3_citizen_vault_vs_surveillance":{"score":3,"citizen_impact":"PIPC blocks unconsented cross-border AI prompt harvesting, while telecom identity verification rules limit pseudonymous local account creation.","state_and_lab_impact":"App operators face strict data-audit penalties from PIPC alongside statutory telecom retention obligations."},"a4_public_compute_and_shared_economy":{"score":4,"citizen_impact":"Universities, public hospitals, and regional startups gain subsidized GPU hours from the National AI Computing Center and municipal testbeds.","state_and_lab_impact":"Public-private financing pools tens of thousands of accelerators to reduce domestic reliance on external cloud monopolies."},"a5_treaty_verification_and_second_road":{"score":4,"citizen_impact":"Seoul AI Summit commitments and HBM memory manufacturing standards position Korean engineering inside international frontier safety verification.","state_and_lab_impact":"Korea AISI collaborates across IN-AISI benchmarks while domestic chipmakers shape hardware telemetry capabilities."}}},{"id":"singapore","code":"SOV-08","cohort":"national_authority","name":"Singapore","subsector_label":"Open Testing Toolkit & Agentic Governance Bridge","region":"Asia-Pacific","url":"https://www.imda.gov.sg","sovereign_paper_url":"","atlas_id":"govtech-imda-singapore","atlas_alignment_score":82,"key_institutions_and_statutes":"MDDI, IMDA AI Verify Foundation and Project Moonshot, Singapore AISI, Model AI Governance Framework for Agentic AI, NSCC ASPIRE clusters","where_they_converge":["IMDA released AI Verify and Project Moonshot as open testing toolkits alongside an early dedicated governance framework for agentic tool use.","AI Singapore funds open SEA-LION Southeast Asian multilingual checkpoints on National Supercomputing Centre public clusters."],"where_they_deviate":["Agentic safety frameworks remain voluntary engineering playbooks without statutory pre-deployment bans on unleased frontier capabilities.","Broad domestic executive speech directions and state data-access authorities limit encrypted local sanctuary against government inspection."],"specialized_agent_id":"cin.sovereign.singapore","sovereign_liaison_role":"Extends IMDA AI Verify and Agentic AI playbooks into verifiable capability-lease receipts and cross-bloc diplomatic evaluation sandboxes.","statutory_and_treaty_step":"Upgrade voluntary agentic tool-bounding guidelines into mandatory financial and infrastructure capability leases, and host neutral East-West zero-knowledge compute audits.","mean_axis_score":3.6,"axis_overlays":{"a1_frontier_safety_teeth":{"score":4,"citizen_impact":"Residents interact with banking and municipal agents tested against IMDA Moonshot benchmarks and explicit human-in-the-loop action caps.","state_and_lab_impact":"IMDA and Singapore AISI ship practical red-teaming suites and agentic bounding standards adopted by regional banks and labs."},"a2_public_over_private_capture":{"score":3,"citizen_impact":"Strict civil-service anti-corruption rules prevent crude vendor bribery, though narrow judicial review limits citizen litigation against state algorithms.","state_and_lab_impact":"GovTech builds capable in-house public software so ministries avoid blind dependence on external consulting vendors."},"a3_citizen_vault_vs_surveillance":{"score":2,"citizen_impact":"PDPC penalizes commercial data leaks sharply, yet statutory state access powers leave local cloud and telecom traffic open to official inspection.","state_and_lab_impact":"Domestic platforms comply with PDPA security standards alongside mandatory government content and law-enforcement access orders."},"a4_public_compute_and_shared_economy":{"score":4,"citizen_impact":"Mid-career workers receive SkillsFuture transition credits while regional builders use open SEA-LION models trained on NSCC supercomputers.","state_and_lab_impact":"Public grants fund Southeast Asian linguistic commons and SME adoption toolkits alongside commercial cloud hub incentives."},"a5_treaty_verification_and_second_road":{"score":5,"citizen_impact":"Cross-border travellers and ASEAN communities benefit from Singapore's neutral technical crosswalks linking US, EU, and Chinese safety standards.","state_and_lab_impact":"Singapore convenes joint red-teaming sprints and ISO/NIST/TC260 compatibility mappings across rival geopolitical blocs."}}},{"id":"india","code":"SOV-09","cohort":"national_authority","name":"India","subsector_label":"Digital Public Infrastructure & Multilingual Compute Commons","region":"Asia-Pacific","url":"https://indiaai.gov.in","sovereign_paper_url":"/labs/sovereign-papers/india/","atlas_id":"","atlas_alignment_score":null,"key_institutions_and_statutes":"MeitY, IndiaAI Mission public GPU pool, Bhashini 22-language voice commons, Digital Personal Data Protection Act, India AI Safety Institute network","where_they_converge":["IndiaAI Mission pools over ten thousand subsidized GPUs and Bhashini open voice models so students, clinics, and farmers cross twenty-two languages.","Open interoperable Digital Public Infrastructure rails prove large populations can clear services without single-company platform monopolies."],"where_they_deviate":["Frequent regional internet shutdowns, broad state exemptions under the DPDP Act, and Aadhaar linkage pressures threaten local encrypted citizen privacy.","Frontier model safety oversight relies on shifting MeitY advisories without statutory pre-deployment containment or whistleblower safe harbor."],"specialized_agent_id":"cin.sovereign.india","sovereign_liaison_role":"Pairs Bhashini multilingual voice commons and IndiaAI subsidized GPU access with offline-resilient encrypted local vaults immune to central database correlation.","statutory_and_treaty_step":"Repeal state surveillance exemptions under the DPDP Act, end regional telecom blackouts, and bind IndiaAI GPU subsidies to open cooperative licensing and safety receipts.","mean_axis_score":3.2,"axis_overlays":{"a1_frontier_safety_teeth":{"score":2,"citizen_impact":"Indian mobile users face widespread deepfake scams and unvetted agent rollouts while statutory frontier red-line testing institutes are still forming.","state_and_lab_impact":"MeitY relies on non-statutory platform advisories and academic consortium hubs in place of binding pre-release containment gates."},"a2_public_over_private_capture":{"score":3,"citizen_impact":"Open public rails curb foreign Big Tech tollbooths for small merchants, yet welfare recipients often struggle to contest automated database exclusions.","state_and_lab_impact":"Public digital goods break single-vendor API lock-in while executive ministries retain wide rulemaking exemptions."},"a3_citizen_vault_vs_surveillance":{"score":2,"citizen_impact":"District telecom shutdowns and centralized identity seeding expose households unless personal assistants run offline with local zero-knowledge credentials.","state_and_lab_impact":"Section 17 of the DPDP Act grants broad government agency carve-outs from standard consent and erasure duties."},"a4_public_compute_and_shared_economy":{"score":5,"citizen_impact":"Rural health workers, agricultural cooperatives, and regional developers access Bhashini speech translation and hourly IndiaAI public GPUs at low cost.","state_and_lab_impact":"IndiaAI Mission underwrites shared compute vouchers, indigenous foundation checkpoints, and non-personal open dataset commons nationwide."},"a5_treaty_verification_and_second_road":{"score":4,"citizen_impact":"Global South communities gain diplomatic voice as New Delhi champions open public digital commons across G20, GPAI, and UN negotiations.","state_and_lab_impact":"Indian negotiators link international frontier safety participation to equitable compute access and open-protocol technology transfer."}}},{"id":"france","code":"SOV-10","cohort":"national_authority","name":"France","subsector_label":"Open-Science Compute Commons & Evaluation Republic","region":"European Union","url":"https://www.economie.gouv.fr","sovereign_paper_url":"","atlas_id":"cnil-france","atlas_alignment_score":80,"key_institutions_and_statutes":"INESIA national AI evaluation institute, CNIL data-protection authority, GENCI Jean Zay supercomputer, INRIA, Current AI commons","where_they_converge":["GENCI's Jean Zay public supercomputer and INRIA open-source ecosystems equip academic and civic teams to train transparent models.","CNIL publishes concrete privacy engineering rules for training datasets and open-weight deployments while INESIA builds national security benchmarks."],"where_they_deviate":["Executive industrial policy frequently lobbies Brussels to soften pre-deployment frontier obligations on domestic commercial model champions.","Statutory authorization of algorithmic public-space video analytics sets risky precedents for automated urban surveillance."],"specialized_agent_id":"cin.sovereign.france","sovereign_liaison_role":"Connects INRIA formal verification, CNIL privacy engineering, and Jean Zay public compute into open-weight capability manifests and Current AI civic commons.","statutory_and_treaty_step":"Sun-set algorithmic street-camera surveillance powers, back strict INESIA hardware airlocks on frontier cyber-bio models, and expand Current AI cooperative grants.","mean_axis_score":3.6,"axis_overlays":{"a1_frontier_safety_teeth":{"score":3,"citizen_impact":"French citizens gain EU AI Act protections and INESIA security testing, though ministries resist strict pre-release gates on open-weight releases.","state_and_lab_impact":"ANSSI and LNE coordinate technical evaluations inside INESIA while domestic labs ship open weights rapidly."},"a2_public_over_private_capture":{"score":3,"citizen_impact":"CNIL enforces citizen erasure and scraping complaints vigorously, even as presidential industrial diplomacy champions domestic frontier startups.","state_and_lab_impact":"Administrative source-code transparency laws require public agencies to publish several state algorithms while executive lobbying aids private champions."},"a3_citizen_vault_vs_surveillance":{"score":3,"citizen_impact":"CNIL defends local privacy rights, yet algorithmic crowd-monitoring cameras authorized for major events erode anonymity in public squares.","state_and_lab_impact":"Municipalities and police vendors test automated video analytics under temporary statutory tolerances watched closely by civil-liberties groups."},"a4_public_compute_and_shared_economy":{"score":5,"citizen_impact":"Public scientists, hospital teams, and open-source builders train multilingual models on GENCI Jean Zay and Current AI public-interest funds.","state_and_lab_impact":"France pairs nuclear-powered low-carbon public supercomputing at Jean Zay with strong social-economy cooperative statutes."},"a5_treaty_verification_and_second_road":{"score":4,"citizen_impact":"Paris AI Action Summit coalitions advance shared public-interest AI pools and international energy-footprint standards.","state_and_lab_impact":"INRIA and French standards bodies contribute formal verification proofs and open-protocol cryptography across European and OECD forums."}}},{"id":"germany","code":"SOV-11","cohort":"national_authority","name":"Germany","subsector_label":"Constitutional Privacy, Works-Council Co-Determination & Exascale State","region":"European Union","url":"https://www.bsi.bund.de","sovereign_paper_url":"","atlas_id":"bsi-germany","atlas_alignment_score":85,"key_institutions_and_statutes":"Federal Office for Information Security BSI, Works Constitution Act BetrVG Section 87, Federal and State Data Protection Commissioners, JUPITER exascale cluster","where_they_converge":["Works Constitution Act Section 87 grants elected employee works councils enforceable veto and co-design rights over workplace AI tools.","BSI cryptographic and AI security catalogs pair with Julich's JUPITER public exascale cluster to anchor verifiable public engineering."],"where_they_deviate":["Fragmented federal and sixteen-state regulatory procurement slows deployment of unified open-source municipal digital services.","Industrial ministries occasionally seek broad trade-secret shields that limit outside civil-society inspection of automotive and enterprise algorithms."],"specialized_agent_id":"cin.sovereign.germany","sovereign_liaison_role":"Binds BSI hardware-attestation profiles and BetrVG works-council co-determination receipts onto workplace agent capability leases and JUPITER public research runs.","statutory_and_treaty_step":"Standardize cryptographic BetrVG works-council approval leases for enterprise agents and open JUPITER exascale allocations to European cooperative and municipal software.","mean_axis_score":4.2,"axis_overlays":{"a1_frontier_safety_teeth":{"score":4,"citizen_impact":"German workers and commuters benefit from strict BSI cybersecurity profiles and TÜV physical safety inspections on industrial and mobility AI.","state_and_lab_impact":"BSI publishes testable adversarial robustness and prompt-injection defense baselines for regulated enterprise and infrastructure deployers."},"a2_public_over_private_capture":{"score":5,"citizen_impact":"Shop-floor and office employees cannot have productivity-tracking or hiring agents imposed without binding approval from their elected works council.","state_and_lab_impact":"Employers must negotiate transparent operating agreements under BetrVG Section 87(1)(6) before turning on workplace AI software."},"a3_citizen_vault_vs_surveillance":{"score":4,"citizen_impact":"Constitutional informational self-determination rulings and BSI support for end-to-end encryption protect household digital vaults from mass scanning.","state_and_lab_impact":"Independent state data-protection commissioners audit commercial cloud contracts and restrict unlawful biometric surveillance."},"a4_public_compute_and_shared_economy":{"score":4,"citizen_impact":"Public universities, Max Planck labs, and regional cooperatives tap Julich JUPITER exascale compute and Sovereign Tech Agency open-source maintenance.","state_and_lab_impact":"Federal and state science budgets co-fund JUPITER exascale clusters and public open-source digital infrastructure maintenance."},"a5_treaty_verification_and_second_road":{"score":4,"citizen_impact":"Citizens gain durable cross-border hardware security standards as BSI shapes European cybersecurity certificates and IETF/ISO cryptography.","state_and_lab_impact":"German engineering institutes supply formal hardware-attestation specifications suited for international compute-cluster verification."}}},{"id":"switzerland","code":"SOV-12","cohort":"national_authority","name":"Switzerland","subsector_label":"Direct-Democracy Sanctuary, Public Supercomputing & Neutral Treaty Host","region":"European Union","url":"https://www.bakom.admin.ch","sovereign_paper_url":"","atlas_id":"","atlas_alignment_score":null,"key_institutions_and_statutes":"Federal Council CoE Convention implementation, OFCOM/BAKOM, CSCS Alps supercomputer, Swiss AI Initiative ETH Zurich and EPFL, Revised FADP","where_they_converge":["CSCS Alps public supercomputer powers the Swiss AI Initiative and fully open Apertus models for hospitals, schools, and science.","Direct-democracy referendum checks, strong cryptographic privacy norms, and Geneva neutrality provide ideal conditions for hosting compute treaties."],"where_they_deviate":["Sector-by-sector federal rulemaking postpones dedicated statutory pre-release containment gates on private dual-use frontier labs.","Financial-sector secrecy traditions require vigilant separation so privacy shields living citizens without hiding corporate shadow-ledger compute."],"specialized_agent_id":"cin.sovereign.switzerland","sovereign_liaison_role":"Operates neutral Geneva treaty-verification escrow nodes and pairs Swiss AI Initiative open models with citizen-held cryptographic privacy vaults.","statutory_and_treaty_step":"Ratify Council of Europe CETS 225 with statutory frontier airlock standards and host an international zero-knowledge compute and biosecurity verification registry in Geneva.","mean_axis_score":4.4,"axis_overlays":{"a1_frontier_safety_teeth":{"score":3,"citizen_impact":"Swiss residents benefit from ETH and EPFL formal robustness audits and SecureDNA bio-screening, though domestic AI law relies on sectoral rules.","state_and_lab_impact":"BAKOM and sectoral regulators enforce medical, aviation, and financial safety statutes while drafting CETS 225 implementation bills."},"a2_public_over_private_capture":{"score":4,"citizen_impact":"Voters hold binding constitutional initiative and referendum power to overturn captured digital surveillance or monopoly laws at the ballot box.","state_and_lab_impact":"Cantonal federalism and public-consultation mandates force ministries to justify automated administrative tools in daylight."},"a3_citizen_vault_vs_surveillance":{"score":5,"citizen_impact":"Strong constitutional privacy culture, encrypted domestic software ecosystems, and Revised FADP rules protect 1:1 local personal vaults.","state_and_lab_impact":"Federal courts and voter referenda repeatedly check overbroad state interception proposals while upholding user-held encryption."},"a4_public_compute_and_shared_economy":{"score":5,"citizen_impact":"Clinicians, teachers, and local cooperatives run open Apertus models trained transparently on over ten thousand public GPUs at CSCS Alps.","state_and_lab_impact":"ETH Zurich, EPFL, and CSCS operate sovereign public supercomputing with open training recipes, clean data provenance, and cooperative access."},"a5_treaty_verification_and_second_road":{"score":5,"citizen_impact":"Global citizens gain a trusted neutral venue in Geneva where rival powers can verify frontier safety treaties without ceding sovereignty.","state_and_lab_impact":"Swiss diplomatic missions host ITU, ILO, UN, and Geneva Science and Diplomacy Anticipator technical treaty sandboxes."}}},{"id":"australia","code":"SOV-13","cohort":"national_authority","name":"Australia","subsector_label":"Post-Robodebt Administrative Accountability & Guardrails State","region":"Asia-Pacific","url":"https://www.industry.gov.au","sovereign_paper_url":"","atlas_id":"australia-esafety-oaic","atlas_alignment_score":81,"key_institutions_and_statutes":"Department of Industry DISR Mandatory Guardrails consultation, Australian AI Safety Institute, OAIC, Royal Commission Robodebt reforms, NCI Gadi and Pawsey Setonix","where_they_converge":["Post-Robodebt administrative reforms enforce hard lessons on human accountability, Ombudsman scrutiny, and checkable welfare-calculation receipts.","DISR's ten proposed mandatory high-risk AI guardrails and the Australian AI Safety Institute advance lifecycle testing and transparency."],"where_they_deviate":["Telecommunications Assistance and Access Act encryption-capability notices undermine ironclad security for encrypted local citizen memory vaults.","Domestic frontier compute capacity leans heavily on foreign hyperscaler datacenters while mandatory high-risk legislation awaits final enactment."],"specialized_agent_id":"cin.sovereign.australia","sovereign_liaison_role":"Translates post-Robodebt scrutable-administration mandates into cryptographic citizen benefit receipts and Australian AISI pre-deployment safety checks.","statutory_and_treaty_step":"Enact the ten mandatory high-risk AI guardrails into binding statute, repeal TOLA encryption backdoor powers, and expand NCI and Pawsey public AI clusters.","mean_axis_score":3.2,"axis_overlays":{"a1_frontier_safety_teeth":{"score":3,"citizen_impact":"Australians gain baseline protections from the Voluntary AI Safety Standard and Australian AISI while binding high-risk guardrails move toward statute.","state_and_lab_impact":"DISR sets ten conformity, testing, and logging expectations for high-risk deployers alongside IN-AISI joint evaluations."},"a2_public_over_private_capture":{"score":4,"citizen_impact":"Welfare and tax residents benefit from strict post-Robodebt bans on unverified automated debt notices and stronger Commonwealth Ombudsman oversight.","state_and_lab_impact":"Federal agencies must document statutory authority and human review paths before deploying automated administrative decisions."},"a3_citizen_vault_vs_surveillance":{"score":2,"citizen_impact":"Privacy Act automated-decision transparency helps consumers, yet TOLA technical capability notices cast legal doubt over local encrypted vaults.","state_and_lab_impact":"Software developers and telecom operators face confidential statutory assistance orders that complicate zero-knowledge device guarantees."},"a4_public_compute_and_shared_economy":{"score":3,"citizen_impact":"Climate, astronomy, and hospital researchers share NCI Gadi and Pawsey Setonix supercomputers while commercial AI training relies on hyperscale imports.","state_and_lab_impact":"Public research infrastructure supports scientific computing alongside union consultation on workplace automation transitions."},"a5_treaty_verification_and_second_road":{"score":4,"citizen_impact":"Regional communities benefit from Australia's active participation in Bletchley, Seoul, OECD, and Pacific digital resilience standards.","state_and_lab_impact":"Australian AISI shares red-team tooling and evaluation findings across Commonwealth and Indo-Pacific safety partners."}}},{"id":"brazil","code":"SOV-14","cohort":"national_authority","name":"Brazil","subsector_label":"Civil-Rights Risk Bill, Data Enforcement & Public Compute Democracy","region":"Americas","url":"https://www.gov.br/anpd","sovereign_paper_url":"","atlas_id":"","atlas_alignment_score":null,"key_institutions_and_statutes":"National Data Protection Authority ANPD, AI Bill PL 2338, Brazilian AI Plan PBIA, LNCC Santos Dumont supercomputer, LGPD","where_they_converge":["ANPD enforced immediate preventive bans when global platforms scraped Brazilian citizens' posts to train generative models without consent.","Brazilian AI Plan PBIA upgrades the public Santos Dumont supercomputer to train open Portuguese and public-health SUS models."],"where_they_deviate":["Broad judicial orders occasionally block entire consumer messaging platforms nationwide, penalizing ordinary citizens' encrypted daily communications.","Protracted congressional lobbying by platform trade groups continues to contest worker and copyright protections inside AI Bill PL 2338."],"specialized_agent_id":"cin.sovereign.brazil","sovereign_liaison_role":"Couples ANPD training-data consent enforcement and PBIA public Portuguese-language compute with citizen-auditable administrative receipts.","statutory_and_treaty_step":"Pass PL 2338 with binding worker impact assessments and frontier safety audits, replace blanket app blocks with targeted due process, and scale Santos Dumont cooperative access.","mean_axis_score":3.6,"axis_overlays":{"a1_frontier_safety_teeth":{"score":3,"citizen_impact":"Brazilians gain strong high-risk categorization and biometric curbs under advancing PL 2338 rules while dedicated frontier lab airlocks mature.","state_and_lab_impact":"Sectoral regulators coordinate under a proposed national AI system SIA to audit high-risk infrastructure and credit models."},"a2_public_over_private_capture":{"score":4,"citizen_impact":"Workers, artists, and consumers see ANPD and labor prosecutors challenge unilateral Big Tech terms of service in public hearings.","state_and_lab_impact":"Multi-sector civil-society seats on national internet CGI.br and data councils counter concentrated platform lobbying."},"a3_citizen_vault_vs_surveillance":{"score":3,"citizen_impact":"Constitutional LGPD data rights protect personal histories, though sweeping court blocks on encrypted messaging apps disrupt millions of households.","state_and_lab_impact":"ANPD enforces strict purpose limitation on private AI training while courts weigh proportionality of telecom blocking orders."},"a4_public_compute_and_shared_economy":{"score":4,"citizen_impact":"Public SUS clinics, agricultural cooperatives, and federal universities gain shared Portuguese AI models funded under PBIA and LNCC Santos Dumont.","state_and_lab_impact":"Federal science ministries invest in sovereign supercomputing upgrades, open sovereign datasets, and cooperative solidarity-economy tools."},"a5_treaty_verification_and_second_road":{"score":4,"citizen_impact":"Citizens benefit from Brazil's G20 digital commons diplomacy and Latin American coordination on fair cross-border data rules.","state_and_lab_impact":"Brasilia bridges OECD technical standards, UN Global Digital Compact talks, and regional Global South compute coalitions."}}},{"id":"united_arab_emirates","code":"SOV-15","cohort":"national_authority","name":"United Arab Emirates","subsector_label":"Sovereign-Wealth Compute Hub & Open-Weight Sponsor State","region":"Middle East & Africa","url":"https://ai.gov.ae","sovereign_paper_url":"","atlas_id":"tii-falcon","atlas_alignment_score":60,"key_institutions_and_statutes":"UAE Council for Artificial Intelligence, Abu Dhabi ATRC and Technology Innovation Institute Falcon models, MGX and G42 compute corridors","where_they_converge":["Abu Dhabi's ATRC and Technology Innovation Institute funded permissively licensed Falcon and Arabic checkpoints usable by builders worldwide.","Large-scale solar and nuclear datacenter corridors offer physical facility footprints capable of hosting hardware-monitored compute vaults."],"where_they_deviate":["Sovereign-wealth executives simultaneously oversee regulatory offices, datacenter investments, and commercial AI vendors without independent civic firewalls.","Pervasive urban surveillance, VoIP and telecom restrictions, and absent judicial remedies leave residents without encrypted 1:1 digital sanctuary."],"specialized_agent_id":"cin.sovereign.united_arab_emirates","sovereign_liaison_role":"Applies hardware-attested substation power and accelerator balance proofs to Gulf compute corridors while keeping open-weight Falcon checkpoints verifiable on public ledgers.","statutory_and_treaty_step":"Separate regulatory safety oversight from sovereign-wealth AI funds, subject megawatt datacenter campuses to multilateral zero-knowledge compute audits, and protect end-to-end user encryption.","mean_axis_score":2.2,"axis_overlays":{"a1_frontier_safety_teeth":{"score":2,"citizen_impact":"Residents experience rapid AI integration across visas, policing, and municipal portals without independent statutory pre-release safety stop-gates.","state_and_lab_impact":"Regulatory sandboxes prioritize rapid procurement and commercial scaling over adversarial hardware-airlocked red-line containment."},"a2_public_over_private_capture":{"score":2,"citizen_impact":"Public-service users lack independent administrative tribunals, labor unions, or freedom-of-information statutes to contest automated state decisions.","state_and_lab_impact":"Overlapping board roles across sovereign funds, state clouds, and AI ministries blur boundaries between regulator and operator."},"a3_citizen_vault_vs_surveillance":{"score":1,"citizen_impact":"Dense biometric city monitoring and state telecom filtering prevent residents and migrant workers from relying on unmonitored personal vaults.","state_and_lab_impact":"Domestic cloud and telecom licensees operate under broad national-security inspection mandates without adversarial judicial review."},"a4_public_compute_and_shared_economy":{"score":3,"citizen_impact":"Arabic-speaking students and global developers freely download open Falcon checkpoints, while domestic AI wealth stays concentrated in state funds.","state_and_lab_impact":"ATRC finances open-weight scientific releases even as domestic labor lacks cooperative equity or collective bargaining rights."},"a5_treaty_verification_and_second_road":{"score":3,"citizen_impact":"International travellers and researchers engage through Dubai and Abu Dhabi global forums alongside bilateral US-monitored datacenter agreements.","state_and_lab_impact":"Gigawatt datacenter partnerships introduce bilateral hardware security conditions that could mature into multilateral treaty templates."}}},{"id":"taiwan","code":"SOV-16","cohort":"national_authority","name":"Taiwan","subsector_label":"Participatory Digital Democracy & Semiconductor Root-of-Trust Hub","region":"Asia-Pacific","url":"https://moda.gov.tw","sovereign_paper_url":"","atlas_id":"moda-taiwan","atlas_alignment_score":96,"key_institutions_and_statutes":"Ministry of Digital Affairs MODA, AI Evaluation Center AIEC, vTaiwan and Alignment Assemblies, NCHC TAIDE sovereign models, semiconductor foundry ecosystem","where_they_converge":["MODA Alignment Assemblies and vTaiwan participatory deliberation prove citizens can shape AI rules directly without synthetic bot capture.","Taiwan's semiconductor foundries and TAIDE public checkpoints anchor both silicon hardware roots of trust and open Traditional Chinese commons."],"where_they_deviate":["Geopolitical exclusion from UN agencies blocks formal Taiwanese voting seats inside several multilateral treaty secretariats.","Draft Basic Act on AI provisions still lean on sectoral guidance before establishing hard statutory containment on autonomous cyber-physical agents."],"specialized_agent_id":"cin.sovereign.taiwan","sovereign_liaison_role":"Bridges MODA participatory Alignment Assemblies, TAIDE public checkpoints, and foundry wafer-level silicon roots of trust into global open-protocol verification.","statutory_and_treaty_step":"Publish open silicon PUF and DICE hardware-attestation profiles from domestic foundries for global compute verification and codify binding frontier airlocks in the AI Basic Act.","mean_axis_score":4.0,"axis_overlays":{"a1_frontier_safety_teeth":{"score":3,"citizen_impact":"Taiwanese citizens gain cybersecurity and hallucination testing from MODA's AI Evaluation Center while statutory frontier containment rules advance.","state_and_lab_impact":"Public agencies follow Executive Yuan generative AI guardrails prohibiting unverified automated drafting of binding state acts."},"a2_public_over_private_capture":{"score":5,"citizen_impact":"Residents deliberate directly in MODA civic assemblies and inspect open government procurement logs built with civic-tech communities.","state_and_lab_impact":"Public ministries run Polis-style consensus mapping so commercial lobbyists cannot monopolize regulatory drafting in secret."},"a3_citizen_vault_vs_surveillance":{"score":4,"citizen_impact":"Constitutional court rulings on digital privacy, open internet access, and decentralized cable/satellite resilience protect citizen-held local vaults.","state_and_lab_impact":"Creation of an independent Personal Data Protection Commission strengthens oversight over both state databases and commercial apps."},"a4_public_compute_and_shared_economy":{"score":4,"citizen_impact":"Schools, clinics, and agricultural co-ops run open TAIDE Traditional Chinese models trained on NCHC Taiwania public supercomputers.","state_and_lab_impact":"National science councils fund shared sovereign checkpoints and open training corpora licensed for domestic civic and SME builders."},"a5_treaty_verification_and_second_road":{"score":4,"citizen_impact":"Civic builders connect directly into IETF, W3C, and open-source safety networks despite formal diplomatic exclusion from UN halls.","state_and_lab_impact":"Domestic semiconductor fabrication labs hold indispensable engineering capacity for tamper-evident chip attestation across global treaties."}}},{"id":"nordic_baltic","code":"SOV-17","cohort":"national_authority","name":"Nordic-Baltic Public-Digital Coalition","subsector_label":"Citizen-Auditable X-Road Logs, Hydro Compute & Union Co-Governance","region":"European Union","url":"https://www.lumi-supercomputer.eu","sovereign_paper_url":"","atlas_id":"","atlas_alignment_score":null,"key_institutions_and_statutes":"CSC Finland LUMI hydro-powered supercomputer, Estonian X-Road citizen data tracker, Nordic Council of Ministers AI cooperation, collective-bargaining transition funds","where_they_converge":["Estonia's X-Road citizen portal logs every official query against personal records in daylight, exemplifying a scrutable public ledger.","Finland's hydro-powered LUMI public supercomputer pairs zero-carbon open-weight training with strong Nordic union transition agreements."],"where_they_deviate":["Centralized state population numbers require careful local zero-knowledge wrapping so cross-agency interoperability never turns into profiling.","Welfare fraud-scoring pilots in municipal social agencies have required Ombudsman intervention to restore transparent human explanations."],"specialized_agent_id":"cin.sovereign.nordic_baltic","sovereign_liaison_role":"Combines X-Road citizen-visible audit receipts, hydro-powered LUMI open-model training, and Nordic collective-bargaining transition funds.","statutory_and_treaty_step":"Extend X-Road citizen data-access receipts to every automated municipal agent call and pair LUMI Next exascale grants with union-stewarded worker skill sanctuaries.","mean_axis_score":4.2,"axis_overlays":{"a1_frontier_safety_teeth":{"score":3,"citizen_impact":"Residents across Nordic and Baltic states gain EU AI Act protections plus practical grid and telecom resilience audits.","state_and_lab_impact":"National cybersecurity centers and CSC Finland enforce strict container isolation and provenance checks on public supercomputer runs."},"a2_public_over_private_capture":{"score":5,"citizen_impact":"Every resident can open a citizen data tracker to see exact timestamps and officials whenever any agency touches their file.","state_and_lab_impact":"Constitutional public-access-to-documents principles and Parliamentary Ombudsmen expose opaque municipal vendor algorithms rapidly."},"a3_citizen_vault_vs_surveillance":{"score":4,"citizen_impact":"Hardware smart-card e-IDs and distributed X-Road registries block silent bulk scraping while citizens retain strong legal redress.","state_and_lab_impact":"Agencies store records across federated databases with mandatory query logging in place of a single honeypot super-database."},"a4_public_compute_and_shared_economy":{"score":5,"citizen_impact":"Open Nordic-language models trained on 100% hydro-powered LUMI pair with strong union job-transition funds and consumer cooperatives.","state_and_lab_impact":"Ten-country LUMI consortium pools public research budgets so universities and local firms train frontier-scale open checkpoints."},"a5_treaty_verification_and_second_road":{"score":4,"citizen_impact":"Cross-border prescriptions, tax records, and diplomas clear over federated signed X-Road tunnels across Finland, Estonia, and neighbors.","state_and_lab_impact":"Nordic-Baltic digital treaties prove sovereign states can operate a shared signed protocol road with cryptographic auditability."}}},{"id":"kenya_african_union","code":"SOV-18","cohort":"national_authority","name":"Kenya & African Union Framework","subsector_label":"Continental Sovereignty Strategy, Data-Worker Rights & Agro-Health Commons","region":"Middle East & Africa","url":"https://au.int","sovereign_paper_url":"","atlas_id":"","atlas_alignment_score":null,"key_institutions_and_statutes":"African Union Continental AI Strategy, Kenya Office of the Data Protection Commissioner ODPC, Kenya Data Protection Act, Nairobi labor courts, Masakhane ecosystem","where_they_converge":["Kenya's Data Protection Commissioner penalized unconsented biometric scanning while Nairobi courts advanced landmark protections for AI data-enrichment workers.","The AU Continental AI Strategy prioritizes African-owned linguistic, agricultural, and community-health datasets over extractive foreign scraping."],"where_they_deviate":["Severe shortages of publicly owned sovereign GPU clusters leave African universities and clinics reliant on foreign cloud credits.","Periodic election-season telecom blackouts and imported spyware kits across several member states threaten citizen encrypted communications."],"specialized_agent_id":"cin.sovereign.kenya_african_union","sovereign_liaison_role":"Supports ODPC biometric enforcement, fair cooperative clearing for African data-annotation and language contributors, and offline-capable agricultural and clinic agents.","statutory_and_treaty_step":"Establish a federated African Public Compute Commons funded by international digital-extraction levies, ban telecom shutdowns under AU human-rights charters, and enforce data-worker labor floors.","mean_axis_score":2.8,"axis_overlays":{"a1_frontier_safety_teeth":{"score":2,"citizen_impact":"Farmers, patients, and mobile-money users face unvetted foreign AI deployments while domestic statutory safety testing labs lack hardware budgets.","state_and_lab_impact":"National standards bureaus draft risk rules under the AU Continental AI Strategy while seeking independent red-team compute capacity."},"a2_public_over_private_capture":{"score":3,"citizen_impact":"Nairobi content moderators and biometric-wallet users win precedent-setting court and ODPC rulings despite heavy foreign vendor lobbying.","state_and_lab_impact":"ODPC requires registration and impact assessments from data processors while donor-funded cloud partnerships test procurement independence."},"a3_citizen_vault_vs_surveillance":{"score":2,"citizen_impact":"Statutory data-protection laws help citizens contest biometric harvesting, yet regional internet shutdowns and state spyware endanger local devices.","state_and_lab_impact":"Telecom operators face intermittent executive shutdown directives alongside commercial pressure to monetize mobile payment metadata."},"a4_public_compute_and_shared_economy":{"score":3,"citizen_impact":"Grassroots Masakhane researchers and smallholder farmer cooperatives build Swahili, Amharic, and Yoruba tools despite scarce public GPUs.","state_and_lab_impact":"AU development frameworks champion regional compute pools and cooperative data trusts to counter foreign cloud rent extraction."},"a5_treaty_verification_and_second_road":{"score":4,"citizen_impact":"Fifty-five AU member states bargain collectively at the UN so global AI rules include labor justice and indigenous language protection.","state_and_lab_impact":"AU negotiators push UN Global Digital Compact financing mechanisms and cross-border curbs on exploitative RLHF outsourcing."}}},{"id":"mexico_latam","code":"SOV-19","cohort":"national_authority","name":"Mexico & Santiago Regional Accord","subsector_label":"Latin American Ministerial Accord & Indigenous Language Commons","region":"Americas","url":"https://www.gob.mx","sovereign_paper_url":"","atlas_id":"","atlas_alignment_score":null,"key_institutions_and_statutes":"Santiago and Cartagena Ministerial AI Declarations, Mexico Digital Transformation Agency, UNAM supercomputing, LatAm-GPT public university coalition","where_they_converge":["Twenty Latin American and Caribbean states united in the Santiago and Cartagena Declarations to coordinate open regional AI governance.","Public universities across Mexico, Chile, and neighbors co-develop LatAm-GPT and Indigenous language models outside commercial cloud monopolies."],"where_they_deviate":["Restructuring of autonomous transparency and data-protection watchdogs weakens independent citizen remedies against executive state databases.","Documented commercial spyware deployments against journalists and human-rights defenders undermine trust in unshielded mobile networks."],"specialized_agent_id":"cin.sovereign.mexico_latam","sovereign_liaison_role":"Pairs LatAm-GPT university compute commons and Indigenous language stewardship with hardware-isolated citizen privacy vaults resistant to spyware.","statutory_and_treaty_step":"Pool regional public-university GPU clusters under the Santiago Accord, enact strict bans on commercial spyware procurement, and preserve independent citizen appeal tribunals.","mean_axis_score":2.8,"axis_overlays":{"a1_frontier_safety_teeth":{"score":2,"citizen_impact":"Residents across Mexico and Santiago Accord states rely on consumer-protection laws while dedicated frontier AI safety statutes remain in draft.","state_and_lab_impact":"Regional ministries share UNESCO readiness evaluations and open-model benchmarks without statutory pre-release compute airlocks."},"a2_public_over_private_capture":{"score":3,"citizen_impact":"Academic and civil-society voices co-authored the Santiago Declaration, though domestic institutional reorganizations strain freedom-of-information appeals.","state_and_lab_impact":"Public procurement reforms aim to replace overpriced proprietary vendor contracts with in-house public-sector engineering."},"a3_citizen_vault_vs_surveillance":{"score":2,"citizen_impact":"Journalists, union organizers, and families require strong local hardware encryption due to past Pegasus spyware abuses and biometric registry bills.","state_and_lab_impact":"Security agencies face civil-society court challenges over unlogged mobile interception and centralized biometric identity proposals."},"a4_public_compute_and_shared_economy":{"score":3,"citizen_impact":"Students, rural clinics, and Nahuatl, Maya, and Quechua speakers benefit from public-university language models and cooperative community networks.","state_and_lab_impact":"UNAM, CENIA, and regional science ministries pool modest public supercomputer budgets to train open Spanish and Indigenous checkpoints."},"a5_treaty_verification_and_second_road":{"score":4,"citizen_impact":"Regional solidarity gives Latin American citizens stronger bargaining power over cross-border cloud taxes, water use, and labor rules.","state_and_lab_impact":"The twenty-nation Santiago coalition coordinates joint positions across CEPAL, UNESCO, OECD, and UN AI governance negotiations."}}},{"id":"israel","code":"SOV-20","cohort":"national_authority","name":"Israel","subsector_label":"Formal-Verification Research Depth vs. Military Targeting Gap","region":"Middle East & Africa","url":"https://www.gov.il","sovereign_paper_url":"","atlas_id":"","atlas_alignment_score":null,"key_institutions_and_statutes":"Ministry of Innovation, Science and Technology sectoral AI policy, Privacy Protection Authority PPA, Israel Innovation Authority Israel-1 supercomputer","where_they_converge":["Israeli university departments lead foundational cryptographic zero-knowledge proof theory and formal neural verification used in verifiable ledgers.","Privacy Protection Authority directives enforce data-protection duties on civilian health, banking, and commercial AI databases."],"where_they_deviate":["High-tempo military target-generation systems operate under sweeping national-security exemptions without independent scrutable-state accountability.","Commercial offensive spyware exports and non-binding civilian sectoral guidance leave severe gaps in frontier containment and device sanctuary."],"specialized_agent_id":"cin.sovereign.israel","sovereign_liaison_role":"Draws on open academic zero-knowledge proof and formal-verification scholarship while insisting on binding humanitarian red lines and hardware dead-man relays.","statutory_and_treaty_step":"Replace non-binding sectoral notes with statutory civilian and dual-use safety laws, subject targeting automation to binding humanitarian-law audits, and halt spyware exports.","mean_axis_score":2.2,"axis_overlays":{"a1_frontier_safety_teeth":{"score":2,"citizen_impact":"Civilian patients and consumers rely on agile sectoral guidance while dual-use autonomous systems deploy without public statutory red-line gates.","state_and_lab_impact":"Regulators favor soft sectoral principles to speed startup commercialization, leaving frontier containment largely voluntary."},"a2_public_over_private_capture":{"score":2,"citizen_impact":"Affected civilians lack inspectable audit receipts or judicial standing when security-classified automated systems drive life-altering decisions.","state_and_lab_impact":"Tight personnel pipelines between defense intelligence units and venture-backed AI startups insulate dual-use procurement from public scrutiny."},"a3_citizen_vault_vs_surveillance":{"score":2,"citizen_impact":"Updated civilian privacy regulations protect routine shopping data, while emergency security surveillance and zero-day spyware tools threaten personal devices.","state_and_lab_impact":"The Privacy Protection Authority polices commercial databases while national-security and export sectors operate under broad carve-outs."},"a4_public_compute_and_shared_economy":{"score":3,"citizen_impact":"Academic labs and hospital researchers share Israel-1 supercomputing time, though economic ownership concentrates heavily in private venture equity.","state_and_lab_impact":"Israel Innovation Authority subsidizes shared R&D GPU access alongside traditional venture-capital startup structures."},"a5_treaty_verification_and_second_road":{"score":2,"citizen_impact":"Academic cryptographers co-author global zero-knowledge standards even as state diplomats oppose binding UN autonomous-weapons treaties.","state_and_lab_impact":"Civilian ministries align with OECD AI principles while defense policy resists international inspection of military compute clusters."}}},{"id":"un_multilateral","code":"MUL-01","cohort":"multilateral_authority","name":"United Nations (Global Digital Compact & AI Scientific Panel)","subsector_label":"Universal 193-State Diplomatic & Scientific Assessment Body","region":"Global / Multilateral","url":"https://www.un.org/digital-emerging-technologies","sovereign_paper_url":"/labs/sovereign-papers/un-multilateral/","atlas_id":"intl-un-hlab-ai","atlas_alignment_score":79,"key_institutions_and_statutes":"UN Office for Digital and Emerging Technologies ODET, Global Digital Compact, Independent International Scientific Panel on AI, OHCHR, UNODA","where_they_converge":["The Independent International Scientific Panel on AI gives all 193 nations shared empirical risk assessments outside corporate PR.","Global Digital Compact commitments and OHCHR resolutions defend human rights, Global South compute capacity, and open digital commons."],"where_they_deviate":["General Assembly consensus politics allow both hyperscaler home states and authoritarian governments to water down binding enforcement teeth.","UN bodies currently lack hardware-attested inspection tools comparable to IAEA nuclear safeguards for verifying frontier compute ceilings."],"specialized_agent_id":"cin.sovereign.un_multilateral","sovereign_liaison_role":"Equips the UN Scientific Panel and Global Dialogue with zero-knowledge compute-audit protocols that verify treaty red lines without exposing sovereign secrets.","statutory_and_treaty_step":"Empower a specialized UN-linked Frontier Compute Verification Mechanism using zero-knowledge substation and chip-telemetry proofs plus binding bans on internet shutdowns.","mean_axis_score":3.6,"axis_overlays":{"a1_frontier_safety_teeth":{"score":3,"citizen_impact":"People in non-producing countries gain independent frontier risk reports from the UN Scientific Panel, though enforcement awaits sovereign treaties.","state_and_lab_impact":"Forty independent scientists synthesize global capability and safety evidence annually without direct subpoena power over private labs."},"a2_public_over_private_capture":{"score":4,"citizen_impact":"Developing nations and civil-society observers gain formal seats at the Global Dialogue so three corporate powers cannot write planetary rules alone.","state_and_lab_impact":"ODET convenes open multi-stakeholder hearings while guarding Scientific Panel appointments against commercial conflict of interest."},"a3_citizen_vault_vs_surveillance":{"score":3,"citizen_impact":"OHCHR reports expose biometric overreach and internet blackouts globally, though member states frequently ignore non-binding human-rights censures.","state_and_lab_impact":"Human Rights Council rapporteurs set clear international legal norms protecting encryption and journalistic privacy."},"a4_public_compute_and_shared_economy":{"score":4,"citizen_impact":"Public clinics, weather services, and schools in low-income nations gain shared datasets and capacity grants under the Global Digital Compact.","state_and_lab_impact":"UN development funds coordinate open-model repositories and regional compute fellowships for underserved scientific communities."},"a5_treaty_verification_and_second_road":{"score":4,"citizen_impact":"Every humanity-wide red line on bio-weapons, cyber sabotage, and autonomous targeting finds its sole universal diplomatic forum at the UN.","state_and_lab_impact":"UNODA and ODET host cross-bloc treaty deliberations linking Washington, Beijing, Brussels, New Delhi, and the African Union."}}},{"id":"in_aisi_network","code":"MUL-02","cohort":"multilateral_authority","name":"International Network of AI Safety Institutes (IN-AISI)","subsector_label":"Cross-Border Technical Frontier Evaluation Coalition","region":"Global / Multilateral","url":"https://www.nist.gov/aisi/international-network-ai-safety-institutes","sovereign_paper_url":"","atlas_id":"uk-aisi","atlas_alignment_score":85,"key_institutions_and_statutes":"Ten founding national and supranational AI Safety Institutes US, UK, EU, Japan, Canada, Singapore, South Korea, France, Australia, Kenya","where_they_converge":["IN-AISI conducts real joint pre-deployment frontier testing exercises across multiple jurisdictions using shared reproducible harnesses.","Public-sector evaluation scientists pool multilingual, biological, cyber, and agent-deception red-teaming suites openly."],"where_they_deviate":["Absence of Chinese and several Global South frontier jurisdictions leaves a critical gap in symmetric cross-bloc safety verification.","Member institutes possess uneven domestic legal teeth, leaving pre-release testing dependent on lab goodwill in several capitals."],"specialized_agent_id":"cin.sovereign.in_aisi_network","sovereign_liaison_role":"Feeds reproducible agent-scheming, capability-airlock, and dead-man relay benchmarks into IN-AISI joint pre-deployment exercises.","statutory_and_treaty_step":"Adopt a mutual IN-AISI treaty protocol requiring signed safety-evaluation receipts before frontier API release and open technical observer channels to rival blocs.","mean_axis_score":3.8,"axis_overlays":{"a1_frontier_safety_teeth":{"score":5,"citizen_impact":"Users across ten partner jurisdictions benefit from coordinated multilingual cyber, bio, and agent-control stress tests before major launches.","state_and_lab_impact":"National safety institutes run federated pre-deployment evaluations so labs cannot play individual regulators off against one another."},"a2_public_over_private_capture":{"score":4,"citizen_impact":"Independent public-sector scientists grade model risks using open harnesses like Inspect in place of glossy vendor self-reports.","state_and_lab_impact":"Technical working groups insulate benchmark design from corporate marketing teams while pressing for statutory model-access mandates."},"a3_citizen_vault_vs_surveillance":{"score":3,"citizen_impact":"Evaluations test prompt-injection and data-exfiltration vulnerabilities on synthetic tasks without harvesting citizens' private messages.","state_and_lab_impact":"Member institutes focus on model capability testing while deferring domestic surveillance and encryption rules to national legislatures."},"a4_public_compute_and_shared_economy":{"score":3,"citizen_impact":"Academic safety teams worldwide reuse open IN-AISI evaluation benchmarks and multilingual test sets at zero licensing cost.","state_and_lab_impact":"Shared evaluation infrastructure lowers testing duplication for smaller nations like Kenya, Singapore, and Canada."},"a5_treaty_verification_and_second_road":{"score":4,"citizen_impact":"Cross-border testing builds working trust among allied technical agencies needed to enforce future signed agent-network rules.","state_and_lab_impact":"Joint exercises prove national evaluators can verify model safety properties across borders without leaking proprietary weights."}}},{"id":"g7_hiroshima","code":"MUL-03","cohort":"multilateral_authority","name":"G7 Hiroshima AI Process","subsector_label":"Frontier Code of Conduct & Transparency Reporting Forum","region":"Global / Multilateral","url":"https://www.oecd.org","sovereign_paper_url":"","atlas_id":"g7-hiroshima-ai-process","atlas_alignment_score":77,"key_institutions_and_statutes":"Hiroshima Process International Guiding Principles, International Code of Conduct for Organizations Developing Advanced AI Systems, 50+ Nation Friends Group","where_they_converge":["Eleven International Guiding Principles establish shared expectations for red-teaming, vulnerability sharing, and C2PA-style content provenance.","The OECD-administered Hiroshima Reporting Framework puts comparative frontier lab governance disclosures onto a public comparison portal."],"where_they_deviate":["Every commitment inside the Hiroshima Code of Conduct remains legally voluntary, carrying zero statutory fines or deployment injunctions.","Framework questions center on corporate developer compliance while omitting public compute commons, union co-determination, and anti-surveillance rules."],"specialized_agent_id":"cin.sovereign.g7_hiroshima","sovereign_liaison_role":"Upgrades voluntary Hiroshima Reporting Framework disclosures into cryptographically signed ledger attestations cross-checked by independent auditors.","statutory_and_treaty_step":"Replace unverified narrative self-reports in the Hiroshima Reporting Framework with third-party hardware-attested red-team receipts and whistleblower safe-harbor clauses.","mean_axis_score":3.0,"axis_overlays":{"a1_frontier_safety_teeth":{"score":3,"citizen_impact":"Citizens can read standardized safety questionnaires from major labs, though nothing in the G7 code stops a risky release.","state_and_lab_impact":"Participating frontier developers file periodic risk-mitigation reports on red-teaming, cyber defense, and weight security."},"a2_public_over_private_capture":{"score":3,"citizen_impact":"Public comparison tables expose vague corporate safety answers to journalists and scholars, without granting affected citizens appeal rights.","state_and_lab_impact":"Industry consultation shaped the reporting templates heavily, leaving independent forensic verification optional."},"a3_citizen_vault_vs_surveillance":{"score":3,"citizen_impact":"Provenance watermarking principles help citizens spot synthetic election fakes while leaving personal local encryption unaddressed.","state_and_lab_impact":"G7 communiques affirm democratic values broadly without restricting domestic cloud warrants or commercial memory harvesting."},"a4_public_compute_and_shared_economy":{"score":2,"citizen_impact":"Workers and small cooperatives find few tools in the Hiroshima code for sharing automation productivity or public GPU access.","state_and_lab_impact":"G7 working groups treat frontier AI primarily through private developer risk management and intellectual-property lenses."},"a5_treaty_verification_and_second_road":{"score":4,"citizen_impact":"Over fifty Friends Group governments share one baseline vocabulary on incident reporting and synthetic content provenance.","state_and_lab_impact":"Diplomatic sherpas use the Hiroshima Reporting Framework as an interoperable bridge across European, North American, and Asian rules."}}},{"id":"oecd_aigo","code":"MUL-04","cohort":"multilateral_authority","name":"OECD AI Policy Observatory (AIGO)","subsector_label":"Intergovernmental Policy Taxonomy, Incident Monitor & Privacy Guardrail Body","region":"Global / Multilateral","url":"https://oecd.ai","sovereign_paper_url":"","atlas_id":"oecd-ai","atlas_alignment_score":80,"key_institutions_and_statutes":"OECD AI Principles revised 2024, Working Party on AI Governance AIGO, OECD AI Incidents Monitor AIM, TUAC and CSISAC stakeholder delegations","where_they_converge":["OECD's legal definition of AI systems and revised 2024 Principles anchor statutory language across the EU AI Act and forty-plus states.","Formal advisory seats for trade unions TUAC and civil society CSISAC sit alongside explicit OECD limits on government access to private data."],"where_they_deviate":["OECD instruments operate as soft-law policy standards and peer reviews without direct regulatory inspection or penalty authority.","Membership skews toward high-income economies, requiring active partnership so low-income countries co-write compute-distribution metrics."],"specialized_agent_id":"cin.sovereign.oecd_aigo","sovereign_liaison_role":"Links the OECD AI Incidents Monitor and national compute taxonomies to tamper-evident public incident receipts and labor-displacement indicators.","statutory_and_treaty_step":"Add cryptographic agent-incident receipt schemas to the OECD AI Incidents Monitor and track national ratios of public-commons compute to private cloud concentration.","mean_axis_score":3.6,"axis_overlays":{"a1_frontier_safety_teeth":{"score":3,"citizen_impact":"Public tracking of real-world harms in the OECD AI Incidents Monitor helps citizens and lawmakers spot recurring agent failures early.","state_and_lab_impact":"AIGO publishes standardized compute-measurement and hazard taxonomies that national legislatures copy into domestic statutes."},"a2_public_over_private_capture":{"score":4,"citizen_impact":"Trade union TUAC and civil-society CSISAC delegates review policy drafts directly alongside ministry officials and corporate representatives.","state_and_lab_impact":"Structured multi-stakeholder governance prevents any single cloud vendor from rewriting OECD assessment methodologies unilaterally."},"a3_citizen_vault_vs_surveillance":{"score":4,"citizen_impact":"OECD Declarations on Government Access to Personal Data establish clear proportionality, judicial-oversight, and redress benchmarks against mass surveillance.","state_and_lab_impact":"Member governments submit domestic intelligence and law-enforcement data-access rules to comparative peer scrutiny."},"a4_public_compute_and_shared_economy":{"score":3,"citizen_impact":"Empirical OECD labor, wage-inequality, and regional compute studies arm unions and cooperatives with hard evidence for shared-dividend policies.","state_and_lab_impact":"Economic directorates publish cross-country comparisons on national supercomputing capacity and SME adoption gaps."},"a5_treaty_verification_and_second_road":{"score":4,"citizen_impact":"Harmonized definitions across forty-six adherent countries reduce legal loopholes when autonomous agents act across national borders.","state_and_lab_impact":"OECD secretariats provide technical monitoring plumbing for G7, G20, and bilateral regulatory interoperability accords."}}},{"id":"council_of_europe","code":"MUL-05","cohort":"multilateral_authority","name":"Council of Europe (AI Framework Convention CETS 225)","subsector_label":"First Legally Binding International Human-Rights & Rule-of-Law AI Treaty","region":"European Union","url":"https://www.coe.int/en/web/artificial-intelligence","sovereign_paper_url":"","atlas_id":"coe-cai","atlas_alignment_score":80,"key_institutions_and_statutes":"Framework Convention on AI and Human Rights, Democracy and the Rule of Law CETS 225, Convention 108+ on Data Protection, European Court of Human Rights","where_they_converge":["CETS 225 is the world's first legally binding international AI treaty, requiring procedural remedies, citizen notice, and risk assessments.","Convention 108+ and Strasbourg human-rights jurisprudence establish enforceable legal walls against arbitrary state surveillance."],"where_they_deviate":["Negotiated carve-outs allow signatory states to exempt national-security systems and cover private-sector labs through softer alternative measures.","Treaty articles protect legal rights and democratic process without establishing shared public compute clusters or cooperative economic rules."],"specialized_agent_id":"cin.sovereign.council_of_europe","sovereign_liaison_role":"Operationalizes CETS 225 Articles 14 and 15 procedural-remedy mandates through verifiable cryptographic decision receipts and citizen contestation tools.","statutory_and_treaty_step":"Urge ratifying parliaments to apply CETS 225 remedies identically to private frontier labs and public agencies while narrowing national-security exemptions.","mean_axis_score":3.6,"axis_overlays":{"a1_frontier_safety_teeth":{"score":3,"citizen_impact":"Citizens in ratifying states gain treaty-backed lifecycle risk and human-rights impact assessments, including moratoria powers on unacceptable risks.","state_and_lab_impact":"Signatory governments must maintain domestic oversight mechanisms capable of auditing or halting rights-violating AI deployments."},"a2_public_over_private_capture":{"score":4,"citizen_impact":"Articles 14 and 15 guarantee people clear notice when interacting with automated systems plus effective legal remedies to contest harms.","state_and_lab_impact":"Public authorities must log relevant documentation so affected individuals and courts can review automated administrative acts."},"a3_citizen_vault_vs_surveillance":{"score":4,"citizen_impact":"Paired with Convention 108+ and Strasbourg case law on encryption, CETS 225 defends private correspondence despite national-security carve-outs.","state_and_lab_impact":"Domestic intelligence carve-outs still face European Court of Human Rights proportionality tests across Council of Europe members."},"a4_public_compute_and_shared_economy":{"score":2,"citizen_impact":"Human-rights treaty protections guard against discriminatory hiring or welfare cuts without funding shared compute or worker cooperatives.","state_and_lab_impact":"Conference of the Parties monitors legal compliance while leaving compute investment and tax distribution to other bodies."},"a5_treaty_verification_and_second_road":{"score":5,"citizen_impact":"Open ratification across Europe, North America, Latin America, and Asia creates a binding cross-continental floor for human rights in AI.","state_and_lab_impact":"CETS 225 proves diverse democracies can sign and ratify a binding international AI treaty with periodic compliance review."}}},{"id":"ilo_tripartite","code":"MUL-06","cohort":"multilateral_authority","name":"International Labour Organization (ILO Tripartite Governance)","subsector_label":"Tripartite Worker-Employer-State Treaty Agency & Cooperative Standard-Setter","region":"Global / Multilateral","url":"https://www.ilo.org","sovereign_paper_url":"","atlas_id":"intl-ilo-future-of-work","atlas_alignment_score":84,"key_institutions_and_statutes":"ILO Tripartite Governing Body, Promotion of Cooperatives Recommendation No. 193, Observatory on AI and Work in the Digital Economy, algorithmic management conventions","where_they_converge":["Equal constitutional voting seats for trade unions alongside employers and states make the ILO structurally resistant to corporate capture.","ILO Recommendation 193 on cooperatives and new standards on algorithmic management directly defend worker agency, wages, and skill."],"where_they_deviate":["ILO mandates focus on workplace governance and social protection without technical institutes for frontier cyber-bio model containment.","Ratified labor conventions depend on domestic labor inspectorates that are underfunded across many supply-chain and data-labeling hubs."],"specialized_agent_id":"cin.sovereign.ilo_tripartite","sovereign_liaison_role":"Embeds ILO algorithmic-management transparency rules, RLHF data-worker protections, and Recommendation 193 cooperative share governance into shared ledger tasking.","statutory_and_treaty_step":"Adopt a binding ILO Convention on Algorithmic Management in the Workplace banning invasive bossware surveillance and protecting global AI data-enrichment workers.","mean_axis_score":4.0,"axis_overlays":{"a1_frontier_safety_teeth":{"score":2,"citizen_impact":"Factory and warehouse workers gain occupational health standards around physical cobots while pre-release LLM cyber testing sits elsewhere.","state_and_lab_impact":"Occupational safety committees evaluate physical shop-floor robotics hazards and human-override stop buttons."},"a2_public_over_private_capture":{"score":5,"citizen_impact":"Workers' elected union federations hold binding constitutional votes so tech employers and ministries cannot pass workplace rules unilaterally.","state_and_lab_impact":"Tripartite negotiation forces every global workplace AI standard through direct scrutiny by international labor confederations."},"a3_citizen_vault_vs_surveillance":{"score":4,"citizen_impact":"ILO workplace privacy codes shield employees from continuous webcam emotion scanning, bathroom timers, and retaliatory algorithmic firing.","state_and_lab_impact":"Employers must notify worker representatives and delete intrusive biometric or off-duty personal monitoring feeds."},"a4_public_compute_and_shared_economy":{"score":5,"citizen_impact":"Cooperative Recommendation 193, collective transition funds, and fair piece-rate floors help workers co-own automation gains.","state_and_lab_impact":"ILO technical assistance guides governments in structuring producer-consumer cooperatives, social-protection floors, and fair RLHF contracting."},"a5_treaty_verification_and_second_road":{"score":4,"citizen_impact":"Cross-border labor conventions stop frontier labs from arbitraging abusive data-labeling contracts into jurisdictions with weak labor laws.","state_and_lab_impact":"Supply-chain audit clauses tie international AI procurement eligibility to verifiable compliance with core ILO labor standards."}}},{"id":"ietf_w3c_c2pa","code":"MUL-07","cohort":"multilateral_authority","name":"IETF, W3C & C2PA Open Protocol Standards","subsector_label":"Open Internet Cryptography, Attestation & Provenance Engineering Bodies","region":"Global / Multilateral","url":"https://www.ietf.org","sovereign_paper_url":"","atlas_id":"ietf-wimse-scitt-quic","atlas_alignment_score":91,"key_institutions_and_statutes":"IETF RATS hardware attestation, SCITT transparency logs, WIMSE workload identity, MLS encryption, AI Preferences AIPREF, W3C Verifiable Credentials, C2PA manifests","where_they_converge":["IETF RATS, WIMSE, SCITT, and W3C Verifiable Credentials provide the exact open cryptographic building blocks for signed agent roads and capability leases.","RFC 8890 establishes that the Internet is for end users, while RFC 7258 treats pervasive state or corporate monitoring as a technical attack."],"where_they_deviate":["Large cloud, browser, and ad-tech employers fund most full-time standards editors, creating subtle commercial gravity inside working groups.","Mandatory identity-bound C2PA signing could endanger anonymous whistleblowers and dissidents unless paired with zero-knowledge selective disclosure."],"specialized_agent_id":"cin.sovereign.ietf_w3c_c2pa","sovereign_liaison_role":"Builds open reference implementations uniting IETF RATS silicon attestation, SCITT receipts, and W3C zero-knowledge credentials for the signed agent transport road.","statutory_and_treaty_step":"Fund independent public-interest cryptographers in IETF and W3C working groups and standardize zero-knowledge C2PA whistleblower modes alongside expiring WIMSE capability leases.","mean_axis_score":4.4,"axis_overlays":{"a1_frontier_safety_teeth":{"score":4,"citizen_impact":"Home routers and personal devices can reject unauthenticated cloud bots using cryptographic WIMSE workload identities and RATS hardware proofs.","state_and_lab_impact":"Protocol specs translate abstract airlock statutes into interoperable wire-level packet, token, and transparency-log formats."},"a2_public_over_private_capture":{"score":4,"citizen_impact":"Every mailing-list debate, draft diff, and open-licensing patent disclosure sits in public archives open to any independent engineer.","state_and_lab_impact":"Rough-consensus governance blocks single-government decrees, though civic fellowships are needed to match hyperscaler staffing."},"a3_citizen_vault_vs_surveillance":{"score":5,"citizen_impact":"TLS 1.3, Messaging Layer Security RFC 9420, and W3C selective-disclosure credentials protect 1:1 local vaults from bulk wiretapping.","state_and_lab_impact":"Internet Architecture Board principles reject golden-key decryption backdoors across global routing and messaging standards."},"a4_public_compute_and_shared_economy":{"score":4,"citizen_impact":"No-fee open web and agent protocols let small cooperatives, clinics, and hobbyists build tools without paying proprietary API tolls.","state_and_lab_impact":"IETF AIPREF machine-readable content preferences give creators and commons stewards technical signals against unconsented scraping."},"a5_treaty_verification_and_second_road":{"score":5,"citizen_impact":"Users gain a clean technical separation between human web browsing and cryptographically signed machine-to-machine agent traffic.","state_and_lab_impact":"SCITT append-only supply-chain receipts and RATS hardware roots work identically across US, European, Asian, and Global South networks."}}},{"id":"iso_iec_ieee","code":"MUL-08","cohort":"multilateral_authority","name":"ISO/IEC JTC 1/SC 42 & IEEE Standards Association","subsector_label":"International Conformity Assessment & Ethical Systems Engineering Bodies","region":"Global / Multilateral","url":"https://www.iso.org","sovereign_paper_url":"","atlas_id":"ieee-sa-p7000","atlas_alignment_score":81,"key_institutions_and_statutes":"ISO/IEC 42001 AI Management System, ISO/IEC 23894 Risk Management, IEC 61508 Functional Safety, IEEE 7000 Ethically Aligned Design series","where_they_converge":["IEC 61508 hardware functional-safety relays and IEEE 7000 ethical engineering methods ground physical robotics and autonomous actuation safety.","ISO/IEC 42001 and CEN-CENELEC conformity profiles turn broad legislative principles into auditable engineering checklists."],"where_they_deviate":["Paywalled ISO specification PDFs block ordinary citizens, small cooperatives, and affected workers from reading the exact rules governing them.","Corporate committee dominance and expensive third-party audit fees risk turning safety conformity into box-ticking compliance theater."],"specialized_agent_id":"cin.sovereign.iso_iec_ieee","sovereign_liaison_role":"Pairs IEC 61508 physical dead-man safety relays and IEEE 7000 value-sensitive design with open-access public conformity test suites.","statutory_and_treaty_step":"Mandate free public read access for every ISO/IEC standard incorporated by reference into public law and fund automated open-source conformity tools for small cooperatives.","mean_axis_score":3.0,"axis_overlays":{"a1_frontier_safety_teeth":{"score":4,"citizen_impact":"Passengers, factory staff, and hospital patients rely on IEC 61508 hardware tripwires and ISO risk standards inside physical machinery.","state_and_lab_impact":"Accredited conformity auditors inspect lifecycle documentation, dataset lineage, and safety fallback states under ISO/IEC 42001."},"a2_public_over_private_capture":{"score":2,"citizen_impact":"Citizens cannot inspect paywalled technical standards easily while multinational vendors staff the majority of national mirror-committee seats.","state_and_lab_impact":"European court rulings on public access to harmonized standards pressure standards bodies to open law-linked specifications."},"a3_citizen_vault_vs_surveillance":{"score":3,"citizen_impact":"IEEE P7002 personal data privacy processes and ISO/IEC 27701 controls reduce corporate leaks without barring sovereign surveillance laws.","state_and_lab_impact":"Enterprise security teams map local encryption and retention schedules against standardized information-security controls."},"a4_public_compute_and_shared_economy":{"score":2,"citizen_impact":"Steep per-document fees and costly certification consultancies burden small community hospitals, unions, and local software cooperatives.","state_and_lab_impact":"Large cloud vendors absorb ISO certification overhead effortlessly while independent open-source teams face compliance friction."},"a5_treaty_verification_and_second_road":{"score":4,"citizen_impact":"Shared international safety numbers allow medical devices and industrial safety relays to clear customs checks across trading blocs.","state_and_lab_impact":"WTO Technical Barriers to Trade rules recognize ISO/IEC and IEEE standards across competing geopolitical jurisdictions."}}},{"id":"brics_south_coop","code":"MUL-09","cohort":"multilateral_authority","name":"BRICS+ & Global South AI Governance Group","subsector_label":"Multipolar Compute Sovereignty, Technology Transfer & Anti-Monopoly Bloc","region":"Global / Multilateral","url":"https://unctad.org","sovereign_paper_url":"","atlas_id":"","atlas_alignment_score":null,"key_institutions_and_statutes":"BRICS AI Study Group, Kazan and Rio Leaders' Declarations on AI Governance, G77 + China UN resolutions, UNCTAD Digital Economy capacity programs, New Development Bank","where_they_converge":["BRICS+ and G77 initiatives challenge hyperscaler cloud rent extraction and push for federated Global South compute and dataset sharing.","Multipolar bargaining ensures planetary frontier treaties must earn consent beyond a narrow transatlantic vendor club."],"where_they_deviate":["Wide internal divergence between constitutional democracies like Brazil and India and authoritarian members blocks strong citizen-privacy commitments.","Declarations emphasize state-level digital sovereignty without binding pre-deployment frontier safety airlocks or domestic anti-shutdown guarantees."],"specialized_agent_id":"cin.sovereign.brics_south_coop","sovereign_liaison_role":"Supports federated public-university compute pooling, open agricultural and medical models, and mutual-credit clearing while safeguarding citizen-level local encryption.","statutory_and_treaty_step":"Channel New Development Bank financing into open university-and-hospital GPU commons paired with citizen-held encryption and zero-knowledge frontier safety verification.","mean_axis_score":2.6,"axis_overlays":{"a1_frontier_safety_teeth":{"score":2,"citizen_impact":"Households across member nations gain shared warnings on deepfakes and cybercrime without unified cross-bloc pre-release model airlocks.","state_and_lab_impact":"BRICS AI Study Group exchanges national regulatory practices while leaving hard safety testing to individual capitals."},"a2_public_over_private_capture":{"score":2,"citizen_impact":"Multipolar competition weakens foreign Big Tech monopoly pricing, yet several member states suppress domestic unions, press, and court appeals.","state_and_lab_impact":"State ministries assert strong public bargaining leverage over foreign cloud platforms while resisting independent civic watchdogs at home."},"a3_citizen_vault_vs_surveillance":{"score":2,"citizen_impact":"State-centric data localization rules keep citizen records inside national borders where domestic security agencies often hold unchecked access.","state_and_lab_impact":"Cross-bloc communiques defend sovereign jurisdiction over data flows while omitting end-to-end encryption protections for individuals."},"a4_public_compute_and_shared_economy":{"score":4,"citizen_impact":"Public hospitals, crop-science institutes, and regional schools share open checkpoints, multilingual corpora, and non-monopoly payment rails.","state_and_lab_impact":"UNCTAD and BRICS development banks back South-South compute sharing, open weights, and local industrial capacity."},"a5_treaty_verification_and_second_road":{"score":3,"citizen_impact":"Multipolar diplomacy forces global UN AI negotiations to address compute inequality alongside catastrophic frontier risks.","state_and_lab_impact":"Joint declarations back UN-centered governance and interoperable provenance standards while opposing unilateral chip export embargoes."}}},{"id":"itu_telecom","code":"MUL-10","cohort":"multilateral_authority","name":"International Telecommunication Union (ITU)","subsector_label":"UN Specialized Telecom Treaty Agency, Spectrum & AI for Good Hub","region":"Global / Multilateral","url":"https://www.itu.int","sovereign_paper_url":"","atlas_id":"itu-un","atlas_alignment_score":68,"key_institutions_and_statutes":"ITU-T Telecommunication Standardization Sector, AI for Good Global Summit, WHO/ITU/WIPO Global Initiative on AI for Health, International Telecommunication Regulations","where_they_converge":["Joint WHO/ITU AI for Health benchmarks and disaster early-warning standards validate life-critical clinical and climate models for developing nations.","Treaty-level spectrum, satellite, and submarine-cable coordination provides global infrastructure plumbing across 194 member states."],"where_they_deviate":["State-centric telecom voting and corporate sector-member fees risk favoring centralized carrier inspection over end-to-end user-owned protocols.","Several ITU member administrations routinely order domestic mobile internet blackouts without facing treaty sanctions."],"specialized_agent_id":"cin.sovereign.itu_telecom","sovereign_liaison_role":"Pairs WHO/ITU clinical and disaster-warning benchmarks with open IETF end-to-end encryption so telecom networks carry signed agent traffic without deep-packet surveillance.","statutory_and_treaty_step":"Keep core agent-identity cryptography in open end-to-end IETF/W3C layers, expand open WHO/ITU clinical validation datasets, and adopt ITU norms against civilian telecom shutdowns.","mean_axis_score":3.0,"axis_overlays":{"a1_frontier_safety_teeth":{"score":3,"citizen_impact":"Patients and coastal residents benefit from WHO/ITU clinical diagnostic benchmarks and UN Early Warnings for All hazard validation.","state_and_lab_impact":"ITU-T study groups test telecom network resilience, multimedia authenticity watermarks, and autonomous vehicle comms reliability."},"a2_public_over_private_capture":{"score":3,"citizen_impact":"AI for Good summits open UN stages to public researchers, though paid ITU sector memberships tilt study-group attendance toward large carriers.","state_and_lab_impact":"National telecom ministries and major equipment vendors co-draft technical recommendations inside Geneva study groups."},"a3_citizen_vault_vs_surveillance":{"score":2,"citizen_impact":"Proposals for centralized carrier-level network identifiers require constant civil-society vigilance to preserve end-to-end encrypted citizen vaults.","state_and_lab_impact":"Democratic delegations and Internet Society observers push back whenever ITU-T drafts encroach on end-to-end internet privacy."},"a4_public_compute_and_shared_economy":{"score":3,"citizen_impact":"Rural schools, clinics, and island communities gain satellite/fiber connectivity programs and open public-health AI benchmarks.","state_and_lab_impact":"ITU Partner2Connect pledges and UN interagency repositories widen baseline infrastructure in least-developed countries."},"a5_treaty_verification_and_second_road":{"score":4,"citizen_impact":"Universal telecom numbering, emergency-routing, and radio-spectrum treaties keep cross-border communications interoperable across rival blocs.","state_and_lab_impact":"ITU-T coordinates cross-border telecom signaling standards that can segregate bulk machine-agent traffic from emergency human channels."}}}]}</script>
+</section>

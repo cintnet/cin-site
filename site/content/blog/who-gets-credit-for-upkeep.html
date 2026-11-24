@@ -1,0 +1,227 @@
+---
+title: Who gets credit for upkeep?
+description: AI tools made new code cheap and review expensive. We propose a way to record maintenance work and give it weight in how projects are run, without turning it into money.
+reader: Open-source maintainers, project leads and funders of shared software.
+takeaway: Maintenance work keeps shared software alive but goes uncounted; we propose verified, non-transferable contribution receipts that give maintainers standing in how a project is run, rather than bounties or tradable tokens.
+template: article
+date: 2026-11-09
+category: Value
+minutes: 5
+image: post-the-quiet-work-of-mending-the-nets.jpg
+image_alt: Watercolour of a person on a stone quay mending a fishing net.
+lede: AI coding tools have made it cheap to produce new code and expensive to review it. The people who review, test and fix are mostly unpaid and uncounted. We propose a way to record that work and give it weight in how a project is run, without turning it into money.
+---
+<h2>The problem</h2>
+
+<p>Most shared software is kept alive by a few people doing work that produces nothing new: triaging bug reports, reviewing changes, fixing flaky tests, updating dependencies and answering newcomers. Researchers who study open-source projects call this invisible labour, because the usual measures (commits, features, downloads) don't capture it.<sup><a href="#fn1">1</a></sup></p>
+
+<p>AI tools have widened the gap. Generating a pull request now costs almost nothing, and reviewing one still costs a person's time. Developers describe the result as "an endless stream of AI slop".<sup><a href="#fn2">2</a></sup> Projects have started writing policies just to limit AI-generated contributions.<sup><a href="#fn3">3</a></sup></p>
+
+<h2>Why paying per task tends to backfire</h2>
+
+<p>The obvious fix is to pay for the work: bounties for closed issues, or tokens for maintenance points. The risk is Goodhart's law. Once a measure becomes a target, people optimise the measure.<sup><a href="#fn4">4</a></sup> Bounties attract trivial fixes and changes split up to earn more payouts. Tradable tokens add a second problem: anyone who buys them gets influence they didn't earn.</p>
+
+<p>Money still has a place. Grants and salaries for maintainers help. The trouble comes from paying per countable unit, and from making recognition something you can sell.</p>
+
+<figure class="explainer" id="ex-maintenance-receipts">
+  <style>
+    #ex-maintenance-receipts {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #E1D3C0;
+      margin: 1.8em 0 2em;
+      padding: 18px 0 16px;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      color: var(--ex-ink);
+    }
+    
+    #ex-maintenance-receipts svg {
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    #ex-maintenance-receipts .diagram-desktop {
+      display: block;
+    }
+    #ex-maintenance-receipts .diagram-mobile {
+      display: none;
+    }
+    #ex-maintenance-receipts figcaption {
+      margin-top: 12px;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: var(--ex-muted);
+      text-align: center;
+    }
+    @media (max-width: 600px) {
+      #ex-maintenance-receipts {
+        padding: 14px 0 12px;
+      }
+      #ex-maintenance-receipts .diagram-desktop {
+        display: none;
+      }
+      #ex-maintenance-receipts .diagram-mobile {
+        display: block;
+      }
+    }
+  </style>
+  <svg class="diagram-desktop" viewBox="0 0 700 350" width="100%" height="auto" role="img" aria-labelledby="ex-maintenance-receipts-title ex-maintenance-receipts-desc">
+    <title id="ex-maintenance-receipts-title">Market bounties versus verified contribution receipts for software upkeep</title>
+    <desc id="ex-maintenance-receipts-desc">Left panel shows market bounties leading to metric gaming and bought influence under Goodhart's law. Right panel shows verified, non-transferable contribution receipts granting governance standing under Elinor Ostrom's commons principles.</desc>
+    <rect x="2" y="2" width="696" height="346" rx="14" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1.5"/>
+    <g>
+      <rect x="14" y="14" width="324" height="322" rx="12" fill="#FAF3EA" stroke="#8C3B24" stroke-width="1.5"/>
+      <rect x="26" y="24" width="232" height="22" rx="11" fill="#8C3B24"/>
+      <text x="142" y="39" text-anchor="middle" fill="#FAF3EA" font-size="11" font-weight="700" letter-spacing="0.04em">GAMED: BOUNTIES &amp; TOKENS</text>
+      <text x="26" y="62" fill="#8C3B24" font-size="11" font-weight="600">Goodhart's law turns care work into cash extraction</text>
+      <rect x="26" y="74" width="300" height="60" rx="6" fill="#FAF1ED" stroke="#E5BFA8" stroke-width="1.2"/>
+      <text x="36" y="93" fill="#131014" font-size="11" font-weight="700">1. Cheap AI Code Flood</text>
+      <text x="36" y="109" fill="#5E564B" font-size="11">Automated bots draft hundreds of pull requests</text>
+      <text x="36" y="124" fill="#8C3B24" font-size="11" font-weight="600">Review triage becomes an unpaid human bottleneck</text>
+      <line x1="176" y1="134" x2="176" y2="148" stroke="#8C3B24" stroke-width="1.5"/>
+      <polygon points="172,148 176,154 180,148" fill="#8C3B24"/>
+      <rect x="26" y="154" width="300" height="70" rx="6" fill="#FFFFFF" stroke="#8C3B24" stroke-width="1.5" stroke-dasharray="4 2"/>
+      <text x="36" y="173" fill="#8C3B24" font-size="11" font-weight="700">2. Per-Task Bounties &amp; Point Chasing</text>
+      <text x="36" y="190" fill="#5E564B" font-size="11">Pay-per-fix rewards splitting edits into tiny commits</text>
+      <text x="36" y="207" fill="#8C3B24" font-size="11" font-weight="600">Deep upkeep like fixing flaky tests gets ignored</text>
+      <line x1="176" y1="224" x2="176" y2="238" stroke="#8C3B24" stroke-width="1.5"/>
+      <polygon points="172,238 176,244 180,238" fill="#8C3B24"/>
+      <rect x="26" y="244" width="300" height="78" rx="6" fill="#FAF1ED" stroke="#8C3B24" stroke-width="1.2"/>
+      <text x="36" y="263" fill="#8C3B24" font-size="11" font-weight="700">3. Speculation &amp; Bought Voice</text>
+      <text x="36" y="280" fill="#5E564B" font-size="11">• Tradable tokens let outside buyers purchase influence</text>
+      <text x="36" y="296" fill="#5E564B" font-size="11">• People who did zero upkeep steer project choices</text>
+      <text x="36" y="311" fill="#8C3B24" font-size="11" font-weight="600">Result: Maintainer burnout and abandoned tools</text>
+    </g>
+    <g>
+      <rect x="362" y="14" width="324" height="322" rx="12" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.6"/>
+      <rect x="374" y="24" width="248" height="22" rx="11" fill="#0B3F30"/>
+      <text x="498" y="39" text-anchor="middle" fill="#FAF3EA" font-size="11" font-weight="700" letter-spacing="0.04em">DURABLE: CONTRIBUTION RECEIPTS</text>
+      <text x="374" y="62" fill="#0B3F30" font-size="11" font-weight="600">Ostrom commons: standing earned through real care</text>
+      <rect x="374" y="74" width="300" height="64" rx="6" fill="#FFFFFF" stroke="#1F6B4E" stroke-width="1.2"/>
+      <text x="384" y="92" fill="#0B3F30" font-size="11" font-weight="700">1. Invisible Maintenance Recorded</text>
+      <text x="384" y="108" fill="#5E564B" font-size="11">Triaging issues, dependency updates, and test fixes</text>
+      <text x="384" y="124" fill="#1F6B4E" font-size="11" font-weight="600">Quiet upkeep earns credit alongside code commits</text>
+      <line x1="524" y1="138" x2="524" y2="152" stroke="#0B3F30" stroke-width="1.5"/>
+      <polygon points="520,152 524,158 528,152" fill="#0B3F30"/>
+      <rect x="374" y="158" width="300" height="82" rx="6" fill="#EDF4F0" stroke="#0B3F30" stroke-width="1.5"/>
+      <text x="384" y="177" fill="#0B3F30" font-size="11" font-weight="700">2. Independent Verification Gate</text>
+      <text x="384" y="193" fill="#131014" font-size="11">Work is checked by peers or reproducible tests:</text>
+      <text x="384" y="209" fill="#1F6B4E" font-size="11">• A test suite green-light or reviewer sign-off</text>
+      <text x="384" y="225" fill="#1F6B4E" font-size="11">• Signed cryptographic proof locked to the author</text>
+      <line x1="524" y1="240" x2="524" y2="252" stroke="#0B3F30" stroke-width="1.5"/>
+      <polygon points="520,252 524,258 528,252" fill="#0B3F30"/>
+      <rect x="374" y="258" width="300" height="64" rx="6" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.2"/>
+      <text x="384" y="276" fill="#0B3F30" font-size="11" font-weight="700">3. Non-Transferable Governance Voice</text>
+      <text x="384" y="292" fill="#5E564B" font-size="11">• Standing to review, merge, and vote on direction</text>
+      <text x="384" y="308" fill="#1F6B4E" font-size="11" font-weight="600">• Cannot be sold, traded, or bought by speculators</text>
+    </g>
+  </svg>
+  <svg class="diagram-mobile" viewBox="0 0 330 690" role="img" aria-labelledby="ex-maintenance-receipts-m-title ex-maintenance-receipts-m-desc">
+    <title id="ex-maintenance-receipts-m-title">Market bounties versus verified contribution receipts for software upkeep (Mobile)</title>
+    <desc id="ex-maintenance-receipts-m-desc">Stacked mobile layout contrasting market bounties that invite gaming with verified contribution receipts granting governance standing.</desc>
+    <rect x="2" y="2" width="326" height="686" rx="14" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1.5"/>
+    <g>
+      <rect x="10" y="10" width="310" height="326" rx="12" fill="#FAF3EA" stroke="#8C3B24" stroke-width="1.5"/>
+      <rect x="20" y="20" width="220" height="22" rx="11" fill="#8C3B24"/>
+      <text x="130" y="35" text-anchor="middle" fill="#FAF3EA" font-size="11" font-weight="700" letter-spacing="0.04em">GAMED: BOUNTIES &amp; TOKENS</text>
+      <text x="20" y="58" fill="#8C3B24" font-size="11.5" font-weight="600">Goodhart's law turns care into cash extraction</text>
+      <rect x="20" y="68" width="290" height="68" rx="6" fill="#FAF1ED" stroke="#E5BFA8" stroke-width="1.2"/>
+      <text x="28" y="86" fill="#131014" font-size="11.5" font-weight="700">1. Cheap AI Code Flood</text>
+      <text x="28" y="103" fill="#5E564B" font-size="11">Bots generate code fast; review stays slow.</text>
+      <text x="28" y="120" fill="#8C3B24" font-size="11" font-weight="600">Maintainers drown in unverified pull requests.</text>
+      <line x1="165" y1="136" x2="165" y2="148" stroke="#8C3B24" stroke-width="1.5"/>
+      <polygon points="161,148 165,154 169,148" fill="#8C3B24"/>
+      <rect x="20" y="154" width="290" height="74" rx="6" fill="#FFFFFF" stroke="#8C3B24" stroke-width="1.5" stroke-dasharray="4 2"/>
+      <text x="28" y="172" fill="#8C3B24" font-size="11.5" font-weight="700">2. Per-Task Bounties &amp; Gaming</text>
+      <text x="28" y="189" fill="#5E564B" font-size="11">Bounties reward splitting fixes to win cash payouts.</text>
+      <text x="28" y="206" fill="#8C3B24" font-size="11" font-weight="600">Quiet upkeep like triage and testing is ignored.</text>
+      <line x1="165" y1="228" x2="165" y2="240" stroke="#8C3B24" stroke-width="1.5"/>
+      <polygon points="161,240 165,246 169,240" fill="#8C3B24"/>
+      <rect x="20" y="246" width="290" height="80" rx="6" fill="#FAF1ED" stroke="#8C3B24" stroke-width="1.2"/>
+      <text x="28" y="264" fill="#8C3B24" font-size="11.5" font-weight="700">3. Tradable Tokens &amp; Bought Voice</text>
+      <text x="28" y="281" fill="#5E564B" font-size="11">• Tradable tokens let buyers purchase influence.</text>
+      <text x="28" y="298" fill="#5E564B" font-size="11">• Speculators steer projects without maintaining them.</text>
+      <text x="28" y="315" fill="#8C3B24" font-size="11" font-weight="600">Result: Maintainer burnout and broken trust.</text>
+    </g>
+    <g>
+      <rect x="10" y="348" width="310" height="332" rx="12" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.6"/>
+      <rect x="20" y="358" width="230" height="22" rx="11" fill="#0B3F30"/>
+      <text x="135" y="373" text-anchor="middle" fill="#FAF3EA" font-size="11" font-weight="700" letter-spacing="0.04em">DURABLE: CONTRIBUTION RECEIPTS</text>
+      <text x="20" y="396" fill="#0B3F30" font-size="11.5" font-weight="600">Standing earned through verified care</text>
+      <rect x="20" y="406" width="290" height="70" rx="6" fill="#FFFFFF" stroke="#1F6B4E" stroke-width="1.2"/>
+      <text x="28" y="424" fill="#0B3F30" font-size="11.5" font-weight="700">1. Invisible Care Work Counted</text>
+      <text x="28" y="441" fill="#5E564B" font-size="11">Triage, flaky tests, and patches are recognized.</text>
+      <text x="28" y="458" fill="#1F6B4E" font-size="11" font-weight="600">Upkeep earns standing alongside new code.</text>
+      <line x1="165" y1="476" x2="165" y2="488" stroke="#0B3F30" stroke-width="1.5"/>
+      <polygon points="161,488 165,494 169,488" fill="#0B3F30"/>
+      <rect x="20" y="494" width="290" height="82" rx="6" fill="#EDF4F0" stroke="#0B3F30" stroke-width="1.5"/>
+      <text x="28" y="512" fill="#0B3F30" font-size="11.5" font-weight="700">2. Independent Verification Gate</text>
+      <text x="28" y="529" fill="#131014" font-size="11">Every upkeep task is checked before sign-off:</text>
+      <text x="28" y="546" fill="#1F6B4E" font-size="11">• Verified by reviewer sign-off or passing tests</text>
+      <text x="28" y="563" fill="#1F6B4E" font-size="11">• Signed receipt locked to the maintainer's key</text>
+      <line x1="165" y1="576" x2="165" y2="588" stroke="#0B3F30" stroke-width="1.5"/>
+      <polygon points="161,588 165,594 169,588" fill="#0B3F30"/>
+      <rect x="20" y="594" width="290" height="74" rx="6" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.2"/>
+      <text x="28" y="612" fill="#0B3F30" font-size="11.5" font-weight="700">3. Non-Transferable Governance</text>
+      <text x="28" y="629" fill="#5E564B" font-size="11">• Gives real standing to review and vote on direction</text>
+      <text x="28" y="646" fill="#1F6B4E" font-size="11" font-weight="600">• Cannot be sold, traded, or bought by speculators</text>
+    </g>
+  </svg>
+  <figcaption>Tradable bounties turn maintenance into a game of small fixes and bought influence. Verified contribution receipts keep recognition non-transferable, granting real governance standing to those who keep shared software working.</figcaption>
+</figure>
+
+<h2>What we propose</h2>
+
+<p>A <strong>contribution receipt</strong>: a signed record that a person did a specific piece of work, on a specific date, and that someone else checked it. Three rules:</p>
+
+<ol>
+<li><strong>Someone else verifies it.</strong> That can be a reviewer, a test that now passes, or a bug that stays fixed.</li>
+<li><strong>It can't be sold or transferred.</strong> It stays with the person who did the work.</li>
+<li><strong>It counts inside the community where the work happened.</strong> It gives standing to review and merge, weight in decisions about the project's direction, and a record the person can show elsewhere.</li>
+</ol>
+
+<p>The third rule is the point. A record nobody uses is a certificate on a wall. We propose that people who keep a shared resource working get more say in how it's run. Long-lived commons have tended to work this way, with rules set by the people who use and maintain the resource.<sup><a href="#fn5">5</a></sup></p>
+
+<h2>What's unsolved</h2>
+
+<ul>
+<li><strong>Weighing different work.</strong> Is a week of triage worth more than one hard bug fix? We don't have a formula, and any fixed formula will be gamed.</li>
+<li><strong>Collusion.</strong> Two people can approve each other's trivial work. Rotating or randomly assigned reviewers make this harder without ruling it out.</li>
+<li><strong>Privacy.</strong> A detailed record of someone's work can also be used to monitor them. People should control who sees theirs.</li>
+<li><strong>Income.</strong> Receipts give standing, not money. Maintainers still need funding.</li>
+</ul>
+
+<h2>What you can do now</h2>
+
+<ul>
+<li>If you run a project, count review and triage in your contributor lists and in who gets a say, not only commits.</li>
+<li>If you fund open source, fund maintainer roles rather than per-issue bounties.</li>
+<li>If you're a researcher, the weighting and collusion problems are open. See <a href="/blog/open-problems-we-would-love-help-with/">Open problems</a>.</li>
+</ul>
+
+<p class="muted"><strong>Related reading:</strong> <a href="/blog/giving-credit-when-many-hands-build/">Giving credit when many hands build something together</a>. <a href="/blog/keeping-the-story-behind-what-we-build/">Keeping the story behind what we build</a>. <a href="/blog/teaching-an-assistant-step-by-step/">Teaching an assistant step by step</a>. <a href="/blog/why-reading-an-ai-models-mind-is-harder-than-checking-its-receipts/">Why reading an AI model's mind is harder than checking its receipts</a>. <a href="/labs/shared-horizon/">Shared Horizon action library</a>.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers</summary>
+    <div>
+      <p>Within our polycentric coordination substrate, non-transferable contribution receipts map invisible software maintenance (Meluso et al., 2024, <code>arXiv:2401.06889</code>) and review triage under automated pull-request load (Baltes et al., 2026, <code>arXiv:2603.27249</code>; Robles et al., 2026, <code>arXiv:2609.07919</code>) onto signed transparency logs (IETF SCITT) without exposing maintainers to Goodhart metric gaming (Goodhart, 1984) or plutocratic token capture. Governance weight follows Elinor Ostrom's design principles for enduring commons (Ostrom, 1990), binding decision standing to verified stewardship inside the domain where the work occurred.</p>
+      <p>Open problems include collusion-resistant randomized reviewer assignment, multi-dimensional upkeep weighting that resists task-splitting, and zero-knowledge selective disclosure so maintainers can prove standing without publishing a surveillance log of their daily hours. See our <a href="/research/">Research</a> page for formal details.</p>
+    </div>
+  </details>
+</aside>
+
+<section class="footnotes">
+<h2>Sources</h2>
+<p id="fn1">1. John Meluso, Amanda Casari, Katie McLaughlin and Milo Z. Trujillo, "Invisible Labor in Open Source Software Ecosystems," <a href="https://arxiv.org/abs/2401.06889">arXiv:2401.06889</a> (2024).</p>
+<p id="fn2">2. Sebastian Baltes, Marc Cheong and Christoph Treude, "'An Endless Stream of AI Slop': How Developers Discuss the Burden of AI-Assisted Software Development," <a href="https://arxiv.org/abs/2603.27249">arXiv:2603.27249</a> (2026).</p>
+<p id="fn3">3. Gregorio Robles, Daniel M. German et al., "You can contribute if you… An Empirical Framework of AI Contribution Policies in OSS," <a href="https://arxiv.org/abs/2609.07919">arXiv:2609.07919</a> (2026).</p>
+<p id="fn4">4. C. A. E. Goodhart, "Problems of Monetary Management: The U.K. Experience," in <em>Monetary Theory and Practice</em> (Macmillan, 1984), 91–121, <a href="https://doi.org/10.1007/978-1-349-17295-5_4">doi:10.1007/978-1-349-17295-5_4</a>.</p>
+<p id="fn5">5. Elinor Ostrom, <em>Governing the Commons: The Evolution of Institutions for Collective Action</em> (Cambridge University Press, 1990), <a href="https://doi.org/10.1017/CBO9780511807763">doi:10.1017/CBO9780511807763</a>.</p>
+</section>

@@ -1,0 +1,306 @@
+---
+title: For builders
+heading: For builders
+eyebrow: Get involved
+description: Small, practical pieces of open infrastructure that engineers can ship this month to keep AI agents accountable to people.
+reader: Software engineers and open-source developers.
+takeaway: Concrete engineering fuses builders can implement now keep AI agents bounded, auditable, and loyal to people.
+template: page
+section: get-involved
+lede: AI agents only become accountable to people once engineers build clear boundaries into code. You do not need permission from a standards committee to improve agent safety: five small engineering patterns, each small enough to ship this month, can protect users from ungrounded execution.
+---
+<div class="prose wrap-narrow">
+<p class="big">Concrete engineering fuses builders can implement now keep AI agents bounded, auditable, and loyal to people. Most AI agent frameworks today run without basic safety fuses. They hand an agent a permanent API key, grant full network access, and let it read untrusted web pages while holding permissions for payments and email. When prompt injection or an execution bug strikes, the user faces unvetted actions and has no checkable receipt.</p>
+
+<p>Software engineers do not need permission from a standards committee to fix these hazards. Like electrical circuit breakers that trip before a wire overheats, software agents need hard boundaries enforced outside the model. Five practical patterns, each small enough to ship in an ordinary sprint, give people direct control over autonomous tools.</p>
+
+<p>These fuses let a 1:1 personal assistant work on your side with a duty of loyalty while keeping human judgment in charge. When wearable cameras or microphones write into a sealed local memory vault, cross-checks flag noisy sensor readings and physical sensor tamper before any tool acts.</p>
+
+<figure class="explainer" id="ex-builder-circuits" data-stage="switchyard">
+  <style>
+    #ex-builder-circuits {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-warn: #B85C38;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      color: var(--ex-ink);
+    }
+    @media (prefers-color-scheme: dark) {
+      #ex-builder-circuits {
+        --ex-paper: #18161E;
+        --ex-slip: #221F2A;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #A8A095;
+        --ex-rule: #322E3D;
+        --ex-signal: #8FD4B6;
+        --ex-warn: #F09D82;
+      }
+      #ex-builder-circuits rect[fill="#FAF3EA"] { fill: #18161E; }
+      #ex-builder-circuits rect[fill="#F3E8D8"] { fill: #221F2A; }
+      #ex-builder-circuits line[stroke="#E1D3C0"] { stroke: #322E3D; }
+      #ex-builder-circuits text[fill="#131014"] { fill: #EDE6DC; }
+      #ex-builder-circuits text[fill="#5E564B"] { fill: #A8A095; }
+      #ex-builder-circuits text[fill="#0B3F30"],
+      #ex-builder-circuits text[fill="#1F6B4E"] { fill: #8FD4B6; }
+      #ex-builder-circuits text[fill="#B85C38"] { fill: #F09D82; }
+    }
+    :root[data-theme="dark"] #ex-builder-circuits,
+    [data-theme="dark"] #ex-builder-circuits {
+      --ex-paper: #18161E;
+      --ex-slip: #221F2A;
+      --ex-ink: #EDE6DC;
+      --ex-muted: #A8A095;
+      --ex-rule: #322E3D;
+      --ex-signal: #8FD4B6;
+      --ex-warn: #F09D82;
+    }
+    :root[data-theme="dark"] #ex-builder-circuits rect[fill="#FAF3EA"],
+    [data-theme="dark"] #ex-builder-circuits rect[fill="#FAF3EA"] { fill: #18161E; }
+    :root[data-theme="dark"] #ex-builder-circuits rect[fill="#F3E8D8"],
+    [data-theme="dark"] #ex-builder-circuits rect[fill="#F3E8D8"] { fill: #221F2A; }
+    :root[data-theme="dark"] #ex-builder-circuits line[stroke="#E1D3C0"],
+    [data-theme="dark"] #ex-builder-circuits line[stroke="#E1D3C0"] { stroke: #322E3D; }
+    :root[data-theme="dark"] #ex-builder-circuits text[fill="#131014"],
+    [data-theme="dark"] #ex-builder-circuits text[fill="#131014"] { fill: #EDE6DC; }
+    :root[data-theme="dark"] #ex-builder-circuits text[fill="#5E564B"],
+    [data-theme="dark"] #ex-builder-circuits text[fill="#5E564B"] { fill: #A8A095; }
+    :root[data-theme="dark"] #ex-builder-circuits text[fill="#0B3F30"],
+    :root[data-theme="dark"] #ex-builder-circuits text[fill="#1F6B4E"],
+    [data-theme="dark"] #ex-builder-circuits text[fill="#0B3F30"],
+    [data-theme="dark"] #ex-builder-circuits text[fill="#1F6B4E"] { fill: #8FD4B6; }
+    :root[data-theme="dark"] #ex-builder-circuits text[fill="#B85C38"],
+    [data-theme="dark"] #ex-builder-circuits text[fill="#B85C38"] { fill: #F09D82; }
+    #ex-builder-circuits svg {
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-builder-circuits .diagram-desktop { display: block; }
+    #ex-builder-circuits .diagram-mobile { display: none; }
+    #ex-builder-circuits .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-builder-circuits figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 600px) {
+      #ex-builder-circuits { padding: 1rem 0 0.85rem; }
+      #ex-builder-circuits .diagram-desktop { display: none; }
+      #ex-builder-circuits .diagram-mobile { display: block; }
+    }
+  </style>
+  <svg class="diagram-desktop" viewBox="0 0 680 340" width="100%" role="img" aria-labelledby="ex-builder-circuits-title ex-builder-circuits-desc">
+    <title id="ex-builder-circuits-title">Comparison of an ungrounded agent execution circuit versus a capability-scoped delegated circuit</title>
+    <desc id="ex-builder-circuits-desc">Diagram contrasting an ungrounded circuit with ambient keys and prompt-injection hazards on the left, with a grounded circuit using quarantined readers, external policy checks, and short-lived delegated tokens on the right.</desc>
+
+    <!-- Left Card: Ungrounded Circuit -->
+    <g>
+      <rect x="12" y="12" width="318" height="316" rx="16" fill="#F3E8D8" stroke="#B85C38" stroke-width="1.5"/>
+      <rect x="28" y="26" width="168" height="24" rx="12" fill="#B85C38"/>
+      <text class="ex-mono" x="112" y="42" text-anchor="middle" font-size="11" font-weight="600" fill="#FAF3EA">UNGROUNDED CIRCUIT</text>
+      <rect x="228" y="26" width="86" height="24" rx="12" fill="#FAF3EA" stroke="#B85C38" stroke-width="1"/>
+      <text x="271" y="42" text-anchor="middle" font-size="11" font-weight="600" fill="#131014">High hazard</text>
+      <line x1="28" y1="62" x2="314" y2="62" stroke="#E1D3C0" stroke-width="1"/>
+
+      <!-- Left Row 1 -->
+      <rect x="28" y="72" width="286" height="44" rx="8" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1"/>
+      <text class="ex-mono" x="40" y="88" font-size="11" font-weight="600" fill="#5E564B">1. Input Ingestion</text>
+      <text x="40" y="106" font-size="12" font-weight="600" fill="#131014">Untrusted text mixed into tool context</text>
+
+      <!-- Left Row 2 -->
+      <rect x="28" y="122" width="286" height="44" rx="8" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1"/>
+      <text class="ex-mono" x="40" y="138" font-size="11" font-weight="600" fill="#5E564B">2. Credential Authority</text>
+      <text x="40" y="156" font-size="12" fill="#131014">Permanent master key in environment</text>
+
+      <!-- Left Row 3 -->
+      <rect x="28" y="172" width="286" height="44" rx="8" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1"/>
+      <text class="ex-mono" x="40" y="188" font-size="11" font-weight="600" fill="#5E564B">3. Safety Boundary</text>
+      <text x="40" y="206" font-size="12" fill="#131014">Policed only by model prompt rules</text>
+
+      <!-- Left Row 4 -->
+      <rect x="28" y="222" width="286" height="44" rx="8" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1"/>
+      <text class="ex-mono" x="40" y="238" font-size="11" font-weight="600" fill="#5E564B">4. Failure Mode</text>
+      <text x="40" y="256" font-size="12" font-weight="600" fill="#131014">Injected text triggers unauthorized tools</text>
+
+      <!-- Left Status -->
+      <rect x="28" y="278" width="286" height="34" rx="17" fill="#FAF3EA" stroke="#B85C38" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <text x="171" y="299" text-anchor="middle" font-size="11.5" font-weight="600" fill="#131014">No fuse · No checkable receipt</text>
+    </g>
+
+    <!-- Right Card: Grounded Circuit -->
+    <g>
+      <rect x="350" y="12" width="318" height="316" rx="16" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.75"/>
+      <rect x="366" y="26" width="180" height="24" rx="12" fill="#0B3F30"/>
+      <text class="ex-mono" x="456" y="42" text-anchor="middle" font-size="11" font-weight="600" fill="#FAF3EA">GROUNDED CIRCUIT</text>
+      <rect x="556" y="26" width="96" height="24" rx="12" fill="#F3E8D8" stroke="#1F6B4E" stroke-width="1"/>
+      <text x="604" y="42" text-anchor="middle" font-size="11" font-weight="600" fill="#0B3F30">Protected</text>
+      <line x1="366" y1="62" x2="652" y2="62" stroke="#E1D3C0" stroke-width="1"/>
+
+      <!-- Right Row 1 -->
+      <rect x="366" y="72" width="286" height="44" rx="8" fill="#F3E8D8" stroke="#1F6B4E" stroke-width="1"/>
+      <text class="ex-mono" x="378" y="88" font-size="11" font-weight="600" fill="#1F6B4E">1. Input Ingestion</text>
+      <text x="378" y="106" font-size="12" font-weight="600" fill="#131014">Quarantined reader with zero tools</text>
+
+      <!-- Right Row 2 -->
+      <rect x="366" y="122" width="286" height="44" rx="8" fill="#F3E8D8" stroke="#1F6B4E" stroke-width="1"/>
+      <text class="ex-mono" x="378" y="138" font-size="11" font-weight="600" fill="#1F6B4E">2. Credential Authority</text>
+      <text x="378" y="156" font-size="12" fill="#131014">Short-lived delegated token (15-min lease)</text>
+
+      <!-- Right Row 3 -->
+      <rect x="366" y="172" width="286" height="44" rx="8" fill="#F3E8D8" stroke="#1F6B4E" stroke-width="1"/>
+      <text class="ex-mono" x="378" y="188" font-size="11" font-weight="600" fill="#1F6B4E">3. Safety Boundary</text>
+      <text x="378" y="206" font-size="12" fill="#131014">Deterministic gate outside the model</text>
+
+      <!-- Right Row 4 -->
+      <rect x="366" y="222" width="286" height="44" rx="8" fill="#F3E8D8" stroke="#1F6B4E" stroke-width="1"/>
+      <text class="ex-mono" x="378" y="238" font-size="11" font-weight="600" fill="#1F6B4E">4. Output Provenance</text>
+      <text x="378" y="256" font-size="12" font-weight="600" fill="#0B3F30">Dual-signed receipt saved on user device</text>
+
+      <!-- Right Status -->
+      <rect x="366" y="278" width="286" height="34" rx="17" fill="#0B3F30"/>
+      <text x="509" y="299" text-anchor="middle" font-size="12" font-weight="600" fill="#FAF3EA">Fuses active · Verifiable receipt</text>
+    </g>
+  </svg>
+
+  <svg class="diagram-mobile" viewBox="0 0 330 676" width="100%" role="img" aria-labelledby="ex-builder-circuits-m-title ex-builder-circuits-m-desc">
+    <title id="ex-builder-circuits-m-title">Comparison of an ungrounded agent execution circuit versus a capability-scoped delegated circuit</title>
+    <desc id="ex-builder-circuits-m-desc">Stacked mobile diagram contrasting an ungrounded circuit with ambient keys and prompt-injection hazards on top, with a grounded circuit using quarantined readers, external policy checks, and short-lived delegated tokens below.</desc>
+    <rect x="0" y="0" width="310" height="676" fill="#FAF3EA"/>
+
+    <!-- Top Card: Ungrounded Circuit -->
+    <g>
+      <rect x="8" y="10" width="298" height="320" rx="14" fill="#F3E8D8" stroke="#B85C38" stroke-width="1.5"/>
+      <rect x="18" y="22" width="172" height="24" rx="12" fill="#B85C38"/>
+      <text class="ex-mono" x="104" y="38" text-anchor="middle" font-size="11" font-weight="600" fill="#FAF3EA">UNGROUNDED CIRCUIT</text>
+      <rect x="196" y="22" width="100" height="24" rx="12" fill="#FAF3EA" stroke="#B85C38" stroke-width="1"/>
+      <text x="246" y="38" text-anchor="middle" font-size="11" font-weight="600" fill="#131014">High hazard</text>
+      <line x1="18" y1="56" x2="296" y2="56" stroke="#E1D3C0" stroke-width="1"/>
+
+      <!-- Row 1 -->
+      <rect x="18" y="66" width="278" height="46" rx="8" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1"/>
+      <text class="ex-mono" x="28" y="82" font-size="11" font-weight="600" fill="#5E564B">1. Input Ingestion</text>
+      <text x="28" y="101" font-size="11.5" font-weight="600" fill="#131014">Untrusted text mixed into tool context</text>
+
+      <!-- Row 2 -->
+      <rect x="18" y="120" width="278" height="46" rx="8" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1"/>
+      <text class="ex-mono" x="28" y="136" font-size="11" font-weight="600" fill="#5E564B">2. Credential Authority</text>
+      <text x="28" y="155" font-size="11.5" fill="#131014">Permanent master key in environment</text>
+
+      <!-- Row 3 -->
+      <rect x="18" y="174" width="278" height="46" rx="8" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1"/>
+      <text class="ex-mono" x="28" y="190" font-size="11" font-weight="600" fill="#5E564B">3. Safety Boundary</text>
+      <text x="28" y="209" font-size="11.5" fill="#131014">Policed only by model prompt rules</text>
+
+      <!-- Row 4 -->
+      <rect x="18" y="228" width="278" height="46" rx="8" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1"/>
+      <text class="ex-mono" x="28" y="244" font-size="11" font-weight="600" fill="#5E564B">4. Failure Mode</text>
+      <text x="28" y="263" font-size="11.5" font-weight="600" fill="#131014">Injected text triggers unauthorized tools</text>
+
+      <!-- Status -->
+      <rect x="18" y="282" width="278" height="36" rx="18" fill="#FAF3EA" stroke="#B85C38" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <text x="165" y="304" text-anchor="middle" font-size="11.5" font-weight="600" fill="#131014">No fuse · No checkable receipt</text>
+    </g>
+
+    <!-- Stage Connectors -->
+    <line x1="165" y1="330" x2="165" y2="341" stroke="#0B3F30" stroke-width="1.75"/>
+    <polygon points="161,339 169,339 165,344" fill="#0B3F30"/>
+    <line x1="165" y1="446" x2="165" y2="453" stroke="#0B3F30" stroke-width="1.5"/>
+    <polygon points="162,451 168,451 165,454" fill="#0B3F30"/>
+    <line x1="165" y1="500" x2="165" y2="507" stroke="#0B3F30" stroke-width="1.5"/>
+    <polygon points="162,505 168,505 165,508" fill="#0B3F30"/>
+
+    <!-- Bottom Card: Grounded Circuit -->
+    <g>
+      <rect x="8" y="344" width="298" height="320" rx="14" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.75"/>
+      <rect x="18" y="356" width="172" height="24" rx="12" fill="#0B3F30"/>
+      <text class="ex-mono" x="104" y="372" text-anchor="middle" font-size="11" font-weight="600" fill="#FAF3EA">GROUNDED CIRCUIT</text>
+      <rect x="196" y="356" width="100" height="24" rx="12" fill="#F3E8D8" stroke="#1F6B4E" stroke-width="1"/>
+      <text x="246" y="372" text-anchor="middle" font-size="11" font-weight="600" fill="#0B3F30">Protected</text>
+      <line x1="18" y1="390" x2="296" y2="390" stroke="#E1D3C0" stroke-width="1"/>
+
+      <!-- Row 1 -->
+      <rect x="18" y="400" width="278" height="46" rx="8" fill="#F3E8D8" stroke="#1F6B4E" stroke-width="1"/>
+      <text class="ex-mono" x="28" y="416" font-size="11" font-weight="600" fill="#1F6B4E">1. Input Ingestion</text>
+      <text x="28" y="435" font-size="11.5" font-weight="600" fill="#131014">Quarantined reader with zero tools</text>
+
+      <!-- Row 2 -->
+      <rect x="18" y="454" width="278" height="46" rx="8" fill="#F3E8D8" stroke="#1F6B4E" stroke-width="1"/>
+      <text class="ex-mono" x="28" y="470" font-size="11" font-weight="600" fill="#1F6B4E">2. Credential Authority</text>
+      <text x="28" y="489" font-size="11.5" fill="#131014">Short-lived delegated token (15-min lease)</text>
+
+      <!-- Row 3 -->
+      <rect x="18" y="508" width="278" height="46" rx="8" fill="#F3E8D8" stroke="#1F6B4E" stroke-width="1"/>
+      <text class="ex-mono" x="28" y="524" font-size="11" font-weight="600" fill="#1F6B4E">3. Safety Boundary</text>
+      <text x="28" y="543" font-size="11.5" fill="#131014">Deterministic gate outside the model</text>
+
+      <!-- Row 4 -->
+      <rect x="18" y="562" width="278" height="46" rx="8" fill="#F3E8D8" stroke="#1F6B4E" stroke-width="1"/>
+      <text class="ex-mono" x="28" y="578" font-size="11" font-weight="600" fill="#1F6B4E">4. Output Provenance</text>
+      <text x="28" y="597" font-size="11.5" font-weight="600" fill="#0B3F30">Dual-signed receipt saved on user device</text>
+
+      <!-- Status -->
+      <rect x="18" y="616" width="278" height="36" rx="18" fill="#0B3F30"/>
+      <text x="165" y="638" text-anchor="middle" font-size="11.5" font-weight="600" fill="#FAF3EA">Fuses active · Verifiable receipt</text>
+    </g>
+  </svg>
+  <figcaption>An ungrounded agent circuit exposes permanent credentials to untrusted text without a fuse; a grounded circuit quarantines reading, validates intent through an external gate, and uses short-lived tokens that leave a signed receipt.</figcaption>
+</figure>
+
+<h2>Five building blocks you can ship this month</h2>
+
+<p><strong>1. Scope authority into short-lived capability leases.</strong> Most agent frameworks store long-lived API keys or session cookies in environment variables where any tool call can reach them. Wrap every outward tool invocation in a short-lived, narrowly scoped capability token. State the exact action allowed, the maximum count or budget, and an expiration timestamp such as fifteen minutes.<sup><a href="#fn5">5</a></sup> When a lease expires, the agent must pause and request a renewal from the user before taking further actions.</p>
+
+<p><strong>2. Separate untrusted input reading from tool execution.</strong> When an AI agent processes an untrusted email or webpage in the same context loop that holds tool-calling permissions, indirect prompt injections can hijack the workflow. Build an architectural wall between ingestion and execution. Let an isolated reader process parse incoming text with zero tool access. Require an explicit, deterministic policy gate outside the model before any outward network request or file modification runs.<sup><a href="#fn4">4</a></sup></p>
+
+<p><strong>3. Emit verifiable human receipts for external actions.</strong> Raw debug traces and JSON dumps help developers, but they leave everyday users unable to inspect what software did in their name. Whenever an agent acts across systems, emit a compact, signed receipt that answers three plain questions on one screen: who authorised the action, what scope permitted it, and what state changed. Store that receipt locally on the user's device so the person retains an independent record even if the provider server goes offline.</p>
+
+<p>This keeps a household's private ledger on their own machine while posting only selective signed proofs to a public ledger on an accountable network for software agents. At community scale, those same open receipts let consenting people run mutual credit clearing, cooperative share pools, and bottom-up audits across 348 organisations in Shared Horizon and 90 lab overlays.</p>
+
+<p><strong>4. Attest software builds, models, and media with cryptographic provenance.</strong> Anonymous files online leave downstream users unable to verify whether a binary, dataset, or document came from a trusted builder or an unvetted source. Add C2PA content credentials to media pipelines so generated assets carry tamper-evident metadata.<sup><a href="#fn1">1</a></sup> Sign software packages, model weights, and agent policies with Sigstore and in-toto attestations so callers can verify the build provenance before execution.<sup><a href="#fn2">2</a></sup></p>
+
+<p><strong>5. Assign distinct workload identities separate from human logins.</strong> When an automated agent logs into internal databases with a human employee's credentials, audit trails break down and blame the person when software misfires. Implement workload identity standards like IETF WIMSE so every automated process carries a distinct cryptographic badge tied to an accountable owner.<sup><a href="#fn3">3</a></sup> Using short-lived delegation tokens ensures sub-agent actions remain traceable back to the originating authority.</p>
+
+<h2>How to stress-test and build with us</h2>
+
+<p>We publish our source repositories under <a href="https://github.com/cintnet" rel="noopener noreferrer">github.com/cintnet</a> so engineers can clone every test, schema, and simulation. Compare notes with other builders in our <a href="https://discord.gg/AANETMGc6Z" rel="noopener noreferrer">Discord community</a>.</p>
+
+<p>We publish our working specifications, client code, and simulation harnesses in the open so engineers can inspect every line and point out where a design is brittle. Here are three concrete projects where an open-source builder can jump in right now:</p>
+
+<ul>
+<li><strong>Critique our IETF draft and wire envelopes.</strong> Test live capability leases and provenance chains in our <a href="/labs/protocol-inspector/">Protocol Inspector</a> and <a href="/research/">working papers</a>. Tell us where packet framing, lease revocation, or sensor checks break under real network conditions.</li>
+<li><strong>Build a lightweight local vault or receipt viewer.</strong> Help us turn signed agent action logs into a calm local inspector that a parent or clinic clerk can read in five seconds, or test our <a href="/labs/sensor-boundary/">sensor boundary sandbox</a>.</li>
+<li><strong>Contribute to the Shared Horizon client and path library.</strong> Our <a href="/labs/shared-horizon/">Shared Horizon</a> scenario engine and <a href="/labs/">simulation sandboxes</a> use dependency-free HTML, CSS, and JavaScript with strict security checks. New scenario cards, institutional adapters, and test cases are always welcome.</li>
+</ul>
+
+<aside class="for-researchers"><details><summary>For researchers</summary><div><p>Our reference engineering patterns combine hardware-isolated Object-Capability sandboxes (capability lease; Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966), control-flow and data-flow separation against indirect prompt injection (Debenedetti et al., 2025; Bouras et al., 2026<sup><a href="#fn4">4</a></sup>), Agentic JWT workflow-aware delegation assertions (Goswami, 2025<sup><a href="#fn5">5</a></sup>; RFC 8693), Sigstore and in-toto supply-chain attestations (Newman et al., 2022; Torres-Arias et al., 2019<sup><a href="#fn2">2</a></sup>), and IETF WIMSE workload identity credentials (Salowey et al., 2026<sup><a href="#fn3">3</a></sup>). At the personal-device boundary, these patterns enforce monogamous <code>1:1</code> personal cognitive models (cybernetic exocortex; Joscha Bach; Bach; Conant &amp; Ashby, 1970, Good Regulator theorem; Andy Clark and David Chalmers; Clark &amp; Chalmers, 1998, Extended Mind) acting as a statutory information fiduciary (Jack Balkin; Balkin, 2016<sup><a href="#fn6">6</a></sup>) that preserves causal <code>do(x)</code> unassisted competence (Pearl, 2009<sup><a href="#fn6">6</a></sup>) and local <code>C2PA</code> and <code>Merkle</code> episodic memory vault custody (Endel Tulving; Tulving, 1972; C2PA v2.1<sup><a href="#fn1">1</a></sup>). Across the multimodal egocentric and ambient perceptual sensorium, hardware-timed (<code>Device Time</code>) peripheral attestation with self-assessed observation confidence (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, and <code>IETF RATS</code> under <code>RFC 9334</code><sup><a href="#fn7">7</a></sup>), an optical data diode (<code>optical data diodes</code>), and physical dead-man safety relays (<code>IEC 61508</code>) pair with transduction realism (<em>Signed Is Not True</em> across the analog hole; Thompson, 1984; Kevin Fu and Wenyuan Xu; Fu &amp; Xu, 2018<sup><a href="#fn7">7</a></sup>). Personal Markov blanket partitioning (Karl Friston; Friston, 2010; Friston, 2013<sup><a href="#fn6">6</a></sup>) separates the Private Autobiographical Ledger from the Public Attestation &amp; Escrow Ledger (Public Attestation and Escrow Ledger) using selective zero-knowledge (<code>ZK</code>) proofs, <code>IETF SCITT</code> transparency receipts (<code>RFC 9943</code><sup><a href="#fn6">6</a></sup>), and independent-class <code>k &gt;= 3f + 1</code> Byzantine corroboration. On the polycentric collective coordination substrate and Wide Network Ledger, commons governance supports Universal Basic Services, merit-bonded tasks, reciprocal mutual credit (James Stodder; Stodder, 2009), and invisible maintenance recognition (Jacob Meluso; Meluso et al., 2024). It also coordinates frontier-lab overlays and cooperative share pools (Elinor Ostrom; Ostrom, 1990<sup><a href="#fn8">8</a></sup>; Rudolf Meidner; Meidner, 1978<sup><a href="#fn8">8</a></sup>) while bounding multi-agent strategic failures (Bracale Syrnikov et al., 2026<sup><a href="#fn8">8</a></sup>), testable in <a href="/labs/protocol-inspector/">/labs/protocol-inspector/</a>, <a href="/labs/sensor-boundary/">/labs/sensor-boundary/</a>, <a href="/labs/shared-horizon/">/labs/shared-horizon/</a>, and <a href="/labs/sovereign-papers/">/labs/sovereign-papers/</a>. All client-side code enforces zero third-party network calls and strict DOM construction without <code>.innerHTML</code>.</p></div></details></aside>
+
+<p>Write to us at <a href="mailto:contact@collectiveintelligencenetwork.org">contact@collectiveintelligencenetwork.org</a> with a link to what you are building, or a blunt note on what we got wrong. A person reads every message, and your code can help people use capable AI without handing over the keys to their lives.</p>
+
+<section class="footnotes">
+<p id="fn1">1. Coalition for Content Provenance and Authenticity (C2PA), <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html"><em>C2PA Technical Specification</em>, v2.1</a> (2024); and Endel Tulving, "Episodic and Semantic Memory," in <em>Organization of Memory</em> (Academic Press, 1972), pp. 381–403.</p>
+<p id="fn2">2. Sigstore documentation, <a href="https://docs.sigstore.dev/about/overview/">docs.sigstore.dev/about/overview</a>, and Zachary Newman, John Speed Meyers, and Santiago Torres-Arias, <a href="https://doi.org/10.1145/3548606.3560596">"Sigstore: Software Signing for Everybody,"</a> <em>ACM CCS</em> (2022), pp. 2353–2367; in-toto specifications, <a href="https://in-toto.io/specs/">in-toto.io/specs</a>, and Santiago Torres-Arias et al., <a href="https://www.usenix.org/conference/usenixsecurity19/presentation/torres-arias">"in-toto: Providing farm-to-table guarantees for bits and bytes,"</a> <em>USENIX Security Symposium</em> (2019), pp. 1393–1410.</p>
+<p id="fn3">3. J. Salowey, Y. Rosomakho, and H. Tschofenig, <a href="https://datatracker.ietf.org/doc/draft-ietf-wimse-arch/"><em>Workload Identity in a Multi System Environment (WIMSE) Architecture</em></a>, IETF Internet-Draft (2026).</p>
+<p id="fn4">4. Edoardo Debenedetti et al., <a href="https://arxiv.org/abs/2503.18813"><em>CaMeL: Defeating Prompt Injection via Capability-Based Access Control</em></a>, arXiv:2503.18813 (March 2025); Dimitrios Stamatios Bouras, Yihan Dai, and Sergey Mechtaev, <a href="https://arxiv.org/abs/2609.08371"><em>Authority Is Not a String: A Capability-Scoped Harness for Prompt-Injection-Resistant Coding Agents</em></a>, arXiv:2609.08371 (September 2026); and Jack B. Dennis and Earl C. Van Horn, <a href="https://doi.org/10.1145/365230.365252">"Programming Semantics for Multiprogrammed Computations,"</a> <em>Communications of the ACM</em>, Vol. 9, No. 3 (1966), pp. 143–155.</p>
+<p id="fn5">5. Abhishek Goswami, <a href="https://arxiv.org/abs/2509.13597"><em>Agentic JWT: A Secure Delegation Protocol for Autonomous AI Agents</em></a>, arXiv:2509.13597 (September 2025); and Brian Campbell, Chuck Mortimore, Michael B. Jones, and Yaron Y. Goland, <a href="https://www.rfc-editor.org/rfc/rfc8693">RFC 8693: OAuth 2.0 Token Exchange</a>, Internet Engineering Task Force (January 2020).</p>
+<p id="fn6">6. Jack M. Balkin, <a href="https://lawreview.law.ucdavis.edu/archives/49/4/information-fiduciaries-and-first-amendment">"Information Fiduciaries and the First Amendment,"</a> <em>UC Davis Law Review</em>, Vol. 49, No. 4 (2016), pp. 1183–1234; Andy Clark and David J. Chalmers, "The Extended Mind," <em>Analysis</em>, Vol. 58, No. 1 (1998), pp. 7–19; Roger C. Conant and W. Ross Ashby, "Every Good Regulator of a System Must Be a Model of That System," <em>International Journal of Systems Science</em>, Vol. 1, No. 2 (1970), pp. 89–97; Judea Pearl, <em>Causality: Models, Reasoning, and Inference</em>, 2nd ed. (Cambridge University Press, 2009); Karl Friston, "The Free-Energy Principle: A Unified Brain Theory?" <em>Nature Reviews Neuroscience</em>, Vol. 11, No. 2 (2010), pp. 127–138; Karl Friston, <a href="https://doi.org/10.1098/rsif.2013.0475">"Life as We Know It,"</a> <em>Journal of the Royal Society Interface</em>, Vol. 10, No. 86 (2013); and H. Birkholz et al., <a href="https://www.rfc-editor.org/rfc/rfc9943"><em>Supply Chain Integrity, Transparency, and Trust (SCITT) Architecture</em></a>, IETF RFC 9943 (2026).</p>
+<p id="fn7">7. Kevin Fu and Wenyuan Xu, <a href="https://doi.org/10.1145/3176402">"Risks of Trusting the Physics of Sensors,"</a> <em>Communications of the ACM</em>, Vol. 61, No. 2 (2018), pp. 20–23; Ken Thompson, "Reflections on Trusting Trust," <em>Communications of the ACM</em>, Vol. 27, No. 8 (1984), pp. 761–763; and Henk Birkholz, Dave Thaler, Michael Richardson, Ned Smith, and Wei Pan, <a href="https://www.rfc-editor.org/rfc/rfc9334"><em>Remote ATtestation procedureS (RATS) Architecture</em></a>, IETF RFC 9334 (2023).</p>
+<p id="fn8">8. Elinor Ostrom, <a href="https://doi.org/10.1017/CBO9780511807763"><em>Governing the Commons: The Evolution of Institutions for Collective Action</em></a> (Cambridge University Press, 1990); Rudolf Meidner, <a href="https://archive.org/details/employeeinvestme0000meid"><em>Employee Investment Funds: An Approach to Collective Capital Formation</em></a> (George Allen &amp; Unwin, 1978); and Niccolò Bracale Syrnikov et al., "STRATEGIC: Game-Theoretic Evaluation of Multi-Agent LLM Systems" (2026).</p>
+</section>
+</div>

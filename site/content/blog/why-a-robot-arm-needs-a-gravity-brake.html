@@ -1,0 +1,357 @@
+---
+title: Why a robot arm needs a gravity brake
+description: Software guardrails cannot stop a warehouse forklift, infusion pump, or workshop arm when its controller freezes or its network is hijacked. Physical machines need out-of-band hardware relays and regular unassisted human practice.
+reader: Engineers, hospital technicians, warehouse crews, and safety officers working alongside automated machines, robots, and physical control software.
+takeaway: Physical machines controlled by software need independent hardware relays that drop safe on power or pulse loss, paired with physical cutoff keys and regular unassisted human practice.
+template: article
+date: 2026-11-13
+order: 72
+category: Safety
+minutes: 8
+image: post-why-a-robot-arm-needs-a-gravity-brake.jpg
+image_alt: Inside an elevator hoistway beside a workshop bay, an overspeed governor and spring-loaded steel wedge stand next to a robot arm wired to a wall cutoff key.
+lede: Software guardrails alone fail when physical machines hit a frozen controller, a sensor fault, or a hijacked network command. Dependable safety pairs independent hardware relays and physical cutoff keys with regular unassisted human practice.
+---
+<p>Peer inside a freight and passenger elevator shaft and you will spot an iron overspeed governor linked to steel rail wedges beneath the cab. Whenever hoist power drops or downward speed spikes, spinning weights trip a latch and spring tension clamps the wedges onto the steel guide rails.</p>
+
+<p>Gravity and coiled springs bring the heavy cab to a stop without waiting for a building computer to approve the brake. Even if the main circuit board freezes or loses its network link, the mechanical wedge still bites the rail.</p>
+
+<p>Warehouse forklifts, hospital infusion pumps, and workshop arms now take real-world movement commands from AI models and networked software assistants. Yet too many designs trust a software guardrail running inside the same computer that drives the motor.</p>
+
+<p>Physical machines controlled by software need two independent protections. Every powered joint needs an out-of-band hardware relay with a physical cutoff key that drops safe when pulses stop. Operators also need regular unassisted practice so crews stay ready when automation lets go.</p>
+
+<figure class="explainer" id="ex-gravity-brake" data-stage="bench">
+  <style>
+    #ex-gravity-brake {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3EADF;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #DFD1BE;
+      --ex-signal: #1F6B4E;
+      --ex-warn: #8C3B24;
+      --ex-key-top: #FDF9F2;
+      --ex-key-side: #D4C3AC;
+      margin: 2rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-gravity-brake .ex-sr-radio {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    #ex-gravity-brake .ex-keybar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding-bottom: 0.95rem;
+      border-bottom: 1px solid var(--ex-rule);
+    }
+    #ex-gravity-brake .ex-bench-kicker {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+    }
+    #ex-gravity-brake .ex-keys {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    #ex-gravity-brake .ex-keycap {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.78rem;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.73rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ex-ink);
+      background: var(--ex-key-top);
+      border: 1px solid var(--ex-ink);
+      border-radius: 2px;
+      box-shadow: 0 3px 0 var(--ex-key-side), 0 4px 0 var(--ex-ink);
+      cursor: pointer;
+      user-select: none;
+      transform: translateY(0);
+      transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 180ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    #ex-gravity-brake .ex-pip {
+      width: 6px;
+      height: 6px;
+      background: var(--ex-muted);
+    }
+    #ex-gravity-brake #sw-gb-normal:focus-visible ~ .ex-keybar label[for="sw-gb-normal"],
+    #ex-gravity-brake #sw-gb-freeze:focus-visible ~ .ex-keybar label[for="sw-gb-freeze"] {
+      outline: 2px solid var(--ex-signal);
+      outline-offset: 3px;
+    }
+    #ex-gravity-brake #sw-gb-normal:checked ~ .ex-keybar label[for="sw-gb-normal"] {
+      transform: translateY(3px);
+      box-shadow: 0 0 0 var(--ex-key-side), 0 1px 0 var(--ex-ink);
+      background: var(--ex-slip);
+      border-color: var(--ex-signal);
+    }
+    #ex-gravity-brake #sw-gb-normal:checked ~ .ex-keybar label[for="sw-gb-normal"] .ex-pip {
+      background: var(--ex-signal);
+    }
+    #ex-gravity-brake #sw-gb-freeze:checked ~ .ex-keybar label[for="sw-gb-freeze"] {
+      transform: translateY(3px);
+      box-shadow: 0 0 0 var(--ex-key-side), 0 1px 0 var(--ex-ink);
+      background: var(--ex-slip);
+      border-color: var(--ex-warn);
+    }
+    #ex-gravity-brake #sw-gb-freeze:checked ~ .ex-keybar label[for="sw-gb-freeze"] .ex-pip {
+      background: var(--ex-warn);
+    }
+    #ex-gravity-brake .ex-brake-canvas {
+      padding: 0.9rem 0 0.65rem;
+    }
+    #ex-gravity-brake svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    #ex-gravity-brake .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    #ex-gravity-brake .st-normal { display: none; }
+    #ex-gravity-brake #sw-gb-normal:checked ~ .ex-brake-canvas .st-freeze { display: none; }
+    #ex-gravity-brake #sw-gb-normal:checked ~ .ex-brake-canvas .st-normal { display: inline; }
+    #ex-gravity-brake .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-top: 1px solid var(--ex-rule);
+    }
+    #ex-gravity-brake .ex-spec-cell {
+      padding: 0.75rem 0.85rem 0.65rem 0;
+      border-right: 1px solid var(--ex-rule);
+    }
+    #ex-gravity-brake .ex-spec-cell:nth-child(2) { padding-left: 0.85rem; }
+    #ex-gravity-brake .ex-spec-cell:last-child {
+      padding-left: 0.85rem;
+      padding-right: 0;
+      border-right: 0;
+    }
+    #ex-gravity-brake .ex-spec-k {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.28rem;
+    }
+    #ex-gravity-brake .ex-spec-v {
+      font-size: 0.88rem;
+      line-height: 1.42;
+      color: var(--ex-ink);
+    }
+    #ex-gravity-brake .sp-normal { display: none; }
+    #ex-gravity-brake #sw-gb-normal:checked ~ .ex-spec-grid .sp-freeze { display: none; }
+    #ex-gravity-brake #sw-gb-normal:checked ~ .ex-spec-grid .sp-normal { display: block; }
+    #ex-gravity-brake figcaption {
+      margin-top: 0.75rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--ex-muted);
+    }
+    @media (max-width: 640px) {
+      #ex-gravity-brake .ex-spec-grid {
+        grid-template-columns: 1fr;
+      }
+      #ex-gravity-brake .ex-spec-cell,
+      #ex-gravity-brake .ex-spec-cell:nth-child(2),
+      #ex-gravity-brake .ex-spec-cell:last-child {
+        padding: 0.65rem 0;
+        border-right: 0;
+        border-bottom: 1px solid var(--ex-rule);
+      }
+      #ex-gravity-brake .ex-spec-cell:last-child { border-bottom: 0; }
+      #ex-gravity-brake .ex-brake-canvas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #ex-gravity-brake .ex-brake-canvas svg {
+        min-width: 540px;
+      }
+    }
+  </style>
+
+  <input type="radio" name="sw-gravity-brake" id="sw-gb-normal" class="ex-sr-radio" />
+  <input type="radio" name="sw-gravity-brake" id="sw-gb-freeze" class="ex-sr-radio" checked />
+
+  <div class="ex-keybar">
+    <span class="ex-bench-kicker">Dead-man relay &amp; gravity-brake fault bench</span>
+    <div class="ex-keys">
+      <label for="sw-gb-normal" class="ex-keycap"><span class="ex-pip"></span>1 &#183; Normal run</label>
+      <label for="sw-gb-freeze" class="ex-keycap"><span class="ex-pip"></span>2 &#183; Inject software freeze</label>
+    </div>
+  </div>
+
+  <div class="ex-brake-canvas">
+    <svg viewBox="0 0 740 232" width="100%" role="img" aria-labelledby="ex-gb-title ex-gb-desc">
+      <title id="ex-gb-title">Comparing a software-only cutoff with an out-of-band gravity interlock and solo practice</title>
+      <desc id="ex-gb-desc">Dual-rail actuator test bench showing how injecting a software freeze causes a software-only velocity filter to coast past the workspace safety line, while an out-of-band passive spring and gravity relay drops its mechanical pin immediately.</desc>
+
+      <!-- Vertical Workspace Safety Boundary Line at x=530 -->
+      <line x1="530" y1="14" x2="530" y2="218" stroke="var(--ex-warn)" stroke-width="1.6" stroke-dasharray="5 3"/>
+      <text class="ex-mono" x="538" y="26" font-size="10.5" font-weight="700" fill="var(--ex-warn)">WORKSPACE SAFETY LINE</text>
+
+      <!-- Track A (Top): Software-Only Velocity Filter -->
+      <text class="ex-mono" x="4" y="34" font-size="10.5" font-weight="700" fill="var(--ex-muted)">TRACK A &#183; SOFTWARE-ONLY VELOCITY FILTER (SHARED OS)</text>
+      <line x1="4" y1="78" x2="726" y2="78" stroke="var(--ex-rule)" stroke-width="1.5"/>
+
+      <!-- Track B (Bottom): Out-of-Band Heartbeat Relay + Gravity Pin -->
+      <text class="ex-mono" x="4" y="126" font-size="10.5" font-weight="700" fill="var(--ex-ink)">TRACK B &#183; OUT-OF-BAND HEARTBEAT RELAY + GRAVITY PIN</text>
+      <line x1="4" y1="194" x2="726" y2="194" stroke="var(--ex-ink)" stroke-width="1.5"/>
+
+      <!-- ==================== STATE 1: NORMAL RUN ==================== -->
+      <g class="st-normal">
+        <rect x="16" y="48" width="154" height="28" fill="var(--ex-slip)" stroke="var(--ex-ink)" stroke-width="1"/>
+        <text class="ex-mono" x="93" y="66" text-anchor="middle" font-size="10.5" fill="var(--ex-ink)">PLANNER + FILTER OK</text>
+        <line x1="170" y1="62" x2="352" y2="62" stroke="var(--ex-signal)" stroke-width="1.6"/>
+        <rect x="352" y="50" width="114" height="26" fill="var(--ex-slip)" stroke="var(--ex-signal)" stroke-width="1.2"/>
+        <text class="ex-mono" x="409" y="67" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--ex-signal)">ARM IN BOUNDS</text>
+
+        <!-- Track B Normal: Steady 5ms pulses hold spring pin up -->
+        <rect x="16" y="162" width="154" height="28" fill="var(--ex-slip)" stroke="var(--ex-signal)" stroke-width="1"/>
+        <text class="ex-mono" x="93" y="180" text-anchor="middle" font-size="10.5" fill="var(--ex-signal)">5MS PULSE STEADY</text>
+        <polyline points="182,176 194,176 198,164 204,186 210,176 226,176 230,164 236,186 242,176 280,176" fill="none" stroke="var(--ex-signal)" stroke-width="1.4"/>
+
+        <!-- Raised mechanical gravity pin at x=316 -->
+        <rect x="306" y="152" width="20" height="18" fill="var(--ex-paper)" stroke="var(--ex-ink)" stroke-width="1.2"/>
+        <text class="ex-mono" x="316" y="147" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--ex-muted)">PIN HELD</text>
+        <rect x="352" y="166" width="114" height="26" fill="var(--ex-slip)" stroke="var(--ex-signal)" stroke-width="1.2"/>
+        <text class="ex-mono" x="409" y="183" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--ex-signal)">ARM IN BOUNDS</text>
+      </g>
+
+      <!-- ==================== STATE 2: INJECT SOFTWARE FREEZE ==================== -->
+      <g class="st-freeze">
+        <!-- Track A Freeze: Compute hangs -> motor stays energized and coasts past x=530! -->
+        <rect x="16" y="48" width="164" height="28" fill="var(--ex-slip)" stroke="var(--ex-warn)" stroke-width="1.2"/>
+        <text class="ex-mono" x="98" y="66" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--ex-warn)">&#9632; OS THREAD FROZEN</text>
+        <line x1="180" y1="62" x2="560" y2="62" stroke="var(--ex-warn)" stroke-width="2.2" stroke-dasharray="5 3"/>
+        <polygon points="560,62 551,57 551,67" fill="var(--ex-warn)"/>
+        <rect x="564" y="48" width="162" height="28" fill="var(--ex-slip)" stroke="var(--ex-warn)" stroke-width="1.5"/>
+        <text class="ex-mono" x="645" y="66" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--ex-warn)">&#9632; OVERRUN PAST LINE</text>
+
+        <!-- Track B Freeze: Flatline pulse -> passive spring/gravity relay drops steel pin immediately! -->
+        <rect x="16" y="162" width="164" height="28" fill="var(--ex-slip)" stroke="var(--ex-warn)" stroke-width="1"/>
+        <text class="ex-mono" x="98" y="180" text-anchor="middle" font-size="10.5" fill="var(--ex-warn)">PULSE LOST (0 HZ)</text>
+        <line x1="180" y1="176" x2="300" y2="176" stroke="var(--ex-muted)" stroke-width="1.2" stroke-dasharray="2 3"/>
+
+        <!-- Dropped steel gravity wedge locking rail at x=316 -->
+        <line x1="316" y1="148" x2="316" y2="168" stroke="var(--ex-signal)" stroke-width="2"/>
+        <rect x="306" y="168" width="20" height="30" fill="var(--ex-signal)" stroke="var(--ex-ink)" stroke-width="1.2"/>
+        <text class="ex-mono" x="316" y="214" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--ex-signal)">&#9632; PIN DROPPED</text>
+
+        <rect x="356" y="166" width="150" height="26" fill="var(--ex-slip)" stroke="var(--ex-signal)" stroke-width="1.3"/>
+        <text class="ex-mono" x="431" y="183" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--ex-signal)">LOCKED SAFE AT 356</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="ex-spec-grid">
+    <div class="ex-spec-cell">
+      <div class="ex-spec-k">01 &#183; Software filter</div>
+      <div class="ex-spec-v sp-normal">Velocity checks share the main computer while sensor queues stay uncongested.</div>
+      <div class="ex-spec-v sp-freeze">Stalled compute blocks the software stop call, leaving motor coils energized past the workspace boundary.</div>
+    </div>
+    <div class="ex-spec-cell">
+      <div class="ex-spec-k">02 &#183; Hardware dead-man pin</div>
+      <div class="ex-spec-v sp-normal">Active 5-millisecond local pulses hold the spring wedge clear of the guide rail during healthy motion.</div>
+      <div class="ex-spec-v sp-freeze">Missing pulses de-energize the isolated contactor immediately, so spring tension drops the mechanical pin.</div>
+    </div>
+    <div class="ex-spec-cell">
+      <div class="ex-spec-k">03 &#183; Human recovery</div>
+      <div class="ex-spec-v sp-normal">Weekly unassisted solo-flight shifts keep operators fluent in manual load feel and physical cutoff keys.</div>
+      <div class="ex-spec-v sp-freeze">Practiced crew pulls the belt cutoff key to lock an air gap and clears the halted arm without panic.</div>
+    </div>
+  </div>
+
+  <figcaption>A software-only stop button shares the same computer and network path that can freeze or be hijacked. An out-of-band hardware relay drops its mechanical pin on power or pulse loss and pairs with regular manual practice.</figcaption>
+</figure>
+
+<h2>Why software-only guardrails fail on physical machines</h2>
+
+<p>On an office laptop, a frozen program costs a sigh and a reboot. On a warehouse floor or hospital ward, moving steel and pressurized fluid obey momentum. A two-ton automated forklift rolling toward a loading dock will keep rolling while its onboard operating system waits on a stalled memory call.</p>
+
+<p>Three everyday faults defeat software-only guardrails. First, the main controller can freeze under heavy sensor load, leaving software stop commands stuck in the same queue as the motor driver. Second, an attacker on the local network can spoof a supervisor packet and tell the controller that the aisle is clear. Third, a dusty rangefinder or stuck flow meter can report safe numbers while an arm swings past its mark or an infusion pump delivers double the intended dose.</p>
+
+<p>Adding a second AI checker on the same circuit board rarely removes this hazard. In classic experiments on software reliability, John Knight and Nancy Leveson asked independent programming teams to write separate control programs from the exact same specification.<sup><a href="#fn3">3</a></sup> The teams made correlated mistakes on the same tricky edge cases far more often than chance would predict.<sup><a href="#fn3">3</a></sup></p>
+
+<p>Nancy Leveson's wider investigations of industrial accidents point to an even sharper lesson.<sup><a href="#fn2">2</a></sup> Serious physical accidents frequently happen when every software component works as coded, yet the computer's internal model drifts out of step with what is physically happening on the floor.<sup><a href="#fn2">2</a></sup></p>
+
+<h2>How an out-of-band physical safety relay works</h2>
+
+<p>Elevator builders solved this problem long ago by reversing what happens when control fails. Instead of counting on an emergency signal to turn a brake on, a fail-safe brake uses spring tension or gravity to clamp shut by default. Power and a healthy local signal are required to hold the brake open.</p>
+
+<p>Computer security pioneers Jerome Saltzer and Michael Schroeder captured this rule in two plain design principles: fail-safe defaults and economy of mechanism.<sup><a href="#fn4">4</a></sup> A protection gate must default to refusing action when conditions break.<sup><a href="#fn4">4</a></sup> The gate itself must also stay small and simple enough to test by hand.<sup><a href="#fn4">4</a></sup></p>
+
+<p>On a modern workshop robot arm or automated pump, an out-of-band safety relay puts both rules in copper and steel. A dedicated hardware timer sits directly on the motor power line. It stays physically separate from the main planning computer and unreachable from the network.</p>
+
+<p>To keep the motor energized, the local controller must feed that timer a steady pulse every few milliseconds. Physical limit switches check speed, force, and joint angle at the same time. If the planning software hangs, if torque spikes against a shoulder, or if power flickers, the pulses stop and mechanical springs lock the joint.</p>
+
+<p>Alongside that timer sits a physical cutoff key wired straight into the power relay. Once a technician or nurse pulls that key and clips it to their belt, an air gap opens in the motor circuit. No remote software update, cloud administrator, or hijacked network command can turn the machine back on until the person on the floor inserts and turns the physical key.</p>
+
+<h2>Why physical brakes need solo-flight human practice</h2>
+
+<p>Clamping a machine to a safe stop prevents the immediate collision, yet the human crew still has to finish the job afterward. When an automated warehouse crane locks mid-aisle or an infusion controller trips an alarm at three in the morning, a person on site must step in under real pressure.</p>
+
+<p>In 1983, engineering psychologist Lisanne Bainbridge documented a trap she called the ironies of automation.<sup><a href="#fn1">1</a></sup> Designers automate the ninety-nine percent of a job that is routine and predictable, leaving the human operator to watch a screen for months on end.<sup><a href="#fn1">1</a></sup></p>
+
+<p>Physical and diagnostic skills fade fast when people only watch dials. Operators lose the hands-on feel for how a heavy load sways, how a valve sounds before it cavitates, or how patient vitals shift before a sensor catches up.<sup><a href="#fn1">1</a></sup> Yet the exact moment automation trips its brake is almost always an unfamiliar, messy fault where manual skill matters most.<sup><a href="#fn1">1</a></sup></p>
+
+<p>Hardware brakes therefore keep people safe only when paired with regular "solo flight" drills. Aviation crews fly manual approaches in clear weather so storm landings do not catch rusty hands by surprise. Hospitals, machine shops, and automated warehouses need the same protected weekly practice. Software assistants step aside, mentors coach apprentices directly, and crews run equipment by hand.</p>
+
+<p>You can inspect practical deployment checklists for <a href="/labs/shared-horizon/">physical cutoff relays and unassisted practice schedules in Shared Horizon</a>.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers and safety engineers</summary>
+    <div>
+      <p>Out-of-band physical actuation gates apply IEC 61508 hardware safety integrity principles and Saltzer and Schroeder's economy-of-mechanism and fail-safe default axioms (1975) to embodied control systems.<sup><a href="#fn4">4</a></sup> Rather than relying on multiversion neural or software monitors, which exhibit correlated failure modes on shared edge cases as shown by John C. Knight and Nancy G. Leveson (1986),<sup><a href="#fn3">3</a></sup> kinetic envelopes are enforced by isolated watchdog silicon wired in series with spring-applied fail-safe contactors.</p>
+      <p>In Nancy G. Leveson's System-Theoretic Process Analysis (STPA) framework (2011), unsafe control actions arise when a controller's process model diverges from physical plant state, even without component failure.<sup><a href="#fn2">2</a></sup> Hardware-enforced Control Barrier Functions and revocable embodiment leases bound worst-case kinetic energy at the actuator boundary. Pairing these physical interlocks with scheduled manual practice addresses Lisanne Bainbridge's classic deskilling paradox (1983), preserving operator mental models for out-of-distribution takeover.<sup><a href="#fn1">1</a></sup></p>
+    </div>
+  </details>
+</aside>
+
+<h2>Where gravity brakes face hard engineering trade-offs</h2>
+
+<p>Wiring a spring brake onto a motor does not settle every physical safety problem. Three real trade-offs require careful engineering on each machine.</p>
+
+<p>First, freezing in place is unsafe for machines that rely on active motion to stay upright or keep someone alive. A warehouse arm can lock its joints safely on power loss, whereas a cargo drone mid-flight or an intensive-care ventilator mid-breath cannot simply cut power. Those machines need a tiny, isolated backup controller with zero network access whose sole job is a gentle landing or steady breathing cycle until a human takes the controls.</p>
+
+<p>Second, overly sensitive tripwires breed dangerous workarounds. If dust on an optical curtain slams a press brake shut four times a shift, tired crews face pressure to tape over the sensor. Safety relays need rugged physical sensors and blameless reset rules so workers are never penalized for an honest stop.</p>
+
+<p>Third, solo-flight practice looks like lost output on a short-term spreadsheet. Without binding labor agreements or safety regulations that audit real manual training hours, managers under deadline pressure often cancel unassisted shifts first. Keeping both the gravity brake and the human craft in working order takes public standards with teeth.</p>
+
+<section class="footnotes">
+  <p id="fn1">1. Lisanne Bainbridge, "<a href="https://doi.org/10.1016/0005-1098(83)90046-8">Ironies of automation</a>," <em>Automatica</em> 19(6):775-779 (1983).</p>
+  <p id="fn2">2. Nancy G. Leveson, <a href="https://direct.mit.edu/books/book/2908/Engineering-a-Safer-WorldSystems-Thinking-Applied">Engineering a Safer World: Systems Thinking Applied to Safety</a>, MIT Press (2011).</p>
+  <p id="fn3">3. John C. Knight and Nancy G. Leveson, "<a href="https://doi.org/10.1109/TSE.1986.6312924">An experimental evaluation of the assumption of independence in multiversion programming</a>," <em>IEEE Transactions on Software Engineering</em> SE-12(1):96-109 (1986).</p>
+  <p id="fn4">4. J. H. Saltzer and M. D. Schroeder, "<a href="https://doi.org/10.1109/PROC.1975.9939">The protection of information in computer systems</a>," <em>Proceedings of the IEEE</em> 63(9):1278-1308 (1975).</p>
+</section>

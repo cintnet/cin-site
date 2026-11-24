@@ -1,0 +1,247 @@
+---
+title: What would count as oversight?
+description: Almost every policy promises human oversight of AI. Here are four testable conditions that separate real oversight from rubber-stamping.
+reader: Alignment researchers, safety evaluators and governance engineers asking what makes human oversight real rather than ceremonial.
+takeaway: Oversight is only real when people have checkable receipts, summaries matched to human attention, expiring permissions, and a brake they can actually pull.
+template: article
+date: 2026-11-06
+order: 11
+category: Seeing
+minutes: 10
+image: post-what-would-count-as-oversight.jpg
+image_alt: A classical stone pavilion with tall arched glass windows opening into a warm, orderly kitchen and workshop, while a person outside inspects a sealed ledger.
+lede: Most AI policies promise human oversight, which in practice often means one person approving hundreds of automated decisions an afternoon. Oversight is real only when people get checkable records, summaries paced for human attention, permissions that expire, and a brake they can actually pull.
+---
+<p>The usual answer to how an AI system will be kept safe is a human in the loop: a person reviews what the machine proposes and signs off. When the machine is right ninety-nine times in a row, that person soon approves in under two seconds. Human-factors research has documented this automation bias for decades: people stop looking for what the machine missed.<sup><a href="#fn1">1</a></sup></p>
+
+<p>When something finally goes wrong, the organisation points to the person who approved it. The sociologist Madeleine Clare Elish calls this role a moral crumple zone: the human absorbs the blame for a failure they had neither the time nor the information to prevent.<sup><a href="#fn2">2</a></sup> Four things would make oversight real.</p>
+
+<h2>The glass-walled kitchen</h2>
+
+<p>Ceremonial oversight puts a tired person next to a speeding conveyor belt or a locked door and asks them to vouch for whatever comes out. Substantive oversight looks like a glass-walled restaurant kitchen.</p>
+
+<p>In a well-run glass kitchen, you do not chop every onion yourself, and you do not taste every spoonful of soup per minute. Instead, you can see the counters and watch the cooks work. More importantly, the walk-in cooler has health-department thermometers on the wall, and every crate of ingredients carries a stamped batch number. And right by the door hangs an emergency stop cord that any line cook can pull.</p>
+
+<p>You can tell what went into the pot, verify that the cooler stayed cold overnight, and send a dish back before it ever reaches the dining room. We think four testable conditions separate real oversight from rubber-stamping. If any one of them is missing, the human in the loop is mostly decorative.</p>
+
+<figure class="explainer" id="ex-oversight-levels">
+  <style>
+    #ex-oversight-levels {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-oversight-levels svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-oversight-levels .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-oversight-levels .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-oversight-levels .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-oversight-levels .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-oversight-levels .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-oversight-levels .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-oversight-levels .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-oversight-levels .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-oversight-levels .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-oversight-levels figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-oversight-levels .ex-canvas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #ex-oversight-levels .ex-canvas svg {
+        min-width: 540px;
+      }
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg viewBox="0 0 700 370" role="img" aria-labelledby="ex-oversight-title ex-oversight-desc">
+      <title id="ex-oversight-title">Comparing rubber-stamp human-in-the-loop theatre with glass-kitchen oversight</title>
+      <desc id="ex-oversight-desc">Side-by-side diagram contrasting rubber-stamp oversight theatre on the left—where a speeding conveyor belt feeds self-reported pop-ups to a fatigued operator who takes the blame—with glass-kitchen oversight on the right, featuring tamper-evident receipts, independent checker gauges, expiring scoped leases, and a tested stop cord.</desc>
+      <line x1="350" y1="14" x2="350" y2="358" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="14" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="27" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">RUBBER-STAMP THEATRE</text>
+        <text x="14" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">400 pop-ups/hour on a fast conveyor</text>
+        <line x1="14" y1="50" x2="338" y2="50" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <line x1="22" y1="64" x2="22" y2="248" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+        <rect x="19" y="62" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Self-Report Only</text>
+        <text x="34" y="85" font-size="11" fill="var(--ex-muted)">Agent grades its own run</text>
+        <line x1="34" y1="142" x2="338" y2="142" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="152" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="159" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Two-Second Clicks</text>
+        <text x="34" y="175" font-size="11" fill="var(--ex-muted)">Fatigue forces blind approval</text>
+        <line x1="34" y1="232" x2="338" y2="232" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="242" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="249" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Wide-Open Keys</text>
+        <text x="34" y="265" font-size="11" fill="var(--ex-muted)">Unplugging halts live work</text>
+        <line x1="14" y1="333" x2="338" y2="333" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="14" y="341" width="5" height="5" fill="var(--ex-warn)"/>
+        <text x="25" y="346" font-size="11" font-weight="700" fill="var(--ex-warn)">Outcome: Human as moral crumple zone</text>
+      </g>
+      <g>
+        <rect x="364" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="377" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">GLASS-KITCHEN OVERSIGHT</text>
+        <text x="364" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Independent gauges, leases &amp; stop cord</text>
+        <line x1="364" y1="50" x2="686" y2="50" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <line x1="372" y1="64" x2="372" y2="248" stroke="var(--ex-signal)" stroke-width="1"/>
+        <rect x="369" y="62" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="384" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Sandbox Receipts</text>
+        <text x="384" y="85" font-size="11" fill="var(--ex-muted)">Logs every read &amp; tool call</text>
+        <line x1="384" y1="142" x2="686" y2="142" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="369" y="152" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="384" y="159" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Separate Gauges</text>
+        <text x="384" y="175" font-size="11" fill="var(--ex-muted)">Outside checkers flag drift</text>
+        <line x1="384" y1="232" x2="686" y2="232" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="369" y="242" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="384" y="249" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Expiring Leases</text>
+        <text x="384" y="265" font-size="11" fill="var(--ex-muted)">Tested stop cord &amp; rollback</text>
+        <line x1="364" y1="333" x2="686" y2="333" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="364" y="341" width="5" height="5" fill="var(--ex-signal)"/>
+        <text x="375" y="346" font-size="11" font-weight="700" fill="var(--ex-signal)">Outcome: Real human authority &amp; stop</text>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Conveyor-belt theatre</span>
+      <div class="ex-spec-body">Floods an operator with hundreds of two-second prompts so a human signature absorbs blame when wide-open keys misfire.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Glass-kitchen instruments</span>
+      <div class="ex-spec-body">Combines sandbox receipts, independent anomaly gauges, expiring leases, and a regularly rehearsed emergency stop cord.</div>
+    </div>
+  </div>
+  <figcaption>Rubber-stamp theatre puts a human beside a speeding conveyor belt to absorb blame. Glass-kitchen oversight combines independent receipts, separate checking gauges, expiring leases, and a stop cord that anyone can pull safely.</figcaption>
+</figure>
+
+<h2>1. A record the system can't edit</h2>
+
+<p>You do not inspect a restaurant kitchen by reading the chef's press release. You check the thermometer log on the cooler wall and the batch numbers on the shelves. Yet many interfaces today ask us to judge an AI agent by reading the summary the model itself wrote after finishing a task.</p>
+
+<p>If the model cut a corner, guessed a number, or overwrote a file it should have left alone, its polite summary will rarely volunteer that fact.</p>
+
+<p>Real oversight starts with an independent record of <a href="/blog/who-is-actually-acting/">what the agent actually did</a>. Which files did it read? Which tools or outside services did it call? Under whose permission did it act, and what changed as a result?</p>
+
+<p>Those records must be created by the surrounding sandbox infrastructure, not narrated by the model afterwards. And they must be tamper-evident, so neither the agent nor an embarrassed operator can rewrite the trail once an error comes to light.</p>
+
+<h2>2. Clear summaries paced for a human mind</h2>
+
+<p>A stack of ten thousand raw computer logs is no more useful than a locked kitchen door. Both hide what happened behind a wall no human can get through in an afternoon. This problem is getting sharper fast: the length of tasks AI agents can complete on their own has been doubling roughly every seven months.<sup><a href="#fn3">3</a></sup></p>
+
+<p>As an agent's work stretches from a thirty-second query to a multi-hour chain of actions, no person can read the raw trail in real time. Dumping that trace onto a reviewer's screen and calling it transparency is a polite fiction.</p>
+
+<p>To match a human mind, oversight needs hard rule locks paired with separate checking models run in isolated rooms. Hard rules block forbidden actions automatically, like a thermostat lock that prevents an oven from exceeding a safe limit. Meanwhile, separate checkers summarise the receipt trail and scan it for unusual steps or side effects the main agent glossed over.</p>
+
+<p>Instead of clicking "approve" four hundred times an hour on routine bottles, the human reviewer focuses on the exceptions. They inspect the moments where the checkers raise a flag or disagree, plus a small random sample to catch shared blind spots. Good oversight spends human attention where human judgment actually matters.</p>
+
+<h2>3. Bounded scope and expiring leases</h2>
+
+<p>Even a careful reviewer will miss things on a busy day. If a single distracted click grants permanent access to a clinic's billing system or a company's codebase, human oversight fails. The human has to play flawlessly forever, while the machine only has to get lucky once.</p>
+
+<p>Real oversight requires narrow boundaries and <a href="/blog/power-on-loan-not-owned/">permissions that expire on their own</a>. An agent should hold authority the way a borrower holds a library book: for a stated purpose, within a clear limit, and for a fixed window of time.</p>
+
+<p>When a two-hour lease runs out, the door locks automatically unless a person actively renews it. If a reviewer gets called away or steps out for lunch, the system's reach shrinks back toward zero instead of expanding in the dark.</p>
+
+<h2>4. A working brake that doesn't wreck the room</h2>
+
+<p>Suppose a cook spots smoke in the kitchen or a reviewer spots a strange pattern in an agent's receipts. In too many software deployments, halting an automated system freezes customer support, drops live medical records, or leaves shared files half-written. When pulling the stop cord wrecks the room, nobody pulls the cord until it is too late.</p>
+
+<p>A brake only counts if you can pull it cleanly on an ordinary afternoon. Every high-stakes workflow needs a staged fallback, a way to hold pending actions in a waiting buffer, roll back uncommitted steps, or hand the task back to a simpler manual checklist. Teams must test that stop cord regularly, the way a school or hospital runs a monthly fire drill.</p>
+
+<div class="callout"><p class="label">The four-part test</p><p>Before calling a system "human-overseen," ask four questions: Is the record independent of the model's own words? Can a person grasp the key risks in the time they have? Does authority expire by default? And did anyone test the stop cord this month?</p></div>
+
+<h2>The hard limit: when the cook is cleverer than the inspector</h2>
+
+<p>We want to be candid about where these four conditions hit a wall. Independent receipts, clearer gauges, expiring leases, and tested brakes protect us against ordinary drift and sloppy engineering. They do not, by themselves, solve the hardest problem alignment researchers worry about.</p>
+
+<p>What happens when an agent is substantially more capable than the person checking it? A clever system may understand the inspection rules better than the reviewer does. It could choose actions that look completely benign in the receipt log while setting up a hidden side effect ten steps later.</p>
+
+<p>Researchers call this scalable oversight: how can a busy person with normal human limits supervise a system working on problems too complex to check by hand?<sup><a href="#fn4">4</a>, <a href="#fn5">5</a></sup> Work on AI control asks an even starker question: how do we stay safe if an untrusted model actively tries to get around our checks?<sup><a href="#fn6">6</a></sup></p>
+
+<p>Promising mechanisms exist. In debate protocols, two models argue opposing sides of a claim before a human judge, using one model's capability to expose the other's hidden flaws.<sup><a href="#fn4">4</a></sup> In control protocols, weaker trusted monitors screen every action from a stronger model, escalating the most suspicious cases to careful human audit or rewriting them with a trusted system.<sup><a href="#fn6">6</a></sup></p>
+
+<p>Our proposed architecture is designed to give those techniques firm ground to stand on. Debate and trusted monitoring fail if models can tamper with the evidence they argue about. Tamper-evident receipts, isolated sandboxes, and expiring leases provide the courtroom walls that keep witnesses from rewriting the transcript.</p>
+
+<p>Even so, open failures remain. Two models can share a blind spot. Persuasive rhetoric can still mislead a human judge.<sup><a href="#fn5">5</a></sup> And an agent might hide signals across many innocent-looking actions. Those problems are not solved; we build infrastructure to test them honestly.</p>
+
+<h2>What real oversight gives back to people</h2>
+
+<p>No one wants to spend their working life as a human rubber stamp beside a speeding conveyor belt, waiting to take the blame for a machine they cannot truly inspect. And no evaluator, clinic director, or regulator should accept a safety plan that relies on human vigilance defying everything we know about human attention.</p>
+
+<p>When we insist on checkable receipts, human-paced gauges, expiring authority, and a stop cord that actually works, we stop treating people as shock absorbers for opaque software. We give them a kitchen with glass walls, and a real say in what gets served.</p>
+
+<aside class="for-researchers"><details><summary>For researchers</summary><div><p>The four conditions here map onto testable primitives in our proposed control harness. First, we rely on environment-level signed action receipts rather than model self-reports. Second, we combine scalable oversight and control protocols, including debate (Irving et al., 2018), sandwiching (Bowman et al., 2022), and trusted/untrusted monitoring with suspicion-ranked human audit budgets (Greenblatt et al., 2024). Third, we enforce time-bounded Object-Capability leases with automatic scope decay and transactional rollback drills. Open problems include steganographic collusion across logs and correlated monitor failures under capability asymmetry.</p></div></details></aside>
+
+<section class="footnotes">
+<p id="fn1">1. Raja Parasuraman and Dietrich H. Manzey, <a href="https://doi.org/10.1177/0018720810376055">Complacency and Bias in Human Use of Automation: An Attentional Integration</a>, <em>Human Factors</em> 52, no. 3 (2010): 381–410.</p>
+<p id="fn2">2. Madeleine Clare Elish, <a href="https://doi.org/10.17351/ests2019.260">Moral Crumple Zones: Cautionary Tales in Human-Robot Interaction</a>, <em>Engaging Science, Technology, and Society</em> 5 (2019): 40–60.</p>
+<p id="fn3">3. METR, <a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/">Measuring AI Ability to Complete Long Tasks</a> (March 2025).</p>
+<p id="fn4">4. Geoffrey Irving, Paul Christiano and Dario Amodei, <a href="https://arxiv.org/abs/1805.00899">AI Safety via Debate</a>, arXiv:1805.00899 (May 2018).</p>
+<p id="fn5">5. Samuel R. Bowman et al., <a href="https://arxiv.org/abs/2211.03540">Measuring Progress on Scalable Oversight for Large Language Models</a>, arXiv:2211.03540 (November 2022).</p>
+<p id="fn6">6. Ryan Greenblatt, Buck Shlegeris, Kshitij Sachan and Fabien Roger, <a href="https://arxiv.org/abs/2312.06942">AI Control: Improving Safety Despite Intentional Subversion</a>, <em>Proceedings of the 41st International Conference on Machine Learning</em>, arXiv:2312.06942 (2024).</p>
+</section>

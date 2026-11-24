@@ -1,0 +1,220 @@
+---
+title: Keeping voice assistants from stealing your eyes
+description: Spoken assistants should not pull people into full-screen chat transcripts. Peripheral glanceable displays let people follow voice conversations with a half-second glance while keeping their eyes on the physical world.
+reader: A product builder or phone user wondering why spoken AI assistants demand full-screen visual attention while walking or commuting.
+takeaway: Spoken assistants remain safer and more useful when they show concise status cards on peripheral screens rather than demanding continuous visual focus on full-screen chat feeds.
+template: article
+date: 2026-11-12
+order: 71
+category: Living
+minutes: 6
+image: post-keeping-voice-assistants-from-stealing-your-eyes.jpg
+image_alt: A person walking along a neighborhood sidewalk on an autumn afternoon wearing a small audio earpiece, holding a phone showing a simple glanceable card, soft watercolor wash fading into cream margins.
+lede: A spoken assistant should help people navigate daily life without trapping their eyes on a glass screen. Displaying concise peripheral cues instead of long chat transcripts protects human attention and prevents distracted accidents.
+---
+
+<p>A spoken assistant should help people navigate daily life without trapping their eyes on a glass screen. Displaying concise peripheral cues instead of long chat transcripts protects human attention and prevents distracted accidents.</p>
+
+<figure class="explainer" id="ex-glanceable-voice-displays">
+  <style>
+    #ex-glanceable-voice-displays {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-glanceable-voice-displays svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-glanceable-voice-displays .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-glanceable-voice-displays .diagram-desktop {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    #ex-glanceable-voice-displays .diagram-mobile {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+    #ex-glanceable-voice-displays figcaption {
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-glanceable-voice-displays .diagram-desktop { display: none; }
+      #ex-glanceable-voice-displays .diagram-mobile { display: block; }
+    }
+  </style>
+  <svg class="diagram-desktop" viewBox="0 0 700 350" role="img" aria-labelledby="ex-gvd-title ex-gvd-desc">
+    <title id="ex-gvd-title">Contrasting full-screen chat feeds with peripheral glanceable cards</title>
+    <desc id="ex-gvd-desc">Two-panel diagram showing how full-screen text transcripts monopolize human attention compared to peripheral glanceable status cards that keep eyes on physical surroundings.</desc>
+    <line x1="350" y1="14" x2="350" y2="336" stroke="var(--ex-rule)" stroke-width="1"/>
+    <g>
+      <rect x="16" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="30" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">INTRUSIVE: FULL-SCREEN CHATS</text>
+      <text x="16" y="42" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Demands focal screen attention</text>
+      <line x1="16" y1="52" x2="338" y2="52" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <line x1="25" y1="68" x2="25" y2="234" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+      <rect x="22" y="67" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="74" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Scrolling Speech Bubbles</text>
+      <text x="38" y="91" font-size="11" fill="var(--ex-muted)">Forces reading long generated paragraphs</text>
+      <line x1="38" y1="136" x2="338" y2="136" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="22" y="147" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="154" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Modal Screen Lock-In</text>
+      <text x="38" y="171" font-size="11" fill="var(--ex-muted)">Pulls eyes away from sidewalks and traffic</text>
+      <line x1="38" y1="216" x2="338" y2="216" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="22" y="227" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="234" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Interrupted Movement</text>
+      <text x="38" y="251" font-size="11" fill="var(--ex-muted)">Hands-free errands stall into screen sessions</text>
+      <line x1="16" y1="308" x2="338" y2="308" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="16" y="317" width="5" height="5" fill="var(--ex-warn)"/>
+      <text x="28" y="322" font-size="11" font-weight="700" fill="var(--ex-warn)">Failure mode: Monopolized human focus</text>
+    </g>
+    <g>
+      <rect x="366" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="380" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">CALM: PERIPHERAL CUES</text>
+      <text x="366" y="42" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Informs with half-second glances</text>
+      <line x1="366" y1="52" x2="684" y2="52" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <line x1="375" y1="68" x2="375" y2="234" stroke="var(--ex-signal)" stroke-width="1"/>
+      <rect x="372" y="67" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="388" y="74" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Two-Word State Cues</text>
+      <text x="388" y="91" font-size="11" fill="var(--ex-muted)">Condenses turns into minimal status markers</text>
+      <line x1="388" y1="136" x2="684" y2="136" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="372" y="147" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="388" y="154" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Ambient Wrist Check</text>
+      <text x="388" y="171" font-size="11" fill="var(--ex-muted)">Confirms spoken intent in a quick glance</text>
+      <line x1="388" y1="216" x2="684" y2="216" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="372" y="227" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="388" y="234" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Intact Street Awareness</text>
+      <text x="388" y="251" font-size="11" fill="var(--ex-muted)">Speech guides tasks while eyes stay free</text>
+      <line x1="366" y1="308" x2="684" y2="308" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="366" y="317" width="5" height="5" fill="var(--ex-signal)"/>
+      <text x="378" y="322" font-size="11" font-weight="700" fill="var(--ex-signal)">Outcome: Calm human attention preserved</text>
+    </g>
+  </svg>
+  <svg class="diagram-mobile" viewBox="0 0 330 640" role="img" aria-labelledby="ex-gvd-m-title ex-gvd-m-desc">
+    <title id="ex-gvd-m-title">Contrasting full-screen chat feeds with peripheral glanceable cards</title>
+    <desc id="ex-gvd-m-desc">Two-panel diagram showing how full-screen text transcripts monopolize human attention compared to peripheral glanceable status cards that keep eyes on physical surroundings.</desc>
+    <g>
+      <rect x="8" y="14" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="20" y="20" font-size="11" font-weight="700" fill="var(--ex-warn)">INTRUSIVE: FULL-SCREEN CHATS</text>
+      <text x="8" y="38" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Demands focal screen attention</text>
+      <line x1="8" y1="47" x2="318" y2="47" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <line x1="12" y1="62" x2="12" y2="214" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+      <rect x="9" y="60" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="24" y="67" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Scrolling Speech Bubbles</text>
+      <text x="24" y="84" font-size="11" fill="var(--ex-muted)">Forces reading long paragraphs</text>
+      <line x1="24" y1="125" x2="318" y2="125" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="134" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="24" y="141" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Modal Screen Lock-In</text>
+      <text x="24" y="158" font-size="11" fill="var(--ex-muted)">Pulls eyes from street traffic</text>
+      <line x1="24" y1="199" x2="318" y2="199" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="208" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="24" y="215" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Interrupted Stride</text>
+      <text x="24" y="232" font-size="11" fill="var(--ex-muted)">Errands turn into screen sessions</text>
+      <line x1="8" y1="286" x2="318" y2="286" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="8" y="295" width="5" height="5" fill="var(--ex-warn)"/>
+      <text x="19" y="300" font-size="11" font-weight="700" fill="var(--ex-warn)">Failure mode: Monopolized human focus</text>
+    </g>
+    <line x1="8" y1="320" x2="318" y2="320" stroke="var(--ex-rule)" stroke-width="1.25"/>
+    <g>
+      <rect x="8" y="334" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="20" y="340" font-size="11" font-weight="700" fill="var(--ex-signal)">CALM: PERIPHERAL CUES</text>
+      <text x="8" y="358" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Informs with half-second glances</text>
+      <line x1="8" y1="367" x2="318" y2="367" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <line x1="12" y1="382" x2="12" y2="536" stroke="var(--ex-signal)" stroke-width="1"/>
+      <rect x="9" y="380" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="24" y="387" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Two-Word State Cues</text>
+      <text x="24" y="404" font-size="11" fill="var(--ex-muted)">Condenses turns into minimal cues</text>
+      <line x1="24" y1="446" x2="318" y2="446" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="455" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="24" y="462" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Quick Visual Check</text>
+      <text x="24" y="479" font-size="11" fill="var(--ex-muted)">Confirms intent in half a second</text>
+      <line x1="24" y1="521" x2="318" y2="521" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="530" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="24" y="537" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Intact Awareness</text>
+      <text x="24" y="554" font-size="11" fill="var(--ex-muted)">Eyes stay on physical surroundings</text>
+      <line x1="8" y1="608" x2="318" y2="608" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="8" y="617" width="5" height="5" fill="var(--ex-signal)"/>
+      <text x="19" y="622" font-size="11" font-weight="700" fill="var(--ex-signal)">Outcome: Calm human attention preserved</text>
+    </g>
+  </svg>
+  <figcaption>Figure 1: Contrasting full-screen chat transcripts with calm glanceable cues.</figcaption>
+</figure>
+
+<h2>Why full-screen chat transcripts fail</h2>
+
+<p>Most mobile assistants treat speech as an audio microphone plugged into a text messenger. When someone speaks a question into an earbud, the phone screen lights up with a full chat transcript. The glass display fills with rolling speech bubbles, bouncing dots, and long paragraphs of generated words.</p>
+
+<p>This text layout defeats the purpose of speaking. People use voice commands while walking down busy streets, carrying grocery bags, or minding children on a playground. If checking what the machine heard requires stopping in place and reading two paragraphs, the voice tool fails. The user must pause their step, tilt their neck downward, and focus on a small glass surface.</p>
+
+<p>Checking a screen while walking creates clear physical risks. People bump into lampposts, miss uneven pavement, and lose awareness of passing bicycles. What began as a hands-free errand ends up taking over visual focus.</p>
+
+<h2>Glanceable cues instead of text feeds</h2>
+
+<p>A safer design borrows from calm technology and simple dashboard instruments. When you check the time on a wristwatch, you absorb the hour in a quarter of a second. You do not read a historical summary of every minute that passed since breakfast.</p>
+
+<p>Recent research on conversational interfaces confirms that glanceable visual cues match this wrist-watch model. Anton Wolter, William Benjamin, and Niklas Elmqvist (<a href="https://arxiv.org/abs/2611.08443">Wolter et al. 2026</a>) built Souffleur, a mobile system that replaces scrolling text with compact visual summaries. In their controlled trials across forty-eight participants, users resumed interrupted conversations just as accurately with brief glanceable cards as they did with full text transcripts. Condensing turns into a few key words preserved comprehension without demanding visual focus.</p>
+
+<p>A glanceable card displays only what matters right now. If you asked your assistant to reschedule a morning clinic visit, the screen shows the doctor's name, the new hour, and a small green check mark. A half-second glance confirms the change. You know the assistant understood your words, and your eyes return immediately to the street.</p>
+
+<h2>Keeping attention in the physical world</h2>
+
+<p>Putting conversational state into the sensory periphery changes how people relate to software tools. Decades ago, computer scientists Mark Weiser and John Seely Brown (<a href="https://doi.org/10.1007/978-1-4612-0685-9_6">Weiser and Brown 1996</a>) described calm technology as tools that inform without demanding center stage. A well-designed tool rests at the edge of awareness until summoned.</p>
+
+<p>When an assistant speaks in your ear and shows a two-word confirmation on a watch face or pocket screen, your attention stays where your feet are walking. You hear a summary of the next bus arrival while your eyes watch the traffic signal. You confirm an appointment without breaking eye contact with the colleague walking beside you. The software serves your goals instead of pulling your attention away from the real world.</p>
+
+<h2>Where glanceable interfaces reach their limits</h2>
+
+<p>Glanceable displays do not fit every spoken task. Two clear trade-offs emerge.</p>
+
+<p>First, complex choices with detailed numeric comparisons still require deliberate reading. Choosing between three medical insurance plans or reviewing legal clauses cannot happen in a half-second glance. Designers must provide clear handoffs to deep-reading modes when the subject matter demands scrutiny.</p>
+
+<p>Second, concise visual cards rely on accurate summarization. If an assistant condenses a nuanced medical warning into three reassuring words, the user might overlook an important allergy note. Builders must design fail-safe cues that signal uncertainty whenever the assistant cannot summarize safely.</p>
+
+<p>To see how personal agents and device builders implement ambient status cards and escalation boundaries, explore the action cards in <a href="/labs/shared-horizon/">Shared Horizon</a>.</p>
+
+<aside class="for-researchers">
+<details>
+<summary>For researchers</summary>
+<div>
+<p>
+Glanceable interfaces operationalize calm technology principles for voice-driven foundation model agents.
+Full-screen text chat transcripts impose high visual cognitive load during mobile tasks, inducing attentional capture and situational blindness.
+Anton Wolter, William Benjamin, and Niklas Elmqvist (<a href="https://arxiv.org/abs/2611.08443">Wolter et al. 2026</a>) demonstrate with Souffleur that compact glanceable status cards maintain conversation resumption accuracy across 48 participants while eliminating the need for full transcript displays.
+Mark Weiser and John Seely Brown (<a href="https://doi.org/10.1007/978-1-4612-0685-9_6">Weiser and Brown 1996</a>) establish the foundational paradigm of peripheral awareness and attentional calm.
+Sebastian Hubenschmid et al. (<a href="https://arxiv.org/abs/2602.19809">Hubenschmid et al. 2026</a>) demonstrate spatial glanceable widgets for situated augmented reality.
+Open questions include automated uncertainty signaling in ambient UI cards, dynamic typography scaling under ambient glare, and multi-modal sensory handoffs during emergency cognitive interruptions.
+</p>
+<p>
+Practical deployment steps and civic safeguard cards are detailed in <a href="/labs/shared-horizon/">Shared Horizon</a>.
+</p>
+</div>
+</details>
+</aside>

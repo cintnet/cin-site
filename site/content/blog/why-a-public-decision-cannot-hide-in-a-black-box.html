@@ -1,0 +1,237 @@
+---
+title: Why a public decision cannot hide in a black box
+description: When software decides who qualifies for housing, benefits, or public care, agencies cannot accept a vendor's trade secret. Here is why public choices need an open blueprint.
+reader: Public officials, agency leaders, and citizens wondering why automated government decisions must stay open to inspection.
+takeaway: Public power requires public reasons. Software that makes official decisions must carry open model dossiers, change triggers, and independent audit trails.
+template: article
+date: 2026-11-09
+order: 1
+category: Governing
+minutes: 7
+image: post-why-a-public-decision-cannot-hide-in-a-black-box.jpg
+image_alt: A sunlit oak table in a town hall meeting room with unrolled architectural blueprints and an open public dossier.
+lede: When software makes official decisions, the public is owed the same reasons it is owed for any exercise of public power. Agencies using AI should keep an open record of each model and how it is used, re-review the system whenever the model changes materially, and allow independent audits.
+---
+<p>A planning board can show anyone the calculations behind a bridge. Administrative law has long required agencies to keep records and give reasons, so courts and the public can check their decisions. Software that decides who gets benefits or permits often comes with neither, because the model is proprietary or its reasoning can't be inspected.</p>
+
+<h2>Public power requires public reasons</h2>
+
+<p>Governments carry a unique responsibility. When a private company buys automated software, it answers to its shareholders. If a shopping app makes a clumsy product recommendation, you can simply close the browser.</p>
+
+<p>Public administration is different. When an agency decides who qualifies for disability support, who receives emergency housing, or whose tax return faces an audit, it exercises the power of the state. Those choices change people's lives in deep, lasting ways.</p>
+
+<p>In a democracy, official power comes with a fundamental bargain. Public power requires public reasons. If an agency denies your permit or cancels your benefits, you have the right to know why.</p>
+
+<p>You have the right to see the rules that were applied. You have the right to check if the facts were accurate. And you have the right to appeal if someone made a mistake.</p>
+
+<p>Proprietary software breaks that democratic bargain. When agencies buy closed algorithms from private vendors, the vendor often claims that the software's inner workings are confidential trade secrets. When a citizen asks why their assistance was cut, the agency staff can only shrug and point at the computer screen.</p>
+
+<figure class="explainer" id="ex-scrutable-state">
+  <style>
+    #ex-scrutable-state {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-scrutable-state svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-scrutable-state .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-scrutable-state .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-scrutable-state .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-scrutable-state .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-scrutable-state .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-scrutable-state .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-scrutable-state .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-scrutable-state .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-scrutable-state .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-scrutable-state figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-scrutable-state .ex-canvas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #ex-scrutable-state .ex-canvas svg {
+        min-width: 540px;
+      }
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg viewBox="0 0 700 370" role="group" aria-labelledby="ex-scrutable-title ex-scrutable-desc">
+      <title id="ex-scrutable-title">Comparing proprietary black-box public software with the Scrutable State framework</title>
+      <desc id="ex-scrutable-desc">A side-by-side comparison showing how closed vendor trade secrets erode public trust, while open model dossiers and material-change triggers protect administrative due process.</desc>
+      <text class="ex-mono" x="14" y="19" font-size="10.5" font-weight="700" fill="var(--ex-muted)">PUBLIC DECISION INTEGRITY: BLACK BOX VS THE SCRUTABLE STATE</text>
+      <line x1="14" y1="27" x2="686" y2="27" stroke="var(--ex-rule)" stroke-width="1"/>
+      <line x1="350" y1="38" x2="350" y2="358" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="14" y="42" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="27" y="48" font-size="11" font-weight="700" fill="var(--ex-warn)">PROPRIETARY BLACK BOX</text>
+        <text x="14" y="65" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Shields public rules behind secrecy</text>
+        <line x1="14" y1="74" x2="338" y2="74" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <line x1="22" y1="88" x2="22" y2="256" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+        <rect x="19" y="86" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="93" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Trade-Secret Shield</text>
+        <text x="34" y="109" font-size="11" fill="var(--ex-muted)">Blocks public weight &amp; rule audit</text>
+        <line x1="34" y1="158" x2="338" y2="158" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="168" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="175" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Silent Model Drift</text>
+        <text x="34" y="191" font-size="11" fill="var(--ex-muted)">Vendor alters prompts unseen</text>
+        <line x1="34" y1="240" x2="338" y2="240" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="250" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="257" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Blind Deference</text>
+        <text x="34" y="273" font-size="11" fill="var(--ex-muted)">Agency defends opaque denials</text>
+        <line x1="14" y1="333" x2="338" y2="333" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="14" y="341" width="5" height="5" fill="var(--ex-warn)"/>
+        <text x="25" y="346" font-size="11" font-weight="700" fill="var(--ex-warn)">Outcome: Eroded due process</text>
+      </g>
+      <g>
+        <rect x="364" y="42" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="377" y="48" font-size="11" font-weight="700" fill="var(--ex-signal)">THE SCRUTABLE STATE</text>
+        <text x="364" y="65" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Binds state action to public proof</text>
+        <line x1="364" y1="74" x2="686" y2="74" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <line x1="372" y1="88" x2="372" y2="256" stroke="var(--ex-signal)" stroke-width="1"/>
+        <rect x="369" y="86" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="384" y="93" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Open Model Dossiers</text>
+        <text x="384" y="109" font-size="11" fill="var(--ex-muted)">Agency holds full test bounds</text>
+        <line x1="384" y1="158" x2="686" y2="158" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="369" y="168" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="384" y="175" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Change Triggers</text>
+        <text x="384" y="191" font-size="11" fill="var(--ex-muted)">Weight updates pause live use</text>
+        <line x1="384" y1="240" x2="686" y2="240" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="369" y="250" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="384" y="257" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Auditable Traces</text>
+        <text x="384" y="273" font-size="11" fill="var(--ex-muted)">Courts verify unbroken logs</text>
+        <line x1="364" y1="333" x2="686" y2="333" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="364" y="341" width="5" height="5" fill="var(--ex-signal)"/>
+        <text x="375" y="346" font-size="11" font-weight="700" fill="var(--ex-signal)">Outcome: Protected public due process</text>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Private secrecy in public law</span>
+      <div class="ex-spec-body">Vendor trade-secret claims prevent citizens and courts from inspecting silent prompt changes or contesting automated denials.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Scrutable state safeguards</span>
+      <div class="ex-spec-body">Requires open testing dossiers, automatic pause triggers when weights change, and unbroken evidentiary logs for judicial review.</div>
+    </div>
+  </div>
+  <figcaption>Figure 1: How proprietary trade secrets undermine public trust, and how the scrutable state framework establishes auditable safeguards for automated decisions.</figcaption>
+</figure>
+
+<h2>Three pillars of the scrutable state</h2>
+
+<p>We do not have to accept uninspectable governance. Legal scholars and administrative researchers are formulating a clear standard known as the scrutable state.<sup><a href="#fn1">1</a></sup> It replaces blind trust with three concrete structural safeguards.</p>
+
+<p>First, public agencies must mandate open model dossiers. Before any automated system touches a public case, the vendor must deliver a complete, open record of how the tool was tested, where it fails, and what boundaries govern its outputs. The public body, not the private vendor, must own this dossier.</p>
+
+<p>Second, procurement rules must establish material-change triggers. Software running in the cloud rarely stays still. When a vendor updates model weights, changes system instructions, or swaps out data pipelines, the tool is no longer the system the agency approved. A material-change trigger automatically pauses automated decisions until independent testers re-verify the new behavior.</p>
+
+<p>Third, administrative review must enforce deference to audit. Courts have long given administrative bodies leeway when they make technical calls. But that trust must be earned. Under this standard, courts only presume a process was fair if the agency presents an unbroken, independent audit trail of the actual decision.</p>
+
+<p>Canada's Directive on Automated Decision-Making demonstrates this principle in practice.<sup><a href="#fn2">2</a></sup> It requires federal departments to publish algorithmic impact assessments, maintain human oversight, and provide plain-language explanations to affected individuals.</p>
+
+<p>Similarly, the European Union's Artificial Intelligence Act classifies public benefit allocation systems as high-risk technologies.<sup><a href="#fn3">3</a></sup> The statute mandates strict technical documentation, continuous logging, and independent pre-deployment testing. In the United States, federal guidance directs agencies to waive vendor trade-secret claims when algorithms affect citizen rights.<sup><a href="#fn4">4</a></sup></p>
+
+<h2>Inspection builds lasting public trust</h2>
+
+<p>Inspecting software does not mean every citizen must read raw code. Very few people calculate concrete load ratios before walking across a municipal footbridge. We cross with confidence because independent inspectors verified the math before the bridge opened to traffic.</p>
+
+<p>Public software deserves that exact same standard of care. When agencies insist on open dossiers and verifiable change triggers, they protect both the public and themselves. They ensure that civil servants remain the masters of their tools rather than captive customers of opaque algorithms.</p>
+
+<p>The choice before public institutions is not between adopting technology or rejecting it. The choice is whether our public tools serve democratic accountability or chip away at it. By insisting on inspectable blueprints, communities ensure that the power of the state always remains accountable to the people it serves.</p>
+
+<p>Explore actionable guidance on establishing model dossiers and automated re-testing triggers in our <a href="/labs/shared-horizon/">Shared Horizon action library</a>.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers: Administrative law's fourth settlement and algorithmic deference</summary>
+    <div>
+      <p>In administrative jurisprudence, the tension between administrative expertise and judicial review has historically resolved through distinct settlements. The Fourth Settlement addresses algorithmic state action. In arXiv:2602.09678, Caputo argues that traditional doctrines of judicial deference (such as Chevron or State Farm arbitrary-and-capricious review) cannot function when agency choices are delegated to uninspectable proprietary models. The authors outline three essential statutory components: Model and System Dossiers (MSDs), Material-Model-Change Triggers (MMCTs), and Deference to Audit standards. When agencies fail to maintain verifiable execution receipts and model dossiers, decisions forfeit judicial deference under administrative procedure statutes.</p>
+    </div>
+  </details>
+</aside>
+
+<section class="related-essays">
+  <h2>Related essays</h2>
+  <ul>
+    <li><a href="/blog/when-pricing-bots-bid-on-public-contracts/">When pricing bots bid on public contracts</a></li>
+    <li><a href="/blog/who-is-actually-acting/">Who is actually acting?</a></li>
+    <li><a href="/blog/power-on-loan-not-owned/">AI agents should hold permissions that expire</a></li>
+    <li><a href="/blog/power-on-loan-not-owned/">AI agents should hold permissions that expire</a></li>
+  </ul>
+</section>
+
+<section class="footnotes">
+  <h2>Footnotes</h2>
+  <ol>
+    <li id="fn1">Nicholas Caputo, <em>Administrative Law's Fourth Settlement: AI and the Scrutable State</em>, arXiv:2602.09678 (2026). <a href="https://arxiv.org/abs/2602.09678">arxiv.org/abs/2602.09678</a></li>
+    <li id="fn2">Treasury Board of Canada Secretariat, <em>Directive on Automated Decision-Making</em>, Government of Canada Policy Suite (2026). <a href="https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32592">tbs-sct.canada.ca/pol/doc-eng.aspx?id=32592</a></li>
+    <li id="fn3">European Union, <em>Regulation (EU) 2024/1689 laying down harmonised rules on artificial intelligence (AI Act)</em>, Official Journal of the European Union (2024). <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj">eur-lex.europa.eu/eli/reg/2024/1689/oj</a></li>
+    <li id="fn4">U.S. Office of Management and Budget, <em>Memorandum M-24-10: Advancing Governance, Innovation, and Risk Management for Agency Use of Artificial Intelligence</em>, The White House (2024). <a href="https://www.whitehouse.gov/wp-content/uploads/2024/03/M-24-10-Advancing-Governance-Innovation-and-Risk-Management-for-Agency-Use-of-Artificial-Intelligence.pdf">whitehouse.gov/wp-content/uploads/2024/03/M-24-10</a></li>
+  </ol>
+</section>

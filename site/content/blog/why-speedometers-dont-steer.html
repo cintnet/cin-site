@@ -1,0 +1,230 @@
+---
+title: Why speedometers don't steer
+description: AI benchmark rankings measure only raw processing speed and task duration. Here is why an honest observatory must measure human control, auditability, and emergency brakes alongside capability.
+reader: Citizens, civic leaders, engineers, and researchers deciding which AI capabilities are safe to trust.
+takeaway: Tracking AI speed without oversight is like watching a speedometer on black ice. An honest observatory tracks capability and control together, publishing scored forecasts in plain daylight.
+template: article
+date: 2026-11-08
+order: 58
+category: Seeing
+minutes: 9
+image: post-why-speedometers-dont-steer.jpg
+image_alt: A warm watercolor vignette of a wooden ship's dashboard with two brass dials, one measuring speed and one measuring steering rudder, beside an open navigational chart and brass compass on warm cream paper.
+lede: Public AI rankings measure how capable models are, not whether people can still oversee them. Our Observatory tracks both, and publishes its forecasts so they can be scored against what actually happens.
+---
+<p>Leaderboards and capability benchmarks report how much AI systems can do and how fast that is growing. They say nothing about whether the institutions using those systems can see what they do and stop them when needed. A dashboard with only a speedometer tells you how fast you are going, not whether you still have control.</p>
+
+<h2>The single dial on the public dashboard</h2>
+
+<p>Every few months, software companies and benchmark trackers release new charts. The lines sweep upward across benchmark scores, parameter counts, and task duration. We are told that a new model solves math competition problems twice as fast, or completes a five-hour coding task without human intervention.<sup><a href="#fn1">1</a></sup> Even when an assistant reaches a high score on a test, standard rankings measure only whether a task finished, not what was damaged along the way.<sup><a href="#fn5">5</a>, <a href="#fn6">6</a></sup></p>
+
+<p>These numbers represent real engineering achievements. But they measure only horsepower and acceleration. What they leave out is the second dial on the dashboard: the steering wheel and the brakes.</p>
+
+<p>Can a human supervisor see what the model did before its decisions take effect? Does the assistant leave a tamper-evident receipt for every file it altered? Can a city council pull an emergency lever to halt an automated workflow without crashing local public services?<sup><a href="#fn2">2</a></sup></p>
+
+<p>When public rankings ignore those questions, they treat raw speed as if it were the only property that matters.</p>
+
+<figure class="explainer" id="ex-two-dials">
+  <style>
+    #ex-two-dials {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-two-dials svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-two-dials .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-two-dials .diagram-desktop {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    #ex-two-dials .diagram-mobile {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+    #ex-two-dials figcaption {
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 600px) {
+      #ex-two-dials .diagram-desktop { display: none; }
+      #ex-two-dials .diagram-mobile { display: block; }
+    }
+  </style>
+  <svg class="diagram-desktop" viewBox="0 0 700 370" role="group" aria-labelledby="ex-dials-title ex-dials-desc">
+    <title id="ex-dials-title">Comparing single-dial capability rankings with dual-dial observatory tracking</title>
+    <desc id="ex-dials-desc">A side-by-side comparison illustrating why tracking model speed alone creates an oversight gap, and how monitoring control, verifiable receipts, and emergency levers restores safety.</desc>
+    <text class="ex-mono" x="16" y="20" font-size="10.5" font-weight="700" fill="var(--ex-muted)">OBSERVATORY FRAMEWORK: CAPABILITY VERSUS GOVERNANCE DIALS</text>
+    <line x1="16" y1="28" x2="684" y2="28" stroke="var(--ex-rule)" stroke-width="1"/>
+    <line x1="350" y1="40" x2="350" y2="356" stroke="var(--ex-rule)" stroke-width="1"/>
+    <g id="ex-panel-speed">
+      <rect x="16" y="44" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="30" y="50" font-size="11" font-weight="700" fill="var(--ex-warn)">THE SPEEDOMETER ONLY</text>
+      <text x="16" y="68" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Tracks velocity and benchmark scores</text>
+      <line x1="16" y1="78" x2="338" y2="78" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <line x1="25" y1="94" x2="25" y2="256" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+      <rect x="22" y="93" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="100" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Raw Benchmark Scale</text>
+      <text x="38" y="117" font-size="11" fill="var(--ex-muted)">Measures math accuracy and token throughput</text>
+      <line x1="38" y1="160" x2="338" y2="160" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="22" y="171" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="178" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Autonomous Task Length</text>
+      <text x="38" y="195" font-size="11" fill="var(--ex-muted)">Tracks hours worked without human input</text>
+      <line x1="38" y1="238" x2="338" y2="238" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="22" y="249" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="256" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Oversight Blindspot</text>
+      <text x="38" y="273" font-size="11" fill="var(--ex-muted)">Ignores whether mistakes can be caught or undone</text>
+      <line x1="16" y1="328" x2="338" y2="328" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="16" y="337" width="5" height="5" fill="var(--ex-warn)"/>
+      <text x="28" y="342" font-size="11" font-weight="700" fill="var(--ex-warn)">Risk: High velocity compounds silent drift</text>
+    </g>
+    <g id="ex-panel-steering">
+      <rect x="366" y="44" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="380" y="50" font-size="11" font-weight="700" fill="var(--ex-signal)">DUAL-DIAL OBSERVATORY</text>
+      <text x="366" y="68" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Pairs capability metrics with human control</text>
+      <line x1="366" y1="78" x2="684" y2="78" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <line x1="375" y1="94" x2="375" y2="256" stroke="var(--ex-signal)" stroke-width="1"/>
+      <rect x="372" y="93" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="388" y="100" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Tamper-Evident Receipts</text>
+      <text x="388" y="117" font-size="11" fill="var(--ex-muted)">Requires signed logs of data and action traces</text>
+      <line x1="388" y1="160" x2="684" y2="160" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="372" y="171" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="388" y="178" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Narrow Expiring Access</text>
+      <text x="388" y="195" font-size="11" fill="var(--ex-muted)">Restricts untrusted nets with expiring leases</text>
+      <line x1="388" y1="238" x2="684" y2="238" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="372" y="249" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="388" y="256" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Calibrated Forecasts</text>
+      <text x="388" y="273" font-size="11" fill="var(--ex-muted)">Scores predictions under public proper rules</text>
+      <line x1="366" y1="328" x2="684" y2="328" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="366" y="337" width="5" height="5" fill="var(--ex-signal)"/>
+      <text x="378" y="342" font-size="11" font-weight="700" fill="var(--ex-signal)">Outcome: Oversight keeps pace with speed</text>
+    </g>
+  </svg>
+  <svg class="diagram-mobile" viewBox="0 0 330 680" role="img" aria-labelledby="ex-dials-m-title ex-dials-m-desc">
+    <title id="ex-dials-m-title">Comparing single-dial capability rankings with dual-dial observatory tracking (Mobile)</title>
+    <desc id="ex-dials-m-desc">Stacked mobile layout contrasting single-dial capability rankings with dual-dial observatory tracking for phone screens.</desc>
+    <g id="ex-panel-speed-m">
+      <rect x="8" y="14" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="20" y="20" font-size="11" font-weight="700" fill="var(--ex-warn)">THE SPEEDOMETER ONLY</text>
+      <text x="8" y="38" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Tracks velocity and benchmark scores</text>
+      <line x1="8" y1="47" x2="318" y2="47" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <line x1="12" y1="62" x2="12" y2="228" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+      <rect x="9" y="60" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="24" y="67" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Raw Benchmark Scale</text>
+      <text x="24" y="84" font-size="11" fill="var(--ex-muted)">Measures accuracy and throughput</text>
+      <line x1="24" y1="132" x2="318" y2="132" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="141" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="24" y="148" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Autonomous Horizon</text>
+      <text x="24" y="165" font-size="11" fill="var(--ex-muted)">Hours worked without human input</text>
+      <line x1="24" y1="213" x2="318" y2="213" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="222" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="24" y="229" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Oversight Blindspot</text>
+      <text x="24" y="246" font-size="11" fill="var(--ex-muted)">Ignores whether errors can be undone</text>
+      <line x1="8" y1="306" x2="318" y2="306" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="8" y="315" width="5" height="5" fill="var(--ex-warn)"/>
+      <text x="19" y="320" font-size="11" font-weight="700" fill="var(--ex-warn)">Risk: High velocity compounds silent drift</text>
+    </g>
+    <line x1="8" y1="340" x2="318" y2="340" stroke="var(--ex-rule)" stroke-width="1.25"/>
+    <g id="ex-panel-steering-m">
+      <rect x="8" y="354" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="20" y="360" font-size="11" font-weight="700" fill="var(--ex-signal)">DUAL-DIAL OBSERVATORY</text>
+      <text x="8" y="378" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Pairs capability metrics with human control</text>
+      <line x1="8" y1="387" x2="318" y2="387" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <line x1="12" y1="402" x2="12" y2="570" stroke="var(--ex-signal)" stroke-width="1"/>
+      <rect x="9" y="400" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="24" y="407" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Tamper-Evident Receipts</text>
+      <text x="24" y="424" font-size="11" fill="var(--ex-muted)">Signed logs of data and action traces</text>
+      <line x1="24" y1="473" x2="318" y2="473" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="482" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="24" y="489" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Narrow Expiring Access</text>
+      <text x="24" y="506" font-size="11" fill="var(--ex-muted)">Expiring leases on untrusted networks</text>
+      <line x1="24" y1="555" x2="318" y2="555" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="564" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="24" y="571" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Calibrated Forecasts</text>
+      <text x="24" y="588" font-size="11" fill="var(--ex-muted)">Scored under public proper rules</text>
+      <line x1="8" y1="648" x2="318" y2="648" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="8" y="657" width="5" height="5" fill="var(--ex-signal)"/>
+      <text x="19" y="662" font-size="11" font-weight="700" fill="var(--ex-signal)">Outcome: Oversight keeps pace with speed</text>
+    </g>
+  </svg>
+  <figcaption>Figure 1: Why watching model speed alone creates dangerous blindspots, and how dual-dial tracking restores balance.</figcaption>
+</figure>
+
+<h2>The widening oversight gap</h2>
+
+<p>When an engine grows more powerful while the steering mechanism remains unchanged, danger compounds with every mile. In technology governance, we call the distance between these two dials the oversight gap.</p>
+
+<p>On one side, autonomous software executes longer chains of actions with less supervision. On the other side, human inspection remains slow, fragmented, and underfunded. AI agents' success rates fall as tasks get longer, so a system that is reliable on short tasks can fail on long ones.<sup><a href="#fn1">1</a></sup> By the time an inspector notices a deviation, twenty dependent actions have already executed.</p>
+
+<p>Relying on an AI assistant to monitor its own mistakes does not fix the problem. An algorithm cannot impartially grade its own work. If a system has the authority to act, its safety guarantees must be enforced by independent external mechanisms.<sup><a href="#fn3">3</a></sup></p>
+
+<h2>How an honest observatory works</h2>
+
+<p>An observatory should never be a marketing department or a panic horn. Its purpose is to provide dependable navigation tools for communities, researchers, and public officials.</p>
+
+<p>To provide clear instruments, our Observatory follows three straightforward commitments:</p>
+
+<p><strong>First, we track both curves side by side.</strong> We record advances in model reasoning and task execution duration. But we give equal prominence to indicators of human control: verifiable action receipts, decentralized data ownership, and democratic appeal procedures. If model speed surges while human oversight tools stagnate, our public charts display that divergence immediately.</p>
+
+<p><strong>Second, we score our forecasts in daylight.</strong> Anyone can issue vague warnings or bold claims about the future. An honest observer writes down concrete forecasts with exact dates, unambiguous resolution criteria, and probabilistic confidence intervals before events unfold.<sup><a href="#fn4">4</a></sup> We score these predictions under standard scoring rules. When our estimates miss the mark, we preserve the record rather than rewriting history.</p>
+
+<p><strong>Third, we anchor every observation in non-negotiable basic rights and hard red lines.</strong> No amount of speed or technical elegance justifies ignoring personal consent, scoring human worth, or denying due process. Our nineteen basic rights and hard red lines set firm boundaries that no technological emergency can override.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers: formal formulations and epistemic scoring</summary>
+    <div>
+      <p>Tracking the oversight gap requires formalizing the divergence between autonomous execution horizon $H_{\text{exec}}$ and human auditability latency $L_{\text{audit}}$. Standard benchmark suites (such as SWE-bench and FrontierMath) focus on capability frontiers, often operationalized via task completion time in METR's time-horizon measurements (Kwa et al., arXiv:2503.14499). Continuous validation on Terminal-Bench 2.0 (Buchanan et al., arXiv:2611.08417) demonstrates that static benchmark rankings accumulate substantial maintenance debt and show leaderboard shifts driven by runtime resource allocations. Empirical analysis across VeriHarm-Bench (Chen et al., arXiv:2611.03575) shows that frontier agents achieve ninety-five percent task accuracy while causing unintended harm in over sixty percent of runs, demonstrating that task-success metrics understate safety risks without explicit side-effect verification.</p>
+      <p>Empirical analysis of multi-step agent trajectories shows that compounding error rates follow non-linear degradation when enforcement mechanisms are delegated to internal self-critique. Wang (arXiv:2609.15293) separates the probability that an agent framework detects an unsafe action ($p_d$) from the probability that it then stops it ($p_e$), and finds $p_e \approx 0$ by default in every framework tested: the controller receives the safety flag and executes anyway.</p>
+      <p>In addition, a review of AI incident governance (Sidhu et al., arXiv:2607.05163) notes that pre-deployment assessments miss some failures, and finds definitions, classification, monitoring and reporting inconsistent across existing frameworks. To ensure epistemic rigor without lookahead bias, CIN's Observatory evaluates forward-looking indicators using proper scoring rules, specifically Brier scores and sequential conformal calibration frameworks (arXiv:2512.16030; arXiv:2610.12937). By evaluating indicator families across Family A (capability horizons), Family C (decentralized protocols), and Family F (democratic governance), the Observatory operationalizes two-sided plausibility constraints across public and private verification domains.</p>
+    </div>
+  </details>
+</aside>
+
+<h2>Keeping human hands on the steering wheel</h2>
+
+<p>We measure AI so that powerful tools stay accountable to the people whose lives they affect.</p>
+
+<p>A locomotive needs an engine, but it also requires steel rails, signal lanterns, and reliable air brakes. Without those safety structures, an engine is merely an unguided projectile. Before communities delegate healthcare triage, public budgets, or legal administration to automated systems, they have a right to inspect both dials.</p>
+
+<p>We invite you to explore our live <a href="/labs/observatory/">Observatory dashboard</a>, review our <a href="/about/principles/">nineteen basic rights and hard red lines</a>, or inspect our verified governance protocols in the <a href="/labs/shared-horizon/">Shared Horizon library</a>.</p>
+
+<p class="muted"><strong>Related essays:</strong> <a href="/blog/when-pricing-bots-bid-on-public-contracts/">When pricing bots bid on public contracts</a> · <a href="/blog/paying-for-words-instead-of-the-repair/">Paying for words instead of the repair</a>. Further reading: <a href="/blog/how-long-errands-stay-on-track/">Why long errands go off the rails</a> · <a href="/blog/how-to-tell-if-an-ai-assistant-works-for-you/">How to tell if an AI assistant works for you</a> · <a href="/blog/why-an-assistant-shouldnt-tap-your-shoulder-for-every-small-question/">Why an assistant shouldn't tap your shoulder for every small question</a>.</p>
+
+<section class="footnotes">
+  <p id="fn1">1. Thomas Kwa, Ben West, Joel Becker et al. (METR), <a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/">Measuring AI Ability to Complete Long Tasks</a>, METR Research Report (March 2025; arXiv:2503.14499).</p>
+  <p id="fn2">2. Harleen Kaur Sidhu, Rebecca Scholefield, Nour Annan et al., <a href="https://arxiv.org/abs/2607.05163">Open Problems in AI Incident Governance</a>, arXiv:2607.05163 (July 2026).</p>
+  <p id="fn3">3. Yuhang Wang, <a href="https://arxiv.org/abs/2609.15293">Why LLM Agents Collapse Without Oversight: The Enforcement Gap as the Mechanism Behind Emergence World Failures</a>, arXiv:2609.15293 (September 2026).</p>
+  <p id="fn4">4. Lukas Nel, <a href="https://arxiv.org/abs/2512.16030">Do Large Language Models Know What They Don't Know? KalshiBench: A New Benchmark for Evaluating Epistemic Calibration via Prediction Markets</a>, arXiv:2512.16030 (December 2025).</p>
+  <p id="fn5">5. E. Kelly Buchanan, Crystal Zhou, Scott W. Linderman and Christopher R&eacute;, <a href="https://arxiv.org/abs/2611.08417">Benchmarks as Software: Terminal-Bench and the Case for Continuous Benchmarks</a>, <em>arXiv:2611.08417</em> (November 2026).</p>
+  <p id="fn6">6. Wei-Lin Chen, Zhepei Wei, Xinyu Zhu, Yu-Min Tseng, Tzu-Han Lin and Yu Meng, <a href="https://arxiv.org/abs/2611.03575">VeriHarm-Bench: Measuring Harmful Success in LLM Coding Agents Verifiably</a>, <em>arXiv:2611.03575</em> (November 2026).</p>
+</section>

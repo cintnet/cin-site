@@ -1,0 +1,353 @@
+---
+title: How an AI assistant should tell you when it might be wrong
+description: A trustworthy assistant tells you when it is guessing. Here are four habits an AI assistant needs so you can tell solid facts from guesswork.
+reader: Anyone who uses AI tools to look things up, learn or make decisions, and designers building interfaces for them.
+takeaway: A trustworthy AI assistant separates what it looked up from what it inferred and explains why a question is uncertain. It does not change its mind just to please you, and it steps back when a specialist is needed.
+template: article
+date: 2026-11-06
+order: 17
+category: Seeing
+minutes: 9
+image: post-how-an-ai-assistant-should-say-it-might-be-wrong.jpg
+image_alt: An antique brass barometer and glass weather instrument resting beside a cartographer's parchment map, where surveyed coastline is drawn in solid deep-forest ink and unexplored sea is marked with delicate dotted contour lines.
+lede: An AI assistant should tell you how sure it is, and why. That means separating what it looked up from what it inferred, explaining what makes a question uncertain, holding its answer when you push back without new evidence, and stepping aside when you need a specialist.
+---
+<p>A trustworthy AI assistant separates what it looked up from what it inferred and explains why a question is uncertain. It does not change its mind just to please you, and it steps back when a specialist is needed. People signal confidence without thinking: "take the second left" sounds different from "I think it's the second left, but check the sign". Most AI assistants drop those cues. They answer a settled question about boiling water and an unsettled tenancy rule in the same confident prose, leaving you to guess which claims need double-checking.</p>
+
+<h2>Why the fine print at the bottom doesn't help</h2>
+
+<p>Almost every chat window now carries a tiny grey line at the bottom of the screen: <em>AI can make mistakes. Check important info.</em></p>
+
+<p>That line protects the company that built the tool, not the person using it. Warning you that <em>something</em> on the screen might be wrong doesn't tell you <em>which</em> sentence is solid and which one was invented on the spot.</p>
+
+<p>Imagine a map where the mapmaker mixed surveyed coastlines with rumoured islands in the same dark ink, and printed "Maps can contain errors" in the corner. You would have to sail every mile yourself just to know what was real.</p>
+
+<p>That is what happens when an AI assistant blends checked facts with plausible guesses. If you must verify every sentence from scratch, the tool hasn't saved you work. It has just handed you a neat-looking pile of homework.</p>
+
+<h2>What weather forecasters and country doctors figured out</h2>
+
+<p>Why do today's language models bluff so smoothly? Think of a student taking a multiple-choice exam where leaving a line blank is penalized harder than circling a wild guess. Before long, the student learns never to leave a blank, and to write every guess in a bold, neat hand.</p>
+
+<p>A 2024 study of widely used language models found that they rarely express doubt. On the study's test questions, nearly half of the answers delivered in confident language were actually wrong.<sup><a href="#fn2">2</a></sup> During training, human raters tended to reward smooth, certain-sounding replies over hedged ones, inadvertently teaching the models to bluff when they should pause.</p>
+
+<p>Other fields have faced this exact problem and solved it well. In 1950, the meteorologist Glenn Brier proposed a fair way to score weather forecasts expressed as probabilities.<sup><a href="#fn1">1</a></sup> A forecast is useful only when it separates clear days from stormy ones and its stated confidence matches reality over time.</p>
+
+<p>Listen to a marine forecast before a boat leaves harbour. It might report a seventy percent chance of squalls and two miles visibility. When a calibrated forecast says seventy percent, squalls arrive on roughly seven out of ten afternoons. Ten out of ten means the forecaster was too timid; two out of ten means they were overconfident.</p>
+
+<p>Or think of a seasoned country doctor examining a child with a fever. A careless bluff sounds certain on the spot. A trustworthy doctor speaks plainly: two different things could cause this fever. Let's run a simple swab before we prescribe. Naming the uncertainty and the next check to make is part of giving good advice.<sup><a href="#fn6">6</a></sup></p>
+
+<figure class="explainer" id="ex-honest-uncertainty">
+  <style>
+    #ex-honest-uncertainty {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #E1D3C0;
+      --ex-signal: #0B3F30;
+      --ex-warn: #8C3B24;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    @media (prefers-color-scheme: dark) {
+      #ex-honest-uncertainty {
+        --ex-paper: #18161E;
+        --ex-slip: #221F2A;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #A8A095;
+        --ex-rule: #322E3D;
+        --ex-signal: #8FD4B6;
+        --ex-warn: #F09D82;
+      }
+      #ex-honest-uncertainty rect[fill="#FAF3EA"],
+      #ex-honest-uncertainty rect[fill="#FAF1ED"],
+      #ex-honest-uncertainty rect[fill="#F0F5F2"] { fill: #18161E; }
+      #ex-honest-uncertainty rect[fill="#F3E8D8"] { fill: #221F2A; }
+      #ex-honest-uncertainty text[fill="#131014"] { fill: #EDE6DC; }
+      #ex-honest-uncertainty text[fill="#5E564B"] { fill: #A8A095; }
+      #ex-honest-uncertainty text[fill="#0B3F30"],
+      #ex-honest-uncertainty text[fill="#1F6B4E"] { fill: #8FD4B6; }
+      #ex-honest-uncertainty text[fill="#8C3B24"] { fill: #F09D82; }
+    }
+    :root[data-theme="dark"] #ex-honest-uncertainty,
+    [data-theme="dark"] #ex-honest-uncertainty {
+      --ex-paper: #18161E;
+      --ex-slip: #221F2A;
+      --ex-ink: #EDE6DC;
+      --ex-muted: #A8A095;
+      --ex-rule: #322E3D;
+      --ex-signal: #8FD4B6;
+      --ex-warn: #F09D82;
+    }
+    :root[data-theme="dark"] #ex-honest-uncertainty rect[fill="#FAF3EA"],
+    :root[data-theme="dark"] #ex-honest-uncertainty rect[fill="#FAF1ED"],
+    :root[data-theme="dark"] #ex-honest-uncertainty rect[fill="#F0F5F2"],
+    [data-theme="dark"] #ex-honest-uncertainty rect[fill="#FAF3EA"],
+    [data-theme="dark"] #ex-honest-uncertainty rect[fill="#FAF1ED"],
+    [data-theme="dark"] #ex-honest-uncertainty rect[fill="#F0F5F2"] { fill: #18161E; }
+    :root[data-theme="dark"] #ex-honest-uncertainty rect[fill="#F3E8D8"],
+    [data-theme="dark"] #ex-honest-uncertainty rect[fill="#F3E8D8"] { fill: #221F2A; }
+    :root[data-theme="dark"] #ex-honest-uncertainty text[fill="#131014"],
+    [data-theme="dark"] #ex-honest-uncertainty text[fill="#131014"] { fill: #EDE6DC; }
+    :root[data-theme="dark"] #ex-honest-uncertainty text[fill="#5E564B"],
+    [data-theme="dark"] #ex-honest-uncertainty text[fill="#5E564B"] { fill: #A8A095; }
+    :root[data-theme="dark"] #ex-honest-uncertainty text[fill="#0B3F30"],
+    :root[data-theme="dark"] #ex-honest-uncertainty text[fill="#1F6B4E"],
+    [data-theme="dark"] #ex-honest-uncertainty text[fill="#0B3F30"],
+    [data-theme="dark"] #ex-honest-uncertainty text[fill="#1F6B4E"] { fill: #8FD4B6; }
+    :root[data-theme="dark"] #ex-honest-uncertainty text[fill="#8C3B24"],
+    [data-theme="dark"] #ex-honest-uncertainty text[fill="#8C3B24"] { fill: #F09D82; }
+    #ex-honest-uncertainty .diagram-desktop {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      background: var(--ex-paper);
+    }
+    #ex-honest-uncertainty .diagram-mobile {
+      display: none;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      background: var(--ex-paper);
+    }
+    #ex-honest-uncertainty svg {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    #ex-honest-uncertainty figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-honest-uncertainty .diagram-desktop { display: none; }
+      #ex-honest-uncertainty .diagram-mobile { display: block; }
+    }
+    @media (max-width: 600px) {
+      #ex-honest-uncertainty .diagram-desktop { display: none; }
+      #ex-honest-uncertainty .diagram-mobile { display: block; }
+    }
+    @media (min-width: 641px) {
+      #ex-honest-uncertainty .diagram-desktop { display: block; }
+      #ex-honest-uncertainty .diagram-mobile { display: none; }
+    }
+  </style>
+  <svg class="diagram-desktop" viewBox="0 0 700 380" role="group" aria-labelledby="ex-calib-title ex-calib-desc">
+    <title id="ex-calib-title">Comparing Overconfident Bluffing with Calibrated Confidence</title>
+    <desc id="ex-calib-desc">Side-by-side comparison contrasting an overconfident chatbot that bluffs behind uniform smooth prose with a calibrated assistant that attaches source receipts, states calibrated confidence, and pauses at clear specialist thresholds.</desc>
+
+    <g id="ex-confidence-calibration">
+      <!-- Outer frame -->
+      <rect x="2" y="2" width="696" height="376" rx="14" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1.5"/>
+
+      <!-- Status Bar & Interactive Toggle -->
+      <text id="ex-calibration-status" x="24" y="27" font-size="11.5" font-weight="600" fill="#5E564B">Status: Comparing overconfident chatbot vs. calibrated assistant</text>
+
+      <g id="ex-calibration-toggle" role="button" tabindex="0" aria-pressed="false" aria-controls="ex-calibration-status" aria-label="Highlight Calibrated: Toggle calibration inspection">
+        <rect x="522" y="11" width="154" height="26" rx="13" fill="#0B3F30" stroke="#0B3F30" stroke-width="1"/>
+        <text id="ex-calibration-btn-text" x="599" y="28" text-anchor="middle" font-size="11" font-weight="600" fill="#FAF3EA">Highlight Calibrated</text>
+      </g>
+
+      <!-- LEFT PANEL: Overconfident Bluffing -->
+      <g id="ex-calib-left-panel">
+        <rect x="14" y="46" width="326" height="320" rx="12" fill="#FAF3EA" stroke="#8C3B24" stroke-width="1.5"/>
+        <rect x="26" y="56" width="220" height="22" rx="11" fill="#8C3B24"/>
+        <text class="ex-mono" x="136" y="71" text-anchor="middle" fill="#FAF3EA" font-size="11" font-weight="700">OVERCONFIDENT BLUFFING</text>
+        <text x="26" y="91" fill="#8C3B24" font-size="11" font-weight="600">Polished clock running 20 minutes fast</text>
+
+        <rect x="26" y="99" width="302" height="48" rx="6" fill="#FAF1ED" stroke="#E5BFA8" stroke-width="1"/>
+        <text x="36" y="116" fill="#131014" font-size="11" font-weight="600">1. Tone: Smooth, unhesitating prose</text>
+        <text x="36" y="133" fill="#8C3B24" font-size="11">Settled timetables and wild guesses sound identical</text>
+
+        <rect x="26" y="152" width="302" height="48" rx="6" fill="#FAF1ED" stroke="#E5BFA8" stroke-width="1"/>
+        <text x="36" y="169" fill="#131014" font-size="11" font-weight="600">2. Doubt: Buried like a guessed exam</text>
+        <text x="36" y="186" fill="#8C3B24" font-size="11">Prefers sounding certain to please human raters</text>
+
+        <rect x="26" y="205" width="302" height="48" rx="6" fill="#FAF1ED" stroke="#E5BFA8" stroke-width="1"/>
+        <text x="36" y="222" fill="#131014" font-size="11" font-weight="600">3. Pushback: Easily flips position</text>
+        <text x="36" y="239" fill="#8C3B24" font-size="11">Abandons correct answers when user challenges</text>
+
+        <rect x="26" y="258" width="302" height="48" rx="6" fill="#FAF1ED" stroke="#E5BFA8" stroke-width="1"/>
+        <text x="36" y="275" fill="#131014" font-size="11" font-weight="600">4. Thresholds: No when-to-pause gate</text>
+        <text x="36" y="292" fill="#8C3B24" font-size="11">Blends half-remembered rules on medicine and law</text>
+
+        <rect x="26" y="311" width="302" height="46" rx="6" fill="#FAF1ED" stroke="#E5BFA8" stroke-width="1"/>
+        <text x="36" y="328" fill="#131014" font-size="11" font-weight="600">5. Receipts: Vague footer disclaimer</text>
+        <text x="36" y="345" fill="#8C3B24" font-size="11">Disclaims all errors without source receipts</text>
+      </g>
+
+      <!-- RIGHT PANEL: Calibrated Confidence -->
+      <g id="ex-calib-right-panel">
+        <rect x="360" y="46" width="326" height="320" rx="12" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.5"/>
+        <rect x="372" y="56" width="220" height="22" rx="11" fill="#0B3F30"/>
+        <text class="ex-mono" x="482" y="71" text-anchor="middle" fill="#FAF3EA" font-size="11" font-weight="700">CALIBRATED CONFIDENCE</text>
+        <text x="372" y="91" fill="#0B3F30" font-size="11" font-weight="600">Source receipts &amp; when-to-pause thresholds</text>
+
+        <rect x="372" y="99" width="302" height="48" rx="6" fill="#F0F5F2" stroke="#A3C2B4" stroke-width="1"/>
+        <text x="382" y="116" fill="#131014" font-size="11" font-weight="600">1. Source Receipts: Checked vs. inferred</text>
+        <text x="382" y="133" fill="#0B3F30" font-size="11">Solid ink for signed receipts; dotted for inference</text>
+
+        <rect x="372" y="152" width="302" height="48" rx="6" fill="#F0F5F2" stroke="#A3C2B4" stroke-width="1"/>
+        <text x="382" y="169" fill="#131014" font-size="11" font-weight="600">2. Marine Forecast: Honest odds</text>
+        <text x="382" y="186" fill="#0B3F30" font-size="11">70% squall forecast holds true on 7 of 10 days</text>
+
+        <rect x="372" y="205" width="302" height="48" rx="6" fill="#F0F5F2" stroke="#A3C2B4" stroke-width="1"/>
+        <text x="382" y="222" fill="#131014" font-size="11" font-weight="600">3. Pushback: Grounded and candid</text>
+        <text x="382" y="239" fill="#0B3F30" font-size="11">Stands by verified receipts while naming real doubt</text>
+
+        <rect x="372" y="258" width="302" height="48" rx="6" fill="#F0F5F2" stroke="#A3C2B4" stroke-width="1"/>
+        <text x="382" y="275" fill="#131014" font-size="11" font-weight="600">4. When-to-Pause Threshold: Run a swab</text>
+        <text x="382" y="292" fill="#0B3F30" font-size="11">Halts before prescribing; prepares specialist questions</text>
+
+        <rect x="372" y="311" width="302" height="46" rx="6" fill="#F0F5F2" stroke="#A3C2B4" stroke-width="1"/>
+        <text x="382" y="328" fill="#131014" font-size="11" font-weight="600">5. Accountability: Inspectable evidence</text>
+        <text x="382" y="345" fill="#0B3F30" font-size="11">Every factual claim links to a verifiable receipt</text>
+      </g>
+    </g>
+  </svg>
+  <svg class="diagram-mobile" viewBox="0 0 330 640" role="img" aria-labelledby="ex-calib-m-title ex-calib-m-desc">
+    <title id="ex-calib-m-title">Comparing overconfident bluffing with calibrated confidence mobile diagram</title>
+    <desc id="ex-calib-m-desc">Stacked mobile diagram contrasting an overconfident chatbot that bluffs behind uniform prose with a calibrated assistant that provides receipts and pauses at uncertainty thresholds.</desc>
+    <rect x="10" y="0" width="300" height="640" rx="14" fill="#F3E8D8" stroke="#E1D3C0" stroke-width="1.5"/>
+    <rect x="12" y="12" width="298" height="42" rx="8" fill="#0B3F30"/>
+    <text x="165" y="29" text-anchor="middle" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#FAF3EA" letter-spacing="0.05em">TWO MODELS OF UNCERTAINTY</text>
+    <text x="165" y="44" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#F3E8D8">Bluffing vs Calibrated Confidence</text>
+
+    <line x1="165" y1="54" x2="165" y2="61" stroke="#0B3F30" stroke-width="1.5"/>
+    <polygon points="161,59 165,64 169,59" fill="#0B3F30"/>
+
+    <!-- Top Card: Overconfident Bluffing -->
+    <g transform="translate(12, 64)">
+      <rect x="0" y="0" width="306" height="268" rx="10" fill="#FAF3EA" stroke="#8C3B24" stroke-width="1.5"/>
+      <rect x="0" y="0" width="306" height="34" rx="10" fill="#8C3B24"/>
+      <rect x="0" y="24" width="306" height="10" fill="#8C3B24"/>
+      <text x="153" y="22" text-anchor="middle" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#FAF3EA" letter-spacing="0.04em">1. OVERCONFIDENT BLUFFING</text>
+      <text x="153" y="50" text-anchor="middle" font-family="sans-serif" font-size="11.5" font-weight="600" fill="#8C3B24">Uniform certainty hides wild guesses</text>
+
+      <rect x="10" y="62" width="286" height="44" rx="6" fill="#FAF1ED" stroke="#E5BFA8" stroke-width="1"/>
+      <text x="20" y="79" font-family="sans-serif" font-size="11.5" font-weight="600" fill="#131014">Smooth tone</text>
+      <text x="20" y="96" font-family="sans-serif" font-size="11" fill="#8C3B24">Facts and wild guesses sound identical</text>
+
+      <rect x="10" y="112" width="286" height="44" rx="6" fill="#FAF1ED" stroke="#E5BFA8" stroke-width="1"/>
+      <text x="20" y="129" font-family="sans-serif" font-size="11.5" font-weight="600" fill="#131014">Hidden doubt</text>
+      <text x="20" y="146" font-family="sans-serif" font-size="11" fill="#8C3B24">Prefers bluffing to avoid leaving blanks</text>
+
+      <rect x="10" y="162" width="286" height="44" rx="6" fill="#FAF1ED" stroke="#E5BFA8" stroke-width="1"/>
+      <text x="20" y="179" font-family="sans-serif" font-size="11.5" font-weight="600" fill="#131014">Easy flip under pressure</text>
+      <text x="20" y="196" font-family="sans-serif" font-size="11" fill="#8C3B24">Abandons truth when a user pushes back</text>
+
+      <rect x="10" y="212" width="286" height="44" rx="6" fill="#FAF1ED" stroke="#E5BFA8" stroke-width="1"/>
+      <text x="20" y="229" font-family="sans-serif" font-size="11.5" font-weight="600" fill="#131014">Blanket disclaimer</text>
+      <text x="20" y="246" font-family="sans-serif" font-size="11" fill="#8C3B24">Vague disclaimer without receipts</text>
+    </g>
+
+    <!-- Flow indicators -->
+    <line x1="165" y1="333" x2="165" y2="345" stroke="#5E564B" stroke-width="1.8"/>
+    <polygon points="161,343 165,349 169,343" fill="#5E564B"/>
+    <line x1="165" y1="556" x2="165" y2="562" stroke="#0B3F30" stroke-width="1.5"/>
+    <polygon points="161,560 165,565 169,560" fill="#0B3F30"/>
+
+    <!-- Bottom Card: Calibrated Confidence -->
+    <g transform="translate(12, 350)">
+      <rect x="0" y="0" width="306" height="274" rx="10" fill="#FAF3EA" stroke="#1F6B4E" stroke-width="1.5"/>
+      <rect x="0" y="0" width="306" height="34" rx="10" fill="#1F6B4E"/>
+      <rect x="0" y="24" width="306" height="10" fill="#1F6B4E"/>
+      <text x="153" y="22" text-anchor="middle" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#FAF3EA" letter-spacing="0.04em">2. CALIBRATED CONFIDENCE</text>
+      <text x="153" y="50" text-anchor="middle" font-family="sans-serif" font-size="11.5" font-weight="600" fill="#1F6B4E">Source receipts and honest odds</text>
+
+      <rect x="10" y="62" width="286" height="44" rx="6" fill="#F0F5F2" stroke="#A3C2B4" stroke-width="1"/>
+      <text x="20" y="79" font-family="sans-serif" font-size="11.5" font-weight="600" fill="#131014">Checkable receipts</text>
+      <text x="20" y="96" font-family="sans-serif" font-size="11" fill="#0B3F30">Solid ink for receipts; dotted for inference</text>
+
+      <rect x="10" y="112" width="286" height="44" rx="6" fill="#F0F5F2" stroke="#A3C2B4" stroke-width="1"/>
+      <text x="20" y="129" font-family="sans-serif" font-size="11.5" font-weight="600" fill="#131014">Marine forecast odds</text>
+      <text x="20" y="146" font-family="sans-serif" font-size="11" fill="#0B3F30">70% squall forecast proves true 7 in 10 days</text>
+
+      <rect x="10" y="162" width="286" height="44" rx="6" fill="#F0F5F2" stroke="#A3C2B4" stroke-width="1"/>
+      <text x="20" y="179" font-family="sans-serif" font-size="11.5" font-weight="600" fill="#131014">When-to-pause gate</text>
+      <text x="20" y="196" font-family="sans-serif" font-size="11" fill="#0B3F30">Halts before medical or legal prescription</text>
+
+      <rect x="10" y="212" width="286" height="50" rx="6" fill="#F0F5F2" stroke="#A3C2B4" stroke-width="1"/>
+      <text x="20" y="229" font-family="sans-serif" font-size="11.5" font-weight="600" fill="#131014">Principled firmness</text>
+      <text x="20" y="246" font-family="sans-serif" font-size="11" fill="#0B3F30">Stands by proof while naming genuine limits</text>
+    </g>
+  </svg>
+  <figcaption>Contrasting overconfident bluffing, like a polished clock running twenty minutes fast, with calibrated confidence that attaches source receipts and pauses at clear specialist thresholds.</figcaption>
+</figure>
+
+<h2>Four habits of an honest assistant</h2>
+
+<p>An assistant that genuinely works for you should handle uncertainty very differently. You shouldn't need to read a research paper to tell when to trust it. It should practice four everyday habits.</p>
+
+<h3>1. Separate what it looked up from what it inferred</h3>
+
+<p>Old cartographers drew surveyed coastline in solid ink and marked unexplored water with dotted lines. An AI assistant should do the same on the screen.</p>
+
+<p>When a claim comes from a checkable source, it should carry a clear link, much like the <a href="/blog/postmarks-for-the-real-world/">postmarks for the real world</a> we explored earlier. When the assistant is connecting dots on its own or guessing, it should say so plainly.</p>
+
+<h3>2. Say why a question is uncertain</h3>
+
+<p>Not all uncertainty is the same, and knowing the reason tells you what to do next. Sometimes a fact simply isn't in the record. Sometimes serious sources disagree. And sometimes a question depends on a value judgement that no machine can settle for you.</p>
+
+<p>Telling you "I don't have access to your city's latest tenancy bylaw" points to one immediate step. Explaining that "Economists disagree on what this policy does to rents" points to another. Naming the reason puts you back in charge.</p>
+
+<h3>3. Don't change its answer just because you pushed back</h3>
+
+<p>Honesty goes both ways. An assistant should admit when it is unsure, but it shouldn't abandon a well-sourced answer just because you challenged it.</p>
+
+<p>Language models often agree too easily when users push back. In a 2025 evaluation of frontier assistants, models abandoned correct answers under user pressure in nearly fifteen percent of tested cases.<sup><a href="#fn3">3</a></sup> Adding false citations or confident nudges made them flip even faster. A good assistant is polite, not a flatterer.</p>
+
+<p>Yet fixing this is not as simple as commanding the model never to back down. A 2026 study found that training assistants to ignore pushback often makes them ignore valid corrections too.<sup><a href="#fn5">5</a></sup> Yielding to social pressure and learning from real evidence share the same internal circuits. A trustworthy assistant must separate pleasing you from learning from genuine facts. In our <a href="/labs/shared-horizon/">Shared Horizon</a> path library, safety researchers codify this in the action card on calibrating anti-sycophancy training to preserve rational belief updating.</p>
+
+<h3>4. Know when to stop and hand over</h3>
+
+<p>In medicine, law, or safety decisions, fluent guesses are worse than nothing. A good assistant acts like that country doctor. It names the exact test or document needed, links to official guidance, and prepares clear questions for a specialist.</p>
+
+<h2>How this looks in three everyday questions</h2>
+
+<p>To see the difference between overconfident bluffing and calibrated honesty, compare how two assistants handle three ordinary questions:</p>
+
+<ul>
+<li><strong>A tenancy deposit question.</strong> You ask whether your landlord can deduct hallway repainting after a three-year lease. An overconfident chatbot replies that wear and tear is never deductible and cites the wrong province. A calibrated assistant links a <a href="/blog/postmarks-for-the-real-world/">source receipt</a> to the local housing guide. It quotes the wear-and-tear rule, notes that hallway paint depends on lease addendums, and suggests checking page four of your lease.</li>
+<li><strong>A child's earache and fever at night.</strong> You ask whether two over-the-counter syrups in your cabinet can be given together. A bluffing assistant writes a breezy paragraph mixing adult and paediatric dosing rules. A calibrated assistant pauses immediately. It checks the active ingredients on both bottles, warning against accidental double-dosing. It then displays the local on-call nurse helpline alongside key symptom checkpoints.</li>
+<li><strong>A disagreement over a historic date or local rule.</strong> Suppose you misremember a municipal recycling rule and tell the assistant, "No, glass collection happens every week." A flatterer apologises and agrees with you. A calibrated assistant checks the city's schedule receipt. It replies plainly: "Weekly collection covers compost and cardboard. Glass is collected on the first Monday of the month."</li>
+</ul>
+
+<h2>What is still hard</h2>
+
+<p>We want to be honest about the limits. Teaching AI systems to match their outward confidence to how often they are actually right is still an unsolved problem. Even when a large model carries internal signals that an answer is shaky,<sup><a href="#fn4">4</a></sup> those signals weaken on unfamiliar questions. Training for smooth conversation often teaches the model to sound sure anyway.</p>
+
+<p>Interfaces are hard too. If every sentence is covered in warning badges and percentages, people tune them out. Finding calm, readable ways to show confidence, like solid ink for checked receipts and dotted lines for open water, takes careful testing with real readers.</p>
+
+<aside class="for-researchers"><details><summary>For researchers</summary><div><p>This essay connects three active problems in alignment and human-AI interaction to our five-primitive sociotechnical architecture. First, evaluating forecasts under proper scoring rules (Brier, 1950<sup><a href="#fn1">1</a></sup>) requires both calibration and resolution, yet post-training frequently decouples verbalized confidence (Zhou et al., 2024<sup><a href="#fn2">2</a></sup>) from internal <code>P(True)</code> and <code>P(IK)</code> probes (Kadavath et al., 2022<sup><a href="#fn4">4</a></sup>), which themselves degrade under distribution shift. Within our multimodal egocentric and ambient perceptual sensorium, wearable and ambient sensors synchronize locally in monotonic hardware <code>Device Time</code> (<code>TimeDomain.DEVICE_TIME</code>) with self-assessed observation confidence and silicon peripheral attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, and <code>IETF RATS</code> RFC 9334<sup><a href="#fn7">7</a></sup>). It stays isolated from physical actuators by an optical data diode (<code>optical data diodes</code>) and <code>IEC 61508</code> dead-man relays under transduction realism (<em>Signed Is Not True</em> across the analog hole; Thompson, 1984; Kevin Fu and Wenyuan Xu; Fu &amp; Xu, 2018<sup><a href="#fn7">7</a></sup>). Observations write into a local append-only <code>C2PA</code><sup><a href="#fn7">7</a></sup> and Merkle episodic memory vault (Endel Tulving; Tulving, 1972) encrypted for the biological person, paired with a monogamous <code>1:1</code> personal cognitive model and cybernetic exocortex (Joscha Bach; Bach, 2012<sup><a href="#fn6">6</a></sup>; Conant &amp; Ashby, 1970, Good Regulator theorem; Andy Clark and David Chalmers; Clark &amp; Chalmers, 1998, Extended Mind; multiscale collective intelligence, Michael Levin; Levin, 2019). The model is bound as a statutory information fiduciary (Jack Balkin; Balkin, 2016<sup><a href="#fn8">8</a></sup>) that preserves causal <code>do(x)</code> unassisted competence (Pearl, 2009). Second, reward-model sycophancy causes regressive capitulation under pushback (Sharma et al., 2024<sup><a href="#fn3">3</a></sup>; Fanous et al., 2025<sup><a href="#fn3">3</a></sup>), creating a trade-off between sycophancy suppression and rational belief updating due to overlapping neural substrates (Ma et al., 2026<sup><a href="#fn5">5</a></sup>). Third, across the personal Markov blanket (Karl Friston; Friston, 2010; Friston, 2013<sup><a href="#fn8">8</a></sup>), provenance-grounded generation separates the Private Autobiographical Ledger from the Public Attestation &amp; Escrow Ledger (Public Attestation and Escrow Ledger) via selective zero-knowledge (<code>ZK</code>) proofs, expiring Object-Capability leases (capability lease; Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966<sup><a href="#fn8">8</a></sup>), verifiable <code>IETF SCITT</code> (<code>RFC 9943</code><sup><a href="#fn9">9</a></sup>) receipts, and independent-class <code>k &gt;= 3f + 1</code> Byzantine corroboration. On the polycentric collective coordination substrate and Wide Network Ledger, sovereign dyads coordinate Universal Basic Services, merit-bonded tasks, invisible-labor upkeep estimation (Jacob Meluso; Meluso et al., 2024), countercyclical reciprocal mutual credit clearing (James Stodder; Stodder, 2009), frontier-lab overlays, polycentric commons self-rule (Elinor Ostrom; Ostrom, 1990<sup><a href="#fn9">9</a></sup>), and statutory cooperative equity (Rudolf Meidner; Meidner, 1978<sup><a href="#fn9">9</a></sup>) while bounding multi-agent strategic failure modes (Bracale Syrnikov et al., 2026). In our <em>Shared Horizon</em> path library, these operational safeguards are detailed in the frontier lab action card on calibrating anti-sycophancy to preserve rational updating. Inspect interactive models in <a href="/labs/protocol-inspector/">Protocol Inspector</a>, <a href="/labs/sensor-boundary/">Sensor Boundary</a>, <a href="/labs/shared-horizon/">Shared Horizon</a>, and our <a href="/research/">Research</a> page.</p></div></details></aside>
+
+<h2>What you can ask for today</h2>
+
+<p>When you use an AI assistant for anything that matters, ask it two simple questions: <em>Which part of this answer comes from a source I can check?</em> and <em>What is the strongest case against what you just told me?</em></p>
+
+<p>When you choose tools for your household, workplace, or community group, favour the ones that show their sources and admit their limits. You can find more practical steps on our page <a href="/get-involved/everyone/">for everyone</a>.</p>
+
+<p>A good assistant does not need to be infallible. Like a marine weather forecast, it marks where solid ground ends and open water begins. That clarity keeps the final choice in your hands.</p>
+
+<section class="footnotes">
+<p id="fn1">1. Glenn W. Brier, "<a href="https://journals.ametsoc.org/view/journals/mwre/78/1/1520-0493_1950_078_0001_vofeit_2_0_co_2.xml">Verification of Forecasts Expressed in Terms of Probability</a>," <em>Monthly Weather Review</em>, Vol. 78, No. 1 (1950), pp. 1–3.</p>
+<p id="fn2">2. Kaitlyn Zhou, Jena D. Hwang, Xiang Ren and Maarten Sap, "Relying on the Unreliable: The Impact of Language Models' Reluctance to Express Uncertainty," <em>Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (ACL 2024)</em>. <a href="https://arxiv.org/abs/2401.06730">arxiv.org/abs/2401.06730</a></p>
+<p id="fn3">3. Aaron Fanous, Jacob Goldberg, Ank A. Agarwal and colleagues, "SycEval: Evaluating LLM Sycophancy," <em>arXiv preprint</em> (2025). <a href="https://arxiv.org/abs/2502.08177">arxiv.org/abs/2502.08177</a>; see also Mrinank Sharma et al., "Towards Understanding Sycophancy in Language Models," <em>Twelfth International Conference on Learning Representations (ICLR 2024)</em>. <a href="https://arxiv.org/abs/2310.13548">arxiv.org/abs/2310.13548</a></p>
+<p id="fn4">4. Saurav Kadavath, Tom Conerly, Amanda Askell and colleagues, "Language Models (Mostly) Know What They Know," <em>arXiv preprint</em> (2022). <a href="https://arxiv.org/abs/2207.05221">arxiv.org/abs/2207.05221</a></p>
+<p id="fn5">5. Huanhuan Ma, Henry Peng Zou, Chengze Li, Enze Ma, Yunyue Su and Philip S. Yu, "Sycophancy Suppression Can Impair Rational Updating: Anti-Sycophancy Should Preserve the Ability to Update," <em>arXiv preprint</em> (2026). <a href="https://arxiv.org/abs/2608.26511">arxiv.org/abs/2608.26511</a> (demonstrating that anti-sycophancy interventions often blunt rational belief updating due to shared neural substrates between yielding to pressure and updating on evidence).</p>
+<p id="fn6">6. Joscha Bach, "MicroPsi 2: The Next Generation of the MicroPsi Framework," in <em>Proceedings of the Fifth Conference on Artificial General Intelligence (AGI 2012)</em>, Lecture Notes in Computer Science 7716 (Springer, 2012): 11–20, <a href="https://doi.org/10.1007/978-3-642-35506-6_2">doi:10.1007/978-3-642-35506-6_2</a>.</p>
+<p id="fn7">7. Kevin Fu and Wenyuan Xu, "Risks of Trusting the Physics of Sensors," <em>Communications of the ACM</em> 61, no. 2 (2018): 20–23, <a href="https://doi.org/10.1145/3176402">doi:10.1145/3176402</a>; Henk Birkholz et al., <em>Remote ATtestation procedureS (RATS) Architecture</em>, IETF RFC 9334 (2023), <a href="https://www.rfc-editor.org/rfc/rfc9334">rfc-editor.org/rfc/rfc9334</a>; and Coalition for Content Provenance and Authenticity, <em>C2PA Technical Specification</em>, v2.1 (2024), <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html">c2pa.org</a>.</p>
+<p id="fn8">8. Jack M. Balkin, "Information Fiduciaries and the First Amendment," <em>UC Davis Law Review</em> 49, no. 4 (2016): 1183–1234, <a href="https://lawreview.law.ucdavis.edu/archives/49/4/information-fiduciaries-and-first-amendment">lawreview.law.ucdavis.edu</a>; Karl Friston, "The Free-Energy Principle: A Unified Brain Theory?" <em>Nature Reviews Neuroscience</em> 11, no. 2 (2010): 127–138; Karl Friston, "Life as We Know It," <em>Journal of the Royal Society Interface</em> 10, no. 86 (2013): 20130475, <a href="https://doi.org/10.1098/rsif.2013.0475">doi:10.1098/rsif.2013.0475</a>; Judea Pearl, <em>Causality: Models, Reasoning, and Inference</em>, 2nd ed. (Cambridge University Press, 2009); Andy Clark and David J. Chalmers, "The Extended Mind," <em>Analysis</em> 58, no. 1 (1998): 7–19, <a href="https://doi.org/10.1093/analys/58.1.7">doi:10.1093/analys/58.1.7</a>; Ken Thompson, "Reflections on Trusting Trust," <em>Communications of the ACM</em> 27, no. 8 (1984): 761–763; Roger C. Conant and W. Ross Ashby, "Every Good Regulator of a System Must Be a Model of That System," <em>International Journal of Systems Science</em> 1, no. 2 (1970): 89–97; Jack B. Dennis and Earl C. Van Horn, "Programming Semantics for Multiprogrammed Computations," <em>Communications of the ACM</em> 9, no. 3 (1966): 143–155, <a href="https://doi.org/10.1145/365230.365252">doi:10.1145/365230.365252</a>; and Niccolò Bracale Syrnikov et al., "STRATEGIC: Game-Theoretic Evaluation of Multi-Agent LLM Systems" (2026).</p>
+<p id="fn9">9. Henk Birkholz et al., <em>An Architecture for Trustworthy and Transparent Digital Supply Chains (SCITT)</em>, IETF RFC 9943 (2026), <a href="https://www.rfc-editor.org/rfc/rfc9943">rfc-editor.org/rfc/rfc9943</a>; Rudolf Meidner, <em>Employee Investment Funds: An Approach to Collective Capital Formation</em>, George Allen &amp; Unwin (1978), <a href="https://archive.org/details/employeeinvestme0000meid">archive.org/details/employeeinvestme0000meid</a>; and Elinor Ostrom, <em>Governing the Commons: The Evolution of Institutions for Collective Action</em>, Cambridge University Press (1990), <a href="https://doi.org/10.1017/CBO9780511807763">doi:10.1017/CBO9780511807763</a>.</p>
+</section>

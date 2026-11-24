@@ -1,0 +1,242 @@
+---
+title: What governments are already doing about AI agents
+description: A plain-language guide for public officials to existing rules for AI systems and agents, the gaps that remain when software acts alone, and practical steps any agency can take today.
+reader: Public officials, policy staffers, procurement leads and regulators who have to make practical decisions about AI systems and AI agents.
+takeaway: Strong rules for automated decisions already exist; extending them to AI agents means requiring a receipt for every action, short-lived permissions, and a strict boundary between the AI's reasoning and the rules it must obey.
+template: article
+date: 2026-11-06
+order: 20
+category: Governing
+minutes: 10
+image: post-governments-and-ai-agents.jpg
+image_alt: A sunlit wooden table beneath a stone portico, holding an open public register, wax-sealed letters, an inkwell and an hourglass overlooking an olive courtyard.
+lede: Governments already have strong rules for automated decisions. Extending them to AI agents that act on their own means three things: a record of every action, permissions that expire, and a firm boundary between the AI's reasoning and the rules it must obey.
+---
+<p>Public agencies are moving from chat tools that suggest text to agents that open case files, update public records and move funds. Once software acts, three questions follow: who gave it permission, what did it actually do, and how can a person stop it before one bad step triggers five more?</p>
+
+<p>Agencies don't have to start from zero. Existing rules for automated decision-making, records management and procurement already cover much of this, if they are applied to agents.</p>
+
+<h2>You are not starting from zero</h2>
+
+<p>The good news is that public servants and lawmakers have already built a real foundation. Over the past several years, governments and standards bodies have written clear rules for automated systems that affect people's lives.</p>
+
+<p>In Canada, the federal Directive on Automated Decision-Making has required departments since 2019 to complete a public impact assessment before using an automated system to recommend or make an administrative decision.<sup><a href="#fn1">1</a></sup> It also requires plain-language notice, bias testing, human intervention, and a clear way for citizens to appeal.<sup><a href="#fn1">1</a></sup></p>
+
+<p>In the European Union, the Artificial Intelligence Act entered into force in August 2024.<sup><a href="#fn2">2</a></sup> Article 50 requires that people be told when they are dealing directly with an AI system. Article 14 requires high-risk systems to be built so a person can understand their limits, watch them work, override a result, or stop them with a clear switch.<sup><a href="#fn2">2</a></sup></p>
+
+<p>In the United States, states and standards bodies have moved in a similar direction. State legislation enacted in 2024 requires impact assessments, disclosure, and appeal rights when high-risk AI shapes consequential decisions in areas like healthcare, housing, employment, or essential government services.<sup><a href="#fn3">3</a></sup> Meanwhile, the National Institute of Standards and Technology (NIST) organized its 2023 AI Risk Management Framework around four practical duties: govern, map, measure, and manage.<sup><a href="#fn4">4</a></sup></p>
+
+<div class="callout"><p class="label">What this means</p><p>The core duties of administrative fairness haven't changed: tell people when software is involved, test it before use, let a human step in, and leave a path to appeal.</p></div>
+
+<h2>What changes when software acts on its own</h2>
+
+<p>Most early AI rules were written with a single decision in mind: a model scores an application, and a human official reviews the score. AI agents work differently. An agent breaks a goal into steps, calls other software tools, and often hands tasks to other agents across agencies or borders.</p>
+
+<p>That creates three gaps that traditional policy rules don't catch on their own.</p>
+
+<p><strong>Borrowed identities.</strong> Today, many AI agents act by logging in with a staff member's password or a shared department key. When something goes wrong, the audit log looks as if the human clerk clicked the button, and the agent inherits every permission that clerk had. It is the digital equivalent of letting an outside delivery van drive through a restricted municipal depot wearing a senior inspector's badge.</p>
+
+<p><strong>Asking the AI to police itself.</strong> Many commercial tools try to enforce rules by putting instructions inside the AI's prompt, such as telling it never to share private records. Because language models process instructions and outside documents together, a cleverly worded email or form can trick the model into ignoring those rules. In civil engineering, you do not keep a water main from bursting by pasting a polite note on the pipe. You install a mechanical pressure relief valve outside the pipe.</p>
+
+<p><strong>Surveillance instead of accountability.</strong> Some vendors respond by streaming every screen, document and keystroke to a central monitoring cloud. For a public agency or clinic, that turns oversight into a privacy hazard. It is like routing every resident's sealed hospital letter through a private marketing company just to count envelopes. That pools sensitive citizen records in one place without stopping an unauthorized action before it happens.</p>
+
+<h2>Separating the thinker from the gatekeeper</h2>
+
+<p>In October 2026, NIST's cybersecurity team outlined ten practical design tenets on managing AI agent identities and permissions.<sup><a href="#fn5">5</a></sup> Those tenets point to a clean rule for public software: <strong>the AI model that thinks through a task must never decide what it is allowed to do.</strong><sup><a href="#fn5">5</a></sup></p>
+
+<p>Think of how a well-run city hall already works. A planning adviser can draft a building permit, and they can be very persuasive. Still, the registrar at the counter checks the signature, the zoning rule and the expiry date against a fixed rulebook. If the authority isn't there, the stamp stays in the drawer.</p>
+
+<p>Those design tenets apply that same separation to software.<sup><a href="#fn5">5</a></sup> Each agent gets its own distinct identity, linked to the person or office it represents. It holds <a href="/blog/power-on-loan-not-owned/">permissions on loan</a> for one task and a brief time, rather than standing access. Outside the AI model, an independent gatekeeper checks every action against hard rules and records a tamper-evident <a href="/blog/postmarks-for-the-real-world/">receipt</a>.<sup><a href="#fn5">5</a></sup></p>
+
+<p>Walk through how that separation works on a routine municipal task, such as scheduling winter road repairs or reviewing a small-business permit application. The AI agent reads the incoming application, checks the street map, and drafts a proposed work order under its own machine badge.</p>
+
+<p>When the agent tries to submit that order, the independent gatekeeper checks three fixed facts. Is this badge authorized, has its ten-minute lease expired, and does the cost stay below the clerk's approval limit? Only when every check passes does the draft enter the public register.</p>
+
+<p>Notice what happens if an outside contractor slips a hidden instruction into a PDF invoice, trying to trick the AI agent into approving an extra payment. Even if the language model is fooled, the gatekeeper at the door is not a language model. It checks the fixed spending cap, blocks the payment immediately, and logs the failed attempt for the human supervisor.</p>
+
+<figure class="explainer" id="ex-agent-gatekeeper">
+  <style>
+    #ex-agent-gatekeeper {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-agent-gatekeeper svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-agent-gatekeeper .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-agent-gatekeeper .diagram-desktop {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    #ex-agent-gatekeeper .diagram-mobile {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+    #ex-agent-gatekeeper figcaption {
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 600px) {
+      #ex-agent-gatekeeper .diagram-desktop { display: none; }
+      #ex-agent-gatekeeper .diagram-mobile { display: block; }
+    }
+  </style>
+  <svg class="diagram-desktop" viewBox="0 0 700 340" role="group" aria-labelledby="ex-agent-gatekeeper-title ex-agent-gatekeeper-desc">
+    <title id="ex-agent-gatekeeper-title">Comparing internal prompt rules with an independent gatekeeper</title>
+    <desc id="ex-agent-gatekeeper-desc">Left side shows a fragile single-box model where an AI attempts to police itself and prompt injection bypasses internal instructions. Right side shows the registrar principle where an AI agent drafts actions under its own identity while an independent gatekeeper validates identity, short leases, and fixed policy rules before execution.</desc>
+    <line x1="350" y1="14" x2="350" y2="326" stroke="var(--ex-rule)" stroke-width="1"/>
+    <g>
+      <rect x="16" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="30" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">FRAGILE: SELF-POLICING PROMPT</text>
+      <text x="16" y="42" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Single box mixes reasoning &amp; enforcement</text>
+      <line x1="16" y1="52" x2="338" y2="52" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <line x1="25" y1="68" x2="25" y2="228" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+      <rect x="22" y="67" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="74" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Unvetted Public Input</text>
+      <text x="38" y="91" font-size="11" fill="var(--ex-muted)">Forms and emails enter model context directly</text>
+      <line x1="38" y1="133" x2="338" y2="133" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="22" y="144" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="151" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Prompts as Guardrails</text>
+      <text x="38" y="168" font-size="11" fill="var(--ex-muted)">Clever phrasing talks model past soft rules</text>
+      <line x1="38" y1="210" x2="338" y2="210" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="22" y="221" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="228" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Direct Record Write</text>
+      <text x="38" y="245" font-size="11" fill="var(--ex-muted)">Borrows clerk login without outside check</text>
+      <line x1="16" y1="298" x2="338" y2="298" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="16" y="307" width="5" height="5" fill="var(--ex-warn)"/>
+      <text x="28" y="312" font-size="11" font-weight="700" fill="var(--ex-warn)">Result: Single failure causes quiet harm</text>
+    </g>
+    <g>
+      <rect x="366" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="380" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">CITY HALL REGISTRAR GATE</text>
+      <text x="366" y="42" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Separate drafter from independent gatekeeper</text>
+      <line x1="366" y1="52" x2="684" y2="52" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <line x1="375" y1="68" x2="375" y2="228" stroke="var(--ex-signal)" stroke-width="1"/>
+      <rect x="372" y="67" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="388" y="74" font-size="12" font-weight="700" fill="var(--ex-ink)">1. AI Agent (Drafter Only)</text>
+      <text x="388" y="91" font-size="11" fill="var(--ex-muted)">Carries machine badge; cannot write alone</text>
+      <line x1="388" y1="133" x2="684" y2="133" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="372" y="144" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="388" y="151" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Independent Registrar Gate</text>
+      <text x="388" y="168" font-size="11" fill="var(--ex-muted)">Checks mandate, short lease, and hard rules</text>
+      <line x1="388" y1="210" x2="684" y2="210" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="372" y="221" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="388" y="228" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Validated Write &amp; Receipt</text>
+      <text x="388" y="245" font-size="11" fill="var(--ex-muted)">Stores signed proof; official holds stop-key</text>
+      <line x1="366" y1="298" x2="684" y2="298" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="366" y="307" width="5" height="5" fill="var(--ex-signal)"/>
+      <text x="378" y="312" font-size="11" font-weight="700" fill="var(--ex-signal)">Result: Public audit &amp; accountable control</text>
+    </g>
+  </svg>
+  <svg class="diagram-mobile" viewBox="0 0 330 690" role="img" aria-labelledby="ex-agent-gatekeeper-m-title ex-agent-gatekeeper-m-desc">
+    <title id="ex-agent-gatekeeper-m-title">Comparing internal prompt rules with an independent gatekeeper (Mobile)</title>
+    <desc id="ex-agent-gatekeeper-m-desc">Stacked mobile layout contrasting the fragile single-box model where an AI polices itself against the city hall registrar principle where an independent gatekeeper checks identity, short leases, and hard rules before execution.</desc>
+    <g>
+      <rect x="8" y="14" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="20" y="20" font-size="11" font-weight="700" fill="var(--ex-warn)">FRAGILE: SELF-POLICING PROMPT</text>
+      <text x="8" y="38" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Single box mixes reasoning &amp; enforcement</text>
+      <line x1="8" y1="47" x2="318" y2="47" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <line x1="12" y1="62" x2="12" y2="232" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+      <rect x="9" y="60" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="24" y="67" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Unvetted Public Input</text>
+      <text x="24" y="84" font-size="11" fill="var(--ex-muted)">Untrusted text enters the prompt</text>
+      <line x1="24" y1="134" x2="318" y2="134" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="143" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="24" y="150" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Prompts as Guardrails</text>
+      <text x="24" y="167" font-size="11" fill="var(--ex-muted)">Injection bypasses internal instructions</text>
+      <line x1="24" y1="217" x2="318" y2="217" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="226" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="24" y="233" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Direct Record Write</text>
+      <text x="24" y="250" font-size="11" fill="var(--ex-muted)">Borrows clerk login with zero audit</text>
+      <line x1="8" y1="311" x2="318" y2="311" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="8" y="320" width="5" height="5" fill="var(--ex-warn)"/>
+      <text x="19" y="325" font-size="11" font-weight="700" fill="var(--ex-warn)">Result: Single failure causes quiet harm</text>
+    </g>
+    <line x1="8" y1="345" x2="318" y2="345" stroke="var(--ex-rule)" stroke-width="1.25"/>
+    <g>
+      <rect x="8" y="359" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="20" y="365" font-size="11" font-weight="700" fill="var(--ex-signal)">CITY HALL REGISTRAR GATE</text>
+      <text x="8" y="383" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Separate drafter from independent gatekeeper</text>
+      <line x1="8" y1="392" x2="318" y2="392" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <line x1="12" y1="407" x2="12" y2="577" stroke="var(--ex-signal)" stroke-width="1"/>
+      <rect x="9" y="405" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="24" y="412" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. AI Agent (Drafter Only)</text>
+      <text x="24" y="429" font-size="11" fill="var(--ex-muted)">Carries badge; cannot write alone</text>
+      <line x1="24" y1="479" x2="318" y2="479" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="488" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="24" y="495" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Independent Registrar Gate</text>
+      <text x="24" y="512" font-size="11" fill="var(--ex-muted)">Checks mandate, lease, and rulebook</text>
+      <line x1="24" y1="562" x2="318" y2="562" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="571" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="24" y="578" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Validated Write &amp; Receipt</text>
+      <text x="24" y="595" font-size="11" fill="var(--ex-muted)">Signed receipt and human stop-switch</text>
+      <line x1="8" y1="658" x2="318" y2="658" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="8" y="667" width="5" height="5" fill="var(--ex-signal)"/>
+      <text x="19" y="672" font-size="11" font-weight="700" fill="var(--ex-signal)">Result: Public audit &amp; accountable control</text>
+    </g>
+  </svg>
+  <figcaption>When safety rules live inside an AI’s prompt, clever phrasing can bypass them. An independent gatekeeper treats the AI like a planning adviser: the model drafts recommendations, but a separate registrar checks identity, expiry dates, and policy rules before anything touches a public database.</figcaption>
+</figure>
+
+<h2>What remains unsolved</h2>
+
+<p>We want to be honest about what these technical guardrails do not solve. A receipt proves which agent took an action, under whose mandate, and within which rulebook. It does not prove that the underlying policy was fair, or that a busy human reviewer had enough time to question a smooth recommendation.</p>
+
+<p>Just as an inspected bridge still needs clear road signs and sensible speed limits, an audited software tool still needs humane laws and well-supported public servants. If an agency cuts front-counter staff and expects one tired supervisor to review four hundred automated drafts before lunch, "human oversight" becomes a comforting fiction.</p>
+
+<p>And when agents from different departments or companies begin dealing with one another at machine speed, individual caution isn't enough, much like careful drivers can still create a traffic jam. If a hospital discharge agent and a municipal home-care scheduling agent misunderstand each other's availability codes, a patient can fall through the gap between two tidy systems. Knowing how to test those multi-agent handoffs in a safe sandbox before deployment is an open research problem, and one we are working on openly.</p>
+
+<h2>Four questions public officials can ask today</h2>
+
+<p>You don't need to wait for new legislation to put sound boundaries around AI agents in procurement, pilot projects or agency guidance. Treat software procurement like civil engineering, and ask four practical questions:</p>
+
+<p><strong>1. Does the agent have its own badge, or is it borrowing a staff member's login?</strong> Require every agent to carry a distinct identity tied to an accountable office, with permissions that expire as soon as the task ends.<sup><a href="#fn5">5</a></sup> Never let a vendor wire an agent into your database using a human clerk's master credentials.</p>
+
+<p><strong>2. What enforces the rules, a prompt, or a separate gatekeeper?</strong> Ask vendors to show the blueprints for how permissions are enforced outside the language model, so a misleading document cannot talk the agent into overstepping its bounds.<sup><a href="#fn5">5</a></sup></p>
+
+<p><strong>3. Do we get a checkable receipt without handing over private files?</strong> Require tamper-evident logs of every external action an agent takes, stored where your agency and auditors can inspect them. That oversight should never require streaming citizens' travel logs, tax forms, or health records to a third-party broker.<sup><a href="#fn1">1</a>,<a href="#fn5">5</a></sup></p>
+
+<p><strong>4. Can a person see what happened, shut the valve and appeal?</strong> Following the pattern set in Canada, the European Union and U.S. state law, make sure a named official holds a local shut-off switch to halt an agent immediately. Ensure every resident can request a real human review.<sup><a href="#fn1">1</a>,<a href="#fn2">2</a>,<a href="#fn3">3</a></sup></p>
+
+<p>Good governance has always relied on simple, dependable tools: open blueprints, a clear mandate, a public register and a receipt at the counter. Above all, it relies on a human being you can appeal to when a rule doesn't fit your life.</p>
+
+<p>Bringing those habits to AI agents lets new software help with the workload while keeping public decisions in human hands. If your office is working through these questions, visit our <a href="/get-involved/policy/">page for policy makers</a> or explore concrete next steps in <a href="/labs/shared-horizon/">Shared Horizon</a>.</p>
+
+<aside class="for-researchers"><details><summary>For researchers</summary><div><p>In our proposed technical architecture, the seventh tenet, architectural separation of policy from reasoning, is modelled as a deterministic, client-side Object-Capability (Dennis and Van Horn, 1966) policy broker outside the language model runtime. This builds on capability-separated control and data flow defences against indirect prompt injection (Debenedetti et al., 2025), paired with short-lived workload credentials and tamper-evident local action logs.</p></div></details></aside>
+
+<section class="footnotes">
+<p id="fn1">1. Treasury Board of Canada Secretariat, <em>Directive on Automated Decision-Making</em> (took effect April 1, 2019; regularly updated). <a href="https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32592">tbs-sct.canada.ca/pol/doc-eng.aspx?id=32592</a></p>
+<p id="fn2">2. European Union, <em>Regulation (EU) 2024/1689 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)</em>, Articles 14 and 50, Official Journal of the European Union (entered into force August 1, 2024). <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202401689">eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202401689</a></p>
+<p id="fn3">3. Colorado General Assembly, Senate Bill 24-205, <em>Consumer Protections for Artificial Intelligence</em> (enacted May 2024). <a href="https://leg.colorado.gov/bills/sb24-205">leg.colorado.gov/bills/sb24-205</a></p>
+<p id="fn4">4. National Institute of Standards and Technology (NIST), <em>Artificial Intelligence Risk Management Framework (AI RMF 1.0)</em>, NIST AI 100-1 (January 2023). <a href="https://doi.org/10.6028/NIST.AI.100-1">doi.org/10.6028/NIST.AI.100-1</a></p>
+<p id="fn5">5. Harold Booth, Bill Fisher, Ryan Galluzzo and Tom Clancy, "Design Tenets for Agent Identity Management Systems," <em>NIST Cybersecurity Insights</em>, National Institute of Standards and Technology and MITRE (October 27, 2026). <a href="https://www.nist.gov/blogs/cybersecurity-insights/design-tenets-agent-identity-management-systems">nist.gov/blogs/cybersecurity-insights/design-tenets-agent-identity-management-systems</a></p>
+</section>

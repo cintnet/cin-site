@@ -1,0 +1,318 @@
+---
+title: Why a score is not a journey
+description: For years, explaining an AI meant highlighting words in a sentence. When an assistant takes ten steps across three websites, you need a journey map, not an ingredient list.
+reader: Anyone who relies on an AI assistant to handle multi-step errands or work tasks.
+takeaway: To see why an automated assistant succeeded or failed, we need step-by-step action receipts that track state changes and permission checks over time.
+template: article
+date: 2026-11-06
+order: 1
+category: Seeing
+minutes: 8
+image: post-why-a-score-is-not-a-journey.jpg
+image_alt: A stone footbridge and stepping-stone path crossing a calm garden stream beside olive trees and wooden milestone markers.
+lede: If your assistant ordered the wrong replacement part or cancelled the wrong reservation, asking which word triggered the mistake tells you almost nothing. You need to see where its steps diverged.
+---
+<p>To see why an automated assistant succeeded or failed, we need step-by-step action receipts that track state changes and permission checks over time. When an apprentice baker burns a loaf of sourdough, handing you the ingredient list does not explain what went wrong. The flour was fresh. The salt was measured. The water was pure. The mistake happened somewhere between kneading the dough, waiting for the rise, and setting the oven timer.</p>
+
+<p>Until recently, explaining an AI system looked a lot like reading that ingredient list. If an automated model declined a loan application or flagged an email as spam, engineers highlighted the specific words or numbers that tipped the score. If the word "urgent" carried heavy weight, that was your explanation.</p>
+
+<p>That approach worked well enough when software made single, one-shot predictions. Today, AI assistants do not stop at predicting a score. They act.<sup><a href="#fn1">1</a></sup></p>
+
+<h2>From single guesses to ten-step errands</h2>
+
+<p>An assistant does not just answer a question. It carries out a multi-step errand across the web.</p>
+
+<p>Picture asking an assistant to reschedule a medical appointment, rebook a train ticket, and notify your employer. To finish that errand, the software takes a dozen connected steps. It logs into a clinic portal. It reads an open calendar slot. It checks train schedules on a booking site. It fills out a confirmation form. Finally, it sends a brief note to your supervisor.</p>
+
+<p>Suppose you wake up to discover you were booked on a midnight train when you asked for a noon departure. Asking which words carried the highest weight tells you nothing. Did the assistant misread the clinic calendar? Did the rail booking site update seat availability midway through? Or did the assistant forget your morning meeting halfway through the task?</p>
+
+<h2>Where assistants lose the thread</h2>
+
+<p>Recent research confirms what everyday intuition suggests. Traditional explanation tools completely fail when applied to multi-step AI agents.<sup><a href="#fn1">1</a></sup></p>
+
+<p>When researchers analyzed hundreds of automated errands, they discovered that failures rarely stem from a single bad word. Instead, assistants fail because they lose track of what changed along the way. In fact, studies found that state confusion was nearly three times more common in failed runs than in successful ones, cutting task completion rates in half.<sup><a href="#fn1">1</a></sup></p>
+
+<p>When an assistant loses its place, an ingredient list cannot help you. You do not need to know which words seemed important in the abstract. You need to know what the software saw at step three, what decision it took at step four, and why it changed direction at step five.</p>
+
+<h2>Comparing a static score with an action journey</h2>
+
+<figure class="explainer" id="ex-journey-vs-score">
+  <style>
+    #ex-journey-vs-score {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    @media (prefers-color-scheme: dark) {
+      #ex-journey-vs-score {
+        --ex-paper: #1B1922;
+        --ex-slip: #23202C;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #A8A095;
+        --ex-rule: #322E3D;
+        --ex-signal: #8FD4B6;
+        --ex-accent: #8FD4B6;
+        --ex-warn: #F09D82;
+        --ex-amber: #E5B976;
+      }
+    }
+    :root[data-theme="dark"] #ex-journey-vs-score {
+      --ex-paper: #1B1922;
+      --ex-slip: #23202C;
+      --ex-ink: #EDE6DC;
+      --ex-muted: #A8A095;
+      --ex-rule: #322E3D;
+      --ex-signal: #8FD4B6;
+      --ex-accent: #8FD4B6;
+      --ex-warn: #F09D82;
+      --ex-amber: #E5B976;
+    }
+    #ex-journey-vs-score svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-journey-vs-score .diagram-desktop {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    #ex-journey-vs-score .diagram-mobile {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+    #ex-journey-vs-score .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    #ex-journey-vs-score [role="button"] {
+      cursor: pointer;
+      transition: opacity 160ms ease;
+    }
+    #ex-journey-vs-score [role="button"]:hover,
+    #ex-journey-vs-score [role="button"]:focus-visible {
+      opacity: 0.88;
+      outline: 2px solid var(--ex-accent);
+      outline-offset: 2px;
+    }
+    #ex-journey-vs-score .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.5rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-journey-vs-score .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-journey-vs-score .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-journey-vs-score .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-journey-vs-score .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.25rem;
+    }
+    #ex-journey-vs-score .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 640px) {
+      #ex-journey-vs-score .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+      #ex-journey-vs-score .diagram-desktop { display: none; }
+      #ex-journey-vs-score .diagram-mobile { display: block; }
+    }
+    #ex-journey-vs-score figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    #ex-journey-vs-score #ex-journey-step-3-title { fill: var(--ex-warn) !important; }
+    #ex-journey-vs-score #ex-journey-step-3-desc { fill: var(--ex-ink) !important; }
+  </style>
+  <svg class="diagram-desktop" viewBox="0 0 680 320" role="group" aria-labelledby="ex-journey-title ex-journey-desc">
+      <title id="ex-journey-title">Comparison of static word highlights and step-by-step action journey diagnostics</title>
+      <desc id="ex-journey-desc">Side-by-side comparison showing static word and token highlights on the left versus a four-step action journey with state checks, tool leases, and interactive step divergence inspection on the right.</desc>
+      <line x1="340" y1="14" x2="340" y2="306" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="16" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="30" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">STATIC WORD HIGHLIGHTS</text>
+        <line x1="16" y1="34" x2="328" y2="34" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <line x1="23" y1="52" x2="23" y2="225" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+        <rect x="20" y="48" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="34" y="54" font-size="11" font-weight="600" fill="var(--ex-muted)">Output sentence</text>
+        <text x="34" y="70" font-size="11.5" font-weight="600" fill="var(--ex-ink)">"Rebooking train ticket for midnight"</text>
+        <line x1="34" y1="95" x2="328" y2="95" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="20" y="105" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="34" y="111" font-size="11" font-weight="600" fill="var(--ex-muted)">Weighted tokens</text>
+        <text x="34" y="127" font-size="11.5" font-weight="600" fill="var(--ex-ink)">"ticket" (+0.42), "midnight" (+0.38)</text>
+        <line x1="34" y1="152" x2="328" y2="152" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="20" y="162" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="34" y="168" font-size="11" font-weight="600" fill="var(--ex-muted)">Intermediate steps</text>
+        <text x="34" y="184" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Hidden inside unrecorded black box</text>
+        <line x1="34" y1="209" x2="328" y2="209" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="20" y="219" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="34" y="225" font-size="11" font-weight="600" fill="var(--ex-muted)">Failure diagnosis</text>
+        <text x="34" y="241" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Blind to stale state and tool faults</text>
+        <line x1="16" y1="282" x2="328" y2="282" stroke="var(--ex-rule)" stroke-width="1"/>
+        <text x="16" y="298" font-size="11" font-weight="700" fill="var(--ex-warn)">Status: Blind to trajectory</text>
+      </g>
+      <g>
+        <rect x="356" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="370" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">AUDITABLE ACTION JOURNEY</text>
+        <line x1="356" y1="34" x2="664" y2="34" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <line x1="363" y1="52" x2="363" y2="225" stroke="var(--ex-signal)" stroke-width="1"/>
+        <g id="ex-journey-step-1">
+        <rect x="360" y="48" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="374" y="54" font-size="11" font-weight="600" fill="var(--ex-accent)">Step 1: Clinic portal</text>
+        <text x="374" y="70" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Found slot Tuesday 14:00 (read lease)</text>
+        </g>
+        <line x1="374" y1="95" x2="664" y2="95" stroke="var(--ex-rule)" stroke-width="1"/>
+        <g id="ex-journey-step-2">
+        <rect x="360" y="105" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="374" y="111" font-size="11" font-weight="600" fill="var(--ex-accent)">Step 2: Rail API</text>
+        <text x="374" y="127" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Fetched afternoon seats (HTTP 200)</text>
+        </g>
+        <line x1="374" y1="152" x2="664" y2="152" stroke="var(--ex-rule)" stroke-width="1"/>
+        <g id="ex-journey-step-3">
+        <rect id="ex-journey-step-3-box" x="360" y="162" width="6" height="6" fill="var(--ex-signal)"/>
+        <text id="ex-journey-step-3-title" class="ex-mono" x="374" y="168" font-size="11" font-weight="600" fill="var(--ex-accent)">Step 3: State check</text>
+        <text id="ex-journey-step-3-desc" x="374" y="184" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Checked departure slot (14:00 UTC)</text>
+        </g>
+        <line x1="374" y1="209" x2="664" y2="209" stroke="var(--ex-rule)" stroke-width="1"/>
+        <g id="ex-journey-step-4">
+        <rect x="360" y="219" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="374" y="225" font-size="11" font-weight="600" fill="var(--ex-accent)">Step 4: Action receipt</text>
+        <text x="374" y="241" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Dual-signed log stored locally</text>
+        </g>
+        <line x1="356" y1="282" x2="664" y2="282" stroke="var(--ex-rule)" stroke-width="1"/>
+        <text id="ex-journey-status" x="356" y="298" font-size="11.5" font-weight="700" fill="var(--ex-signal)">Status: 4 steps logged</text>
+        <g id="ex-journey-toggle" role="button" tabindex="0" aria-pressed="false" aria-controls="ex-journey-status" aria-label="Inspect step divergence">
+          <rect x="580" y="285" width="84" height="22" rx="2" fill="#9E4726" stroke="var(--ex-signal)" stroke-width="1"/>
+          <text id="ex-journey-btn-text" x="622" y="300" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">Inspect</text>
+        </g>
+      </g>
+  </svg>
+  <svg class="diagram-mobile" viewBox="0 0 330 460" role="img" aria-labelledby="ex-journey-m-title ex-journey-m-desc">
+    <title id="ex-journey-m-title">Static word highlights versus step-by-step action journey on mobile</title>
+    <desc id="ex-journey-m-desc">Stacked mobile diagram comparing static word weights that hide intermediate errors with a four-step action journey recording clinic, rail, state, and receipt checks.</desc>
+    <g>
+      <rect x="10" y="14" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="22" y="20" font-size="11" font-weight="700" fill="var(--ex-warn)">STATIC WORD HIGHLIGHTS</text>
+      <line x1="10" y1="30" x2="310" y2="30" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <line x1="13" y1="42" x2="13" y2="170" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+      <polygon points="10,92 16,92 13,98" fill="var(--ex-warn)"/>
+      <polygon points="10,144 16,144 13,150" fill="var(--ex-warn)"/>
+      <text x="24" y="54" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Weighted Final Words</text>
+      <text x="24" y="70" font-size="11" fill="var(--ex-muted)">Highlights "ticket" and "midnight" only</text>
+      <text x="24" y="106" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Hidden Intermediate Steps</text>
+      <text x="24" y="122" font-size="11" fill="var(--ex-muted)">No record of clinic or rail API replies</text>
+      <text x="24" y="158" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Blind to Stale State</text>
+      <text x="24" y="174" font-size="11" fill="var(--ex-muted)">Cannot tell where the errand drifted</text>
+    </g>
+    <line x1="10" y1="198" x2="310" y2="198" stroke="var(--ex-rule)" stroke-width="1"/>
+    <g>
+      <rect x="10" y="216" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="22" y="222" font-size="11" font-weight="700" fill="var(--ex-signal)">AUDITABLE ACTION JOURNEY</text>
+      <line x1="10" y1="232" x2="310" y2="232" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <line x1="13" y1="244" x2="13" y2="386" stroke="var(--ex-signal)" stroke-width="1"/>
+      <polygon points="10,294 16,294 13,300" fill="var(--ex-signal)"/>
+      <polygon points="10,346 16,346 13,352" fill="var(--ex-signal)"/>
+      <text x="24" y="256" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Clinic &amp; Rail Snapshots</text>
+      <text x="24" y="272" font-size="11" fill="var(--ex-muted)">Logs exact slot and seat replies in order</text>
+      <text x="24" y="308" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Scoped Lease &amp; State Check</text>
+      <text x="24" y="324" font-size="11" fill="var(--ex-muted)">Flags stale departure slot before booking</text>
+      <text x="24" y="360" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Dual-Signed Local Receipt</text>
+      <text x="24" y="376" font-size="11" fill="var(--ex-muted)">Pinpoints step divergence on your device</text>
+      <text x="24" y="410" font-size="11" font-weight="700" fill="var(--ex-signal)">Result: Every step checkable and reversible</text>
+    </g>
+  </svg>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Token saliency maps</span>
+      <div class="ex-spec-body">Highlighting words in the final reply never shows which intermediate API call or stale clock went wrong.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Step-by-step trajectory log</span>
+      <div class="ex-spec-body">Recording each observation, lease check, and state transition pinpoints the exact step where an errand drifted.</div>
+    </div>
+  </div>
+  <figcaption>Word highlights show which terms weighed heavily on a final sentence. An action journey records every step, state observation, and permission boundary so you can spot where an errand went off course.</figcaption>
+</figure>
+
+<h2>Three things an action journey must show</h2>
+
+<p>To make automated assistants truly accountable, every multi-step errand needs an auditable journey record. We think that record must answer three simple questions.</p>
+
+<p><strong>1. What did the assistant observe at each step?</strong> When software opens a page or queries an online service, it sees a momentary snapshot of facts. A journey record captures that snapshot. If a rail site updated seat prices midway through, you can see whether the assistant acted on current facts or outdated data.</p>
+
+<p><strong>2. What rule guided each move?</strong> Every time an assistant clicks, reserves, or sends, it should link that move to a clear instruction. If it booked an evening departure, did your note permit evening travel, or did the software overstep? Without a rule attached to each step, you cannot tell an honest mistake from an unauthorised action.</p>
+
+<p><strong>3. Where can a human step in?</strong> A journey record should not be a sealed black box delivered only after disaster strikes. You should be able to pause the journey, inspect the steps taken so far, and revoke active permissions with a single tap.</p>
+
+<h2>Why receipts matter when agents deal with agents</h2>
+
+<p>Today, an assistant mostly interacts with websites built for human eyes. Tomorrow, assistants will coordinate directly with other assistants across machine channels, a shift we explore in <a href="/blog/the-internet-needs-a-second-road/">Why the internet needs a second road</a>.</p>
+
+<p>Your calendar assistant will negotiate with a clinic scheduling assistant. That clinic assistant will coordinate with a pharmacy inventory agent. In a chain of automated handoffs, no human being sits watching every second.</p>
+
+<p>If something breaks, who was responsible? Without signed, step-by-step receipts, every system can blame the next. The clinic claims your assistant requested midnight; your assistant claims the clinic confirmed noon. When every participant is software, the signed journey log is the only credible witness.</p>
+
+<div class="callout"><p class="label">What this means</p><p>When an assistant takes ten steps on your behalf, you need a checkable record of each step. You can spot mistakes at the exact step where they happened.</p></div>
+
+<h2>What you should ask today</h2>
+
+<p>You should not need a degree in machine learning to trust an automated assistant. Before trusting software with your errands, ask a straightforward question: <em>When this makes a mistake, will you show me the steps it took, or just tell me to trust its score?</em></p>
+
+<p>If a provider cannot show you the journey, you are flying blind. Keeping a checkable trail of every step is simply how we ensure that as assistants grow more capable, they remain honest, accountable, and firmly under your care.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers</summary>
+    <div>
+      <p>Traditional Explainable AI methods like SHAP and LIME rely on feature attribution over static input vectors. Chaduvula et al. (arXiv:2602.06841) demonstrate that feature attribution fails to diagnose execution-level breakdowns across multi-step agent trajectories, where state tracking inconsistency is 2.7 times more prevalent in failed runs and reduces task success by 49 percent. We implement Minimal Explanation Packets (MEP) combining Object-Capability delegation (Dennis &amp; Van Horn, 1966), Proof-Carrying Code execution traces (Necula, 1997), and HTTP Message Signatures (RFC 9421) to provide deterministic, trace-grounded trajectory verification.</p>
+      <p>Within our five-primitive sociotechnical architecture, heterogeneous wearable and room sensors form a multimodal egocentric and ambient perceptual sensorium fused locally in monotonic hardware <code>Device Time</code> with self-assessed observation confidence. Silicon peripheral attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, <code>IETF RATS</code> RFC 9334), an optical data diode, and <code>IEC 61508</code> dead-man relays isolate physical actuators. Trajectory observations write into an append-only <code>C2PA</code> and Merkle episodic memory vault (Endel Tulving; Tulving, 1972) bound by transduction realism (<em>Signed Is Not True</em> across the analog hole; Kevin Fu and Wenyuan Xu; Fu &amp; Xu, 2018). A monogamous <code>1:1</code> principal-bound personal cognitive model and cybernetic exocortex (Joscha Bach; Bach, 2009) grounded in the Extended Mind thesis (Andy Clark and David Chalmers; Clark &amp; Chalmers, 1998) and the Good Regulator theorem (Conant &amp; Ashby, 1970) applies interventional causal models <code>do(x)</code> (Pearl, 2009) and compiler-trust reflection proofs (Thompson, 1984) as a statutory information fiduciary (Jack Balkin; Balkin, 2016), preserving unassisted competence over the Private Autobiographical Ledger.</p>
+      <p>Across the personal Markov blanket boundary (Karl Friston; Friston, 2010; Friston, 2013), multi-step errand handoffs require time-bounded Object-Capability lease gates (Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966), selective zero-knowledge (<code>ZK</code>) trajectory proofs, independent-class Byzantine corroboration (<code>k &gt;= 3f + 1</code>; Lamport, Shostak &amp; Pease, 1982), and signed <code>IETF SCITT</code> (<code>RFC 9943</code>) transparency receipts on the Public Attestation &amp; Escrow Ledger. Those verified journey receipts couple sovereign dyads to the Wide Network Ledger for Universal Basic Services, merit-bonded commons tasks, invisible-labor upkeep recognition (Jacob Meluso; Meluso et al., 2022), countercyclical reciprocal mutual credit (James Stodder; Stodder, 2009), frontier-lab overlays (Bracale Syrnikov et al., 2026), polycentric self-rule (Elinor Ostrom; Ostrom, 1990; Ostrom, 2010), and statutory Meidner cooperative equity (Rudolf Meidner; Meidner, 1978).</p>
+    </div>
+  </details>
+</aside>
+
+<section class="footnotes">
+  <p id="fn1">1. Sindhuja Chaduvula, Jessee Ho, Kina Kim, Aravind Narayanan, Ahmed Y. Radwan, Mahshid Alinoori, Muskan Garg, Dhanesh Ramachandram, and Shaina Raza, <a href="https://arxiv.org/abs/2602.06841">From Features to Actions: Explainability in Traditional and Agentic AI Systems</a>, arXiv:2602.06841 (February 2026).</p>
+</section>

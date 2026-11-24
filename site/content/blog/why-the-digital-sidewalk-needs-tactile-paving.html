@@ -1,0 +1,212 @@
+---
+title: Why the digital sidewalk needs tactile paving
+description: When software is built only for visual screens, blind users and automated assistants alike get trapped. Clear semantic paving makes the digital world navigable for everyone.
+reader: Designers, software engineers, and public stewards building interfaces meant to be used by assistive tools, screen readers, and everyday people.
+takeaway: Visual appearance is not enough. Giving digital tools reliable, structured accessibility cues keeps public software open, safe, and navigable for everyone.
+template: article
+date: 2026-11-08
+order: 23
+category: Inclusion
+minutes: 7
+image: post-why-the-digital-sidewalk-needs-tactile-paving.jpg
+image_alt: A sunlit city sidewalk intersection where a person with a white cane walks across textured tactile paving curb stones, with soft morning light fading into warm cream paper.
+lede: Software should carry structured accessibility information, such as labelled buttons, headings and form fields, because people using screen readers depend on it, and AI agents that operate software increasingly do too.
+---
+<p>Tactile paving tells a blind pedestrian where the pavement ends. Accessibility markup does the same job in software: it tells assistive technology what each element is and does. More and more AI agents navigate websites and apps on people's behalf, and many of them rely on the same structure, or else guess from pixels on the screen.</p>
+
+<h2>Pixel guessing</h2>
+
+<p>When an engineer builds an interface only for the eyes, assistive tools struggle. A screen reader speaks page contents aloud for people with visual impairments. To do its job, it needs structured cues. It needs clear heading levels, descriptive labels on buttons, and unambiguous keyboard focus states.</p>
+
+<p>When those markers are missing, software turns into a featureless blank wall. An unlabelled icon becomes "button." A critical form error produces complete silence. An interactive pop-up window traps the keyboard, leaving the visitor stranded with no way back to the main page.</p>
+
+<p>Recent empirical research has laid bare just how severe this barrier has become.<sup><a href="#fn1">1</a></sup> When researchers tested screen reader users across everyday computer tasks, users encountered constant dead ends. The tools failed not because the participants lacked skill, but because modern applications hide their underlying structural meaning behind visual tricks.</p>
+
+<p>Now, automated AI assistants are running into that exact same wall. Many teams assume that computer-using agents can simply "look at the screen" and guess what to click based on raw pixels. But visual guessing is brittle. When buttons shift position, or when contrast is low, assistants hallucinate actions or click the wrong controls.</p>
+
+<figure class="explainer" id="ex-tactile-paving">
+  <style>
+    #ex-tactile-paving {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-tactile-paving svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-tactile-paving .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-tactile-paving .diagram-desktop {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    #ex-tactile-paving .diagram-mobile {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+    #ex-tactile-paving figcaption {
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-tactile-paving .diagram-desktop { display: none; }
+      #ex-tactile-paving .diagram-mobile { display: block; }
+    }
+  </style>
+  <svg class="diagram-desktop" viewBox="0 0 760 310" role="img" aria-labelledby="ex-tactile-paving-title ex-tactile-paving-desc">
+    <title id="ex-tactile-paving-title">Interface Navigation: Unstructured Pixel Guessing versus Standardized Accessibility Tree</title>
+    <desc id="ex-tactile-paving-desc">A side-by-side comparison illustrating how interfaces lacking structural cues cause screen reader failures and agent hallucination, whereas standardized accessibility trees provide clear semantic waypoints for universal navigation.</desc>
+    <line x1="380" y1="14" x2="380" y2="296" stroke="var(--ex-rule)" stroke-width="1"/>
+    <g>
+      <rect x="16" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="30" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">Unstructured pixel guessing</text>
+      <text x="16" y="42" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Visual-only canvas without semantic tags</text>
+      <line x1="16" y1="52" x2="368" y2="52" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <line x1="25" y1="68" x2="25" y2="208" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+      <rect x="22" y="67" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="74" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Missing Semantic Labels</text>
+      <text x="38" y="91" font-size="11" fill="var(--ex-muted)">Buttons read aloud as unlabeled "icon 12"</text>
+      <line x1="38" y1="123" x2="368" y2="123" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="22" y="134" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="141" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Broken Keyboard Focus</text>
+      <text x="38" y="158" font-size="11" fill="var(--ex-muted)">Tab navigation traps users in hidden loops</text>
+      <line x1="38" y1="190" x2="368" y2="190" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="22" y="201" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="208" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Silent Form Failures</text>
+      <text x="38" y="225" font-size="11" fill="var(--ex-muted)">Validation errors appear visually, never spoken</text>
+      <line x1="16" y1="268" x2="368" y2="268" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="16" y="277" width="5" height="5" fill="var(--ex-warn)"/>
+      <text x="28" y="282" font-size="11" font-weight="700" fill="var(--ex-warn)">Result: Screen readers stall; blind clicks</text>
+    </g>
+    <g>
+      <rect x="396" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="410" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">Standardized accessibility tree</text>
+      <text x="396" y="42" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Explicit semantic roles and focus flow</text>
+      <line x1="396" y1="52" x2="744" y2="52" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <line x1="405" y1="68" x2="405" y2="208" stroke="var(--ex-signal)" stroke-width="1"/>
+      <rect x="402" y="67" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="418" y="74" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Clear Action Names</text>
+      <text x="418" y="91" font-size="11" fill="var(--ex-muted)">Controls announce "Submit order for check"</text>
+      <line x1="418" y1="123" x2="744" y2="123" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="402" y="134" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="418" y="141" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Predictable Focus Order</text>
+      <text x="418" y="158" font-size="11" fill="var(--ex-muted)">Structured landmarks guide keyboard travel</text>
+      <line x1="418" y1="190" x2="744" y2="190" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="402" y="201" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="418" y="208" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Live Status Alerts</text>
+      <text x="418" y="225" font-size="11" fill="var(--ex-muted)">Dynamic state changes spoken immediately</text>
+      <line x1="396" y1="268" x2="744" y2="268" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="396" y="277" width="5" height="5" fill="var(--ex-signal)"/>
+      <text x="408" y="282" font-size="11" font-weight="700" fill="var(--ex-signal)">Result: Universal dependable navigation</text>
+    </g>
+  </svg>
+  <svg class="diagram-mobile" viewBox="0 0 330 590" role="img" aria-labelledby="ex-tactile-paving-m-title ex-tactile-paving-m-desc">
+    <title id="ex-tactile-paving-m-title">Interface Navigation on Mobile: Unstructured Pixel Guessing versus Standardized Accessibility Tree</title>
+    <desc id="ex-tactile-paving-m-desc">Stacked mobile overview contrasting fragile visual-only pixel guessing with standardized accessibility trees that support screen readers and assistive agents.</desc>
+    <g>
+      <rect x="8" y="14" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="20" y="20" font-size="11" font-weight="700" fill="var(--ex-warn)">Unstructured pixel guessing</text>
+      <text x="8" y="38" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Visual-only canvas without semantic tags</text>
+      <line x1="8" y1="47" x2="318" y2="47" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <line x1="12" y1="62" x2="12" y2="198" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+      <rect x="9" y="60" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="24" y="67" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Missing Labels</text>
+      <text x="24" y="84" font-size="11" fill="var(--ex-muted)">Button reads aloud as "icon 12"</text>
+      <line x1="24" y1="117" x2="318" y2="117" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="126" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="24" y="133" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Broken Focus Ring</text>
+      <text x="24" y="150" font-size="11" fill="var(--ex-muted)">Trapped inside hidden focus loop</text>
+      <line x1="24" y1="183" x2="318" y2="183" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="192" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="24" y="199" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Silent Updates</text>
+      <text x="24" y="216" font-size="11" fill="var(--ex-muted)">Form errors are never spoken</text>
+      <line x1="8" y1="261" x2="318" y2="261" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="8" y="270" width="5" height="5" fill="var(--ex-warn)"/>
+      <text x="19" y="275" font-size="11" font-weight="700" fill="var(--ex-warn)">Result: Screen readers stall; blind clicks</text>
+    </g>
+    <line x1="8" y1="295" x2="318" y2="295" stroke="var(--ex-rule)" stroke-width="1.25"/>
+    <g>
+      <rect x="8" y="309" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="20" y="315" font-size="11" font-weight="700" fill="var(--ex-signal)">Standardized accessibility tree</text>
+      <text x="8" y="333" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Explicit semantic roles and focus flow</text>
+      <line x1="8" y1="342" x2="318" y2="342" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <line x1="12" y1="357" x2="12" y2="495" stroke="var(--ex-signal)" stroke-width="1"/>
+      <rect x="9" y="355" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="24" y="362" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Clear Action Names</text>
+      <text x="24" y="379" font-size="11" fill="var(--ex-muted)">Announces "Submit verification"</text>
+      <line x1="24" y1="413" x2="318" y2="413" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="422" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="24" y="429" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Structured Flow</text>
+      <text x="24" y="446" font-size="11" fill="var(--ex-muted)">Predictable keyboard landmark order</text>
+      <line x1="24" y1="480" x2="318" y2="480" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="489" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="24" y="496" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Live Spoken Alerts</text>
+      <text x="24" y="513" font-size="11" fill="var(--ex-muted)">Status updates announced clearly</text>
+      <line x1="8" y1="558" x2="318" y2="558" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="8" y="567" width="5" height="5" fill="var(--ex-signal)"/>
+      <text x="19" y="572" font-size="11" font-weight="700" fill="var(--ex-signal)">Result: Universal dependable navigation</text>
+    </g>
+  </svg>
+  <figcaption>When software omits underlying semantic structure, visually impaired people and assistive software encounter dead ends. Standardizing accessibility trees provides universal tactile paving across digital public services.</figcaption>
+</figure>
+
+<h2>The shared digital sidewalk</h2>
+
+<p>Accessibility is often treated as an optional checklist item, added at the end if time allows. That view misunderstands who public infrastructure is for.</p>
+
+<p>Tactile paving on a street corner does not just benefit someone with a white cane. It helps a parent pushing a stroller spot the curb edge. It alerts a distracted walker looking down at their phone. It helps delivery workers wheeling heavy carts.</p>
+
+<p>In software and on the web, standardized accessibility structures offer the same shared benefit.<sup><a href="#fn2">2</a></sup> When an application exposes a clean semantic hierarchy, everyone wins. Screen readers speak clearly. Assistive switches navigate with single keystrokes. And local AI assistants can help users complete tedious tasks without guessing wrong or corrupting entries.</p>
+
+<p>By connecting software through open protocols that share structural meaning rather than just visual pixels, we build tools that work together.<sup><a href="#fn3">3</a></sup> A person can use their own trusted assistive agent to navigate any service, confident that the controls mean what they say.</p>
+
+<h2>Building for everyone</h2>
+
+<p>A sidewalk is not truly public if half the neighbourhood cannot safely cross it. The same principle holds for the software that runs our civic life, our healthcare, and our schools.</p>
+
+<p>We do not need more visual clutter or heavier tracking. We need durable, well-tended digital paving stones that tell both humans and assistants where they stand, what they can do, and how to get home safely.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers and interface engineers</summary>
+    <div>
+      <p>This essay examines interface accessibility through the lens of multimodal interaction and structural semantics. Primary research by Nan Chen et al. (arXiv:2601.18092, 2026: <em>From Struggle to Success: Context-Aware Guidance for Screen Reader Users in Computer Use</em>) documents widespread task failure when web applications rely on purely visual affordances without corresponding structural cues.</p>
+      <p>Standardizing accessibility trees through open agent protocols (Ramineni et al., arXiv:2608.24898) and model-driven interface transformations (Jerry et al., arXiv:2601.06616) eliminates platform fragmentation by exposing ARIA-aligned roles, states, and properties directly to assistive screen-reader engines and local user agents. For auditable civic governance patterns, explore our builder guidance on standardizing accessibility trees for assistive agents in <a href="/labs/shared-horizon/">Shared Horizon</a>, as well as harmonized European accessibility requirements under EN 301 549 and W3C Web Content Accessibility Guidelines (WCAG 2.2).</p>
+    </div>
+  </details>
+</aside>
+
+<section class="footnotes">
+  <ol>
+    <li id="fn1">Nan Chen et al., "From Struggle to Success: Context-Aware Guidance for Screen Reader Users in Computer Use," <em>arXiv preprint arXiv:2601.18092</em> (2026), <a href="https://arxiv.org/abs/2601.18092">https://arxiv.org/abs/2601.18092</a>.</li>
+    <li id="fn2">Blessing Jerry, Lourdes Moreno, Virginia Francisco, and Raquel Herv&aacute;s, "LLM-Driven Accessible Interface: A Model-Based Approach," <em>arXiv preprint arXiv:2601.06616</em> (January 2026), <a href="https://arxiv.org/abs/2601.06616">https://arxiv.org/abs/2601.06616</a>.</li>
+    <li id="fn3">Vishnu Ramineni, Nitin Saksena, Akash Kumar Agarwal, Darshan Mohan Bidkar, Balakrishna Pothineni, Durgaraman Maruthavanan, Lokesh Butra, and Siva Kumar Chintham, "MCP-Driven Accessibility Tree Standardization for AI-Powered Screen Reader Agents," <em>arXiv preprint arXiv:2608.24898</em> (August 2026), <a href="https://arxiv.org/abs/2608.24898">https://arxiv.org/abs/2608.24898</a>; see also W3C, "Web Content Accessibility Guidelines (WCAG) 2.2" (2023), <a href="https://www.w3.org/TR/WCAG22/">https://www.w3.org/TR/WCAG22/</a>.</li>
+  </ol>
+</section>

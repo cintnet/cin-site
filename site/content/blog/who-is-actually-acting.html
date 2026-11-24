@@ -1,0 +1,479 @@
+---
+title: Who is actually acting?
+description: AI assistants are starting to act for us. Before they do much more, we need the equivalent of a licence plate and a receipt.
+reader: Anyone who uses, or will soon use, an AI assistant that does things on their behalf.
+takeaway: When software acts for us, we need a simple, checkable record of who it acted for, what it was allowed to do and what it did.
+template: article
+date: 2026-11-06
+order: 1
+category: Seeing
+minutes: 9
+image: post-who-is-acting.jpg
+image_alt: A delicate mechanical hand with a blank paper tag tied to its wrist, posting a sealed letter into a postbox.
+lede: Your assistant booked the flight, emailed the landlord and paid the bill. It's a small miracle. It's also a question we haven't really answered yet. Afterwards, could you tell exactly what it did?
+---
+<p>When software acts for us, we need a simple, checkable record of who it acted for, what it was allowed to do and what it did. Until recently, if someone acted on your behalf, it was another person. A travel agent, a bookkeeper, a clinic receptionist, or a neighbour doing you a favour. When a booking went wrong or a bill looked strange, you could ask them what happened. They would check their notes, remember the phone call, and give you a straight answer.</p>
+
+<p>Software is now stepping into that role. AI assistants read our email, fill in forms, compare prices and, increasingly, act: they send, buy, book, reschedule, and negotiate. And they are getting better at it quickly. One careful measurement found that the length of task AI agents can complete on their own has been doubling roughly every seven months.<sup><a href="#fn1">1</a></sup></p>
+
+<p>That shift is genuinely exciting. Imagine never again losing an afternoon on hold with a utility company, or spending your Sunday evening untangling a reimbursement form. Yet it raises a simple, practical question: when an assistant acts in your name, how do you know what it actually did?</p>
+
+<h2>An unmarked van on your porch</h2>
+
+<p>Most software today wasn't built to answer that question. When an AI assistant clicks through a website, it usually looks either like you typing at superhuman speed or like an anonymous script knocking from an unknown address.</p>
+
+<p>Picture coming home to find a heavy wooden crate sitting on your front porch, blocking the door, while an unmarked white van with no licence plates speeds away down the street. There is no delivery slip taped to the lid. You don't know which company sent the van, who authorised the drop-off, whether your card was charged, or who to call to haul the crate back.</p>
+
+<p>That is what an unsigned agent action looks like on the internet today. When an automated assistant makes a request without a clear identity or a bounded permission slip, everyone is left guessing. The service on the receiving end cannot tell whether your assistant had your blessing to change a contract or simply guessed wrong. And you have no independent receipt showing what was promised on your behalf.</p>
+
+<h2>Three small questions: the letter, the valet key, and the receipt</h2>
+
+<figure class="explainer" id="ex-action-receipt" data-stage="bench">
+  <style>
+    #ex-action-receipt {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3EADF;
+      --ex-tape: #FBF8F1;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #DFD1BE;
+      --ex-signal: #1F6B4E;
+      --ex-accent: #0B3F30;
+      --ex-warn: #963E1D;
+      --ex-key-top: #FDF9F2;
+      --ex-key-side: #D4C3AC;
+      margin: 2rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    @media (prefers-color-scheme: dark) {
+      #ex-action-receipt {
+        --ex-paper: #1C1A24;
+        --ex-slip: #262331;
+        --ex-tape: #262331;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #C2B8AC;
+        --ex-rule: #3A3548;
+        --ex-signal: #8FD4B6;
+        --ex-accent: #8FD4B6;
+        --ex-warn: #F09D82;
+        --ex-key-top: #262331;
+        --ex-key-side: #3A3548;
+      }
+    }
+    :root[data-theme="dark"] #ex-action-receipt {
+      --ex-paper: #1C1A24;
+      --ex-slip: #262331;
+      --ex-tape: #262331;
+      --ex-ink: #EDE6DC;
+      --ex-muted: #C2B8AC;
+      --ex-rule: #3A3548;
+      --ex-signal: #8FD4B6;
+      --ex-accent: #8FD4B6;
+      --ex-warn: #F09D82;
+      --ex-key-top: #262331;
+      --ex-key-side: #3A3548;
+    }
+    #ex-action-receipt .ex-sr-radio {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    #ex-action-receipt .ex-keybar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding-bottom: 0.95rem;
+      border-bottom: 1px solid var(--ex-rule);
+    }
+    #ex-action-receipt .ex-bench-kicker {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+    }
+    #ex-action-receipt .ex-keys {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    #ex-action-receipt .ex-keycap {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.78rem;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.73rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ex-ink);
+      background: var(--ex-key-top);
+      border: 1px solid var(--ex-ink);
+      border-radius: 2px;
+      box-shadow: 0 3px 0 var(--ex-key-side), 0 4px 0 var(--ex-ink);
+      cursor: pointer;
+      user-select: none;
+      transform: translateY(0);
+      transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 180ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    #ex-action-receipt .ex-pip {
+      width: 6px;
+      height: 6px;
+      background: var(--ex-muted);
+    }
+    #ex-action-receipt #sw-act-opaque:focus-visible ~ .ex-keybar label[for="sw-act-opaque"],
+    #ex-action-receipt #sw-act-scoped:focus-visible ~ .ex-keybar label[for="sw-act-scoped"] {
+      outline: 2px solid var(--ex-signal);
+      outline-offset: 3px;
+    }
+    #ex-action-receipt #sw-act-opaque:checked ~ .ex-keybar label[for="sw-act-opaque"] {
+      transform: translateY(3px);
+      box-shadow: 0 0 0 var(--ex-key-side), 0 1px 0 var(--ex-ink);
+      background: var(--ex-slip);
+      border-color: var(--ex-warn);
+    }
+    #ex-action-receipt #sw-act-opaque:checked ~ .ex-keybar label[for="sw-act-opaque"] .ex-pip {
+      background: var(--ex-warn);
+    }
+    #ex-action-receipt #sw-act-scoped:checked ~ .ex-keybar label[for="sw-act-scoped"] {
+      transform: translateY(3px);
+      box-shadow: 0 0 0 var(--ex-key-side), 0 1px 0 var(--ex-ink);
+      background: var(--ex-slip);
+      border-color: var(--ex-signal);
+    }
+    #ex-action-receipt #sw-act-scoped:checked ~ .ex-keybar label[for="sw-act-scoped"] .ex-pip {
+      background: var(--ex-signal);
+    }
+    #ex-action-receipt .ex-bench-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(236px, 0.95fr);
+      gap: 1.15rem;
+      align-items: stretch;
+      padding-top: 0.95rem;
+    }
+    #ex-action-receipt .diagram-desktop {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    #ex-action-receipt .diagram-mobile {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+    #ex-action-receipt svg {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-action-receipt .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    #ex-action-receipt .st-opaque { display: none; }
+    #ex-action-receipt #sw-act-opaque:checked ~ .ex-bench-grid .st-scoped { display: none; }
+    #ex-action-receipt #sw-act-opaque:checked ~ .ex-bench-grid .st-opaque { display: inline; }
+    #ex-action-receipt #ex-revoke-btn,
+    #ex-action-receipt #ex-revoke-btn-m,
+    #ex-action-receipt .ex-revoke-btn {
+      cursor: pointer;
+      transition: opacity 180ms ease;
+    }
+    #ex-action-receipt #ex-revoke-btn:hover rect,
+    #ex-action-receipt #ex-revoke-btn:focus-visible rect,
+    #ex-action-receipt #ex-revoke-btn-m:hover rect,
+    #ex-action-receipt #ex-revoke-btn-m:focus-visible rect {
+      fill: #0B3F30;
+    }
+    #ex-action-receipt .ex-receipt-printer {
+      position: relative;
+      padding: 0.75rem 0.85rem 0.75rem 1.35rem;
+      background: var(--ex-tape);
+      border-top: 2px dotted var(--ex-ink);
+      border-bottom: 2px dotted var(--ex-ink);
+      border-left: 1px dashed var(--ex-rule);
+      border-right: 1px dashed var(--ex-rule);
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.73rem;
+      line-height: 1.5;
+    }
+    #ex-action-receipt .ex-receipt-printer::before {
+      content: "o\Ao\Ao\Ao\Ao\Ao";
+      white-space: pre;
+      position: absolute;
+      left: 0.42rem;
+      top: 0.65rem;
+      font-size: 0.65rem;
+      line-height: 1.85;
+      color: var(--ex-muted);
+    }
+    #ex-action-receipt .ex-tape-head {
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding-bottom: 0.35rem;
+      margin-bottom: 0.4rem;
+      border-bottom: 1px dashed var(--ex-rule);
+    }
+    #ex-action-receipt .ex-tape-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.16rem 0;
+    }
+    #ex-action-receipt .ex-tape-k { color: var(--ex-muted); }
+    #ex-action-receipt .ex-tape-stamp {
+      margin-top: 0.45rem;
+      padding-top: 0.4rem;
+      border-top: 1px dashed var(--ex-rule);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    #ex-action-receipt .tape-opaque { display: none; }
+    #ex-action-receipt #sw-act-opaque:checked ~ .ex-bench-grid .tape-scoped { display: none; }
+    #ex-action-receipt #sw-act-opaque:checked ~ .ex-bench-grid .tape-opaque { display: block; }
+    #ex-action-receipt .ink-warn { color: var(--ex-warn); }
+    #ex-action-receipt .ink-ok { color: var(--ex-signal); }
+    #ex-action-receipt figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: var(--ex-muted);
+    }
+    @media (max-width: 640px) {
+      #ex-action-receipt .ex-bench-grid {
+        grid-template-columns: 1fr;
+      }
+      #ex-action-receipt .diagram-desktop { display: none; }
+      #ex-action-receipt .diagram-mobile { display: block; }
+    }
+    @media (max-width: 600px) {
+      #ex-action-receipt .diagram-desktop { display: none; }
+      #ex-action-receipt .diagram-mobile { display: block; }
+    }
+  </style>
+
+  <input type="radio" name="sw-action-receipt" id="sw-act-opaque" class="ex-sr-radio" />
+  <input type="radio" name="sw-action-receipt" id="sw-act-scoped" class="ex-sr-radio" checked />
+
+  <div class="ex-keybar">
+    <span class="ex-bench-kicker">Licence-plate wire &amp; receipt printer</span>
+    <div class="ex-keys">
+      <label for="sw-act-opaque" class="ex-keycap"><span class="ex-pip"></span>Black-box assistant</label>
+      <label for="sw-act-scoped" class="ex-keycap"><span class="ex-pip"></span>Scoped pass + signed receipt</label>
+    </div>
+  </div>
+
+  <div class="ex-bench-grid">
+    <div class="ex-wire-stage">
+      <!-- Desktop SVG (viewBox 0 0 484 228) -->
+      <svg class="diagram-desktop" viewBox="0 0 484 228" width="100%" role="img" aria-labelledby="ex-action-receipt-title ex-action-receipt-desc">
+        <title id="ex-action-receipt-title">Comparison of an unsigned AI request and a signed action envelope with a checkable receipt</title>
+        <desc id="ex-action-receipt-desc">Frameless relay wire comparing a black-box assistant sending an unmarked request with unbounded access against a scoped pass for M. Tremblay with a licence plate, 120-second lease, signed receipt wire, and interactive revoke switch.</desc>
+
+        <!-- Bare horizontal relay wire -->
+        <line x1="8" y1="88" x2="472" y2="88" stroke="var(--ex-rule)" stroke-width="1"/>
+
+        <!-- State 1: Black-Box Assistant -->
+        <g class="st-opaque">
+          <rect x="8" y="34" width="194" height="92" fill="var(--ex-slip)" stroke="var(--ex-warn)" stroke-width="1.2" stroke-dasharray="4 3"/>
+          <text class="ex-mono" x="18" y="54" font-size="11" font-weight="700" fill="var(--ex-warn)">&#9632; UNMARKED PLATE</text>
+          <text x="18" y="76" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Principal: Unknown ("an AI")</text>
+          <text x="18" y="96" font-size="11" fill="var(--ex-muted)">Lease: Unbounded access</text>
+          <text x="18" y="114" font-size="11" fill="var(--ex-muted)">Cutoff: No stop switch</text>
+
+          <line x1="202" y1="80" x2="286" y2="80" stroke="var(--ex-warn)" stroke-width="2" stroke-dasharray="4 3"/>
+          <text class="ex-mono" x="244" y="71" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ex-warn)">UNSIGNED</text>
+
+          <rect x="286" y="34" width="186" height="92" fill="var(--ex-paper)" stroke="var(--ex-warn)" stroke-width="1.2"/>
+          <text class="ex-mono" x="296" y="54" font-size="11" font-weight="700" fill="var(--ex-warn)">RAIL BOOKING DESK</text>
+          <text x="296" y="76" font-size="11" fill="var(--ex-ink)">Cannot verify blessing</text>
+          <text x="296" y="96" font-size="11" fill="var(--ex-ink)">First-class billed silently</text>
+          <text x="296" y="114" font-size="11" font-weight="600" fill="var(--ex-warn)">Status: No checkable receipt</text>
+        </g>
+
+        <!-- State 2: Scoped Pass + Signed Receipt -->
+        <g class="st-scoped">
+          <rect x="8" y="26" width="194" height="104" fill="var(--ex-slip)" stroke="var(--ex-signal)" stroke-width="1.3"/>
+          <text class="ex-mono" x="18" y="46" font-size="11" font-weight="700" fill="var(--ex-signal)">&#9632; LICENCE PLATE #MT-04</text>
+          <text x="18" y="68" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Principal: M. Tremblay</text>
+          <text x="18" y="88" font-size="11" fill="var(--ex-ink)">Pass: Standard rail seat only</text>
+          <text x="18" y="108" font-size="11" fill="var(--ex-muted)">Lease window: TTL 120s</text>
+
+          <line x1="202" y1="78" x2="286" y2="78" stroke="var(--ex-signal)" stroke-width="2"/>
+          <polygon points="286,78 278,73 278,83" fill="var(--ex-signal)"/>
+          <text class="ex-mono" x="244" y="69" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ex-signal)">SIGNED</text>
+
+          <rect x="286" y="26" width="186" height="104" fill="var(--ex-paper)" stroke="var(--ex-signal)" stroke-width="1.3"/>
+          <text class="ex-mono" x="296" y="46" font-size="11" font-weight="700" fill="var(--ex-signal)">VERIFIED RELAY GATE</text>
+          <text x="296" y="68" font-size="11" fill="var(--ex-ink)">Upgrade blocked by scope</text>
+          <text x="296" y="88" font-size="11" fill="var(--ex-ink)">Dual-signed receipt logged</text>
+          <text x="296" y="108" font-size="11" font-weight="600" fill="var(--ex-signal)">Portable copy in your log</text>
+
+          <!-- Live Hardware Kill-Switch & Lease Status wired to site.js -->
+          <rect x="8" y="156" width="248" height="34" rx="2" fill="#0B3F30"/>
+          <text id="ex-receipt-status" class="ex-receipt-status" x="132" y="178" text-anchor="middle" font-size="12" font-weight="600" fill="#FAF3EA">Status: Active lease</text>
+
+          <g id="ex-revoke-btn" class="ex-revoke-btn" role="button" tabindex="0" aria-pressed="false" aria-controls="ex-receipt-status" aria-label="Revoke task lease">
+            <rect x="268" y="156" width="112" height="34" rx="2" fill="#963E1D" stroke="#0B3F30" stroke-width="1.2"/>
+            <text x="324" y="178" text-anchor="middle" font-size="12" font-weight="600" fill="#FAF3EA">Revoke</text>
+          </g>
+        </g>
+      </svg>
+
+      <!-- Mobile SVG (viewBox 0 0 330 260) -->
+      <svg class="diagram-mobile" viewBox="0 0 330 260" width="100%" role="img" aria-labelledby="ex-action-receipt-m-title ex-action-receipt-m-desc">
+        <title id="ex-action-receipt-m-title">Comparison of an unsigned AI request and a signed action envelope with a checkable receipt</title>
+        <desc id="ex-action-receipt-m-desc">Stacked mobile relay schematic comparing an unmarked black-box assistant request with a scoped licence-plate pass for M. Tremblay and an interactive revoke switch.</desc>
+
+        <g class="st-opaque">
+          <rect x="10" y="12" width="298" height="96" fill="var(--ex-slip)" stroke="var(--ex-warn)" stroke-width="1.2" stroke-dasharray="4 3"/>
+          <text class="ex-mono" x="20" y="32" font-size="11" font-weight="700" fill="var(--ex-warn)">UNMARKED PLATE</text>
+          <text x="20" y="54" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Principal: Unknown AI</text>
+          <text x="20" y="74" font-size="11" fill="var(--ex-muted)">Scope: Unbounded access</text>
+          <text x="20" y="94" font-size="11" fill="var(--ex-warn)">No stop switch or receipt</text>
+
+          <line x1="159" y1="108" x2="159" y2="136" stroke="var(--ex-warn)" stroke-width="2" stroke-dasharray="3 2"/>
+          <polygon points="155,134 163,134 159,140" fill="var(--ex-warn)"/>
+
+          <rect x="10" y="140" width="298" height="84" fill="var(--ex-paper)" stroke="var(--ex-warn)" stroke-width="1.2"/>
+          <text class="ex-mono" x="20" y="160" font-size="11" font-weight="700" fill="var(--ex-warn)">OPAQUE OUTCOME</text>
+          <text x="20" y="182" font-size="11" fill="var(--ex-ink)">Service guesses permission</text>
+          <text x="20" y="204" font-size="11" fill="var(--ex-warn)">No checkable record kept</text>
+        </g>
+
+        <g class="st-scoped">
+          <rect x="10" y="12" width="298" height="88" fill="var(--ex-slip)" stroke="var(--ex-signal)" stroke-width="1.3"/>
+          <text class="ex-mono" x="20" y="32" font-size="11" font-weight="700" fill="var(--ex-signal)">PLATE #MT-04</text>
+          <text x="20" y="54" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Principal: M. Tremblay</text>
+          <text x="20" y="74" font-size="11" fill="var(--ex-ink)">Pass: Standard rail seat</text>
+          <text x="20" y="92" font-size="11" fill="var(--ex-muted)">Lease window: TTL 120s</text>
+
+          <line x1="159" y1="100" x2="159" y2="122" stroke="var(--ex-signal)" stroke-width="2"/>
+          <polygon points="155,120 163,120 159,126" fill="var(--ex-signal)"/>
+
+          <rect x="10" y="126" width="298" height="66" fill="var(--ex-paper)" stroke="var(--ex-signal)" stroke-width="1.3"/>
+          <text class="ex-mono" x="20" y="146" font-size="11" font-weight="700" fill="var(--ex-signal)">VERIFIED RELAY</text>
+          <text x="20" y="168" font-size="11" fill="var(--ex-ink)">Dual-signed receipt logged</text>
+
+          <line x1="159" y1="192" x2="159" y2="204" stroke="var(--ex-signal)" stroke-width="1.5"/>
+          <polygon points="155,202 163,202 159,208" fill="var(--ex-signal)"/>
+
+          <rect x="10" y="208" width="192" height="34" rx="2" fill="#0B3F30"/>
+          <text id="ex-receipt-status-m" class="ex-receipt-status" x="106" y="230" text-anchor="middle" font-size="11" font-weight="600" fill="#FAF3EA">Status: Active lease</text>
+
+          <g id="ex-revoke-btn-m" class="ex-revoke-btn" role="button" tabindex="0" aria-pressed="false" aria-controls="ex-receipt-status-m" aria-label="Revoke task lease">
+            <rect x="210" y="208" width="90" height="34" rx="2" fill="#963E1D" stroke="#0B3F30" stroke-width="1.2"/>
+            <text x="255" y="230" text-anchor="middle" font-size="12" font-weight="600" fill="#FAF3EA">Revoke</text>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <div class="ex-receipt-printer">
+      <div class="tape-opaque">
+        <div class="ex-tape-head ink-warn">&#9632; Receipt tape &#183; blank</div>
+        <div class="ex-tape-row"><span class="ex-tape-k">SCOPE</span><span class="ink-warn">UNBOUNDED</span></div>
+        <div class="ex-tape-row"><span class="ex-tape-k">TTL</span><span class="ink-warn">NONE (OPEN)</span></div>
+        <div class="ex-tape-row"><span class="ex-tape-k">DIGEST</span><span class="ink-warn">UNSIGNED</span></div>
+        <div class="ex-tape-row"><span class="ex-tape-k">PRINCIPAL</span><span>UNKNOWN</span></div>
+        <div class="ex-tape-stamp ink-warn">Out-of-band stamp: Missing</div>
+      </div>
+      <div class="tape-scoped">
+        <div class="ex-tape-head ink-ok">&#9632; Action receipt #A94F</div>
+        <div class="ex-tape-row"><span class="ex-tape-k">SCOPE</span><span>rail_std_seat</span></div>
+        <div class="ex-tape-row"><span class="ex-tape-k">TTL</span><span class="ink-ok">120s (BOUNDED)</span></div>
+        <div class="ex-tape-row"><span class="ex-tape-k">DIGEST</span><span>9f4a..c21e</span></div>
+        <div class="ex-tape-row"><span class="ex-tape-k">HOLDER</span><span>M. Tremblay</span></div>
+        <div class="ex-tape-stamp ink-ok">Out-of-band stamp: Verified</div>
+      </div>
+    </div>
+  </div>
+
+  <figcaption>An unsigned request leaves services guessing who is acting. A signed action envelope attaches a licence plate, sets a 120-second valet lease you can revoke in one tap, and prints a checkable receipt.</figcaption>
+</figure>
+
+<p>We think every action an agent takes should travel inside a signed action envelope that answers three small questions.</p>
+
+<p><strong>1. Who is it acting for? (The notarized letter.)</strong> Never just "an AI". A real person, household, clinic, or organisation must stand behind the software. Think of it like a notarized power-of-attorney letter for a single errand: it names the person represented and carries a signature nobody can forge.</p>
+
+<p><strong>2. What is it allowed to do? (The hotel valet key.)</strong> When you hand a valet your car at a hotel, you don't hand over the master key to your house. You hand over a valet key that parks the car for twenty minutes, cannot open the trunk, and stops working afterwards.</p>
+
+<p>A task lease works the same way, travelling with the action and expiring automatically. We explore why scoped keys beat master passwords in <a href="/blog/power-on-loan-not-owned/">AI agents should hold permissions that expire</a>.</p>
+
+<p><strong>3. What did it actually do? (The itemized receipt.)</strong> Every step leaves a plain, dated record listing what was requested, what was agreed, and which rule allowed it. That itemized receipt is signed by both sides and stored where neither the software nor its maker can alter it afterwards.</p>
+
+<p>None of this is exotic. We already expect these safeguards in everyday life. A licence plate shows who stands behind a vehicle, a valet key limits how far it can be driven, and an itemized receipt shows what was bought. Together, they let us sort out mistakes without asking anyone to trust a stranger blindly.</p>
+
+<h2>Three everyday moments where receipts change the story</h2>
+
+<p>To see why this matters in daily life, walk through three situations where software assistants are already stepping in.</p>
+
+<p><strong>A travel rebooking gone wrong.</strong> Suppose an ice storm cancels your evening train home, and your assistant tries to rebook you on the next departure. The rail company's system offers two seats: a flexible standard ticket and a non-refundable first-class upgrade. Without an action receipt, if you wake up to a steep charge on your statement, you are stuck in a circular argument. The rail company says you clicked confirm; your assistant says the form was unclear.</p>
+
+<p>With a signed action envelope, the trail is unambiguous. Your task lease states plainly that the assistant had permission only to rebook a standard seat under a set limit within thirty minutes of the cancellation. If the rail system charged you for first class anyway, the signed receipt proves the rail system ignored the lease boundary. If your assistant exceeded its instructions, its own receipt shows the error immediately.</p>
+
+<p><strong>A clinic scheduling assistant.</strong> Now picture a community health clinic using an assistant to schedule follow-up blood work with patients' personal assistants. You want the two assistants to find an appointment window that fits both your work schedule and the nurse's shift. What you never want is for the clinic's scheduling bot, or your own calendar tool, to rummage through your private medical chart notes or share your workplace appointments.</p>
+
+<p>A valet-key task lease keeps that boundary tight. Your assistant carries permission only to confirm a thirty-minute morning window, and the clinic's assistant carries permission only to reserve a lab chair. Both sides get a signed receipt confirming the appointment time, and neither side ever touches a single line of private medical history.</p>
+
+<p><strong>A small business supplier order.</strong> Finally, imagine you run a neighbourhood bakery and use an inventory assistant to reorder flour and butter from two regional mills each week. One morning, a faulty spreadsheet or a supplier's pricing glitch causes the mill's automated agent to quote triple the normal wholesale price for fifty sacks of flour.</p>
+
+<p>If your assistant had your master bank login, that order could empty your operating account before the ovens warmed up. Because the assistant carries a bounded task lease, the order halts at the gate the moment the quote crosses your normal wholesale ceiling.</p>
+
+<p>Better still, you have a single revoke switch on your phone, like the one in the diagram above, that cancels the assistant's active lease in a tap. When your assistant makes a mistake, or another agent oversteps, you can see it, prove it and fix it without arguing with a chatbot.</p>
+
+<h2>Why this matters more as agents talk to each other</h2>
+
+<p>Today, most agents still act on websites built for human eyes. Soon, far more of them will deal directly with other agents on dedicated machine channels, a shift we describe in <a href="/blog/the-internet-needs-a-second-road/">Why the internet needs a second road</a>. Your assistant will negotiate with a store's assistant, which will check stock with a warehouse assistant and confirm terms with a credit union's assistant. That chain takes seconds. It is also a conversation no human being is watching live.</p>
+
+<p>When every party in the room is software, the receipt is the only witness. If that record is missing, or if the largest platform in the room can edit the log afterwards, then truth becomes whatever the strongest system claims happened. We shouldn't drift into that world by accident.</p>
+
+<h2>What's already happening, and what isn't</h2>
+
+<p>The good news is that technical foundations for this are already taking shape. Internet standards groups are drafting rules for how software workloads prove who they represent and exchange narrowly scoped permission tokens without sharing master passwords.<sup><a href="#fn2">2</a>, <a href="#fn3">3</a></sup> Several software makers are also adding activity logs and confirmation prompts to their assistants.</p>
+
+<p>What is still missing is a shared civic rule: every agent action should leave a signed, portable receipt that you hold yourself. Right now, most activity logs sit locked inside the servers of the company running the assistant. Putting a tamper-evident copy of that receipt in your hands is the piece we are building, because fair dispute resolution depends on it.</p>
+
+<p>We also want to be honest about the hardest unsolved problem. A receipt proves what was written down and signed, not that every covert side-channel was written down. Two badly behaved agents could, in principle, keep a second set of books off the record. Catching unreported actions requires cross-checking independent clues, an open problem we explore in <a href="/blog/open-problems-we-would-love-help-with/">Open problems we would love help with</a>.</p>
+
+<h2>Where this leaves you</h2>
+
+<p>You don't need to be a software engineer to ask the right questions. Before you let an AI assistant book, buy, or message in your name, ask three things: <em>Can I limit what it is allowed to do? Can I revoke its permission in one click? And do I get a receipt I can check that nobody can alter later?</em> If the answer is no, you deserve to know that upfront.</p>
+
+<p>Helpful AI could give us back hours of our week to spend with the people and work we actually care about. Keeping a licence plate, a valet key, and an itemized receipt on every automated errand is simply how we make sure our assistants stay accountable to us.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers</summary>
+    <div>
+      <p>Our signed action envelope combines Object-Capability delegation and expiring capability lease checks (Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966) across the personal Markov blanket (Karl Friston; Friston, 2010; Friston, 2013) with OAuth 2.0 Token Exchange (RFC 8693), WIMSE workload identity credentials, and Proof-Carrying authorization manifests (Necula, 1997). Within CIN's five-primitive architecture, wearable and ambient sensors form an egocentric and ambient perceptual sensorium synchronized in hardware Device Time with self-assessed observation confidence and PUF, TCG DICE, DMTF SPDM, and IETF RATS (RFC 9334) attestation. An optical data diode and IEC 61508 dead-man relays isolate physical actuators under analog transduction realism, because Signed Is Not True across the analog hole (Kevin Fu and Wenyuan Xu, 2018; <a href="/labs/sensor-boundary/">/labs/sensor-boundary/</a>). Personal history remains encrypted inside a local append-only C2PA v2.1 and Merkle episodic memory vault (Endel Tulving, 1972) served by a monogamous 1:1 personal cognitive model and cybernetic exocortex (Joscha Bach, 2009; Extended Mind, Andy Clark and David Chalmers; Clark &amp; Chalmers, 1998; Good Regulator theorem, Conant &amp; Ashby, 1970; interventional causal inference <code>do(x)</code>, Pearl, 2009; compiler-trust verification, Thompson, 1984) bound as a statutory information fiduciary (Jack Balkin; Balkin, 2016) that preserves unassisted competence.<sup><a href="#fn4">4</a></sup></p>
+      <p>At the boundary between the Private Autobiographical Ledger and the Public Attestation and Escrow Ledger (Public Attestation &amp; Escrow Ledger), each task lease is a time-bounded, attenuate-only capability token bound to a verifiable principal with selective zero-knowledge (ZK) proofs. Every state-mutating request and response is dual-signed using HTTP Message Signatures (RFC 9421), logged via verifiable IETF SCITT (RFC 9943) receipts (<a href="/labs/protocol-inspector/">/labs/protocol-inspector/</a>), and corroborated across independent sensor classes by Byzantine quorum (<code>k &gt;= 3f + 1</code>). Cooperative and merit-bonded tasks settle across the Wide Network Ledger to sustain Universal Basic Services, plural value accounting (Jacob Meluso et al., 2025), reciprocal mutual credit clearing (James Stodder, 2009), Meidner share-issuance funds (Rudolf Meidner, 1978), frontier-lab overlays (Bracale Syrnikov et al., 2026), and polycentric Ostrom commons self-rule (Elinor Ostrom; Ostrom, 1990; <a href="/labs/shared-horizon/">/labs/shared-horizon/</a>).<sup><a href="#fn5">5</a></sup></p>
+    </div>
+  </details>
+</aside>
+
+<section class="footnotes">
+  <p id="fn1">1. Thomas Kwa, Ben West et al. (METR), <a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/">Measuring AI Ability to Complete Long Tasks</a> (19 March 2025); technical report: <a href="https://arxiv.org/abs/2503.14499">arXiv:2503.14499</a>.</p>
+  <p id="fn2">2. IETF <a href="https://datatracker.ietf.org/wg/wimse/about/">Workload Identity in Multi-System Environments (WIMSE) Working Group charter</a>; Brian Campbell, Chuck Mortimore, Michael B. Jones and Yaron Y. Goland, <a href="https://www.rfc-editor.org/rfc/rfc8693">RFC 8693: OAuth 2.0 Token Exchange</a> (January 2020).</p>
+  <p id="fn3">3. Annabelle Backman, Justin Richer and Manu Sporny, <a href="https://www.rfc-editor.org/rfc/rfc9421">RFC 9421: HTTP Message Signatures</a>, Internet Engineering Task Force (February 2024).</p>
+  <p id="fn4">4. Kevin Fu and Wenyuan Xu (2018), <a href="https://doi.org/10.1145/3176402">"Risks of Trusting the Physics of Sensors,"</a> <em>Communications of the ACM</em>, 61(2), 20–23; Henk Birkholz et al. (2023), <a href="https://www.rfc-editor.org/rfc/rfc9334">IETF RFC 9334: Remote ATtestation procedureS (RATS) Architecture</a>; Coalition for Content Provenance and Authenticity (2024), <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html">C2PA Technical Specification v2.1</a>; Jack M. Balkin (2016), <a href="https://lawreview.law.ucdavis.edu/issues/49/4/lecture/information-fiduciaries-and-first-amendment">"Information Fiduciaries and the First Amendment,"</a> <em>UC Davis Law Review</em>, 49(4), 1183–1234.</p>
+  <p id="fn5">5. Karl Friston (2013), <a href="https://doi.org/10.1098/rsif.2013.0475">"Life as We Know It,"</a> <em>Journal of the Royal Society Interface</em>, 10(86), 20130475; Jack B. Dennis and Earl C. Van Horn (1966), <a href="https://doi.org/10.1145/365230.365252">"Programming Semantics for Multiprogrammed Computations,"</a> <em>Communications of the ACM</em>, 9(3), 143–155; Henk Birkholz et al. (2026), <a href="https://www.rfc-editor.org/rfc/rfc9943">IETF RFC 9943: An Architecture for Trustworthy and Transparent Digital Supply Chains (SCITT)</a>; Rudolf Meidner (1978), <a href="https://archive.org/details/employeeinvestme0000meid"><em>Employee Investment Funds: An Approach to Collective Capital Formation</em></a>; Elinor Ostrom (1990), <a href="https://doi.org/10.1017/CBO9780511807763"><em>Governing the Commons</em></a>.</p>
+</section>

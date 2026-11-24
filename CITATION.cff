@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software, benchmark, or dataset, please cite it using this metadata."
+title: "cintnet/cin-site"
+authors:
+  - name: "Collective Intelligence Network"
+repository-code: "https://github.com/cintnet/cin-site"
+url: "https://cintnet.org"
+license: "Apache-2.0"
+date-released: "2026-11-24"

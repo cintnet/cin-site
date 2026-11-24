@@ -1,0 +1,435 @@
+---
+title: How groups govern a shared resource
+description: Communities have run pastures, water and fisheries for centuries without a single boss or ruin. The same design rules apply when people share AI tools, and when AI agents share a resource.
+reader: Organisers, co-op members, policy staff and researchers asking how people can share and govern AI systems without handing control to a single authority.
+takeaway: People can govern shared AI resources using the rules of long-lived commons. These include clear membership, member-amended rules, open monitoring, graduated sanctions, expiring authority, and a clean way to leave.
+template: article
+date: 2026-11-06
+order: 22
+category: Governing
+minutes: 7
+image: post-how-groups-govern-a-shared-resource.jpg
+image_alt: A sunlit alpine valley with terraced stone irrigation channels, wooden sluice gates dividing a mountain stream among hillside cottages, and a stone council circle with a sundial in the meadow.
+lede: Shared AI resources, from a co-op's computing to a city's data, can be governed by the people who use them rather than by one owner or one coordinator. Communities have done this with pastures, water and fisheries for centuries, and the rules that made those commons last apply to AI too.
+---
+<div class="prose wrap-narrow">
+<h2>What the commons research found</h2>
+
+<p>In 1968 Garrett Hardin argued that people sharing a pasture will overgraze it, so a shared resource must be either privatised or run by a state.<sup><a href="#fn1">1</a></sup> Elinor Ostrom spent her career documenting communities that did neither and kept their resource healthy for generations. In the alpine village of Törbel, for example, shared pastures have been managed under village rules since at least the thirteenth century.<sup><a href="#fn2">2</a></sup> She found that the long-lived ones shared a set of design features:<sup><a href="#fn3">3</a></sup></p>
+
+<ul>
+<li><strong>Clear boundaries.</strong> Members know exactly who belongs to the group and what resource they share.</li>
+<li><strong>Local rules.</strong> Members adapt usage rules to local conditions and can change them directly.</li>
+<li><strong>Accountable monitors.</strong> Observers answer to the members rather than distant managers.</li>
+<li><strong>Graduated consequences.</strong> Sanctions start with gentle reminders before escalating to formal penalties.</li>
+<li><strong>Fast dispute resolution.</strong> Neighbours resolve disagreements cheaply and locally.</li>
+<li><strong>Protected autonomy.</strong> Outside governments recognize the group's right to make its own rules.</li>
+<li><strong>Nested layers.</strong> Large systems coordinate through multiple small, nested councils instead of a single central command.</li>
+</ul>
+
+<figure class="explainer" id="ex-ostrom-commons">
+  <style>
+    #ex-ostrom-commons {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-ostrom-commons svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-ostrom-commons .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-ostrom-commons .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-ostrom-commons .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-ostrom-commons .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-ostrom-commons .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-ostrom-commons .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-ostrom-commons .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-ostrom-commons .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-ostrom-commons .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-ostrom-commons .diagram-desktop { display: block; }
+    #ex-ostrom-commons .diagram-mobile { display: none; }
+    @media (max-width: 640px) {
+      #ex-ostrom-commons .diagram-desktop { display: none; }
+      #ex-ostrom-commons .diagram-mobile { display: block; }
+    }
+    #ex-ostrom-commons figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+  </style>
+  <svg class="diagram-desktop" viewBox="0 0 700 410" role="img" aria-labelledby="ex-ostrom-title ex-ostrom-desc">
+    <title id="ex-ostrom-title">Elinor Ostrom's eight commons principles translated to shared AI infrastructure</title>
+    <desc id="ex-ostrom-desc">Diagram mapping Elinor Ostrom's eight design principles from alpine pastures and irrigation canals to shared AI infrastructure: clear membership boundaries, local resource quotas, equal member voice, visible receipt gauges, graduated rate limits, fast local arbitration, right to fork, and nested federation.</desc>
+    <rect x="16" y="13" width="6" height="6" fill="var(--ex-signal)"/>
+    <text class="ex-mono" x="29" y="19" font-size="11" font-weight="700" fill="var(--ex-signal)">ELINOR OSTROM'S 8 COMMONS PRINCIPLES IN SHARED AI</text>
+    <line x1="16" y1="29" x2="684" y2="29" stroke="var(--ex-signal)" stroke-width="1.25"/>
+    <line x1="340" y1="42" x2="340" y2="368" stroke="var(--ex-rule)" stroke-width="1"/>
+    <line x1="16" y1="117" x2="684" y2="117" stroke="var(--ex-rule)" stroke-width="1"/>
+    <line x1="16" y1="200" x2="684" y2="200" stroke="var(--ex-rule)" stroke-width="1"/>
+    <line x1="16" y1="283" x2="684" y2="283" stroke="var(--ex-rule)" stroke-width="1"/>
+    <rect x="16" y="48" width="6" height="6" fill="var(--ex-signal)"/>
+    <text class="ex-mono" x="28" y="54" font-size="11" font-weight="700" fill="var(--ex-ink)">01 · CLEAR BOUNDARIES</text>
+    <text x="28" y="73" font-size="11.5" fill="var(--ex-muted)">Verified members &amp; scoped keys</text>
+    <rect x="350" y="48" width="6" height="6" fill="var(--ex-signal)"/>
+    <text class="ex-mono" x="362" y="54" font-size="11" font-weight="700" fill="var(--ex-ink)">02 · LOCAL FIT</text>
+    <text x="362" y="73" font-size="11.5" fill="var(--ex-muted)">Compute turns matched to hardware</text>
+    <rect x="16" y="131" width="6" height="6" fill="var(--ex-signal)"/>
+    <text class="ex-mono" x="28" y="137" font-size="11" font-weight="700" fill="var(--ex-ink)">03 · EQUAL MEMBER VOICE</text>
+    <text x="28" y="156" font-size="11.5" fill="var(--ex-muted)">One person, one equal rule vote</text>
+    <rect x="350" y="131" width="6" height="6" fill="var(--ex-signal)"/>
+    <text class="ex-mono" x="362" y="137" font-size="11" font-weight="700" fill="var(--ex-ink)">04 · VISIBLE GAUGES</text>
+    <text x="362" y="156" font-size="11.5" fill="var(--ex-muted)">Signed usage receipts &amp; meters</text>
+    <rect x="16" y="214" width="6" height="6" fill="var(--ex-signal)"/>
+    <text class="ex-mono" x="28" y="220" font-size="11" font-weight="700" fill="var(--ex-ink)">05 · GRADUATED COOLDOWNS</text>
+    <text x="28" y="239" font-size="11.5" fill="var(--ex-muted)">Gentle rate cap before revocation</text>
+    <rect x="350" y="214" width="6" height="6" fill="var(--ex-signal)"/>
+    <text class="ex-mono" x="362" y="220" font-size="11" font-weight="700" fill="var(--ex-ink)">06 · FAST LOCAL REVIEW</text>
+    <text x="362" y="239" font-size="11.5" fill="var(--ex-muted)">Rapid peer tribunal with logs</text>
+    <rect x="16" y="297" width="6" height="6" fill="var(--ex-signal)"/>
+    <text class="ex-mono" x="28" y="303" font-size="11" font-weight="700" fill="var(--ex-ink)">07 · RIGHT TO FORK &amp; EXIT</text>
+    <text x="28" y="322" font-size="11.5" fill="var(--ex-muted)">Leave cleanly with full records</text>
+    <rect x="350" y="297" width="6" height="6" fill="var(--ex-signal)"/>
+    <text class="ex-mono" x="362" y="303" font-size="11" font-weight="700" fill="var(--ex-ink)">08 · NESTED FEDERATION</text>
+    <text x="362" y="322" font-size="11.5" fill="var(--ex-muted)">Local co-ops linked across regions</text>
+    <line x1="16" y1="380" x2="684" y2="380" stroke="var(--ex-rule)" stroke-width="1"/>
+    <text class="ex-mono" x="16" y="396" font-size="10.5" font-weight="600" fill="var(--ex-muted)">FROM ALPINE PASTURES &amp; WATER TRIBUNALS TO MEMBER-GOVERNED COMPUTE POOLS</text>
+  </svg>
+  <svg class="diagram-mobile" viewBox="0 0 330 680" width="100%" role="img" aria-labelledby="ex-ostrom-mob-title ex-ostrom-mob-desc">
+    <title id="ex-ostrom-mob-title">Elinor Ostrom's eight commons principles for shared AI infrastructure</title>
+    <desc id="ex-ostrom-mob-desc">Vertical stacked view of Elinor Ostrom's eight design principles translated to shared AI infrastructure: clear boundaries, local fit, equal voice, visible gauges, graduated cooldowns, fast local review, right to fork, and nested federation.</desc>
+    <rect x="12" y="14" width="6" height="6" fill="var(--ex-signal)"/>
+    <text class="ex-mono" x="24" y="20" font-size="11" font-weight="700" fill="var(--ex-signal)">8 COMMONS PRINCIPLES IN AI</text>
+    <line x1="12" y1="28" x2="318" y2="28" stroke="var(--ex-signal)" stroke-width="1.25"/>
+
+    <!-- Card 1 -->
+    <rect x="12" y="36" width="306" height="66" fill="var(--ex-slip)" stroke="var(--ex-rule)" stroke-width="1"/>
+    <rect x="20" y="47" width="5" height="5" fill="var(--ex-signal)"/>
+    <text class="ex-mono" x="30" y="52" font-size="10.5" font-weight="700" fill="var(--ex-ink)">01 · CLEAR BOUNDARIES</text>
+    <text x="30" y="71" font-size="11" fill="var(--ex-muted)">Verified members &amp; scoped keys</text>
+    <text x="30" y="87" font-size="10.5" fill="var(--ex-ink)">Clear entry limits protect shared pools</text>
+
+    <!-- Card 2 -->
+    <rect x="12" y="110" width="306" height="66" fill="var(--ex-slip)" stroke="var(--ex-rule)" stroke-width="1"/>
+    <rect x="20" y="121" width="5" height="5" fill="var(--ex-signal)"/>
+    <text class="ex-mono" x="30" y="126" font-size="10.5" font-weight="700" fill="var(--ex-ink)">02 · LOCAL RESOURCE FIT</text>
+    <text x="30" y="145" font-size="11" fill="var(--ex-muted)">Compute turns matched to hardware</text>
+    <text x="30" y="161" font-size="10.5" fill="var(--ex-ink)">Local quotas set by participating nodes</text>
+
+    <!-- Card 3 -->
+    <rect x="12" y="184" width="306" height="66" fill="var(--ex-slip)" stroke="var(--ex-rule)" stroke-width="1"/>
+    <rect x="20" y="195" width="5" height="5" fill="var(--ex-signal)"/>
+    <text class="ex-mono" x="30" y="200" font-size="10.5" font-weight="700" fill="var(--ex-ink)">03 · EQUAL MEMBER VOICE</text>
+    <text x="30" y="219" font-size="11" fill="var(--ex-muted)">One person, one equal rule vote</text>
+    <text x="30" y="235" font-size="10.5" fill="var(--ex-ink)">Members directly shape policy changes</text>
+
+    <!-- Card 4 -->
+    <rect x="12" y="258" width="306" height="66" fill="var(--ex-slip)" stroke="var(--ex-rule)" stroke-width="1"/>
+    <rect x="20" y="269" width="5" height="5" fill="var(--ex-signal)"/>
+    <text class="ex-mono" x="30" y="274" font-size="10.5" font-weight="700" fill="var(--ex-ink)">04 · VISIBLE USAGE GAUGES</text>
+    <text x="30" y="293" font-size="11" fill="var(--ex-muted)">Signed usage receipts and meters</text>
+    <text x="30" y="309" font-size="10.5" fill="var(--ex-ink)">Transparent logs prevent secret drains</text>
+
+    <!-- Card 5 -->
+    <rect x="12" y="332" width="306" height="66" fill="var(--ex-slip)" stroke="var(--ex-rule)" stroke-width="1"/>
+    <rect x="20" y="343" width="5" height="5" fill="var(--ex-signal)"/>
+    <text class="ex-mono" x="30" y="348" font-size="10.5" font-weight="700" fill="var(--ex-ink)">05 · GRADUATED COOLDOWNS</text>
+    <text x="30" y="367" font-size="11" fill="var(--ex-muted)">Gentle rate caps before revocation</text>
+    <text x="30" y="383" font-size="10.5" fill="var(--ex-ink)">Light penalties escalate only on repeats</text>
+
+    <!-- Card 6 -->
+    <rect x="12" y="406" width="306" height="66" fill="var(--ex-slip)" stroke="var(--ex-rule)" stroke-width="1"/>
+    <rect x="20" y="417" width="5" height="5" fill="var(--ex-signal)"/>
+    <text class="ex-mono" x="30" y="422" font-size="10.5" font-weight="700" fill="var(--ex-ink)">06 · FAST LOCAL REVIEW</text>
+    <text x="30" y="441" font-size="11" fill="var(--ex-muted)">Rapid peer review with logs</text>
+    <text x="30" y="457" font-size="10.5" fill="var(--ex-ink)">Low-cost tribunals resolve disputes</text>
+
+    <!-- Card 7 -->
+    <rect x="12" y="480" width="306" height="66" fill="var(--ex-slip)" stroke="var(--ex-rule)" stroke-width="1"/>
+    <rect x="20" y="491" width="5" height="5" fill="var(--ex-signal)"/>
+    <text class="ex-mono" x="30" y="496" font-size="10.5" font-weight="700" fill="var(--ex-ink)">07 · RIGHT TO FORK &amp; EXIT</text>
+    <text x="30" y="515" font-size="11" fill="var(--ex-muted)">Leave cleanly with full records</text>
+    <text x="30" y="531" font-size="10.5" fill="var(--ex-ink)">Portable history protects group autonomy</text>
+
+    <!-- Card 8 -->
+    <rect x="12" y="554" width="306" height="66" fill="var(--ex-slip)" stroke="var(--ex-rule)" stroke-width="1"/>
+    <rect x="20" y="565" width="5" height="5" fill="var(--ex-signal)"/>
+    <text class="ex-mono" x="30" y="570" font-size="10.5" font-weight="700" fill="var(--ex-ink)">08 · NESTED FEDERATION</text>
+    <text x="30" y="589" font-size="11" fill="var(--ex-muted)">Local co-ops linked across regions</text>
+    <text x="30" y="605" font-size="10.5" fill="var(--ex-ink)">Multiple small layers beat one central hub</text>
+
+    <!-- Footer -->
+    <line x1="12" y1="636" x2="318" y2="636" stroke="var(--ex-rule)" stroke-width="1"/>
+    <text class="ex-mono" x="12" y="654" font-size="10.5" font-weight="600" fill="var(--ex-muted)">FROM ALPINE PASTURES TO SHARED COMPUTE</text>
+  </svg>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-amber">
+      <span class="ex-spec-kicker">Physical commons roots</span>
+      <div class="ex-spec-body">Alpine meadows in Torbel and Valencia's Thursday water tribunal endured for centuries through clear membership, open sluice gauges, and graduated local remedies.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Shared AI translation</span>
+      <div class="ex-spec-body">Member-governed compute pools apply the same eight joints: scoped keys, fair turn quotas, equal voting, public receipts, and portable exit rights.</div>
+    </div>
+  </div>
+  <figcaption>How Elinor Ostrom's eight principles for durable physical commons, from Törbel's alpine pastures to Valencia's water tribunals, translate directly into rules for shared, community-governed AI infrastructure.</figcaption>
+</figure>
+
+<h2>Why this matters for AI</h2>
+
+<p>Two things are new. People increasingly share AI resources, such as a co-op's computing pools, a city's public dataset, or a neighborhood moderation circle. And AI agents now share resources directly with one another. In a simulated fishery, most language-model agents over-harvested the common pool.<sup><a href="#fn4">4</a></sup> Only the most capable models kept the fishery alive, and even their best survival rate stayed below 54%. When researchers gave one agent more authority than the others, cooperation collapsed faster, with survival rates falling by up to 87%.<sup><a href="#fn5">5</a></sup></p>
+
+<h2>What we propose</h2>
+
+<ol>
+<li><strong>Rules the members can amend, in small steps.</strong> Keep the rulebook versioned, so a proposed change is a visible edit to one rule, tried for a fixed trial period, and kept or reverted. Communities avoid both frozen rules and sudden rewrites where the loudest voice wins.</li>
+<li><strong>Authority that rotates and expires.</strong> Whoever coordinates, whether human or software agent, holds the role for a limited term and must seek renewal (see <a href="/blog/power-on-loan-not-owned/">AI agents should hold permissions that expire</a>). Researchers now run simulations where human and machine participants choose and test their own rules before deploying them.<sup><a href="#fn6">6</a></sup></li>
+<li><strong>Many small, overlapping groups instead of one coordinator.</strong> A single coordinator sees only what reaches its desk and accumulates power nobody can check. Game-theoretic models show that exit rights discipline delegates only in smaller groups.<sup><a href="#fn7">7</a></sup> Beyond a threshold size, a coordinator can exploit members without triggering mass departure.</li>
+<li><strong>A cheap exit.</strong> Members can take their data and leave, or fork the rules and start a new group. The threat of exit disciplines whoever is in charge.<sup><a href="#fn8">8</a></sup></li>
+<li><strong>Monitoring that can see agents coordinating.</strong> Agents can coordinate in ways message transcripts never reveal. Researchers are now testing detectors that read internal model activations directly.<sup><a href="#fn9">9</a></sup></li>
+</ol>
+
+<figure class="explainer" id="ex-commons-governance">
+  <style>
+    #ex-commons-governance {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-commons-governance svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-commons-governance .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-commons-governance .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-commons-governance .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-commons-governance .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-commons-governance .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-commons-governance .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-commons-governance .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-commons-governance .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-commons-governance .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-commons-governance figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-commons-governance .ex-canvas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #ex-commons-governance .ex-canvas svg {
+        min-width: 540px;
+      }
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg viewBox="0 0 680 340" role="img" aria-labelledby="ex-commons-title ex-commons-desc">
+      <title id="ex-commons-title">Comparison of top-down centralized command versus community-governed commons with personal assistant shields</title>
+      <desc id="ex-commons-desc">Side-by-side comparison diagram. On the left, a top-down monopoly or unmanaged pasture leads to remote extraction, rule mismatch, and sudden collapse. On the right, an Ostrom community commons pairs clear local boundaries and equal human voice with on-device assistant shields, graduated reminders, and checkable shared records.</desc>
+      <line x1="340" y1="14" x2="340" y2="328" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="14" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="27" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">TOP-DOWN OR FREE-FOR-ALL</text>
+        <text x="14" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Distant boss or unmanaged extraction</text>
+        <line x1="14" y1="50" x2="328" y2="50" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <line x1="22" y1="64" x2="22" y2="228" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+        <rect x="19" y="62" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Remote Mandates</text>
+        <text x="34" y="85" font-size="11" fill="var(--ex-muted)">One-size rules miss local needs</text>
+        <line x1="34" y1="132" x2="328" y2="132" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="142" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="149" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Synthetic Flood</text>
+        <text x="34" y="165" font-size="11" fill="var(--ex-muted)">Bot replies drown human voice</text>
+        <line x1="34" y1="212" x2="328" y2="212" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="222" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="229" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Hidden Depletion</text>
+        <text x="34" y="245" font-size="11" fill="var(--ex-muted)">Over-use spotted too late</text>
+        <line x1="14" y1="303" x2="328" y2="303" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="14" y="311" width="5" height="5" fill="var(--ex-warn)"/>
+        <text x="25" y="316" font-size="11" font-weight="700" fill="var(--ex-warn)">Result: Collapse or forced lock-in</text>
+      </g>
+      <g>
+        <rect x="354" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="367" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">OSTROM COMMONS PATTERN</text>
+        <text x="354" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Local rules with personal shields</text>
+        <line x1="354" y1="50" x2="666" y2="50" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <line x1="362" y1="64" x2="362" y2="228" stroke="var(--ex-signal)" stroke-width="1"/>
+        <rect x="359" y="62" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Matched Boundaries</text>
+        <text x="374" y="85" font-size="11" fill="var(--ex-muted)">Open council &amp; local quotas</text>
+        <line x1="374" y1="132" x2="666" y2="132" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="359" y="142" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="149" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Personal Shields</text>
+        <text x="374" y="165" font-size="11" fill="var(--ex-muted)">Protects equal human standing</text>
+        <line x1="374" y1="212" x2="666" y2="212" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="359" y="222" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="229" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Visible Checking</text>
+        <text x="374" y="245" font-size="11" fill="var(--ex-muted)">Graduated reminders &amp; exit right</text>
+        <line x1="354" y1="303" x2="666" y2="303" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="354" y="311" width="5" height="5" fill="var(--ex-signal)"/>
+        <text x="365" y="316" font-size="11" font-weight="700" fill="var(--ex-signal)">Result: Durable balance by choice</text>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Central command or ruin</span>
+      <div class="ex-spec-body">Remote monopolies impose uniform rules without local context, while unguarded pools suffer rapid automated depletion.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Community commons with shields</span>
+      <div class="ex-spec-body">Pairs local member councils and visible gauges with personal on-device shields and an unconditional right to leave.</div>
+    </div>
+  </div>
+  <figcaption>Elinor Ostrom's eight principles show that long-lasting commons avoid central tyranny and free-for-all ruin by pairing clear local boundaries and visible checking with personal shields and a guaranteed right to leave.</figcaption>
+</figure>
+
+<h2>The objection</h2>
+
+<p>Central coordination is sometimes simply more efficient. In one synthetic economy benchmark, a central planner consistently beat market and hybrid mechanisms.<sup><a href="#fn10">10</a></sup> However, the author cautions that the experiment favored the planner and does not prove central planning is superior overall. A central coordinator can help. It still requires term limits, open monitoring, and a guaranteed right to leave. Most of the time, many smaller federated groups are safer.</p>
+
+<h2>What's unsolved</h2>
+
+<ul>
+<li>Verifying that each member is one real person without creating a centralized surveillance register.</li>
+<li>Detecting agents that coordinate through subtle patterns that message logs and action receipts miss.</li>
+<li>Measuring how large an agent-assisted group can grow before the threat of exit loses its disciplinary power.</li>
+</ul>
+
+<p>Related: <a href="/blog/hearing-care-not-just-volume/">Hearing how much people care, not just how loud they shout</a>, on how a group can decide what it wants.</p>
+
+<aside class="for-researchers"><details><summary>For researchers</summary><div><p>Ostrom's design principles and polycentric governance applied to AI-mediated commons; versioned constitutional rule sets with trial periods; term-limited capability leases for coordinators; exit-bounded delegation; activation-based collusion detection. Testbeds: GovSim, SovSim, Megabike. Open: proof of personhood, collusion detection under distribution shift, and accountable constituency size with machine members.</p></div></details></aside>
+
+<section class="footnotes">
+<h2>Sources</h2>
+<p id="fn1">1. Garrett Hardin, "The Tragedy of the Commons," <em>Science</em> 162, no. 3859 (1968): 1243–1248, <a href="https://doi.org/10.1126/science.162.3859.1243">doi:10.1126/science.162.3859.1243</a>.</p>
+<p id="fn2">2. Elinor Ostrom, <em>Governing the Commons: The Evolution of Institutions for Collective Action</em> (Cambridge University Press, 1990), <a href="https://doi.org/10.1017/CBO9780511807763">doi:10.1017/CBO9780511807763</a>.</p>
+<p id="fn3">3. Elinor Ostrom, "Beyond Markets and States: Polycentric Governance of Complex Economic Systems," <em>American Economic Review</em> 100, no. 3 (2010): 641–672, <a href="https://doi.org/10.1257/aer.100.3.641">doi:10.1257/aer.100.3.641</a>.</p>
+<p id="fn4">4. Giorgio Piatti, Zhijing Jin, Max Kleiman-Weiner, Bernhard Schölkopf et al., "Cooperate or Collapse: Emergence of Sustainable Cooperation in a Society of LLM Agents" (2024), <a href="https://arxiv.org/abs/2404.16698">arXiv:2404.16698</a>.</p>
+<p id="fn5">5. Abhilekh Borah, "Bosses, Kings, and the Commons: Cooperation Under Power Asymmetry in LLM Societies" (2026), <a href="https://arxiv.org/abs/2605.29062">arXiv:2605.29062</a>.</p>
+<p id="fn6">6. Callum Berger, Jeremy Pitt and Stefan Sarkadi, "A Simulation Testbed for Self-Governing Human-Machine Institutions" (2026), <a href="https://arxiv.org/abs/2610.36989">arXiv:2610.36989</a>.</p>
+<p id="fn7">7. Arin Mukhopadhyay, Aris Filos-Ratsikas and Panayiotis Danassis, "The Delegation Dilemma: Economies of Scale, Accountability, and Polycentric Governance" (2026), <a href="https://arxiv.org/abs/2610.21746">arXiv:2610.21746</a>.</p>
+<p id="fn8">8. Vincent Ostrom, Charles M. Tiebout and Robert Warren, "The Organization of Government in Metropolitan Areas: A Theoretical Inquiry," <em>American Political Science Review</em> 55, no. 4 (1961): 831–842, <a href="https://doi.org/10.2307/1952530">doi:10.2307/1952530</a>.</p>
+<p id="fn9">9. Aaron Rose, Carissa Cullen, Sahar Abdelnabi, Philip Torr et al., "Detecting Multi-Agent Collusion Through Multi-Agent Interpretability" (2026), <a href="https://arxiv.org/abs/2604.01151">arXiv:2604.01151</a>.</p>
+<p id="fn10">10. Ricardo Alonzo Fernández Salguero, "Testing Centralized and Polycentric Computational Planning" (2026), <a href="https://arxiv.org/abs/2606.19214">arXiv:2606.19214</a>.</p>
+</section>
+</div>

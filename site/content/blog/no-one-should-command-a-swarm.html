@@ -1,0 +1,256 @@
+---
+title: No one should command a swarm
+description: Why no single person or master key should ever direct a fleet of AI agents acting in the shared world, and how two-person rules and shared sign-off can prevent runaway mistakes.
+reader: Policy makers, AI lab leaders and citizens thinking about how to prevent runaway or concentrated power in multi-agent systems.
+takeaway: One person directing one personal assistant is healthy, while actions that affect many people should require agreement that grows with the risk.
+template: article
+date: 2026-11-06
+order: 15
+category: Governing
+minutes: 9
+image: post-no-one-should-command-a-swarm.jpg
+image_alt: Two stone pillars on opposite sides of a bridge over a watergate, each fitted with its own brass lock and tended by an independent keeper as birds rise over a quiet valley.
+lede: One person directing their own AI assistant is healthy. One person directing thousands of agents at once is a new kind of power, and actions that affect many people should require agreement from more people as the risk grows.
+---
+<p>Large undertakings used to need many people to carry them out, and each of them could question an order, warn a colleague or refuse. That friction was messy, and it stopped many disasters. Software agents remove it. One person with one credential can now instruct thousands of agents that don't hesitate or ask whether an instruction makes sense.</p>
+
+<p>Engineers already match controls to consequences: a garden tap turns with one hand, while a dam's floodgates need separate keepers who check the river first. Systems that let agents act at scale need the same graded checks.</p>
+
+<h2>Two keys on the vault door, and a fuse box in the hall</h2>
+
+<p>We already know how to handle single points of failure in physical life. A bank vault requires two keys held by two different officers. Commercial aviation checklists require the pilot flying and the co-pilot monitoring to cross-check critical switches aloud before either hand moves.<sup><a href="#fn1">1</a></sup></p>
+
+<p>Everyday engineering also separates stopping power from starting power. Think about the electrical fuse box in your hallway. When a defective kitchen toaster shorts out, the local breaker trips in a few milliseconds to stop a house fire.</p>
+
+<p>Nobody has to call a committee to cut electricity to a smoking toaster. Stopping local harm is instant and automatic. By contrast, energizing a high-voltage substation that feeds fifty thousand homes requires multiple grid engineers, physical lock-out tags, and staged safety checks.</p>
+
+<p>Computer security reached the same conclusion fifty years ago. In 1975, Jerome Saltzer and Michael Schroeder called it separation of privilege: high-stakes actions should require two independent keys.<sup><a href="#fn2">2</a></sup> Four years later, Adi Shamir showed how to split a mathematical key into shares so a chosen fraction of guardians must agree.<sup><a href="#fn3">3</a></sup></p>
+
+<p>Today, separation of duties, dual authorization, and threshold cryptography are standard rules in government systems and critical infrastructure.<sup><a href="#fn4">4</a>,<a href="#fn5">5</a></sup> Yet the way we deploy AI agent fleets routinely ignores all three.</p>
+
+<figure class="explainer" id="ex-swarm-locks">
+  <style>
+    #ex-swarm-locks {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-swarm-locks svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-swarm-locks .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-swarm-locks .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-swarm-locks .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-swarm-locks .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-swarm-locks .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-swarm-locks .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-swarm-locks .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-swarm-locks .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-swarm-locks .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-swarm-locks figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-swarm-locks .ex-canvas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #ex-swarm-locks .ex-canvas svg {
+        min-width: 540px;
+      }
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg viewBox="0 0 700 350" role="group" aria-labelledby="ex-swarm-locks-title ex-swarm-locks-desc">
+      <title id="ex-swarm-locks-title">Single-key swarm command versus risk-scaled two-key sign-off and local circuit breakers</title>
+      <desc id="ex-swarm-locks-desc">Left panel shows fragile single-key swarm command where one console dispatches thousands of agents simultaneously. Right panel shows risk-scaled governance with instant local fuse boxes and two-key sign-off for shared actions.</desc>
+      <line x1="350" y1="14" x2="350" y2="338" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="14" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="27" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">FRAGILE: SINGLE-KEY SWARM</text>
+        <text x="14" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">One lever opens every floodgate</text>
+        <line x1="14" y1="50" x2="338" y2="50" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <line x1="22" y1="64" x2="22" y2="234" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+        <rect x="19" y="62" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Single Console</text>
+        <text x="34" y="85" font-size="11" fill="var(--ex-muted)">One typo or stolen key</text>
+        <line x1="34" y1="135" x2="338" y2="135" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="145" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="152" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Instant Broadcast</text>
+        <text x="34" y="168" font-size="11" fill="var(--ex-muted)">10,000+ agents fire at once</text>
+        <line x1="34" y1="218" x2="338" y2="218" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="228" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="235" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Shared Blast Radius</text>
+        <text x="34" y="251" font-size="11" fill="var(--ex-muted)">Drains stock or trips grid</text>
+        <line x1="14" y1="313" x2="338" y2="313" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="14" y="321" width="5" height="5" fill="var(--ex-warn)"/>
+        <text x="25" y="326" font-size="11" font-weight="700" fill="var(--ex-warn)">Result: Runaway cascade before reaction</text>
+      </g>
+      <g>
+        <rect x="364" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="377" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">SAFE: RISK-SCALED SIGN-OFF</text>
+        <text x="364" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Local fuses &amp; two-key checklist gates</text>
+        <line x1="364" y1="50" x2="686" y2="50" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <line x1="372" y1="64" x2="372" y2="234" stroke="var(--ex-signal)" stroke-width="1"/>
+        <rect x="369" y="62" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="384" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Millisecond Fuse</text>
+        <text x="384" y="85" font-size="11" fill="var(--ex-muted)">Local breaker halts home steps</text>
+        <line x1="384" y1="135" x2="686" y2="135" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="369" y="145" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="384" y="152" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Two-Key Gate</text>
+        <text x="384" y="168" font-size="11" fill="var(--ex-muted)">2-of-2 sign-off for group scope</text>
+        <line x1="384" y1="218" x2="686" y2="218" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="369" y="228" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="384" y="235" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Paced Rollout</text>
+        <text x="384" y="251" font-size="11" fill="var(--ex-muted)">Staged ramp &amp; co-signed log</text>
+        <line x1="364" y1="313" x2="686" y2="313" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="364" y="321" width="5" height="5" fill="var(--ex-signal)"/>
+        <text x="375" y="326" font-size="11" font-weight="700" fill="var(--ex-signal)">Result: Bounded scale &amp; public audit</text>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Single master command</span>
+      <div class="ex-spec-body">Allows one compromised credential or operator mistake to trigger simultaneous outward actions across thousands of endpoints.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Risk-scaled governance</span>
+      <div class="ex-spec-body">Pairs fast local circuit breakers for personal errands with multi-party threshold sign-off and cooling-off windows at civic scale.</div>
+    </div>
+  </div>
+  <figcaption>A single master key turns a fleet of agents into an unguarded floodgate. Risk-scaled governance pairs instant local circuit breakers with two-key sign-off and cooling-off windows for outward actions.</figcaption>
+</figure>
+
+<h2>One assistant per person</h2>
+
+<p>Think about the difference between a personal assistant and an outward-acting swarm. An assistant that works only for you (sorting mail, checking a medical bill, or helping your teenager practise algebra) keeps power close to home.</p>
+
+<p>If your personal assistant misunderstands a request, the mistake stays inside your own study. You notice the odd draft on your screen, tap the stop button, and fix the instruction.</p>
+
+<p>The danger begins when one account can dispatch a fleet of agents into the shared world. Three things go wrong at once:</p>
+
+<ul>
+<li><strong>One mistake scales instantly.</strong> A typo, a misread alert, or a moment of panic can trigger thousands of outward actions across markets and offices before anyone can read a warning banner.</li>
+<li><strong>One stolen key hands over the fleet.</strong> An attacker does not need to defeat a whole institution if all outward authority sits behind one administrator credential.</li>
+<li><strong>Human oversight becomes a polite fiction.</strong> Claiming one person is "in the loop" over ten thousand fast-moving agents is like asking one lifeguard to watch ten thousand swimmers in rough surf at night.</li>
+</ul>
+
+<div class="callout"><p class="label">What this means</p><p>A personal AI assistant acting for one person is healthy. A single console commanding a swarm of outward-acting agents is a single point of failure for everyone else.</p></div>
+
+<h2>Walkthrough: power grids and clinic supplies</h2>
+
+<p>To see why this distinction matters, consider two ordinary community systems where automated agents are beginning to coordinate work.</p>
+
+<p>First, picture a regional electric utility where forty thousand homes have rooftop solar panels and garage batteries. Each homeowner runs a personal agent to charge their battery when power is cheap and sell extra electricity back when neighbours need it.</p>
+
+<p>Suppose a vendor builds a central console that can send one override command to all forty thousand home batteries at once. One afternoon, a faulty weather forecast or a hijacked laptop instructs every battery in the valley to dump full power into the street lines simultaneously. Within seconds, local transformers overload and trip across three towns.</p>
+
+<p>Now picture the same valley governed by fuse boxes and two-key rules. Each household battery has a local hardware breaker that answers only to the homeowner and physics. If an external signal asks for an unsafe surge, the local fuse trips in milliseconds.</p>
+
+<p>Meanwhile, at the utility level, no single console can command more than one feeder line. Any adjustment across multiple substations requires independent digital sign-off from two senior grid operators, an automated physics check, and a ten-minute ramp.</p>
+
+<p>Second, consider a cooperative of rural clinics using agents to order seasonal vaccines and surgical supplies. If one central account can command two hundred clinic agents to place urgent bulk orders at the same second, a single garbled prompt can drain regional warehouses and leave neighbouring hospitals empty-handed.</p>
+
+<p>With risk-scaled sign-off, a clinic nurse can still let their local assistant reorder a routine box of gauze with one click. However, any coordinated bulk order above normal monthly volume pauses at a two-key gate until both the clinical pharmacist and a regional supply steward turn their keys.</p>
+
+<h2>Matching agreement to the size of the risk</h2>
+
+<p>Instead of hoping that a single commander never errs, we think the rules should govern how instructions travel across four clear rungs.</p>
+
+<p>First, <strong>one person directs one personal agent</strong>. You can run as many calculations as you like inside a closed sandbox that touches no one else. Inside your own home, your say-so is enough.</p>
+
+<p>Second, <strong>stopping local harm never waits for a committee</strong>. Like the fuse box in your hallway, any person or local operator can trip a defensive circuit breaker immediately to pause an erratic agent or close a leaking port.</p>
+
+<p>Third, <strong>actions that affect a group require two-person control</strong>. When an automated workflow modifies shared workplace records or contacts hundreds of residents, the person who drafts the instruction and the person who approves its release must be two distinct individuals.<sup><a href="#fn1">1</a>,<a href="#fn4">4</a></sup></p>
+
+<p>Fourth, <strong>city-scale actions require threshold sign-off and a cooling-off clock</strong>. Changes touching public utilities or regional markets should require cryptographic shares from independent operators and accountable public representatives, paired with a public waiting window.<sup><a href="#fn3">3</a>,<a href="#fn5">5</a></sup></p>
+
+<h2>Where this is hard</h2>
+
+<p>These guardrails are hard to build. Four problems stand in the way, and we are testing them in simulation rather than claiming they are solved.</p>
+
+<p>First, how do you verify that approvals come from distinct humans rather than fake accounts, without building an invasive biometric surveillance database? Second, how do you stop a clever agent from slicing one big dangerous order into a thousand tiny requests that each slip just under the two-key threshold?</p>
+
+<p>Third, who estimates the risk of an action when the agent proposing it has every incentive to call it routine? The gatekeeper that scores the blast radius must be independent of the model that drafts the plan, relying on plain, auditable rules rather than persuasive prose.</p>
+
+<p>Fourth, how do we prevent alarm fatigue so reviewers do not rubber-stamp high-stakes prompts out of habit?<sup><a href="#fn1">1</a></sup> In cockpits and hospital wards, when warning chimes sound every two minutes, tired operators eventually click approve without reading. Two-key gates only stay sharp when everyday local chores run on their own, reserving shared sign-off for moments that genuinely carry community weight.</p>
+
+<h2>Why builders and officials both gain</h2>
+
+<p>Good guardrails protect the people in charge as much as the public. When bank robbers know a branch manager cannot open a two-key time-locked vault alone, threatening that manager stops working.</p>
+
+<p>The same logic protects software engineers and public officials. When no single official holds a master key that commands a swarm alone, no one can be blackmailed, tricked by a deepfake call, or pressured at midnight into turning it alone.</p>
+
+<p>We put two locks on watergates and bank vaults, checklists in cockpits, and fuse boxes in our hallways because we respect how much is at stake. Bringing that same calm discipline to AI lets your household enjoy a helpful personal assistant, knowing no stranger at a distant console can unleash a fleet that upends your community.</p>
+
+<aside class="for-researchers"><details><summary>For researchers</summary><div><p>In our simulation work we model swarm governance as risk-scaled threshold authorisation combining $(t, n)$ Shamir secret sharing<sup><a href="#fn3">3</a></sup> and NIST threshold signature schemes<sup><a href="#fn5">5</a></sup> with independent reference monitors and hardware-isolated Object-Capability boundaries. Local circuit breakers that reduce state entropy execute immediately with $t = 1$ authority. Outward actions with high estimated blast radius require threshold co-signing across affected principals and a cooling-off delay.</p><p>Key open problems include Sybil-resistant proof-of-personhood without biometric surveillance, and compositional blast-radius accounting over causal action graphs to prevent sub-threshold smurfing attacks. We also draw on human-factors design from aviation Crew Resource Management<sup><a href="#fn1">1</a></sup> to bound false-positive circuit-breaker trips and reviewer fatigue.</p></div></details></aside>
+
+<section class="footnotes">
+<p id="fn1">1. Federal Aviation Administration, <em>Crew Resource Management Training</em>, Advisory Circular AC 120-51E, U.S. Department of Transportation, January 2004 (cross-verification, challenge-and-response checklists, and error trapping in multi-crew cockpits). <a href="https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_120-51E.pdf">faa.gov/documentLibrary/media/Advisory_Circular/AC_120-51E.pdf</a></p>
+<p id="fn2">2. Jerome H. Saltzer and Michael D. Schroeder, "The Protection of Information in Computer Systems," <em>Proceedings of the IEEE</em>, vol. 63, no. 9, pp. 1278–1308, September 1975 (Section I-A3, "Separation of privilege"). <a href="https://doi.org/10.1109/PROC.1975.9939">doi.org/10.1109/PROC.1975.9939</a></p>
+<p id="fn3">3. Adi Shamir, "How to Share a Secret," <em>Communications of the ACM</em>, vol. 22, no. 11, pp. 612–613, November 1979. <a href="https://doi.org/10.1145/359168.359176">doi.org/10.1145/359168.359176</a></p>
+<p id="fn4">4. National Institute of Standards and Technology, <em>Security and Privacy Controls for Information Systems and Organizations</em>, NIST Special Publication 800-53, Revision 5, September 2020 (Control AC-5, Separation of Duties, and Control AC-3(2), Dual Authorization / Two-Person Control). <a href="https://doi.org/10.6028/NIST.SP.800-53r5">doi.org/10.6028/NIST.SP.800-53r5</a></p>
+<p id="fn5">5. Luís T. A. N. Brandão, Nicky Mouha, and Apostol Vassilev, <em>Threshold Schemes for Cryptographic Primitives: Challenges and Opportunities in Standardization and Validation of Threshold Cryptography</em>, NIST Internal Report 8214, National Institute of Standards and Technology, March 2019. <a href="https://doi.org/10.6028/NIST.IR.8214">doi.org/10.6028/NIST.IR.8214</a></p>
+</section>

@@ -1,0 +1,300 @@
+---
+title: Why an assistant shouldn't tap your shoulder for every small question
+description: Loading an assistant with questions sounds cautious until it interrupts you every two minutes. Here is how well-designed tools protect human focus.
+reader: Designers, engineers, knowledge workers, and teams collaborating with parallel AI agents.
+takeaway: Asking questions helps maintain safety, but uncoordinated interruptions shatter human attention. Dependable systems search local project context first and batch non-urgent inquiries at natural stopping points.
+template: article
+date: 2026-11-08
+order: 55
+category: Living
+minutes: 7
+image: post-why-an-assistant-shouldnt-tap-your-shoulder-for-every-small-question.jpg
+image_alt: A sunlit timber workshop where an apprentice stands patiently beside a workbench with a wooden measuring rule, waiting for a natural pause in the craftsperson's work rather than interrupting, pastel watercolor vignette on cream paper.
+lede: Pausing to ask for guidance is how software avoids careless mistakes. But if an assistant taps your shoulder every two minutes, your attention breaks and careful oversight turns into exhausted rubber-stamping.
+---
+<p>Asking questions helps maintain safety, but uncoordinated interruptions shatter human attention. Dependable systems search local project context first and batch non-urgent inquiries at natural stopping points. Step into a woodshop. A cabinetmaker is cutting a snug dovetail joint by hand. Every cut requires exact pressure, steady breath, and unbroken concentration.</p>
+
+<p>Now imagine an apprentice trying to be thorough. Every ninety seconds, the apprentice taps the cabinetmaker on the shoulder to ask about sandpaper. Two minutes later comes a question about rags, and three minutes later another about brass hinges.</p>
+
+<p>The apprentice does not mean any harm. They are trying hard not to make a blunder. Yet by noon, the joint is ruined, the craftsperson has a raging headache, and the workshop has ground to a standstill.</p>
+
+<p>Good mentors teach newcomers a practical working habit: look around the bench first, check the project notebook, group small questions together, and wait for a natural stopping point before speaking.</p>
+
+<h2>The cost of a broken stride</h2>
+
+<p>When software engineers build AI assistants, they face a trade-off. If an assistant guesses blindly whenever instructions are incomplete, it makes costly errors, overwriting files, emailing the wrong contact, or inventing facts.</p>
+
+<p>Because guessing is dangerous, many teams teach assistants to pause and ask for clarification. On paper, pausing sounds like the responsible choice. In daily practice, uncoordinated questions create a new problem.</p>
+
+<p>Workplace studies show that human attention is remarkably fragile. When a notification interrupts a deep train of thought, recovering focus takes an average of over twenty-three minutes.<sup><a href="#fn1">1</a></sup></p>
+
+<p>Even worse, people who face frequent interruptions feel hurried and stressed. To keep up, they work faster, skip checks, and suffer mental fatigue.<sup><a href="#fn1">1</a></sup></p>
+
+<p>When an assistant interrupts you six times an hour, you do not provide thoughtful answers. You look for the fastest way to dismiss the dialogue box. Careful human judgment degrades into thoughtless clicking.</p>
+
+<div class="callout"><p class="label">What this means</p><p>An assistant that interrupts constantly does not create safe collaboration. It creates clarification fatigue, pushing human partners to rubber-stamp decisions just to silence the screen.</p></div>
+
+<h2>How questions turn into bottlenecks</h2>
+
+<p>This challenge grows rapidly when multiple assistants collaborate on a shared project. Imagine three assistants helping you organize a community conference.</p>
+
+<p>One assistant reviews caterers, another updates the schedule, and a third drafts room signage. If each assistant acts independently, inquiries arrive without rhythm or order.</p>
+
+<p>The first assistant asks whether you prefer gluten-free boxed lunches. Two minutes later, the second asks whether a keynote speaker needs twenty minutes or thirty. A moment later, the third asks which font to use on directional banners.</p>
+
+<p>Recent research terms this problem the attention bottleneck.<sup><a href="#fn2">2</a></sup> Parallel agents can generate hundreds of plausible questions. But human attention is strictly serial and finite.</p>
+
+<p>When parallel tools compete for supervisory attention without coordination, the system collapses. Important decisions wait in long queues, or frustrated users abandon the tools entirely.<sup><a href="#fn3">3</a></sup></p>
+
+<h2>Three habits of a calm assistant</h2>
+
+<p>How do we protect human focus while keeping software safely bounded? Well-governed assistants adopt three habits that mirror a thoughtful apprentice.</p>
+
+<p><strong>1. Search local context before tapping the shoulder.</strong> A capable assistant checks existing files, commit history, and past project notes before asking a human partner. If a question was already settled in an earlier meeting, asking again is sheer laziness. Searching verified local records answers the majority of small doubts without disturbing anyone.<sup><a href="#fn2">2</a></sup></p>
+
+<p><strong>2. Batch non-urgent questions at natural waypoints.</strong> Not every question carries the same urgency. An apprentice does not interrupt a mentor mid-cut to ask about tomorrow's lumber delivery. A calm assistant continues working on unblocked subtasks, holds secondary questions in a clean scratchpad, and presents them together when you finish your current task.</p>
+
+<p><strong>3. Distinguish irreversible acts from routine choices.</strong> An assistant should only interrupt immediately when an irreversible boundary is crossed. Deleting a database, spending budget, or publishing sensitive documents warrants an immediate pause. Choosing between two slide layouts does not.</p>
+
+<figure class="explainer" id="ex-attention-scheduling" role="group">
+  <style>
+    #ex-attention-scheduling {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    @media (prefers-color-scheme: dark) {
+      #ex-attention-scheduling {
+        --ex-paper: #1B1922;
+        --ex-slip: #23202C;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #A8A095;
+        --ex-rule: #322E3D;
+        --ex-signal: #8FD4B6;
+        --ex-accent: #8FD4B6;
+        --ex-warn: #F09D82;
+        --ex-amber: #E5B976;
+      }
+    }
+    :root[data-theme="dark"] #ex-attention-scheduling {
+      --ex-paper: #1B1922;
+      --ex-slip: #23202C;
+      --ex-ink: #EDE6DC;
+      --ex-muted: #A8A095;
+      --ex-rule: #322E3D;
+      --ex-signal: #8FD4B6;
+      --ex-accent: #8FD4B6;
+      --ex-warn: #F09D82;
+      --ex-amber: #E5B976;
+    }
+    #ex-attention-scheduling svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-attention-scheduling .diagram-desktop {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    #ex-attention-scheduling .diagram-mobile {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+    #ex-attention-scheduling .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-attention-scheduling .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-attention-scheduling .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-attention-scheduling .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-attention-scheduling .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-attention-scheduling .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-attention-scheduling .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-attention-scheduling .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-attention-scheduling .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-attention-scheduling figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-attention-scheduling .diagram-desktop { display: none; }
+      #ex-attention-scheduling .diagram-mobile { display: block; }
+    }
+  </style>
+  <svg class="diagram-desktop" viewBox="0 0 700 260" role="group" aria-labelledby="ex-as-title ex-as-desc">
+      <title id="ex-as-title">Comparing Constant Interruption with Scheduled Clarification Waypoints</title>
+      <desc id="ex-as-desc">A flowchart comparing uncoordinated, constant assistant interruptions that cause fatigue against batched, context-checked waypoints that preserve deep focus.</desc>
+      <g>
+        <rect x="16" y="16" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="29" y="22" font-size="11" font-weight="700" fill="var(--ex-warn)">UNCOORDINATED PROMPTS</text>
+        <text x="29" y="38" font-size="11.5" fill="var(--ex-muted)">Interrupts on every small doubt and shreds concentration</text>
+        <line x1="22" y1="62" x2="660" y2="62" stroke="var(--ex-warn)" stroke-width="1.25" stroke-dasharray="4 3"/>
+        <rect x="16" y="59" width="6" height="6" fill="var(--ex-warn)"/>
+        <line x1="19" y1="65" x2="19" y2="77" stroke="var(--ex-warn)" stroke-width="1"/>
+        <text x="16" y="92" font-size="12" font-weight="700" fill="var(--ex-ink)">Constant Shoulder Taps</text>
+        <text x="16" y="108" font-size="11" fill="var(--ex-muted)">Pings on routine doubts</text>
+        <rect x="238" y="59" width="6" height="6" fill="var(--ex-warn)"/>
+        <line x1="241" y1="65" x2="241" y2="77" stroke="var(--ex-warn)" stroke-width="1"/>
+        <text x="238" y="92" font-size="12" font-weight="700" fill="var(--ex-ink)">23-Min Focus Loss</text>
+        <text x="238" y="108" font-size="11" fill="var(--ex-muted)">Hurried, stressed review</text>
+        <rect x="460" y="59" width="6" height="6" fill="var(--ex-warn)"/>
+        <line x1="463" y1="65" x2="463" y2="77" stroke="var(--ex-warn)" stroke-width="1"/>
+        <text x="460" y="92" font-size="12" font-weight="700" fill="var(--ex-ink)">Blind Rubber-Stamping</text>
+        <text x="460" y="108" font-size="11" fill="var(--ex-muted)">Real oversight vanishes</text>
+      </g>
+      <line x1="16" y1="130" x2="684" y2="130" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="16" y="144" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="29" y="150" font-size="11" font-weight="700" fill="var(--ex-signal)">SCHEDULED WAYPOINTS</text>
+        <text x="29" y="166" font-size="11.5" fill="var(--ex-muted)">Checks local logs first and batches questions for natural breaks</text>
+        <line x1="22" y1="190" x2="660" y2="190" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <rect x="16" y="187" width="6" height="6" fill="var(--ex-signal)"/>
+        <line x1="19" y1="193" x2="19" y2="205" stroke="var(--ex-signal)" stroke-width="1"/>
+        <text x="16" y="220" font-size="12" font-weight="700" fill="var(--ex-ink)">Local Context Check</text>
+        <text x="16" y="236" font-size="11" fill="var(--ex-muted)">Resolves routine doubts</text>
+        <rect x="238" y="187" width="6" height="6" fill="var(--ex-signal)"/>
+        <line x1="241" y1="193" x2="241" y2="205" stroke="var(--ex-signal)" stroke-width="1"/>
+        <text x="238" y="220" font-size="12" font-weight="700" fill="var(--ex-ink)">Batched Waypoints</text>
+        <text x="238" y="236" font-size="11" fill="var(--ex-muted)">Continues independent work</text>
+        <rect x="460" y="187" width="6" height="6" fill="var(--ex-signal)"/>
+        <line x1="463" y1="193" x2="463" y2="205" stroke="var(--ex-signal)" stroke-width="1"/>
+        <text x="460" y="220" font-size="12" font-weight="700" fill="var(--ex-ink)">Mindful Decisions</text>
+        <text x="460" y="236" font-size="11" fill="var(--ex-muted)">Calm human steering</text>
+      </g>
+  </svg>
+  <svg class="diagram-mobile" viewBox="0 0 330 440" role="img" aria-labelledby="ex-as-m-title ex-as-m-desc">
+    <title id="ex-as-m-title">Constant interruptions versus scheduled clarification waypoints on mobile</title>
+    <desc id="ex-as-m-desc">Stacked mobile diagram comparing constant shoulder taps that cause 23-minute focus loss and rubber-stamping against local context checks and batched waypoints.</desc>
+    <g>
+      <rect x="10" y="14" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="22" y="20" font-size="11" font-weight="700" fill="var(--ex-warn)">UNCOORDINATED PROMPTS</text>
+      <line x1="10" y1="30" x2="310" y2="30" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <line x1="13" y1="42" x2="13" y2="164" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+      <polygon points="10,88 16,88 13,94" fill="var(--ex-warn)"/>
+      <polygon points="10,136 16,136 13,142" fill="var(--ex-warn)"/>
+      <text x="24" y="54" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Constant Shoulder Taps</text>
+      <text x="24" y="70" font-size="11" fill="var(--ex-muted)">Pings user on every small routine doubt</text>
+      <text x="24" y="102" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. 23-Min Focus Loss</text>
+      <text x="24" y="118" font-size="11" fill="var(--ex-muted)">Shreds concentration into hurried bursts</text>
+      <text x="24" y="150" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Blind Rubber-Stamping</text>
+      <text x="24" y="166" font-size="11" fill="var(--ex-muted)">Fatigued user clicks Allow to silence dialog</text>
+    </g>
+    <line x1="10" y1="194" x2="310" y2="194" stroke="var(--ex-rule)" stroke-width="1"/>
+    <g>
+      <rect x="10" y="212" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="22" y="218" font-size="11" font-weight="700" fill="var(--ex-signal)">SCHEDULED WAYPOINTS</text>
+      <line x1="10" y1="228" x2="310" y2="228" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <line x1="13" y1="240" x2="13" y2="372" stroke="var(--ex-signal)" stroke-width="1"/>
+      <polygon points="10,286 16,286 13,292" fill="var(--ex-signal)"/>
+      <polygon points="10,334 16,334 13,340" fill="var(--ex-signal)"/>
+      <text x="24" y="252" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Local Context Check</text>
+      <text x="24" y="268" font-size="11" fill="var(--ex-muted)">Searches project notes before asking</text>
+      <text x="24" y="300" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Batched Waypoints</text>
+      <text x="24" y="316" font-size="11" fill="var(--ex-muted)">Holds routine questions for natural breaks</text>
+      <text x="24" y="348" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Mindful Decisions</text>
+      <text x="24" y="364" font-size="11" fill="var(--ex-muted)">Immediate pause only on irreversible acts</text>
+      <text x="24" y="398" font-size="11" font-weight="700" fill="var(--ex-signal)">Result: Calm focus &amp; genuine human oversight</text>
+    </g>
+  </svg>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Constant interruption loop</span>
+      <div class="ex-spec-body">Each unscheduled ping costs up to twenty-three minutes of deep focus recovery, training users to click Allow blindly.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Context-checked batching</span>
+      <div class="ex-spec-body">Consults past local decisions first and holds non-blocking questions until a scheduled waypoint break.</div>
+    </div>
+  </div>
+  <figcaption>Uncoordinated inquiries flood user attention and encourage blind rubber-stamping, while local context checks and batched waypoints keep work calm and dependable.</figcaption>
+</figure>
+
+<h2>Keeping technology in the periphery</h2>
+
+<p>Thirty years ago, computer scientist Mark Weiser described a concept he called calm technology.<sup><a href="#fn4">4</a></sup> The most helpful tools do not shout for center stage. They sit in our sensory periphery, conveying reassurance with a glance and stepping forward only when genuine action is needed.</p>
+
+<p>Today's conversational interfaces often do the opposite. They pop up modal windows, steal cursor focus, and ring chime alerts. They demand immediate answers for questions the software could have answered by reading the previous paragraph.</p>
+
+<p>Protecting human judgment requires designing assistants that protect people's concentration. An assistant that works alongside you should feel like an experienced colleague in the same room. They do not whistle in your ear. They work steadily, keep tidy notes, and ask for guidance when it actually matters.</p>
+
+<p>You can explore how teams coordinate clarification policies across parallel roles in our <a href="/labs/shared-horizon/">Shared Horizon</a> atlas. Dependable safety comes from knowing which questions require human guidance and timing them with care.</p>
+
+<aside class="for-researchers">
+<details>
+<summary>For researchers: Dynamic clarification scheduling and cognitive fatigue bounds</summary>
+<div>
+<p>Empirical human-computer interaction literature demonstrates that continuous interruptions induce severe cognitive fragmentation. Mark, Gonzalez, and Harris (2005) quantified that workplace tasks are interrupted every three minutes, requiring an average of 23 minutes and 15 seconds to resume the original work sphere. Mark, Gudith, and Klocke (CHI 2008) further established that individuals exposed to high interruption frequencies work in hurried bursts to compensate, producing measurably higher subjective workload, frustration, and stress. In autonomous multi-agent environments, these dynamics trigger prompt fatigue, where human evaluators default to indiscriminate authorization.</p>
+<p>To bound interruption frequency under finite supervisory attention, Wang, Liu, and Wang (2026, arXiv:2610.41129) formalize clarification scheduling across parallel agents as a constrained dynamic program. Rather than evaluating clarification decisions independently at the moment of local model ambiguity, their framework requires agents to first query local execution context and project histories. For remaining uncertainties, agents evaluate task dependency graphs to partition inquiries: non-blocking ambiguities are batched until natural subtask completions, while immediate interruptions are strictly restricted to irreversible capability invocations. This policy provably minimizes supervisory cognitive load while maintaining execution correctness guarantees.</p>
+<p>Complementary failure taxonomies by Wang, Xiao, Zhu, and Shen (2026, arXiv:2611.00291) analyze 695 real-world human-agent interaction failures, identifying supervisory saturation as a primary driver of deployment abandonment. Anchoring agent notifications in peripheral calm technology (Weiser &amp; Brown, 1996; arXiv:2606.09836; arXiv:2602.19809) ensures status remains glanceable in secondary ambient buffers, preserving primary task equanimity.</p>
+<p>Within our five-primitive sociotechnical architecture, heterogeneous wearable and workshop sensors form a multimodal egocentric and ambient perceptual sensorium fused locally in monotonic hardware <code>Device Time</code> with self-assessed observation confidence. Silicon peripheral attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, <code>IETF RATS</code> RFC 9334), an optical data diode, and <code>IEC 61508</code> dead-man relays isolate physical actuators. Project context and notification logs write into an append-only <code>C2PA</code> and Merkle episodic memory vault (Endel Tulving; Tulving, 1972) bound by transduction realism (<em>Signed Is Not True</em> across the analog hole; Kevin Fu and Wenyuan Xu; Fu &amp; Xu, 2018). A monogamous <code>1:1</code> principal-bound personal cognitive model and cybernetic exocortex (Joscha Bach; Bach, 2009) grounded in the Extended Mind thesis (Andy Clark and David Chalmers; Clark &amp; Chalmers, 1998) and the Good Regulator theorem (Conant &amp; Ashby, 1970) applies interventional causal models <code>do(x)</code> (Pearl, 2009) and compiler-trust reflection proofs (Thompson, 1984) as a statutory information fiduciary (Jack Balkin; Balkin, 2016), preserving unassisted competence over the Private Autobiographical Ledger.</p>
+<p>Across the personal Markov blanket boundary (Karl Friston; Friston, 2010; Friston, 2013), irreversible capability invocations require time-bounded Object-Capability lease gates (Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966), selective zero-knowledge (<code>ZK</code>) waypoint proofs, independent-class Byzantine corroboration (<code>k &gt;= 3f + 1</code>; Lamport, Shostak &amp; Pease, 1982), and signed <code>IETF SCITT</code> (<code>RFC 9943</code>) transparency receipts on the Public Attestation &amp; Escrow Ledger. Those verified waypoint receipts couple sovereign dyads to the Wide Network Ledger for Universal Basic Services, merit-bonded commons tasks, invisible-labor upkeep recognition (Jacob Meluso; Meluso et al., 2022), countercyclical reciprocal mutual credit (James Stodder; Stodder, 2009), frontier-lab overlays (Bracale Syrnikov et al., 2026), polycentric self-rule (Elinor Ostrom; Ostrom, 1990; Ostrom, 2010), and statutory Meidner cooperative equity (Rudolf Meidner; Meidner, 1978).</p>
+</div>
+</details>
+</aside>
+
+<section class="footnotes">
+<h2>Notes and sources</h2>
+<ol>
+<li id="fn1">Gloria Mark, Daniela Gudith, and Ulrich Klocke, "The Cost of Interrupted Work: More Speed and Stress," <em>Proceedings of the SIGCHI Conference on Human Factors in Computing Systems</em> (CHI 2008): 107–110, <a href="https://doi.org/10.1145/1357054.1357072">doi:10.1145/1357054.1357072</a>; Gloria Mark, Victor M. Gonzalez, and Justin Harris, "No Task Left Behind? Examining the Nature of Fragmented Work," <em>CHI 2005</em>: 321–330, <a href="https://doi.org/10.1145/1054972.1055017">doi:10.1145/1054972.1055017</a>.</li>
+<li id="fn2">Hanzhao Wang, Shengjie Liu and Zhengchao Wang, "When Should AI Agents Ask? Clarification Requests Under Limited Human Attention" (2026), <a href="https://arxiv.org/abs/2610.41129">arXiv:2610.41129</a>.</li>
+<li id="fn3">Canwen Wang, Qing Xiao, Haiyi Zhu, and Hong Shen, "When AI Agents Act on Our Behalf: A Taxonomy of Human-Agent Interaction Failure" (2026), <a href="https://arxiv.org/abs/2611.00291">arXiv:2611.00291</a>.</li>
+<li id="fn4">Mark Weiser and John Seely Brown, "The Coming Age of Calm Technology" (1996), <a href="https://doi.org/10.1007/978-1-4612-0685-9_6">doi:10.1007/978-1-4612-0685-9_6</a>; see also empirical peripheral agent notification architectures in <a href="https://arxiv.org/abs/2606.09836">arXiv:2606.09836</a> and <a href="https://arxiv.org/abs/2602.19809">arXiv:2602.19809</a>.</li>
+</ol>
+</section>

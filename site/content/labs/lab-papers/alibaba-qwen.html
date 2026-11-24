@@ -1,0 +1,408 @@
+---
+title: Alibaba Cloud Qwen: Alignment, Governance, and Safe ASI Paper
+heading: Local edge loyalty and signed cloud leases across Qwen and Bailian
+eyebrow: Lab Technical Paper · LAB-15
+description: Five-part technical and governance paper detailing how CIN pairs Alibaba Qwen open edge models with local vaults, signed Bailian cloud leases, build provenance, and merchant bargaining shields.
+reader: Leadership, alignment and security engineers at Alibaba Cloud Qwen, peer AI labs, safety evaluators, and public regulators.
+takeaway: Compact Qwen open weights protect everyday users and small merchants when anchored inside local vaults with signed Bailian cloud leases and cryptographic build provenance.
+template: page
+layout: wide
+section: labs
+lede: Compact Qwen open weights protect everyday users and small merchants inside local vaults with signed Bailian cloud leases and cryptographic build provenance.
+---
+<section class="wrap">
+  <nav class="lp-breadcrumb" aria-label="Lab paper navigation"><a href="/labs/lab-papers/">← All Lab Technical Papers</a><span>·</span><a href="/labs/lab-overlays/">Compare in 93-Group Overlays</a><span>·</span><a href="/research/">Research Workspace</a></nav>
+
+  <div class="prose wrap-narrow">
+    <p class="big">Compact Qwen open weights protect everyday users and small merchants when anchored inside local vaults with signed Bailian cloud leases and cryptographic build provenance. A wholesale hardware market can sell pocket wrenches that fit in a backpack while operating the giant freight depot next door.</p>
+    <p>Alibaba Cloud Qwen ships the world's most downloaded multi-size open models alongside Asia-Pacific's largest commercial cloud platform. That split identity brings broad multilingual access on personal devices while exposing stripped edge guardrails, opaque API middlemen, and marketplace bargaining imbalances.</p>
+  </div>
+
+  <div class="lp-dossier" role="region" aria-label="Alibaba Cloud Qwen technical dossier">
+    <div class="lp-dossier-head">
+      <span>LAB-15 · Alibaba Cloud Qwen</span>
+      <span>Jurisdiction: Hangzhou, China &amp; Asia-Pacific · Liaison: cin.liaison.alibaba_qwen</span>
+    </div>
+    <div class="lp-dossier-grid">
+      <div class="lp-dossier-cell">
+        <span class="lp-dossier-label">Architecture &amp; Paradigm</span>
+        <p>Multi-size open-weight text, vision, audio, coding, and reasoning suite (0.5B to 72B+) paired with Bailian commercial hyperscaler APIs.</p>
+      </div>
+      <div class="lp-dossier-cell">
+        <span class="lp-dossier-label">Core Alignment Bottlenecks</span>
+        <p>Stripped safety filters across millions of downstream fine-tunes, opaque third-party API relays, and closed flagship cloud tiers without public audit logs.</p>
+      </div>
+      <div class="lp-dossier-cell">
+        <span class="lp-dossier-label">CIN Technical Anchor</span>
+        <p>Local-first 0.5B to 32B personal models inside encrypted vaults, wearable sensor confidence checks, prompt fencing, and signed Bailian capability leases.</p>
+      </div>
+      <div class="lp-dossier-cell">
+        <span class="lp-dossier-label">Economic &amp; Civic Role</span>
+        <p>Local bargaining shields for small merchants and couriers, customer-built SME software, cooperative logistics equity, and regional mutual credit.</p>
+      </div>
+    </div>
+  </div>
+
+  <nav class="lp-toc" aria-label="Paper sections"><a href="#sec-1">01 · Alignment Bottlenecks</a><a href="#sec-2">02 · CIN Technical Integration</a><a href="#sec-3">03 · Inter-Lab Options</a><a href="#sec-4">04 · Government Options</a><a href="#sec-5">05 · Safe ASI &amp; Economy</a></nav>
+
+  <figure class="explainer lp-arch-fig" id="ex-lp-alibaba-qwen">
+    <style>
+      #ex-lp-alibaba-qwen {
+        --ex-rule: #D6CBB8;
+        --ex-ink: #131014;
+        --ex-muted: #4A433A;
+        margin: 2rem 0 2.25rem;
+        padding: 1.35rem 0 1.15rem;
+        background: transparent;
+        border: 0;
+        border-top: 1px solid var(--ex-rule);
+        border-bottom: 1px solid var(--ex-rule);
+        border-radius: 0;
+        box-shadow: none;
+        color: var(--ex-ink);
+      }
+      #ex-lp-alibaba-qwen .diagram-desktop { width: 100%; height: auto; display: block; }
+      #ex-lp-alibaba-qwen .diagram-mobile { width: 100%; height: auto; display: none; }
+      @media (max-width: 640px) {
+        #ex-lp-alibaba-qwen .diagram-desktop { display: none; }
+        #ex-lp-alibaba-qwen .diagram-mobile { display: block; }
+      }
+      #ex-lp-alibaba-qwen figcaption {
+        margin-top: 0.9rem;
+        padding-top: 0.7rem;
+        border-top: 1px solid var(--ex-rule);
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: var(--ex-muted);
+        text-align: left;
+      }
+      @media (prefers-color-scheme: dark) {
+        #ex-lp-alibaba-qwen {
+          --ex-rule: #322E3D;
+          --ex-ink: #EDE6DC;
+          --ex-muted: #A8A095;
+        }
+        #ex-lp-alibaba-qwen rect[fill="#FAF3EA"],
+        #ex-lp-alibaba-qwen rect[fill="#FFFDF9"],
+        #ex-lp-alibaba-qwen rect[fill="#F4EBDD"] {
+          fill: #221F2A;
+        }
+        #ex-lp-alibaba-qwen text[fill="#131014"],
+        #ex-lp-alibaba-qwen text[fill="#26211C"],
+        #ex-lp-alibaba-qwen text[fill="#4A433A"] {
+          fill: #EDE6DC;
+        }
+        #ex-lp-alibaba-qwen text[fill="#0B3F30"] { fill: #8FD4B6; }
+        #ex-lp-alibaba-qwen text[fill="#963E1D"] { fill: #F09D82; }
+        #ex-lp-alibaba-qwen rect[stroke="#0B3F30"],
+        #ex-lp-alibaba-qwen line[stroke="#0B3F30"],
+        #ex-lp-alibaba-qwen path[stroke="#0B3F30"] { stroke: #8FD4B6; }
+        #ex-lp-alibaba-qwen rect[stroke="#963E1D"],
+        #ex-lp-alibaba-qwen line[stroke="#963E1D"],
+        #ex-lp-alibaba-qwen path[stroke="#963E1D"] { stroke: #F09D82; }
+        #ex-lp-alibaba-qwen polygon[fill="#0B3F30"] { fill: #8FD4B6; }
+        #ex-lp-alibaba-qwen polygon[fill="#963E1D"] { fill: #F09D82; }
+      }
+      :root[data-theme="dark"] #ex-lp-alibaba-qwen,
+      [data-theme="dark"] #ex-lp-alibaba-qwen {
+        --ex-rule: #322E3D;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #A8A095;
+      }
+      :root[data-theme="dark"] #ex-lp-alibaba-qwen rect[fill="#FAF3EA"],
+      :root[data-theme="dark"] #ex-lp-alibaba-qwen rect[fill="#FFFDF9"],
+      :root[data-theme="dark"] #ex-lp-alibaba-qwen rect[fill="#F4EBDD"],
+      [data-theme="dark"] #ex-lp-alibaba-qwen rect[fill="#FAF3EA"],
+      [data-theme="dark"] #ex-lp-alibaba-qwen rect[fill="#FFFDF9"],
+      [data-theme="dark"] #ex-lp-alibaba-qwen rect[fill="#F4EBDD"] {
+        fill: #221F2A;
+      }
+      :root[data-theme="dark"] #ex-lp-alibaba-qwen text[fill="#131014"],
+      :root[data-theme="dark"] #ex-lp-alibaba-qwen text[fill="#26211C"],
+      :root[data-theme="dark"] #ex-lp-alibaba-qwen text[fill="#4A433A"],
+      [data-theme="dark"] #ex-lp-alibaba-qwen text[fill="#131014"],
+      [data-theme="dark"] #ex-lp-alibaba-qwen text[fill="#26211C"],
+      [data-theme="dark"] #ex-lp-alibaba-qwen text[fill="#4A433A"] {
+        fill: #EDE6DC;
+      }
+      :root[data-theme="dark"] #ex-lp-alibaba-qwen text[fill="#0B3F30"],
+      [data-theme="dark"] #ex-lp-alibaba-qwen text[fill="#0B3F30"] { fill: #8FD4B6; }
+      :root[data-theme="dark"] #ex-lp-alibaba-qwen text[fill="#963E1D"],
+      [data-theme="dark"] #ex-lp-alibaba-qwen text[fill="#963E1D"] { fill: #F09D82; }
+      :root[data-theme="dark"] #ex-lp-alibaba-qwen rect[stroke="#0B3F30"],
+      :root[data-theme="dark"] #ex-lp-alibaba-qwen line[stroke="#0B3F30"],
+      :root[data-theme="dark"] #ex-lp-alibaba-qwen path[stroke="#0B3F30"],
+      [data-theme="dark"] #ex-lp-alibaba-qwen rect[stroke="#0B3F30"],
+      [data-theme="dark"] #ex-lp-alibaba-qwen line[stroke="#0B3F30"],
+      [data-theme="dark"] #ex-lp-alibaba-qwen path[stroke="#0B3F30"] { stroke: #8FD4B6; }
+      :root[data-theme="dark"] #ex-lp-alibaba-qwen rect[stroke="#963E1D"],
+      :root[data-theme="dark"] #ex-lp-alibaba-qwen line[stroke="#963E1D"],
+      :root[data-theme="dark"] #ex-lp-alibaba-qwen path[stroke="#963E1D"],
+      [data-theme="dark"] #ex-lp-alibaba-qwen rect[stroke="#963E1D"],
+      [data-theme="dark"] #ex-lp-alibaba-qwen line[stroke="#963E1D"],
+      [data-theme="dark"] #ex-lp-alibaba-qwen path[stroke="#963E1D"] { stroke: #F09D82; }
+      :root[data-theme="dark"] #ex-lp-alibaba-qwen polygon[fill="#0B3F30"],
+      [data-theme="dark"] #ex-lp-alibaba-qwen polygon[fill="#0B3F30"] { fill: #8FD4B6; }
+      :root[data-theme="dark"] #ex-lp-alibaba-qwen polygon[fill="#963E1D"],
+      [data-theme="dark"] #ex-lp-alibaba-qwen polygon[fill="#963E1D"] { fill: #F09D82; }
+    </style>
+    <svg class="diagram-desktop" viewBox="0 0 920 260" role="img" aria-labelledby="ex-lp-alibaba-qwen-title ex-lp-alibaba-qwen-desc">
+      <title id="ex-lp-alibaba-qwen-title">CIN edge-to-cloud containment and provenance architecture for Alibaba Cloud Qwen</title>
+      <desc id="ex-lp-alibaba-qwen-desc">Four-stage diagram linking local-first Qwen edge models on personal laptops and phones to signed capability leases across Bailian cloud relays, Sigstore open-weight build manifests, and cooperative small-business clearing.</desc>
+      <rect x="0" y="0" width="920" height="260" rx="6" fill="#FAF3EA"/>
+      <rect x="20" y="28" width="198" height="204" rx="6" fill="#FFFDF9" stroke="#0B3F30" stroke-width="1.5"/>
+      <text x="34" y="54" font-size="11" font-weight="700" fill="#0B3F30">01 · LOCAL EDGE VAULT</text>
+      <text x="34" y="82" font-size="12.5" font-weight="700" fill="#26211C">Qwen 0.5B-32B 1:1</text>
+      <text x="34" y="104" font-size="11" fill="#4A433A">Laptop &amp; phone custody</text>
+      <text x="34" y="124" font-size="11" fill="#4A433A">Sensor confidence gates</text>
+      <text x="34" y="144" font-size="11" fill="#4A433A">Multilingual local memory</text>
+
+      <line x1="218" y1="130" x2="244" y2="130" stroke="#0B3F30" stroke-width="2"/>
+      <polygon points="244,125 254,130 244,135" fill="#0B3F30"/>
+
+      <rect x="256" y="28" width="198" height="204" rx="6" fill="#F4EBDD" stroke="#963E1D" stroke-width="1.5"/>
+      <text x="270" y="54" font-size="11" font-weight="700" fill="#963E1D">02 · RELAY AIRLOCK</text>
+      <text x="270" y="82" font-size="12.5" font-weight="700" fill="#26211C">Bailian Lease Gate</text>
+      <text x="270" y="104" font-size="11" fill="#4A433A">Prompt-injection fence</text>
+      <text x="270" y="124" font-size="11" fill="#4A433A">Expiring capability lease</text>
+      <text x="270" y="144" font-size="11" fill="#4A433A">Blocks relay downgrades</text>
+
+      <line x1="454" y1="130" x2="480" y2="130" stroke="#0B3F30" stroke-width="2"/>
+      <polygon points="480,125 490,130 480,135" fill="#0B3F30"/>
+
+      <rect x="492" y="28" width="198" height="204" rx="6" fill="#FFFDF9" stroke="#0B3F30" stroke-width="1.5"/>
+      <text x="506" y="54" font-size="11" font-weight="700" fill="#0B3F30">03 · BUILD PROVENANCE</text>
+      <text x="506" y="82" font-size="12.5" font-weight="700" fill="#26211C">Signed Open Suite</text>
+      <text x="506" y="104" font-size="11" fill="#4A433A">Sigstore &amp; C2PA manifests</text>
+      <text x="506" y="124" font-size="11" fill="#4A433A">Zero-knowledge red-teaming</text>
+      <text x="506" y="144" font-size="11" fill="#4A433A">Qwen-Coder patch sprints</text>
+
+      <line x1="690" y1="130" x2="716" y2="130" stroke="#0B3F30" stroke-width="2"/>
+      <polygon points="716,125 726,130 716,135" fill="#0B3F30"/>
+
+      <rect x="728" y="28" width="172" height="204" rx="6" fill="#F4EBDD" stroke="#0B3F30" stroke-width="1.5"/>
+      <text x="742" y="54" font-size="11" font-weight="700" fill="#0B3F30">04 · FAIR COMMERCE</text>
+      <text x="742" y="82" font-size="12.5" font-weight="700" fill="#26211C">Merchant &amp; Civic Trust</text>
+      <text x="742" y="104" font-size="11" fill="#4A433A">Cross-border ZK trade</text>
+      <text x="742" y="124" font-size="11" fill="#4A433A">SME bargaining shields</text>
+      <text x="742" y="144" font-size="11" fill="#4A433A">Cooperative supply equity</text>
+    </svg>
+    <svg class="diagram-mobile" viewBox="0 0 300 536" role="img" aria-labelledby="ex-lp-alibaba-qwen-m-title ex-lp-alibaba-qwen-m-desc">
+      <title id="ex-lp-alibaba-qwen-m-title">Mobile four-stage Alibaba Qwen edge vault and Bailian lease diagram</title>
+      <desc id="ex-lp-alibaba-qwen-m-desc">Vertical mobile stack from a local-first Qwen edge vault into a Bailian relay airlock, Sigstore build provenance, and fair merchant commerce.</desc>
+      <rect x="0" y="0" width="300" height="536" fill="#FAF3EA"/>
+      <rect x="10" y="10" width="280" height="114" rx="4" fill="#FFFDF9" stroke="#0B3F30" stroke-width="2"/>
+      <text x="24" y="34" fill="#0B3F30" font-family="monospace" font-size="11" font-weight="700">01 · LOCAL EDGE VAULT</text>
+      <text x="24" y="56" fill="#131014" font-family="sans-serif" font-size="12.5" font-weight="700">Qwen 0.5B-32B 1:1</text>
+      <text x="24" y="76" fill="#4A433A" font-family="sans-serif" font-size="11">Laptop &amp; phone custody</text>
+      <text x="24" y="94" fill="#4A433A" font-family="sans-serif" font-size="11">Sensor confidence gates</text>
+      <text x="24" y="112" fill="#0B3F30" font-family="sans-serif" font-size="11">Multilingual local memory</text>
+
+      <line x1="150" y1="124" x2="150" y2="134" stroke="#0B3F30" stroke-width="2"/>
+      <polygon points="145,134 150,141 155,134" fill="#0B3F30"/>
+
+      <rect x="10" y="142" width="280" height="114" rx="4" fill="#F4EBDD" stroke="#963E1D" stroke-width="1.8"/>
+      <text x="24" y="166" fill="#963E1D" font-family="monospace" font-size="11" font-weight="700">02 · RELAY AIRLOCK</text>
+      <text x="24" y="188" fill="#131014" font-family="sans-serif" font-size="12.5" font-weight="700">Bailian Lease Gate</text>
+      <text x="24" y="208" fill="#4A433A" font-family="sans-serif" font-size="11">Prompt-injection fence</text>
+      <text x="24" y="226" fill="#4A433A" font-family="sans-serif" font-size="11">Expiring capability lease</text>
+      <text x="24" y="244" fill="#4A433A" font-family="sans-serif" font-size="11">Blocks relay downgrades</text>
+
+      <line x1="150" y1="256" x2="150" y2="266" stroke="#963E1D" stroke-width="2"/>
+      <polygon points="145,266 150,273 155,266" fill="#963E1D"/>
+
+      <rect x="10" y="274" width="280" height="114" rx="4" fill="#FFFDF9" stroke="#0B3F30" stroke-width="1.8"/>
+      <text x="24" y="298" fill="#0B3F30" font-family="monospace" font-size="11" font-weight="700">03 · BUILD PROVENANCE</text>
+      <text x="24" y="320" fill="#131014" font-family="sans-serif" font-size="12.5" font-weight="700">Signed Open Suite</text>
+      <text x="24" y="340" fill="#4A433A" font-family="sans-serif" font-size="11">Sigstore &amp; C2PA manifests</text>
+      <text x="24" y="358" fill="#4A433A" font-family="sans-serif" font-size="11">Zero-knowledge red-teaming</text>
+      <text x="24" y="376" fill="#4A433A" font-family="sans-serif" font-size="11">Qwen-Coder patch sprints</text>
+
+      <line x1="150" y1="388" x2="150" y2="398" stroke="#0B3F30" stroke-width="2"/>
+      <polygon points="145,398 150,405 155,398" fill="#0B3F30"/>
+
+      <rect x="10" y="406" width="280" height="114" rx="4" fill="#F4EBDD" stroke="#0B3F30" stroke-width="1.5"/>
+      <text x="24" y="430" fill="#0B3F30" font-family="monospace" font-size="11" font-weight="700">04 · FAIR COMMERCE</text>
+      <text x="24" y="452" fill="#131014" font-family="sans-serif" font-size="12.5" font-weight="700">Merchant &amp; Civic Trust</text>
+      <text x="24" y="472" fill="#4A433A" font-family="sans-serif" font-size="11">Cross-border ZK trade</text>
+      <text x="24" y="490" fill="#4A433A" font-family="sans-serif" font-size="11">SME bargaining shields</text>
+      <text x="24" y="508" fill="#0B3F30" font-family="sans-serif" font-size="11">Cooperative supply equity</text>
+    </svg>
+    <figcaption>CIN binds compact Qwen models to local user vaults while securing Bailian cloud connectors, open-weight supply chains, and regional trade.</figcaption>
+  </figure>
+
+  <section class="lp-sec" id="sec-1">
+    <p class="lp-sec-kicker lp-sec-kicker--warn">Section 01 · Architecture and Alignment Bottlenecks</p>
+    <h2>Open edge ubiquity meets centralized hyperscaler agent hosting</h2>
+    <div class="prose wrap-narrow">
+      <p>Qwen spans dense and sparse checkpoints from tiny 0.5B phone models up to 72B+ servers across text, vision, audio, coding (Qwen-Coder), and reasoning (QwQ). At the same time, Alibaba Cloud runs Bailian to host commercial agents across retail marketplaces, freight logistics, and municipal clouds.</p>
+      <p>That dual reach creates sharp safety friction. Downstream fine-tuners strip safety refusals from open edge models while wiring screen-control agents directly to operating systems. Meanwhile, commercial API relays silently swap model quality, widen tool permissions, and distort billed usage without cryptographic receipts.<sup><a href="#fn1">1</a></sup></p>
+
+      <div class="lp-options-grid">
+        <div class="lp-option lp-option--warn">
+          <h3>Stripped guardrails on edge fine-tunes</h3>
+          <p>Lightweight fine-tuning removes refusal filters from Qwen-Coder and QwQ in hours while leaving full code-writing and screen-clicking capabilities active.</p>
+        </div>
+        <div class="lp-option lp-option--warn">
+          <h3>Unverified commercial API relays</h3>
+          <p>Middlemen between users and cloud endpoints silently downgrade model tiers, expand tool scopes, and alter system prompts without caller-verifiable proof.</p>
+        </div>
+        <div class="lp-option lp-option--warn">
+          <h3>Multi-tenant workflow enclosure</h3>
+          <p>Hosting millions of merchant, logistics, and civic assistants on central cloud servers pools private business habits into a single platform operator.</p>
+        </div>
+        <div class="lp-option lp-option--warn">
+          <h3>Closed flagship audit gap</h3>
+          <p>While smaller Qwen weights are open for inspection, flagship commercial Qwen-Max endpoints remain closed without independent third-party safety logs.</p>
+        </div>
+      </div>
+
+      <aside class="for-researchers"><details><summary>For researchers: formal protocol and verification details</summary><div>
+        <p>Downstream LoRA and TIES-Merging fine-tunes readily erase DPO refusal directions across Apache-2.0 Qwen2.5 and Qwen3 checkpoints while leaving <code>Qwen-Agent</code> GUI and shell actuators exposed to indirect prompt injection. On the hosted side, Wu et al. (2026) audit commercial LLM API relays and document silent quantization substitution, inflated tool-permission scopes, and unverified billing drift whenever callers lack end-to-end cryptographic execution attestations.</p>
+      </div></details></aside>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="sec-2">
+    <p class="lp-sec-kicker">Section 02 · CIN Technical Integration</p>
+    <h2>Local-first personal vaults and signed Bailian cloud leases</h2>
+    <div class="prose wrap-narrow">
+      <p>CIN anchors 0.5B to 32B Qwen text, vision, and audio checkpoints directly on personal laptops and phones using local-first data custody.<sup><a href="#fn2">2</a></sup> Raw multilingual conversations, family photos, and shop ledgers stay encrypted inside the owner's local vault alongside calibrated camera and microphone confidence checks.</p>
+      <p>Whenever a local Qwen assistant calls Bailian cloud APIs or marketplace connectors, CIN requires hardware-signed expiring capability leases.<sup><a href="#fn3">3</a></sup> Strict data-control prompt fencing blocks untrusted invoices or web pages from hijacking tool permissions, and any middleman tampering fails verification immediately.</p>
+
+      <div class="lp-options-grid">
+        <div class="lp-option">
+          <h3>Local-first multilingual vault</h3>
+          <p>Sub-32B Qwen checkpoints adapt privately on user hardware under legal loyalty to one person, keeping raw business and household records off cloud servers.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Calibrated sensor confidence gates</h3>
+          <p>Wearable and phone cameras check each other on synchronized hardware clocks and pause action when glare or blocked lenses lower observation confidence.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Signed Bailian capability leases</h3>
+          <p>Every remote cloud or e-commerce call carries a time-limited hardware lease locking exact model hashes, spending limits, and narrow tool permissions.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Prompt-fenced GUI automation</h3>
+          <p>Separating trusted user instructions from untrusted supplier emails or QR codes stops hidden prompt injections from seizing local files or payment tools.</p>
+        </div>
+      </div>
+
+      <aside class="for-researchers"><details><summary>For researchers: formal protocol and verification details</summary><div>
+        <p>Within CIN's five-primitive functional deliverable, local perception synchronizes in monotonic hardware <code>Device Time</code> with self-assessed observation confidence under <code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, and <code>IETF RATS</code> RFC 9334 peripheral attestation, separated by optical data diodes and <code>IEC 61508</code> dead-man relays. Following Kleppmann et al. (2019), observations enter an append-only <code>C2PA</code>/Merkle episodic memory vault (Endel Tulving; Tulving, 1972) under transduction realism (<em>Signed Is Not True</em> across the analog hole; Fu &amp; Xu, 2018), governed by a monogamous <code>1:1</code> personal cognitive model and cybernetic exocortex (Joscha Bach; Bach; Andy Clark &amp; David Chalmers; Clark &amp; Chalmers, 1998) acting as a statutory information fiduciary (Jack Balkin; Balkin, 2016) protecting unassisted competence across an active-inference Markov blanket (Karl Friston; Friston, 2013).</p>
+        <p>Outbound delegation separates the Private Autobiographical Ledger from the Public Attestation &amp; Escrow Ledger (Public Attestation and Escrow Ledger) with selective <code>ZK</code> proofs and <code>CaMeL</code> taint-tracked data-control isolation. It enforces <code>ACLE-MCP</code> <code>Object-Capability</code> and expiring capability lease bounds (Dennis &amp; Van Horn, 1966; Ding et al., 2026), <code>IETF SCITT</code> (<code>RFC 9943</code>) receipts, and independent-class <code>k &gt;= 3f + 1</code> Byzantine corroboration. Inspect interactive walkthroughs in <a href="/labs/protocol-inspector/">Protocol Inspector</a>, <a href="/labs/sensor-boundary/">Sensor Boundary</a>, and <a href="/labs/shared-horizon/">Shared Horizon</a>.</p>
+      </div></details></aside>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="sec-3">
+    <p class="lp-sec-kicker">Section 03 · Inter-Lab Coordination Options</p>
+    <h2>Signed open-weight supply chains and pre-release patching sprints</h2>
+    <div class="prose wrap-narrow">
+      <p>Qwen, DeepSeek, Meta Llama, Mistral, and Hugging Face supply the foundation weights behind millions of global applications. Unmarked mirror copies and uncoordinated code-model drops leave open-source software maintainers racing behind automated exploit tools.</p>
+      <p>CIN establishes a shared open-weight provenance compact built on transparent software signing.<sup><a href="#fn4">4</a></sup> Every Qwen checkpoint ships with cryptographic build manifests binding weight hashes, tokenizers, and safety evaluations, paired with pre-release defensive cyber-patching sprints before new Qwen-Coder releases go public.</p>
+
+      <div class="lp-options-grid">
+        <div class="lp-option">
+          <h3>Sigstore and C2PA build manifests</h3>
+          <p>Every open checkpoint carries a signed bill of materials so hospitals, banks, and builders can verify untouched weights across mirror downloads.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Zero-knowledge flagship receipts</h3>
+          <p>Closed Qwen-Max updates and pre-release QwQ models publish zero-knowledge safety proofs confirming red-line compliance without exposing proprietary weights.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Qwen-Coder defensive sprints</h3>
+          <p>Open-source package maintainers get cleanroom access ahead of public weight drops to find and patch critical software flaws before attackers fine-tune.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Dataset provenance declarations</h3>
+          <p>Standardized cryptographic summaries document pretraining cutoff dates, synthetic distillation lineage, and opt-out compliance without leaking raw corpora.</p>
+        </div>
+      </div>
+
+      <aside class="for-researchers"><details><summary>For researchers: formal protocol and verification details</summary><div>
+        <p>Using Sigstore transparency logs (Newman, Meyers, and Torres-Arias, 2022) and C2PA manifests, Qwen binds tensor Merkle roots to quantization kernels and benchmark hashes across Hugging Face and ModelScope mirrors. For closed Qwen-Max and pre-release Qwen-Coder checkpoints, non-interactive zkLLM proofs on IETF SCITT ledgers attest clean cyber and CBRN uplift evaluations alongside Proof-Carrying Code remediation patches.</p>
+      </div></details></aside>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="sec-4">
+    <p class="lp-sec-kicker">Section 04 · Government and Sovereign Engagement Options</p>
+    <h2>Cross-border trade receipts and scrutable public procurement</h2>
+    <div class="prose wrap-narrow">
+      <p>Alibaba Cloud operates across China's TC260 standards, Singapore and Japan AI Safety Institutes, and European AI rules. Conflicting demands for raw server inspections threaten to fracture regional commerce or trigger sudden border blocks.</p>
+      <p>CIN keeps regional trade open through bilateral zero-knowledge compliance receipts on the Wide Network Ledger. When cities procure Bailian or Qwen agents for transit, customs, or public benefits, administrative law requires scrutable public receipts and clear human appeal paths.<sup><a href="#fn5">5</a></sup></p>
+
+      <div class="lp-options-grid">
+        <div class="lp-option">
+          <h3>Cross-border zero-knowledge trade</h3>
+          <p>Commercial logistics and customs agents attach jurisdiction-specific safety and liability proofs over CIN's signed Second Road without exposing domestic cloud servers.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Scrutable municipal AI logs</h3>
+          <p>Public-sector Qwen deployments publish deterministic input schemas, lease bounds, and demographic calibration audits while keeping citizen vaults private.</p>
+        </div>
+        <div class="lp-option">
+          <h3>TC260, ASEAN, and EU interop</h3>
+          <p>Shared attestation profiles map domestic registration checks and regional AISI safety benchmarks onto one verifiable ledger format.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Human contestability hooks</h3>
+          <p>Every automated municipal or customs decision carries a signed receipt routing disputed cases directly to accountable human review.</p>
+        </div>
+      </div>
+
+      <aside class="for-researchers"><details><summary>For researchers: formal protocol and verification details</summary><div>
+        <p>Grounded in Caputo (2026) on administrative scrutability, CIN enforces risk-scaled asymmetric transparency: household vaults disclose zero raw state, whereas municipal Bailian deployments log IETF SCITT schema digests, Object-Capability bounds, and subgroup calibration metrics. Cross-border commercial agents negotiate over IETF QUIC Second Road channels carrying selective zero-knowledge compliance proofs recognized across TC260, Singapore AISI, J-AISI, and EU AI Office profiles.</p>
+      </div></details></aside>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="sec-5">
+    <p class="lp-sec-kicker">Section 05 · Safe ASI Adoption and Macroeconomic Stability</p>
+    <h2>Protecting small merchants, workshops, and gig workers from squeeze</h2>
+    <div class="prose wrap-narrow">
+      <p>When giant digital marketplaces run stronger pricing and routing models than individual sellers or couriers, small businesses lose bargaining power. Running loyal 1:1 Qwen assistants on local phones and shop laptops gives independent merchants, farmers, and drivers a private contract and pricing shield on their own side.</p>
+      <p>Backed by Universal Basic Compute, small firms use local Qwen-Coder tools to build custom inventory and bookkeeping software.<sup><a href="#fn6">6</a></sup> Automated supply hubs share ownership broadly to prevent income concentration<sup><a href="#fn7">7</a></sup> and settle regional trade through zero-interest mutual credit.</p>
+
+      <div class="lp-options-grid">
+        <div class="lp-option">
+          <h3>Merchant and courier shields</h3>
+          <p>Local Qwen assistants audit platform fee changes, ad auctions, and dispatch rules in real time to protect small sellers and gig workers.</p>
+        </div>
+        <div class="lp-option">
+          <h3>SME customer-built software</h3>
+          <p>Workshops, clinics, and co-ops generate and verify multilingual ERP, scheduling, and shop-floor software locally without recurring SaaS lock-in.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Cooperative logistics equity</h3>
+          <p>Automated fulfillment centers and shared regional compute pools issue statutory cooperative shares to participating small producers, crews, and host towns.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Regional mutual credit clearing</h3>
+          <p>Small manufacturers and repair networks clear real goods, freight capacity, and compute cycles on CIN's ledger without credit-crunch bottlenecks.</p>
+        </div>
+      </div>
+
+      <aside class="for-researchers"><details><summary>For researchers: formal protocol and verification details</summary><div>
+        <p>On the Wide Network Ledger, local fiduciary Qwen-Coder synthesis (Malo, Yu, and Qiu, 2026) paired with Universal Basic Services and Jacob Meluso invisible-labor upkeep estimation (Meluso et al., 2024) eliminates SaaS rent extraction for small enterprises. To counter the automation-driven distribution shocks modeled by Korinek and Stiglitz (2017), Primitive 5 pairs automated supply-chain hubs with statutory Rudolf Meidner cooperative equity trusts (Meidner, 1978), polycentric commons governance (Elinor Ostrom; Ostrom, 1990; Ostrom, 2010), and conservation-checked counter-cyclical reciprocal mutual credit clearing (James Stodder; Stodder, 2009) audited via <code>k</code>-truss subgraph tests.</p>
+      </div></details></aside>
+    </div>
+  </section>
+
+  <div class="prose wrap-narrow">
+    <section class="footnotes">
+      <ol>
+        <li id="fn1">Xiaodong Wu et al., "What the Middleman Delivers: Answer Behavior, Tool Permissions, and Billed Usage in LLM API Relays" (2026), <a href="https://arxiv.org/abs/2611.07650">arxiv.org/abs/2611.07650</a>.</li>
+        <li id="fn2">Martin Kleppmann, Adam Wiggins, Peter van Hardenberg, and Mark McGranaghan, "Local-first software: you own your data, in spite of the cloud" (2019), <a href="https://doi.org/10.1145/3359591.3359737">doi.org/10.1145/3359591.3359737</a>.</li>
+        <li id="fn3">Zhiyang Ding, Yang Luo, Guangpu Chen, Qingni Shen, and Zhonghai Wu, "ACLE-MCP: Attested Capability Leases for Execution-Time Trust in Remote LLM Tool Use" (2026), <a href="https://arxiv.org/abs/2609.02690">arxiv.org/abs/2609.02690</a>.</li>
+        <li id="fn4">Zachary Newman, John Speed Meyers, and Santiago Torres-Arias, "Sigstore: Software Signing for Everybody" (2022), <a href="https://doi.org/10.1145/3548606.3560596">doi.org/10.1145/3548606.3560596</a>.</li>
+        <li id="fn5">Nicholas Caputo, "Administrative Law's Fourth Settlement: AI and the Scrutable State" (2026), <a href="https://arxiv.org/abs/2602.09678">arxiv.org/abs/2602.09678</a>.</li>
+        <li id="fn6">Ripon Chandra Malo, Zimeng Yu, and Tong Qiu, "The Customer Is the Builder: How AI Coding Agents Are Rewriting the Economics of Software" (2026), <a href="https://arxiv.org/abs/2610.30307">arxiv.org/abs/2610.30307</a>.</li>
+        <li id="fn7">Anton Korinek and Joseph E. Stiglitz, "Artificial Intelligence and Its Implications for Income Distribution and Unemployment" (2017), <a href="https://doi.org/10.3386/w24174">doi.org/10.3386/w24174</a>.</li>
+      </ol>
+    </section>
+  </div>
+</section>

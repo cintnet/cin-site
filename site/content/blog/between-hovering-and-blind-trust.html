@@ -1,0 +1,270 @@
+---
+title: Between hovering and blind trust
+description: Delegating tasks to AI assistants often forces an impossible choice between approval fatigue and unmonitored drift. Dependable delegation requires milestone checkpoints.
+reader: Anyone delegating tasks to AI assistants, from software developers and office workers to public servants.
+takeaway: Delegating to AI assistants fails when systems offer only constant micro-approvals or blind long-horizon autonomy; dependable delegation needs inspectable milestone checkpoints and leased authority.
+template: article
+date: 2026-11-11
+order: 68
+category: Seeing
+minutes: 9
+image: post-between-hovering-and-blind-trust.jpg
+image_alt: A sunlit carpentry workshop with a wooden workbench holding measuring calipers, an open blueprint with checked milestones, and hand tools beside freshly planed pine boards.
+lede: Delegating tasks to AI assistants currently forces users into two bad options: hover over every micro-step or grant blind autonomy and hope for the best. A study of 695 real-world incidents from Carnegie Mellon shows that both extremes fail, and that dependable delegation requires inspectable milestone checkpoints and leased authority.
+---
+<p>If you stand over a carpentry apprentice's shoulder watching every tap of the mallet, you might as well drive the chisel yourself. Your neck aches, your focus drifts, and you end up nodding without looking.</p>
+
+<p>Yet if you hand that apprentice your workshop keys, leave town for a month, and set zero check-in dates, you take a reckless gamble. You return to ruined walnut boards, dull tools, and an empty bank account.</p>
+
+<p>Skilled trades avoid both traps by using milestone checkpoints. The apprentice marks the cut lines, you check the dimensions against the blueprint, they rough out the joinery, and you inspect the dry fit before any glue touches the wood.</p>
+
+<p>Software agents need the same middle ground. Today, most assistants force people to choose between hovering over hundreds of confirmation dialogs or turning their backs and praying nothing breaks.</p>
+
+<figure class="explainer" id="ex-delegation-checkpoints">
+  <style>
+    #ex-delegation-checkpoints {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-delegation-checkpoints svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-delegation-checkpoints .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-delegation-checkpoints .diagram-desktop {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    #ex-delegation-checkpoints .diagram-mobile {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+    #ex-delegation-checkpoints figcaption {
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-delegation-checkpoints .diagram-desktop { display: none; }
+      #ex-delegation-checkpoints .diagram-mobile { display: block; }
+    }
+  </style>
+  <svg class="diagram-desktop" viewBox="0 0 700 350" role="img" aria-labelledby="ex-del-title ex-del-desc">
+    <title id="ex-del-title">Comparing the hovering trap, the blind trust trap, and milestone checkpoints</title>
+    <desc id="ex-del-desc">Three-panel diagram contrasting approval fatigue from micro-prompts, cascading error from unmonitored autonomy, and safe delegation using bounded milestone checkpoints.</desc>
+    <line x1="233" y1="16" x2="233" y2="332" stroke="var(--ex-rule)" stroke-width="1"/>
+    <line x1="467" y1="16" x2="467" y2="332" stroke="var(--ex-rule)" stroke-width="1"/>
+    <g>
+      <rect x="14" y="22" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="27" y="28" font-size="10.5" font-weight="700" fill="var(--ex-warn)">HOVERING TRAP</text>
+      <text x="14" y="48" font-size="11" font-weight="600" fill="var(--ex-muted)">Constant micro-prompts</text>
+      <line x1="14" y1="60" x2="219" y2="60" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <line x1="21" y1="78" x2="21" y2="236" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+      <rect x="18" y="90" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="32" y="97" font-size="11" font-weight="600" fill="var(--ex-ink)"><tspan x="32" y="97">1. Prompt fatigue</tspan><tspan x="32" dy="17" font-weight="400" fill="var(--ex-muted)">Confirms every read &amp; click</tspan></text>
+      <line x1="32" y1="142" x2="219" y2="142" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="18" y="168" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="32" y="175" font-size="11" font-weight="600" fill="var(--ex-ink)"><tspan x="32" y="175">2. Rubber-stamping</tspan><tspan x="32" dy="17" font-weight="400" fill="var(--ex-muted)">Tired eyes click Allow blindly</tspan></text>
+      <line x1="14" y1="274" x2="219" y2="274" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="14" y="294" width="5" height="5" fill="var(--ex-warn)"/>
+      <text x="25" y="300" font-size="10.5" font-weight="700" fill="var(--ex-warn)">Result: False safety &amp; friction</text>
+    </g>
+    <g>
+      <rect x="247" y="22" width="6" height="6" fill="var(--ex-amber)"/>
+      <text class="ex-mono" x="260" y="28" font-size="10.5" font-weight="700" fill="var(--ex-amber)">BLIND TRUST TRAP</text>
+      <text x="247" y="48" font-size="11" font-weight="600" fill="var(--ex-muted)">Unbounded long runs</text>
+      <line x1="247" y1="60" x2="453" y2="60" stroke="var(--ex-amber)" stroke-width="1.25"/>
+      <line x1="254" y1="78" x2="254" y2="236" stroke="var(--ex-amber)" stroke-width="1" stroke-dasharray="3 3"/>
+      <rect x="251" y="90" width="6" height="6" fill="var(--ex-amber)"/>
+      <text x="265" y="97" font-size="11" font-weight="600" fill="var(--ex-ink)"><tspan x="265" y="97">1. Early guess</tspan><tspan x="265" dy="17" font-weight="400" fill="var(--ex-muted)">Misreads initial instruction</tspan></text>
+      <line x1="265" y1="142" x2="453" y2="142" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="251" y="168" width="6" height="6" fill="var(--ex-amber)"/>
+      <text x="265" y="175" font-size="11" font-weight="600" fill="var(--ex-ink)"><tspan x="265" y="175">2. Silent drift</tspan><tspan x="265" dy="17" font-weight="400" fill="var(--ex-muted)">Dozens of unchecked steps</tspan></text>
+      <line x1="247" y1="274" x2="453" y2="274" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="247" y="294" width="5" height="5" fill="var(--ex-amber)"/>
+      <text x="258" y="300" font-size="10.5" font-weight="700" fill="var(--ex-amber)">Result: Costly manual rollback</text>
+    </g>
+    <g>
+      <rect x="481" y="22" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="494" y="28" font-size="10.5" font-weight="700" fill="var(--ex-signal)">MILESTONE CHECKPOINTS</text>
+      <text x="481" y="48" font-size="11" font-weight="600" fill="var(--ex-muted)">Leased autonomy &amp; receipts</text>
+      <line x1="481" y1="60" x2="686" y2="60" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <line x1="488" y1="78" x2="488" y2="236" stroke="var(--ex-signal)" stroke-width="1"/>
+      <rect x="485" y="90" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="499" y="97" font-size="11" font-weight="600" fill="var(--ex-ink)"><tspan x="499" y="97">1. Bounded scope lease</tspan><tspan x="499" dy="17" font-weight="400" fill="var(--ex-muted)">Runs up to next milestone</tspan></text>
+      <line x1="499" y1="142" x2="686" y2="142" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="485" y="168" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="499" y="175" font-size="11" font-weight="600" fill="var(--ex-ink)"><tspan x="499" y="175">2. Plain action receipt</tspan><tspan x="499" dy="17" font-weight="400" fill="var(--ex-muted)">Shows files &amp; records touched</tspan></text>
+      <line x1="481" y1="274" x2="686" y2="274" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="481" y="294" width="5" height="5" fill="var(--ex-signal)"/>
+      <text x="492" y="300" font-size="10.5" font-weight="700" fill="var(--ex-signal)">Result: Calm steering check</text>
+    </g>
+  </svg>
+  <svg class="diagram-mobile" viewBox="0 0 330 680" role="img" aria-labelledby="ex-del-m-title ex-del-m-desc">
+    <title id="ex-del-m-title">Comparing three delegation models on mobile</title>
+    <desc id="ex-del-m-desc">Stacked mobile overview contrasting the hovering trap, the blind trust trap, and milestone checkpoints.</desc>
+    <g>
+      <rect x="8" y="16" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="20" y="22" font-size="11" font-weight="700" fill="var(--ex-warn)">THE HOVERING TRAP</text>
+      <text x="8" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Constant micro-prompts</text>
+      <line x1="8" y1="51" x2="318" y2="51" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <line x1="12" y1="66" x2="12" y2="151" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+      <rect x="9" y="74" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="22" y="81" font-size="11" font-weight="600" fill="var(--ex-ink)">1. Confirms every file read and click</text>
+      <line x1="22" y1="106" x2="318" y2="106" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="124" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="22" y="131" font-size="11" font-weight="600" fill="var(--ex-ink)">2. Tired users click Allow blindly</text>
+      <line x1="8" y1="170" x2="318" y2="170" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="8" y="186" width="5" height="5" fill="var(--ex-warn)"/>
+      <text x="19" y="192" font-size="11.5" font-weight="700" fill="var(--ex-warn)">Result: False safety &amp; high friction</text>
+    </g>
+    <line x1="8" y1="218" x2="318" y2="218" stroke="var(--ex-rule)" stroke-width="1.25"/>
+    <g>
+      <rect x="8" y="238" width="6" height="6" fill="var(--ex-amber)"/>
+      <text class="ex-mono" x="20" y="244" font-size="11" font-weight="700" fill="var(--ex-amber)">THE BLIND TRUST TRAP</text>
+      <text x="8" y="263" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Unbounded long runs</text>
+      <line x1="8" y1="273" x2="318" y2="273" stroke="var(--ex-amber)" stroke-width="1.25"/>
+      <line x1="12" y1="288" x2="12" y2="373" stroke="var(--ex-amber)" stroke-width="1" stroke-dasharray="3 3"/>
+      <rect x="9" y="296" width="6" height="6" fill="var(--ex-amber)"/>
+      <text x="22" y="303" font-size="11" font-weight="600" fill="var(--ex-ink)">1. Misreads an early instruction</text>
+      <line x1="22" y1="328" x2="318" y2="328" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="346" width="6" height="6" fill="var(--ex-amber)"/>
+      <text x="22" y="353" font-size="11" font-weight="600" fill="var(--ex-ink)">2. Errors compound across systems</text>
+      <line x1="8" y1="392" x2="318" y2="392" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="8" y="408" width="5" height="5" fill="var(--ex-amber)"/>
+      <text x="19" y="414" font-size="11.5" font-weight="700" fill="var(--ex-amber)">Result: Costly manual rollback</text>
+    </g>
+    <line x1="8" y1="440" x2="318" y2="440" stroke="var(--ex-rule)" stroke-width="1.25"/>
+    <g>
+      <rect x="8" y="460" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="20" y="466" font-size="11" font-weight="700" fill="var(--ex-signal)">MILESTONE CHECKPOINTS</text>
+      <text x="8" y="485" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Leased authority &amp; receipts</text>
+      <line x1="8" y1="495" x2="318" y2="495" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <line x1="12" y1="510" x2="12" y2="595" stroke="var(--ex-signal)" stroke-width="1"/>
+      <rect x="9" y="518" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="22" y="525" font-size="11" font-weight="600" fill="var(--ex-ink)">1. Leased scope until checkpoint</text>
+      <line x1="22" y1="550" x2="318" y2="550" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="568" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="22" y="575" font-size="11" font-weight="600" fill="var(--ex-ink)">2. Plain receipt of touched state</text>
+      <line x1="8" y1="614" x2="318" y2="614" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="8" y="630" width="5" height="5" fill="var(--ex-signal)"/>
+      <text x="19" y="636" font-size="11.5" font-weight="700" fill="var(--ex-signal)">Result: Calm ten-second steering</text>
+    </g>
+  </svg>
+  <figcaption>Delegating to AI assistants fails at both extremes: constant confirmation dialogs cause fatigue, while unchecked autonomy causes compounding drift. Milestone checkpoints provide safe delegation by coupling bounded authority leases with inspectable receipts.</figcaption>
+</figure>
+
+<h2>What 695 real-world failures teach us</h2>
+
+<p>When software agents fail in everyday use, where does the fault lie? Is the language model simply not smart enough, or is the way we configure its autonomy broken?</p>
+
+<p>A research team at Carnegie Mellon University set out to answer that question by studying 695 real-world failure incidents across public repositories.<sup><a href="#fn1">1</a></sup> The authors examined cases where agents wrote code, manipulated user interfaces, and conducted online transactions on behalf of users.<sup><a href="#fn1">1</a></sup></p>
+
+<p>They identified twelve distinct failure modes across three interaction stages: before action begins, during execution, and after completion.<sup><a href="#fn1">1</a></sup> Their central finding was striking: the exact same model running the exact same task failed in different ways depending on how much autonomy the system allowed between user check-ins.<sup><a href="#fn1">1</a></sup></p>
+
+<p>Autonomy is not an abstract personality trait of an AI model. Autonomy is a design setting chosen at deployment time. It dictates how many actions an assistant may take before it must stop and check back with a human.</p>
+
+<p>When developers build an assistant without intermediate stopping points, they trap users on one side of a steep cliff. Either the person watches every command, or the person abdicates responsibility completely.</p>
+
+<h2>The hovering trap and approval fatigue</h2>
+
+<p>The first trap looks safe on paper. To prevent mistakes, the developer programs the assistant to ask for confirmation before calling any tool.</p>
+
+<p>The user starts their morning by asking the assistant to clean up project dependencies. Within thirty seconds, the screen fills with prompts. Can I read package.json? Can I run npm audit? Can I inspect the lockfile? Can I check this Git branch?</p>
+
+<p>Human attention does not work like a mechanical switch. Decades of ergonomics research show that frequent, low-stakes confirmation dialogs produce habituation.<sup><a href="#fn2">2</a></sup> When people face dozens of interruptions an hour, their brains treat the prompt as friction to dismiss rather than a decision to evaluate.</p>
+
+<p>Users begin clicking "Allow" on reflex. At that point, the safety check has evaporated. The system annoys the user all day while still allowing a destructive deletion to slip through unnoticed during an afternoon lapse of focus.</p>
+
+<h2>The blind trust trap and compounding drift</h2>
+
+<p>Frustrated by constant interruptions, teams often swing to the opposite extreme. They give the assistant a broad prompt, grant it full terminal access, and walk away to brew tea.</p>
+
+<p>This triggers the blind trust trap. Language models are probabilistic pattern matchers, not psychic mind-readers. When an instruction contains a slight ambiguity, the model picks a plausible interpretation and proceeds.</p>
+
+<p>In a long, unmonitored execution chain, early errors compound. At step three, the agent mistakes a test database for a scratch file. At step seven, it runs a migration that overwrites user tables. By step twenty, it has committed changes, deployed to staging, and sent status emails.</p>
+
+<p>When the user returns, they face an expensive disaster. Untangling twenty dependent actions across multiple tools takes far longer than writing the code manually from scratch. The user loses confidence and abandons the tool entirely.</p>
+
+<h2>The silent approval gap</h2>
+
+<p>Between hovering and blind trust lies a third failure mode that appears across modular agent architectures. Most modern assistants split tasks between a desktop host application and separate tool servers that handle shell commands or database updates.</p>
+
+<p>This division creates a dangerous coordination gap. Developers building tool servers assume the host interface prompts the person before running dangerous commands. At the same time, developers building host interfaces assume the tool server protects itself.</p>
+
+<p>Because each side assumes the other checks for consent, neither side asks. A security audit of one thousand tool repositories by Yao et al. revealed that ninety percent of destructive tools provide no server confirmation.<sup><a href="#fn5">5</a></sup> Across forty-one popular agent hosts, thirty-two run tools without confirmation by default.<sup><a href="#fn5">5</a></sup></p>
+
+<p>When researchers tested destructive tool calls across common host and tool pairings, over sixty percent ran without any human confirmation.<sup><a href="#fn5">5</a></sup> In test runs with low-cost models, prompt injections triggered hundreds of unapproved file deletions.<sup><a href="#fn5">5</a></sup> Both sides believed protections were active, yet the command executed silently.</p>
+
+<h2>Designing milestone checkpoints and authority leases</h2>
+
+<p>Reliable teamwork does not require watching every breath or vanishing until Friday. It requires structured milestones. In software delegation, this principle translates into three concrete mechanisms.</p>
+
+<p>First, <strong>bounded authority leases</strong>. Instead of giving an assistant open-ended access to an entire workspace, give it an expiring lease for a single stage. For instance, permit it to inspect files and draft an outline, but require a new lease before it modifies code.</p>
+
+<p>Second, <strong>structured action receipts</strong>. When reaching a milestone, the assistant must stop and display a plain receipt. That receipt shows three facts: what external sources it read, what changes it prepared, and what it intends to do next.</p>
+
+<p>Third, <strong>five-second inspectability</strong>. A human cannot audit a wall of raw JSON logs during a busy workday. The receipt must summarize boundary crossings clearly: files touched, network endpoints queried, and credentials used.</p>
+
+<p>With those three pieces in place, the relationship shifts from an adversarial tug-of-war into a calm rhythm. The assistant works independently on focused chunks, while the human provides strategic steering without suffering from cognitive overload.</p>
+
+<p>Closing the approval gap requires applying the security principle of fail-safe defaults. The host application must assume every tool call is dangerous unless that tool carries an audited read-only tag. Yao et al. found that when hosts prompt for every tool without a read-only tag, the share of unconfirmed destructive pairings drops from sixty percent to five percent.<sup><a href="#fn5">5</a></sup></p>
+
+<p>Combining fail-safe defaults with milestone checkpoints gives users safety without approval fatigue. The assistant reads documents, searches code, and gathers context without interruptions. When the plan calls for modifying files or dropping database records, the system pauses at a clear checkpoint and asks for review.</p>
+
+<p>You can explore practical implementation patterns and verified action cards for <a href="/labs/shared-horizon/">milestone checkpoints and capability leases in Shared Horizon</a>.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers and systems architects</summary>
+    <div>
+      <p>This design pattern builds on foundational work in human-automation interaction and security. Parasuraman, Sheridan, and Wickens established ten distinct levels of automation, demonstrating that intermediate levels (where automation executes suggestions only after consent or provides veto windows) dramatically outperform fully manual or fully autonomous extremes.<sup><a href="#fn3">3</a></sup> Amershi et al. formalized these trade-offs in the Microsoft Guidelines for Human-AI Interaction.<sup><a href="#fn4">4</a></sup> They focused on three rules in particular: Guideline 1 for clear capability bounds, Guideline 9 for prompt fatigue mitigation, and Guideline 10 for scoping authority during ambiguous requests.<sup><a href="#fn4">4</a></sup></p>
+      <p>In our architecture, these insights combine with Object-Capability (OCap) patterns, fail-safe defaults (Saltzer &amp; Schroeder, 1975), and authority leases. Rather than granting ambient permissions, the host sandbox issues short-lived capability tokens that expire upon reaching a defined milestone state. The agent emits a tamper-evident action receipt signed with its session key, proving what resources were accessed before the host releases the next capability lease. In our <em>Shared Horizon</em> path library, these operational safeguards are codified in the action cards on <a href="/labs/shared-horizon/">enforcing host-side confirmation prompts for destructive tools</a>, <a href="/labs/shared-horizon/">attested capability leases and scope attenuation</a>, and <a href="/labs/shared-horizon/">auditing long-horizon terminal agents with dense checkpoints</a>.</p>
+    </div>
+  </details>
+</aside>
+
+<h2>Where checkpoints fall short</h2>
+
+<p>Milestone checkpoints do not solve every delegation challenge. If developers design milestones that are too wide, the compounding drift problem reappears inside each stage. If they design milestones that are too narrow, the prompt fatigue problem returns under a different name.</p>
+
+<p>Finding the natural seams of a task requires thoughtful system design. A good milestone matches the points where a human craftsperson would naturally pause to check their work: after drafting a plan, after assembling components, or before pushing changes to shared systems.</p>
+
+<p>Checkpoints also fail if the software produces cluttered, dishonest receipts. If an assistant hides a questionable database query beneath fifty lines of self-congratulatory prose, the user cannot make an informed judgment. Receipts must remain concise, factual, and focused on boundaries.</p>
+
+<p>Even with these caveats, intermediate milestones offer the only sustainable path forward. We do not need assistants that demand our attention every ten seconds, nor do we need black boxes running wild in our systems. By building clear checkpoints and expiring leases, we keep people in control of the tools that serve them.</p>
+
+<section class="footnotes">
+  <p id="fn1">1. Canwen Wang, Qing Xiao, Haiyi Zhu, and Hong Shen, <a href="https://arxiv.org/abs/2611.00291">When AI Agents Act on Our Behalf: A Taxonomy of Human-Agent Interaction Failure</a>, arXiv:2611.00291 (November 2026).</p>
+  <p id="fn2">2. Jeffrey Jenkins, Bonnie Anderson, Anthony Vance, C. Brock Kirwan, and David Eargle, <a href="https://doi.org/10.1287/isre.2016.0644">More Harm Than Good? How Messages That Interrupt Can Make Us Vulnerable</a>, Information Systems Research 27(4):880-896 (2016).</p>
+  <p id="fn3">3. Raja Parasuraman, Thomas B. Sheridan, and Christopher D. Wickens, <a href="https://doi.org/10.1109/3468.844354">A Model for Types and Levels of Human Interaction with Automation</a>, IEEE Transactions on Systems, Man, and Cybernetics 30(3):286-297 (2000).</p>
+  <p id="fn4">4. Saleema Amershi, Dan Weld, Mihaela Vorvoreanu, Adam Fourney, Besmira Nushi, Penny Collisson, Jina Suh, Saeed Iqbal, Paul Bennett, Kori Inkpen, Jaime Teevan, Ruth Kikin-Gil, and Eric Horvitz, <a href="https://doi.org/10.1145/3290605.3300233">Guidelines for Human-AI Interaction</a>, Proceedings of the 2019 CHI Conference on Human Factors in Computing Systems (May 2019).</p>
+  <p id="fn5">5. Junwei Yao, Zike Yang, Zhijun Wang, Yongxi Zhou, and Wenbo Ye, <a href="https://arxiv.org/abs/2611.02527">When Neither Side Confirms: Destructive Tool Approval Across MCP Servers and Hosts</a>, arXiv:2611.02527 (November 2026).</p>
+</section>

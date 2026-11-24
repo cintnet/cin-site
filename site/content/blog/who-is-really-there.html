@@ -1,0 +1,257 @@
+---
+title: Who is really there?
+description: Voice clones, deepfake video calls and tampered devices make it easy to pass as someone you're not. Here's how AI agents could help notice, and how to do it without treating honest people as suspects.
+reader: Anyone who has received a call or message that didn't feel quite right, and people responsible for security in organisations.
+takeaway: Detecting impersonation and tampering is possible by combining several weak signals, and every alarm should start a fair check, never a punishment.
+template: article
+date: 2026-11-05
+order: 7
+category: Seeing
+minutes: 9
+image: post-who-is-really-there.jpg
+image_alt: A figure standing in an open doorway whose reflection in a hall mirror is subtly different, with a brass meter with a broken seal on a side table.
+lede: Impersonation with AI-generated voices and video is now cheap. It can be caught by combining several weak signals, such as verified credentials, device checks, and a callback on a known number. Every alarm should trigger a fair review, never an automatic punishment.
+---
+<p>In early 2024, a finance employee at the engineering firm Arup joined a video call with what looked like several colleagues, including a senior executive. Every one of them was a deepfake. By the end of it, he had sent about 25 million US dollars to the fraudsters.<sup><a href="#fn1">1</a></sup> He had been suspicious of the original email; the live call with familiar faces convinced him.</p>
+
+<p>What took a coordinated crew in 2024 is now cheap. A few seconds of recorded voice is enough to clone it, and live video can be faked on an ordinary laptop. Software packages and devices can be faked too.</p>
+
+<h2>Three ways to pass as someone you're not</h2>
+
+<p><strong>1. Pretending to be a person.</strong> A cloned voice calls a grandparent late at night asking for urgent bail or medical money. A fake executive joins a video call to authorize a wire transfer. Or a bot poses as a customer, a voter, or a neighbour in a local consultation.</p>
+
+<p><strong>2. Tampering with software before it reaches you.</strong> In March 2024, an engineer discovered a hidden backdoor in XZ Utils, a piece of open-source software built into millions of servers. The person who planted it had spent roughly two years patiently contributing code and earning the volunteer maintainer's trust first.<sup><a href="#fn2">2</a></sup></p>
+
+<p><strong>3. Tampering with hardware and sensors.</strong> Someone can physically alter a camera, utility meter, or thermometer so it reports whatever they want while keeping its digital seal intact. Think of a courier taping a small heater beside a thermometer inside a refrigerated medicine van. Counterfeit parts have turned up in some of the most carefully guarded supply chains in the world.</p>
+
+<p>All three failures point to the same lesson. As we noted in <a href="/blog/postmarks-for-the-real-world/">Postmarks for the real world</a>, a tampered camera signs a false picture just as faithfully as an honest camera signs a true one. A seal tells you where something came from. It doesn't tell you it's true.</p>
+
+<h2>Proving a person is there without handing over your life story</h2>
+
+<p>Before we look at how to catch sophisticated fakes, we have to avoid an obvious trap. When organisations panic about impersonation and bots, their first instinct is often to demand intrusive identity checks from everyone. They ask people to upload a government passport scan, submit a live facial biometric video, or hand over a home address just to join a forum.</p>
+
+<p>Turning the internet into a permanent border checkpoint would be a disaster for privacy and free speech. Worse, centralising millions of passport scans creates a honeypot for the very fraudsters we want to stop.</p>
+
+<p>Fortunately, we don't need to strip away privacy to know that a real person is on the other end. Selective-disclosure credentials let us verify the exact fact that matters for a conversation without exposing everything else.<sup><a href="#fn3">3</a></sup></p>
+
+<p>Think of two familiar scenes from everyday life:</p>
+<ul>
+<li><strong>The bouncer at the door.</strong> When you walk into a venue that serves alcohol, the bouncer needs to know one narrow fact: are you over 19? You shouldn't have to let them photocopy your home address, medical history, or bank balance. A selective-disclosure credential shows a tamper-proof "Yes, over 19" without letting the venue copy your personal records.</li>
+<li><strong>The town hall hand stamp.</strong> Imagine arriving at a municipal town hall meeting. At the entrance table, a volunteer checks the voter roll once to confirm you live in the district, then stamps the back of your hand. Inside the hall, that stamp proves you are a real resident rather than a paid impersonator, without forcing you to wear a badge listing your street address.</li>
+</ul>
+
+<p>Digital personhood credentials work just like that town hall hand stamp. They let a community forum verify that each account belongs to a distinct human being. They also let your workplace assistant confirm a colleague's active badge, while leaving zero trail of personal documents behind.</p>
+
+<h2>No single clue is enough</h2>
+
+<p>Even with good credentials, a stolen device or a tricked sensor can still pass a single gate. So how do you spot a fake? The same way a good detective does: you combine several independent clues that each tell part of the story.</p>
+
+<figure class="explainer" id="ex-multi-signal-detective">
+  <style>
+    #ex-multi-signal-detective {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-multi-signal-detective svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-multi-signal-detective .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-multi-signal-detective .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-multi-signal-detective .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-multi-signal-detective .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-multi-signal-detective .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-multi-signal-detective .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-multi-signal-detective .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-multi-signal-detective .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-multi-signal-detective .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-multi-signal-detective figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-multi-signal-detective .ex-canvas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #ex-multi-signal-detective .ex-canvas svg {
+        min-width: 540px;
+      }
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg viewBox="0 0 680 340" role="group" aria-labelledby="ex-multi-signal-title ex-multi-signal-desc">
+      <title id="ex-multi-signal-title">Comparing a single brittle check with patient multi-clue cross-checking</title>
+      <desc id="ex-multi-signal-desc">Two panels showing how relying on a single digital seal or voice tone leads to blind trust and catastrophic failure, whereas cross-checking five independent clues (lineage, anomaly lists, physical common sense, witness agreement, and behavioural fit) triggers a fair, calm verification check.</desc>
+      <line x1="340" y1="14" x2="340" y2="328" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="14" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="27" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">SINGLE BRITTLE CHECK</text>
+        <text x="14" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Relies on voice tone or one seal</text>
+        <line x1="14" y1="50" x2="328" y2="50" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <line x1="22" y1="64" x2="22" y2="228" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+        <rect x="19" y="62" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Sole Signal</text>
+        <text x="34" y="85" font-size="11" fill="var(--ex-muted)">Voice match or single badge</text>
+        <line x1="34" y1="132" x2="328" y2="132" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="142" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="149" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Easy Spoof</text>
+        <text x="34" y="165" font-size="11" fill="var(--ex-muted)">Cloned voice or stolen key</text>
+        <line x1="34" y1="212" x2="328" y2="212" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="222" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="229" font-size="12" font-weight="700" fill="var(--ex-ink)">3. False Alarms</text>
+        <text x="34" y="245" font-size="11" fill="var(--ex-muted)">Innocent callers treated badly</text>
+        <line x1="14" y1="303" x2="328" y2="303" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="14" y="311" width="5" height="5" fill="var(--ex-warn)"/>
+        <text x="25" y="316" font-size="11" font-weight="700" fill="var(--ex-warn)">Outcome: Panic fraud or unfair block</text>
+      </g>
+      <g>
+        <rect x="354" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="367" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">MULTI-CLUE CROSS-CHECK</text>
+        <text x="354" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Corroborates independent signals</text>
+        <line x1="354" y1="50" x2="666" y2="50" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <line x1="362" y1="64" x2="362" y2="228" stroke="var(--ex-signal)" stroke-width="1"/>
+        <rect x="359" y="62" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Lineage &amp; Lists</text>
+        <text x="374" y="85" font-size="11" fill="var(--ex-muted)">Checks origin &amp; known anomalies</text>
+        <line x1="374" y1="132" x2="666" y2="132" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="359" y="142" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="149" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Physical Plausibility</text>
+        <text x="374" y="165" font-size="11" fill="var(--ex-muted)">Tests timing &amp; witness fit</text>
+        <line x1="374" y1="212" x2="666" y2="212" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="359" y="222" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="229" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Calm Second Channel</text>
+        <text x="374" y="245" font-size="11" fill="var(--ex-muted)">Quiet callback confirms intent</text>
+        <line x1="354" y1="303" x2="666" y2="303" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="354" y="311" width="5" height="5" fill="var(--ex-signal)"/>
+        <text x="365" y="316" font-size="11" font-weight="700" fill="var(--ex-signal)">Outcome: Fair check, zero punishment</text>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Single-signal gate</span>
+      <div class="ex-spec-body">Voice clones and stolen session tokens defeat one-dimensional checks while false positives lock out honest people.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Patient multi-clue detective</span>
+      <div class="ex-spec-body">Cross-checks origin lineage, physical plausibility, and a calm out-of-band callback before high-stakes transfers.</div>
+    </div>
+  </div>
+  <figcaption>Relying on a single signal (left) creates a brittle gate that attackers can easily spoof. Cross-checking multiple independent clues (right) catches anomalies without treating innocent people as suspects.</figcaption>
+</figure>
+
+<ul>
+<li><strong>Does the story of where it came from hold together?</strong> Who made the device, how did it arrive, and can you trace its software back to an audited source?</li>
+<li><strong>Has anyone found a problem with this source before?</strong> Public, dated lists of bad batches, revoked keys, and broken channels help everyone check.</li>
+<li><strong>Does it break the laws of physics or common sense?</strong> A meter reporting use during a power cut. A photo whose shadows don't match the time of day. A colleague joining a call from London ten minutes after badging into an office lift in Toronto.</li>
+<li><strong>Do independent witnesses agree?</strong> Air-quality monitors or thermometers from different makers, owned by different neighbours, should roughly agree. When one device drifts far from the rest, that mismatch is worth a look.</li>
+<li><strong>Does the behaviour fit?</strong> When a familiar account suddenly demands secrecy, skips normal sign-off steps, and asks to route money to a new account, someone else may have taken the wheel.</li>
+</ul>
+
+<p>AI agents are well suited to this kind of patient cross-checking, if they are trained for it. That means practising first in simulated worlds full of honest and dishonest participants, where the right answer is known. Assistants should be rewarded for catching real spoofing and penalised heavily for false alarms.</p>
+
+<div class="callout"><p class="label">What this means</p><p>An assistant that works only for you could spot when a "colleague" on a call doesn't add up. It could also notice when someone has tampered with a device, and warn you before you act.</p></div>
+
+<h2>Walkthrough: how your assistant catches the fake call</h2>
+
+<p>Go back for a moment to the finance worker on that deepfake video call. Imagine how differently the afternoon unfolds when his personal assistant cross-checks those five clues in the background.</p>
+
+<p>The faces and voices on screen look convincing to human eyes. Underneath the surface, however, the clues refuse to line up. The meeting link came from an outside domain, the video stream carries no hardware postmark from company laptops, and the chief financial officer's real calendar shows she is boarding a flight offline.</p>
+
+<p>Instead of locking the worker's computer, his assistant shows a calm banner at the top of the screen. It notes that the video stream is unsigned and offers to send a one-tap check to the CFO's verified phone number before any transfer leaves the bank.</p>
+
+<p>One check over a second, independent channel breaks the illusion in thirty seconds.</p>
+
+<p>The same five-clue check works just as well for physical devices. Suppose a community clinic receives a shipment of childhood vaccines that must stay cold during transit. The delivery van's built-in sensor reports a steady four degrees all morning.</p>
+
+<p>Instead of trusting that single thermometer blindly, the clinic's assistant checks the delivery against two other clues. It compares the van's route against a municipal traffic delay in the afternoon heat, and checks an inexpensive, independent indicator strip packed inside the cooler box itself. When the two witnesses disagree, the nurse knows to inspect the vials before administering a single dose.</p>
+
+<h2>An alarm should start a fair check</h2>
+
+<p>This is the part that matters most. In daily life, most alarms have innocent explanations: a cheap sensor, a rural connection that drops packets, or a relative calling from a borrowed hospital phone. A system that treats every alarm as guilt would hurt the people least able to afford the newest equipment.</p>
+
+<p>So the steps should always be gentle and fair:</p>
+<ol>
+<li>Give the suspect evidence less weight, or pause the high-stakes transfer, without judging the person behind it.</li>
+<li>Tell the person privately, and explain plainly why the check triggered.</li>
+<li>Ask for an independent check, such as a callback on a saved number, a family code word, or a second device.</li>
+<li>Report tampering only after you confirm it and can show the evidence.</li>
+<li>Give anyone flagged a clear way to appeal, and restore their standing fully once cleared.</li>
+</ol>
+
+<h2>Where this leaves you</h2>
+
+<p>For now, the best defence is an old-fashioned one. If a call or message asks for money or access and something feels off, check through a different channel you already trust. Call back on a number you know. Ask a question only the real person could answer.</p>
+
+<p>In time, we hope personal assistants will handle that cross-checking and fairly in the background, working alongside the action receipts we describe in <a href="/blog/who-is-actually-acting/">Who is actually acting?</a> The goal is to let you answer a call or read a message knowing the person on the other end is really there, without treating everyone as a suspect.</p>
+
+<aside class="for-researchers"><details><summary>For researchers</summary><div><p>This multi-signal posture operationalizes Zero Trust Architecture (NIST SP 800-207), W3C Verifiable Credentials v2.0 selective disclosure, and out-of-band cryptographic attestation for autonomous agents. Rather than treating identity as a fixed perimeter, the system models integrity as a multi-clue fusion problem. It checks lineage provenance, public incident logs, physical invariants, and witness consensus.<sup><a href="#fn3">3</a></sup> On why real-world deepfake defense must address targeted personal and workplace scams rather than public-figure broadcast fakes, see Raza (2026).<sup><a href="#fn5">5</a></sup> In addition, local credential verifiers avoid dynamic remote schema downloads and recursive graph sorting.<sup><a href="#fn4">4</a></sup> Using self-contained formats like SD-JWT VC or pre-compiled schema loaders prevents server-side request forgery and denial-of-service vulnerabilities.</p><p>Anomaly detections trigger non-punitive verification workflows to prevent denial-of-service and minimize false-positive harm against participants with lower-fidelity hardware.</p></div></details></aside>
+
+<section class="footnotes">
+<p id="fn1">1. Hong Kong police first reported the 200 million Hong Kong dollar (about 25.6 million US dollar) deepfake video-call fraud in February 2024, and Arup confirmed in May 2024 that its Hong Kong office was the target. See Heather Chen and Kathleen Magramo, <a href="https://www.cnn.com/2024/02/04/asia/deepfake-cfo-scam-hong-kong-intl-hnk">"Finance worker pays out $25 million after video call with deepfake 'chief financial officer,'"</a> <em>CNN</em> (Feb. 4, 2024); Kathleen Magramo, <a href="https://www.cnn.com/2024/05/16/tech/arup-deepfake-scam-loss-hong-kong-intl-hnk">"Arup revealed as victim of $25 million deepfake scam involving Hong Kong employee,"</a> <em>CNN Business</em> (May 16, 2024); and Dan Milmo, <a href="https://www.theguardian.com/technology/article/2024/may/17/uk-engineering-arup-deepfake-scam-hong-kong-ai-video">"UK engineering firm Arup falls victim to £20m deepfake scam,"</a> <em>The Guardian</em> (May 17, 2024).</p>
+<p id="fn2">2. The XZ Utils supply-chain backdoor (versions 5.6.0 and 5.6.1), planted by an account using the name "Jia Tan" after roughly two years of trust-building and discovered by Microsoft engineer Andres Freund on March 29, 2024. See Andres Freund, <a href="https://www.openwall.com/lists/oss-security/2024/03/29/4">"backdoor in upstream xz/liblzma leading to ssh server compromise,"</a> <em>Openwall oss-security</em> (Mar. 29, 2024), and <a href="https://nvd.nist.gov/vuln/detail/CVE-2024-3094">CVE-2024-3094</a> in the NIST National Vulnerability Database.</p>
+<p id="fn3">3. Scott Rose, Oliver Borchert, Stu Mitchell and Sean Connelly, <a href="https://doi.org/10.6028/NIST.SP.800-207"><em>NIST Special Publication 800-207: Zero Trust Architecture</em></a> (August 2020); World Wide Web Consortium (W3C), <a href="https://www.w3.org/TR/vc-data-model-2.0/"><em>Verifiable Credentials Data Model v2.0</em></a> (May 2025).</p>
+<p id="fn4">4. On the vulnerability of dynamic remote context dereferencing and recursive graph canonicalization (RDFC-1.0) to denial-of-service poison graphs, context injection, and SSRF in verifiable credential pipelines—and the architectural resilience of self-contained formats like SD-JWT VC—see Naohiro Fujie and Shigeya Suzuki, <a href="https://arxiv.org/abs/2611.04461">"A Security Analysis of Verifiable Credential Verification Pipelines: Attack Surface Arising from JSON-LD/RDFC Canonicalization Compared with SD-JWT VC and mdoc,"</a> <em>arXiv:2611.04461</em> (Nov. 2026), and Daniel Fett, Kristina Yasuda, and Brian Campbell, <a href="https://datatracker.ietf.org/doc/draft-ietf-oauth-selective-disclosure-jwt/">"Selective Disclosure for JSON Web Tokens (SD-JWT),"</a> <em>IETF OAuth Working Group RFC 9901</em> (2026).</p>
+<p id="fn5">5. Shaina Raza, <a href="https://arxiv.org/abs/2605.12075">"The Deepfakes We Missed: We Built Detectors for a Threat That Didn't Arrive,"</a> <em>arXiv:2605.12075</em> (May 2026), documenting how 2022–2026 empirical harm distributions shifted to family voice clone extortion and employee impersonation.</p>
+</section>

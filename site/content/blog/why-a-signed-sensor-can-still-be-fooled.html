@@ -1,0 +1,253 @@
+---
+title: Why a signed sensor can still be fooled
+description: A cryptographic signature on a camera or microphone proves what software ran after a signal became numbers, never that the physical world before the lens was honest. Personal assistants need sensors that check each other on a shared hardware clock and lock raw recordings in a local diary you can still challenge.
+reader: Anyone using wearable or home sensors with a personal AI assistant, along with hardware engineers and public officials who rely on sensor evidence.
+takeaway: A digital signature on a camera or sensor only proves what software ran after a physical signal became numbers. Trustworthy personal assistants cross-check separate physical sensors on one hardware clock, lock raw recordings in a private local diary, and keep every sensor reading open to human challenge.
+template: article
+date: 2026-11-15
+category: Seeing
+minutes: 6
+image: post-why-a-signed-sensor-can-still-be-fooled.jpg
+image_alt: Watercolour of a sunlit wooden workbench holding a brass barometer, a spirit level, an optical lens, and a closed leather diary with a small brass key.
+lede: A digital signature on a camera or sensor only proves what software ran after a physical signal became numbers; it never proves the physical world in front of the lens was honest. Trustworthy personal assistants must cross-check separate physical sensors on one hardware clock, lock raw recordings in a private local diary, and keep every sensor reading open to human challenge.
+---
+<h2>When the lie happens before the chip</h2>
+
+<p>A digital signature on a camera or sensor only proves what software ran after a physical signal became numbers. Trustworthy personal assistants cross-check separate physical sensors on one hardware clock, lock raw recordings in a private local diary, and keep every sensor reading open to human challenge. If a sensor is fooled by glare, heat, or an outside signal before that conversion happens, the chip will happily sign a false reading and seal it as authentic.</p>
+
+<p>Hardware makers increasingly advertise cryptographic stamps as a cure for fake media and bad data. We explain in <a href="/blog/postmarks-for-the-real-world/">Postmarks for the real world</a> why tamper-evident stamps matter once a photo or recording is stored on a device. Yet as personal AI assistants move onto eyeglasses, earpieces, and workshop tools, a harder problem appears right at the physical boundary.</p>
+
+<p>Computer scientists Kevin Fu and Wenyuan Xu demonstrated in 2018 that physical sensors can be tricked before their signals ever reach digital memory.<sup><a href="#fn1">1</a></sup> High-frequency sound waves can make a motion sensor think a level drone is tilting. Radio interference can also shift the baseline of a medical monitor. Because the distortion occurs in analog wiring before the signal becomes numbers, every digital security check downstream reports that nothing was altered.</p>
+
+<p>In 2026, Kun Wang, Wenyuan Xu, and colleagues tested this boundary systematically across fourteen sensor models and six physical sensing methods.<sup><a href="#fn2">2</a></sup> They showed that tiny analog modifications inside sensor amplifiers can stay dormant during normal factory tests, matching ordinary behaviour over 97 percent of the time. When triggered by an outside sound or radio pulse, the sensors produced false readings in over 95 percent of trials while every digital signature remained intact.</p>
+
+<p>Think of a notary stamping a witness statement at a wooden desk. The wax stamp proves the page was signed at noon and that nobody erased a line afterward. Still, the notary was never out on the street to see whether the witness's glasses were fogged.</p>
+
+<h2>Checking different senses on one clock</h2>
+
+<p>No single sensor deserves blind trust. When you walk down icy steps at dusk, your brain compares what your eyes see against the tilt in your inner ear and the crunch under your boots. If your eyes say the stairs are flat while your inner ear feels a sudden slip, you grab the handrail.</p>
+
+<p>Personal assistants that help people in the physical world need the same habit. Beyond any single camera or microphone, wearable glasses and room sensors should combine channels that rely on different physics: optical light, motion and acceleration, depth ranging, and sound.</p>
+
+<p>Two practical rules make that cross-check work on everyday hardware:</p>
+
+<ul>
+<li><strong>Stamp every sensor on one hardware clock.</strong> On a standard smartphone, camera frames and motion readings get their timestamps only after passing through busy operating-system queues. Those tiny delays make it hard to tell whether a head turn matched how the room moved on camera. Stamping every frame against one shared crystal clock inside the hardware keeps all channels aligned to the millisecond.<sup><a href="#fn3">3</a></sup></li>
+<li><strong>Record when a sensor knows it cannot see.</strong> A camera blinded by low winter sun or a microphone muffled by a coat collar should attach a clear uncertainty bar to its reading. When a camera and a motion sensor disagree beyond safe limits, any connected machine should pause and hand control back to the person. That software pause should be backed by the physical cutoff relays we describe in <a href="/blog/why-a-robot-arm-needs-a-gravity-brake/">Why a robot arm needs a gravity brake</a>.</li>
+</ul>
+
+<figure class="explainer" id="ex-sensor-cross-check">
+  <style>
+    #ex-sensor-cross-check {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    @media (prefers-color-scheme: dark) {
+      #ex-sensor-cross-check {
+        --ex-paper: #1B1922;
+        --ex-slip: #23202C;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #A8A095;
+        --ex-rule: #322E3D;
+        --ex-signal: #8FD4B6;
+        --ex-accent: #8FD4B6;
+        --ex-warn: #F09D82;
+        --ex-amber: #E5B976;
+      }
+    }
+    :root[data-theme="dark"] #ex-sensor-cross-check {
+      --ex-paper: #1B1922;
+      --ex-slip: #23202C;
+      --ex-ink: #EDE6DC;
+      --ex-muted: #A8A095;
+      --ex-rule: #322E3D;
+      --ex-signal: #8FD4B6;
+      --ex-accent: #8FD4B6;
+      --ex-warn: #F09D82;
+      --ex-amber: #E5B976;
+    }
+    #ex-sensor-cross-check svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-sensor-cross-check .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-sensor-cross-check .diagram-desktop {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    #ex-sensor-cross-check .diagram-mobile {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+    #ex-sensor-cross-check figcaption {
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 600px) {
+      #ex-sensor-cross-check .diagram-desktop { display: none; }
+      #ex-sensor-cross-check .diagram-mobile { display: block; }
+    }
+  </style>
+  <svg class="diagram-desktop" viewBox="0 0 700 340" role="img" aria-labelledby="ex-sensor-cross-check-title ex-sensor-cross-check-desc">
+    <title id="ex-sensor-cross-check-title">Single signed sensor versus cross-checked sensors and a private local diary</title>
+    <desc id="ex-sensor-cross-check-desc">Left panel shows a single sensor fooled by analog interference before digitization, producing a valid signature on a false reading. Right panel shows optical, motion, and acoustic sensors synchronized on one hardware clock, cross-checking physics before sealing events into a local encrypted diary.</desc>
+    <line x1="350" y1="14" x2="350" y2="326" stroke="var(--ex-rule)" stroke-width="1"/>
+    <g>
+      <rect x="16" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="30" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">FRAGILE: SINGLE SIGNED SENSOR</text>
+      <text x="16" y="42" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Analog spoofing happens before the digital seal</text>
+      <line x1="16" y1="52" x2="336" y2="52" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <line x1="25" y1="68" x2="25" y2="232" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+      <rect x="22" y="67" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="74" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Unchecked Physical Input</text>
+      <text x="38" y="91" font-size="11" fill="var(--ex-muted)">Glare, sound, or radio pulse shifts analog wire</text>
+      <line x1="38" y1="134" x2="336" y2="134" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="22" y="145" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="152" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Valid Chip Signature</text>
+      <text x="38" y="169" font-size="11" fill="var(--ex-muted)">Chip signs the distorted numbers as authentic</text>
+      <line x1="38" y1="212" x2="336" y2="212" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="22" y="223" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="230" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Cloud Stream &amp; Auto-Action</text>
+      <text x="38" y="247" font-size="11" fill="var(--ex-muted)">Raw feed leaves home; false reading treated as fact</text>
+      <line x1="16" y1="298" x2="336" y2="298" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="16" y="307" width="5" height="5" fill="var(--ex-warn)"/>
+      <text x="28" y="312" font-size="11" font-weight="700" fill="var(--ex-warn)">Result: Signed falsehood &amp; exposed private life</text>
+    </g>
+    <g>
+      <rect x="366" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="380" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">GROUNDED: CROSS-CHECKED LOCAL DIARY</text>
+      <text x="366" y="42" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Separate senses checked on one hardware clock</text>
+      <line x1="366" y1="52" x2="684" y2="52" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <line x1="375" y1="68" x2="375" y2="232" stroke="var(--ex-signal)" stroke-width="1"/>
+      <rect x="372" y="67" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="388" y="74" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Shared Clock &amp; Multi-Sense Check</text>
+      <text x="388" y="91" font-size="11" fill="var(--ex-muted)">Camera, motion, and sound compared in step</text>
+      <line x1="388" y1="134" x2="684" y2="134" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="372" y="145" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="388" y="152" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Confidence Bars &amp; Local Diary</text>
+      <text x="388" y="169" font-size="11" fill="var(--ex-muted)">Encrypted on your hardware; flags blocked views</text>
+      <line x1="388" y1="212" x2="684" y2="212" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="372" y="223" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="388" y="230" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Minimal Proof &amp; Human Appeal</text>
+      <text x="388" y="247" font-size="11" fill="var(--ex-muted)">Shares narrow answers; readings stay contestable</text>
+      <line x1="366" y1="298" x2="684" y2="298" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="366" y="307" width="5" height="5" fill="var(--ex-signal)"/>
+      <text x="378" y="312" font-size="11" font-weight="700" fill="var(--ex-signal)">Result: Spoofing caught early &amp; diary stays yours</text>
+    </g>
+  </svg>
+  <svg class="diagram-mobile" viewBox="0 0 330 432" role="img" aria-labelledby="ex-sensor-cross-check-m-title ex-sensor-cross-check-m-desc">
+    <title id="ex-sensor-cross-check-m-title">Single signed sensor versus cross-checked local diary on mobile</title>
+    <desc id="ex-sensor-cross-check-m-desc">Stacked mobile view showing how a single sensor signs analog spoofing before conversion, whereas synchronized optical, motion, and sound sensors cross-check physics into a private local diary.</desc>
+    <g>
+      <rect x="10" y="16" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="22" y="22" font-size="11" font-weight="700" fill="var(--ex-warn)">FRAGILE: SINGLE SIGNED SENSOR</text>
+      <line x1="10" y1="32" x2="310" y2="32" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <line x1="13" y1="42" x2="13" y2="160" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+      <polygon points="10,82 16,82 13,88" fill="var(--ex-warn)"/>
+      <polygon points="10,126 16,126 13,132" fill="var(--ex-warn)"/>
+      <text x="24" y="54" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Unchecked Physical Input</text>
+      <text x="24" y="70" font-size="11" fill="var(--ex-muted)">Glare or sound shifts wire before seal</text>
+      <text x="24" y="98" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Valid Chip Signature</text>
+      <text x="24" y="114" font-size="11" fill="var(--ex-muted)">Chip signs distorted numbers as true</text>
+      <text x="24" y="142" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Cloud Stream &amp; Auto-Action</text>
+      <text x="24" y="158" font-size="11" fill="var(--ex-muted)">Raw feed leaves home; false value trusted</text>
+      <text x="10" y="186" font-size="11" font-weight="700" fill="var(--ex-warn)">Result: Signed falsehood &amp; exposed life</text>
+    </g>
+    <line x1="10" y1="210" x2="310" y2="210" stroke="var(--ex-rule)" stroke-width="1"/>
+    <g>
+      <rect x="10" y="230" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="22" y="236" font-size="11" font-weight="700" fill="var(--ex-signal)">GROUNDED: CROSS-CHECKED DIARY</text>
+      <line x1="10" y1="246" x2="310" y2="246" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <line x1="13" y1="256" x2="13" y2="376" stroke="var(--ex-signal)" stroke-width="1"/>
+      <polygon points="10,298 16,298 13,304" fill="var(--ex-signal)"/>
+      <polygon points="10,342 16,342 13,348" fill="var(--ex-signal)"/>
+      <text x="24" y="270" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Shared Clock &amp; Multi-Sense Check</text>
+      <text x="24" y="286" font-size="11" fill="var(--ex-muted)">Camera, motion, and sound checked together</text>
+      <text x="24" y="314" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Confidence Bars &amp; Local Diary</text>
+      <text x="24" y="330" font-size="11" fill="var(--ex-muted)">Encrypted at home; flags blocked views</text>
+      <text x="24" y="358" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Minimal Proof &amp; Human Appeal</text>
+      <text x="24" y="374" font-size="11" fill="var(--ex-muted)">Shares narrow facts; stays contestable</text>
+      <text x="10" y="402" font-size="11" font-weight="700" fill="var(--ex-signal)">Result: Spoofing caught &amp; diary stays yours</text>
+    </g>
+  </svg>
+  <figcaption>A single sensor can sign a distorted signal before digitization (left). Synchronizing separate physical channels on one hardware clock and storing events in a private local diary catches single-channel spoofing while keeping household life at home (right).</figcaption>
+</figure>
+
+<h2>A private diary locked on your own hardware</h2>
+
+<p>Cross-checking cameras, microphones, and motion sensors produces a detailed record of your day. If that stream is uploaded to a vendor's cloud servers, a helpful memory aid turns into continuous household surveillance.</p>
+
+<p>We propose keeping raw sensor streams and event summaries inside a private digital diary encrypted on hardware you control at home. Only you and <a href="/blog/an-assistant-that-works-only-for-you/">an assistant legally bound to work on your side</a> hold the keys to read that diary.<sup><a href="#fn4">4</a></sup></p>
+
+<p>Suppose you ask your assistant to prove a narrow fact to an outside party, such as confirming that a heating pipe stayed below freezing overnight. The assistant never hands over raw video or audio of your living room. Instead, it crosses a strict privacy boundary with a short, expiring proof that checks out against independent sensors while leaving your private diary untouched.</p>
+
+<h2>When the whole ruler is misprinted</h2>
+
+<p>The hardest objection to sensor cross-checking is that multiple sensors can still fail together if they share the same factory flaw or biased calibration table.</p>
+
+<p>In 2020, Michael Sjoding and colleagues examined tens of thousands of paired hospital oxygen readings in the <em>New England Journal of Medicine</em>.<sup><a href="#fn5">5</a></sup> They found that fingertip pulse oximeters missed dangerously low blood oxygen roughly three times as often in Black patients as in white patients. That gap happened because the optical sensors had been calibrated mainly on lighter skin tones. No cryptographic chip signature inside a hospital monitor could catch that error, because the calibration curve itself was skewed.</p>
+
+<p>For that reason, we propose three guardrails whenever sensors touch public services, healthcare, or shared infrastructure:</p>
+
+<ol>
+<li><strong>Independent makers and calibration audits.</strong> High-stakes checks must combine sensors from different manufacturers and physical methods, and devices must pass published accuracy audits across diverse populations.</li>
+<li><strong>Wider error bars never punish the resident.</strong> If a neighbourhood has fewer public sensors or a wearable reports low confidence, the system must widen its own uncertainty bar and ask for human review. Costly personal hardware must never buy extra civic weight or faster access to public services.</li>
+<li><strong>An anomaly starts a conversation, never an automatic penalty.</strong> No resident, worker, or patient should lose a benefit, permit, or job solely because a signed sensor flagged a number. Every reading must remain open to human inspection and reversal.</li>
+</ol>
+
+<h2>What remains unsolved</h2>
+
+<p>Two practical problems remain open in our research. First, low-power eyeglasses and hearing aids run on tiny batteries, and running continuous cross-checks across video, motion, and sound without draining the battery by lunchtime still requires more efficient edge chips. Second, catching slow calibration drift over months of daily wear, without nagging the owner to run tedious test routines, is an unsolved design challenge.</p>
+
+<p>If you build wearable hardware, robotics, or local AI tools, you can inspect our concrete engineering steps in <a href="/labs/shared-horizon/">Shared Horizon</a>. Those records include practical steps for defending sensors against analog hardware tampering and consolidating personal memory in local vaults.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers</summary>
+    <div>
+      <p>Our perceptual grounding and episodic vault specifications pair multi-modal hardware time synchronization (<code>TimeDomain.DEVICE_TIME</code>; Engel et al., 2023) with silicon peripheral attestation via DMTF SPDM (<code>DSP0274</code>), TCG DICE key derivation, and IETF Remote ATtestation procedureS (RATS, <code>RFC 9334</code>). Captured event summaries are sealed into a local append-only Merkle and C2PA v2.1 autobiographical store encrypted exclusively for the principal and their 1:1 personal model.</p>
+      <p>To defend the analog-to-digital transduction boundary (Fu &amp; Xu, 2018; Wang et al., 2026, <code>arXiv:2611.06103</code>), the runtime enforces cross-modal kinematic consistency checks across orthogonal physical channels and attaches explicit observation confidence intervals. It also applies Proof-Carrying lineage (Necula, 1997) and expiring Object-Capability leases (Dennis &amp; Van Horn, 1966) when selectively disclosing claims across the privacy boundary. Open problems and simulation results are documented on our <a href="/research/">Research</a> page.</p>
+      <p>Within our five-primitive sociotechnical architecture, heterogeneous wearable and room sensors form a multimodal egocentric and ambient perceptual sensorium fused locally in monotonic hardware <code>Device Time</code> with self-assessed observation confidence. Silicon peripheral attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, <code>IETF RATS</code> RFC 9334), an optical data diode, and <code>IEC 61508</code> dead-man relays isolate physical actuators. Local telemetry writes into an append-only <code>C2PA</code> and Merkle episodic memory vault (Endel Tulving; Tulving, 1972) bound by transduction realism (<em>Signed Is Not True</em> across the analog hole; Kevin Fu and Wenyuan Xu; Fu &amp; Xu, 2018). A monogamous <code>1:1</code> principal-bound personal cognitive model and cybernetic exocortex (Joscha Bach; Bach, 2009) grounded in the Extended Mind thesis (Andy Clark and David Chalmers; Clark &amp; Chalmers, 1998) and the Good Regulator theorem (Conant &amp; Ashby, 1970) applies interventional causal models <code>do(x)</code> (Pearl, 2009) and compiler-trust reflection proofs (Thompson, 1984) as a statutory information fiduciary (Jack Balkin; Balkin, 2016), preserving unassisted competence over the Private Autobiographical Ledger.</p>
+      <p>Across the personal Markov blanket boundary (Karl Friston; Friston, 2010; Friston, 2013), external disclosures require time-bounded Object-Capability lease gates (Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966), selective zero-knowledge (<code>ZK</code>) proofs, independent-class Byzantine sensor corroboration (<code>k &gt;= 3f + 1</code>; Lamport, Shostak &amp; Pease, 1982), and signed <code>IETF SCITT</code> (<code>RFC 9943</code>) transparency receipts on the Public Attestation &amp; Escrow Ledger. Those verified receipts couple sovereign dyads to the Wide Network Ledger for Universal Basic Services, merit-bonded commons tasks, invisible-labor upkeep recognition (Jacob Meluso; Meluso et al., 2022), countercyclical reciprocal mutual credit (James Stodder; Stodder, 2009), frontier-lab overlays (Bracale Syrnikov et al., 2026), polycentric self-rule (Elinor Ostrom; Ostrom, 1990; Ostrom, 2010), and statutory Meidner cooperative equity (Rudolf Meidner; Meidner, 1978).</p>
+    </div>
+  </details>
+</aside>
+
+<section class="footnotes">
+  <h2>References</h2>
+  <ol>
+    <li id="fn1">Kevin Fu and Wenyuan Xu, "Risks of Trusting the Physics of Sensors," <em>Communications of the ACM</em> 61, no. 2 (2018): 20–23, <a href="https://doi.org/10.1145/3176402">doi:10.1145/3176402</a>.</li>
+    <li id="fn2">Kun Wang, Ruochen Zhou, Wenjun Zhu, Shilin Xiao, Kai Wang, Chen Yan, Xiaoyu Ji, and Wenyuan Xu, "SenTrojan: Revealing Analog Hardware Trojan Attacks on Sensors," arXiv preprint (2026), <a href="https://arxiv.org/abs/2611.06103">arXiv:2611.06103</a>.</li>
+    <li id="fn3">Henk Birkholz, Dave Thaler, Michael Richardson, Ned Smith, and Wei Pan, "Remote ATtestation procedureS (RATS) Architecture," Internet Engineering Task Force, RFC 9334 (2023), <a href="https://www.rfc-editor.org/rfc/rfc9334.html">rfc-editor.org/rfc/rfc9334.html</a>; and Distributed Management Task Force, "Security Protocol and Data Model (SPDM) Specification," DSP0274 (2024), <a href="https://www.dmtf.org/standards/spdm">dmtf.org/standards/spdm</a>.</li>
+    <li id="fn4">Coalition for Content Provenance and Authenticity, <em>C2PA Technical Specification</em>, Version 2.1 (2024), <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html">c2pa.org</a>; Jack B. Dennis and Earl C. Van Horn, "Programming Semantics for Multiprogrammed Computations," <em>Communications of the ACM</em> 9, no. 3 (1966): 143–155, <a href="https://doi.org/10.1145/365230.365252">doi:10.1145/365230.365252</a>; and George C. Necula, "Proof-Carrying Code," in <em>Proceedings of the 24th ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages</em> (1997): 106–119, <a href="https://doi.org/10.1145/263699.263712">doi:10.1145/263699.263712</a>.</li>
+    <li id="fn5">Michael W. Sjoding, Robert P. Dickson, Theodore J. Iwashyna, Steven E. Gay, and Thomas S. Valley, "Racial Bias in Pulse Oximetry Measurement," <em>New England Journal of Medicine</em> 383, no. 25 (2020): 2477–2478, <a href="https://doi.org/10.1056/NEJMc2029240">doi:10.1056/NEJMc2029240</a>.</li>
+  </ol>
+</section>

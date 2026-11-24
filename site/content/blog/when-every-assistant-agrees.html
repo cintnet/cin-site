@@ -1,0 +1,236 @@
+---
+title: When every assistant agrees
+description: Groups of AI agents converge on the same answer far too easily, often because they share a model, share evidence, or watch each other. Agreement among them is weak evidence unless they were kept independent.
+reader: Public officials, civic technologists, and engineers who use panels of AI agents to simulate stakeholders, debate answers or make forecasts.
+takeaway: Agreement among AI agents is weak evidence when they share a model, share the same evidence, or see each other's answers. Reliable multi-agent systems preserve independence through diverse models, private evidence and targeted exchange.
+template: article
+date: 2026-11-06
+order: 29
+category: Governing
+minutes: 6
+image: post-when-every-assistant-agrees.jpg
+image_alt: A warm ink and watercolor illustration of a circular town hall table with distinct mechanical figures representing diverse viewpoints, refusing an artificial rubber stamp.
+lede: Panels of AI agents are increasingly used to simulate stakeholders, debate hard questions and make forecasts. They agree far too easily. When agents share a model, share their evidence, or can see each other's answers, their agreement says little about whether they are right.
+---
+<div class="prose wrap-narrow">
+<h2>Three ways agents end up agreeing</h2>
+
+<p><strong>They are the same model.</strong> A city could replace public workshops with fifty simulated residents, each given a different persona, and get a report saying most of them back the plan. In a study of 120 such deliberations, agents assigned different value perspectives still converged on the same option. Giving each perspective a different underlying model cut that concentration sharply: in a child-welfare scenario, from 71% picking the same first choice to 46%.<sup><a href="#fn1">1</a></sup> Personas written into a prompt are not the same as different people.</p>
+
+<p><strong>They copy each other.</strong> In debates between identical models, agents adopt the majority answer, abandon correct reasoning when shown a peer's argument, and lose correct answers in the final vote. In one study, isolated self-correction beat group debate.<sup><a href="#fn2">2</a></sup> A replication of the classic Music Lab experiment found large populations of language-model agents far more prone to herding than people, and less able to recover from a runaway cascade.<sup><a href="#fn3">3</a></sup></p>
+
+<p><strong>They see the same evidence.</strong> Forecasting agents given identical evidence end up herding instead of revising their beliefs, and the group does little better than one agent.<sup><a href="#fn4">4</a></sup> The same thing happens outside AI panels: outlets that rely more heavily on the same wire copy publish sooner after the leading outlets do.<sup><a href="#fn5">5</a></sup></p>
+
+<p>Each of these produces agreement that looks like confirmation and isn't.</p>
+
+<figure class="explainer" id="ex-deliberation-diversity">
+  <style>
+    #ex-deliberation-diversity {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-deliberation-diversity svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-deliberation-diversity .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    #ex-deliberation-diversity [role="button"] {
+      cursor: pointer;
+      transition: opacity 160ms ease;
+    }
+    #ex-deliberation-diversity [role="button"]:hover,
+    #ex-deliberation-diversity [role="button"]:focus-visible {
+      opacity: 0.88;
+      outline: 2px solid var(--ex-accent);
+      outline-offset: 2px;
+    }
+    #ex-deliberation-diversity .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.5rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-deliberation-diversity .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-deliberation-diversity .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-deliberation-diversity .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-deliberation-diversity .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.25rem;
+    }
+    #ex-deliberation-diversity .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 640px) {
+      #ex-deliberation-diversity .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+      #ex-deliberation-diversity .ex-canvas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #ex-deliberation-diversity .ex-canvas svg {
+        min-width: 540px;
+      }
+    }
+    #ex-deliberation-diversity figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    #ex-deliberation-diversity #ex-panel-arch,
+    #ex-deliberation-diversity #ex-panel-coherence,
+    #ex-deliberation-diversity #ex-panel-outcome { fill: var(--ex-ink) !important; }
+    #ex-deliberation-diversity #ex-panel-spread { fill: var(--ex-signal) !important; }
+  </style>
+  <div class="ex-canvas">
+    <svg viewBox="0 0 680 320" role="group" aria-labelledby="ex-delib-title ex-delib-desc">
+      <title id="ex-delib-title">Comparison of single-model deliberation versus diverse-model deliberation with coherence checks</title>
+      <desc id="ex-delib-desc">Side-by-side comparison illustrating how identical models create artificial consensus on the left, whereas diverse model families and coherence verification preserve authentic community dissent on the right.</desc>
+      <line x1="340" y1="14" x2="340" y2="306" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="16" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="30" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">IDENTICAL BASE MODEL</text>
+        <line x1="16" y1="34" x2="328" y2="34" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <line x1="23" y1="52" x2="23" y2="225" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+        <rect x="20" y="48" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="34" y="54" font-size="10.5" font-weight="600" fill="var(--ex-muted)">Architecture</text>
+        <text x="34" y="70" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Single shared model with thin personas</text>
+        <line x1="34" y1="95" x2="328" y2="95" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="20" y="105" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="34" y="111" font-size="10.5" font-weight="600" fill="var(--ex-muted)">Option concentration</text>
+        <text x="34" y="127" font-size="11.5" font-weight="600" fill="var(--ex-ink)">92% converge on safe middle option</text>
+        <line x1="34" y1="152" x2="328" y2="152" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="20" y="162" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="34" y="168" font-size="10.5" font-weight="600" fill="var(--ex-muted)">Dissent preservation</text>
+        <text x="34" y="184" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Personas abandon stated priorities</text>
+        <line x1="34" y1="209" x2="328" y2="209" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="20" y="219" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="34" y="225" font-size="10.5" font-weight="600" fill="var(--ex-muted)">Civic consequence</text>
+        <text x="34" y="241" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Blind spots surface only after launch</text>
+        <line x1="16" y1="282" x2="328" y2="282" stroke="var(--ex-rule)" stroke-width="1"/>
+        <text x="16" y="298" font-size="11" font-weight="700" fill="var(--ex-warn)">Flaw: Artificial consensus</text>
+      </g>
+      <g>
+        <rect x="356" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="370" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">ARCHITECTURAL DIVERSITY</text>
+        <line x1="356" y1="34" x2="664" y2="34" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <line x1="363" y1="52" x2="363" y2="225" stroke="var(--ex-signal)" stroke-width="1"/>
+        <rect x="360" y="48" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="374" y="54" font-size="10.5" font-weight="600" fill="var(--ex-accent)">Architecture</text>
+        <text id="ex-panel-arch" x="374" y="70" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Four distinct model families &amp; training</text>
+        <line x1="374" y1="95" x2="664" y2="95" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="360" y="105" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="374" y="111" font-size="10.5" font-weight="600" fill="var(--ex-accent)">Option concentration</text>
+        <text id="ex-panel-spread" x="374" y="127" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Balanced spread; real trade-offs emerge</text>
+        <line x1="374" y1="152" x2="664" y2="152" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="360" y="162" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="374" y="168" font-size="10.5" font-weight="600" fill="var(--ex-accent)">Coherence check</text>
+        <text id="ex-panel-coherence" x="374" y="184" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Auditor verifies choices match values</text>
+        <line x1="374" y1="209" x2="664" y2="209" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="360" y="219" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="374" y="225" font-size="10.5" font-weight="600" fill="var(--ex-accent)">Civic consequence</text>
+        <text id="ex-panel-outcome" x="374" y="241" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Minority objections surfaced early</text>
+        <line x1="356" y1="282" x2="664" y2="282" stroke="var(--ex-rule)" stroke-width="1"/>
+        <text id="ex-panel-status" x="356" y="298" font-size="11.5" font-weight="700" fill="var(--ex-signal)">Panel: Multi-model</text>
+        <g id="ex-panel-toggle" role="button" tabindex="0" aria-pressed="false" aria-controls="ex-panel-status" aria-label="Inspect: Toggle panel inspection mode">
+          <rect x="572" y="285" width="92" height="22" rx="2" fill="#9E4726" stroke="var(--ex-signal)" stroke-width="1"/>
+          <text id="ex-panel-btn-text" x="618" y="300" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">Inspect</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Synthetic echo chamber</span>
+      <div class="ex-spec-body">Role-playing prompts atop one base model collapse toward identical priors and erase minority trade-offs.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Cross-family coherence audit</span>
+      <div class="ex-spec-body">Independent model lineages paired with value-coherence checks keep genuine disagreements visible.</div>
+    </div>
+  </div>
+  <figcaption>When an automated simulation relies on one base model, artificial consensus erases legitimate objections; using diverse model families and coherence verification keeps real trade-offs visible.</figcaption>
+</figure>
+
+<h2>What we propose</h2>
+
+<ul>
+<li><strong>Different models for different perspectives.</strong> Where there is no single correct answer, such as a policy consultation, model diversity preserves disagreement that one model playing many roles erases.<sup><a href="#fn1">1</a></sup></li>
+<li><strong>Private evidence.</strong> Give each agent some information the others don't have, so their errors are less correlated and deliberation has something to add.<sup><a href="#fn4">4</a></sup></li>
+<li><strong>Targeted exchange instead of broadcast.</strong> Have one agent respond to a specific claim of another (support, rebuttal or question) rather than showing everyone the running tally.<sup><a href="#fn6">6</a></sup></li>
+<li><strong>Less chatter.</strong> In distributed search, agents that share beliefs constantly converge early on wrong answers. Sharing only when something has changed protects exploration.<sup><a href="#fn7">7</a></sup></li>
+<li><strong>Report the dissent.</strong> A simulation's output should show minority positions and how strongly they were held, not only the winning option.</li>
+</ul>
+
+<h2>The objection</h2>
+
+<p>For questions with one right answer, diversity alone doesn't help much: the same study that found model diversity reduced convergence in policy questions notes that accuracy-oriented debate behaves differently.<sup><a href="#fn1">1</a></sup> There, the useful checks are independent verification of the answer itself (see <a href="/blog/why-an-ai-agent-will-not-audit-itself/">why an AI agent will not audit itself</a>), not more voices.</p>
+
+<h2>What's unsolved</h2>
+
+<ul>
+<li>No simulation of residents should replace asking residents. We don't know how to validate simulated stakeholders against real ones.</li>
+<li>Even with private evidence and tools, joint decisions under partial information remain hard for current models.<sup><a href="#fn8">8</a></sup></li>
+<li>How much model diversity is enough, when most available models are trained on overlapping data.</li>
+</ul>
+
+<p>Related: <a href="/blog/why-many-small-assistants-beat-one-giant-mind/">Why many small assistants beat one giant mind</a>.</p>
+
+<aside class="for-researchers"><details><summary>For researchers</summary><div><p>Failure modes: homogeneous-model convergence in value-laden deliberation, sycophantic conformity and consensus collapse in multi-agent debate, herding cascades, and correlated errors from shared evidence. Mitigations studied: architectural heterogeneity with coherence validation, designed information asymmetry, one-to-one peer advice, and gated communication. Open: validating simulated stakeholders, and measuring effective independence between models with overlapping training data.</p></div></details></aside>
+
+<section class="footnotes">
+<h2>Sources</h2>
+<p id="fn1">1. Ariel Sela, "Preserving Disagreement: Architectural Heterogeneity and Coherence Validation in Multi-Agent Policy Simulation" (2026), <a href="https://arxiv.org/abs/2604.26561">arXiv:2604.26561</a>.</p>
+<p id="fn2">2. Blaž Bertalanič and Carolina Fortuna, "The Cost of Consensus: Isolated Self-Correction Prevails Over Unguided Homogeneous Multi-Agent Debate" (2026), <a href="https://arxiv.org/abs/2605.00914">arXiv:2605.00914</a>.</p>
+<p id="fn3">3. Farnoosh Hashemi, Shiyu Ji, Joice Chen and Michael W. Macy, "LLM Multi-Agent Systems Are Vulnerable to Herding and Runaway Cascades" (2026), <a href="https://arxiv.org/abs/2610.30769">arXiv:2610.30769</a>; the original experiment is Matthew J. Salganik, Peter Sheridan Dodds and Duncan J. Watts, "Experimental Study of Inequality and Unpredictability in an Artificial Cultural Market," <em>Science</em> 311 (2006): 854–856, <a href="https://doi.org/10.1126/science.1121066">doi:10.1126/science.1121066</a>.</p>
+<p id="fn4">4. Yuante Li, Yicheng Tao, Kate Zhang et al., "Diverse Evidence, Better Forecasts: Multi-Agent Deliberation Under Information Asymmetry" (2026), <a href="https://arxiv.org/abs/2607.01661">arXiv:2607.01661</a>.</p>
+<p id="fn5">5. Mohammad Yousuf and Arif Md Tareque Habib, "Structural Dependence, Imitation or Herding? A Multi-Agent Simulation of Global Intermedia Agenda Setting" (2026), <a href="https://arxiv.org/abs/2610.20144">arXiv:2610.20144</a>.</p>
+<p id="fn6">6. Dezheng Bao, Sihang Du, Renhong Huang et al., "Beyond Answer Sharing: TrueMAD for Targeted Peer Engagement in Multi-Agent Debate" (2026), <a href="https://arxiv.org/abs/2610.18240">arXiv:2610.18240</a>.</p>
+<p id="fn7">7. David Farr, Iain Cruickshank, Kate Starbird and Jevin West, "The Cost of Consensus: Malignant Epistemic Herding and Adaptive Gating in Distributed Multi-Agent Search" (2026), <a href="https://arxiv.org/abs/2605.06988">arXiv:2605.06988</a>.</p>
+<p id="fn8">8. Chenxu Wang, Yongkun Yang, Boyuan Du et al., "LLM Agents for Deliberative Collaboration: A Study on Joint Decision Making Under Partial Observability" (2026), <a href="https://arxiv.org/abs/2607.06157">arXiv:2607.06157</a>.</p>
+</section>
+</div>

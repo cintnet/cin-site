@@ -1,0 +1,143 @@
+---
+title: From the founder
+heading: A project from a late-night desk, not a boardroom.
+eyebrow: About · Founder
+description: Why a hardware tinkerer and twenty-year public servant in cybersecurity started the Collective Intelligence Network.
+reader: Anyone who wants to know the person and motives behind CIN.
+takeaway: CIN comes from one person's long experience with how systems fail and how trust breaks, offered in good faith.
+template: page
+section: about
+lede: I'm a husband, a father, a twenty-year public servant in cybersecurity, and someone who has been taking machines apart since I was eight years old.
+---
+<div class="prose wrap-narrow">
+<figure class="article-art" style="margin: 1.8rem auto 2.4rem; max-width: 500px; padding: 10px; background: #FFFDF8; border: 1px solid #DFD1BE;">
+  <img src="/assets/img/founder-late-night-desk.jpg" alt="Sitting at a desk late at night in front of a glowing computer monitor with coffee mugs and a warm desk lamp." width="764" height="1024" loading="lazy" decoding="async">
+  <figcaption>Late-night workbench in Ottawa: software always comes back to real wires, switches, and who holds the schematic.</figcaption>
+</figure>
+
+<h2>Age eight, and a wiring diagram</h2>
+<p>When I was eight, I took apart a Soviet clone of an early x186 personal computer and spent days tracing its paper wiring diagrams by hand. I wanted to see if I could coax colour out of a machine that only showed green monochrome text. Halfway through the schematic, I realised the four-bit colour capability was already sitting on the board, just never connected to an output pin.</p>
+
+<p>Together with my dad and a local electrician, we soldered a custom video interface and hooked it up to our living-room television. Watching <em>Test Drive</em> and <em>Grand Prix Circuit</em> light up in colour taught me a lesson that never wore off. Software is never magic; real copper and silicon sit underneath every system, and you can always open the box to see who holds the switch.</p>
+
+<p>Years later, when people talk about AI as if it were an inscrutable oracle floating in the clouds, I still think of that circuit board on our kitchen table. Every system has wires, permissions, and switches. The only question is whether the person using the machine is allowed to see the schematic.</p>
+
+<h2>Twenty years of watching institutions under stress</h2>
+<p>As an adult, I spent two decades in public service across cybersecurity and institutional defence. When you spend twenty years helping large organisations protect their networks and recover from failures, two patterns stay with you.</p>
+
+<p>The first is how easily decent, dedicated people inside tall hierarchies lose touch with what is actually happening on the ground. Think of a game of telephone played up a ten-storey staircase. By the time a frontline technician's warning climbs five layers of management, every uncomfortable detail has been sanded off to fit what the next floor up wants to hear.</p>
+
+<p>The second is the heavy price we all pay when institutions treat every piece of operational knowledge like a private fortress. When ten hospitals or ten municipalities each hoard their lessons behind closed doors, the same preventable failure can hit all ten of them in a row. Ordinary families and small teams end up paying for that friction.</p>
+
+<p>What keeps a grid or a hospital safe is clear compartments, honest gauges that nobody is punished for reading aloud, and two-key locks on any switch that can hurt the public.</p>
+
+<h2>What living cells taught me about software</h2>
+<p>Outside of work, one of my favourite late-night habits is reading developmental biology and neuroscience papers for fun. Living organisms solved coordination problems hundreds of millions of years ago that computer engineering is only beginning to face.</p>
+
+<p>Consider how thousands of cells in a salamander limb or a healing wound coordinate to rebuild complex tissue without a single "boss cell" barking orders from a central podium.<sup><a href="#fn-1" id="fnref-1">1</a></sup> Each cell reads local signals from its neighbours, checks its own boundaries, and contributes to the shared shape.</p>
+
+<p>Or consider how every living cell depends on a selective membrane, like skin or a cell wall, that lets nourishment and honest signals pass while keeping its inner workings intact.<sup><a href="#fn-2" id="fnref-2">2</a></sup> A cell without a membrane dissolves into the soup around it; a cell sealed inside a brick wall starves. Life happens in the careful boundary between the two.</p>
+
+<p>Those two biological habits shaped the whole architecture on this site. Your personal assistant should act like a healthy cell membrane around your records. It lets you engage on your own terms, without ad platforms or outside bots invading your attention. And our shared networks should coordinate like living tissue, without ever handing a master key to a single ruler.</p>
+
+<figure class="explainer" id="ex-cellular-coordination">
+  <div class="st-stage" data-stage="switchyard" data-rail-mode="separated">
+    <div class="st-stage-bar">
+      <span class="st-tag"><span class="st-pip"></span> COORDINATION TOPOLOGY · MEMBRANES VS. CENTRAL HUB</span>
+      <span data-rail-status>CELLULAR COORDINATION ACTIVE</span>
+    </div>
+    <div class="st-lever-bar">
+      <div class="st-lever-group" role="group" aria-label="Coordination architecture">
+        <button type="button" class="st-rail-btn is-active" data-rail-option="separated" aria-pressed="true"
+          data-status="CELLULAR COORDINATION ACTIVE"
+          data-readout="CELLULAR MEMBRANES: Personal records stay inside each household cell while verified signals cross peer links.">
+          <span class="st-pip"></span> Cellular coordination
+        </button>
+        <button type="button" class="st-rail-btn" data-rail-option="shared" data-rail-tone="warn" aria-pressed="false"
+          data-status="FRAGILE CENTRAL PYRAMID"
+          data-readout="FRAGILE PYRAMID: Every household funnels raw files into one cloud hub, creating a single point of breach and control.">
+          <span class="st-pip st-pip--warn"></span> The fragile pyramid
+        </button>
+      </div>
+    </div>
+    <div class="st-switchyard-canvas">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 220" role="img" aria-labelledby="ex-cellular-title ex-cellular-desc">
+        <title id="ex-cellular-title">The Fragile Pyramid versus Cellular Coordination</title>
+        <desc id="ex-cellular-desc">Comparative schematic contrasting a centralized cloud hub collecting raw household files against cellular coordination where each household assistant keeps a selective local membrane and shares verified peer signals.</desc>
+
+        <g data-rail-view="separated">
+          <rect x="44" y="46" width="210" height="126" fill="none" stroke="var(--st-forest, #0B3F30)" stroke-width="2" stroke-dasharray="6 4" />
+          <text x="58" y="70" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="var(--st-forest, #0B3F30)">LOCAL CELL A · SELECTIVE SKIN</text>
+          <text x="58" y="96" font-family="system-ui, sans-serif" font-size="11.5" fill="var(--st-ink, #131014)">Health, notes, and family files</text>
+          <text x="58" y="116" font-family="system-ui, sans-serif" font-size="11" fill="var(--st-muted, #5A5247)">Remain inside local hardware</text>
+
+          <line x1="254" y1="108" x2="426" y2="108" stroke="var(--st-forest, #0B3F30)" stroke-width="2.5" />
+          <circle cx="340" cy="108" r="6" fill="var(--st-forest, #0B3F30)" />
+          <text x="340" y="92" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" font-weight="700" fill="var(--st-forest, #0B3F30)">VERIFIED PEER SIGNAL</text>
+          <text x="340" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" fill="var(--st-muted, #5A5247)">Answers cross · Raw files stay home</text>
+
+          <rect x="426" y="46" width="210" height="126" fill="none" stroke="var(--st-forest, #0B3F30)" stroke-width="2" stroke-dasharray="6 4" />
+          <text x="440" y="70" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="var(--st-forest, #0B3F30)">LOCAL CELL B · SELECTIVE SKIN</text>
+          <text x="440" y="96" font-family="system-ui, sans-serif" font-size="11.5" fill="var(--st-ink, #131014)">Independent local rules</text>
+          <text x="440" y="116" font-family="system-ui, sans-serif" font-size="11" fill="var(--st-muted, #5A5247)">No central master switch</text>
+        </g>
+
+        <g data-rail-view="shared">
+          <rect x="230" y="34" width="220" height="58" fill="none" stroke="var(--st-terracotta, #B85C38)" stroke-width="2" />
+          <text x="340" y="58" text-anchor="middle" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="var(--st-terracotta-ink, #963E1D)">CENTRAL CLOUD PYRAMID</text>
+          <text x="340" y="77" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="var(--st-ink, #131014)">Holds all keys and raw household histories</text>
+
+          <line x1="110" y1="164" x2="280" y2="92" stroke="var(--st-terracotta, #B85C38)" stroke-width="2" stroke-dasharray="5 4" />
+          <line x1="340" y1="164" x2="340" y2="92" stroke="var(--st-terracotta, #B85C38)" stroke-width="2" stroke-dasharray="5 4" />
+          <line x1="570" y1="164" x2="400" y2="92" stroke="var(--st-terracotta, #B85C38)" stroke-width="2" stroke-dasharray="5 4" />
+
+          <text x="110" y="184" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10.5" fill="var(--st-ink, #131014)">HOUSEHOLD A</text>
+          <text x="340" y="184" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10.5" fill="var(--st-ink, #131014)">HOUSEHOLD B</text>
+          <text x="570" y="184" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10.5" fill="var(--st-ink, #131014)">HOUSEHOLD C</text>
+          <text x="340" y="206" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10" font-weight="700" fill="var(--st-terracotta-ink, #963E1D)">SINGLE BREACH POINT · TOP-DOWN STEERING</text>
+        </g>
+      </svg>
+    </div>
+    <div class="st-switchyard-readout" data-rail-readout aria-live="polite">
+      CELLULAR MEMBRANES: Personal records stay inside each household cell while verified signals cross peer links.
+    </div>
+  </div>
+  <figcaption>Living tissue coordinates without a central boss cell barking orders. Each cell maintains a selective membrane so private inner state stays local while honest signals cross peer links.</figcaption>
+</figure>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers</summary>
+    <div>
+      <p>The biological analogies above draw on Michael Levin's work on collective cellular intelligence and morphogenesis<sup><a href="#fn-1">1</a></sup>, and Karl Friston's formalisation of the Markov blanket as the statistical boundary that separates an autonomous agent's internal states from external environmental states.<sup><a href="#fn-2">2</a></sup> In our architecture, the local Object-Capability sandbox and the rule that outside agents communicate only via structured inspection locks rather than raw human feeds serve as a practical cognitive boundary.</p>
+    </div>
+  </details>
+</aside>
+
+<h2>A father's test for the next twenty years</h2>
+<p>When you are a parent, "the long term" stops being an abstract line on a chart. It has a name, a laugh, and a pair of shoes by the front door.</p>
+
+<p>I ask myself what kind of world I want my family and neighbours to inhabit ten or twenty years from now, when software agents are ten times more capable than they are tonight. I want them to have tools that clear away bureaucracy and medical billing traps so they have more unhurried hours for craft, music, friendship, and rest.</p>
+
+<p>I do not want them begging an opaque algorithm to appeal a civic decision. Nor should their digital assistant be secretly paid by the other side of the table.</p>
+
+<h2>Why build in the open from a home desk?</h2>
+<p>I love building with AI. Almost every night after the house settles down, agents running on my workstation help me read preprints, test simulations, audit primary sources, and draft the pages you are reading now. Yet I am also candid about why human stewardship has to sit at the centre of that loop.</p>
+
+<p>Human minds take in the world at the pace of a walk or a kitchen-table conversation. We were not built to out-argue or out-click automated software swarms running millions of times faster than we think. If we plug those machines straight into today's bureaucracies or ad-driven platforms without new guardrails, we will lock in their worst habits at machine speed.</p>
+
+<p>The answer isn't to stop building. Instead, we can build everyday civic safeguards that keep people in charge. These include clear <a href="/blog/who-is-actually-acting/">action receipts</a>, <a href="/blog/an-assistant-that-works-only-for-you/">assistants bound loyally to one person</a>, <a href="/blog/power-on-loan-not-owned/">permissions that expire unless renewed</a>, and <a href="/blog/the-internet-needs-a-second-road/">a separate road for machine traffic</a>.</p>
+
+<h2>Offered in good faith</h2>
+<p>This foundation doesn't come from a venture-capital boardroom, and it isn't selling a token, a subscription, or a miracle cure. Everything on this site is an open working notebook, and some of it will turn out to be wrong. I would much rather hear where an argument breaks from researchers, public officials, and neighbours early than find out when it is too late to mend.</p>
+
+<p>If you want to test an idea, challenge an assumption, or build alongside us, please explore our <a href="/research/">research</a>, <a href="/labs/">labs</a>, and <a href="/blog/">essays</a>, or <a href="/contact/">write to us directly</a>.</p>
+
+<section class="footnotes">
+  <h2>Sources</h2>
+  <ol>
+    <li id="fn-1">Michael Levin, <a href="https://doi.org/10.3389/fnsys.2022.768201">"Technological Approach to Mind Everywhere: An Experimentally-Grounded Framework for Understanding Diverse Bodies and Minds,"</a> <em>Frontiers in Systems Neuroscience</em> 16 (2022). <a href="#fnref-1" aria-label="Back to text">↩</a></li>
+    <li id="fn-2">Karl Friston, <a href="https://doi.org/10.1098/rsif.2013.0475">"Life as We Know It,"</a> <em>Journal of the Royal Society Interface</em> 10, no. 86 (2013). <a href="#fnref-2" aria-label="Back to text">↩</a></li>
+  </ol>
+</section>
+</div>

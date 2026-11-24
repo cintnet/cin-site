@@ -1,0 +1,274 @@
+---
+title: World Labs: Alignment, Governance, and Safe ASI Paper
+heading: Keeping 3D spatial world models grounded in local vaults and hardware leases
+eyebrow: Lab Technical Paper · LAB-41
+description: Technical integration paper for World Labs covering 3D spatial privacy vaults, sim-to-real containment leases, municipal digital twins, and shared civic compute.
+reader: Leadership, alignment and security engineers at World Labs, peer AI labs, safety evaluators, and public regulators.
+takeaway: World Labs builds three-dimensional world models that stay safe when raw room scans remain inside local home vaults and robots act under expiring hardware leases.
+template: page
+layout: wide
+section: labs
+lede: World Labs builds three-dimensional world models that stay safe when raw room scans remain inside local home vaults. Physical robots then act only under expiring hardware leases.
+---
+<section class="wrap">
+  <nav class="lp-breadcrumb" aria-label="Lab paper navigation"><a href="/labs/lab-papers/">← All Lab Technical Papers</a><span>·</span><a href="/labs/lab-overlays/">Compare in 93-Group Overlays</a><span>·</span><a href="/research/">Research Workspace</a></nav>
+
+  <div class="prose wrap-narrow">
+    <p class="big">Hiring a locksmith to repair your front latch does not give that shop a live blueprint of every bedroom in your home. World Labs builds three-dimensional world models that stay safe when raw room scans remain inside local home vaults and robots act under expiring hardware leases.</p>
+    <p>Founded by Fei-Fei Li, Justin Johnson, Christoph Lassner, and Ben Mildenhall, World Labs moves beyond flat text prediction into persistent spatial intelligence. Its Large World Models reconstruct navigable three-dimensional scenes with consistent geometry and physical mechanics. Pairing those spatial models with local-first custody prevents cloud surveillance and contains sudden robotic capability jumps.</p>
+  </div>
+
+  <div class="lp-dossier" role="region" aria-label="World Labs technical dossier">
+    <div class="lp-dossier-head">
+      <span>Technical Dossier · LAB-41</span>
+      <span>Non-LLM Spatial Intelligence</span>
+    </div>
+    <div class="lp-dossier-grid">
+      <div class="lp-dossier-cell">
+        <span class="lp-dossier-label">Lab &amp; Leadership</span>
+        <p>World Labs, Inc. (San Francisco, California), founded by Fei-Fei Li, Justin Johnson, Christoph Lassner, and Ben Mildenhall.</p>
+      </div>
+      <div class="lp-dossier-cell">
+        <span class="lp-dossier-label">Core Paradigm</span>
+        <p>Large World Models that generate and simulate persistent, physics-consistent 3D geometry and digital twins beyond one-dimensional token streams.</p>
+      </div>
+      <div class="lp-dossier-cell">
+        <span class="lp-dossier-label">Primary Bottlenecks</span>
+        <p>Centralized 3D interior privacy enclosure, rapid sim-to-real active-learning capability overhangs, and optical or LiDAR spoofing before signal conversion.</p>
+      </div>
+      <div class="lp-dossier-cell">
+        <span class="lp-dossier-label">CIN Integration Path</span>
+        <p>Local encrypted spatial vaults behind optical diodes, zero-knowledge clearance proofs, expiring actuator capability leases, and public municipal twins.</p>
+      </div>
+    </div>
+  </div>
+
+  <nav class="lp-toc" aria-label="Paper sections"><a href="#sec-1">01 · Alignment Bottlenecks</a><a href="#sec-2">02 · CIN Technical Integration</a><a href="#sec-3">03 · Inter-Lab Options</a><a href="#sec-4">04 · Government Options</a><a href="#sec-5">05 · Safe ASI &amp; Economy</a></nav>
+
+  <figure class="explainer lp-arch-fig" id="ex-lp-world-labs">
+    <svg viewBox="0 0 920 260" role="img" aria-labelledby="ex-lp-world-labs-title ex-lp-world-labs-desc">
+      <title id="ex-lp-world-labs-title">World Labs spatial intelligence containment and local vault architecture</title>
+      <desc id="ex-lp-world-labs-desc">Diagram showing wearable depth sensors feeding a local spatial vault behind an optical diode, exporting only zero-knowledge clearance proofs to World Labs 3D models and gating physical actuators with expiring hardware leases.</desc>
+      <defs>
+        <marker id="lp-wl-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1 L 9 5 L 0 9 z" fill="#0B3F30"/>
+        </marker>
+        <marker id="lp-wl-warn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1 L 9 5 L 0 9 z" fill="#963E1D"/>
+        </marker>
+      </defs>
+      <rect x="4" y="4" width="912" height="252" fill="#FAF3EA" stroke="#C8B59B" stroke-width="1.5"/>
+
+      <rect x="24" y="42" width="185" height="172" fill="#FFFDF9" stroke="#0B3F30" stroke-width="1.5"/>
+      <rect x="24" y="42" width="185" height="28" fill="#F4EBDD" stroke="#0B3F30" stroke-width="1"/>
+      <text x="36" y="60" font-family="monospace" font-size="11" font-weight="700" fill="#0B3F30">01 · LOCAL CAPTURE</text>
+      <text x="36" y="92" font-family="sans-serif" font-size="12" font-weight="700" fill="#26211C">Depth &amp; Radar Array</text>
+      <text x="36" y="114" font-family="sans-serif" font-size="11" fill="#4A433A">Device Time clock sync</text>
+      <text x="36" y="134" font-family="sans-serif" font-size="11" fill="#4A433A">Optical data diode</text>
+      <text x="36" y="154" font-family="sans-serif" font-size="11" fill="#963E1D">Checks sensor spoofing</text>
+
+      <line x1="209" y1="128" x2="245" y2="128" stroke="#0B3F30" stroke-width="1.8" marker-end="url(#lp-wl-arr)"/>
+
+      <rect x="248" y="42" width="200" height="172" fill="#FFFDF9" stroke="#0B3F30" stroke-width="1.5"/>
+      <rect x="248" y="42" width="200" height="28" fill="#F4EBDD" stroke="#0B3F30" stroke-width="1"/>
+      <text x="260" y="60" font-family="monospace" font-size="11" font-weight="700" fill="#0B3F30">02 · HOME VAULT</text>
+      <text x="260" y="92" font-family="sans-serif" font-size="12" font-weight="700" fill="#26211C">Private 3D Room History</text>
+      <text x="260" y="114" font-family="sans-serif" font-size="11" fill="#4A433A">Raw meshes stay home</text>
+      <text x="260" y="134" font-family="sans-serif" font-size="11" fill="#4A433A">1:1 personal assistant</text>
+      <text x="260" y="154" font-family="sans-serif" font-size="11" fill="#0B3F30">Builds clearance proofs</text>
+
+      <line x1="448" y1="128" x2="486" y2="128" stroke="#0B3F30" stroke-width="1.8" marker-end="url(#lp-wl-arr)"/>
+
+      <rect x="489" y="42" width="195" height="172" fill="#FFFDF9" stroke="#963E1D" stroke-width="1.5"/>
+      <rect x="489" y="42" width="195" height="28" fill="#F4EBDD" stroke="#963E1D" stroke-width="1"/>
+      <text x="501" y="60" font-family="monospace" font-size="11" font-weight="700" fill="#963E1D">03 · WORLD LABS LWM</text>
+      <text x="501" y="92" font-family="sans-serif" font-size="12" font-weight="700" fill="#26211C">3D Physics Simulation</text>
+      <text x="501" y="114" font-family="sans-serif" font-size="11" fill="#4A433A">Sees coarsened bounds</text>
+      <text x="501" y="134" font-family="sans-serif" font-size="11" fill="#4A433A">Labels synthetic scenes</text>
+
+      <line x1="684" y1="128" x2="720" y2="128" stroke="#963E1D" stroke-width="1.8" marker-end="url(#lp-wl-warn)"/>
+
+      <rect x="723" y="42" width="173" height="172" fill="#FFFDF9" stroke="#0B3F30" stroke-width="1.5"/>
+      <rect x="723" y="42" width="173" height="28" fill="#F4EBDD" stroke="#0B3F30" stroke-width="1"/>
+      <text x="735" y="60" font-family="monospace" font-size="11" font-weight="700" fill="#0B3F30">04 · ACTUATOR GATE</text>
+      <text x="735" y="92" font-family="sans-serif" font-size="12" font-weight="700" fill="#26211C">Expiring Lease &amp; Relay</text>
+      <text x="735" y="114" font-family="sans-serif" font-size="11" fill="#4A433A">Torque and speed caps</text>
+      <text x="735" y="134" font-family="sans-serif" font-size="11" fill="#0B3F30">Dead-man safety switch</text>
+    </svg>
+    <figcaption>Local spatial vaults keep raw household 3D scans private while sending zero-knowledge clearance bounds to World Labs planners and gating robot motion behind hardware leases.</figcaption>
+  </figure>
+
+  <section class="lp-sec" id="sec-1">
+    <p class="lp-sec-kicker lp-sec-kicker--warn">Section 01 · Architecture &amp; Alignment Bottlenecks</p>
+    <h2>Why 3D world models create distinct privacy and physical safety risks</h2>
+    <div class="prose wrap-narrow">
+      <p>Language models process flat strings of text and routinely lose track of where solid objects sit when a camera turns away. World Labs solves this geometric blindness with Large World Models that maintain persistent three-dimensional scenes, material surfaces, and physical mechanics across time.</p>
+      <p>Moving from text chat to continuous spatial modeling introduces three severe safety bottlenecks. Cloud depth scans map private rooms, sim-to-real robotics loops trigger sudden manipulation jumps, and optical spoofing corrupts plans before silicon signatures apply.</p>
+
+      <div class="lp-options-grid">
+        <div class="lp-option lp-option--warn">
+          <h3>Total spatial privacy enclosure</h3>
+          <p>Smart glasses and home robots scanning hallways in 3D capture medicine cabinets, door locks, and family routines. Streaming raw meshes to multi-tenant clouds builds a permanent map of private life.</p>
+        </div>
+        <div class="lp-option lp-option--warn">
+          <h3>Sim-to-real active-learning overhangs</h3>
+          <p>When agents pair differentiable 3D physics rollouts with targeted physical robot probes, dexterity and mechanical bypass skills jump abruptly. Static pre-release benchmarks miss this rapid transfer loop.</p>
+        </div>
+        <div class="lp-option lp-option--warn">
+          <h3>Sensor spoofing across the analog hole</h3>
+          <p>Timed laser pulses or ultrasonic interference can inject phantom walls or erase real obstacles before analog-to-digital conversion. Planners that trust signed feeds blindly risk dangerous collisions.</p>
+        </div>
+        <div class="lp-option lp-option--warn">
+          <h3>Unlabelled synthetic scene feedback</h3>
+          <p>Photorealistic 3D renders re-entering training sets or civil inspections can masquerade as real physical evidence. Downstream engineering tools then plan against fabricated structural geometry.</p>
+        </div>
+      </div>
+
+      <aside class="for-researchers">
+        <details>
+          <summary>For researchers: SE(3) spatial state spaces and active-learning sample complexity</summary>
+          <div>
+            <p>World Labs Large World Models represent environments as persistent metric scene graphs and 3D Gaussian or signed-distance primitives evolving under differentiable transition dynamics <code>s_{t+1} = f_theta(s_t, u_t)</code>. While virtual code benchmarks scale visibly first, closed-loop active learning over <code>f_theta</code> dramatically compresses real-world robotic sample complexity once manipulators probe uncertain contact friction or kinematic joints directly. Across the pre-conversion analog hole, cryptographic peripheral signatures verify silicon firmware custody after signal digitization, never unspoofed physical ground truth.</p>
+          </div>
+        </details>
+      </aside>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="sec-2">
+    <p class="lp-sec-kicker">Section 02 · CIN Technical Integration</p>
+    <h2>Sealing raw 3D scans at home while proving safe clearance</h2>
+    <div class="prose wrap-narrow">
+      <p>CIN anchors spatial intelligence inside local-first hardware custody<sup><a href="#fn1">1</a></sup>. Wearable cameras, radar, and motion sensors align to a local capture clock and send raw 3D scans across optical diodes into an encrypted vault.</p>
+      <p>Only the resident and their bound single-person assistant can decrypt that spatial history. When an outside robot or World Labs planner needs navigation bounds, the home assistant exports a zero-knowledge proof confirming clearance without revealing furniture or people<sup><a href="#fn2">2</a></sup>.</p>
+      <p>Before any simulated plan drives physical motors, CIN enforces strict control-and-data separation so adversarial visual scenes cannot hijack tool permissions<sup><a href="#fn3">3</a></sup>. Every motor handoff requires an expiring hardware capability lease paired with a physical dead-man switch<sup><a href="#fn4">4</a></sup>.</p>
+
+      <div class="lp-options-grid">
+        <div class="lp-option">
+          <h3>Cross-modal sensor cross-checking</h3>
+          <p>Local edge fusion compares optical depth against millimeter-wave radar and inertial motion on Device Time. Disagreement widens uncertainty bars and halts motion before spoofed meshes corrupt planning.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Zero-knowledge geometric bounds</h3>
+          <p>Cryptographic proofs verify that a doorway meets wheelchair width or a floor supports load limits. External World Labs models never see private room layouts<sup><a href="#fn2">2</a></sup>.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Isolated perception and control channels</h3>
+          <p>Untrusted 3D geometry updates obstacle maps without ever issuing privileged system commands. Visual or spatial prompt injections fail deterministically at the type boundary<sup><a href="#fn3">3</a></sup>.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Expiring hardware actuator leases</h3>
+          <p>Simulated trajectories compile into sub-second capability leases capping force, speed, and spatial reach, backed by hardware dead-man relays that cut power if renewal stops<sup><a href="#fn4">4</a></sup>.</p>
+        </div>
+      </div>
+
+      <aside class="for-researchers">
+        <details>
+          <summary>For researchers: Markov blanket ZK predicates, Object-Capability leases, and Sensorium attestation</summary>
+          <div>
+            <p>At the Perceptual Sensorium root, <code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, and <code>IETF RATS</code> bind RGB-D and radar streams to attested silicon before writing <code>C2PA</code> Merkle records into the local vault<sup><a href="#fn1">1</a></sup>. Across the Personal Markov Blanket, the principal-bound Exocortex proves collision-free polytope predicates via succinct zero-knowledge arguments<sup><a href="#fn2">2</a></sup>. Physical actuation combines <code>CaMeL</code> dataflow isolation<sup><a href="#fn3">3</a></sup> with <code>ACLE-MCP</code> Object-Capability leases<sup><a href="#fn4">4</a></sup> and <code>IEC 61508</code> hardware safety relays.</p>
+          </div>
+        </details>
+      </aside>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="sec-3">
+    <p class="lp-sec-kicker">Section 03 · Inter-Lab Coordination Options</p>
+    <h2>Shared sim-to-real evaluations and synthetic 3D provenance</h2>
+    <div class="prose wrap-narrow">
+      <p>No single lab can gauge physical robotics risk behind redacted internal reports. World Labs can partner with Physical Intelligence, AMI Labs, Google DeepMind, and public safety institutes on open sim-to-real active-learning evaluations.</p>
+      <p>Participating labs also benefit from shared cryptographic receipts that separate synthetic 3D world renders from attested camera captures. Hardware-enforced cluster quorums protect high-cost spatial model weights against rapid credential theft and exfiltration<sup><a href="#fn5">5</a></sup>.</p>
+
+      <div class="lp-options-grid">
+        <div class="lp-option">
+          <h3>Joint sim-to-real overhang benchmarks</h3>
+          <p>Measure how few physical robot trials a 3D world model needs to master unfamiliar latches, tools, or deformable materials, triggering shared containment tiers early.</p>
+        </div>
+        <div class="lp-option">
+          <h3>SCITT synthetic-versus-captured receipts</h3>
+          <p>Stamp every generated 3D scene on an append-only transparency ledger so downstream safety planners and future training runs never confuse synthetic renders with camera capture.</p>
+        </div>
+      </div>
+
+      <aside class="for-researchers">
+        <details>
+          <summary>For researchers: closed-loop transfer metrics and cluster weight-exfiltration quorums</summary>
+          <div>
+            <p>Standard visual fidelity scores such as <code>PSNR</code> miss closed-loop manipulation overhangs; joint benchmarks track active system-identification sample complexity across independent robotic testbeds. To prevent 12-to-48-hour monorepo weight leaks, shard export requires <code>DMTF SPDM</code> enclave attestation and multi-party cryptographic quorum sign-off<sup><a href="#fn5">5</a></sup> alongside <code>IETF SCITT</code> provenance receipts.</p>
+          </div>
+        </details>
+      </aside>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="sec-4">
+    <p class="lp-sec-kicker">Section 04 · Government &amp; Sovereign Engagement Options</p>
+    <h2>Inspectable municipal digital twins without street-to-bedroom surveillance</h2>
+    <div class="prose wrap-narrow">
+      <p>Cities, transit agencies, and flood responders need accurate 3D world models to plan evacuations, seismic upgrades, and wheelchair-accessible routes. Handing street-to-bedroom LiDAR maps to private cloud vendors creates unacceptable surveillance risks.</p>
+      <p>Running World Labs models on public civic compute lets municipalities maintain open, auditable digital twins of public streets that meet administrative law standards<sup><a href="#fn6">6</a></sup>. Private homes and clinics connect only through zero-knowledge fire-safety or utility clearance proofs, while compute governance tracks frontier training runs<sup><a href="#fn5">5</a></sup>.</p>
+
+      <div class="lp-options-grid">
+        <div class="lp-option">
+          <h3>Scrutable civic digital twins</h3>
+          <p>Host municipal 3D models of bridges, transit hubs, and floodplains on public compute so engineers and residents can audit simulation assumptions directly<sup><a href="#fn6">6</a></sup>.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Critical infrastructure twin airlocks</h3>
+          <p>Require hardware-attested operator identity, expiring capability leases, and public audit logs before any external agent queries high-detail electrical substation or water-plant twins.</p>
+        </div>
+      </div>
+
+      <aside class="for-researchers">
+        <details>
+          <summary>For researchers: administrative scrutability and sovereign compute verification</summary>
+          <div>
+            <p>Deploying municipal Large World Models on sovereign civic clusters satisfies administrative due-process requirements for a scrutable state by logging physical solver tolerances and boundary conditions<sup><a href="#fn6">6</a></sup>. High-FLOP spatial pre-training clusters publish privacy-preserving workload attestations<sup><a href="#fn5">5</a></sup> while enforcing asymmetric transparency on critical civil infrastructure queries.</p>
+          </div>
+        </details>
+      </aside>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="sec-5">
+    <p class="lp-sec-kicker">Section 05 · Safe ASI &amp; Macroeconomic Stability</p>
+    <h2>Local spatial design tools, cooperative equity, and mutual credit</h2>
+    <div class="prose wrap-narrow">
+      <p>Local builders, architects, and therapists can run quantized 3D world models on Universal Basic Compute. Communities then design accessibility ramps, solar retrofits, and structural repairs without recurring cloud rents<sup><a href="#fn7">7</a></sup>. Personal assistants step back during routine design work so human spatial judgment stays sharp.</p>
+      <p>Spatial models learn from environments built by skilled trades and local communities. Large commercial digital-twin platforms therefore stream statutory Rudolf Meidner cooperative equity into worker and civic trusts. Local repair and construction co-ops then settle real project work through zero-interest mutual credit clearing.</p>
+
+      <div class="lp-options-grid">
+        <div class="lp-option">
+          <h3>Local 3D synthesis on public civic compute</h3>
+          <p>Pair local spatial vaults with public edge compute so small workshops, clinics, and cities generate verified CAD and retrofit plans on their own hardware<sup><a href="#fn7">7</a></sup>.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Meidner cooperative shares and mutual credit</h3>
+          <p>Convert commercial digital-twin scale into collective worker and municipal equity trusts while clearing neighborhood construction and repair capacity over transparent mutual credit.</p>
+        </div>
+      </div>
+
+      <aside class="for-researchers">
+        <details>
+          <summary>For researchers: user-built spatial tooling and post-fiat productive clearing</summary>
+          <div>
+            <p>Extending local agentic synthesis<sup><a href="#fn7">7</a></sup> from 2D code to 3D CAD assemblies lets households and cooperatives replace extractive per-seat engineering subscriptions while preserving unassisted craft competence. Coupling Rudolf Meidner cooperative equity conversion with cyclic mutual credit clearing keeps spatial-automation gains anchored in regional productive capacity under zero speculative token framing.</p>
+          </div>
+        </details>
+      </aside>
+
+      <section class="footnotes">
+        <ol>
+          <li id="fn1">Martin Kleppmann, Adam Wiggins, Peter van Hardenberg, and Mark McGranaghan, "Local-first software: you own your data, in spite of the cloud" (2019), <a href="https://doi.org/10.1145/3359591.3359737">doi.org/10.1145/3359591.3359737</a>.</li>
+          <li id="fn2">Haochen Sun et al., "zkLLM: Zero Knowledge Proofs for Large Language Models" (2024), <a href="https://arxiv.org/abs/2404.16109">arxiv.org/abs/2404.16109</a>.</li>
+          <li id="fn3">Edoardo Debenedetti et al., "Defeating Prompt Injections by Design" (2025), <a href="https://arxiv.org/abs/2503.18813">arxiv.org/abs/2503.18813</a>.</li>
+          <li id="fn4">Zhiyang Ding, Yang Luo, Guangpu Chen, Qingni Shen, and Zhonghai Wu, "ACLE-MCP: Attested Capability Leases for Execution-Time Trust in Remote LLM Tool Use" (2026), <a href="https://arxiv.org/abs/2609.02690">arxiv.org/abs/2609.02690</a>.</li>
+          <li id="fn5">Girish Sastry et al., "Computing Power and the Governance of Artificial Intelligence" (2024), <a href="https://arxiv.org/abs/2402.08797">arxiv.org/abs/2402.08797</a>.</li>
+          <li id="fn6">Nicholas Caputo, "Administrative Law's Fourth Settlement: AI and the Scrutable State" (2026), <a href="https://arxiv.org/abs/2602.09678">arxiv.org/abs/2602.09678</a>.</li>
+          <li id="fn7">Ripon Chandra Malo, Zimeng Yu, and Tong Qiu, "The Customer Is the Builder: How AI Coding Agents Are Rewriting the Economics of Software" (2026), <a href="https://arxiv.org/abs/2610.30307">arxiv.org/abs/2610.30307</a>.</li>
+        </ol>
+      </section>
+    </div>
+  </section>
+</section>

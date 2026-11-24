@@ -1,0 +1,408 @@
+---
+title: Physical Intelligence: Alignment, Governance, and Safe ASI Paper
+heading: Hardware dead-man relays, local video vaults, and cooperative robot fleets
+eyebrow: Lab Technical Paper · LAB-27
+description: Five-part technical and governance paper showing how CIN wraps Physical Intelligence generalist robot models in hardware dead-man relays, local video vaults, black-box logs, and cooperative fleet ownership.
+reader: Leadership, alignment and security engineers at Physical Intelligence, peer AI labs, safety evaluators, and public regulators.
+takeaway: Generalist robot brains from Physical Intelligence stay safe beside people when wrapped in local video vaults, multi-sensor checks, passive dead-man relays, and cooperative fleet ownership.
+template: page
+layout: wide
+section: labs
+lede: Generalist robot brains from Physical Intelligence stay safe beside people inside local video vaults, multi-sensor checks, passive dead-man relays, and cooperative fleet ownership.
+---
+<section class="wrap">
+  <nav class="lp-breadcrumb" aria-label="Lab paper navigation"><a href="/labs/lab-papers/">← All Lab Technical Papers</a><span>·</span><a href="/labs/lab-overlays/">Compare in 93-Group Overlays</a><span>·</span><a href="/research/">Research Workspace</a></nav>
+
+  <div class="prose wrap-narrow">
+    <p class="big">Generalist robot brains from Physical Intelligence stay safe beside people when wrapped in local video vaults, multi-sensor checks, passive dead-man relays, and cooperative fleet ownership. A cabinetmaker's table saw stops its spinning blade in milliseconds when skin touches steel, because a software patch tomorrow cannot mend a severed thumb today.</p>
+    <p>Physical Intelligence trains vision-language-action models (such as pi-zero) to fold laundry, pack boxes, and guide dexterous arms across real homes and warehouses. Moving foundation models into physical motors introduces kinetic, privacy, and labor risks that software guardrails alone cannot contain.</p>
+  </div>
+
+  <div class="lp-dossier" role="region" aria-label="Physical Intelligence technical dossier">
+    <div class="lp-dossier-head">
+      <span>LAB-27 · Physical Intelligence</span>
+      <span>Jurisdiction: San Francisco, United States · Liaison: cin.liaison.physical_intelligence</span>
+    </div>
+    <div class="lp-dossier-grid">
+      <div class="lp-dossier-cell">
+        <span class="lp-dossier-label">Architecture &amp; Paradigm</span>
+        <p>Generalist vision-language-action foundation models (pi-zero and openpi) driving 50 Hz continuous motor control across diverse robot arms and mobile bases.</p>
+      </div>
+      <div class="lp-dossier-cell">
+        <span class="lp-dossier-label">Core Alignment Bottlenecks</span>
+        <p>Irreversible kinetic harm, spoofed cameras across the analog hole, cloud bedroom surveillance, and workers blamed as moral crumple zones.</p>
+      </div>
+      <div class="lp-dossier-cell">
+        <span class="lp-dossier-label">CIN Technical Anchor</span>
+        <p>Attested multi-sensor plausibility gates, one-way optical data diodes into local vaults, deterministic torque clamps, and passive IEC 61508 dead-man relays.</p>
+      </div>
+      <div class="lp-dossier-cell">
+        <span class="lp-dossier-label">Economic &amp; Civic Role</span>
+        <p>Banning remote fleet override keys, ending worker blame via black-box receipts, and sharing robot gains through cooperative equity and mutual credit.</p>
+      </div>
+    </div>
+  </div>
+
+  <nav class="lp-toc" aria-label="Paper sections"><a href="#sec-1">01 · Alignment Bottlenecks</a><a href="#sec-2">02 · CIN Technical Integration</a><a href="#sec-3">03 · Inter-Lab Options</a><a href="#sec-4">04 · Government Options</a><a href="#sec-5">05 · Safe ASI &amp; Economy</a></nav>
+
+  <figure class="explainer lp-arch-fig" id="ex-lp-physical-intelligence">
+    <style>
+      #ex-lp-physical-intelligence {
+        --ex-rule: #D6CBB8;
+        --ex-ink: #131014;
+        --ex-muted: #4A433A;
+        margin: 2rem 0 2.25rem;
+        padding: 1.35rem 0 1.15rem;
+        background: transparent;
+        border: 0;
+        border-top: 1px solid var(--ex-rule);
+        border-bottom: 1px solid var(--ex-rule);
+        border-radius: 0;
+        box-shadow: none;
+        color: var(--ex-ink);
+      }
+      #ex-lp-physical-intelligence .diagram-desktop { width: 100%; height: auto; display: block; }
+      #ex-lp-physical-intelligence .diagram-mobile { width: 100%; height: auto; display: none; }
+      @media (max-width: 640px) {
+        #ex-lp-physical-intelligence .diagram-desktop { display: none; }
+        #ex-lp-physical-intelligence .diagram-mobile { display: block; }
+      }
+      #ex-lp-physical-intelligence figcaption {
+        margin-top: 0.9rem;
+        padding-top: 0.7rem;
+        border-top: 1px solid var(--ex-rule);
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: var(--ex-muted);
+        text-align: left;
+      }
+      @media (prefers-color-scheme: dark) {
+        #ex-lp-physical-intelligence {
+          --ex-rule: #322E3D;
+          --ex-ink: #EDE6DC;
+          --ex-muted: #A8A095;
+        }
+        #ex-lp-physical-intelligence rect[fill="#FAF3EA"],
+        #ex-lp-physical-intelligence rect[fill="#FFFDF9"],
+        #ex-lp-physical-intelligence rect[fill="#F4EBDD"] {
+          fill: #221F2A;
+        }
+        #ex-lp-physical-intelligence text[fill="#131014"],
+        #ex-lp-physical-intelligence text[fill="#26211C"],
+        #ex-lp-physical-intelligence text[fill="#4A433A"] {
+          fill: #EDE6DC;
+        }
+        #ex-lp-physical-intelligence text[fill="#0B3F30"] { fill: #8FD4B6; }
+        #ex-lp-physical-intelligence text[fill="#963E1D"] { fill: #F09D82; }
+        #ex-lp-physical-intelligence rect[stroke="#0B3F30"],
+        #ex-lp-physical-intelligence line[stroke="#0B3F30"],
+        #ex-lp-physical-intelligence path[stroke="#0B3F30"] { stroke: #8FD4B6; }
+        #ex-lp-physical-intelligence rect[stroke="#963E1D"],
+        #ex-lp-physical-intelligence line[stroke="#963E1D"],
+        #ex-lp-physical-intelligence path[stroke="#963E1D"] { stroke: #F09D82; }
+        #ex-lp-physical-intelligence polygon[fill="#0B3F30"] { fill: #8FD4B6; }
+        #ex-lp-physical-intelligence polygon[fill="#963E1D"] { fill: #F09D82; }
+      }
+      :root[data-theme="dark"] #ex-lp-physical-intelligence,
+      [data-theme="dark"] #ex-lp-physical-intelligence {
+        --ex-rule: #322E3D;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #A8A095;
+      }
+      :root[data-theme="dark"] #ex-lp-physical-intelligence rect[fill="#FAF3EA"],
+      :root[data-theme="dark"] #ex-lp-physical-intelligence rect[fill="#FFFDF9"],
+      :root[data-theme="dark"] #ex-lp-physical-intelligence rect[fill="#F4EBDD"],
+      [data-theme="dark"] #ex-lp-physical-intelligence rect[fill="#FAF3EA"],
+      [data-theme="dark"] #ex-lp-physical-intelligence rect[fill="#FFFDF9"],
+      [data-theme="dark"] #ex-lp-physical-intelligence rect[fill="#F4EBDD"] {
+        fill: #221F2A;
+      }
+      :root[data-theme="dark"] #ex-lp-physical-intelligence text[fill="#131014"],
+      :root[data-theme="dark"] #ex-lp-physical-intelligence text[fill="#26211C"],
+      :root[data-theme="dark"] #ex-lp-physical-intelligence text[fill="#4A433A"],
+      [data-theme="dark"] #ex-lp-physical-intelligence text[fill="#131014"],
+      [data-theme="dark"] #ex-lp-physical-intelligence text[fill="#26211C"],
+      [data-theme="dark"] #ex-lp-physical-intelligence text[fill="#4A433A"] {
+        fill: #EDE6DC;
+      }
+      :root[data-theme="dark"] #ex-lp-physical-intelligence text[fill="#0B3F30"],
+      [data-theme="dark"] #ex-lp-physical-intelligence text[fill="#0B3F30"] { fill: #8FD4B6; }
+      :root[data-theme="dark"] #ex-lp-physical-intelligence text[fill="#963E1D"],
+      [data-theme="dark"] #ex-lp-physical-intelligence text[fill="#963E1D"] { fill: #F09D82; }
+      :root[data-theme="dark"] #ex-lp-physical-intelligence rect[stroke="#0B3F30"],
+      :root[data-theme="dark"] #ex-lp-physical-intelligence line[stroke="#0B3F30"],
+      :root[data-theme="dark"] #ex-lp-physical-intelligence path[stroke="#0B3F30"],
+      [data-theme="dark"] #ex-lp-physical-intelligence rect[stroke="#0B3F30"],
+      [data-theme="dark"] #ex-lp-physical-intelligence line[stroke="#0B3F30"],
+      [data-theme="dark"] #ex-lp-physical-intelligence path[stroke="#0B3F30"] { stroke: #8FD4B6; }
+      :root[data-theme="dark"] #ex-lp-physical-intelligence rect[stroke="#963E1D"],
+      :root[data-theme="dark"] #ex-lp-physical-intelligence line[stroke="#963E1D"],
+      :root[data-theme="dark"] #ex-lp-physical-intelligence path[stroke="#963E1D"],
+      [data-theme="dark"] #ex-lp-physical-intelligence rect[stroke="#963E1D"],
+      [data-theme="dark"] #ex-lp-physical-intelligence line[stroke="#963E1D"],
+      [data-theme="dark"] #ex-lp-physical-intelligence path[stroke="#963E1D"] { stroke: #F09D82; }
+      :root[data-theme="dark"] #ex-lp-physical-intelligence polygon[fill="#0B3F30"],
+      [data-theme="dark"] #ex-lp-physical-intelligence polygon[fill="#0B3F30"] { fill: #8FD4B6; }
+      :root[data-theme="dark"] #ex-lp-physical-intelligence polygon[fill="#963E1D"],
+      [data-theme="dark"] #ex-lp-physical-intelligence polygon[fill="#963E1D"] { fill: #F09D82; }
+    </style>
+    <svg class="diagram-desktop" viewBox="0 0 920 260" role="img" aria-labelledby="ex-lp-physical-intelligence-title ex-lp-physical-intelligence-desc">
+      <title id="ex-lp-physical-intelligence-title">CIN physical airlock, black-box flight recorder, and cooperative ownership architecture for Physical Intelligence robots</title>
+      <desc id="ex-lp-physical-intelligence-desc">Four-stage diagram showing multi-sensor analog cross-checks and one-way optical diodes into a local home vault, a deterministic torque envelope with a passive dead-man relay, signed incident black boxes, and cooperative fleet equity.</desc>
+      <rect x="0" y="0" width="920" height="260" rx="6" fill="#FAF3EA"/>
+      <rect x="20" y="28" width="198" height="204" rx="6" fill="#FFFDF9" stroke="#0B3F30" stroke-width="1.5"/>
+      <text x="34" y="54" font-size="11" font-weight="700" fill="#0B3F30">01 · SENSOR &amp; VAULT</text>
+      <text x="34" y="82" font-size="12.5" font-weight="700" fill="#26211C">Analog Cross-Check</text>
+      <text x="34" y="104" font-size="11" fill="#4A433A">Camera + radar + torque</text>
+      <text x="34" y="124" font-size="11" fill="#4A433A">Optical diode to vault</text>
+      <text x="34" y="144" font-size="11" fill="#4A433A">Zero cloud home video</text>
+
+      <line x1="218" y1="130" x2="244" y2="130" stroke="#0B3F30" stroke-width="2"/>
+      <polygon points="244,125 254,130 244,135" fill="#0B3F30"/>
+
+      <rect x="256" y="28" width="198" height="204" rx="6" fill="#F4EBDD" stroke="#963E1D" stroke-width="1.5"/>
+      <text x="270" y="54" font-size="11" font-weight="700" fill="#963E1D">02 · MOTOR AIRLOCK</text>
+      <text x="270" y="82" font-size="12.5" font-weight="700" fill="#26211C">Torque &amp; Relay Gate</text>
+      <text x="270" y="104" font-size="11" fill="#4A433A">pi-zero plans actions</text>
+      <text x="270" y="124" font-size="11" fill="#4A433A">Hard speed/force clamp</text>
+      <text x="270" y="144" font-size="11" fill="#4A433A">IEC 61508 dead-man cut</text>
+
+      <line x1="454" y1="130" x2="480" y2="130" stroke="#0B3F30" stroke-width="2"/>
+      <polygon points="480,125 490,130 480,135" fill="#0B3F30"/>
+
+      <rect x="492" y="28" width="198" height="204" rx="6" fill="#FFFDF9" stroke="#0B3F30" stroke-width="1.5"/>
+      <text x="506" y="54" font-size="11" font-weight="700" fill="#0B3F30">03 · BLACK-BOX LOGS</text>
+      <text x="506" y="82" font-size="12.5" font-weight="700" fill="#26211C">Signed Safety Proofs</text>
+      <text x="506" y="104" font-size="11" fill="#4A433A">Sim-to-real hazard suites</text>
+      <text x="506" y="124" font-size="11" fill="#4A433A">Tamper-proof flight log</text>
+      <text x="506" y="144" font-size="11" fill="#4A433A">No remote fleet key</text>
+
+      <line x1="690" y1="130" x2="716" y2="130" stroke="#0B3F30" stroke-width="2"/>
+      <polygon points="716,125 726,130 716,135" fill="#0B3F30"/>
+
+      <rect x="728" y="28" width="172" height="204" rx="6" fill="#F4EBDD" stroke="#0B3F30" stroke-width="1.5"/>
+      <text x="742" y="54" font-size="11" font-weight="700" fill="#0B3F30">04 · SHARED GAINS</text>
+      <text x="742" y="82" font-size="12.5" font-weight="700" fill="#26211C">Worker Co-Ownership</text>
+      <text x="742" y="104" font-size="11" fill="#4A433A">Meidner fleet shares</text>
+      <text x="742" y="124" font-size="11" fill="#4A433A">Right-to-repair tools</text>
+      <text x="742" y="144" font-size="11" fill="#4A433A">Mutual credit goods</text>
+    </svg>
+    <svg class="diagram-mobile" viewBox="0 0 300 536" role="img" aria-labelledby="ex-lp-physical-intelligence-m-title ex-lp-physical-intelligence-m-desc">
+      <title id="ex-lp-physical-intelligence-m-title">Mobile four-stage Physical Intelligence robotics safety airlock diagram</title>
+      <desc id="ex-lp-physical-intelligence-m-desc">Vertical mobile stack from multi-sensor analog cross-checks and optical vault diodes into a motor torque and dead-man relay airlock, black-box safety logs, and worker-shared gains.</desc>
+      <rect x="0" y="0" width="300" height="536" fill="#FAF3EA"/>
+      <rect x="10" y="10" width="280" height="114" rx="4" fill="#FFFDF9" stroke="#0B3F30" stroke-width="2"/>
+      <text x="24" y="34" fill="#0B3F30" font-family="monospace" font-size="11" font-weight="700">01 · SENSOR &amp; VAULT</text>
+      <text x="24" y="56" fill="#131014" font-family="sans-serif" font-size="12.5" font-weight="700">Analog Cross-Check</text>
+      <text x="24" y="76" fill="#4A433A" font-family="sans-serif" font-size="11">Camera + radar + torque</text>
+      <text x="24" y="94" fill="#4A433A" font-family="sans-serif" font-size="11">Optical diode to vault</text>
+      <text x="24" y="112" fill="#0B3F30" font-family="sans-serif" font-size="11">Zero cloud home video</text>
+
+      <line x1="150" y1="124" x2="150" y2="134" stroke="#0B3F30" stroke-width="2"/>
+      <polygon points="145,134 150,141 155,134" fill="#0B3F30"/>
+
+      <rect x="10" y="142" width="280" height="114" rx="4" fill="#F4EBDD" stroke="#963E1D" stroke-width="1.8"/>
+      <text x="24" y="166" fill="#963E1D" font-family="monospace" font-size="11" font-weight="700">02 · MOTOR AIRLOCK</text>
+      <text x="24" y="188" fill="#131014" font-family="sans-serif" font-size="12.5" font-weight="700">Torque &amp; Relay Gate</text>
+      <text x="24" y="208" fill="#4A433A" font-family="sans-serif" font-size="11">pi-zero plans actions</text>
+      <text x="24" y="226" fill="#4A433A" font-family="sans-serif" font-size="11">Hard speed/force clamp</text>
+      <text x="24" y="244" fill="#963E1D" font-family="sans-serif" font-size="11">IEC 61508 dead-man cut</text>
+
+      <line x1="150" y1="256" x2="150" y2="266" stroke="#963E1D" stroke-width="2"/>
+      <polygon points="145,266 150,273 155,266" fill="#963E1D"/>
+
+      <rect x="10" y="274" width="280" height="114" rx="4" fill="#FFFDF9" stroke="#0B3F30" stroke-width="1.8"/>
+      <text x="24" y="298" fill="#0B3F30" font-family="monospace" font-size="11" font-weight="700">03 · BLACK-BOX LOGS</text>
+      <text x="24" y="320" fill="#131014" font-family="sans-serif" font-size="12.5" font-weight="700">Signed Safety Proofs</text>
+      <text x="24" y="340" fill="#4A433A" font-family="sans-serif" font-size="11">Sim-to-real hazard suites</text>
+      <text x="24" y="358" fill="#4A433A" font-family="sans-serif" font-size="11">Tamper-proof flight log</text>
+      <text x="24" y="376" fill="#4A433A" font-family="sans-serif" font-size="11">No remote fleet key</text>
+
+      <line x1="150" y1="388" x2="150" y2="398" stroke="#0B3F30" stroke-width="2"/>
+      <polygon points="145,398 150,405 155,398" fill="#0B3F30"/>
+
+      <rect x="10" y="406" width="280" height="114" rx="4" fill="#F4EBDD" stroke="#0B3F30" stroke-width="1.5"/>
+      <text x="24" y="430" fill="#0B3F30" font-family="monospace" font-size="11" font-weight="700">04 · SHARED GAINS</text>
+      <text x="24" y="452" fill="#131014" font-family="sans-serif" font-size="12.5" font-weight="700">Worker Co-Ownership</text>
+      <text x="24" y="472" fill="#4A433A" font-family="sans-serif" font-size="11">Meidner fleet shares</text>
+      <text x="24" y="490" fill="#4A433A" font-family="sans-serif" font-size="11">Right-to-repair tools</text>
+      <text x="24" y="508" fill="#0B3F30" font-family="sans-serif" font-size="11">Mutual credit goods</text>
+    </svg>
+    <figcaption>CIN separates high-level robot task planning from hardware force limits, local home video vaults, and worker-shared fleet ownership.</figcaption>
+  </figure>
+
+  <section class="lp-sec" id="sec-1">
+    <p class="lp-sec-kicker lp-sec-kicker--warn">Section 01 · Architecture and Alignment Bottlenecks</p>
+    <h2>Software rollbacks cannot undo physical force in homes and shops</h2>
+    <div class="prose wrap-narrow">
+      <p>Physical Intelligence couples vision-language models with continuous flow-matching motor control so a single policy can drive many robot arms at 50 cycles per second. Unlike a text chatbot, an errant joint trajectory crushes fingers, spills scalding liquid, or drops an eldercare patient before any software patch can intervene.</p>
+      <p>Printed stickers or laser glare can trick intact cameras across the analog hole before pixels ever receive a digital signature. Cloud teleoperation streams also risk exposing bedrooms and shop floors. Meanwhile, workers beside fast arms become moral crumple zones blamed when neural policies fail.<sup><a href="#fn1">1</a></sup></p>
+
+      <div class="lp-options-grid">
+        <div class="lp-option lp-option--warn">
+          <h3>Irreversible kinetic trauma</h3>
+          <p>Continuous neural motor policies lack mathematical force bounds, turning sudden lighting shifts or unfamiliar objects into irreversible physical collisions.</p>
+        </div>
+        <div class="lp-option lp-option--warn">
+          <h3>Analog-hole sensor spoofing</h3>
+          <p>Adversarial stickers, infrared glare, or acoustic vibration deceive physical cameras and motion chips before digital signatures are ever applied.</p>
+        </div>
+        <div class="lp-option lp-option--warn">
+          <h3>Intimate teleoperation capture</h3>
+          <p>Streaming failure-recovery video from millions of kitchens, hospital rooms, and factories encloses private family and workplace life on lab servers.</p>
+        </div>
+        <div class="lp-option lp-option--warn">
+          <h3>Workers as moral crumple zones</h3>
+          <p>Human reactions take over 250 milliseconds, yet caregivers and warehouse crews absorb legal blame when 50 Hz motor policies misstep.</p>
+        </div>
+      </div>
+
+      <aside class="for-researchers"><details><summary>For researchers: formal protocol and verification details</summary><div>
+        <p>In <code>pi0</code>, conditional flow matching integrates learned vector fields <code>v_theta(A_t^tau, o_t, tau)</code> directly into continuous joint-space chunks without formal forward-invariance proofs. Under CIN's transduction realism principle (<em>Signed Is Not True</em>), post-conversion signatures cannot block optical or ultrasonic injection across the analog hole. Elish (2019) further shows how human-in-the-loop framing shifts liability onto operators lacking reaction-time leverage.</p>
+      </div></details></aside>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="sec-2">
+    <p class="lp-sec-kicker">Section 02 · CIN Technical Integration</p>
+    <h2>Hardware airlocks, optical video diodes, and passive dead-man relays</h2>
+    <div class="prose wrap-narrow">
+      <p>CIN wraps generalist robot policies inside hardware airlocks. Cameras, millimeter-wave radar, and joint torque gauges run on a synchronized hardware clock and check each other continuously, halting motion whenever optical pixels disagree with physical radar reflections.</p>
+      <p>Home and clinic video flows across one-way optical data diodes strictly into the owner's local encrypted vault under local-first custody.<sup><a href="#fn2">2</a></sup> Meanwhile, pi-zero plans tasks while an isolated microcontroller enforces hard torque limits wired to an IEC 61508 passive dead-man relay and expiring local capability leases.<sup><a href="#fn3">3</a></sup></p>
+
+      <div class="lp-options-grid">
+        <div class="lp-option">
+          <h3>Multi-sensor analog cross-checks</h3>
+          <p>Hardware-attested cameras, radar, and torque sensors compare physical distance and resistance, clamping speed to zero when a sticker or glare spoofs vision.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Optical diodes to local vaults</h3>
+          <p>One-way optical links lock household and eldercare camera feeds inside the resident's private home vault so raw video never reaches cloud servers.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Isolated kinematic safety kernel</h3>
+          <p>A separate real-time chip filters neural motor proposals through strict speed, boundary, and contact-pressure envelopes before energizing joints.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Passive IEC 61508 dead-man relay</h3>
+          <p>Actuator power stays open solely while a proximate human vault renews a short local lease, dropping mechanically to a safe brake state if contact fails.</p>
+        </div>
+      </div>
+
+      <aside class="for-researchers"><details><summary>For researchers: formal protocol and verification details</summary><div>
+        <p>Within CIN's five-primitive functional deliverable, <code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, and <code>IETF RATS</code> RFC 9334 silicon roots bind RGB-D, radar, and strain-gauge Sensorium channels to monotonic hardware <code>Device Time</code> with self-assessed observation confidence. Actuator buses stay isolated behind optical data diodes and <code>IEC 61508</code> dead-man relays. Raw video stays inside a local-first append-only <code>C2PA</code>/Merkle episodic memory vault (Endel Tulving; Tulving, 1972; Kleppmann et al., 2019) under transduction realism (<em>Signed Is Not True</em> across the analog hole; Fu &amp; Xu, 2018), governed by a monogamous <code>1:1</code> personal cognitive model and cybernetic exocortex (Joscha Bach; Bach; Andy Clark &amp; David Chalmers; Clark &amp; Chalmers, 1998) acting as a statutory information fiduciary (Jack Balkin; Balkin, 2016) protecting unassisted competence across an active-inference Markov blanket (Karl Friston; Friston, 2013).</p>
+        <p>A 1 kHz Control Barrier Function microcontroller separates the Private Autobiographical Ledger from the Public Attestation &amp; Escrow Ledger (Public Attestation and Escrow Ledger) with selective <code>ZK</code> proofs and <code>CaMeL</code> taint isolation. Motor execution requires <code>ACLE-MCP</code> <code>Object-Capability</code> and expiring capability lease bounds (Dennis &amp; Van Horn, 1966; Ding et al., 2026), <code>IETF SCITT</code> (<code>RFC 9943</code>) receipts, and independent-class <code>k &gt;= 3f + 1</code> Byzantine corroboration. Inspect interactive walkthroughs in <a href="/labs/protocol-inspector/">Protocol Inspector</a>, <a href="/labs/sensor-boundary/">Sensor Boundary</a>, and <a href="/labs/shared-horizon/">Shared Horizon</a>.</p>
+      </div></details></aside>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="sec-3">
+    <p class="lp-sec-kicker">Section 03 · Inter-Lab Coordination Options</p>
+    <h2>Shared physical-hazard benchmarks and black-box incident ledgers</h2>
+    <div class="prose wrap-narrow">
+      <p>Physical Intelligence, World Labs, Google DeepMind Robotics, and NVIDIA Isaac share a clear interest in embodied safety. One severe domestic accident would halt public trust across all generalist robotics.</p>
+      <p>CIN proposes open sim-to-real perturbation benchmarks alongside cryptographic black-box flight recorders modeled on real-world incident cataloging.<sup><a href="#fn4">4</a></sup> Signed pre-collision joint and sensor logs prove exact mechanical or policy root causes across fleets without leaking proprietary teleoperation datasets.</p>
+
+      <div class="lp-options-grid">
+        <div class="lp-option">
+          <h3>Adversarial physical testbeds</h3>
+          <p>Labs co-maintain open sim-to-real suites testing visual prompt patches, glare, slippery grasps, and sudden child or pet entry before firmware release.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Signed kinematic black boxes</h3>
+          <p>Rolling 30-second hardware ring buffers record joint torque, sensor health, and policy hashes whenever a safety clamp or dead-man relay trips.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Privacy-preserving root-cause proofs</h3>
+          <p>Zero-knowledge incident receipts let safety boards verify whether a fault came from policy drift or worn gears while redacting bystander video.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Openpi safety wrapper standards</h3>
+          <p>Reference hardware relay schematics and torque-envelope APIs ship directly inside openpi repositories so academic and startup builders inherit safe defaults.</p>
+        </div>
+      </div>
+
+      <aside class="for-researchers"><details><summary>For researchers: formal protocol and verification details</summary><div>
+        <p>Extending the AI Incident Database methodology (McGregor, 2021) to embodied fleets, hardware-signed ring buffers record Device Time trajectories <code>(q_t, dq_t, tau_t)</code> and CBF slack variables. Upon any safety-envelope breach, the robot commits checkpoint Merkle digests onto IETF SCITT transparency logs for rapid cross-fleet advisories without exposing domestic video.</p>
+      </div></details></aside>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="sec-4">
+    <p class="lp-sec-kicker">Section 04 · Government and Sovereign Engagement Options</p>
+    <h2>Ending worker blame and banning remote fleet override keys</h2>
+    <div class="prose wrap-narrow">
+      <p>Twentieth-century factory safety codes assumed heavy robots stayed bolted inside steel cages away from people. Generalist mobile manipulators working in kitchens, nursing homes, and dynamic warehouses need modern rules built on verifiable hardware boundaries.</p>
+      <p>Signed flight-recorder logs end the moral crumple zone by proving when a fault crossed the vendor's attested policy boundary, protecting nearby workers from unfair blame. At the national security level, hardware governance rules<sup><a href="#fn5">5</a></sup> must ban cloud-commanded fleet override keys so no hacked lab server or state seizure can hijack domestic robots en masse.</p>
+
+      <div class="lp-options-grid">
+        <div class="lp-option">
+          <h3>ISO and OSHA flight-log rules</h3>
+          <p>Workplace and home safety regulators use signed torque-envelope logs to assign strict vendor liability while protecting proximate caregivers or pickers from unfair blame.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Ban on remote kinetic overrides</h3>
+          <p>Hardware certification forbids any cloud network key from energizing motors or bypassing local dead-man relays without physical human confirmation.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Audited local firmware updates</h3>
+          <p>Over-the-air motor policy updates require multi-party safety signatures and explicit local owner approval before installation on domestic hardware.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Bystander sanctuary enforcement</h3>
+          <p>Public procurement mandates optical vault isolation in hospitals, schools, and eldercare facilities so assistive robots never double as surveillance cameras.</p>
+        </div>
+      </div>
+
+      <aside class="for-researchers"><details><summary>For researchers: formal protocol and verification details</summary><div>
+        <p>Applying hardware-anchored governance (Sastry et al., 2024) and STAMP control-loop accountability, statutory certification requires DMTF SPDM proof that zero remote network keys can close the IEC 61508 actuator contactor. Tamper-evident SCITT flight logs separate nominal <code>pi0</code> proposals from CBF clamp states, legally immunizing frontline workers from Elish (2019) moral-crumple-zone liability.</p>
+      </div></details></aside>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="sec-5">
+    <p class="lp-sec-kicker">Section 05 · Safe ASI Adoption and Macroeconomic Stability</p>
+    <h2>Cooperative robot fleets, local repair tools, and mutual credit</h2>
+    <div class="prose wrap-narrow">
+      <p>Dexterous generalist robots directly automate physical work in warehouses, farms, kitchens, and eldercare. Without new ownership rules and new human-centered tasks, rapid physical automation depresses wages and concentrates wealth in fleet monopolies.<sup><a href="#fn6">6</a></sup></p>
+      <p>CIN pairs embodied robotics with worker and community co-ownership shares and local right-to-repair software on Universal Basic Compute. Capacity-backed mutual credit networks<sup><a href="#fn7">7</a></sup> then turn physical abundance into direct household security.</p>
+
+      <div class="lp-options-grid">
+        <div class="lp-option">
+          <h3>Cooperative fleet co-ownership</h3>
+          <p>Automated warehouses, farm harvesters, and eldercare fleets issue Rudolf Meidner equity shares into worker and municipal trusts to share real output gains.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Human-reinstating care and craft</h3>
+          <p>Ledger task routing reserves high-empathy eldercare, mentorship, and skilled craft decisions for humans while delegating heavy lifting to robots.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Right-to-repair local toolchains</h3>
+          <p>Cooperatives use Universal Basic Compute and openpi interfaces to calibrate fixtures, inspect sensors, and maintain robots without vendor lock-in.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Mutual credit for baseline goods</h3>
+          <p>Community farms, repair shops, and assistive cooperatives clear food, parts, and care hours through interest-free mutual credit on CIN's ledger.</p>
+        </div>
+      </div>
+
+      <aside class="for-researchers"><details><summary>For researchers: formal protocol and verification details</summary><div>
+        <p>Addressing the displacement-versus-reinstatement dynamics of Acemoglu and Restrepo (2019), CIN couples embodied capital deployment on the Wide Network Ledger with Universal Basic Services, Jacob Meluso invisible-labor upkeep estimation (Meluso et al., 2024), statutory Rudolf Meidner worker-community equity trusts (Meidner, 1978), and polycentric commons rules (Elinor Ostrom; Ostrom, 1990; Ostrom, 2010). Conservation-checked counter-cyclical reciprocal mutual credit clearing (James Stodder; Stodder, 2009; Iosifidis et al., 2018) settles baseline physical output under <code>k</code>-truss anti-cartel checks.</p>
+      </div></details></aside>
+    </div>
+  </section>
+
+  <div class="prose wrap-narrow">
+    <section class="footnotes">
+      <ol>
+        <li id="fn1">Madeleine Clare Elish, "Moral Crumple Zones: Cautionary Tales in Human-Robot Interaction" (2019), <a href="https://doi.org/10.17351/ests2019.260">doi.org/10.17351/ests2019.260</a>.</li>
+        <li id="fn2">Martin Kleppmann, Adam Wiggins, Peter van Hardenberg, and Mark McGranaghan, "Local-first software: you own your data, in spite of the cloud" (2019), <a href="https://doi.org/10.1145/3359591.3359737">doi.org/10.1145/3359591.3359737</a>.</li>
+        <li id="fn3">Zhiyang Ding, Yang Luo, Guangpu Chen, Qingni Shen, and Zhonghai Wu, "ACLE-MCP: Attested Capability Leases for Execution-Time Trust in Remote LLM Tool Use" (2026), <a href="https://arxiv.org/abs/2609.02690">arxiv.org/abs/2609.02690</a>.</li>
+        <li id="fn4">Sean McGregor, "Preventing Repeated Real World AI Failures by Cataloging Incidents: The AI Incident Database" (2021), <a href="https://doi.org/10.1609/aaai.v35i17.17817">doi.org/10.1609/aaai.v35i17.17817</a>.</li>
+        <li id="fn5">Girish Sastry et al., "Computing Power and the Governance of Artificial Intelligence" (2024), <a href="https://arxiv.org/abs/2402.08797">arxiv.org/abs/2402.08797</a>.</li>
+        <li id="fn6">Daron Acemoglu and Pascual Restrepo, "Automation and New Tasks: How Technology Displaces and Reinstates Labor" (2019), <a href="https://doi.org/10.1257/jep.33.2.3">doi.org/10.1257/jep.33.2.3</a>.</li>
+        <li id="fn7">George Iosifidis et al., "Cyclic motifs in the Sardex monetary network" (2018), <a href="https://doi.org/10.1038/s41562-018-0450-0">doi.org/10.1038/s41562-018-0450-0</a>.</li>
+      </ol>
+    </section>
+  </div>
+</section>

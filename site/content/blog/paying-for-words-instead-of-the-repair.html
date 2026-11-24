@@ -1,0 +1,201 @@
+---
+title: Paying for words instead of the repair
+description: Why measuring AI by tokens generated rewards endless chatter and silent failures, and how shifting to verifiable outcomes restores common sense.
+reader: Technology leaders, engineering managers, and public procurement teams buying AI assistants.
+takeaway: Paying for token volume creates an incentive to talk in circles; real accountability means paying for verified work that passes deterministic checks.
+template: article
+date: 2026-11-08
+order: 56
+category: Seeing
+minutes: 6
+image: post-paying-for-words-instead-of-the-repair.jpg
+image_alt: A warm watercolor illustration of a watchmaker's wooden workbench with brass gears, loupe, and clock hands fading into cream paper.
+lede: Most AI is sold by the token, so buyers pay for text generated whether or not the job gets done. We propose paying AI agents for finished work that passes independent checks, with staged milestones so genuine partial progress still counts.
+---
+
+<p>A plumber who billed by the wrench turn while the drain stayed blocked would not get paid. Buyers of AI agents accept that deal routinely: every wandering response and failed retry is billed.</p>
+
+<p>Yet across the software industry, organisations buying artificial intelligence accept the exact opposite deal every single day. Vendors bill by the chunk of generated text, known in the trade as a token. Every wandering response, circular planning step, and hallucinated function call runs up the bill.<sup><a href="#fn1">1</a></sup></p>
+
+<p>When you measure work by words spoken rather than jobs finished, you get more words. Anthropologist Marilyn Strathern famously summarized Goodhart's Law: when a measure becomes a target, it ceases to be a good measure.<sup><a href="#fn2">2</a></sup> With AI agents, paying by the token turns every hesitation into revenue for the vendor and confusion for the buyer.</p>
+
+<figure class="explainer" id="ex-verifiable-work">
+  <style>
+    #ex-verifiable-work {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-verifiable-work svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-verifiable-work .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-verifiable-work .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-verifiable-work .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-verifiable-work .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-verifiable-work .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-verifiable-work .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-verifiable-work .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-verifiable-work .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-verifiable-work .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-verifiable-work figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-verifiable-work .ex-canvas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #ex-verifiable-work .ex-canvas svg {
+        min-width: 540px;
+      }
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg viewBox="0 0 700 320" role="group" aria-labelledby="ex-work-title ex-work-desc">
+      <title id="ex-work-title">Comparing token billing with outcome-verified contracts</title>
+      <desc id="ex-work-desc">Diagram showing how token-based billing rewards wandering loops and failed steps, whereas verifiable execution only credits work that passes deterministic checks.</desc>
+      <line x1="350" y1="14" x2="350" y2="308" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="14" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="27" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">PAYING FOR WORDS (TOKENS)</text>
+        <text x="14" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Incentive: generate volume (illustrative)</text>
+        <line x1="14" y1="50" x2="338" y2="50" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <line x1="22" y1="64" x2="22" y2="214" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+        <rect x="19" y="62" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Verbose Planning</text>
+        <text x="34" y="85" font-size="11" fill="var(--ex-muted)">+1,200 t unverified prose</text>
+        <line x1="34" y1="125" x2="338" y2="125" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="135" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="142" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Circular Retries</text>
+        <text x="34" y="158" font-size="11" fill="var(--ex-muted)">+4,800 t tool loop churn</text>
+        <line x1="34" y1="198" x2="338" y2="198" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="208" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="215" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Unchecked Summary</text>
+        <text x="34" y="231" font-size="11" fill="var(--ex-muted)">+1,500 t polished excuse</text>
+        <line x1="14" y1="283" x2="338" y2="283" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="14" y="291" width="5" height="5" fill="var(--ex-warn)"/>
+        <text x="25" y="296" font-size="11" font-weight="700" fill="var(--ex-warn)">Bill: 7,500 tokens (Repair unfinished)</text>
+      </g>
+      <g>
+        <rect x="364" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="377" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">PAYING FOR OUTCOMES</text>
+        <text x="364" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Incentive: solve cleanly &amp; pass checks</text>
+        <line x1="364" y1="50" x2="686" y2="50" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <line x1="372" y1="64" x2="372" y2="214" stroke="var(--ex-signal)" stroke-width="1"/>
+        <rect x="369" y="62" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="384" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Minimal Diff Plan</text>
+        <text x="384" y="85" font-size="11" fill="var(--ex-muted)">Queued against exact spec</text>
+        <line x1="384" y1="125" x2="686" y2="125" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="369" y="135" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="384" y="142" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Deterministic Tests</text>
+        <text x="384" y="158" font-size="11" fill="var(--ex-muted)">Verified in clean sandbox</text>
+        <line x1="384" y1="198" x2="686" y2="198" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="369" y="208" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="384" y="215" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Signed Receipt</text>
+        <text x="384" y="231" font-size="11" fill="var(--ex-muted)">Cryptographic proof sealed</text>
+        <line x1="364" y1="283" x2="686" y2="283" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="364" y="291" width="5" height="5" fill="var(--ex-signal)"/>
+        <text x="375" y="296" font-size="11" font-weight="700" fill="var(--ex-signal)">Outcome delivered (Verified pass)</text>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Metered word billing</span>
+      <div class="ex-spec-body">Rewards verbose planning loops and repeated retries even when the underlying repair remains broken.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Outcome-verified settlement</span>
+      <div class="ex-spec-body">Settles tasks against deterministic test suites and signed execution receipts rather than raw word volume.</div>
+    </div>
+  </div>
+  <figcaption>Token billing rewards wandering loops and failed steps, while outcome verification rewards finishing the task cleanly. Token counts shown are illustrative examples, not benchmark data.</figcaption>
+</figure>
+
+<p>When an assistant writes a software patch or files a report, the number of tokens it burned tells you nothing about quality. A model that loops four times and generates ten thousand words of boilerplate is far less valuable than one that edits three lines and passes the existing test suite.<sup><a href="#fn3">3</a></sup></p>
+
+<p>Researchers evaluating long tasks have documented this challenge clearly. In complex terminal benchmarks across real-world tools, agents frequently burn large token budgets looping across failed retries without finishing the job.<sup><a href="#fn4">4</a></sup> Generating words is easy. Reaching resolution is hard.</p>
+
+<p>Paying strictly for passed checks also has real limits. In long-horizon benchmarks, all-or-nothing binary checks scored an average of only 0.221 on reconstruction tasks, while dense progress ladders that credited incremental milestones averaged 0.653.<sup><a href="#fn4">4</a></sup> Pure outcome checks discard genuine partial work. Real-world contracts need staged milestones, rewarding steady progress rather than demanding a single leap.</p>
+
+<p>This is why accountability requires separating the conversation from the proof. When an agent acts on your behalf, you need an independent check that runs outside its own context window.<sup><a href="#fn5">5</a></sup> Did the code compile? Did the database migration balance? Did the external message match the allowed policy?</p>
+
+<p>If the answer is no, the run did not succeed, no matter how eloquent the explanation sounds. A system designed around finished work only records an outcome when an independent verification check passes. We think this simple shift changes how teams build and buy software.</p>
+
+<p>Verifiers themselves are not immune to failure. In benchmark evaluations of executable verifiers across nineteen language models, balanced accuracy ranged from 10.6 to 62.1 percent, frequently rejecting valid solutions or passing broken ones.<sup><a href="#fn5">5</a></sup> Independent checks must themselves be thoroughly tested and deterministic. Demanding signed receipts gives human teams a clearer view of what ran, but human judgment remains necessary.</p>
+
+<p>You can explore tested execution checks and dense verification cards in our <a href="/labs/shared-horizon/">Shared Horizon library</a>.</p>
+
+<p class="muted"><strong>Related essays:</strong> <a href="/blog/when-the-middleman-pads-the-meter/">When the middleman pads the meter</a> · <a href="/blog/why-an-ai-agent-will-not-audit-itself/">Why an AI agent will not audit itself</a> · <a href="/blog/transparency-you-can-actually-use/">Transparency you can actually use</a> · <a href="/blog/who-gets-credit-for-upkeep/">Who gets credit for upkeep?</a>. Further reading: <a href="/blog/why-watermarking-breaks-the-words/">Why watermarking breaks the words</a> · <a href="/blog/who-is-actually-acting/">Who is actually acting?</a>.</p>
+
+<aside class="for-researchers"><details><summary>For researchers</summary><div><p>In technical terms, moving beyond token-denominated pricing reflects the shift from unconstrained generative inference to verified task completion. Benchmarks such as SWE-bench (Jimenez et al., 2024), Long-Horizon-Terminal-Bench 2.0 (Li et al., 2026), and METR long-task evaluations (2025) demonstrate how agents frequently exhaust substantial token budgets on unproductive retry loops in long-horizon environments. In LHTB 2.0 evaluations, binary verifiers averaged 0.221 on environment reconstruction while dense progress ladders averaged 0.653, demonstrating that binary pass/fail gates throw away legitimate intermediate milestones. When evaluation shifts to outcome verification, systems require independent executable verifiers (VerifierBench; arXiv:2610.28679) and deterministic test harness oracles rather than model self-attestation. However, VerifierBench evaluations show that generated verifiers exhibit balanced accuracy between 10.6% and 62.1% across 19 frontier and open models, establishing that verifiers themselves require empirical validation. In decentralized agent networks, coupling deterministic verification oracles with tamper-evident capability logs enforces non-compensatory safety boundaries, so failed execution trajectories cannot claim legitimate completion.</p></div></details></aside>
+
+<section class="footnotes">
+  <p id="fn1">1. MIT Technology Review, &ldquo;Stop counting tokens, start counting what ships,&rdquo; November 2, 2026, <a href="https://www.technologyreview.com/2026/11/02/1147702/stop-counting-tokens-start-counting-what-ships/">technologyreview.com/2026/11/02/1147702/stop-counting-tokens-start-counting-what-ships</a>.</p>
+  <p id="fn2">2. Marilyn Strathern, &ldquo;Improving ratings: audit in the British University system,&rdquo; <em>European Review</em> 5, no. 3 (1997): 305&ndash;321; see also C. A. E. Goodhart, &ldquo;Problems of Monetary Management: The U.K. Experience,&rdquo; in <em>Monetary Theory and Practice</em> (London: Macmillan, 1984), 91&ndash;99, <a href="https://doi.org/10.1007/978-1-349-17295-5_4">doi:10.1007/978-1-349-17295-5_4</a>.</p>
+  <p id="fn3">3. Carlos E. Jimenez et al., &ldquo;SWE-bench: Can Language Models Resolve Real-World GitHub Issues?&rdquo; <em>ICLR 2024</em>, <a href="https://doi.org/10.48550/arXiv.2310.06770">doi:10.48550/arXiv.2310.06770</a>.</p>
+  <p id="fn4">4. METR, <em>Measuring AI Ability to Complete Long Tasks</em> (March 19, 2025), <a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/">metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks</a>; and Zongxia Li et al., &ldquo;Long-Horizon-Terminal-Bench 2.0: Automating Diverse Task Construction and Measuring Sustained Agent Progress,&rdquo; arXiv:2610.14146 (2026), <a href="https://arxiv.org/abs/2610.14146">arxiv.org/abs/2610.14146</a>.</p>
+  <p id="fn5">5. &ldquo;VerifierBench: Benchmarking the Generation of Executable Verifiers for LLM Agents,&rdquo; arXiv:2610.28679 (2026), <a href="https://arxiv.org/abs/2610.28679">arxiv.org/abs/2610.28679</a>; and Stephen Casper et al., &ldquo;The 2026 Singapore Consensus on Global AI Safety Research Priorities,&rdquo; arXiv:2608.14611 (2026), <a href="https://arxiv.org/abs/2608.14611">arxiv.org/abs/2608.14611</a>.</p>
+</section>

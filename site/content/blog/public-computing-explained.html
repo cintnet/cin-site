@@ -1,0 +1,242 @@
+---
+title: Public computing, explained
+description: What people mean when they talk about treating AI computing power like a public library or a road network, where it is already being built, and what determines whether it serves the public.
+reader: Legislators, policy staffers, public servants and citizens who keep hearing the phrase "public compute" and want a plain-English explanation.
+takeaway: Public computing gives universities, hospitals, cities and independent safety researchers shared AI hardware of their own, so public-interest science and oversight do not depend on the goodwill of the companies they study or regulate.
+template: article
+date: 2026-11-06
+order: 14
+category: Owning
+minutes: 9
+image: post-public-computing-explained.jpg
+image_alt: A sunlit classical public library reading room with high arched windows and wooden tables where scholars, a nurse and a town planner share open atlases and brass instruments connected by delicate geometric lines.
+lede: Universities, hospitals, cities and independent safety researchers should have shared AI computing of their own, so public-interest science and oversight don't depend on the goodwill of the companies they study or regulate. That is what public computing means.
+---
+<p>"Public compute" now turns up in budget briefings, usually wrapped in talk of chips, substations and sovereign clusters. The underlying question is a familiar one: should the public own some of the infrastructure that science, healthcare and government oversight depend on? Public water systems, libraries and weather services didn't stop private businesses from thriving. They made a lot of independent work possible.</p>
+
+<h2>What "compute" actually means</h2>
+
+<p>Modern artificial intelligence rests on three ingredients: data, skilled people, and large rooms filled with specialized computer chips. When engineers and policy staffers say "compute," they mean those rooms of high-speed chips, along with the electrical transformers and cooling towers that keep them running.</p>
+
+<p>Without those machines, data is just a silent archive and an algorithm is just a recipe on a chalkboard. Computing power is needed twice: first in massive bursts to train a new model, and then every single day to run it when a doctor, farmer, researcher or citizen asks a question.</p>
+
+<p>Building and operating these facilities has become extraordinarily expensive. Independent tracking by researchers at Epoch AI shows that the computing power and hardware budgets required to train frontier AI models have climbed steeply year after year.<sup><a href="#fn1">1</a></sup></p>
+
+<p>Because the entry ticket is so steep, most of the world's high-end AI chips sit inside a handful of giant technology companies. Almost everyone else (from local startups to medical schools, weather agencies and government regulators) rents time on their servers by the hour.</p>
+
+<figure class="explainer" id="ex-public-computing-layers">
+  <style>
+    #ex-public-computing-layers {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-public-computing-layers svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-public-computing-layers .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-public-computing-layers .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-public-computing-layers .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-public-computing-layers .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-public-computing-layers .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-public-computing-layers .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-public-computing-layers .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-public-computing-layers .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-public-computing-layers .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-public-computing-layers figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-public-computing-layers .ex-canvas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #ex-public-computing-layers .ex-canvas svg {
+        min-width: 540px;
+      }
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg viewBox="0 0 680 356" role="group" aria-labelledby="ex-public-computing-layers-title ex-public-computing-layers-desc">
+      <title id="ex-public-computing-layers-title">Comparing Civic Public Infrastructure to Public AI Compute Tiers</title>
+      <desc id="ex-public-computing-layers-desc">A three-tier comparison showing how familiar civic infrastructure—National Weather Radar and Highways, Municipal Water Plants, and Public Libraries—maps directly onto National Research Supercomputers, Regional Hospital and University Enclaves, and Local Civic Audit and Classroom Access.</desc>
+      <text class="ex-mono" x="16" y="20" font-size="11" font-weight="700" fill="var(--ex-muted)">FAMILIAR CIVIC INFRASTRUCTURE</text>
+      <text class="ex-mono" x="372" y="20" font-size="11" font-weight="700" fill="var(--ex-signal)">PUBLIC AI COMPUTING TIERS</text>
+      <line x1="16" y1="30" x2="664" y2="30" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <rect x="16" y="58" width="6" height="6" fill="var(--ex-amber)"/>
+      <text class="ex-mono" x="28" y="64" font-size="11" font-weight="700" fill="var(--ex-ink)">TIER 1 · NATIONAL COMMONS</text>
+      <text x="28" y="82" font-size="11.5" fill="var(--ex-muted)">Weather radar &amp; highways</text>
+      <line x1="278" y1="68" x2="360" y2="68" stroke="var(--ex-signal)" stroke-width="1" stroke-dasharray="3 3"/>
+      <polygon points="364,68 357,64 357,72" fill="var(--ex-signal)"/>
+      <rect x="372" y="58" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="384" y="64" font-size="11" font-weight="700" fill="var(--ex-signal)">TIER 1 · SHARED CLUSTERS</text>
+      <text x="384" y="82" font-size="11.5" fill="var(--ex-ink)">Open research supercomputers</text>
+      <line x1="16" y1="114" x2="664" y2="114" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="16" y="154" width="6" height="6" fill="var(--ex-amber)"/>
+      <text class="ex-mono" x="28" y="160" font-size="11" font-weight="700" fill="var(--ex-ink)">TIER 2 · MUNICIPAL UTILITY</text>
+      <text x="28" y="178" font-size="11.5" fill="var(--ex-muted)">Water labs &amp; public health</text>
+      <line x1="278" y1="164" x2="360" y2="164" stroke="var(--ex-signal)" stroke-width="1" stroke-dasharray="3 3"/>
+      <polygon points="364,164 357,160 357,168" fill="var(--ex-signal)"/>
+      <rect x="372" y="154" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="384" y="160" font-size="11" font-weight="700" fill="var(--ex-signal)">TIER 2 · REGIONAL ENCLAVES</text>
+      <text x="384" y="178" font-size="11.5" fill="var(--ex-ink)">Teaching hospitals &amp; campuses</text>
+      <line x1="16" y1="210" x2="664" y2="210" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="16" y="250" width="6" height="6" fill="var(--ex-amber)"/>
+      <text class="ex-mono" x="28" y="256" font-size="11" font-weight="700" fill="var(--ex-ink)">TIER 3 · COMMUNITY ACCESS</text>
+      <text x="28" y="274" font-size="11.5" fill="var(--ex-muted)">Carnegie public libraries</text>
+      <line x1="278" y1="260" x2="360" y2="260" stroke="var(--ex-signal)" stroke-width="1" stroke-dasharray="3 3"/>
+      <polygon points="364,260 357,256 357,264" fill="var(--ex-signal)"/>
+      <rect x="372" y="250" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="384" y="256" font-size="11" font-weight="700" fill="var(--ex-signal)">TIER 3 · CIVIC WORKBENCHES</text>
+      <text x="384" y="274" font-size="11.5" fill="var(--ex-ink)">Municipal auditors &amp; co-ops</text>
+      <line x1="16" y1="322" x2="664" y2="322" stroke="var(--ex-rule)" stroke-width="1"/>
+      <text class="ex-mono" x="16" y="340" font-size="10.5" font-weight="600" fill="var(--ex-signal)">PUBLIC BACKBONE ENABLES PRIVATE &amp; COOPERATIVE LIFE AT EVERY SCALE</text>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-amber">
+      <span class="ex-spec-kicker">Familiar civic backbone</span>
+      <div class="ex-spec-body">Weather radar, municipal water testing labs, and Carnegie public libraries provide trusted shared foundations without crowding out local shops.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Three-tier public AI compute</span>
+      <div class="ex-spec-body">Pairs national research clusters with regional hospital enclaves and local municipal audit workbenches so public institutions never depend solely on private rent.</div>
+    </div>
+  </div>
+  <figcaption>Figure 1: Just as highways, municipal water labs, and public libraries create a foundation where local life and private businesses thrive, public AI compute operates across national, regional, and local civic tiers.</figcaption>
+</figure>
+
+<h2>Why renting everything creates two public problems</h2>
+
+<p>For ordinary commercial tasks, renting server time from a private cloud provider works well enough. A retailer wants to forecast winter coat inventory or summarise customer emails; it rents cloud capacity and pays the monthly invoice out of sales.</p>
+
+<p>Where that pure rental model breaks down is public-interest work. When universities, children's hospitals, municipal governments and independent safety evaluators must rent all their computing power from the same few corporations whose systems they study or regulate, two serious problems follow.</p>
+
+<p>First, vital non-commercial work gets priced out of the room. A commercial lab can justify huge computing bills because it plans to sell subscriptions or advertising across hundreds of millions of users. A pediatric hospital studying a rare genetic disorder or a regional watershed team modelling spring flood risk will never generate software-platform margins.</p>
+
+<p>The same goes for a university linguist building speech tools for an endangered Indigenous language. It applies equally to an agronomist breeding drought-tolerant oats, or a city auditor testing tenant-screening software for bias. When computing is rationed purely by commercial willingness to pay, urgent public problems wait at the back of the queue.</p>
+
+<p>Second, independent evaluators end up depending on the charity of the companies they evaluate. Imagine if municipal water inspectors or food-safety scientists had no laboratories of their own. Imagine they could only test for contamination by borrowing a microscope inside the meat-packing plant, during hours chosen by the plant manager.</p>
+
+<p>Today, academic teams testing whether a frontier AI system can fail dangerously or manipulate users often rely on computing credits donated by the very company that built the model. Even when individuals on both sides act in good faith, that structural dependence makes independent oversight brittle.</p>
+
+<p>Graduate students and lab directors may think twice before pressing an uncomfortable line of inquiry if next semester's computing grant depends on a corporate renewal. And public regulators cannot verify a vendor's safety claims independently if they lack the hardware and secure testbeds to run the evaluations themselves.</p>
+
+<div class="callout"><p class="label">The core idea</p><p>Public computing does not replace private AI labs any more than public libraries replace private bookshops or interstate highways ban private trucking. It builds shared, publicly accountable capacity alongside them, so science and oversight have a home of their own.</p></div>
+
+<h2>Walkthrough: a day inside a regional public compute hub</h2>
+
+<p>What does public computing look like when you strip away the policy abstractions? Picture a morning at a shared regional computing cluster hosted by a public university and linked to nearby teaching hospitals and city halls.</p>
+
+<p>In one secure partition, oncology researchers from three public hospitals are training a diagnostic tool to spot early-stage tumours on chest scans without patient records ever leaving public medical custody. No private cloud broker acquires rights over the resulting medical insights.</p>
+
+<p>In a second partition, engineers and meteorologists run storm-surge simulations for coastal towns ahead of autumn tides. This work mirrors national weather radar feeds that airlines and local farmers rely on daily.</p>
+
+<p>In a third partition, an independent safety audit team commissioned by a provincial regulator is stress-testing an automated benefits-eligibility system before the ministry is allowed to deploy it. Because the auditors are running on public hardware with dedicated staff support, they do not have to ask the software vendor for permission or server credits to probe where the model fails.</p>
+
+<h2>Where public computing is already being built</h2>
+
+<p>Treating AI computing infrastructure as a civic foundation (like roads, clean water or public libraries) is no longer a theoretical manifesto. Across North America and Europe, democratic governments are already operating or constructing three practical models.</p>
+
+<ul>
+<li><strong>Shared research capacity in the United States.</strong> The U.S. National Science Foundation and partner federal agencies launched the National Artificial Intelligence Research Resource (NAIRR) pilot in 2024.<sup><a href="#fn2">2</a></sup> It pools computing time, curated datasets and evaluation tools for universities, non-profits and safety researchers studying healthcare, agriculture, climate and AI trustworthiness.</li>
+<li><strong>National and regional public supercomputers in Europe and the UK.</strong> The European Union's EuroHPC Joint Undertaking builds public supercomputers shared across member states, including LUMI in Finland and JUPITER in Germany, allocated through open scientific peer review.<sup><a href="#fn3">3</a></sup> The United Kingdom has invested in its AI Research Resource, including the Isambard-AI cluster at the University of Bristol, dedicated to public and academic science.<sup><a href="#fn4">4</a></sup></li>
+<li><strong>Canadian public compute.</strong> Canada's Sovereign AI Compute Strategy sets aside dedicated public computing infrastructure for academic researchers and public-interest science alongside separate programmes for commercial capacity.<sup><a href="#fn5">5</a></sup></li>
+</ul>
+
+<h2>Three conditions that separate a public good from a subsidy</h2>
+
+<p>Not every budget line labelled "public compute" serves the public equally. When governments spend tax dollars on data centres or cloud vouchers, the governance rules determine whether citizens get a lasting public library or simply pay a private vendor's invoice.</p>
+
+<p>Three practical rules separate genuine civic infrastructure from a passive subsidy.</p>
+
+<p><strong>1. Protected capacity for safety, health and civic research.</strong> Commercial cloud vouchers can help local startups pay their server bills, which is ordinary industrial policy, not public research infrastructure. Genuine public computing reserves a protected share of capacity, allocated by independent peer review, for safety evaluations, hospital research, environmental modelling and civic audits.</p>
+
+<p><strong>2. Open public results for public funding.</strong> When taxpayers fund the machines or pay for safety evaluations, the resulting benchmarks, safety findings and scientific methods should default to open publication. Redactions should remain narrow and explicit, protecting only individual patient privacy or severe security hazards.</p>
+
+<p><strong>3. Shared engineering staff and regional on-ramps.</strong> Hardware sitting inside one central ministry does little for a smaller college or municipal clinic. Linking public clusters through regional universities and teaching hospitals, staffed with research software engineers who help domain experts run jobs, lets a city agency or clinic audit software without hiring its own data-centre team.</p>
+
+<h2>Honest limits and what can go wrong</h2>
+
+<p>We should be straightforward about how public computing projects can stumble. Government procurement rules are often built for thirty-year bridges rather than silicon chips that age in three years. A public cluster that takes four years to build can open its doors already behind the curve unless its budget funds rolling upgrades and skilled operations staff.</p>
+
+<p>Public programmes can also be captured by lobbying if their charter is vague. When hardware vendors or large commercial labs write the eligibility rules, public funds can drift toward subsidising routine corporate workloads while independent safety auditors and regional universities wait months in the queue.</p>
+
+<p>Finally, owning a public microscope is not enough if inspectors are locked out of the building. To evaluate closed commercial AI models rigorously, independent safety researchers need legal and technical inspection access to the models themselves, not just a public server to send questions from. Public computing is one vital piece of a broader civic question about <a href="/blog/who-should-own-intelligence/">who should own intelligence</a> in a society that runs on software.</p>
+
+<aside class="for-researchers"><details><summary>For researchers</summary><div><p>Public compute programmes directly address the hardware concentration documented by Epoch AI, enabling open-weight training, scientific replication, and adversarial evaluation sandboxes via peer-reviewed allocation (NAIRR, EuroHPC, UK AIRR, and Canada's Sovereign AI Compute Strategy). However, rigorous third-party safety evaluation of proprietary frontier systems requires pairing public compute enclaves with structured grey- or white-box model access (such as weight inspection, activation probing, and fine-tuning APIs) since black-box query access alone cannot bound latent capabilities or deceptive alignment.</p></div></details></aside>
+
+<h2>What officials and citizens can ask next</h2>
+
+<p>A Carnegie library never owned every book printed in the nation. It did not need to. It only needed enough open doors, shared tables and independent reference librarians that any resident could walk in, study a subject and verify a claim without asking a private publisher's permission.</p>
+
+<p>If you draft legislation or review public budgets, our guide <a href="/get-involved/policy/">for policy makers</a> sets out concrete questions to ask when the next AI infrastructure bill lands on your desk. Asking who gets guaranteed seats at the table, and what open knowledge the public receives in return, is the best place to begin.</p>
+
+<section class="footnotes">
+<p id="fn1">1. Epoch AI, <em>Trends in AI</em> (tracking training compute, hardware costs and model scale across frontier AI systems). <a href="https://epoch.ai/trends">epoch.ai/trends</a></p>
+<p id="fn2">2. U.S. National Science Foundation (NSF) and participating agencies, <em>National Artificial Intelligence Research Resource (NAIRR) Pilot</em>. <a href="https://nairrpilot.org/about">nairrpilot.org/about</a></p>
+<p id="fn3">3. European High Performance Computing Joint Undertaking (EuroHPC JU), <em>Discover EuroHPC JU</em>. <a href="https://www.eurohpc-ju.europa.eu/about/discover-eurohpc-ju_en">eurohpc-ju.europa.eu/about/discover-eurohpc-ju_en</a></p>
+<p id="fn4">4. UK Department for Science, Innovation and Technology and UK Research and Innovation (UKRI), <em>AI Research Resource (AIRR)</em>. <a href="https://www.gov.uk/government/publications/ai-research-resource">gov.uk/government/publications/ai-research-resource</a></p>
+<p id="fn5">5. Government of Canada, Innovation, Science and Economic Development Canada (ISED), <em>Canadian Sovereign AI Compute Strategy</em>. <a href="https://ised-isde.canada.ca/site/ised/en/canadian-sovereign-ai-compute-strategy">ised-isde.canada.ca/site/ised/en/canadian-sovereign-ai-compute-strategy</a></p>
+</section>

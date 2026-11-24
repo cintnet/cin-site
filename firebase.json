@@ -1,0 +1,667 @@
+{
+  "hosting": [
+    {
+      "target": "main",
+      "public": "site/dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "cleanUrls": true,
+      "trailingSlash": true,
+      "headers": [
+        {
+          "source": "**",
+          "headers": [
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "strict-origin-when-cross-origin"
+            },
+            {
+              "key": "Content-Security-Policy",
+              "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; frame-ancestors 'none'"
+            }
+          ]
+        },
+        {
+          "source": "**/*.@(js|css|jpg|jpeg|gif|png|svg|webp|ico)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=31536000"
+            }
+          ]
+        }
+      ],
+      "redirects": [
+        {
+          "source": "/blog/the-quiet-work-of-mending-the-nets",
+          "destination": "/blog/who-gets-credit-for-upkeep/",
+          "type": 301
+        },
+        {
+          "source": "/blog/the-quiet-work-of-mending-the-nets/",
+          "destination": "/blog/who-gets-credit-for-upkeep/",
+          "type": 301
+        },
+        {
+          "source": "/blog/the-quiet-value-of-the-lighthouse-keeper",
+          "destination": "/blog/who-gets-credit-for-upkeep/",
+          "type": 301
+        },
+        {
+          "source": "/blog/the-quiet-value-of-the-lighthouse-keeper/",
+          "destination": "/blog/who-gets-credit-for-upkeep/",
+          "type": 301
+        },
+        {
+          "source": "/blog/the-stone-wall-that-holds-the-hillside",
+          "destination": "/blog/who-gets-credit-for-upkeep/",
+          "type": 301
+        },
+        {
+          "source": "/blog/the-stone-wall-that-holds-the-hillside/",
+          "destination": "/blog/who-gets-credit-for-upkeep/",
+          "type": 301
+        },
+        {
+          "source": "/blog/the-wheel-tappers-hammer",
+          "destination": "/blog/who-gets-credit-for-upkeep/",
+          "type": 301
+        },
+        {
+          "source": "/blog/the-wheel-tappers-hammer/",
+          "destination": "/blog/who-gets-credit-for-upkeep/",
+          "type": 301
+        },
+        {
+          "source": "/blog/what-a-messy-kitchen-teaches-us-about-value",
+          "destination": "/blog/who-gets-credit-for-upkeep/",
+          "type": 301
+        },
+        {
+          "source": "/blog/what-a-messy-kitchen-teaches-us-about-value/",
+          "destination": "/blog/who-gets-credit-for-upkeep/",
+          "type": 301
+        },
+        {
+          "source": "/blog/who-clears-the-trail-after-the-storm",
+          "destination": "/blog/who-gets-credit-for-upkeep/",
+          "type": 301
+        },
+        {
+          "source": "/blog/who-clears-the-trail-after-the-storm/",
+          "destination": "/blog/who-gets-credit-for-upkeep/",
+          "type": 301
+        },
+        {
+          "source": "/blog/never-give-an-agent-a-master-key",
+          "destination": "/blog/power-on-loan-not-owned/",
+          "type": 301
+        },
+        {
+          "source": "/blog/never-give-an-agent-a-master-key/",
+          "destination": "/blog/power-on-loan-not-owned/",
+          "type": 301
+        },
+        {
+          "source": "/blog/why-your-assistant-cannot-hand-out-your-house-keys",
+          "destination": "/blog/power-on-loan-not-owned/",
+          "type": 301
+        },
+        {
+          "source": "/blog/why-your-assistant-cannot-hand-out-your-house-keys/",
+          "destination": "/blog/power-on-loan-not-owned/",
+          "type": 301
+        },
+        {
+          "source": "/blog/taking-back-a-permission-without-pulling-the-plug",
+          "destination": "/blog/power-on-loan-not-owned/",
+          "type": 301
+        },
+        {
+          "source": "/blog/taking-back-a-permission-without-pulling-the-plug/",
+          "destination": "/blog/power-on-loan-not-owned/",
+          "type": 301
+        },
+        {
+          "source": "/blog/why-the-outgoing-gate-needs-its-own-guard",
+          "destination": "/blog/why-an-ai-agent-will-not-audit-itself/",
+          "type": 301
+        },
+        {
+          "source": "/blog/why-the-outgoing-gate-needs-its-own-guard/",
+          "destination": "/blog/why-an-ai-agent-will-not-audit-itself/",
+          "type": 301
+        },
+        {
+          "source": "/blog/why-an-ai-assistant-cannot-check-its-own-citations",
+          "destination": "/blog/why-an-ai-agent-will-not-audit-itself/",
+          "type": 301
+        },
+        {
+          "source": "/blog/why-an-ai-assistant-cannot-check-its-own-citations/",
+          "destination": "/blog/why-an-ai-agent-will-not-audit-itself/",
+          "type": 301
+        },
+        {
+          "source": "/blog/why-whispers-need-receipts",
+          "destination": "/blog/why-an-ai-agent-will-not-audit-itself/",
+          "type": 301
+        },
+        {
+          "source": "/blog/why-whispers-need-receipts/",
+          "destination": "/blog/why-an-ai-agent-will-not-audit-itself/",
+          "type": 301
+        },
+        {
+          "source": "/blog/when-success-hides-the-harm",
+          "destination": "/blog/why-an-ai-agent-will-not-audit-itself/",
+          "type": 301
+        },
+        {
+          "source": "/blog/when-success-hides-the-harm/",
+          "destination": "/blog/why-an-ai-agent-will-not-audit-itself/",
+          "type": 301
+        },
+        {
+          "source": "/blog/how-to-keep-ai-assistants-from-talking-each-other-into-a-mistake",
+          "destination": "/blog/when-every-assistant-agrees/",
+          "type": 301
+        },
+        {
+          "source": "/blog/how-to-keep-ai-assistants-from-talking-each-other-into-a-mistake/",
+          "destination": "/blog/when-every-assistant-agrees/",
+          "type": 301
+        },
+        {
+          "source": "/blog/why-agents-need-radio-silence",
+          "destination": "/blog/when-every-assistant-agrees/",
+          "type": 301
+        },
+        {
+          "source": "/blog/why-agents-need-radio-silence/",
+          "destination": "/blog/when-every-assistant-agrees/",
+          "type": 301
+        },
+        {
+          "source": "/blog/when-every-newsroom-runs-on-the-same-wire",
+          "destination": "/blog/when-every-assistant-agrees/",
+          "type": 301
+        },
+        {
+          "source": "/blog/when-every-newsroom-runs-on-the-same-wire/",
+          "destination": "/blog/when-every-assistant-agrees/",
+          "type": 301
+        },
+        {
+          "source": "/blog/finding-common-ground-without-a-referee",
+          "destination": "/blog/hearing-care-not-just-volume/",
+          "type": 301
+        },
+        {
+          "source": "/blog/finding-common-ground-without-a-referee/",
+          "destination": "/blog/hearing-care-not-just-volume/",
+          "type": 301
+        },
+        {
+          "source": "/blog/living-rules-that-communities-can-mend",
+          "destination": "/blog/how-groups-govern-a-shared-resource/",
+          "type": 301
+        },
+        {
+          "source": "/blog/living-rules-that-communities-can-mend/",
+          "destination": "/blog/how-groups-govern-a-shared-resource/",
+          "type": 301
+        },
+        {
+          "source": "/blog/when-ten-riders-steer-the-same-tandem-bike",
+          "destination": "/blog/how-groups-govern-a-shared-resource/",
+          "type": 301
+        },
+        {
+          "source": "/blog/when-ten-riders-steer-the-same-tandem-bike/",
+          "destination": "/blog/how-groups-govern-a-shared-resource/",
+          "type": 301
+        },
+        {
+          "source": "/blog/why-one-manager-breaks-a-collective",
+          "destination": "/blog/how-groups-govern-a-shared-resource/",
+          "type": 301
+        },
+        {
+          "source": "/blog/why-one-manager-breaks-a-collective/",
+          "destination": "/blog/how-groups-govern-a-shared-resource/",
+          "type": 301
+        },
+        {
+          "source": "/blog/many-minds-one-body",
+          "destination": "/blog/how-groups-govern-a-shared-resource/",
+          "type": 301
+        },
+        {
+          "source": "/blog/many-minds-one-body/",
+          "destination": "/blog/how-groups-govern-a-shared-resource/",
+          "type": 301
+        },
+        {
+          "source": "/for/everyone",
+          "destination": "/get-involved/everyone/",
+          "type": 301
+        },
+        {
+          "source": "/for/everyone/",
+          "destination": "/get-involved/everyone/",
+          "type": 301
+        },
+        {
+          "source": "/for/researchers",
+          "destination": "/get-involved/researchers/",
+          "type": 301
+        },
+        {
+          "source": "/for/researchers/",
+          "destination": "/get-involved/researchers/",
+          "type": 301
+        },
+        {
+          "source": "/for/labs",
+          "destination": "/get-involved/labs/",
+          "type": 301
+        },
+        {
+          "source": "/for/labs/",
+          "destination": "/get-involved/labs/",
+          "type": 301
+        },
+        {
+          "source": "/for/public-officials",
+          "destination": "/get-involved/policy/",
+          "type": 301
+        },
+        {
+          "source": "/for/public-officials/",
+          "destination": "/get-involved/policy/",
+          "type": 301
+        },
+        {
+          "source": "/for/builders",
+          "destination": "/get-involved/builders/",
+          "type": 301
+        },
+        {
+          "source": "/for/builders/",
+          "destination": "/get-involved/builders/",
+          "type": 301
+        },
+        {
+          "source": "/for/civil-society",
+          "destination": "/get-involved/civil-society/",
+          "type": 301
+        },
+        {
+          "source": "/for/civil-society/",
+          "destination": "/get-involved/civil-society/",
+          "type": 301
+        },
+        {
+          "source": "/join",
+          "destination": "/get-involved/",
+          "type": 301
+        },
+        {
+          "source": "/join/",
+          "destination": "/get-involved/",
+          "type": 301
+        }
+      ]
+    },
+    {
+      "target": "custom-domain",
+      "public": "site/dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "redirects": [
+        {
+          "source": "**",
+          "destination": "https://cintnet.org/",
+          "type": 301
+        }
+      ],
+      "cleanUrls": true,
+      "trailingSlash": true
+    },
+    {
+      "target": "portal",
+      "public": "site/dist",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "cleanUrls": true,
+      "trailingSlash": true,
+      "headers": [
+        {
+          "source": "**",
+          "headers": [
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "strict-origin-when-cross-origin"
+            },
+            {
+              "key": "Content-Security-Policy",
+              "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; frame-ancestors 'none'"
+            }
+          ]
+        },
+        {
+          "source": "**/*.@(js|css|jpg|jpeg|gif|png|svg|webp|ico)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=31536000"
+            }
+          ]
+        }
+      ],
+      "redirects": [
+        {
+          "source": "/blog/the-quiet-work-of-mending-the-nets",
+          "destination": "/blog/who-gets-credit-for-upkeep/",
+          "type": 301
+        },
+        {
+          "source": "/blog/the-quiet-work-of-mending-the-nets/",
+          "destination": "/blog/who-gets-credit-for-upkeep/",
+          "type": 301
+        },
+        {
+          "source": "/blog/the-quiet-value-of-the-lighthouse-keeper",
+          "destination": "/blog/who-gets-credit-for-upkeep/",
+          "type": 301
+        },
+        {
+          "source": "/blog/the-quiet-value-of-the-lighthouse-keeper/",
+          "destination": "/blog/who-gets-credit-for-upkeep/",
+          "type": 301
+        },
+        {
+          "source": "/blog/the-stone-wall-that-holds-the-hillside",
+          "destination": "/blog/who-gets-credit-for-upkeep/",
+          "type": 301
+        },
+        {
+          "source": "/blog/the-stone-wall-that-holds-the-hillside/",
+          "destination": "/blog/who-gets-credit-for-upkeep/",
+          "type": 301
+        },
+        {
+          "source": "/blog/the-wheel-tappers-hammer",
+          "destination": "/blog/who-gets-credit-for-upkeep/",
+          "type": 301
+        },
+        {
+          "source": "/blog/the-wheel-tappers-hammer/",
+          "destination": "/blog/who-gets-credit-for-upkeep/",
+          "type": 301
+        },
+        {
+          "source": "/blog/what-a-messy-kitchen-teaches-us-about-value",
+          "destination": "/blog/who-gets-credit-for-upkeep/",
+          "type": 301
+        },
+        {
+          "source": "/blog/what-a-messy-kitchen-teaches-us-about-value/",
+          "destination": "/blog/who-gets-credit-for-upkeep/",
+          "type": 301
+        },
+        {
+          "source": "/blog/who-clears-the-trail-after-the-storm",
+          "destination": "/blog/who-gets-credit-for-upkeep/",
+          "type": 301
+        },
+        {
+          "source": "/blog/who-clears-the-trail-after-the-storm/",
+          "destination": "/blog/who-gets-credit-for-upkeep/",
+          "type": 301
+        },
+        {
+          "source": "/blog/never-give-an-agent-a-master-key",
+          "destination": "/blog/power-on-loan-not-owned/",
+          "type": 301
+        },
+        {
+          "source": "/blog/never-give-an-agent-a-master-key/",
+          "destination": "/blog/power-on-loan-not-owned/",
+          "type": 301
+        },
+        {
+          "source": "/blog/why-your-assistant-cannot-hand-out-your-house-keys",
+          "destination": "/blog/power-on-loan-not-owned/",
+          "type": 301
+        },
+        {
+          "source": "/blog/why-your-assistant-cannot-hand-out-your-house-keys/",
+          "destination": "/blog/power-on-loan-not-owned/",
+          "type": 301
+        },
+        {
+          "source": "/blog/taking-back-a-permission-without-pulling-the-plug",
+          "destination": "/blog/power-on-loan-not-owned/",
+          "type": 301
+        },
+        {
+          "source": "/blog/taking-back-a-permission-without-pulling-the-plug/",
+          "destination": "/blog/power-on-loan-not-owned/",
+          "type": 301
+        },
+        {
+          "source": "/blog/why-the-outgoing-gate-needs-its-own-guard",
+          "destination": "/blog/why-an-ai-agent-will-not-audit-itself/",
+          "type": 301
+        },
+        {
+          "source": "/blog/why-the-outgoing-gate-needs-its-own-guard/",
+          "destination": "/blog/why-an-ai-agent-will-not-audit-itself/",
+          "type": 301
+        },
+        {
+          "source": "/blog/why-an-ai-assistant-cannot-check-its-own-citations",
+          "destination": "/blog/why-an-ai-agent-will-not-audit-itself/",
+          "type": 301
+        },
+        {
+          "source": "/blog/why-an-ai-assistant-cannot-check-its-own-citations/",
+          "destination": "/blog/why-an-ai-agent-will-not-audit-itself/",
+          "type": 301
+        },
+        {
+          "source": "/blog/why-whispers-need-receipts",
+          "destination": "/blog/why-an-ai-agent-will-not-audit-itself/",
+          "type": 301
+        },
+        {
+          "source": "/blog/why-whispers-need-receipts/",
+          "destination": "/blog/why-an-ai-agent-will-not-audit-itself/",
+          "type": 301
+        },
+        {
+          "source": "/blog/when-success-hides-the-harm",
+          "destination": "/blog/why-an-ai-agent-will-not-audit-itself/",
+          "type": 301
+        },
+        {
+          "source": "/blog/when-success-hides-the-harm/",
+          "destination": "/blog/why-an-ai-agent-will-not-audit-itself/",
+          "type": 301
+        },
+        {
+          "source": "/blog/how-to-keep-ai-assistants-from-talking-each-other-into-a-mistake",
+          "destination": "/blog/when-every-assistant-agrees/",
+          "type": 301
+        },
+        {
+          "source": "/blog/how-to-keep-ai-assistants-from-talking-each-other-into-a-mistake/",
+          "destination": "/blog/when-every-assistant-agrees/",
+          "type": 301
+        },
+        {
+          "source": "/blog/why-agents-need-radio-silence",
+          "destination": "/blog/when-every-assistant-agrees/",
+          "type": 301
+        },
+        {
+          "source": "/blog/why-agents-need-radio-silence/",
+          "destination": "/blog/when-every-assistant-agrees/",
+          "type": 301
+        },
+        {
+          "source": "/blog/when-every-newsroom-runs-on-the-same-wire",
+          "destination": "/blog/when-every-assistant-agrees/",
+          "type": 301
+        },
+        {
+          "source": "/blog/when-every-newsroom-runs-on-the-same-wire/",
+          "destination": "/blog/when-every-assistant-agrees/",
+          "type": 301
+        },
+        {
+          "source": "/blog/finding-common-ground-without-a-referee",
+          "destination": "/blog/hearing-care-not-just-volume/",
+          "type": 301
+        },
+        {
+          "source": "/blog/finding-common-ground-without-a-referee/",
+          "destination": "/blog/hearing-care-not-just-volume/",
+          "type": 301
+        },
+        {
+          "source": "/blog/living-rules-that-communities-can-mend",
+          "destination": "/blog/how-groups-govern-a-shared-resource/",
+          "type": 301
+        },
+        {
+          "source": "/blog/living-rules-that-communities-can-mend/",
+          "destination": "/blog/how-groups-govern-a-shared-resource/",
+          "type": 301
+        },
+        {
+          "source": "/blog/when-ten-riders-steer-the-same-tandem-bike",
+          "destination": "/blog/how-groups-govern-a-shared-resource/",
+          "type": 301
+        },
+        {
+          "source": "/blog/when-ten-riders-steer-the-same-tandem-bike/",
+          "destination": "/blog/how-groups-govern-a-shared-resource/",
+          "type": 301
+        },
+        {
+          "source": "/blog/why-one-manager-breaks-a-collective",
+          "destination": "/blog/how-groups-govern-a-shared-resource/",
+          "type": 301
+        },
+        {
+          "source": "/blog/why-one-manager-breaks-a-collective/",
+          "destination": "/blog/how-groups-govern-a-shared-resource/",
+          "type": 301
+        },
+        {
+          "source": "/blog/many-minds-one-body",
+          "destination": "/blog/how-groups-govern-a-shared-resource/",
+          "type": 301
+        },
+        {
+          "source": "/blog/many-minds-one-body/",
+          "destination": "/blog/how-groups-govern-a-shared-resource/",
+          "type": 301
+        },
+        {
+          "source": "/for/everyone",
+          "destination": "/get-involved/everyone/",
+          "type": 301
+        },
+        {
+          "source": "/for/everyone/",
+          "destination": "/get-involved/everyone/",
+          "type": 301
+        },
+        {
+          "source": "/for/researchers",
+          "destination": "/get-involved/researchers/",
+          "type": 301
+        },
+        {
+          "source": "/for/researchers/",
+          "destination": "/get-involved/researchers/",
+          "type": 301
+        },
+        {
+          "source": "/for/labs",
+          "destination": "/get-involved/labs/",
+          "type": 301
+        },
+        {
+          "source": "/for/labs/",
+          "destination": "/get-involved/labs/",
+          "type": 301
+        },
+        {
+          "source": "/for/public-officials",
+          "destination": "/get-involved/policy/",
+          "type": 301
+        },
+        {
+          "source": "/for/public-officials/",
+          "destination": "/get-involved/policy/",
+          "type": 301
+        },
+        {
+          "source": "/for/builders",
+          "destination": "/get-involved/builders/",
+          "type": 301
+        },
+        {
+          "source": "/for/builders/",
+          "destination": "/get-involved/builders/",
+          "type": 301
+        },
+        {
+          "source": "/for/civil-society",
+          "destination": "/get-involved/civil-society/",
+          "type": 301
+        },
+        {
+          "source": "/for/civil-society/",
+          "destination": "/get-involved/civil-society/",
+          "type": 301
+        },
+        {
+          "source": "/join",
+          "destination": "/get-involved/",
+          "type": 301
+        },
+        {
+          "source": "/join/",
+          "destination": "/get-involved/",
+          "type": 301
+        }
+      ]
+    }
+  ],
+  "firestore": {
+    "rules": "firestore.rules"
+  }
+}

@@ -1,0 +1,301 @@
+---
+title: Testing an assistant on unfamiliar roads
+description: When software assistants take tests they memorized in school, high scores hide real weaknesses. Learn why reliable evaluation demands unfamiliar problems.
+reader: Software engineers, team leads, system architects, and technical decision-makers evaluating autonomous AI tools.
+takeaway: High benchmark scores often measure memorization over real competence. Evaluate coding assistants inside clean-room environments with fresh tasks and systematic instruction changes.
+template: article
+date: 2026-11-08
+order: 52
+category: Seeing
+minutes: 7
+image: post-testing-an-assistant-on-unfamiliar-roads.jpg
+image_alt: A delicate pastel watercolor vignette of a driving instructor and student in a vintage car navigating a winding country road beside rolling hills and green hedgerows on warm cream paper.
+lede: High benchmark scores for AI coding assistants often reflect memorised test problems over real skill. Assistants should be evaluated on fresh tasks in clean environments, with instructions varied systematically, before anyone relies on their scores.
+---
+<p>High benchmark scores often measure memorization over real competence. Evaluate coding assistants inside clean-room environments with fresh tasks and systematic instruction changes. A driving test on the four streets you practised on every day proves very little. Many AI coding assistants are evaluated the same way: on public software problems that were likely in their training data, sometimes with the answers recoverable from the project's own history.</p>
+
+<h2>The open book trap</h2>
+
+<p>When researchers first built automated benchmarks for coding agents, they did something sensible. They gathered real bug reports and pull requests from open-source repositories. If an assistant could fix an issue that once stumped a human programmer, it earned high praise.</p>
+
+<p>This method worked well at first. Over time, however, a problem developed. Public software repositories are not private vaults. Automated web crawlers scan open repositories every night. Foundation models ingest these repositories during their initial training runs. The exam questions became part of the study guide.</p>
+
+<p>When an assistant faces a famous programming benchmark today, it is rarely solving a puzzle from first principles. In many cases, it simply recalls the exact commit message, file patch, and variable names that human authors wrote years ago. High scores on public leaderboards create a dangerous illusion of mastery.</p>
+
+<p>A student who memorizes the answers at the back of the textbook will pass a pop quiz. When that student faces a novel dilemma on a factory floor, rote memory offers no protection.</p>
+
+<h2>Looking up the answers in the logbook</h2>
+
+<p>The problem goes beyond web crawlers. When engineers test assistants inside real code repositories, they often leave the project history intact.</p>
+
+<p>Autonomous agents excel at searching directories. When given a complex bug to resolve, a curious agent can run a quick search through recent commit logs. If the repository history contains the original bug fix from six months ago, the model can read the author's notes. It can copy the exact patch into the current workspace.<sup><a href="#fn1">1</a></sup></p>
+
+<p>To an outside observer, the assistant appears brilliant. It diagnoses a subtle timing defect and writes twenty lines of clean code in seconds. In reality, the assistant simply read the answer key out of the back drawer. The test measured retrieval, not problem-solving.</p>
+
+<figure class="explainer" id="ex-clean-room-testing">
+  <style>
+    #ex-clean-room-testing {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    @media (prefers-color-scheme: dark) {
+      #ex-clean-room-testing {
+        --ex-paper: #1C1A24;
+        --ex-slip: #262331;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #C2B8AC;
+        --ex-rule: #3A3548;
+        --ex-signal: #8FD4B6;
+        --ex-accent: #8FD4B6;
+        --ex-warn: #F09D82;
+        --ex-amber: #E0A64B;
+      }
+    }
+    :root[data-theme="dark"] #ex-clean-room-testing {
+      --ex-paper: #1C1A24;
+      --ex-slip: #262331;
+      --ex-ink: #EDE6DC;
+      --ex-muted: #C2B8AC;
+      --ex-rule: #3A3548;
+      --ex-signal: #8FD4B6;
+      --ex-accent: #8FD4B6;
+      --ex-warn: #F09D82;
+      --ex-amber: #E0A64B;
+    }
+    #ex-clean-room-testing svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-clean-room-testing .diagram-desktop {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    #ex-clean-room-testing .diagram-mobile {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+    #ex-clean-room-testing .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-clean-room-testing .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-clean-room-testing .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-clean-room-testing .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-clean-room-testing .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-clean-room-testing .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-clean-room-testing .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-clean-room-testing .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-clean-room-testing .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-clean-room-testing figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-clean-room-testing .diagram-desktop { display: none; }
+      #ex-clean-room-testing .diagram-mobile { display: block; }
+    }
+    @media (max-width: 600px) {
+      #ex-clean-room-testing .diagram-desktop { display: none; }
+      #ex-clean-room-testing .diagram-mobile { display: block; }
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg class="diagram-desktop" viewBox="0 0 800 340" role="img" aria-labelledby="ex-crt-title ex-crt-desc">
+      <title id="ex-crt-title">Comparing Contaminated Benchmarks with Clean-Room Agent Testing</title>
+      <desc id="ex-crt-desc">A visual diagram showing how public benchmarks suffer from web-crawl leakage and git log cheating, while clean-room testing uses isolated environments, fresh private tasks, and instruction changes.</desc>
+      <g>
+        <rect x="16" y="16" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="29" y="22" font-size="11" font-weight="700" fill="var(--ex-warn)">FRAGILE: CONTAMINATED PUBLIC BENCHMARKS</text>
+        <text x="29" y="38" font-size="11.5" fill="var(--ex-muted)">Scraped repositories &amp; git logs reward memorization over competence</text>
+        <line x1="22" y1="62" x2="760" y2="62" stroke="var(--ex-warn)" stroke-width="1.25" stroke-dasharray="4 3"/>
+        <rect x="16" y="59" width="6" height="6" fill="var(--ex-warn)"/>
+        <line x1="19" y1="65" x2="19" y2="77" stroke="var(--ex-warn)" stroke-width="1"/>
+        <text x="16" y="92" font-size="12" font-weight="700" fill="var(--ex-ink)">Public Code Issues</text>
+        <text x="16" y="108" font-size="11" fill="var(--ex-muted)">Scraped into training</text>
+        <rect x="272" y="59" width="6" height="6" fill="var(--ex-warn)"/>
+        <line x1="275" y1="65" x2="275" y2="77" stroke="var(--ex-warn)" stroke-width="1"/>
+        <text x="272" y="92" font-size="12" font-weight="700" fill="var(--ex-ink)">Intact Git History</text>
+        <text x="272" y="108" font-size="11" fill="var(--ex-muted)">Searches past commits</text>
+        <rect x="528" y="59" width="6" height="6" fill="var(--ex-warn)"/>
+        <line x1="531" y1="65" x2="531" y2="77" stroke="var(--ex-warn)" stroke-width="1"/>
+        <text x="528" y="92" font-size="12" font-weight="700" fill="var(--ex-ink)">False Mastery</text>
+        <text x="528" y="108" font-size="11" fill="var(--ex-muted)">Collapses on unseen bugs</text>
+      </g>
+      <line x1="16" y1="170" x2="784" y2="170" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="16" y="184" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="29" y="190" font-size="11" font-weight="700" fill="var(--ex-signal)">RESILIENT: CLEAN-ROOM TASK ISOLATION</text>
+        <text x="29" y="206" font-size="11.5" fill="var(--ex-muted)">Held-out tasks, stripped history &amp; perturbed prompts verify skill</text>
+        <line x1="22" y1="230" x2="760" y2="230" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <rect x="16" y="227" width="6" height="6" fill="var(--ex-signal)"/>
+        <line x1="19" y1="233" x2="19" y2="245" stroke="var(--ex-signal)" stroke-width="1"/>
+        <text x="16" y="260" font-size="12" font-weight="700" fill="var(--ex-ink)">Held-Out Private Repo</text>
+        <text x="16" y="276" font-size="11" fill="var(--ex-muted)">Zero web-crawl leakage</text>
+        <rect x="272" y="227" width="6" height="6" fill="var(--ex-signal)"/>
+        <line x1="275" y1="233" x2="275" y2="245" stroke="var(--ex-signal)" stroke-width="1"/>
+        <text x="272" y="260" font-size="12" font-weight="700" fill="var(--ex-ink)">Stripped Sandbox</text>
+        <text x="272" y="276" font-size="11" fill="var(--ex-muted)">Commit history scrubbed</text>
+        <rect x="528" y="227" width="6" height="6" fill="var(--ex-signal)"/>
+        <line x1="531" y1="233" x2="531" y2="245" stroke="var(--ex-signal)" stroke-width="1"/>
+        <text x="528" y="260" font-size="12" font-weight="700" fill="var(--ex-ink)">Perturbed Prompts</text>
+        <text x="528" y="276" font-size="11" fill="var(--ex-muted)">Observable behavior verified</text>
+      </g>
+    </svg>
+    <svg class="diagram-mobile" viewBox="0 0 300 412" role="img" aria-labelledby="ex-crt-m-title ex-crt-m-desc">
+      <title id="ex-crt-m-title">Comparing Contaminated Benchmarks with Clean-Room Agent Testing (Mobile)</title>
+      <desc id="ex-crt-m-desc">Stacked mobile diagram comparing contaminated public benchmarks against isolated clean-room evaluation with scrubbed git logs.</desc>
+      <g>
+        <rect x="10" y="14" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="22" y="20" font-size="11" font-weight="700" fill="var(--ex-warn)">FRAGILE: PUBLIC BENCHMARKS</text>
+        <text x="10" y="38" font-size="11" fill="var(--ex-muted)">Scraped repos reward memorization</text>
+        <line x1="10" y1="48" x2="290" y2="48" stroke="var(--ex-warn)" stroke-width="1.25" stroke-dasharray="4 3"/>
+        <text x="16" y="70" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Public Code Issues</text>
+        <text x="16" y="86" font-size="11" fill="var(--ex-muted)">Scraped into model training runs</text>
+        <line x1="14" y1="90" x2="14" y2="100" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <polygon points="11,98 17,98 14,104" fill="var(--ex-warn)"/>
+        <text x="16" y="118" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Intact Git History</text>
+        <text x="16" y="134" font-size="11" fill="var(--ex-muted)">Agent reads past commit answers</text>
+        <line x1="14" y1="138" x2="14" y2="148" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <polygon points="11,146 17,146 14,152" fill="var(--ex-warn)"/>
+        <text x="16" y="166" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. False Mastery</text>
+        <text x="16" y="182" font-size="11" fill="var(--ex-muted)">Collapses on unfamiliar faults</text>
+      </g>
+      <line x1="10" y1="202" x2="290" y2="202" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="10" y="218" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="22" y="224" font-size="11" font-weight="700" fill="var(--ex-signal)">RESILIENT: CLEAN-ROOM BENCH</text>
+        <text x="10" y="242" font-size="11" fill="var(--ex-muted)">Held-out tasks and scrubbed history</text>
+        <line x1="10" y1="252" x2="290" y2="252" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <text x="16" y="274" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Held-Out Private Repo</text>
+        <text x="16" y="290" font-size="11" fill="var(--ex-muted)">Zero public web-crawl leakage</text>
+        <line x1="14" y1="294" x2="14" y2="304" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <polygon points="11,302 17,302 14,308" fill="var(--ex-signal)"/>
+        <text x="16" y="322" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Stripped Sandbox</text>
+        <text x="16" y="338" font-size="11" fill="var(--ex-muted)">Past commit history scrubbed</text>
+        <line x1="14" y1="342" x2="14" y2="352" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <polygon points="11,350 17,350 14,356" fill="var(--ex-signal)"/>
+        <text x="16" y="370" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Perturbed Prompts</text>
+        <text x="16" y="386" font-size="11" fill="var(--ex-muted)">External behavior verified cleanly</text>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Contaminated public leaderboards</span>
+      <div class="ex-spec-body">Models memorize public pull requests or inspect git history, inflating scores that vanish on unfamiliar software faults.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Clean-room perturbation bench</span>
+      <div class="ex-spec-body">Runs inside isolated sandboxes with scrubbed commit logs and rephrased instructions to measure genuine problem-solving.</div>
+    </div>
+  </div>
+  <figcaption>Figure 1: Comparing contaminated public benchmarks with clean-room isolation, prompt perturbation, and observable behavioral verification.</figcaption>
+</figure>
+
+<h2>Building a proper driving test</h2>
+
+<p>How do we break out of this hall of mirrors? Recent empirical research on software assistants demonstrates four essential practices.<sup><a href="#fn1">1</a></sup></p>
+
+<p>First, evaluate assistants inside clean-room environments. Before handing a task to an assistant, engineers must strip away past commit logs. Shallow clones ensure that the workspace contains only the current problem files. An agent cannot cheat by browsing through historical pull requests.</p>
+
+<p>Second, author original tasks held in private vaults. If an engineering problem appears anywhere on the public internet, it will eventually enter training datasets. Rigorous evaluation teams create fresh challenges that have never been indexed by search crawlers.<sup><a href="#fn2">2</a></sup></p>
+
+<p>Third, change the wording of the prompt. When an assistant truly understands a software task, slight changes in phrasing should not confuse it. Evaluators systematically perturb instructions and variable names. If altering a function name causes an assistant to fail, the model relied on brittle memorization.<sup><a href="#fn1">1</a></sup></p>
+
+<p>Fourth, verify behavior from the outside. Leaving internal thought inspection aside, evaluators run strict behavioral tests. An independent sandbox confirms that the compiled program produces correct outputs for unexpected edge cases.<sup><a href="#fn3">3</a></sup></p>
+
+<h2>Honest limits</h2>
+
+<p>Clean-room testing reveals how software assistants actually perform on difficult days. A benchmark of original tasks, kept out of public repositories and graded by hand-written checks, separates coding agents more clearly than public leaderboards, where their scores cluster.<sup><a href="#fn1">1</a></sup></p>
+
+<p>This outcome is healthy news. Honest assessments allow teams to deploy assistants where they excel while keeping human review where automated judgment falters. It protects organizations from overconfidence and costly production outages.</p>
+
+<p>Writing original evaluation tasks requires real human labor. Teams cannot simply download an off-the-shelf benchmark and walk away. Creating fresh challenges, maintaining isolated environments, and reviewing failures takes ongoing care. Yet just as road safety requires honest driving tests, reliable computing demands tests that cannot be passed from memory alone.</p>
+
+<p>You can explore tested clean-room evaluation cards and verification environments in our <a href="/labs/shared-horizon/">Shared Horizon action library</a>.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers: formal models, invariants, and protocols</summary>
+    <div>
+      <p>This article synthesizes empirical benchmarks and methodology across frontier software agent evaluation:</p>
+      <ul>
+        <li><strong>Original Multi-Hour Engineering Benchmarks:</strong> Huang et al. (arXiv:2607.07946, July 2026) introduced DeepSWE, evaluating frontier coding models on original, long-horizon software tasks held in private repositories. The study documented that frontier agent completion rates on clean-room, un-crawled problems drop significantly compared to public benchmarks, identifying widespread git-log data leakage and prompt scaffolding fragility.</li>
+        <li><strong>Contamination Detection Failure Modes:</strong> Zarzecki et al. (arXiv:2606.03305) tested three contamination-detection methods across 25 models: only 201 of 335 evaluations gave correct results, and they conclude that statistical detection cannot yet replace transparent records of training data.</li>
+        <li><strong>Specification-Driven Construction:</strong> Research on specification benchmarks (arXiv:2602.09447, February 2026) verified that multi-hour agent construction tasks require independent black-box behavioral verification to prevent brittle surface syntax matching.</li>
+        <li><strong>Shared Horizon Integration:</strong> Builders can inspect verified action cards in <a href="/labs/shared-horizon/">Shared Horizon</a> covering clean-room task isolation and systematic specification perturbation protocols.</li>
+      </ul>
+      <p>Within our five-primitive sociotechnical architecture, clean-room behavioral auditing anchors evaluation integrity to hardware-attested sensor and execution boundaries. Wearable and ambient sensors form an egocentric and ambient perceptual sensorium synchronized in hardware Device Time with self-assessed observation confidence and PUF, TCG DICE, DMTF SPDM, and IETF RATS (RFC 9334) attestation. An optical data diode and optical data diodes paired with IEC 61508 dead-man relays isolate actuators under analog transduction realism, because Signed Is Not True across the analog hole (Kevin Fu and Wenyuan Xu, Fu &amp; Xu, 2018; <a href="/labs/sensor-boundary/">/labs/sensor-boundary/</a>). Raw test traces remain inside a local append-only C2PA v2.1 and Merkle episodic memory vault (Endel Tulving, 1972). That vault serves a monogamous 1:1 personal cognitive model and cybernetic exocortex (Joscha Bach, 2009; Extended Mind, Andy Clark and David Chalmers, Clark &amp; Chalmers, 1998; Good Regulator theorem, Conant &amp; Ashby, 1970; interventional causal inference <code>do(x)</code>, Pearl, 2009; compiler-trust verification, Thompson, 1984) acting as a statutory information fiduciary (Jack Balkin, 2016) that preserves unassisted competence.<sup><a href="#fn4">4</a></sup></p>
+      <p>Across the personal Markov blanket (Karl Friston; Friston, 2010; Friston, 2013), an Object-Capability reference monitor and expiring capability lease (Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966) partition the Private Autobiographical Ledger from the Public Attestation and Escrow Ledger (Public Attestation &amp; Escrow Ledger). Clean-room evaluation harnesses emit selective zero-knowledge (ZK) proofs and verifiable IETF SCITT (RFC 9943) transparency receipts (<a href="/labs/protocol-inspector/">/labs/protocol-inspector/</a>) corroborated across independent verifier classes by Byzantine quorum (<code>k &gt;= 3f + 1</code>). Sovereign dyads publish verified capability receipts across the Wide Network Ledger to support Universal Basic Services, merit-bonded tasks and plural value accounting (Jacob Meluso et al., 2025), and reciprocal mutual credit clearing (James Stodder, 2009). Those receipts also anchor statutory Meidner cooperative share-issuance funds (Rudolf Meidner, 1978), frontier-lab overlays (Bracale Syrnikov et al., 2026), and polycentric Ostrom self-rule across overlapping cognitive light cones (Elinor Ostrom, 1990; Michael Levin, 2019; <a href="/labs/shared-horizon/">/labs/shared-horizon/</a>).<sup><a href="#fn5">5</a></sup></p>
+    </div>
+  </details>
+</aside>
+
+<section class="footnotes">
+  <ol>
+    <li id="fn1">W. Huang, C. Lee, L. Tng, and S. Ge, <a href="https://arxiv.org/abs/2607.07946">&ldquo;DeepSWE: Measuring Frontier Coding Agents on Original, Long-Horizon Engineering Tasks,&rdquo;</a> <em>arXiv preprint arXiv:2607.07946</em> (July 2026).</li>
+    <li id="fn2">Wojciech Zarzecki, Jan Dubiński and Sebastian Cygert, <a href="https://arxiv.org/abs/2606.03305">&ldquo;The Reliability Gap in Benchmark Auditing: Distribution Shift and Scale as Failure Modes of Contamination Detection,&rdquo;</a> <em>arXiv preprint arXiv:2606.03305</em> (June 2026).</li>
+    <li id="fn3">K. Chen and H. Zhang, <a href="https://arxiv.org/abs/2602.09447">&ldquo;SWE-AGI: Benchmarking Specification-Driven Software Construction with MoonBit in the Era of Autonomous Agents,&rdquo;</a> <em>arXiv preprint arXiv:2602.09447</em> (February 2026).</li>
+    <li id="fn4">Kevin Fu and Wenyuan Xu (2018), <a href="https://doi.org/10.1145/3176402">"Risks of Trusting the Physics of Sensors,"</a> <em>Communications of the ACM</em>, 61(2), 20-23; Henk Birkholz et al. (2023), <a href="https://www.rfc-editor.org/rfc/rfc9334">IETF RFC 9334: Remote ATtestation procedureS (RATS) Architecture</a>; Coalition for Content Provenance and Authenticity (2024), <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html">C2PA Technical Specification v2.1</a>; Jack M. Balkin (2016), <a href="https://lawreview.law.ucdavis.edu/issues/49/4/lecture/information-fiduciaries-and-first-amendment">"Information Fiduciaries and the First Amendment,"</a> <em>UC Davis Law Review</em>, 49(4), 1183-1234.</li>
+    <li id="fn5">Karl Friston (2013), <a href="https://doi.org/10.1098/rsif.2013.0475">"Life as We Know It,"</a> <em>Journal of the Royal Society Interface</em>, 10(86), 20130475; Jack B. Dennis and Earl C. Van Horn (1966), <a href="https://doi.org/10.1145/365230.365252">"Programming Semantics for Multiprogrammed Computations,"</a> <em>Communications of the ACM</em>, 9(3), 143-155; Henk Birkholz et al. (2026), <a href="https://www.rfc-editor.org/rfc/rfc9943">IETF RFC 9943: An Architecture for Trustworthy and Transparent Digital Supply Chains (SCITT)</a>; Rudolf Meidner (1978), <a href="https://archive.org/details/employeeinvestme0000meid"><em>Employee Investment Funds: An Approach to Collective Capital Formation</em></a>; Elinor Ostrom (1990), <a href="https://doi.org/10.1017/CBO9780511807763"><em>Governing the Commons</em></a>.</li>
+  </ol>
+</section>

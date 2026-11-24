@@ -1,0 +1,304 @@
+---
+title: Teaching an assistant step by step
+description: When an AI assistant gets an errand wrong, giving it a score at the end leaves it guessing. Pointing to the exact step where it slipped makes it learn in a fraction of the time.
+reader: Curious builders, teachers, and anyone wondering why AI assistants make odd mistakes on long tasks.
+takeaway: Evaluating an entire errand with a single pass-fail grade forces an assistant to guess what went wrong. Checking each step as it happens pinpoints errors immediately, saving energy and keeping human oversight clear.
+template: article
+date: 2026-11-07
+order: 2
+category: Building
+minutes: 8
+image: post-teaching-an-assistant-step-by-step.jpg
+image_alt: A sunlit wooden baker's workbench with a ceramic bowl of rising bread dough under a linen cloth, a wooden spoon, a small jar of yeast, and stalks of wheat.
+lede: AI assistants learn faster and fail more visibly when each step of a task is checked as it happens, while a single pass-or-fail grade at the end leaves the model guessing. Step-level checks also give people a clearer view of where things went wrong.
+---
+<p>Evaluating an entire errand with a single pass-fail grade forces an assistant to guess what went wrong. Checking each step as it happens pinpoints errors immediately, saving energy and keeping human oversight clear. When an assistant attempts a twenty-step task, training often waits until the end and marks the whole attempt as a failure if the result is wrong. The assistant learns that it failed, but not whether the mistake was at step two or step nineteen, so it has to guess what to change. Researchers call this the credit assignment problem.</p>
+
+<h2>The guessing trap of end-to-end scores</h2>
+
+<p>To see why this guessing is so wasteful, picture a maze with ten successive doorways. If an assistant takes nine correct turns and stumbles at the tenth, an end-of-run score simply says no.</p>
+
+<p>Unable to see which turn was wrong, the assistant begins changing everything at random. It alters the first turn, scrambles the third turn, and replaces good choices with bad ones. It may try hundreds of variations before stumbling across the exit again.</p>
+
+<p>This trial-and-error cycle consumes huge amounts of electrical power and computing time. Worse still, it makes assistants brittle. A system trained by pure trial and error often memorizes specific sequences and misses why each step works.</p>
+
+<h2>Checking the steps as they happen</h2>
+
+<figure class="explainer" id="ex-step-dpo">
+  <style>
+    #ex-step-dpo {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    @media (prefers-color-scheme: dark) {
+      #ex-step-dpo {
+        --ex-paper: #1C1A24;
+        --ex-slip: #262331;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #C2B8AC;
+        --ex-rule: #3A3548;
+        --ex-signal: #8FD4B6;
+        --ex-accent: #8FD4B6;
+        --ex-warn: #F09D82;
+        --ex-amber: #E0A64B;
+      }
+    }
+    :root[data-theme="dark"] #ex-step-dpo {
+      --ex-paper: #1C1A24;
+      --ex-slip: #262331;
+      --ex-ink: #EDE6DC;
+      --ex-muted: #C2B8AC;
+      --ex-rule: #3A3548;
+      --ex-signal: #8FD4B6;
+      --ex-accent: #8FD4B6;
+      --ex-warn: #F09D82;
+      --ex-amber: #E0A64B;
+    }
+    #ex-step-dpo svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-step-dpo .diagram-desktop {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    #ex-step-dpo .diagram-mobile {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+    #ex-step-dpo .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-step-dpo .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-step-dpo .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-step-dpo .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-step-dpo .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-step-dpo .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-step-dpo .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-step-dpo .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-step-dpo .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-step-dpo figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-step-dpo .diagram-desktop { display: none; }
+      #ex-step-dpo .diagram-mobile { display: block; }
+    }
+    @media (max-width: 600px) {
+      #ex-step-dpo .diagram-desktop { display: none; }
+      #ex-step-dpo .diagram-mobile { display: block; }
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg class="diagram-desktop" viewBox="0 0 680 340" role="img" aria-labelledby="ex-step-title ex-step-desc">
+      <title id="ex-step-title">Comparison of end-of-run scoring versus step-by-step diagnostic feedback</title>
+      <desc id="ex-step-desc">A diagram comparing two learning approaches. On the left, an assistant receives a single fail grade after ten steps, leaving it to guess which step failed. On the right, each step is verified in sequence, catching an error at step four immediately with a clear explanation.</desc>
+      <line x1="340" y1="14" x2="340" y2="328" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="14" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="27" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">END-OF-RUN SCORING</text>
+        <text x="14" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Single 0/10 score after 10 steps</text>
+        <line x1="14" y1="50" x2="328" y2="50" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <line x1="22" y1="64" x2="22" y2="228" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+        <rect x="19" y="62" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Steps 1-3 Sound</text>
+        <text x="34" y="85" font-size="11" fill="var(--ex-muted)">Valid planning unconfirmed</text>
+        <line x1="34" y1="132" x2="328" y2="132" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="142" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="149" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Step 4 Silent Slip</text>
+        <text x="34" y="165" font-size="11" fill="var(--ex-muted)">Bad premise passes unseen</text>
+        <line x1="34" y1="212" x2="328" y2="212" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="222" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="229" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Blind Reshuffle</text>
+        <text x="34" y="245" font-size="11" fill="var(--ex-muted)">Scrambles all 10 steps</text>
+        <line x1="14" y1="303" x2="328" y2="303" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="14" y="311" width="5" height="5" fill="var(--ex-warn)"/>
+        <text x="25" y="316" font-size="11" font-weight="700" fill="var(--ex-warn)">Outcome: Slow churn &amp; broken premises</text>
+      </g>
+      <g>
+        <rect x="354" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="367" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">STEP-WISE FEEDBACK</text>
+        <text x="354" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Pinpoints exact failing step</text>
+        <line x1="354" y1="50" x2="666" y2="50" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <line x1="362" y1="64" x2="362" y2="228" stroke="var(--ex-signal)" stroke-width="1"/>
+        <rect x="359" y="62" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Steps 1-3 Locked</text>
+        <text x="374" y="85" font-size="11" fill="var(--ex-muted)">Verified premises kept</text>
+        <line x1="374" y1="132" x2="666" y2="132" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="359" y="142" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="149" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Step 4 Pinpointed</text>
+        <text x="374" y="165" font-size="11" fill="var(--ex-muted)">Linter flags exact fault</text>
+        <line x1="374" y1="212" x2="666" y2="212" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="359" y="222" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="229" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Targeted Repair</text>
+        <text x="374" y="245" font-size="11" fill="var(--ex-muted)">Fixes Step 4 in isolation</text>
+        <line x1="354" y1="303" x2="666" y2="303" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="354" y="311" width="5" height="5" fill="var(--ex-signal)"/>
+        <text x="365" y="316" font-size="11" font-weight="700" fill="var(--ex-signal)">Outcome: 35x faster &amp; clear audit</text>
+      </g>
+    </svg>
+    <svg class="diagram-mobile" viewBox="0 0 300 412" role="img" aria-labelledby="ex-step-m-title ex-step-m-desc">
+      <title id="ex-step-m-title">Comparison of end-of-run scoring versus step-by-step diagnostic feedback (Mobile)</title>
+      <desc id="ex-step-m-desc">Stacked mobile diagram comparing single end-of-run pass-fail scoring against step-by-step verification and targeted repair.</desc>
+      <g>
+        <rect x="10" y="14" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="22" y="20" font-size="11" font-weight="700" fill="var(--ex-warn)">END-OF-RUN SCORING</text>
+        <text x="10" y="38" font-size="11" fill="var(--ex-muted)">Single 0/10 grade after 10 steps</text>
+        <line x1="10" y1="48" x2="290" y2="48" stroke="var(--ex-warn)" stroke-width="1.25" stroke-dasharray="4 3"/>
+        <text x="16" y="70" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Steps 1-3 Unconfirmed</text>
+        <text x="16" y="86" font-size="11" fill="var(--ex-muted)">Valid early planning left unmarked</text>
+        <line x1="14" y1="90" x2="14" y2="100" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <polygon points="11,98 17,98 14,104" fill="var(--ex-warn)"/>
+        <text x="16" y="118" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Step 4 Silent Slip</text>
+        <text x="16" y="134" font-size="11" fill="var(--ex-muted)">Faulty premise passes unseen</text>
+        <line x1="14" y1="138" x2="14" y2="148" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <polygon points="11,146 17,146 14,152" fill="var(--ex-warn)"/>
+        <text x="16" y="166" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Blind Reshuffle</text>
+        <text x="16" y="182" font-size="11" fill="var(--ex-muted)">Scrambles all 10 steps at random</text>
+      </g>
+      <line x1="10" y1="202" x2="290" y2="202" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="10" y="218" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="22" y="224" font-size="11" font-weight="700" fill="var(--ex-signal)">STEP-WISE FEEDBACK</text>
+        <text x="10" y="242" font-size="11" fill="var(--ex-muted)">Pinpoints and repairs exact failing step</text>
+        <line x1="10" y1="252" x2="290" y2="252" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <text x="16" y="274" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Steps 1-3 Locked</text>
+        <text x="16" y="290" font-size="11" fill="var(--ex-muted)">Verified early premises preserved</text>
+        <line x1="14" y1="294" x2="14" y2="304" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <polygon points="11,302 17,302 14,308" fill="var(--ex-signal)"/>
+        <text x="16" y="322" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Step 4 Pinpointed</text>
+        <text x="16" y="338" font-size="11" fill="var(--ex-muted)">Linter names exact policy fault</text>
+        <line x1="14" y1="342" x2="14" y2="352" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <polygon points="11,350 17,350 14,356" fill="var(--ex-signal)"/>
+        <text x="16" y="370" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Targeted Repair</text>
+        <text x="16" y="386" font-size="11" fill="var(--ex-muted)">35x faster learning and clear audit</text>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Final-outcome grading</span>
+      <div class="ex-spec-body">Hands a single fail mark at Step 10 without naming the faulty step, causing the model to overwrite good early work.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Step-level diagnostic check</span>
+      <div class="ex-spec-body">Verifies each intermediate step in sequence so Step 4 repairs cleanly while preserving verified Steps 1 through 3.</div>
+    </div>
+  </div>
+  <figcaption>End-of-run scoring leaves an assistant guessing which of ten steps went wrong. Step-wise feedback isolates the exact error, fixing the problem without disturbing good work.</figcaption>
+</figure>
+
+<p>Recent research offers a much cleaner path forward. Leaving whole-run lump scores behind, training tools evaluate individual reasoning steps as atomic units.<sup><a href="#fn1">1</a></sup></p>
+
+<p>When an assistant takes a step, the harness checks that specific action against known rules. Did it read a valid file? Did it follow the safety policy? Did its intermediate calculation hold up?</p>
+
+<p>If step four contains a flaw, the system pauses right there. It tells the assistant exactly what went wrong in plain language. The assistant corrects step four and continues its errand, keeping steps one through three intact.</p>
+
+<p>The difference in performance is striking. Computer scientists have found that step-level feedback allows models to solve complex multi-step problems with far greater accuracy.<sup><a href="#fn1">1</a></sup> Even more surprisingly, using natural language reflection to diagnose why a step failed can outperform traditional trial-and-error training while using up to thirty-five times fewer trial runs.<sup><a href="#fn2">2</a></sup></p>
+
+<h2>Words work better than numbers</h2>
+
+<p>Why does plain language teach an assistant so much faster than a numerical score?</p>
+
+<p>Consider what happens when you give an assistant a number like minus five. A number has no structure. It tells the software that something went wrong, but it contains zero information about why.</p>
+
+<p>Now consider what happens when a diagnostic checker provides a sentence: <em>"You tried to send the email before verifying the recipient address."</em> That sentence contains rich semantic cues. It tells the model which tool call failed, which policy rule was violated, and what prerequisite action was skipped.</p>
+
+<p>Because modern language models are designed to understand words, they can digest that written critique immediately. They do not need thousands of random attempts to figure out what the penalty meant. They read the explanation and adjust their plan on the very next try.</p>
+
+<p>Giving an AI assistant a single grade at the end wastes time and power. Pointing to the exact step where it stumbled makes learning fast and transparent.</p>
+
+<h2>What this means for everyday people</h2>
+
+<p>You might wonder why training techniques inside research labs matter to someone using an assistant at home or work. The answer comes down to safety and inspectability.</p>
+
+<p>When an assistant is trained only on end-of-run scores, its internal reasoning remains an opaque black box. If it makes a costly blunder, nobody can trace which assumption led it astray. The software vendor will tell you to try again with a different prompt.</p>
+
+<p>When an assistant operates step by step, its entire journey becomes visible. Before taking an irreversible action, like spending money or deleting a record, it records the exact reasoning step that led there. You do not have to trust a mysterious feeling or a secret algorithm. You can read the steps yourself.</p>
+
+<h2>Clear steps keep humans in charge</h2>
+
+<p>As automated assistants take on larger roles in healthcare, local government, and small businesses, we cannot afford systems that learn by blind guessing. We need assistants that think in legible steps and learn from specific corrections.</p>
+
+<p>Teaching assistants step by step saves electricity while building tools whose thinking we can follow, audit, and gently guide when things go off track.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers</summary>
+    <div>
+      <p>This essay synthesizes findings from step-wise preference optimization (Step-DPO; Lai et al., arXiv:2406.18629, 2024) and reflective prompt evolution across Pareto frontiers (GEPA; Agrawal et al., arXiv:2507.19457, 2025 / ICLR 2026 Oral).</p>
+      <p>Standard Direct Preference Optimization (Rafailov et al., 2023) treats full trajectories as holistic preference pairs. Under long reasoning horizons, this introduces credit assignment diffusion, requiring exponential trajectory sampling to isolate sub-optimal reasoning tokens. Step-DPO decomposes trajectories into granular step pairs $(y_t^w, y_t^l)$, isolating error localization and providing substantial benchmark gains on GSM8K and MATH with self-generated on-policy rollouts.</p>
+      <p>Complementarily, GEPA replaces scalar reinforcement learning reward signals (such as GRPO) with reflective natural language mutation guided by Pareto selection over multi-objective validation criteria. Agrawal et al. prove that textual reflection captures diagnostic error gradients directly from tool logs and linter diagnostics, outperforming scalar RL by up to 20% while reducing environment rollouts by up to 35x.</p>
+      <p>Within our five-primitive sociotechnical architecture, step-level diagnostic verification anchors every intermediate tool call to hardware-rooted provenance. Wearable and ambient sensors form an egocentric and ambient perceptual sensorium synchronized in hardware Device Time with self-assessed observation confidence and PUF, TCG DICE, DMTF SPDM, and IETF RATS (RFC 9334) attestation. An optical data diode and optical data diodes paired with IEC 61508 dead-man relays isolate actuators under analog transduction realism, because Signed Is Not True across the analog hole (Kevin Fu and Wenyuan Xu, Fu &amp; Xu, 2018; <a href="/labs/sensor-boundary/">/labs/sensor-boundary/</a>). Raw reasoning traces remain inside a local append-only C2PA v2.1 and Merkle episodic memory vault (Endel Tulving, 1972). That vault serves a monogamous 1:1 personal cognitive model and cybernetic exocortex (Joscha Bach, 2009; Extended Mind, Andy Clark and David Chalmers, Clark &amp; Chalmers, 1998; Good Regulator theorem, Conant &amp; Ashby, 1970; interventional causal inference <code>do(x)</code>, Pearl, 2009; compiler-trust verification, Thompson, 1984) acting as a statutory information fiduciary (Jack Balkin, 2016) that preserves unassisted competence.<sup><a href="#fn3">3</a></sup></p>
+      <p>Across the personal Markov blanket (Karl Friston; Friston, 2010; Friston, 2013), an Object-Capability reference monitor and expiring capability lease (Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966) partition the Private Autobiographical Ledger from the Public Attestation and Escrow Ledger (Public Attestation &amp; Escrow Ledger). Each verified step emits selective zero-knowledge (ZK) proofs and IETF SCITT (RFC 9943) transparency receipts (<a href="/labs/protocol-inspector/">/labs/protocol-inspector/</a>) corroborated across independent sensor classes by Byzantine quorum (<code>k &gt;= 3f + 1</code>). Sovereign dyads settle shared and merit-bonded tasks across the Wide Network Ledger to support Universal Basic Services, plural value accounting (Jacob Meluso et al., 2025), reciprocal mutual credit clearing (James Stodder, 2009), statutory Meidner cooperative share-issuance funds (Rudolf Meidner, 1978), frontier-lab overlays (Bracale Syrnikov et al., 2026), and polycentric Ostrom self-rule across overlapping cognitive light cones (Elinor Ostrom, 1990; Michael Levin, 2019; <a href="/labs/shared-horizon/">/labs/shared-horizon/</a>).<sup><a href="#fn4">4</a></sup></p>
+    </div>
+  </details>
+</aside>
+
+<section class="footnotes">
+  <p id="fn1">1. Xin Lai, Zhuotao Tian, Yukang Chen, Senqiao Yang, Xiangru Peng, and Jiaya Jia, <a href="https://arxiv.org/abs/2406.18629">Step-DPO: Step-wise Preference Optimization for Long-chain Reasoning of LLMs</a>, arXiv:2406.18629 (June 2024 / ICLR 2025).</p>
+  <p id="fn2">2. Ayush Agrawal, et al., <a href="https://arxiv.org/abs/2507.19457">GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning</a>, arXiv:2507.19457 (July 2025 / ICLR 2026 Oral).</p>
+  <p id="fn3">3. Kevin Fu and Wenyuan Xu (2018), <a href="https://doi.org/10.1145/3176402">"Risks of Trusting the Physics of Sensors,"</a> <em>Communications of the ACM</em>, 61(2), 20-23; Henk Birkholz et al. (2023), <a href="https://www.rfc-editor.org/rfc/rfc9334">IETF RFC 9334: Remote ATtestation procedureS (RATS) Architecture</a>; Coalition for Content Provenance and Authenticity (2024), <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html">C2PA Technical Specification v2.1</a>; Jack M. Balkin (2016), <a href="https://lawreview.law.ucdavis.edu/issues/49/4/lecture/information-fiduciaries-and-first-amendment">"Information Fiduciaries and the First Amendment,"</a> <em>UC Davis Law Review</em>, 49(4), 1183-1234.</p>
+  <p id="fn4">4. Karl Friston (2013), <a href="https://doi.org/10.1098/rsif.2013.0475">"Life as We Know It,"</a> <em>Journal of the Royal Society Interface</em>, 10(86), 20130475; Jack B. Dennis and Earl C. Van Horn (1966), <a href="https://doi.org/10.1145/365230.365252">"Programming Semantics for Multiprogrammed Computations,"</a> <em>Communications of the ACM</em>, 9(3), 143-155; Henk Birkholz et al. (2026), <a href="https://www.rfc-editor.org/rfc/rfc9943">IETF RFC 9943: An Architecture for Trustworthy and Transparent Digital Supply Chains (SCITT)</a>; Rudolf Meidner (1978), <a href="https://archive.org/details/employeeinvestme0000meid"><em>Employee Investment Funds: An Approach to Collective Capital Formation</em></a>; Elinor Ostrom (1990), <a href="https://doi.org/10.1017/CBO9780511807763"><em>Governing the Commons</em></a>.</p>
+</section>

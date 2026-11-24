@@ -1,0 +1,275 @@
+---
+title: Before you sign the contract
+description: High-level ethical promises do not protect public services or everyday buyers. Writing clear human-AI interaction rules directly into contracts does.
+reader: Public procurement leads, agency directors, small business owners and anyone asked to sign a dense software or service contract.
+takeaway: If you want an automated system or service agreement to be explainable, contestable and stoppable, you have to inspect the fine print and write clear rules into the contract before you sign.
+template: article
+date: 2026-11-06
+order: 21
+category: Governing
+minutes: 9
+image: post-before-you-sign-the-contract.jpg
+image_alt: A fountain pen resting across an open civic contract parchment with a brass notary seal and an inkwell beside an open window.
+lede: Every software vendor promises their AI is safe, fair and transparent. But when a case file is closed by mistake or a service fee doubles overnight, an abstract promise cannot be audited. If you want software and contracts that answer to people, you have to inspect the terms and write the rules before you sign the deal.
+---
+<p>Every week, city halls, clinics and small shops review bids for automated software. Vendors arrive with glossy slide decks promising efficiency, fairness and trustworthy AI. Those words sound reassuring in a meeting room. Yet when the software goes live, abstract promises quickly run into messy human realities.</p>
+
+<p>A family applying for housing support is rejected overnight without a clear explanation. A clinic appointment is cancelled by an automated rule. When staff ask why the choice was made, the screen displays only a confidence score. The vendor points to the signed agreement, noting they met every high-level guideline requested.</p>
+
+<p>The same imbalance shows up whenever a person or local shop is handed a forty-page vendor contract or service agreement. The company that drafted the document hired lawyers to protect its own interests. You are expected to read forty pages of dense cross-references alone after dinner.</p>
+
+<h2>Buying a house when the seller wrote the inspection report</h2>
+
+<p>Signing a forty-page vendor contract alone is like buying an old house without a home inspector. Worse, the seller's own engineer wrote the inspection report. Everything on the summary page looks freshly painted. The roof is described as sound, and the basement dry.</p>
+
+<p>Only when winter arrives do you discover what the careful phrasing hid. Buried on page twenty-seven, a clause shifts repair costs onto the buyer. Another paragraph waives your right to dispute defective wiring in court, locking you into a five-year service agreement.</p>
+
+<p>Nobody would buy a family home under those conditions. You hire an independent home inspector who answers only to you. They check the wiring and roof, then hand you a clear list of what needs fixing before closing.</p>
+
+<p>Yet when public agencies buy decision software, they routinely rely on the seller's brochure. Tenants, freelancers and small clinics face the same trap when signing commercial software licenses.</p>
+
+<h2>The procurement blind spot in public services</h2>
+
+<p>In public purchasing, this breakdown is an everyday reality. An empirical study of municipal AI procurement across seven American cities found that legacy purchasing rules often leave software unexamined.<sup><a href="#fn1">1</a></sup> Commercial vendors routinely claim trade-secret exemptions, preventing caseworkers and city councils from inspecting automated scoring rules.<sup><a href="#fn1">1</a></sup></p>
+
+<p>International treaties are beginning to close this loophole. Under Article 3 of the Council of Europe AI Framework Convention (CETS No. 225), private contractors serving public authorities share the same human rights duties as the state itself.<sup><a href="#fn2">2</a></sup></p>
+
+<p>Yet on the ground, agencies still struggle to translate high-level values into contract specifications.<sup><a href="#fn3">3</a></sup> Tender documents request fairness and transparency in broad words. But they rarely specify what buttons a caseworker needs on screen to pause an automated notice.<sup><a href="#fn3">3</a></sup></p>
+
+<p>Instead, interaction details are left to vendor discretion.<sup><a href="#fn3">3</a></sup> Vendors decide what information appears on screen and whether a human can override an alert. When oversight is treated as an abstract wish rather than an enforceable contract specification, public accountability disappears the moment a resident needs help.<sup><a href="#fn3">3</a></sup></p>
+
+<p>Consider what happens inside a municipal benefits office when a new automated triage tool is installed without clear interaction rules. A resident submits pay stubs from two part-time jobs, and an optical scanner misreads a smudged date. The software flags the file as incomplete and schedules an automatic termination notice for Friday.</p>
+
+<p>The caseworker sees a red warning banner on the monitor, but the software does not show which document triggered the alert. Worse, the screen offers no button to pause the Friday notice while the resident fetches a cleaner copy. The worker wants to help, yet the contract never required a pause button or a source link.</p>
+
+<figure class="explainer" id="ex-procurement-gates">
+  <style>
+    #ex-procurement-gates {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-procurement-gates svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-procurement-gates .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-procurement-gates .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-procurement-gates .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-procurement-gates .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-procurement-gates .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-procurement-gates .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-procurement-gates .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-procurement-gates .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-procurement-gates .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-procurement-gates figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-procurement-gates .ex-canvas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #ex-procurement-gates .ex-canvas svg {
+        min-width: 540px;
+      }
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg viewBox="0 0 680 340" role="group" aria-labelledby="ex-procurement-gates-title ex-procurement-gates-desc">
+      <title id="ex-procurement-gates-title">Comparison of traditional vague procurement RFPs and enforceable interaction specifications</title>
+      <desc id="ex-procurement-gates-desc">Side-by-side comparison showing traditional procurement on the left with vague ethical promises and vendor discretion, versus enforceable interaction specifications on the right with verifiable capability leases, one-click human override switches, and tamper-evident action receipts.</desc>
+      <line x1="340" y1="14" x2="340" y2="328" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="14" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="27" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">TRADITIONAL RFP</text>
+        <text x="14" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Vague ethical wish in vendor brochure</text>
+        <line x1="14" y1="50" x2="328" y2="50" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <line x1="22" y1="64" x2="22" y2="248" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+        <rect x="19" y="62" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Abstract Slogan</text>
+        <text x="34" y="85" font-size="11" fill="var(--ex-muted)">Asks for trustworthy AI</text>
+        <line x1="34" y1="112" x2="328" y2="112" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="122" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="129" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Self-Assessment</text>
+        <text x="34" y="145" font-size="11" fill="var(--ex-muted)">Vendor grades own system</text>
+        <line x1="34" y1="172" x2="328" y2="172" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="182" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="189" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Zero Human Recourse</text>
+        <text x="34" y="205" font-size="11" fill="var(--ex-muted)">Closed cloud black box</text>
+        <line x1="34" y1="232" x2="328" y2="232" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="242" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="249" font-size="12" font-weight="700" fill="var(--ex-ink)">4. Opaque Telemetry</text>
+        <text x="34" y="265" font-size="11" fill="var(--ex-muted)">Logs locked in vendor cloud</text>
+        <line x1="14" y1="303" x2="328" y2="303" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="14" y="311" width="5" height="5" fill="var(--ex-warn)"/>
+        <text x="25" y="316" font-size="11" font-weight="700" fill="var(--ex-warn)">Outcome: Unenforceable in disputes</text>
+      </g>
+      <g>
+        <rect x="354" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="367" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">ENFORCEABLE SPEC</text>
+        <text x="354" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Measurable contract gates &amp; staff tools</text>
+        <line x1="354" y1="50" x2="666" y2="50" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <line x1="362" y1="64" x2="362" y2="248" stroke="var(--ex-signal)" stroke-width="1"/>
+        <rect x="359" y="62" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Interaction Criteria</text>
+        <text x="374" y="85" font-size="11" fill="var(--ex-muted)">Testable operational bounds</text>
+        <line x1="374" y1="112" x2="666" y2="112" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="359" y="122" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="129" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Hands-On Staff Audit</text>
+        <text x="374" y="145" font-size="11" fill="var(--ex-muted)">Checked on real casework</text>
+        <line x1="374" y1="172" x2="666" y2="172" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="359" y="182" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="189" font-size="12" font-weight="700" fill="var(--ex-ink)">3. One-Click Override</text>
+        <text x="374" y="205" font-size="11" fill="var(--ex-muted)">Caseworker halts bad output</text>
+        <line x1="374" y1="232" x2="666" y2="232" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="359" y="242" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="249" font-size="12" font-weight="700" fill="var(--ex-ink)">4. Action Receipts</text>
+        <text x="374" y="265" font-size="11" fill="var(--ex-muted)">Tamper-evident public log</text>
+        <line x1="354" y1="303" x2="666" y2="303" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="354" y="311" width="5" height="5" fill="var(--ex-signal)"/>
+        <text x="365" y="316" font-size="11" font-weight="700" fill="var(--ex-signal)">Outcome: Enforceable public warranty</text>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Vague procurement wish</span>
+      <div class="ex-spec-body">Relies on vendor self-assessments and closed telemetry, leaving public staff unable to inspect or override flawed automated outputs.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Enforceable contract gate</span>
+      <div class="ex-spec-body">Writes measurable usability audits, one-click caseworker overrides, and tamper-evident action receipts directly into tender law.</div>
+    </div>
+  </div>
+  <figcaption>Vague ethical requests leave agencies dependent on marketing claims; writing explicit interaction requirements into procurement contracts gives staff measurable tools to inspect, override and verify automated decisions.</figcaption>
+</figure>
+
+<h2>A nutrition label and an advocate at the kitchen table</h2>
+
+<p>How do we fix this imbalance before a contract is signed? Think about how nutrition labels transformed grocery shopping. Decades ago, food boxes listed only dense chemical ingredient names in tiny print. Without a chemistry degree, you could never tell how much salt, sugar or saturated fat was hidden inside.</p>
+
+<p>Standardized nutrition labels changed the rules. They forced food makers to summarize what matters in clear, uniform lines that anyone can compare in ten seconds. A private contract-reading assistant running on your own computer does the exact same thing for legal agreements.<sup><a href="#fn7">7</a></sup></p>
+
+<p>Feed a vendor contract, commercial lease or software bid into an assistant that answers only to you. In seconds, it generates a clear nutrition label for the deal. It surfaces the exact lines governing data ownership, price increases, auto-renewals, dispute rights and human override switches.</p>
+
+<p>Even better, a private assistant feels like a seasoned union steward sitting beside you at your kitchen table. When a vendor slides a thick contract across the table, an experienced advocate knows right where to look. They put a finger on paragraph nineteen and explain what that harmless-sounding clause will do to your budget next year.</p>
+
+<p>Because the assistant runs on your own device, confidential bids stay private. You never upload personal lease terms or sensitive municipal records to a commercial cloud server. Your negotiations stay in your hands, paired with line-by-line checks against open model clauses.<sup><a href="#fn7">7</a></sup></p>
+
+<h2>What a kitchen-table inspection catches in practice</h2>
+
+<p>When procurement officers, clinic managers or independent workers run a structured pre-signing check, four recurring traps immediately come into view.</p>
+
+<ul>
+<li><strong>Silent data-training grabs.</strong> Many commercial contracts let the vendor use customer records to train proprietary models. A clear clause forbids secondary model training on public or client records without written consent.</li>
+<li><strong>Unilateral rule changes by web link.</strong> Vendors often write that core service rules live on an external web page they can change anytime. Enforceable contracts freeze governing terms on the signing date.</li>
+<li><strong>Auto-renewal traps with narrow exit windows.</strong> Agreements frequently lock buyers into multi-year extensions unless notice arrives during a narrow thirty-day window months early. A nutrition-label audit highlights those dates immediately.</li>
+<li><strong>Missing explanation and appeal paths.</strong> Standard vendor templates rarely promise that a citizen or caseworker will see the specific facts behind an automated score.<sup><a href="#fn3">3</a></sup> Catching that omission lets buyers demand plain-language explanation screens.</li>
+</ul>
+
+<h2>Three clauses to include in every public contract</h2>
+
+<p>Public agencies do not need to wait for legislative overhaul to protect residents and staff. Writing three concrete specifications into standard contract templates turns abstract ethics into daily operational tools.</p>
+
+<p><strong>1. Demand a checkable receipt for each action.</strong> Never accept an automated system that operates as an unrecorded black box. Every time the software updates a file, issues a notice or calculates a score, it must write a tamper-evident receipt. That receipt must record who authorized the step, which policy rule applied, and which inputs drove the outcome.</p>
+
+<p><strong>2. Put an egg timer on authority.</strong> Software agents should hold permissions on loan, never as a blank cheque.<sup><a href="#fn6">6</a></sup> Require vendors to bind automated actions to short-lived permission leases that expire automatically once a task is complete.<sup><a href="#fn6">6</a></sup> If a background workflow stalls or steps outside its mandate, its permission evaporates automatically.</p>
+
+<p><strong>3. Require a real human stop switch.</strong> Both European Union regulations and Canadian federal directives require that humans retain the ability to step in and overturn automated decisions.<sup><a href="#fn4">4</a>,<a href="#fn5">5</a></sup> Make sure your contract defines what intervention looks like on the ground. A caseworker must be able to halt a workflow instantly, read its reasoning in plain words, and reverse a recommendation with one click.</p>
+
+<div class="callout"><p class="label">What this means</p><p>When a contract requires checkable receipts, expiring permissions and one-click human stop switches, front-line staff stay in charge. You can fix mistakes in minutes instead of arguing with a vendor over who is to blame.</p></div>
+
+<h2>Testing the software with the people who will use it</h2>
+
+<p>Writing strong clauses into the contract is the first half of the job. The second half is verifying that the software delivers on those clauses before the final invoice is paid.</p>
+
+<p>A better contract ties vendor payment milestones to hands-on trials with real front-line caseworkers and clerks.<sup><a href="#fn3">3</a></sup> During a two-week pilot, give staff realistic edge cases: seasonal income, shared surnames, or a crookedly scanned form.</p>
+
+<p>Then measure what happens with a stopwatch. Can staff tell why the software flagged the file in under sixty seconds? Can they pause the notice and attach a correction without a support ticket? If not, the vendor must fix the interface before launch.</p>
+
+<h2>What remains challenging</h2>
+
+<p>We want to be candid about what contract language can and cannot solve. Even clear procurement specifications cannot repair biased historical records or an unfair statute. If past data reflects unequal treatment, the software will still reproduce those patterns.</p>
+
+<p>At the same time, front-line staff face intense time pressures. Even with an override button on screen, an overworked caseworker handling eighty files a day may feel pressure to rubber-stamp automated suggestions. Preventing rubber-stamp automation requires manageable caseloads, supportive supervision and regular audits alongside strong contract terms.</p>
+
+<p>Smaller towns and clinics also face bargaining hurdles when negotiating alone against giant software providers. Sharing open-source contract templates and forming municipal purchasing coalitions levels the field. When twenty towns demand the same oversight clauses, vendors listen.</p>
+
+<h2>Where buyers and agencies can start</h2>
+
+<p>You do not need permission from a national ministry to improve the next agreement on your desk. Whether you lead a county procurement team, run a clinic, or review a shop contract, refuse vague promises where concrete rules belong.</p>
+
+<p>Use a private contract-reading assistant like a nutrition label and a trusted steward at your kitchen table to spot hidden traps before you sign. And in every public software purchase, insist on checkable receipts, expiring permissions and a real human stop switch. Public services work when human beings stand behind public choices, and that starts on page one of the contract.</p>
+
+<aside class="for-researchers"><details><summary>For researchers</summary><div><p>The procurement and contract-inspection framework presented here translates Human-AI Interaction (HAI) governance principles into formal contracting gates (Abbasi et al., 2026). Empirical research shows that legacy municipal procurement laws routinely allow vendor AI to bypass public scrutiny (Johnson et al., 2024). Meanwhile, international frameworks like Article 3 of the Council of Europe Framework Convention on Artificial Intelligence (CETS No. 225) explicitly bind private contractors acting on behalf of public authorities to human rights and contestability obligations.</p><p>Our reference architecture enforces these invariants via client-side Object-Capability sandboxes (Dennis and Van Horn, 1966), time-bounded capability leases with automatic demurrage, authenticated delegation chains (South et al., 2025), and Proof-Carrying Code action receipts. For pre-signing analysis, local models evaluate clauses against structured legal benchmarks such as CUAD (Hendrycks et al., 2021) entirely on-device.</p></div></details></aside>
+
+<section class="footnotes">
+<p id="fn1">1. Nari Johnson, Elise Silva, Harrison Leon, Motahhare Eslami, Beth Schwanke, Ravit Dotan, and Hoda Heidari, <a href="https://arxiv.org/abs/2411.04994"><em>Legacy Procurement Practices Shape How U.S. Cities Govern AI: Understanding Government Employees' Practices, Challenges, and Needs</em></a>, arXiv:2411.04994 (2024).</p>
+<p id="fn2">2. Council of Europe, <a href="https://www.coe.int/en/web/conventions/full-list?module=treaty-detail&treatynum=225"><em>Framework Convention on Artificial Intelligence and Human Rights, Democracy and the Rule of Law (CETS No. 225)</em></a>, Article 3 (Scope), Council of Europe Treaty Series (2024).</p>
+<p id="fn3">3. Mateen A. Abbasi, Tommi Mikkonen, Sinna Pirinen, and Aapo Koski, <a href="https://arxiv.org/abs/2606.21247"><em>Human-AI Interaction Requirements in Public Sector Procurements</em></a>, arXiv:2606.21247 (2026); published in <em>Business Information Systems (BIS 2026)</em>, Lecture Notes in Business Information Processing, vol 584.</p>
+<p id="fn4">4. European Union, <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202401689"><em>Regulation (EU) 2024/1689 (Artificial Intelligence Act)</em></a>, Article 14 (Human oversight), Official Journal of the European Union (2024).</p>
+<p id="fn5">5. Treasury Board of Canada Secretariat, <a href="https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32592"><em>Directive on Automated Decision-Making</em></a>, Appendix C (Impact Assessment and Human Intervention Controls), Government of Canada (2019, updated 2024).</p>
+<p id="fn6">6. Tobin South, Samuele Marro, Thomas Hardjono, Robert Mahari, Cedric Deslandes Whitney, Dazza Greenwood, Alan Chan, and Alex Pentland, <a href="https://arxiv.org/abs/2501.09674"><em>Authenticated Delegation and Authorized AI Agents</em></a>, arXiv:2501.09674 (2025).</p>
+<p id="fn7">7. Dan Hendrycks, Collin Burns, Anya Chen, and Spencer Ball, <a href="https://arxiv.org/abs/2103.06268"><em>CUAD: An Expert-Annotated NLP Dataset for Legal Contract Review</em></a>, Advances in Neural Information Processing Systems (NeurIPS Datasets and Benchmarks, 2021), arXiv:2103.06268.</p>
+</section>

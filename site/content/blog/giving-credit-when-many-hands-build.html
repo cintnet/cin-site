@@ -1,0 +1,254 @@
+---
+title: Giving credit when many hands build something together
+description: When a useful answer draws on dozens of teachers, datasets, and specialist tools, how do we keep an honest record of who made it work?
+reader: Researchers, creators, open-source maintainers, and general readers
+takeaway: Understand how counterfactual provenance tracks which contributions actually made an answer reliable, preserving credit and accountability across long chains of collaboration.
+template: article
+date: 2026-11-06
+order: 25
+category: Owning
+minutes: 10
+lede: AI systems blend the work of thousands of people into one answer and drop the credits. We propose tracking which contributions actually changed an answer, by testing what happens when each is removed, so credit and accountability survive long chains of collaboration.
+image: post-giving-credit-when-many-hands-build.jpg
+image_alt: Warm book-plate illustration of a woven cloth on a wooden loom where distinct coloured threads trace back to individual spools.
+---
+<p>In science, journalism and open-source software, citations tell a reader where a claim came from, so it can be traced back and checked. Large AI systems read millions of papers, manuals, forum answers and code libraries, blend them into one voice, and hand back an answer without the labels. When the answer is good, nobody knows whose work to credit. When it is wrong, nobody knows which source to fix.</p>
+
+<h2>Why missing credit hurts more than pride</h2>
+
+<p>When an AI assistant gives you a confident answer without showing whose work it leaned on, two things go wrong at once.</p>
+
+<p>First, the people who did the hard, patient work of gathering real-world knowledge become invisible. A rural nurse who wrote clear triage guides, a botanist who catalogued local crop pests, or a volunteer maintaining open code sees their craft absorbed into a nameless summary.</p>
+
+<p>Over time, melting everyone's craft into an unmarked bar dries up the well. Why should a master electrician publish a careful guide, or a local society digitize parish registers, if a giant machine swallows their work without a nod?</p>
+
+<p>Second, the person reading the answer loses the ability to check whether it deserves trust. A smooth paragraph that draws on a verified clinical handbook looks identical on the screen to one stitched together from an old rumour. Without provenance, an honest record of where each piece came from, fluency masquerades as authority.<sup><a href="#fn-3" id="fnref-3">3</a></sup></p>
+
+<div class="callout"><p class="label">What this means</p><p>Credit is more than a polite nod at the end of a project. In shared intelligence, knowing which contributions made an answer work preserves both fairness and accountability.</p></div>
+
+<h2>The puzzle of a team effort</h2>
+
+<p>Keeping an honest record gets tricky when several specialist tools and datasets work together on the same task. Suppose a family uses a personal assistant to check an unclear hospital bill or a complicated housing lease. Behind the scenes, three different community tools help out:</p>
+
+<ul>
+<li><strong>A public-records lookup tool</strong> that retrieves the current statutory rules for the family's town.</li>
+<li><strong>A plain-language checker</strong> trained by legal-aid volunteers to spot unfair clauses buried in fine print.</li>
+<li><strong>A verification tool</strong> that double-checks every cited rule number against the official register so nothing is invented.</li>
+</ul>
+
+<p>When the final summary catches a serious error in the lease, who deserves the credit? Giving all the credit to the last tool that spoke is like thanking only the newsreader who read the evening bulletin while ignoring the reporters who checked the facts.</p>
+
+<p>Think of how a documentary film crew or a university research lab handles this instead. On a film set, the lead actor's face fills the screen. Still, the scene falls flat if the boom operator misses a line, the colourist muddies the shadows, or the archivist fails to clear a historical photograph. Everyone's role is recorded on the call sheet and the closing credit roll because each craft had to hold up its end.</p>
+
+<p>On the other hand, splitting credit evenly among every tool that happened to be in the room invites clutter. An idle tool that added ten pages of irrelevant boilerplate would stand on equal footing with the specialist check that actually caught the mistake.</p>
+
+<h2>Testing what changes when a piece is removed</h2>
+
+<figure class="explainer" id="ex-counterfactual-credit">
+  <style>
+    #ex-counterfactual-credit {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-counterfactual-credit svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-counterfactual-credit .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-counterfactual-credit .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-counterfactual-credit .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-counterfactual-credit .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-counterfactual-credit .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-counterfactual-credit .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-counterfactual-credit .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-counterfactual-credit .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-counterfactual-credit .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-counterfactual-credit figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-counterfactual-credit .ex-canvas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #ex-counterfactual-credit .ex-canvas svg {
+        min-width: 540px;
+      }
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg viewBox="0 0 680 340" role="img" aria-labelledby="ex-credit-title ex-credit-desc">
+      <title id="ex-credit-title">Naïve credit versus counterfactual attribution</title>
+      <desc id="ex-credit-desc">A comparison between naïve credit schemes, which over-reward the final voice and treat idle text equally, and counterfactual attribution, which tests what happens when each piece is removed so only genuine contributors receive recognition.</desc>
+      <g>
+        <rect x="16" y="16" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="29" y="22" font-size="11" font-weight="700" fill="var(--ex-warn)">NAIVE CREDIT SPLIT</text>
+        <text x="29" y="38" font-size="11.5" fill="var(--ex-muted)">Last-mile bias rewards final speaker; equal split rewards idle padding</text>
+        <line x1="22" y1="62" x2="640" y2="62" stroke="var(--ex-warn)" stroke-width="1.25" stroke-dasharray="4 3"/>
+        <rect x="16" y="59" width="6" height="6" fill="var(--ex-warn)"/>
+        <line x1="19" y1="65" x2="19" y2="77" stroke="var(--ex-warn)" stroke-width="1"/>
+        <text x="16" y="92" font-size="12" font-weight="700" fill="var(--ex-ink)">Record + Rule + Check</text>
+        <text x="16" y="108" font-size="11" fill="var(--ex-muted)">Found error &amp; statute</text>
+        <rect x="232" y="59" width="6" height="6" fill="var(--ex-warn)"/>
+        <line x1="235" y1="65" x2="235" y2="77" stroke="var(--ex-warn)" stroke-width="1"/>
+        <text x="232" y="92" font-size="12" font-weight="700" fill="var(--ex-ink)">Idle Padding Tool</text>
+        <text x="232" y="108" font-size="11" fill="var(--ex-muted)">Added noisy boilerplate</text>
+        <rect x="448" y="59" width="6" height="6" fill="var(--ex-warn)"/>
+        <line x1="451" y1="65" x2="451" y2="77" stroke="var(--ex-warn)" stroke-width="1"/>
+        <text x="448" y="92" font-size="12" font-weight="700" fill="var(--ex-ink)">Final Voice Takes All</text>
+        <text x="448" y="108" font-size="11" fill="var(--ex-muted)">Or idle tool gets 20%</text>
+      </g>
+      <line x1="16" y1="170" x2="664" y2="170" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="16" y="184" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="29" y="190" font-size="11" font-weight="700" fill="var(--ex-signal)">COUNTERFACTUAL REMOVAL TEST</text>
+        <text x="29" y="206" font-size="11.5" fill="var(--ex-muted)">Observe accuracy drop when each contributor steps out</text>
+        <line x1="22" y1="230" x2="640" y2="230" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <rect x="16" y="227" width="6" height="6" fill="var(--ex-signal)"/>
+        <line x1="19" y1="233" x2="19" y2="245" stroke="var(--ex-signal)" stroke-width="1"/>
+        <text x="16" y="260" font-size="12" font-weight="700" fill="var(--ex-ink)">Test 1: Full Team</text>
+        <text x="16" y="276" font-size="11" fill="var(--ex-muted)">Mistake caught (100%)</text>
+        <rect x="232" y="227" width="6" height="6" fill="var(--ex-signal)"/>
+        <line x1="235" y1="233" x2="235" y2="245" stroke="var(--ex-signal)" stroke-width="1"/>
+        <text x="232" y="260" font-size="12" font-weight="700" fill="var(--ex-ink)">Test 2: Remove Check</text>
+        <text x="232" y="276" font-size="11" fill="var(--ex-muted)">Accuracy drops to 0%</text>
+        <rect x="448" y="227" width="6" height="6" fill="var(--ex-signal)"/>
+        <line x1="451" y1="233" x2="451" y2="245" stroke="var(--ex-signal)" stroke-width="1"/>
+        <text x="448" y="260" font-size="12" font-weight="700" fill="var(--ex-ink)">Test 3: Remove Idle</text>
+        <text x="448" y="276" font-size="11" fill="var(--ex-muted)">Stays 100% (0 false credit)</text>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Last-mile &amp; equal-split flaws</span>
+      <div class="ex-spec-body">Crediting only the final voice erases foundational checks, while splitting credit evenly rewards noisy padding tools.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Counterfactual removal test</span>
+      <div class="ex-spec-body">Replays the task without each contributor in turn so essential checks earn recognition and idle additions receive zero false credit.</div>
+    </div>
+  </div>
+  <figcaption>Naïve systems either credit only the final voice that read the answer or split praise evenly among every tool in the room. Counterfactual attribution tests what happens when each piece is removed: tools that make the difference are recognised, while idle additions receive zero false credit.</figcaption>
+</figure>
+
+<p>In 1953, the mathematician Lloyd Shapley asked a general version of this question: when a coalition of players cooperates to achieve a result, how can we measure what each participant actually contributed?<sup><a href="#fn-1" id="fnref-1">1</a></sup></p>
+
+<p>His answer rests on an intuitive idea. To see what one contributor brings to a team, look at what changes when they step into, or out of, different combinations of teammates. Machine-learning researchers have adapted this counterfactual credit method to measure which training examples and tools actually improve a model's answers.<sup><a href="#fn-2" id="fnref-2">2</a></sup></p>
+
+<p>This way of weighing contributions respects four simple rules of fairness that anyone who has worked on a group project will recognise:</p>
+
+<ul>
+<li><strong>No contribution, no false credit.</strong> If removing a tool or dataset changes nothing about the accuracy of the final answer, it claims no credit.</li>
+<li><strong>Equal work gets equal standing.</strong> Two contributors that strengthen an answer in the exact same way are recognised equally.</li>
+<li><strong>Complementarity counts.</strong> Sometimes a local dataset only shines when paired with a careful reasoning tool. Testing combinations recognises both partners.</li>
+<li><strong>Warnings about bad inputs.</strong> If a noisy source makes answers worse whenever it joins the team, the record flags its negative effect so maintainers can fix it.</li>
+</ul>
+
+<p>Walk through how that removal test plays out in our family's housing lease check. With all three tools working together, the assistant catches an unlawful late-fee clause and cites the exact town bylaw. Now ask what happens if we replay that check with the idle boilerplate tool removed: the answer stays just as accurate, so the padding tool gets zero credit.</p>
+
+<p>Next, ask what happens if we remove the legal-aid volunteers' plain-language checker. Suddenly the assistant misses the hidden fee trap altogether. That sharp drop proves the volunteer rule-set did real work, so its thread stays bright and named in the final receipt.</p>
+
+<h2>Tracing the reasoning graph without wasting effort</h2>
+
+<p>There is a practical catch with classical counterfactual testing. If twenty tools contribute to a task, re-running every combination from scratch would take over a million trial runs. Nobody wants to wait an hour or burn a roomful of electricity just to print the credits.</p>
+
+<p>Fortunately, when specialist assistants collaborate in structured steps, they do not melt their work into an unmarked pot. Instead, they produce a clear trail of how each conclusion was built, much like following individual coloured threads across a loom. One tool supplies a verified fact, a second combines two facts to test a rule, and a third checks the final step.</p>
+
+<p>Because that trail forms a clear map of dependencies, what standards bodies call a provenance graph, we do not have to guess in the dark.<sup><a href="#fn-3">3</a></sup> If a tool's output was never linked into the final reasoning chain, we already know removing it changes nothing. By tracing only the upstream facts and checks that actually supported the conclusion, a network records accurate credit in a single pass. Recent methods show this counterfactual accounting can run directly alongside regular model updates rather than requiring full restarts from scratch.<sup><a href="#fn-4" id="fnref-4">4</a></sup></p>
+
+<h2>Where this gets hard</h2>
+
+<p>Even with good maths and clean provenance records, giving fair credit in AI is far from solved:</p>
+
+<ul>
+<li><strong>Deep foundations are easy to overlook.</strong> Tracing the three tools that answered a question today is easier than tracing the thousands of teachers, writers, and maintainers whose work shaped the base model years earlier. A film credit roll names the camera operator and the sound mixer on set, yet rarely names the lens grinder who perfected the glass fifty years ago.</li>
+<li><strong>Gaming the trail.</strong> If contributors know credit follows citation links, some may split one simple lookup into five artificial steps or pad workflows with redundant checks. Independent verification must test whether removing a step genuinely changes the outcome.</li>
+<li><strong>Privacy versus public credit.</strong> Sometimes a helpful pattern comes from people who want their community lesson shared, say, a rare symptom pattern noticed by a patient group. They may want that knowledge available without having their personal names exposed on a public board. Good provenance lets a community group or clinic hold collective credit while keeping individual lives private.</li>
+</ul>
+
+<h2>Keeping the human story visible</h2>
+
+<p>Useful answers are never conjured from nothing by a lone machine in a data centre. Every helpful result is a relay race run by teachers, archivists, researchers, craftspeople, and maintainers who cared enough to get something right and share it.</p>
+
+<p>We do not have to melt human knowledge into an unmarked ingot. When we build AI systems that <a href="/blog/postmarks-for-the-real-world/">attach verifiable receipts</a> and preserve the lineage of who helped, we do more than honour good work. Like an honest credit roll, we give every reader a thread back to the people who helped. That shared record gives all of us a reason to keep contributing to what we <a href="/blog/who-should-own-intelligence/">build together</a>.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers</summary>
+    <div>
+      <p>This essay introduces cooperative provenance and counterfactual attribution without financial or token framing. Classic Data Shapley attribution (Ghorbani &amp; Zou, 2019; Shapley, 1953) satisfies null-player, symmetry, and additivity axioms, but requires exponential evaluations in black-box workflows. When structured multi-agent pipelines emit W3C PROV-compatible directed acyclic hypergraphs, minimal support sets can be extracted directly from the trace in a single pass. Recent in-run data attribution advances (Ding et al., arXiv:2602.00329, 2026; Wang et al., ICLR 2025) further enable dynamic attribution during gradient updates without retraining.</p>
+    </div>
+  </details>
+</aside>
+
+<section class="footnotes">
+  <h2>Sources</h2>
+  <ol>
+    <li id="fn-1">Lloyd S. Shapley, <a href="https://doi.org/10.1515/9781400881970-018">"A Value for n-Person Games,"</a> in <em>Contributions to the Theory of Games, Volume II</em>, edited by Harold W. Kuhn and Albert W. Tucker, Princeton University Press (1953), pp. 307–317. <a href="#fnref-1" aria-label="Back to text">↩</a></li>
+    <li id="fn-2">Amirata Ghorbani and James Zou, <a href="https://proceedings.mlr.press/v97/ghorbani19c.html">"Data Shapley: Equitable Valuation of Data for Machine Learning,"</a> <em>Proceedings of the 36th International Conference on Machine Learning (ICML)</em>, PMLR Vol. 97 (2019), pp. 2242–2251. <a href="#fnref-2" aria-label="Back to text">↩</a></li>
+    <li id="fn-3">Paul Groth and Luc Moreau (eds.), <a href="https://www.w3.org/TR/prov-overview/"><em>PROV-Overview: An Overview of the PROV Family of Documents</em></a>, W3C Working Group Note, World Wide Web Consortium (2013). <a href="#fnref-3" aria-label="Back to text">↩</a></li>
+    <li id="fn-4">Meng Ding, Zeqing Zhang, Di Wang and Lijie Hu, <a href="https://arxiv.org/abs/2602.00329">"In-Run Data Shapley for Adam Optimizer,"</a> arXiv:2602.00329 [cs.LG] (February 2026). <a href="#fnref-4" aria-label="Back to text">↩</a></li>
+  </ol>
+</section>

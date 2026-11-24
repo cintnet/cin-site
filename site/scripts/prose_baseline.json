@@ -1,0 +1,611 @@
+{
+ "about/founder.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "about/governance.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "about/index.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "about/others.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "about/principles.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/an-assistant-that-works-only-for-you.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/before-you-sign-the-contract.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/five-questions-before-buying-an-ai-agent.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/giving-credit-when-many-hands-build.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/governments-and-ai-agents.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/hearing-care-not-just-volume.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/how-a-need-finds-an-answer.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/how-an-ai-assistant-should-say-it-might-be-wrong.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/how-groups-govern-a-shared-resource.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/how-long-errands-stay-on-track.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/how-to-tell-if-an-ai-assistant-works-for-you.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/index.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/instructions-are-clues-not-orders.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/keeping-the-craft-dropping-the-chores.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/keeping-the-story-behind-what-we-build.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/locking-an-errand-to-your-touch.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/no-one-should-command-a-swarm.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/open-problems-we-would-love-help-with.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/paying-for-words-instead-of-the-repair.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/pooling-orders-without-showing-your-books.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/postmarks-for-the-real-world.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/power-on-loan-not-owned.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/proving-one-fact-without-handing-over-the-rest.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/public-computing-explained.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/quests-not-feeds.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/reading-the-fine-print-on-a-medical-bill.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/showing-the-roads-an-assistant-did-not-take.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/stopping-the-race-to-the-bottom.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/taking-back-your-recommendation-profile.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/teaching-an-assistant-step-by-step.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/testing-an-assistant-on-unfamiliar-roads.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/the-internet-needs-a-second-road.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/transparency-you-can-actually-use.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/what-would-count-as-oversight.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/when-agents-deal-with-agents.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/when-an-agent-forgets-who-said-what.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/when-an-ai-pretends-to-be-simpler-than-it-is.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/when-an-assistant-reads-the-rules.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/when-an-invoice-gives-orders-to-your-assistant.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/when-every-assistant-agrees.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/when-pricing-bots-bid-on-public-contracts.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/when-software-decides-about-you.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/when-the-middleman-pads-the-meter.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/who-gets-credit-for-upkeep.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/who-is-actually-acting.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/who-is-really-there.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/who-should-own-intelligence.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/why-a-public-decision-cannot-hide-in-a-black-box.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/why-a-score-is-not-a-journey.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/why-an-ai-agent-will-not-audit-itself.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/why-an-assistant-shouldnt-tap-your-shoulder-for-every-small-question.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/why-assistants-should-ask-first.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/why-code-still-needs-a-mentor.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/why-containment-runs-out-of-time.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/why-many-small-assistants-beat-one-giant-mind.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/why-practicing-without-an-assistant-protects-your-judgment.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/why-pricing-bots-learn-not-to-compete.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/why-speedometers-dont-steer.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/why-the-digital-sidewalk-needs-tactile-paving.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/why-trust-multiplies.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/why-watermarking-breaks-the-words.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/why-your-inbox-is-not-a-security-guard.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "blog/why-your-shopping-assistant-needs-a-bargaining-shield.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "contact.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "cookies.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "corrections.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "get-involved/builders.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "get-involved/civil-society.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "get-involved/everyone.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "get-involved/index.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "get-involved/labs.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "get-involved/policy.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "get-involved/researchers.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "index.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "labs/index.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "labs/observatory.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "labs/shared-horizon.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "privacy.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "research.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "support.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "terms.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ },
+ "vision.html": {
+  "aphorism": 0,
+  "buried": 0,
+  "internal_leak": 0,
+  "staged": 0,
+  "tics": 0
+ }
+}

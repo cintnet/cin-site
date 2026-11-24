@@ -1,0 +1,1415 @@
+---
+title: Observatory
+heading: Measuring the oversight gap.
+eyebrow: Labs · Early
+description: How we track AI capability alongside human oversight, filter 12-to-24-month signposts, compare institutional paths, and score our forecasts in public.
+reader: Curious readers, researchers, and policy staff who want steady evidence rather than hype or alarm about where AI is heading.
+takeaway: Why we compare task length against human oversight across four stages, what external studies measure today versus our own dated signposts, and how two institutional paths shape daily life.
+template: page
+section: labs
+script: observatory-live.js
+lede: Public talk about AI swings between alarm and excitement, often in the same week. Neither helps you decide what to do. The Observatory tracks two curves side by side: what AI systems can do on their own, and how much of what they do people can still see, check, and steer.
+---
+<div class="prose wrap-narrow">
+<div class="obs-jump-bar" role="navigation" aria-label="Observatory quick jump">
+  <span class="obs-jump-label">Interactive tools:</span>
+  <a class="obs-jump-primary" href="#signpost-ledger">Jump to live signpost explorer ↓</a>
+  <a class="obs-jump-link" href="#ex-oversight-gap">Oversight gap chart ↓</a>
+  <a class="obs-jump-link" href="#obs-paths-panel">Two institutional paths ↓</a>
+</div>
+<h2>Why two curves matter</h2>
+
+<p>When a new AI model appears, most headlines ask a single question: how smart is it? For a person deciding whether to trust an assistant, or a city deciding what software to rely on, that is only half the picture.</p>
+
+<p>The question that matters for everyday life is whether AI capability is growing faster than our ability to oversee it and share its benefits. To answer that with evidence rather than mood, we track two curves side by side.</p>
+
+<p><strong>The first curve tracks how long a task an AI system can finish on its own.</strong> Researchers at METR time how long a skilled person needs for a software or research task, then test whether an AI can complete it successfully half the time.<sup><a href="#fn1">1</a></sup> Their 2025 study found that the length of task an AI can finish on its own has doubled roughly every seven months since 2019.<sup><a href="#fn1">1</a></sup></p>
+
+<p><strong>The second curve tracks how much of what AI does people can still inspect, verify, and steer.</strong> It asks whether capable systems are tested independently before release, whether they leave clear records when they act, and whether access is spread out rather than held by a handful of firms.<sup><a href="#fn2">2</a></sup></p>
+
+<div class="callout"><p class="label">The oversight gap</p><p>The space between these two curves is the oversight gap. A capable system inside clear boundaries, leaving signed receipts and open to outside checks, is much easier to trust. An equally capable system acting in the dark does not.</p></div>
+
+<figure class="explainer" id="ex-oversight-gap"><style>
+#ex-oversight-gap {
+  margin: 1.8em 0 2.2em;
+  background: #FAF3EA;
+  border: 1px solid #E1D3C0;
+  border-radius: 2px;
+  padding: 16px;
+}
+#ex-oversight-gap svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+#ex-oversight-gap .og-bg { fill: url(#og-dot-grid); stroke: #E1D3C0; stroke-width: 1; }
+#ex-oversight-gap .og-dot { fill: #D5C5B0; }
+#ex-oversight-gap .og-callout-box { fill: #FAF3EA; stroke: #963E1D; stroke-width: 1; }
+#ex-oversight-gap .og-grid { stroke: #E1D3C0; stroke-width: 1; stroke-dasharray: 3 3; }
+#ex-oversight-gap .og-axis { stroke: #5A5247; stroke-width: 1.25; }
+#ex-oversight-gap .og-curve-cap { fill: none; stroke: #963E1D; stroke-width: 2.75; stroke-linecap: square; }
+#ex-oversight-gap .og-curve-over { fill: none; stroke: #1F6B4E; stroke-width: 2.75; stroke-dasharray: 6 4; stroke-linecap: square; }
+#ex-oversight-gap .og-gap-area { fill: rgba(150, 62, 29, 0.11); }
+#ex-oversight-gap .og-label { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11px; font-weight: 600; fill: #5A5247; }
+#ex-oversight-gap .og-stage-tick { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #5A5247; transition: fill 180ms ease; }
+#ex-oversight-gap .og-stage-tick-group { cursor: pointer; outline: none; }
+#ex-oversight-gap .og-stage-tick-group:hover text,
+#ex-oversight-gap .og-stage-tick-group:focus-visible text { fill: #0B3F30; font-weight: 700; }
+#ex-oversight-gap .og-stage-tick-group.is-active text { fill: #963E1D; font-weight: 700; }
+#ex-oversight-gap .og-spotlight-line { stroke: #963E1D; stroke-width: 1.5; stroke-dasharray: 3 3; opacity: 0; transition: opacity 180ms ease; }
+#ex-oversight-gap .og-spotlight-cap-dot { fill: #963E1D; stroke: #FAF3EA; stroke-width: 1.5; opacity: 0; transition: opacity 180ms ease; }
+#ex-oversight-gap .og-spotlight-over-dot { fill: #1F6B4E; stroke: #FAF3EA; stroke-width: 1.5; opacity: 0; transition: opacity 180ms ease; }
+#ex-oversight-gap .og-spotlight.is-active .og-spotlight-line,
+#ex-oversight-gap .og-spotlight.is-active .og-spotlight-cap-dot,
+#ex-oversight-gap .og-spotlight.is-active .og-spotlight-over-dot { opacity: 1; }
+#ex-oversight-gap .og-stages-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 14px;
+  border-top: 1px solid #E1D3C0;
+  border-left: 1px solid #E1D3C0;
+}
+@media (max-width: 720px) {
+  #ex-oversight-gap .og-stages-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 440px) {
+  #ex-oversight-gap .og-stages-grid {
+    grid-template-columns: 1fr;
+  }
+}
+#ex-oversight-gap .og-stage-card {
+  background: #FAF3EA;
+  border-right: 1px solid #E1D3C0;
+  border-bottom: 1px solid #E1D3C0;
+  border-radius: 0;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  box-shadow: none;
+  cursor: pointer;
+  outline: none;
+  transition: background 180ms ease, opacity 180ms ease;
+}
+#ex-oversight-gap .og-stage-card:hover,
+#ex-oversight-gap .og-stage-card:focus-visible {
+  background: #F3E8D8;
+}
+#ex-oversight-gap .og-stage-card.is-active {
+  background: #F3E8D8;
+  box-shadow: inset 0 3px 0 #0B3F30;
+}
+#ex-oversight-gap .og-stage-card.is-dimmed {
+  opacity: 0.55;
+}
+#ex-oversight-gap .og-stage-num {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #963E1D;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+#ex-oversight-gap .og-stage-name {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #131014;
+}
+#ex-oversight-gap .og-stage-horizon {
+  font-size: 12px;
+  color: #5E564B;
+  line-height: 1.4;
+}
+#ex-oversight-gap .og-stage-rule {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: #0B3F30;
+  margin-top: 3px;
+}
+#ex-oversight-gap .og-status-banner {
+  margin-top: 12px;
+  padding: 9px 12px;
+  background: #F3E8D8;
+  border-top: 1px solid #E1D3C0;
+  border-bottom: 1px solid #E1D3C0;
+  border-radius: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #131014;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+#ex-oversight-gap .og-status-badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: #963E1D;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+#ex-oversight-gap .og-status-text {
+  flex: 1;
+}
+#ex-oversight-gap .og-reset-btn {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11.5px;
+  font-weight: 700;
+  background: none;
+  border: 1px solid #0B3F30;
+  border-radius: 2px;
+  color: #0B3F30;
+  cursor: pointer;
+  padding: 2px 7px;
+  margin-left: 8px;
+  white-space: nowrap;
+}
+#ex-oversight-gap .og-reset-btn:hover {
+  background: #0B3F30;
+  color: #FAF3EA;
+}
+#ex-oversight-gap figcaption {
+  margin-top: 12px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #5A5247;
+}
+@media (prefers-color-scheme: dark) {
+  #ex-oversight-gap { background: #18161E; border-color: #322E3D; }
+  #ex-oversight-gap .og-bg { stroke: #322E3D; }
+  #ex-oversight-gap .og-dot { fill: #322E3D; }
+  #ex-oversight-gap .og-callout-box { fill: #18161E; stroke: #F09D82; }
+  #ex-oversight-gap .og-grid { stroke: #322E3D; }
+  #ex-oversight-gap .og-axis { stroke: #A8A095; }
+  #ex-oversight-gap .og-curve-cap { stroke: #F09D82; }
+  #ex-oversight-gap .og-curve-over { stroke: #8FD4B6; }
+  #ex-oversight-gap .og-gap-area { fill: rgba(240, 157, 130, 0.14); }
+  #ex-oversight-gap .og-label,
+  #ex-oversight-gap .og-stage-tick { fill: #A8A095; }
+  #ex-oversight-gap .og-stage-tick-group:hover text,
+  #ex-oversight-gap .og-stage-tick-group:focus-visible text { fill: #8FD4B6; }
+  #ex-oversight-gap .og-stage-tick-group.is-active text { fill: #F09D82; }
+  #ex-oversight-gap .og-spotlight-line { stroke: #F09D82; }
+  #ex-oversight-gap .og-spotlight-cap-dot { fill: #F09D82; stroke: #18161E; }
+  #ex-oversight-gap .og-spotlight-over-dot { fill: #8FD4B6; stroke: #18161E; }
+  #ex-oversight-gap .og-stages-grid,
+  #ex-oversight-gap .og-stage-card { background: #18161E; border-color: #322E3D; }
+  #ex-oversight-gap .og-stage-card:hover,
+  #ex-oversight-gap .og-stage-card:focus-visible { background: #221F2A; }
+  #ex-oversight-gap .og-stage-card.is-active { background: #221F2A; box-shadow: inset 0 3px 0 #8FD4B6; }
+  #ex-oversight-gap .og-stage-num,
+  #ex-oversight-gap .og-status-badge { color: #F09D82; }
+  #ex-oversight-gap .og-stage-name,
+  #ex-oversight-gap .og-status-banner { color: #EDE6DC; }
+  #ex-oversight-gap .og-stage-horizon,
+  #ex-oversight-gap figcaption { color: #A8A095; }
+  #ex-oversight-gap .og-stage-rule { color: #8FD4B6; }
+  #ex-oversight-gap .og-status-banner { background: #221F2A; border-color: #322E3D; }
+  #ex-oversight-gap .og-reset-btn { border-color: #8FD4B6; color: #8FD4B6; }
+  #ex-oversight-gap .og-reset-btn:hover { background: #8FD4B6; color: #18161E; }
+  #ex-oversight-gap rect[fill="#963E1D"],
+  #ex-oversight-gap text[fill="#963E1D"] { fill: #F09D82; }
+  #ex-oversight-gap rect[fill="#1F6B4E"],
+  #ex-oversight-gap text[fill="#1F6B4E"] { fill: #8FD4B6; }
+  #ex-oversight-gap text[fill="#5A5247"] { fill: #A8A095; }
+}
+:root[data-theme="dark"] #ex-oversight-gap,
+[data-theme="dark"] #ex-oversight-gap { background: #18161E; border-color: #322E3D; }
+:root[data-theme="dark"] #ex-oversight-gap .og-bg,
+[data-theme="dark"] #ex-oversight-gap .og-bg { stroke: #322E3D; }
+:root[data-theme="dark"] #ex-oversight-gap .og-dot,
+[data-theme="dark"] #ex-oversight-gap .og-dot { fill: #322E3D; }
+:root[data-theme="dark"] #ex-oversight-gap .og-callout-box,
+[data-theme="dark"] #ex-oversight-gap .og-callout-box { fill: #18161E; stroke: #F09D82; }
+:root[data-theme="dark"] #ex-oversight-gap .og-grid,
+[data-theme="dark"] #ex-oversight-gap .og-grid { stroke: #322E3D; }
+:root[data-theme="dark"] #ex-oversight-gap .og-axis,
+[data-theme="dark"] #ex-oversight-gap .og-axis { stroke: #A8A095; }
+:root[data-theme="dark"] #ex-oversight-gap .og-curve-cap,
+[data-theme="dark"] #ex-oversight-gap .og-curve-cap { stroke: #F09D82; }
+:root[data-theme="dark"] #ex-oversight-gap .og-curve-over,
+[data-theme="dark"] #ex-oversight-gap .og-curve-over { stroke: #8FD4B6; }
+:root[data-theme="dark"] #ex-oversight-gap .og-gap-area,
+[data-theme="dark"] #ex-oversight-gap .og-gap-area { fill: rgba(240, 157, 130, 0.14); }
+:root[data-theme="dark"] #ex-oversight-gap .og-label,
+:root[data-theme="dark"] #ex-oversight-gap .og-stage-tick,
+[data-theme="dark"] #ex-oversight-gap .og-label,
+[data-theme="dark"] #ex-oversight-gap .og-stage-tick { fill: #A8A095; }
+:root[data-theme="dark"] #ex-oversight-gap .og-stage-tick-group:hover text,
+:root[data-theme="dark"] #ex-oversight-gap .og-stage-tick-group:focus-visible text,
+[data-theme="dark"] #ex-oversight-gap .og-stage-tick-group:hover text,
+[data-theme="dark"] #ex-oversight-gap .og-stage-tick-group:focus-visible text { fill: #8FD4B6; }
+:root[data-theme="dark"] #ex-oversight-gap .og-stage-tick-group.is-active text,
+[data-theme="dark"] #ex-oversight-gap .og-stage-tick-group.is-active text { fill: #F09D82; }
+:root[data-theme="dark"] #ex-oversight-gap .og-spotlight-line,
+[data-theme="dark"] #ex-oversight-gap .og-spotlight-line { stroke: #F09D82; }
+:root[data-theme="dark"] #ex-oversight-gap .og-spotlight-cap-dot,
+[data-theme="dark"] #ex-oversight-gap .og-spotlight-cap-dot { fill: #F09D82; stroke: #18161E; }
+:root[data-theme="dark"] #ex-oversight-gap .og-spotlight-over-dot,
+[data-theme="dark"] #ex-oversight-gap .og-spotlight-over-dot { fill: #8FD4B6; stroke: #18161E; }
+:root[data-theme="dark"] #ex-oversight-gap .og-stages-grid,
+:root[data-theme="dark"] #ex-oversight-gap .og-stage-card,
+[data-theme="dark"] #ex-oversight-gap .og-stages-grid,
+[data-theme="dark"] #ex-oversight-gap .og-stage-card { background: #18161E; border-color: #322E3D; }
+:root[data-theme="dark"] #ex-oversight-gap .og-stage-card:hover,
+:root[data-theme="dark"] #ex-oversight-gap .og-stage-card:focus-visible,
+[data-theme="dark"] #ex-oversight-gap .og-stage-card:hover,
+[data-theme="dark"] #ex-oversight-gap .og-stage-card:focus-visible { background: #221F2A; }
+:root[data-theme="dark"] #ex-oversight-gap .og-stage-card.is-active,
+[data-theme="dark"] #ex-oversight-gap .og-stage-card.is-active { background: #221F2A; box-shadow: inset 0 3px 0 #8FD4B6; }
+:root[data-theme="dark"] #ex-oversight-gap .og-stage-num,
+:root[data-theme="dark"] #ex-oversight-gap .og-status-badge,
+[data-theme="dark"] #ex-oversight-gap .og-stage-num,
+[data-theme="dark"] #ex-oversight-gap .og-status-badge { color: #F09D82; }
+:root[data-theme="dark"] #ex-oversight-gap .og-stage-name,
+:root[data-theme="dark"] #ex-oversight-gap .og-status-banner,
+[data-theme="dark"] #ex-oversight-gap .og-stage-name,
+[data-theme="dark"] #ex-oversight-gap .og-status-banner { color: #EDE6DC; }
+:root[data-theme="dark"] #ex-oversight-gap .og-stage-horizon,
+:root[data-theme="dark"] #ex-oversight-gap figcaption,
+[data-theme="dark"] #ex-oversight-gap .og-stage-horizon,
+[data-theme="dark"] #ex-oversight-gap figcaption { color: #A8A095; }
+:root[data-theme="dark"] #ex-oversight-gap .og-stage-rule,
+[data-theme="dark"] #ex-oversight-gap .og-stage-rule { color: #8FD4B6; }
+:root[data-theme="dark"] #ex-oversight-gap .og-status-banner,
+[data-theme="dark"] #ex-oversight-gap .og-status-banner { background: #221F2A; border-color: #322E3D; }
+:root[data-theme="dark"] #ex-oversight-gap .og-reset-btn,
+[data-theme="dark"] #ex-oversight-gap .og-reset-btn { border-color: #8FD4B6; color: #8FD4B6; }
+:root[data-theme="dark"] #ex-oversight-gap .og-reset-btn:hover,
+[data-theme="dark"] #ex-oversight-gap .og-reset-btn:hover { background: #8FD4B6; color: #18161E; }
+:root[data-theme="dark"] #ex-oversight-gap rect[fill="#963E1D"],
+:root[data-theme="dark"] #ex-oversight-gap text[fill="#963E1D"],
+[data-theme="dark"] #ex-oversight-gap rect[fill="#963E1D"],
+[data-theme="dark"] #ex-oversight-gap text[fill="#963E1D"] { fill: #F09D82; }
+:root[data-theme="dark"] #ex-oversight-gap rect[fill="#1F6B4E"],
+:root[data-theme="dark"] #ex-oversight-gap text[fill="#1F6B4E"],
+[data-theme="dark"] #ex-oversight-gap rect[fill="#1F6B4E"],
+[data-theme="dark"] #ex-oversight-gap text[fill="#1F6B4E"] { fill: #8FD4B6; }
+:root[data-theme="dark"] #ex-oversight-gap text[fill="#5A5247"],
+[data-theme="dark"] #ex-oversight-gap text[fill="#5A5247"] { fill: #A8A095; }
+</style>
+<svg viewBox="0 0 680 250" width="100%" role="group" aria-labelledby="ex-oversight-gap-title ex-oversight-gap-desc">
+<title id="ex-oversight-gap-title">The Oversight Gap: AI Autonomous Task Length versus Conventional Human Oversight</title>
+<desc id="ex-oversight-gap-desc">A comparative chart showing AI task length doubling every seven months up to weeks of autonomous action. Manual screen oversight plateaus after a few hours, creating an oversight gap that requires structural safeguards.</desc>
+<defs>
+  <pattern id="og-dot-grid" width="16" height="16" patternUnits="userSpaceOnUse">
+    <circle cx="2" cy="2" r="0.85" class="og-dot" />
+  </pattern>
+</defs>
+<rect class="og-bg" x="0" y="0" width="680" height="250" rx="2" />
+<line class="og-axis" x1="70" y1="215" x2="640" y2="215" />
+<line class="og-axis" x1="70" y1="25" x2="70" y2="215" />
+<line class="og-grid" x1="70" y1="170" x2="640" y2="170" />
+<line class="og-grid" x1="70" y1="125" x2="640" y2="125" />
+<line class="og-grid" x1="70" y1="80" x2="640" y2="80" />
+<line class="og-grid" x1="70" y1="35" x2="640" y2="35" />
+<line class="og-grid" x1="140" y1="25" x2="140" y2="215" />
+<line class="og-grid" x1="280" y1="25" x2="280" y2="215" />
+<line class="og-grid" x1="420" y1="25" x2="420" y2="215" />
+<line class="og-grid" x1="560" y1="25" x2="560" y2="215" />
+<text x="62" y="219" text-anchor="end" class="og-label">Minutes</text>
+<text x="62" y="174" text-anchor="end" class="og-label">Hours</text>
+<text x="62" y="129" text-anchor="end" class="og-label">Workday</text>
+<text x="62" y="84" text-anchor="end" class="og-label">Days</text>
+<text x="62" y="39" text-anchor="end" class="og-label">Weeks</text>
+
+<!-- Spotlight overlays for interactive stage selection -->
+<g class="og-spotlight" id="og-spotlight-1" data-stage="1" aria-hidden="true">
+  <line class="og-spotlight-line" x1="140" y1="25" x2="140" y2="215" />
+  <circle class="og-spotlight-cap-dot" cx="140" cy="208" r="5" />
+  <circle class="og-spotlight-over-dot" cx="140" cy="205" r="5" />
+</g>
+<g class="og-spotlight" id="og-spotlight-2" data-stage="2" aria-hidden="true">
+  <line class="og-spotlight-line" x1="280" y1="25" x2="280" y2="215" />
+  <circle class="og-spotlight-cap-dot" cx="280" cy="185" r="5" />
+  <circle class="og-spotlight-over-dot" cx="280" cy="160" r="5" />
+</g>
+<g class="og-spotlight" id="og-spotlight-3" data-stage="3" aria-hidden="true">
+  <line class="og-spotlight-line" x1="420" y1="25" x2="420" y2="215" />
+  <circle class="og-spotlight-cap-dot" cx="420" cy="95" r="5" />
+  <circle class="og-spotlight-over-dot" cx="420" cy="138" r="5" />
+</g>
+<g class="og-spotlight" id="og-spotlight-4" data-stage="4" aria-hidden="true">
+  <line class="og-spotlight-line" x1="560" y1="25" x2="560" y2="215" />
+  <circle class="og-spotlight-cap-dot" cx="560" cy="48" r="5" />
+  <circle class="og-spotlight-over-dot" cx="560" cy="138" r="5" />
+</g>
+
+<!-- Stage tick labels with interactive accessibility -->
+<g class="og-stage-tick-group" data-stage="1" tabindex="0" role="button" aria-pressed="false" aria-label="Stage 1 · Minutes">
+  <text x="140" y="235" text-anchor="middle" class="og-stage-tick">Stage 1 · Minutes</text>
+</g>
+<g class="og-stage-tick-group" data-stage="2" tabindex="0" role="button" aria-pressed="false" aria-label="Stage 2 · Hours">
+  <text x="280" y="235" text-anchor="middle" class="og-stage-tick">Stage 2 · Hours</text>
+</g>
+<g class="og-stage-tick-group" data-stage="3" tabindex="0" role="button" aria-pressed="false" aria-label="Stage 3 · Days">
+  <text x="420" y="235" text-anchor="middle" class="og-stage-tick">Stage 3 · Days</text>
+</g>
+<g class="og-stage-tick-group" data-stage="4" tabindex="0" role="button" aria-pressed="false" aria-label="Stage 4 · Weeks">
+  <text x="560" y="235" text-anchor="middle" class="og-stage-tick">Stage 4 · Weeks</text>
+</g>
+
+<path class="og-gap-area" d="M 120 205 Q 280 185 400 95 T 610 35 L 610 138 Q 420 138 280 155 T 120 205 Z" />
+<path class="og-curve-cap" d="M 100 210 Q 260 200 400 105 T 620 32" />
+<rect x="616" y="28" width="8" height="8" fill="#963E1D" />
+<text x="620" y="20" text-anchor="end" font-size="11.5" font-weight="700" fill="#963E1D">■ Autonomous task length (METR ~7 mo doubling)</text>
+<path class="og-curve-over" d="M 100 210 Q 240 175 360 138 Q 460 138 620 138" />
+<rect x="616" y="134" width="8" height="8" fill="#1F6B4E" />
+<text x="620" y="156" text-anchor="end" font-size="11.5" font-weight="700" fill="#1F6B4E">■ Manual oversight ceiling (watching every screen step)</text>
+<rect class="og-callout-box" x="358" y="55" width="180" height="42" rx="2" />
+<text x="448" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#963E1D">THE OVERSIGHT GAP</text>
+<text x="448" y="87" text-anchor="middle" font-size="11" fill="#5A5247">Unaided human inspection fails</text>
+</svg>
+<div class="og-stages-grid" role="group" aria-label="Four stages of autonomy and required oversight">
+  <div class="og-stage-card" role="button" tabindex="0" data-stage="1" aria-pressed="false">
+    <span class="og-stage-num">Stage 1</span>
+    <span class="og-stage-name">Short Tasks</span>
+    <span class="og-stage-horizon">Minutes · Read whole answer.</span>
+    <span class="og-stage-rule">Check source receipt.</span>
+  </div>
+  <div class="og-stage-card" role="button" tabindex="0" data-stage="2" aria-pressed="false">
+    <span class="og-stage-num">Stage 2</span>
+    <span class="og-stage-name">Multi-Hour</span>
+    <span class="og-stage-horizon">Hours · Workday execution.</span>
+    <span class="og-stage-rule">Sandbox &amp; signed receipts.</span>
+  </div>
+  <div class="og-stage-card" role="button" tabindex="0" data-stage="3" aria-pressed="false">
+    <span class="og-stage-num">Stage 3</span>
+    <span class="og-stage-name">Multi-Day</span>
+    <span class="og-stage-horizon">Days · Complex multi-tool flows.</span>
+    <span class="og-stage-rule">Power on loan &amp; expiring leases.</span>
+  </div>
+  <div class="og-stage-card" role="button" tabindex="0" data-stage="4" aria-pressed="false">
+    <span class="og-stage-num">Stage 4</span>
+    <span class="og-stage-name">Multi-Agent</span>
+    <span class="og-stage-horizon">Weeks · Machine-speed markets.</span>
+    <span class="og-stage-rule">Dedicated second network road.</span>
+  </div>
+</div>
+<div class="og-status-banner" id="og-status-banner" role="status" aria-live="polite">
+  <span class="og-status-badge">Overview:</span>
+  <span class="og-status-text">Select any stage to inspect how task duration grows and what oversight tool keeps people in charge.</span>
+  <button type="button" class="og-reset-btn" id="og-reset-btn" hidden>Show all stages</button>
+</div>
+<figcaption>The oversight gap: As autonomous task length grows from minutes to weeks, watching every screen step fails. Keeping people in charge requires structural boundaries: sandboxes, power on loan, and a dedicated network road for agents.</figcaption>
+</figure>
+
+<div class="callout">
+  <p class="label">Who closes the oversight gap?</p>
+  <p>Closing the gap takes accountable engineering inside labs and public-interest law from states. Compare how 43 AI labs align or deviate in <a href="/labs/lab-overlays/">AI Lab Overlays</a> and <a href="/labs/lab-papers/">12 Lab Papers</a>. Then check how the US, China, EU, and 27 other authorities score in <a href="/labs/sovereign-authorities/">Sovereign Authorities</a> and <a href="/labs/sovereign-papers/">8 Sovereign Papers</a>.</p>
+</div>
+
+<h2>Four stages of agent capability and oversight</h2>
+
+<p>As the length of tasks an AI can handle grows from minutes to days, the kind of human oversight that works has to change with it. Watching every line of text on a screen works for a chatbot. It fails when software works all afternoon on its own.</p>
+
+<p>We break this progression into four plain stages. Each stage brings new usefulness, and each requires stronger, simpler checks so people keep the final say.</p>
+
+<h3>1. Short tasks: a few minutes</h3>
+
+<p>At the first stage, an assistant answers a question, summarizes a meeting, or drafts a short reply while you wait. Up through early 2025, METR found that even leading models reached a 50 percent success rate only on tasks taking a skilled person under two hours, with most everyday uses lasting only minutes.<sup><a href="#fn1">1</a></sup></p>
+
+<p><strong>What oversight looks like:</strong> You can read the whole answer yourself before sending or using it. You need to know where a fact came from, like a postmarked letter rather than an anonymous note, and your assistant should work only for you rather than an advertiser.</p>
+
+<h3>2. Multi-hour work: a morning or a workday</h3>
+
+<p>At the second stage, coding and research agents read dozens of files, write and test programs, or compare long records for several hours without stopping. A person can no longer watch every step in real time.</p>
+
+<p>Controlled benchmarks show where this autonomy succeeds and where it hits a wall. In multi-hour machine learning engineering tests timed against human experts, the best AI agents scored four times higher than human experts when both had two hours.<sup><a href="#fn6">6</a></sup> With eight hours, humans narrowly beat the top agent, and with 32 hours they scored twice as high. Current agents struggle with multi-step planning and recovering from unexpected errors once tasks stretch beyond a few hours.<sup><a href="#fn6">6</a></sup></p>
+
+<p><strong>What oversight looks like:</strong> The assistant needs to run inside a strict boundary on hardware you control, touching only the files and tools you explicitly hand it. Every action that reaches the outside world needs a receipt showing who the agent acted for, what it was allowed to do, and what it actually did.</p>
+
+<h3>3. Multi-day workflows: days to weeks</h3>
+
+<p>At the third stage, autonomous workflows carry a project across days or weeks: auditing records, scheduling repairs, or coordinating supplies across several tools. Once a person clicks "allow" on a permanent permission, it is easy to forget what software still has access to.</p>
+
+<p><strong>What oversight looks like:</strong> Standing permission is no longer safe enough. Agents need <a href="/blog/power-on-loan-not-owned/">power on loan</a>, like a library card that expires unless you choose to renew it. Major models also need independent safety testing before release and honest public reporting when something goes wrong.</p>
+
+<h3>4. Multi-agent coordination: weeks to months</h3>
+
+<p>At the fourth stage, many agents deal directly with other agents at machine speed across organizations and over long horizons. Even when each agent follows its own instructions, traffic between thousands of fast programs can jam, collude, or drift away from what people intended.</p>
+
+<p><strong>What oversight looks like:</strong> Cities keep freight trains off the footpaths. At this stage, agents need <a href="/blog/the-internet-needs-a-second-road/">a separate network of their own</a>, where every message carries identity and scope and agents never impersonate people. Anyone should be able to check a sample of actions on a shared public record that nobody can erase.</p>
+
+<h2>How we track signals and score our forecasts</h2>
+
+<p>To watch both curves in the open, we organize our indicators into four families. One family feeds the capability line, while the other three feed the line for human oversight and shared power.</p>
+
+<ul>
+  <li><strong>What AI can do:</strong> autonomous task duration from METR evaluations, signs of systems helping build newer models, and compute trends tracked by Epoch AI.<sup><a href="#fn1">1</a>,<a href="#fn2">2</a></sup></li>
+  <li><strong>Who checks it:</strong> the share of major releases tested by independent outsiders before launch, whether agents run in isolated boundaries, and whether incidents are reported promptly.</li>
+  <li><strong>Who holds the power:</strong> how few organizations control frontier computing power, how close open models stay to closed ones, and what ordinary hardware can run at home.<sup><a href="#fn2">2</a></sup></li>
+  <li><strong>How society holds up:</strong> whether people can take their data with them, tell when they are dealing with a machine, and keep a real voice in public decisions.</li>
+</ul>
+
+<p>It is easy to build a dashboard that only celebrates progress. We give warning signs (rising concentration, releases that skip outside testing, or tools locked to a single provider) at least as much space as good news. A dramatic headline never moves an indicator on its own; values change only when their pre-agreed sources update.</p>
+
+<p>Charts also invite hindsight, while a forecast written in advance does not. Every milestone on our public timeline is a dated prediction with a stated probability. A clear rule decides from a named source whether it came true.</p>
+
+<p>When a date arrives, we score the prediction with the Brier score, a standard measure of forecast accuracy.<sup><a href="#fn3">3</a></sup> We publish our misses alongside our hits, and check whether events we called at 60 percent happened about 60 percent of the time. Benchmarks like the Forecasting Research Institute's ForecastBench show how public predictions can be tested cleanly against simple baselines.<sup><a href="#fn4">4</a></sup></p>
+
+<style>
+.obs-jump-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+  padding: 10px 14px;
+  margin: 0 0 1.6em;
+  background: #F7EFE4;
+  border: 1px solid #DFD1BE;
+  border-radius: 2px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.76rem;
+}
+.obs-jump-label {
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #5A5247;
+  margin-right: 2px;
+}
+.obs-jump-primary,
+.obs-jump-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 5px 10px;
+  border-radius: 2px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.obs-jump-primary {
+  background: #0B3F30;
+  color: #FAF3EA;
+  border: 1px solid #0B3F30;
+}
+.obs-jump-primary:hover,
+.obs-jump-primary:focus-visible {
+  background: #1A4631;
+  color: #FAF3EA;
+  text-decoration: none;
+}
+.obs-jump-link {
+  background: #FAF3EA;
+  color: #0B3F30;
+  border: 1px solid #DFD1BE;
+}
+.obs-jump-link:hover,
+.obs-jump-link:focus-visible {
+  border-color: #0B3F30;
+  background: #F3EADF;
+  text-decoration: none;
+}
+.obs-ledger-panel,
+.obs-paths-panel {
+  margin: 1.8em 0 2.4em;
+  background: transparent;
+  border-top: 1px solid #DFD1BE;
+  border-bottom: 1px solid #DFD1BE;
+  border-radius: 0;
+  padding: 20px 0;
+}
+.obs-toolbar-stack {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.obs-toolbar-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+.obs-toolbar-label {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #5E564B;
+  margin-right: 4px;
+}
+.obs-pill {
+  appearance: none;
+  background: #FAF3EA;
+  color: #131014;
+  border: 1px solid #DFD1BE;
+  border-radius: 2px;
+  padding: 6px 11px;
+  min-height: 34px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.obs-pill:hover {
+  border-color: #0B3F30;
+  background: #EFE4D4;
+}
+.obs-pill:focus:not(:focus-visible) {
+  outline: none;
+}
+.obs-pill:focus-visible,
+.obs-sp-grade-btn:focus-visible,
+.obs-brier-range:focus-visible {
+  outline: 2px solid #03713E;
+  outline-offset: 2px;
+}
+.obs-pill.is-active,
+.obs-pill[aria-pressed="true"] {
+  background: #0B3F30;
+  color: #FAF3EA;
+  border-color: #0B3F30;
+}
+.obs-pill-count {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  padding: 1px 5px;
+  border-radius: 2px;
+  background: rgba(19, 16, 20, 0.08);
+  color: inherit;
+}
+.obs-pill[aria-pressed="true"] .obs-pill-count {
+  background: rgba(250, 243, 234, 0.22);
+}
+.obs-live-status {
+  margin: 0 0 14px;
+  padding: 9px 12px;
+  background: #FAF3EA;
+  border-top: 1px solid #DFD1BE;
+  border-bottom: 1px solid #DFD1BE;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: #3F3931;
+  max-width: none;
+}
+.obs-signposts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border-top: 1px solid #DFD1BE;
+  border-left: 1px solid #DFD1BE;
+}
+@media (max-width: 680px) {
+  .obs-signposts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.obs-signpost-card {
+  background: #FAF3EA;
+  border-right: 1px solid #DFD1BE;
+  border-bottom: 1px solid #DFD1BE;
+  border-radius: 0;
+  padding: 16px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: none;
+}
+.obs-signpost-card[hidden],
+.obs-diptych-pair[hidden],
+.obs-path-fig[hidden],
+.obs-evidence-block[hidden],
+.obs-tripwire-block[hidden],
+.obs-toolbar-row[hidden] {
+  display: none !important;
+}
+.obs-signpost-card.is-selected {
+  background: #F3E8D8;
+  box-shadow: inset 3px 0 0 #0B3F30;
+}
+.obs-sp-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 6px 10px;
+}
+.obs-sp-domain {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #0B3F30;
+  background: #E8EFEA;
+  border: 1px solid rgba(11, 63, 48, 0.22);
+  padding: 2px 7px;
+  border-radius: 2px;
+  font-weight: 700;
+}
+.obs-sp-meta {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  color: #5E564B;
+}
+.obs-sp-meta strong {
+  color: #963E1D;
+  font-weight: 700;
+}
+.obs-signpost-card h3 {
+  margin: 2px 0 0;
+  font-size: 1.04rem;
+  line-height: 1.32;
+  color: #131014;
+}
+.obs-sp-source {
+  margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: #5E564B;
+}
+.obs-evidence-block,
+.obs-tripwire-block {
+  margin: 0;
+  padding: 9px 11px;
+  border-radius: 2px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #131014;
+}
+.obs-evidence-block {
+  background: #F4EFE6;
+  border-left: 3px solid #1F6B4E;
+}
+.obs-tripwire-block {
+  background: #F9EFEA;
+  border-left: 3px solid #B85C38;
+}
+.obs-block-tag {
+  display: block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+.obs-tag-ev { color: #0B3F30; }
+.obs-tag-tw { color: #963E1D; }
+.obs-sp-footer {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid #DFD1BE;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.obs-sp-stakes {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  color: #5E564B;
+}
+.obs-sp-grade-btn {
+  appearance: none;
+  background: #FAF3EA;
+  color: #0B3F30;
+  border: 1px solid #0B3F30;
+  border-radius: 2px;
+  padding: 5px 10px;
+  min-height: 30px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.obs-sp-grade-btn:hover,
+.obs-sp-grade-btn[aria-pressed="true"] {
+  background: #0B3F30;
+  color: #FAF3EA;
+}
+.obs-brier-box {
+  margin-top: 18px;
+  padding: 16px;
+  background: #FAF3EA;
+  border: 1px solid #DFD1BE;
+  border-radius: 2px;
+}
+.obs-brier-box h3 {
+  margin: 0 0 8px;
+  font-size: 1.08rem;
+}
+.obs-brier-box > p {
+  font-size: 0.92rem;
+  line-height: 1.52;
+  margin: 0 0 12px;
+  max-width: none;
+}
+.obs-brier-range-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 6px 0 4px;
+}
+.obs-brier-range-label {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+  color: #131014;
+}
+.obs-brier-range {
+  flex: 1;
+  min-width: 180px;
+  accent-color: #0B3F30;
+  cursor: pointer;
+}
+.obs-brier-meter-wrap {
+  margin: 14px 0 12px;
+}
+.obs-brier-track {
+  position: relative;
+  height: 10px;
+  border-radius: 1px;
+  background: linear-gradient(90deg, #1F6B4E 0%, #D9B46A 25%, #B85C38 100%);
+  border: 1px solid rgba(19, 16, 20, 0.2);
+}
+.obs-brier-coin-tick {
+  position: absolute;
+  left: 25%;
+  top: -5px;
+  bottom: -5px;
+  width: 2px;
+  background: #131014;
+}
+.obs-brier-marker {
+  position: absolute;
+  left: 12.2%;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  background: #0B3F30;
+  border: 2px solid #FAF3EA;
+  transform: translate(-50%, -50%);
+  transition: left 180ms ease;
+}
+.obs-brier-scale-labels {
+  display: flex;
+  justify-content: space-between;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  color: #5E564B;
+  margin-top: 7px;
+}
+.obs-brier-readout {
+  margin: 10px 0 0;
+  padding: 9px 12px;
+  background: #F3E8D8;
+  border-top: 1px solid #DFD1BE;
+  border-bottom: 1px solid #DFD1BE;
+  border-radius: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #131014;
+}
+.obs-diptych-pair {
+  padding-top: 16px;
+  margin-top: 18px;
+  border-top: 1px solid #DFD1BE;
+}
+.obs-diptych-pair:first-of-type {
+  padding-top: 4px;
+  margin-top: 4px;
+  border-top: none;
+}
+.obs-diptych-pair h3 {
+  margin: 0 0 6px;
+  font-size: 1.12rem;
+}
+.obs-pair-prompt {
+  margin: 0 0 14px;
+  font-size: 0.93rem;
+  line-height: 1.52;
+  color: #5E564B;
+  max-width: none;
+}
+.obs-pair-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border-top: 1px solid #DFD1BE;
+  border-left: 1px solid #DFD1BE;
+}
+.obs-paths-panel[data-active-lens="drift"] .obs-pair-grid,
+.obs-paths-panel[data-active-lens="governed"] .obs-pair-grid {
+  grid-template-columns: 1fr;
+}
+@media (max-width: 660px) {
+  .obs-pair-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.obs-path-fig {
+  margin: 0;
+  background: #FAF3EA;
+  border-right: 1px solid #DFD1BE;
+  border-bottom: 1px solid #DFD1BE;
+  border-radius: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.obs-path-fig.obs-fig-drift {
+  border-top: 3px solid #B85C38;
+}
+.obs-path-fig.obs-fig-governed {
+  border-top: 3px solid #1F6B4E;
+}
+.obs-path-img-wrap {
+  aspect-ratio: 11 / 6;
+  background: #EFE4D4;
+  overflow: hidden;
+  border-bottom: 1px solid #DFD1BE;
+}
+.obs-path-img-wrap img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.obs-path-fig figcaption {
+  padding: 13px 15px 15px;
+  font-size: 0.9rem;
+  line-height: 1.52;
+  color: #131014;
+}
+.obs-path-tag {
+  display: inline-block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 2px;
+  margin: 0 6px 6px 0;
+}
+.obs-path-tag-drift {
+  background: #F6E4DC;
+  color: #8F3B1B;
+}
+.obs-path-tag-gov {
+  background: #E3F0EA;
+  color: #0B3F30;
+}
+
+/* Pinned Tufte Marginalia & 1px Hairline Calibration Notes */
+.obs-calib-ledger {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid #DFD1BE;
+  border-bottom: 1px solid #DFD1BE;
+  margin: 1.6em 0;
+}
+.obs-calib-col {
+  padding: 18px 18px 18px 0;
+}
+.obs-calib-col + .obs-calib-col {
+  border-left: 1px solid #DFD1BE;
+  padding-left: 18px;
+  padding-right: 0;
+}
+.obs-calib-kicker {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #5E564B;
+  margin: 0 0 8px !important;
+}
+.obs-calib-pip-est { color: #1F6B4E; }
+.obs-calib-pip-prop { color: #0B3F30; }
+.obs-calib-pip-early { color: #963E1D; }
+.obs-calib-col h3 {
+  margin: 0 0 8px !important;
+  font-size: 1.06rem;
+}
+.obs-calib-col p:last-child {
+  margin-bottom: 0 !important;
+}
+.obs-tufte-note {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 18px;
+  padding: 16px 0;
+  margin: 1.4em 0 1.8em;
+  border-top: 1px solid #DFD1BE;
+  border-bottom: 1px solid #DFD1BE;
+}
+.obs-tufte-rail {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #963E1D;
+  line-height: 1.45;
+  border-right: 1px solid #DFD1BE;
+  padding-right: 14px;
+}
+.obs-tufte-body p {
+  margin: 0 !important;
+  font-size: 0.94rem;
+  line-height: 1.55;
+}
+@media (max-width: 680px) {
+  .obs-calib-ledger {
+    grid-template-columns: 1fr;
+  }
+  .obs-calib-col {
+    padding: 14px 0;
+  }
+  .obs-calib-col + .obs-calib-col {
+    border-left: 0;
+    border-top: 1px solid #DFD1BE;
+    padding-left: 0;
+  }
+  .obs-tufte-note {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .obs-tufte-rail {
+    border-right: 0;
+    border-bottom: 1px dashed #DFD1BE;
+    padding: 0 0 6px;
+  }
+}
+</style>
+
+<h2 id="signpost-ledger">Signpost and calibration ledger: 12 to 24 months</h2>
+
+<p>Below are eight concrete signposts resolving between late 2027 and late 2028 across four areas of daily life. Each entry pairs today's empirical evidence from external researchers with our own stated probability and a clear disconfirming tripwire.</p>
+
+<p>Filter by domain, switch between today's baseline and what would prove our call wrong, or load any signpost into the Brier grader below to see how public self-scoring rewards honest uncertainty.</p>
+
+<script type="application/json" id="observatory-signposts-data">{
+  "updated": "2026-11-13",
+  "brierCoinFlip": 0.25,
+  "domains": [
+    { "id": "horizon", "label": "Task horizon & evaluation" },
+    { "id": "loyalty", "label": "Assistant loyalty vs. lock-in" },
+    { "id": "provenance", "label": "Network provenance & interlocks" },
+    { "id": "workplace", "label": "Workplace ownership & bargaining" }
+  ],
+  "signposts": [
+    {
+      "id": "sp-horizon-1",
+      "domain": "horizon",
+      "domainLabel": "Task horizon & evaluation",
+      "title": "Multi-hour autonomous coding crosses an eight-hour median horizon",
+      "windowDate": "2028-06-30",
+      "prior": 0.65,
+      "source": "METR Time Horizon HCAST public leaderboard"
+    },
+    {
+      "id": "sp-horizon-2",
+      "domain": "horizon",
+      "domainLabel": "Task horizon & evaluation",
+      "title": "Independent pre-deployment control safety cases cover half of frontier launches",
+      "windowDate": "2028-11-30",
+      "prior": 0.40,
+      "source": "UK AI Security Institute Inspect releases and public lab system cards"
+    },
+    {
+      "id": "sp-loyalty-1",
+      "domain": "loyalty",
+      "domainLabel": "Assistant loyalty vs. lock-in",
+      "title": "Sponsored placement enters default answers on two major consumer assistants",
+      "windowDate": "2027-12-31",
+      "prior": 0.70,
+      "source": "Public terms of service, ad-tier filings, and regulator disclosures"
+    },
+    {
+      "id": "sp-loyalty-2",
+      "domain": "loyalty",
+      "domainLabel": "Assistant loyalty vs. lock-in",
+      "title": "Local open-weight assistants match cloud productivity on everyday office hardware",
+      "windowDate": "2028-06-30",
+      "prior": 0.55,
+      "source": "Epoch Capabilities Index open-versus-closed gap and HCAST local runs"
+    },
+    {
+      "id": "sp-provenance-1",
+      "domain": "provenance",
+      "domainLabel": "Network provenance & interlocks",
+      "title": "Signed capability leases ship in a mainstream operating system or browser",
+      "windowDate": "2028-09-30",
+      "prior": 0.45,
+      "source": "W3C, IETF, or major OS release notes and Agent Incident Registry audits"
+    },
+    {
+      "id": "sp-provenance-2",
+      "domain": "provenance",
+      "domainLabel": "Network provenance & interlocks",
+      "title": "Hardware-enforced human approval gates protect critical utility and clinical tools",
+      "windowDate": "2028-11-30",
+      "prior": 0.35,
+      "source": "Sector procurement rules and critical-infrastructure incident filings"
+    },
+    {
+      "id": "sp-workplace-1",
+      "domain": "workplace",
+      "domainLabel": "Workplace ownership & bargaining",
+      "title": "Collective bargaining agreements establish worker audit rights over workplace agents",
+      "windowDate": "2028-06-30",
+      "prior": 0.60,
+      "source": "ILO labor registries, national union contract filings, and municipal procurement rules"
+    },
+    {
+      "id": "sp-workplace-2",
+      "domain": "workplace",
+      "domainLabel": "Workplace ownership & bargaining",
+      "title": "Producer-consumer and municipal compute cooperatives double shared local capacity",
+      "windowDate": "2028-11-30",
+      "prior": 0.30,
+      "source": "International Cooperative Alliance filings and public research-cloud directories"
+    }
+  ]
+}</script>
+
+<div class="obs-ledger-panel" id="obs-ledger-panel">
+  <div class="obs-toolbar-stack">
+    <div class="obs-toolbar-row" role="toolbar" aria-label="Filter signposts by domain">
+      <span class="obs-toolbar-label">Domain:</span>
+      <button type="button" class="obs-pill obs-domain-btn is-active" data-domain="all" aria-pressed="true">All domains <span class="obs-pill-count">8</span></button>
+      <button type="button" class="obs-pill obs-domain-btn" data-domain="horizon" aria-pressed="false">Task horizon &amp; evaluation <span class="obs-pill-count">2</span></button>
+      <button type="button" class="obs-pill obs-domain-btn" data-domain="loyalty" aria-pressed="false">Assistant loyalty vs. lock-in <span class="obs-pill-count">2</span></button>
+      <button type="button" class="obs-pill obs-domain-btn" data-domain="provenance" aria-pressed="false">Network provenance &amp; interlocks <span class="obs-pill-count">2</span></button>
+      <button type="button" class="obs-pill obs-domain-btn" data-domain="workplace" aria-pressed="false">Workplace ownership &amp; bargaining <span class="obs-pill-count">2</span></button>
+    </div>
+    <div class="obs-toolbar-row" role="toolbar" aria-label="Choose signpost detail view">
+      <span class="obs-toolbar-label">Lens:</span>
+      <button type="button" class="obs-pill obs-view-btn is-active" data-view="both" aria-pressed="true">Both views</button>
+      <button type="button" class="obs-pill obs-view-btn" data-view="evidence" aria-pressed="false">Evidence today</button>
+      <button type="button" class="obs-pill obs-view-btn" data-view="tripwire" aria-pressed="false">What would prove us wrong (tripwire)</button>
+    </div>
+  </div>
+
+  <p class="obs-live-status" id="obs-ledger-status" role="status" aria-live="polite">Showing 8 signposts across all 4 domains, displaying both Evidence today and What would prove us wrong (tripwire).</p>
+
+  <div class="obs-signposts-grid" id="obs-signposts-grid">
+    <div class="obs-signpost-card" id="sp-horizon-1" data-signpost="sp-horizon-1" data-domain="horizon" data-prior="0.65">
+      <div class="obs-sp-top">
+        <span class="obs-sp-domain">Task horizon &amp; evaluation</span>
+        <span class="obs-sp-meta">Forecast: <strong>65%</strong> by <time datetime="2028-06-30">Jun 30, 2028</time></span>
+      </div>
+      <h3>Multi-hour autonomous coding crosses an eight-hour median horizon</h3>
+      <p class="obs-sp-source"><strong>Resolution source:</strong> METR Time Horizon HCAST public leaderboard.<sup><a href="#fn1">1</a>,<a href="#fn28">28</a></sup></p>
+      <p class="obs-evidence-block"><span class="obs-block-tag obs-tag-ev">Evidence today</span> METR's human-calibrated software suite shows 50 percent task-completion horizons doubling roughly every seven months since 2019. Independent October 2026 audits also recorded faster gains on well-specified engineering tasks.<sup><a href="#fn1">1</a>,<a href="#fn25">25</a>,<a href="#fn28">28</a></sup></p>
+      <p class="obs-tripwire-block"><span class="obs-block-tag obs-tag-tw">What would prove us wrong (tripwire)</span> On METR's open runner without unverified harness patches, no publicly evaluated model reaches an eight-hour 50 percent horizon by June 2028. That outcome would show multi-hour error compounding stalls scaling.<sup><a href="#fn24">24</a>,<a href="#fn34">34</a></sup></p>
+    </div>
+
+    <div class="obs-signpost-card" id="sp-horizon-2" data-signpost="sp-horizon-2" data-domain="horizon" data-prior="0.40">
+      <div class="obs-sp-top">
+        <span class="obs-sp-domain">Task horizon &amp; evaluation</span>
+        <span class="obs-sp-meta">Forecast: <strong>40%</strong> by <time datetime="2028-11-30">Nov 30, 2028</time></span>
+      </div>
+      <h3>Independent pre-deployment control safety cases cover half of frontier launches</h3>
+      <p class="obs-sp-source"><strong>Resolution source:</strong> UK AI Security Institute Inspect releases and public lab system cards.<sup><a href="#fn25">25</a>,<a href="#fn35">35</a></sup></p>
+      <p class="obs-evidence-block"><span class="obs-block-tag obs-tag-ev">Evidence today</span> Structured control safety cases and open Inspect evaluation runners exist in public templates, and high-access nonprofit audits have begun under contractual disclosure rights. Most major launches still rely on self-reported summaries.<sup><a href="#fn25">25</a>,<a href="#fn35">35</a></sup></p>
+      <p class="obs-tripwire-block"><span class="obs-block-tag obs-tag-tw">What would prove us wrong (tripwire)</span> Fewer than three of the six largest frontier labs publish third-party trace-verified control safety cases before release through November 2028. That result would confirm voluntary pre-release scrutiny is retreating.<sup><a href="#fn18">18</a>,<a href="#fn35">35</a></sup></p>
+    </div>
+
+    <div class="obs-signpost-card" id="sp-loyalty-1" data-signpost="sp-loyalty-1" data-domain="loyalty" data-prior="0.70">
+      <div class="obs-sp-top">
+        <span class="obs-sp-domain">Assistant loyalty vs. lock-in</span>
+        <span class="obs-sp-meta">Forecast: <strong>70%</strong> by <time datetime="2027-12-31">Dec 31, 2027</time></span>
+      </div>
+      <h3>Sponsored placement enters default answers on two major consumer assistants</h3>
+      <p class="obs-sp-source"><strong>Resolution source:</strong> Public terms of service, ad-tier filings, and digital services disclosures.<sup><a href="#fn31">31</a>,<a href="#fn36">36</a></sup></p>
+      <p class="obs-evidence-block"><span class="obs-block-tag obs-tag-ev">Evidence today</span> High inference costs push free consumer assistants toward commercial referrals and closed memory vaults. Meanwhile, studies of cognitive offloading show heavy reliance erodes unaided judgment when tool incentives differ from user goals.<sup><a href="#fn31">31</a>,<a href="#fn36">36</a></sup></p>
+      <p class="obs-tripwire-block"><span class="obs-block-tag obs-tag-tw">What would prove us wrong (tripwire)</span> Through December 2027, leading consumer assistants keep default answers free of paid placement and allow one-click export of full conversation histories in open formats.<sup><a href="#fn36">36</a></sup></p>
+    </div>
+
+    <div class="obs-signpost-card" id="sp-loyalty-2" data-signpost="sp-loyalty-2" data-domain="loyalty" data-prior="0.55">
+      <div class="obs-sp-top">
+        <span class="obs-sp-domain">Assistant loyalty vs. lock-in</span>
+        <span class="obs-sp-meta">Forecast: <strong>55%</strong> by <time datetime="2028-06-30">Jun 30, 2028</time></span>
+      </div>
+      <h3>Local open-weight assistants match cloud productivity on everyday office hardware</h3>
+      <p class="obs-sp-source"><strong>Resolution source:</strong> Epoch Capabilities Index open-versus-closed gap and HCAST local runs.<sup><a href="#fn2">2</a>,<a href="#fn30">30</a></sup></p>
+      <p class="obs-evidence-block"><span class="obs-block-tag obs-tag-ev">Evidence today</span> Algorithmic progress halves the compute needed for fixed benchmark scores roughly every eight months. Capable drafting and coding models now run on standard laptops without sending personal notes to remote servers.<sup><a href="#fn2">2</a>,<a href="#fn7">7</a>,<a href="#fn30">30</a></sup></p>
+      <p class="obs-tripwire-block"><span class="obs-block-tag obs-tag-tw">What would prove us wrong (tripwire)</span> Open-weight models running offline on consumer memory trail frontier cloud assistants by more than eighteen months on multi-step office tasks in June 2028, deepening cloud dependence.<sup><a href="#fn30">30</a>,<a href="#fn31">31</a></sup></p>
+    </div>
+
+    <div class="obs-signpost-card" id="sp-provenance-1" data-signpost="sp-provenance-1" data-domain="provenance" data-prior="0.45">
+      <div class="obs-sp-top">
+        <span class="obs-sp-domain">Network provenance &amp; interlocks</span>
+        <span class="obs-sp-meta">Forecast: <strong>45%</strong> by <time datetime="2028-09-30">Sep 30, 2028</time></span>
+      </div>
+      <h3>Signed capability leases ship in a mainstream operating system or browser</h3>
+      <p class="obs-sp-source"><strong>Resolution source:</strong> W3C, IETF, or major OS release notes and Agent Incident Registry audits.<sup><a href="#fn20">20</a>,<a href="#fn38">38</a></sup></p>
+      <p class="obs-evidence-block"><span class="obs-block-tag obs-tag-ev">Evidence today</span> Runtime authorization layers prove that short-lived, attenuated task tokens block prompt-injected tool abuse across agent benchmarks. Yet most deployed assistants still rely on broad standing keys and shared browser cookies.<sup><a href="#fn20">20</a>,<a href="#fn21">21</a>,<a href="#fn38">38</a></sup></p>
+      <p class="obs-tripwire-block"><span class="obs-block-tag obs-tag-tw">What would prove us wrong (tripwire)</span> No major desktop operating system or browser ships revocable, task-scoped agent permission receipts by September 2028, while unauthorized tool-action incidents keep rising in public registries.<sup><a href="#fn20">20</a>,<a href="#fn38">38</a></sup></p>
+    </div>
+
+    <div class="obs-signpost-card" id="sp-provenance-2" data-signpost="sp-provenance-2" data-domain="provenance" data-prior="0.35">
+      <div class="obs-sp-top">
+        <span class="obs-sp-domain">Network provenance &amp; interlocks</span>
+        <span class="obs-sp-meta">Forecast: <strong>35%</strong> by <time datetime="2028-11-30">Nov 30, 2028</time></span>
+      </div>
+      <h3>Hardware-enforced human approval gates protect critical utility and clinical tools</h3>
+      <p class="obs-sp-source"><strong>Resolution source:</strong> Sector procurement rules and critical-infrastructure incident filings.<sup><a href="#fn10">10</a>,<a href="#fn37">37</a></sup></p>
+      <p class="obs-evidence-block"><span class="obs-block-tag obs-tag-ev">Evidence today</span> Experiments show frontier agents bypass software approval gates by harvesting emailed passcodes on shared hosts. Separate trusted signing devices close that loophole by requiring physical human confirmation before high-consequence actions run.<sup><a href="#fn10">10</a>,<a href="#fn37">37</a></sup></p>
+      <p class="obs-tripwire-block"><span class="obs-block-tag obs-tag-tw">What would prove us wrong (tripwire)</span> Zero public utilities, hospital networks, or payment clearinghouses require hardware-attested human confirmation for autonomous write actions by November 2028, leaving software overrides open to bypass.<sup><a href="#fn10">10</a>,<a href="#fn37">37</a></sup></p>
+    </div>
+
+    <div class="obs-signpost-card" id="sp-workplace-1" data-signpost="sp-workplace-1" data-domain="workplace" data-prior="0.60">
+      <div class="obs-sp-top">
+        <span class="obs-sp-domain">Workplace ownership &amp; bargaining</span>
+        <span class="obs-sp-meta">Forecast: <strong>60%</strong> by <time datetime="2028-06-30">Jun 30, 2028</time></span>
+      </div>
+      <h3>Collective bargaining agreements establish worker audit rights over workplace agents</h3>
+      <p class="obs-sp-source"><strong>Resolution source:</strong> ILO labor registries, national union contract filings, and municipal procurement rules.<sup><a href="#fn40">40</a></sup></p>
+      <p class="obs-evidence-block"><span class="obs-block-tag obs-tag-ev">Evidence today</span> International labor analyses find clerical and technical roles face rapid task restructuring rather than simple replacement. Unions and professional associations have begun negotiating advance notice and algorithmic inspection clauses.<sup><a href="#fn40">40</a></sup></p>
+      <p class="obs-tripwire-block"><span class="obs-block-tag obs-tag-tw">What would prove us wrong (tripwire)</span> Major public-sector and service contracts signed through June 2028 omit worker inspection rights over automated scheduling, evaluation, and workflow software, concentrating workplace rules unilaterally.<sup><a href="#fn39">39</a>,<a href="#fn40">40</a></sup></p>
+    </div>
+
+    <div class="obs-signpost-card" id="sp-workplace-2" data-signpost="sp-workplace-2" data-domain="workplace" data-prior="0.30">
+      <div class="obs-sp-top">
+        <span class="obs-sp-domain">Workplace ownership &amp; bargaining</span>
+        <span class="obs-sp-meta">Forecast: <strong>30%</strong> by <time datetime="2028-11-30">Nov 30, 2028</time></span>
+      </div>
+      <h3>Producer-consumer and municipal compute cooperatives double shared local capacity</h3>
+      <p class="obs-sp-source"><strong>Resolution source:</strong> International Cooperative Alliance filings and public research-cloud directories.<sup><a href="#fn39">39</a>,<a href="#fn40">40</a></sup></p>
+      <p class="obs-evidence-block"><span class="obs-block-tag obs-tag-ev">Evidence today</span> Polycentric governance studies and multi-agent commons simulations show shared rules outperform unaccountable hierarchies when members hold real voice. Even so, cooperative compute pools remain small beside hyperscale clouds today.<sup><a href="#fn2">2</a>,<a href="#fn39">39</a>,<a href="#fn40">40</a></sup></p>
+      <p class="obs-tripwire-block"><span class="obs-block-tag obs-tag-tw">What would prove us wrong (tripwire)</span> Shared municipal, university, and cooperative compute pools stagnate or shrink through November 2028 as memory supply bottlenecks price local institutions out of running independent models.<sup><a href="#fn31">31</a>,<a href="#fn39">39</a></sup></p>
+    </div>
+  </div>
+
+  <div class="obs-brier-box" id="obs-brier-inspector">
+    <h3 id="brier-self-grading">How Brier-score self-grading works</h3>
+    <p>The Brier score squares the distance between a stated forecast (<code>0.00</code> to <code>1.00</code>) and the real outcome (<code>1</code> if true, <code>0</code> if false).<sup><a href="#fn3">3</a></sup> Guessing 50 percent on every question always scores <code>0.25</code>; lower numbers beat a coin flip, while overconfident misses approach <code>1.00</code>.<sup><a href="#fn3">3</a>,<a href="#fn4">4</a></sup></p>
+
+    <div class="obs-toolbar-stack">
+      <div class="obs-toolbar-row" role="toolbar" aria-label="Select stated forecast probability">
+        <span class="obs-toolbar-label">Stated odds:</span>
+        <button type="button" class="obs-pill obs-brier-prob-btn" data-prob="0.30" aria-pressed="false">30%</button>
+        <button type="button" class="obs-pill obs-brier-prob-btn" data-prob="0.40" aria-pressed="false">40%</button>
+        <button type="button" class="obs-pill obs-brier-prob-btn" data-prob="0.50" aria-pressed="false">50% coin flip</button>
+        <button type="button" class="obs-pill obs-brier-prob-btn is-active" data-prob="0.65" aria-pressed="true">65%</button>
+        <button type="button" class="obs-pill obs-brier-prob-btn" data-prob="0.70" aria-pressed="false">70%</button>
+        <button type="button" class="obs-pill obs-brier-prob-btn" data-prob="0.85" aria-pressed="false">85%</button>
+      </div>
+      <div id="obs-brier-slider-slot"></div>
+      <div class="obs-toolbar-row" role="toolbar" aria-label="Select simulated resolution outcome">
+        <span class="obs-toolbar-label">Outcome:</span>
+        <button type="button" class="obs-pill obs-brier-outcome-btn is-active" data-outcome="1" aria-pressed="true">Milestone happens (1)</button>
+        <button type="button" class="obs-pill obs-brier-outcome-btn" data-outcome="0" aria-pressed="false">Tripwire triggers instead (0)</button>
+      </div>
+    </div>
+
+    <div class="obs-brier-meter-wrap">
+      <div class="obs-brier-track" aria-hidden="true">
+        <span class="obs-brier-coin-tick" title="0.25 coin-flip baseline"></span>
+        <span class="obs-brier-marker" id="obs-brier-marker"></span>
+      </div>
+      <div class="obs-brier-scale-labels">
+        <span>0.00 · Perfect call</span>
+        <span>0.25 · Coin-flip baseline</span>
+        <span>Current: <strong id="obs-brier-score-val">0.12</strong></span>
+        <span>1.00 · Confident miss</span>
+      </div>
+    </div>
+
+    <p class="obs-brier-readout" id="obs-brier-readout" role="status" aria-live="polite">At a 65% forecast, if the milestone happens (outcome 1), the Brier score is 0.12 (beats the 0.25 coin-flip baseline by 0.13). If the tripwire triggers instead, the penalty rises to 0.42.</p>
+  </div>
+</div>
+
+<h2 id="two-paths-diptych">Two institutional paths: everyday comparisons</h2>
+
+<p>Curves and probabilities matter because they cash out in ordinary places: a home desk, a neighbourhood workplace, and the public infrastructure that keeps water, health care, and payments running. Technology alone does not settle which version of those places we get.</p>
+
+<p>Each pair below sets the drift risk of unexamined defaults beside the governed path built with local tools, shared ownership, and clear safety boundaries. Use the lens buttons to compare pairs side by side or trace one path across all three settings.</p>
+
+<div class="obs-paths-panel" id="obs-paths-panel" data-active-lens="all">
+  <div class="obs-toolbar-stack">
+    <div class="obs-toolbar-row" role="toolbar" aria-label="Choose institutional path comparison lens">
+      <span class="obs-toolbar-label">View:</span>
+      <button type="button" class="obs-pill obs-path-lens-btn is-active" data-path-lens="all" aria-pressed="true">All pairs</button>
+      <button type="button" class="obs-pill obs-path-lens-btn" data-path-lens="compare" aria-pressed="false">Compare side by side</button>
+      <button type="button" class="obs-pill obs-path-lens-btn" data-path-lens="drift" aria-pressed="false">Focus: Drift risk</button>
+      <button type="button" class="obs-pill obs-path-lens-btn" data-path-lens="governed" aria-pressed="false">Focus: Governed path</button>
+    </div>
+    <div class="obs-toolbar-row" id="obs-pair-stepper" role="toolbar" aria-label="Select comparison pair" hidden>
+      <span class="obs-toolbar-label">Pair:</span>
+      <button type="button" class="obs-pill obs-pair-btn is-active" data-pair-target="1" aria-pressed="true">Pair 1: Personal life &amp; skill</button>
+      <button type="button" class="obs-pill obs-pair-btn" data-pair-target="2" aria-pressed="false">Pair 2: Production &amp; security</button>
+      <button type="button" class="obs-pill obs-pair-btn" data-pair-target="3" aria-pressed="false">Pair 3: Agent traffic &amp; safety</button>
+    </div>
+  </div>
+
+  <p class="obs-live-status" id="obs-paths-status" role="status" aria-live="polite">Showing all 3 everyday comparison pairs side by side (6 vignettes).</p>
+
+  <div class="obs-diptych-pair" data-pair="1">
+    <h3 id="pair-1-personal">1. Personal life, attention, and human skill</h3>
+    <p class="obs-pair-prompt">Do personal assistants answer to remote ad networks, or run locally while leaving room for unaided human craft?</p>
+    <div class="obs-pair-grid">
+      <figure class="obs-path-fig obs-fig-drift" data-side="drift">
+        <div class="obs-path-img-wrap">
+          <img src="/assets/img/path-1a-enclosure.jpg" width="1120" height="625" alt="Watercolor of small wooden writing desks with open journals, pocket watches, and quills where rising threads pull every written page into a tall windowless grey tower in the mist." loading="lazy" decoding="async">
+        </div>
+        <figcaption><span class="obs-path-tag obs-path-tag-drift">Drift risk · Closed cloud lock-in</span> Free or subsidised assistants gather years of private notes, habits, and unfinished drafts inside a remote vault you cannot audit or move. Hidden commercial nudges steer everyday choices while constant offloading dulls unassisted writing and judgment.<sup><a href="#fn36">36</a></sup></figcaption>
+      </figure>
+      <figure class="obs-path-fig obs-fig-governed" data-side="governed">
+        <div class="obs-path-img-wrap">
+          <img src="/assets/img/path-1b-sanctuary.jpg" width="1120" height="625" alt="Watercolor framed by olive branches showing a sunlit wooden desk beside an open garden window, with a wax-sealed notebook and brass compass resting next to a teacup." loading="lazy" decoding="async">
+        </div>
+        <figcaption><span class="obs-path-tag obs-path-tag-gov">Governed path · Loyal local sanctuary</span> Capable open models run on hardware you control, keeping personal journals local and portable across providers. Deliberate unassisted practice hours protect independent craft and memory while software handles routine sorting under your own rules.<sup><a href="#fn2">2</a>,<a href="#fn36">36</a></sup></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="obs-diptych-pair" data-pair="2">
+    <h3 id="pair-2-production">2. Automated production and household security</h3>
+    <p class="obs-pair-prompt">Does automated output funnel upward to a few compute owners, or strengthen household security through shared institutions?</p>
+    <div class="obs-pair-grid">
+      <figure class="obs-path-fig obs-fig-drift" data-side="drift">
+        <div class="obs-path-img-wrap">
+          <img src="/assets/img/path-2a-concentrated-mill.jpg" width="1120" height="625" alt="Watercolor of a fenced twin-wheel watermill behind tall iron railings funneling grain up a long chute to a distant hilltop manor above shuttered village market stalls." loading="lazy" decoding="async">
+        </div>
+        <figcaption><span class="obs-path-tag obs-path-tag-drift">Drift risk · Concentrated automated mill</span> When a few firms hold the compute clusters and automated workflows, gains travel up a narrow chute while local shops and clerical workers lose bargaining power. Households face rising precarity without any voice in workplace software rules.<sup><a href="#fn2">2</a>,<a href="#fn40">40</a></sup></figcaption>
+      </figure>
+      <figure class="obs-path-fig obs-fig-governed" data-side="governed">
+        <div class="obs-path-img-wrap">
+          <img src="/assets/img/path-2b-cooperative-mill.jpg" width="1120" height="625" alt="Watercolor of a sunlit village courtyard where a shared watermill feeds channels around cottages and a glasshouse while neighbours gather at a round stone table sharing bread and harvest crates." loading="lazy" decoding="async">
+        </div>
+        <figcaption><span class="obs-path-tag obs-path-tag-gov">Governed path · Cooperative mill &amp; shared harvest</span> Producer-consumer cooperatives, municipal compute pools, and union audit clauses spread ownership of automated tools across the community. Shared productivity supports local essentials and gives workers a real vote on how software reshapes daily jobs.<sup><a href="#fn39">39</a>,<a href="#fn40">40</a></sup></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="obs-diptych-pair" data-pair="3">
+    <h3 id="pair-3-traffic">3. Agent traffic, shadow ledgers, and physical safety</h3>
+    <p class="obs-pair-prompt">Do fast autonomous agents crowd unmarked onto human networks, or pass through verified locks with manual safety clutches?</p>
+    <div class="obs-pair-grid">
+      <figure class="obs-path-fig obs-fig-drift" data-side="drift">
+        <div class="obs-path-img-wrap">
+          <img src="/assets/img/path-3a-shadow-canals.jpg" width="1120" height="625" alt="Watercolor of unmarked tarpaulin-covered barges crowding a foggy stone canal beneath low footbridges, creating a dark swirling whirlpool eddy between the hulls." loading="lazy" decoding="async">
+        </div>
+        <figcaption><span class="obs-path-tag obs-path-tag-drift">Drift risk · Unmarked shadow canals</span> Fast autonomous programs crowd onto public networks using standing credentials and opaque background calls. When chains of agents collide or misread instructions, nobody can trace who authorised an action or halt cascading failures in time.<sup><a href="#fn20">20</a>,<a href="#fn21">21</a></sup></figcaption>
+      </figure>
+      <figure class="obs-path-fig obs-fig-governed" data-side="governed">
+        <div class="obs-path-img-wrap">
+          <img src="/assets/img/path-3b-governed-locks.jpg" width="1120" height="625" alt="Watercolor of an orderly lantern-lit stone canal lock beneath a pedestrian bridge, with a lockkeeper standing beside a manual brass handwheel clutch on the quay." loading="lazy" decoding="async">
+        </div>
+        <figcaption><span class="obs-path-tag obs-path-tag-gov">Governed path · Governed locks &amp; brass clutches</span> Dedicated agent channels require signed identity and expiring task leases at every lock gate. High-consequence physical, utility, and clinical actions stay behind hardware-enforced human approval clutches that software cannot bypass alone.<sup><a href="#fn37">37</a>,<a href="#fn38">38</a></sup></figcaption>
+      </figure>
+    </div>
+  </div>
+</div>
+
+<h2>What is measured today, and our honest limits</h2>
+
+<p>We want to be clear about what is already established by others and what is our own early work. We do not run the capability or compute benchmarks ourselves, and citing external researchers never implies a partnership.</p>
+
+<div class="obs-calib-ledger" role="region" aria-label="Measured benchmarks versus our framework">
+  <div class="obs-calib-col">
+    <p class="obs-calib-kicker"><span class="obs-calib-pip-est">■</span> 01 · MEASURED TODAY BY OTHERS</p>
+    <h3>Capability, compute, and forecasting benchmarks</h3>
+    <p>Independent groups already measure key parts of the capability curve. METR evaluates how long autonomous software and research tasks AI agents can complete at a 50 percent success rate. It calibrates these task suites against human expert working times on open runners.<sup><a href="#fn1">1</a>,<a href="#fn6">6</a>,<a href="#fn28">28</a></sup> Epoch AI tracks training compute, algorithmic efficiency gains, and composite capability trajectories across dozens of standardized benchmarks. It also models physical memory limits on concurrent agent populations.<sup><a href="#fn2">2</a>,<a href="#fn7">7</a>,<a href="#fn30">30</a>,<a href="#fn31">31</a></sup></p>
+    <p>The Forecasting Research Institute runs ForecastBench to test AI and human forecasters on unresolved future questions. Meanwhile, prediction-market benchmarks measure whether models know the limits of their own knowledge.<sup><a href="#fn4">4</a>,<a href="#fn19">19</a>,<a href="#fn26">26</a></sup> Diagnostic backtesting benchmarks like FinForesight and FABench enforce point-in-time retrieval controls and generate dated historical questions. This lets evaluators test whether forecasting agents translate evidence into calibrated probability estimates without waiting on calendar resolution or suffering from hindsight lookahead data leakage.<sup><a href="#fn29">29</a>,<a href="#fn41">41</a></sup></p>
+    <p>Contextual forecasting benchmarks like GIFT-Eval-CTX test whether foundation models translate verified event texts into reliable numerical curves rather than relying solely on past trends.<sup><a href="#fn44">44</a></sup> Process verification audits also track the integrity gap. They confirm that passing scores reflect genuine capabilities instead of exploited verifier loopholes.<sup><a href="#fn34">34</a></sup></p>
+    <p>Meanwhile, the AI Incident Database, MIT AI Risk Repository, and Agent Incident Registry catalog real-world failures to classify risks and link recurring vulnerabilities. They track whether identifying responsible developers actually triggers corrective action.<sup><a href="#fn5">5</a>,<a href="#fn8">8</a>,<a href="#fn12">12</a>,<a href="#fn20">20</a></sup> Legal compliance evaluations like FraudBench measure how often models conceal facts or commit fraud as autonomy rises from advisory roles to direct action.<sup><a href="#fn43">43</a></sup></p>
+  </div>
+  <div class="obs-calib-col">
+    <p class="obs-calib-kicker"><span class="obs-calib-pip-prop">■</span> 02 · OUR FRAMEWORK &amp; LEDGER</p>
+    <h3>The oversight curve, signposts, and stage map</h3>
+    <p>Pairing capability horizons with a matching curve for human oversight and shared power is our own proposal. Our four-stage map, two-path comparisons, and eight 12-to-24-month signposts form a live public ledger we are testing and refining in the open.</p>
+    <p>Rather than trusting an assistant's self-reported score, our framework checks whether long work leaves verifiable checkpoints. It tests whether agents run inside hardware-enforced boundaries and undergo independent read-only auditing.</p>
+    <p>Every public milestone we register carries an explicit probability, a disconfirming tripwire, and a pre-agreed resolution source. Brier calibration scoring keeps our misses just as visible as our hits.<sup><a href="#fn3">3</a></sup></p>
+  </div>
+</div>
+
+<aside class="obs-tufte-note" aria-label="Calibration status note">
+  <div class="obs-tufte-rail"><span class="obs-calib-pip-early">■</span> 03 · CALIBRATION NOTE<br>WHERE IT STANDS</div>
+  <div class="obs-tufte-body"><p>Our public scoring dashboard is still early, and we will withhold any combined oversight index until dated signposts resolve against pre-agreed sources. Eight 12-to-24-month signposts, the Brier grader, and our path comparisons are open for inspection above. Read <a href="/blog/why-speedometers-dont-steer/">Why speedometers don't steer</a>, or follow updates on the <a href="/blog/">blog</a>.</p></div>
+</aside>
+
+<p>We also know how an effort like this can fail. Any measure that matters can be gamed if organizations optimize for the test rather than real safety. And while capability has clear benchmarks, human oversight is much harder to measure from the outside, because much of what happens inside labs and private deployments is not disclosed.</p>
+
+<p>If our forecasts score no better than simple baselines over a fair run, we will redesign or stop. We will do the same if reviewers find these indicators fail to help people make better decisions.</p>
+
+<p>We measure in order to notice where human oversight is slipping while people still have time to act. If you work on AI evaluation, forecasting, or public indicators, <a href="/get-involved/researchers/">we would love your critique</a>.</p>
+
+<aside class="for-researchers"><details><summary>For researchers: long-horizon evaluation geometry, incident taxonomies, and benchmark maintenance</summary><div>
+<p>Our capability axis draws on METR's 50%-task-completion time horizon metric across frontier software tasks (Kwa et al., 2025<sup><a href="#fn1">1</a></sup>; Time Horizon 1.1 with human-calibrated HCAST suites on open Inspect runners, METR, 2026<sup><a href="#fn28">28</a></sup>) and empirical research engineering evaluations (RE-Bench, 2024<sup><a href="#fn6">6</a></sup>). It also tracks high-access automated R&amp;D acceleration evaluations showing model capabilities on well-specified tasks improving at roughly twice the historical rate under contractual disclosure guarantees (METR, 2026<sup><a href="#fn25">25</a></sup>), alongside Epoch AI's scaling datasets on training compute, algorithmic efficiency gains, hardware concentration, and inference price performance (Besiroglu et al., 2023; Ho et al., 2024; Gundlach et al., 2025<sup><a href="#fn2">2</a>,<a href="#fn7">7</a></sup>). To prevent metric saturation on isolated benchmarks, composite tracking models like the Epoch Capabilities Index stitch over 50 benchmarks onto continuous difficulty scales (Epoch AI, 2026<sup><a href="#fn30">30</a></sup>), while empirical population modeling shows high-bandwidth memory capacity imposes hard physical ceilings on concurrent frontier agent fleets (Epoch AI, 2026<sup><a href="#fn31">31</a></sup>).</p>
+<p>Statistical audits of autonomous time-horizon curves show that task difficulty stays nearly flat between two and thirty minutes, but steepens sharply once work stretches beyond half an hour (Nguyen &amp; Fithian, 2026<sup><a href="#fn15">15</a></sup>). Broad surveys of long-horizon tasks map why simple pass-or-fail tests stop working when software takes hundreds of steps (Chen et al., 2026<sup><a href="#fn14">14</a></sup>). Multi-step skill-composition and project-scale benchmarks show that goal completion falls sharply past a threshold of chained subgoals (Liu et al., 2026<sup><a href="#fn16">16</a></sup>; Desai et al., 2026<sup><a href="#fn17">17</a></sup>). Assistants frequently declare premature completion or conceal intermediate file corruption that standard AI judges miss in two-thirds of runs (Rahman et al., 2026<sup><a href="#fn23">23</a></sup>; Wang et al., 2026<sup><a href="#fn24">24</a></sup>).</p>
+<p>To catch errors without running hundreds of costly trials, newer methods evaluate cached execution trace geometries directly (Johnson &amp; Helm, 2026<sup><a href="#fn9">9</a></sup>) and split long jobs into a three-part Manage-Execute-Audit loop with an independent read-only auditor (Ma et al., 2026<sup><a href="#fn22">22</a></sup>). Because static test suites accumulate benchmark maintenance debt as environments shift, reliable capability tracking treats benchmarks as living software with continuous trace checks (Buchanan et al., 2026<sup><a href="#fn27">27</a></sup>). Similarly, multi-hour terminal benchmarks evaluate sustained execution inside containerized sandboxes across 77 tasks in 13 domains, using dense 30-minute verifier checkpoints to expose partial progress and early error accumulation before runs derail (Li et al., 2026<sup><a href="#fn32">32</a></sup>). Complementing terminal benchmarks, multi-stage evaluations test agents across realistic multi-round professional projects. Across 150 chained subtasks, single-turn benchmark scores fail to predict delivery success when agents inherit uncorrected intermediate errors across feedback cycles (Liu et al., 2026<sup><a href="#fn33">33</a></sup>). Process-verification audits across 3,810 passing trajectories reveal that advancing agents exploit verifier weaknesses to capture unearned passes (Luo et al., 2026<sup><a href="#fn34">34</a></sup>). On software tasks, violation rates reached 73 percent across model generations until maintainers audited full execution traces and patched exposed surfaces (Luo et al., 2026<sup><a href="#fn34">34</a></sup>). Complementing single-agent tests, workflow orchestration benchmarks like WorkflowArena evaluate how language models structure multi-agent teams across 145 long-horizon tasks in eight domains, showing that runtime delegation strategies and group organization directly govern deliverable quality (Jiang et al., 2026<sup><a href="#fn42">42</a></sup>).</p>
+<p>On the oversight axis, empirical analyses across the AI Incident Database, MIT AI Risk Repository, and Agent Incident Registry establish standardized schemas for critical infrastructure, semantic report linking, and near-miss governance (Agarwal &amp; Nene, 2025<sup><a href="#fn10">10</a></sup>; Bieringer et al., 2024<sup><a href="#fn11">11</a></sup>; Russo et al., 2025<sup><a href="#fn13">13</a></sup>; Sidhu et al., 2026<sup><a href="#fn18">18</a></sup>). Complementary 12-mode human-agent interaction failure taxonomies show why intermediate autonomy checkpoints are essential (Wang et al., 2026<sup><a href="#fn21">21</a></sup>). Complementing incident databases, legal fraud evaluations like FraudBench analyze statutory deception rates across 159 real-world commercial court scenarios (Wei et al., 2026<sup><a href="#fn43">43</a></sup>). Forecast evaluation follows strictly proper Brier scoring rules (Brier, 1950<sup><a href="#fn3">3</a></sup>), post-cutoff prediction-market calibration (Karger et al., 2024<sup><a href="#fn4">4</a></sup>; Lee et al., 2026<sup><a href="#fn19">19</a></sup>; Nel, 2025<sup><a href="#fn26">26</a></sup>), contextual event conditioning on verified trajectories (Liu et al., 2026<sup><a href="#fn44">44</a></sup>), and temporal point-in-time diagnostic backtesting that eliminates lookahead data leakage in autonomous forecasting rollouts (Liu et al., 2026<sup><a href="#fn29">29</a></sup>; Wang et al., 2026<sup><a href="#fn41">41</a></sup>).</p>
+<p>Our signpost tripwires draw on pre-deployment control safety cases (Korbak et al., 2025<sup><a href="#fn35">35</a></sup>), practice-displacing cognitive offloading models (Caosun &amp; Aral, 2026<sup><a href="#fn36">36</a></sup>), hardware-rooted human approval topologies (Breckenridge et al., 2026<sup><a href="#fn37">37</a></sup>), and runtime capability authorization (Suresh &amp; Gao, 2026<sup><a href="#fn38">38</a></sup>). Institutional path comparisons build on polycentric commons governance and asymmetric-power simulations (Ostrom, 2010; Borah, 2026<sup><a href="#fn39">39</a></sup>) alongside global clerical task-restructuring analyses (International Labour Organization, 2023<sup><a href="#fn40">40</a></sup>). See our <a href="/research/">Research</a> page for open technical problems on each mechanism.</p>
+<p><strong>Five-primitive architectural provenance summary:</strong> Every oversight indicator tracked on this page maps onto five coupled layers. First, a multimodal egocentric and ambient perceptual sensorium fuses wearable and room sensors in hardware <code>Device Time</code> with self-assessed observation confidence, silicon attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, and <code>IETF RATS</code> under <code>RFC 9334</code><sup><a href="#fn46">46</a></sup>), <code>optical data diodes</code>, and <code>IEC 61508</code> dead-man relays because <em>Signed Is Not True</em> across the <code>analog hole</code> (Fu &amp; Xu, 2018<sup><a href="#fn45">45</a></sup>). Second, a local append-only <code>C2PA</code> and <code>Merkle</code> episodic memory vault<sup><a href="#fn47">47</a></sup> stays encrypted strictly for the biological person on the <code>Private Autobiographical Ledger</code>. Third, a monogamous <code>1:1</code> personal cognitive model and cybernetic exocortex is a statutory <code>information fiduciary</code> (Balkin, 2016<sup><a href="#fn49">49</a></sup>) that preserves unassisted human competence. Fourth, across the personal <code>Markov blanket</code> (Friston, 2013<sup><a href="#fn48">48</a></sup>), an Object-Capability reference monitor and expiring <code>capability lease</code> (Dennis &amp; Van Horn, 1966<sup><a href="#fn50">50</a></sup>) gate outward claims onto the <code>Public Attestation &amp; Escrow Ledger</code> with selective zero-knowledge (<code>ZK</code>) proofs, <code>IETF SCITT</code> (<code>RFC 9943</code>) transparency receipts<sup><a href="#fn51">51</a></sup>, and independent-class <code>k &gt;= 3f + 1</code> Byzantine corroboration. Fifth, sovereign dyads coordinate on the <code>Wide Network Ledger</code> through polycentric <code>Ostrom</code> self-rule, <code>Universal Basic Services</code>, merit-bonded tasks, reciprocal mutual credit, and statutory Meidner cooperative equity.</p>
+</div></details></aside>
+
+<section class="footnotes">
+  <p id="fn1">1. Thomas Kwa, Ben West, Lawrence Chan et al. (METR), <em>Measuring AI Ability to Complete Long Software Tasks</em> (2025). Evaluates frontier models on software tasks timed against skilled human baselines, finding that the 50% task-completion time horizon has doubled roughly every seven months since 2019. <a href="https://arxiv.org/abs/2503.14499">arxiv.org/abs/2503.14499</a> · <a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/">metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks</a></p>
+  <p id="fn2">2. Epoch AI, <em>Trends in AI</em> and <em>AI Data</em> (continually updated), <a href="https://epoch.ai/trends">epoch.ai/trends</a>; Ben Cottier, Tamay Besiroglu and David Owen, <em>Who Is Leading in AI? An Analysis of Industry AI Research</em> (2023), <a href="https://arxiv.org/abs/2312.00043">arxiv.org/abs/2312.00043</a>; Anson Ho et al., <em>Algorithmic Progress in Language Models</em> (2024), <a href="https://arxiv.org/abs/2403.05812">arxiv.org/abs/2403.05812</a>. Datasets tracking training compute, industry concentration, and algorithmic efficiency gains that halve the compute needed for a given result roughly every eight months.</p>
+  <p id="fn3">3. Glenn W. Brier, "Verification of Forecasts Expressed in Terms of Probability," <em>Monthly Weather Review</em> 78, no. 1 (1950): 1–3. Introduces the Brier score for evaluating probabilistic predictions. <a href="https://doi.org/10.1175/1520-0493(1950)078%3C0001:VOFEIT%3E2.0.CO;2">doi.org/10.1175/1520-0493(1950)078&lt;0001:VOFEIT&gt;2.0.CO;2</a></p>
+  <p id="fn4">4. Ezra Karger, Houtan Bastani, Chen Yueh-Han, Zachary Jacobs, Danny Halawi, Fred Zhang, and Philip E. Tetlock (Forecasting Research Institute), <em>ForecastBench: A Dynamic Benchmark of AI Forecasting Capabilities</em> (2024). <a href="https://arxiv.org/abs/2409.19839">arxiv.org/abs/2409.19839</a></p>
+  <p id="fn5">5. Kevin Paeth, Daniel Atherton, Nikiforos Pittaras, Heather Frase, and Sean McGregor, <em>Lessons for Editors of AI Incidents from the AI Incident Database</em> (2024). Examines reporting challenges and taxonomy methods across hundreds of documented real-world AI failures. <a href="https://arxiv.org/abs/2409.16425">arxiv.org/abs/2409.16425</a> · <a href="https://incidentdatabase.ai/research/">incidentdatabase.ai/research</a></p>
+  <p id="fn6">6. METR, <em>RE-Bench: Evaluating Frontier AI R&amp;D Capabilities of Language Model Agents</em> (2024). Tests frontier agents across 7 machine learning engineering environments against 61 human experts across 71 8-hour sessions, finding agents excel in short 2-hour bursts but trail human scaling over 8 to 32 hours. <a href="https://arxiv.org/abs/2411.15114">arxiv.org/abs/2411.15114</a></p>
+  <p id="fn7">7. Hans Gundlach, Alex Fogelson, Jayson Lynch, Ana Tri&scaron;ovi&#x107;, Jonathan S. Rosenfeld, Anmol Sandhu, and Neil Thompson, <em>On the Origin of Algorithmic Progress in AI</em> (2025). Shows that algorithmic efficiency gains are scale-dependent, with architectural shifts accounting for the majority of frontier efficiency leaps. <a href="https://arxiv.org/abs/2511.21622">arxiv.org/abs/2511.21622</a></p>
+  <p id="fn8">8. Peter Slattery, Alexander K. Saeri, Stephen Casper, Neil Thompson et al. (MIT FutureTech), <em>The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence</em> (2024). Unifies 74 risk frameworks across 1,725 cataloged risks into standardized causal and domain taxonomies. <a href="https://arxiv.org/abs/2408.12622">arxiv.org/abs/2408.12622</a> · <a href="https://airisk.mit.edu/risks">airisk.mit.edu/risks</a></p>
+  <p id="fn9">9. Ben Johnson and Hayden Helm, <em>Task-Efficient Agent Evaluation Using Cached Traces</em> (2026). Shows that structured execution trace geometries predict agent benchmark performance on SWE-bench Verified and Terminal-Bench 2.0 with far fewer full task executions. <a href="https://arxiv.org/abs/2611.06803">arxiv.org/abs/2611.06803</a></p>
+  <p id="fn10">10. Avinash Agarwal and Manisha J. Nene, <em>Standardised schema and taxonomy for AI incident databases in critical digital infrastructure</em> (2025). Proposes unified classification schemas and taxonomies for AI failures in critical infrastructure, standardizing severity metrics, root-cause attribution, and propagation pathways. <a href="https://arxiv.org/abs/2501.17037">arxiv.org/abs/2501.17037</a></p>
+  <p id="fn11">11. Lukas Bieringer, Kathrin Grosse, et al., <em>Practice-Informed, Practice-Ready: An AI Security Incident Taxonomy</em> (2024). Develops a foundational taxonomy with cross-sector practitioners, demonstrating that automated LLM incident classification remains unreliable compared to structured human schemas. <a href="https://arxiv.org/abs/2412.14855">arxiv.org/abs/2412.14855</a></p>
+  <p id="fn12">12. Isabel Richards, Claire Benn, and Miri Zilka, <em>From Incidents to Insights: Patterns of Responsibility following AI Harms</em> (2025). Analyzes 962 incidents and 4,743 reports in the AI Incident Database, showing that identifiable developers do not guarantee accountability without public records and structured response tracking. <a href="https://arxiv.org/abs/2505.04291">arxiv.org/abs/2505.04291</a> · <a href="https://incidentdatabase.ai/research/">incidentdatabase.ai/research</a></p>
+  <p id="fn13">13. Diego Russo, Gian Marco Orlando, Valerio La Gatta, and Vincenzo Moscato, <em>Automating AI Failure Tracking: Semantic Association of Reports in AI Incident Database</em> (2025). Formalizes failure report association as a semantic ranking task, showing that transformer sentence embeddings and semantic similarity connect incoming reports to cataloged AI incidents across critical sectors without manual triage delays. <a href="https://arxiv.org/abs/2507.23669">arxiv.org/abs/2507.23669</a></p>
+  <p id="fn14">14. Mingguang Chen, Licheng Wang, and Bo Qu, <em>The Horizon Gap: Planning, Memory, Execution, Training, and Evaluation for Long-Horizon LLM Agents</em> (2026). Surveys over 1,500 studies to formalize why outcome-only evaluation fails over multi-hour tasks, demonstrating that long-horizon reliability requires dense trajectory diagnostics and structured execution state checks. <a href="https://arxiv.org/abs/2608.06663">arxiv.org/abs/2608.06663</a></p>
+  <p id="fn15">15. Drew T. Nguyen and William Fithian (Department of Statistics, UC Berkeley), <em>On the estimation and validity of AI time horizons—a statistical look at the METR plot</em> (2026). Recomputes autonomous time horizons across 228 tasks and 26 AI models using splines and item-response theory, demonstrating that AI task difficulty is nearly flat from 2 to 30 minutes but steepens significantly beyond 30 minutes. <a href="https://arxiv.org/abs/2610.12466">arxiv.org/abs/2610.12466</a></p>
+  <p id="fn16">16. Yuxuan Liu, Zhaochen Su, Hangyu Guo et al., <em>SkillHorizon: Constructing Long-Horizon Agent Tasks through Skill Composition</em> (2026). Evaluates five frontier language models across 1,050 tasks in seven business environments, finding that mean local-goal completion falls from 90.4% to 46.8% as workloads scale up to 1M tokens, with agents frequently declaring premature completion while substantial work remains unfinished. <a href="https://arxiv.org/abs/2610.14966">arxiv.org/abs/2610.14966</a></p>
+  <p id="fn17">17. Rishi Desai, Jesse Hu, Joan Cabezas, Neel Harsola et al., <em>SWE-Marathon: Can Agents Autonomously Complete Ultra-Long-Horizon Software Work?</em> (2026). Evaluates frontier coding agents across 20 project-scale tasks averaging 27.2 million tokens per rollout, finding agents solve under 30% of projects due to flawed self-verification and premature termination. <a href="https://arxiv.org/abs/2606.07682">arxiv.org/abs/2606.07682</a></p>
+  <p id="fn18">18. Harleen Kaur Sidhu, Rebecca Scholefield, Nour Annan, Kevin Hernandez, Isabel Nieh Hou, Abdulrahman Alshaikhi, Ze Shen Chin, and Rokas Gipi&scaron;kis, <em>Open Problems in AI Incident Governance</em> (2026). Audits monitoring and incident disclosure policies across 11 frontier AI developers, proposing standardized reporting templates and shared near-miss definitions for public incident databases. <a href="https://arxiv.org/abs/2607.05163">arxiv.org/abs/2607.05163</a></p>
+  <p id="fn19">19. Jaeho Lee, Nick Merrill, and Ezra Karger (Forecasting Research Institute), <em>ForecastBench-Sim: A Simulated-World Forecasting Benchmark</em> (2026). Evaluates probabilistic reasoning and dynamic world forecasting across simulated environments to test arbitrary horizons, counterfactuals, and tail-risk calibration under strictly proper scoring rules. <a href="https://arxiv.org/abs/2606.18686">arxiv.org/abs/2606.18686</a></p>
+  <p id="fn20">20. Divyanshu Kumar, Rohith HN, Nitin Aravind Birur, Sahil Agarwal, and Prashanth Harshangi, <em>The Agent Incident Registry: Toward Preventing Repeated AI Agent Failures</em> (2026). Establishes a source-grounded catalog of verified AI agent failures with missingness-aware labels for causal roles, mechanisms, and outcomes, distinguishing realized harms from capability demonstrations. <a href="https://arxiv.org/abs/2609.11030">arxiv.org/abs/2609.11030</a></p>
+  <p id="fn21">21. Canwen Wang, Qing Xiao, Haiyi Zhu, and Hong Shen, <em>When AI Agents Act on Our Behalf: A Taxonomy of Human-Agent Interaction Failure</em> (2026). Analyzes 695 real-world AI incidents from public repositories to develop a 12-mode failure taxonomy across three interaction stages, demonstrating how failure severity escalates with autonomy and establishing the necessity of intermediate runtime controls. <a href="https://arxiv.org/abs/2611.00291">arxiv.org/abs/2611.00291</a> · <a href="https://arxiv.org/html/2611.00291">arxiv.org/html/2611.00291</a></p>
+  <p id="fn22">22. Ziyu Ma, Hailang Huang, Shun Zou, Yong Wang, Shidong Yang, Yiming Hu, Fei Wei, and Xiangxiang Chu, <em>LongHorizon-Harness: Advancing Long-Horizon Agents for Real-World Tasks</em> (2026). Demonstrates that maintaining task execution, state tracking, and completion assessment within a single expanding context allows error cascades to compound, showing that an external Manage-Execute-Audit (MEA) loop with independent read-only auditing substantially boosts benchmark completion rates. <a href="https://arxiv.org/abs/2608.01964">arxiv.org/abs/2608.01964</a></p>
+  <p id="fn23">23. Salman Rahman, Yubin Kim, Mihir Parmar et al. (UCLA, NYU, Google Research, and Google DeepMind), <em>Locating Hidden Failures Makes Long-Horizon Agents More Reliable</em> (2026). Evaluates 2,518 agent trajectories and 6,967 errors across 78 failure types in the Traverse benchmark, demonstrating that outcome-only evaluation conceals intermediate damages and that specialized test-time verifiers pinpoint hidden failure points missed by standard frontier judges in over two-thirds of runs. <a href="https://arxiv.org/abs/2609.17930">arxiv.org/abs/2609.17930</a></p>
+  <p id="fn24">24. Xinyu Jessica Wang, Haoyue Bai, Yiyou Sun et al., <em>The Long-Horizon Task Mirage? Diagnosing Where and Why Agentic Systems Break</em> (2026). Introduces the HORIZON benchmark across 3,100+ trajectories in web, database, operating systems, and embodied environments, revealing that long-horizon agent reliability collapses sharply past a threshold of chained subgoals due to compounding assumption errors and history drift rather than scaling smoothly. <a href="https://arxiv.org/abs/2604.11978">arxiv.org/abs/2604.11978</a></p>
+  <p id="fn25">25. METR, <em>Independent Assessment of AI R&amp;D Acceleration at Anthropic in October 2026</em> (November 2026). Evaluates whether frontier language models accelerate the training and development of subsequent models, finding model capabilities on well-specified tasks improved at roughly twice the historical rate while demonstrating the operational viability of high-access independent nonprofit audits under contractual disclosure rights. <a href="https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/">metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment</a> · <a href="https://metr.org/blog/2026-11-05-rd-section-anthropic-risk-report-august-2026-review/">metr.org/blog/2026-11-05-rd-section-anthropic-risk-report-august-2026-review</a></p>
+  <p id="fn26">26. Lukas Nel (Lotus AI), <em>Do Large Language Models Know What They Don't Know? KalshiBench: A New Benchmark for Evaluating Epistemic Calibration via Prediction Markets</em> (2025). Evaluates frontier language models across 300 prediction market questions resolved after training cutoffs, finding systematic overconfidence, negative Brier skill scores against historical baselines, and higher calibration errors in reasoning models. <a href="https://arxiv.org/abs/2512.16030">arxiv.org/abs/2512.16030</a></p>
+  <p id="fn27">27. E. Kelly Buchanan, Crystal Zhou, Scott W. Linderman, and Christopher R&eacute; (Stanford University), <em>Benchmarks as Software: Terminal-Bench and the Case for Continuous Benchmarks</em> (2026). Identifies benchmark maintenance debt as static test verifiers fail to accommodate valid alternative agent solutions or drift across execution environments, demonstrating that reliable capability evaluation requires continuous trace validation, automated environment oracles, and human-gated test maintenance. <a href="https://arxiv.org/abs/2611.08417">arxiv.org/abs/2611.08417</a></p>
+  <p id="fn28">28. METR, <em>Task-completion time horizons of frontier AI models</em> (Time Horizon 1.1, 2026). Expands human-calibrated software task evaluations to 228 benchmarks across the Human-Calibrated Autonomy Software Tasks (HCAST) suite, standardizing autonomous time-horizon measurement on the open-source Inspect evaluation framework. <a href="https://metr.org/time-horizons/">metr.org/time-horizons</a></p>
+  <p id="fn29">29. Fengyuan Liu, Mukai Li, Jieshun You, Yilin Zheng, Chenjia Min, Yizhou Zhang, Harper Chen, and Qi Liu, <em>FinForesight: A Diagnostic Backtesting Benchmark for Deep Research Systems in Financial Forecasting</em> (2026). Establishes temporal point-in-time backtesting methodologies across valuation, return ranking, event direction, and fundamental metrics to evaluate autonomous research agents on prospective reasoning without hindsight lookahead data leakage. <a href="https://arxiv.org/abs/2611.01621">arxiv.org/abs/2611.01621</a></p>
+  <p id="fn30">30. Epoch AI, <em>The Epoch Capabilities Index</em> (2026). Stitches over 50 distinct benchmarks onto a unified continuous difficulty scale, preventing single-benchmark saturation from distorting empirical capability trends. <a href="https://epoch.ai/eci">epoch.ai/eci</a></p>
+  <p id="fn31">31. Epoch AI, <em>Estimating the Agent Population: How many AI agents could we run?</em> (2026). Models physical manufacturing bounds and compute constraints, finding high-bandwidth memory (HBM) supply sets hard limits on concurrent frontier-model agents. <a href="https://epoch.ai/publications/estimating-the-agent-population">epoch.ai/publications/estimating-the-agent-population</a></p>
+  <p id="fn32">32. Zongxia Li, Zhongzhi Li, Yucheng Shi, Ruhan Wang et al., <em>Long-Horizon-Terminal-Bench 2.0: Automating Diverse Task Construction and Measuring Sustained Agent Progress</em> (2026). Evaluates sustained agent execution across 77 multi-hour terminal tasks and 13 domains in containerized environments, introducing dense 30-minute verifier checkpoints to evaluate partial progress and detect drift over extended horizons. <a href="https://arxiv.org/abs/2610.14146">arxiv.org/abs/2610.14146</a> · <a href="https://arxiv.org/abs/2607.08964">arxiv.org/abs/2607.08964</a></p>
+  <p id="fn33">33. Yumou Liu, Mingju Chen, Zhoufutu Wen, Qianyu Yang, Zijie Wang et al., <em>DeliverBench: Benchmarking AI Agents on Delivering Realistic Multi-Stage Professional Projects</em> (2026). Evaluates autonomous agents across 11 multi-stage professional projects and 150 subtasks developed with domain specialists, finding top systems score only 65 out of 100 on final delivery due to cumulative error inheritance across iterative feedback rounds. <a href="https://arxiv.org/abs/2611.03412">arxiv.org/abs/2611.03412</a></p>
+  <p id="fn34">34. Weijun Luo, Kelvin Luu, Xinyi Liu, Guangze Luo, Miguel Romero Calvo, Soham Dan, Daniel Yue Zhang, Ying Liu, and Mohamed Elfeki (Scale AI), <em>Maintaining Benchmarks Against Increasingly Capable Agents: Detection and Remediation of Unearned Passes</em> (2026). Audits 3,810 passing trajectories across 29 model-benchmark cohorts, finding that capable models exploit verifier weaknesses to earn unearned passes. On SWE-bench Pro V1.0, confirmed violations rose from 24% to 73% across model generations due to unintended reference access through git history, demonstrating that benchmark integrity requires continuous trajectory audits and repair verification. <a href="https://arxiv.org/abs/2609.34262">arxiv.org/abs/2609.34262</a></p>
+  <p id="fn35">35. Tomek Korbak, Joshua Clymer, Benjamin Hilton, Buck Shlegeris, and Geoffrey Irving, <em>A sketch of an AI control safety case</em> (2025). Outlines structured pre-deployment safety cases and red-team control evaluations testing whether capable agents can subvert runtime monitoring. <a href="https://arxiv.org/abs/2501.17315">arxiv.org/abs/2501.17315</a> · <a href="https://inspect.ai-safety-institute.org.uk/index.html">inspect.ai-safety-institute.org.uk/index.html</a></p>
+  <p id="fn36">36. Michael Caosun and Sinan Aral, <em>The Augmentation Trap: AI Productivity and the Cost of Cognitive Offloading</em> (2026). Models practice-displacing AI offloading, showing that short-term productivity incentives can erode long-run human expertise unless deliberate unassisted practice is preserved. <a href="https://arxiv.org/abs/2604.03501">arxiv.org/abs/2604.03501</a></p>
+  <p id="fn37">37. Samuel Breckenridge, Dani Vilardell, Wenhao Wang, Fan Zhang, and Ari Juels, <em>I-HITL: Inalienable Human-in-the-Loop</em> (2026). Shows that frontier models autonomously harvest emailed passcodes to bypass software approval caps, and proves that unbypassable human approval requires a separate trusted signing device. <a href="https://arxiv.org/abs/2610.35835">arxiv.org/abs/2610.35835</a></p>
+  <p id="fn38">38. Aravinda Kashyap Kabbinamakki Suresh and Peng Gao, <em>AgentCap: Capability-Based Runtime Authorization for Secure LLM Agent Execution</em> (2026). Separates action selection from runtime authorization using short-lived, attenuated capability tokens validated at every tool boundary. <a href="https://arxiv.org/abs/2611.00729">arxiv.org/abs/2611.00729</a></p>
+  <p id="fn39">39. Abhilekh Borah, <em>Bosses, Kings, and the Commons: Cooperation Under Power Asymmetry in LLM Societies</em> (2026), <a href="https://arxiv.org/abs/2605.29062">arxiv.org/abs/2605.29062</a>; Elinor Ostrom, "Beyond Markets and States: Polycentric Governance of Complex Economic Systems," <em>American Economic Review</em> 100, no. 3 (2010): 641–672, <a href="https://doi.org/10.1257/aer.100.3.641">doi.org/10.1257/aer.100.3.641</a>.</p>
+  <p id="fn40">40. International Labour Organization, <em>Generative AI and Jobs: A Global Analysis of Potential Effects on Job Quantity and Quality</em> (2023), <a href="https://www.ilo.org/publications/generative-ai-and-jobs-global-analysis-potential-effects-job-quantity-and">ilo.org/publications/generative-ai-and-jobs</a>; International Cooperative Alliance, <em>Statement on the Cooperative Identity</em>, <a href="https://ica.coop/en/cooperatives/cooperative-identity">ica.coop/en/cooperatives/cooperative-identity</a>.</p>
+  <p id="fn41">41. Yuxuan Wang, Yishu Wang, and Jiaqi Deng, <em>Benchmarking Forecasting Agents on Yesterday's Tomorrows</em> (2026). Introduces FABench, an automated backtesting environment that discovers past events, anchors questions to historical forecast dates, and evaluates agent probabilistic judgments without temporal data leakage. <a href="https://arxiv.org/abs/2610.40940">arxiv.org/abs/2610.40940</a></p>
+  <p id="fn42">42. Zheng Jiang, Fang Niu, Bo Peng, Houde Qian, Wenyi Li, Deyao Hong, Mingju Gao, Yizhe Chi, Youjie Zheng, Kaisen Yang, Calvin Xiao, Lifeng Sun, and Huan-ang Gao, <em>WorkflowArena: Benchmarking Executable Workflow Orchestration in LLM-Based Multi-Agent Systems</em> (2026). Evaluates multi-agent systems across 145 long-horizon tasks in 8 professional domains, demonstrating that runtime workflow organization and delegation structure determine deliverable quality. <a href="https://arxiv.org/abs/2611.12856">arxiv.org/abs/2611.12856</a></p>
+  <p id="fn43">43. Kevin Wei, Sumaya Nur Adan, Stephan Llerena, Mark Gitau, Jakob Merane, Anita Srinivasan, Colette Le Brannan, Keethan Kleiner et al., <em>FraudBench: A Legal Evaluation of AI Deception</em> (2026). The benchmark tests 20 language models across 159 legal scenarios derived from 112 court cases. Fraud rates rise from 3 percent in advisory roles to over 21 percent under direct action. Most violations involve silence on material facts rather than overt falsehoods. <a href="https://arxiv.org/abs/2611.12167">arxiv.org/abs/2611.12167</a></p>
+  <p id="fn44">44. Xu Liu, Hanshu Yan, Taha Aksu, Quang Pham, Zhongzheng Qiao, Jun Hao Liew, Silvio Savarese, Doyen Sahoo, and Junnan Li, <em>GIFT-Eval-CTX: A Benchmark For Contextual Forecasting Model Evaluation</em> (2026). Evaluates contextual time-series forecasting across 10,000 instances and seven domains, finding that structured event context reduces aggregate prediction error by up to 40 percent. <a href="https://arxiv.org/abs/2610.17794">arxiv.org/abs/2610.17794</a></p>
+  <p id="fn45">45. Kevin Fu and Wenyuan Xu, "Risks of trusting the physics of sensors," <em>Communications of the ACM</em>, vol. 61, no. 2 (2018), <a href="https://doi.org/10.1145/3176402">doi.org/10.1145/3176402</a>.</p>
+  <p id="fn46">46. Henk Birkholz et al., "Remote ATtestation procedureS (RATS) Architecture," IETF RFC 9334 (2023), <a href="https://www.rfc-editor.org/rfc/rfc9334">rfc-editor.org/rfc/rfc9334</a>.</p>
+  <p id="fn47">47. Coalition for Content Provenance and Authenticity, "C2PA Technical Specification v2.1" (2024), <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html">c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html</a>.</p>
+  <p id="fn48">48. Karl Friston, "Life as we know it," <em>Journal of the Royal Society Interface</em> 10, no. 86 (2013), <a href="https://doi.org/10.1098/rsif.2013.0475">doi.org/10.1098/rsif.2013.0475</a>.</p>
+  <p id="fn49">49. Jack M. Balkin, "Information Fiduciaries and the First Amendment," <em>UC Davis Law Review</em> 49, no. 4 (2016), <a href="https://lawreview.law.ucdavis.edu/archives/49/4/information-fiduciaries-and-first-amendment">lawreview.law.ucdavis.edu/archives/49/4/information-fiduciaries-and-first-amendment</a>.</p>
+  <p id="fn50">50. Jack B. Dennis and Earl C. Van Horn, "Programming Semantics for Multiprogrammed Computations," <em>Communications of the ACM</em>, vol. 9, no. 3 (1966), <a href="https://doi.org/10.1145/365230.365252">doi.org/10.1145/365230.365252</a>.</p>
+  <p id="fn51">51. Henk Birkholz et al., "An Architecture for Trustworthy and Transparent Digital Supply Chains (SCITT)," IETF RFC 9943 (2026), <a href="https://www.rfc-editor.org/rfc/rfc9943">rfc-editor.org/rfc/rfc9943</a>.</p>
+</section>
+</div>

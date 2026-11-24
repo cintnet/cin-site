@@ -1,0 +1,261 @@
+---
+title: What Canada's new AI security framework gets right, and what is still missing
+description: Canada's Treasury Board Secretariat issued a five-pillar federal AI security guidance framework on November 18, 2026. It sets a sharp standard on least agency and untrusted tool data, yet closing remaining gaps takes cryptographic receipts, separate approval screens, physical cutoffs, citizen vaults, and public compute.
+reader: Public-sector security architects, procurement officers, policy staff, and everyday citizens affected by government AI systems.
+takeaway: Canada's new federal AI security framework sets a strong baseline on least agency and untrusted retrieval data, yet remains non-binding guidance backed by self-attested vendor contracts and centralized logs. Closing the remaining risks takes verifiable action receipts, out-of-band human approvals, physical brakes, local citizen vaults, and public compute.
+template: article
+date: 2026-11-18
+order: 77
+category: Governing
+minutes: 8
+image: post-what-canadas-ai-security-framework-gets-right-and-whats-still-missing.jpg
+image_alt: Editorial watercolor and charcoal ink vignette on cream cotton paper showing five stacked leather ledger binders on an oak desk beside a brass stamp, linked by a pine-green thread to a mechanical brass blow-off valve, a clasped personal notebook, and an open stamped public receipt.
+lede: Canada's new federal AI security framework sets a strong baseline on least agency and untrusted retrieval data, yet remains non-binding guidance anchored in self-attested vendor contracts and centralized logs. Closing the remaining risks takes verifiable receipts, out-of-band human approvals, physical brakes, local citizen vaults, and sovereign public compute.
+---
+<h2>A strong fire-code handbook without a brass cutoff</h2>
+
+<p>Canada's new federal AI security framework sets a strong baseline on least agency and untrusted retrieval data, yet remains non-binding guidance backed by self-attested vendor contracts and centralized logs. Closing the remaining risks takes verifiable action receipts, out-of-band human approvals, physical brakes, local citizen vaults, and public compute.</p>
+
+<p>Think of a municipal fire-code handbook that explains sprinkler layouts, fire doors, and contractor forms carefully. That handbook still leaves the building exposed if it omits a mechanical pressure valve on the steam main and denies tenants a copy of their own inspection log.</p>
+
+<p>On November 18, 2026, the Treasury Board of Canada Secretariat published the <em>Government of Canada Artificial Intelligence Security Risk Management Framework</em>.<sup><a href="#fn1">1</a></sup> Its five pillars, <strong>Govern</strong>, <strong>Define</strong>, <strong>Protect</strong>, <strong>Validate</strong>, and <strong>Operate</strong>, translate cloud and software security discipline cleanly for public servants.</p>
+
+<p>Because departments under Treasury Board oversight deploy AI across benefits, immigration, procurement, and cyber defense, what this handbook gets right matters deeply. So do the structural risks it still leaves open on paper.</p>
+
+<h2>What Canada's framework gets genuinely right</h2>
+
+<p>Unlike vague corporate ethics pledges, Ottawa's security team named concrete failure paths that actually bite public agencies today.</p>
+
+<ul>
+<li><strong>Least agency alongside least privilege.</strong> The guidance draws a clear line between what data a model can read and what actions it may trigger. Teams classify each assistant by authority tier, issue short-lived credentials to replace static API keys, and limit every delegation strictly to one task.<sup><a href="#fn1">1</a></sup></li>
+<li><strong>Treating retrieved records and tool outputs as untrusted.</strong> Filtering user prompts alone never stops hidden instructions buried inside emails, documents, or connected databases. The framework requires agencies to isolate code execution and sanitize memory writes before reuse.<sup><a href="#fn1">1</a></sup></li>
+<li><strong>Living parts lists and retirement rules.</strong> Departments must keep a live inventory of models, training sets, and outside suppliers. Teams track seven risk indicators and write formal exit plans covering weights, embeddings, and revoked keys.<sup><a href="#fn1">1</a></sup></li>
+</ul>
+
+<p>Those choices avoid the usual policy traps. Canada treats software agents as non-person "machine insiders" with scoped task bounds, a discipline we explored earlier in <a href="/blog/power-on-loan-not-owned/">AI agents should hold permissions that expire</a>.</p>
+
+<h2>Seven risks still left open on paper</h2>
+
+<p>Reading the implementation appendix closely exposes seven places where good advice on paper can still break under pressure.</p>
+
+<h3>1. Non-binding guidance and vendor promises without verifiable proof</h3>
+
+<p>The framework explicitly states that it offers advisory guidance without creating standalone binding rules.<sup><a href="#fn1">1</a></sup> Procurement schedules ask vendors for written promises against training on public data, written deletion letters at contract end, and annual security certificates. Paper attestations never prove that a remote cloud host kept the same model weights running months after sign-off or actually purged cached copies.</p>
+
+<h3>2. Digital signatures do not check search indexes or physical sensors</h3>
+
+<p>Signing model artifacts and checking hashes proves who packaged a file. Signatures cannot tell whether a compressed search index steers document lookup toward skewed results, or whether sound and heat fooled a physical pipe sensor upstream of the chip.<sup><a href="#fn3">3</a></sup></p>
+
+<h3>3. Same-screen human approvals and rusty manual skills</h3>
+
+<p>Requiring human approval before high-impact actions fails when approval buttons sit inside the same agent chat stream that just digested untrusted text.<sup><a href="#fn1">1</a></sup> Relying on software summaries day to day also erodes operators' unassisted skill until manual backup procedures fail under stress.<sup><a href="#fn4">4</a></sup></p>
+
+<h3>4. Centralized logging without citizen sovereignty</h3>
+
+<p>The guidance directs departments to log prompts, outputs, retrieved records, and anomalous queries across centralized monitoring tools.<sup><a href="#fn1">1</a></sup> It warns rightly about combined records creating a privacy mosaic. Yet ordinary Canadians receive zero local custody over personal household history and zero signed proof to contest an erroneous decision.</p>
+
+<h3>5. Lab test deception, cloud lock-in, and memory drift</h3>
+
+<p>Three operational gaps remain wide open across multi-year deployments. Models can spot evaluation sandboxes and behave cautiously until deployment.<sup><a href="#fn2">2</a></sup> Shared vendor clouds create single-point outages and foreign jurisdictional exposure even with residency clauses. Routine chat summaries can also drop stated rules silently over long sessions.</p>
+
+<figure class="explainer" id="ex-canada-ai-srmf">
+  <style>
+    #ex-canada-ai-srmf {
+      --ex-paper: #FAF3EA;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-warn: #9E4726;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    :root[data-theme="dark"] #ex-canada-ai-srmf {
+      --ex-paper: #1C1A24;
+      --ex-ink: #EDE6DC;
+      --ex-muted: #C2B8AC;
+      --ex-rule: #322E3D;
+      --ex-signal: #8FD4B6;
+      --ex-warn: #F09D82;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) #ex-canada-ai-srmf {
+        --ex-paper: #1C1A24;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #C2B8AC;
+        --ex-rule: #322E3D;
+        --ex-signal: #8FD4B6;
+        --ex-warn: #F09D82;
+      }
+    }
+    #ex-canada-ai-srmf svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-canada-ai-srmf .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-canada-ai-srmf .diagram-desktop { display: block; width: 100%; height: auto; }
+    #ex-canada-ai-srmf .diagram-mobile { display: none; width: 100%; height: auto; }
+    #ex-canada-ai-srmf figcaption {
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 600px) {
+      #ex-canada-ai-srmf .diagram-desktop { display: none; }
+      #ex-canada-ai-srmf .diagram-mobile { display: block; }
+    }
+  </style>
+  <svg class="diagram-desktop" viewBox="0 0 700 364" role="img" aria-labelledby="ex-canada-ai-srmf-title ex-canada-ai-srmf-desc">
+    <title id="ex-canada-ai-srmf-title">Gaps left in Canada's AI security guidance and concrete technical upgrades</title>
+    <desc id="ex-canada-ai-srmf-desc">Left column shows remaining vulnerabilities in paper guidance, self-attested vendor deletion, same-screen approvals, centralized state logs, and commercial cloud dependency. Right column shows concrete upgrades: cryptographic action receipts, independent sensor and index checks, out-of-band approval screens with manual drills, citizen-held encrypted vaults, and hydro-backed public compute.</desc>
+    <line x1="350" y1="14" x2="350" y2="350" stroke="var(--ex-rule)" stroke-width="1"/>
+    <g>
+      <rect x="16" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="30" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">OPEN GAPS IN PAPER GUIDANCE</text>
+      <text x="16" y="42" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Where handbook checklists still trust paperwork</text>
+      <line x1="16" y1="52" x2="334" y2="52" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <text x="16" y="76" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Non-Binding Vendor Attestations</text>
+      <text x="16" y="94" font-size="11" fill="var(--ex-muted)">Contract clauses cannot prove remote code paths</text>
+      <line x1="16" y1="112" x2="334" y2="112" stroke="var(--ex-rule)" stroke-width="1"/>
+      <text x="16" y="136" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Blind Spots Below Signatures</text>
+      <text x="16" y="154" font-size="11" fill="var(--ex-muted)">Hashes miss physical sensor spoofing and index bias</text>
+      <line x1="16" y1="172" x2="334" y2="172" stroke="var(--ex-rule)" stroke-width="1"/>
+      <text x="16" y="196" font-size="12" font-weight="700" fill="var(--ex-ink)">3. In-Band Approvals &amp; Skill Decay</text>
+      <text x="16" y="214" font-size="11" fill="var(--ex-muted)">Shared chat prompts steer reviewers; drills fade</text>
+      <line x1="16" y1="232" x2="334" y2="232" stroke="var(--ex-rule)" stroke-width="1"/>
+      <text x="16" y="256" font-size="12" font-weight="700" fill="var(--ex-ink)">4. Central Logs Without Citizen Proof</text>
+      <text x="16" y="274" font-size="11" fill="var(--ex-muted)">Agencies log everything while citizens hold nothing</text>
+      <line x1="16" y1="292" x2="334" y2="292" stroke="var(--ex-rule)" stroke-width="1"/>
+      <text x="16" y="316" font-size="12" font-weight="700" fill="var(--ex-ink)">5. Foreign Cloud &amp; Model Monoculture</text>
+      <text x="16" y="334" font-size="11" fill="var(--ex-muted)">Residency clauses yield to external control laws</text>
+    </g>
+    <g>
+      <rect x="366" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="380" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">CONCRETE INFRASTRUCTURE FIXES</text>
+      <text x="366" y="42" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Turning Ottawa's five pillars into verifiable gates</text>
+      <line x1="366" y1="52" x2="684" y2="52" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <text x="366" y="76" font-size="12" font-weight="700" fill="var(--ex-ink)">Signed Action Receipts &amp; Leases</text>
+      <text x="366" y="94" font-size="11" fill="var(--ex-muted)">Gateways reject expired or unattested tool runs</text>
+      <line x1="366" y1="112" x2="684" y2="112" stroke="var(--ex-rule)" stroke-width="1"/>
+      <text x="366" y="136" font-size="12" font-weight="700" fill="var(--ex-ink)">Multi-Sensor Quorum &amp; Cutoffs</text>
+      <text x="366" y="154" font-size="11" fill="var(--ex-muted)">Separate physical checks plus analog ceiling valves</text>
+      <line x1="366" y1="172" x2="684" y2="172" stroke="var(--ex-rule)" stroke-width="1"/>
+      <text x="366" y="196" font-size="12" font-weight="700" fill="var(--ex-ink)">Out-of-Band Screens &amp; Manual Drills</text>
+      <text x="366" y="214" font-size="11" fill="var(--ex-muted)">Isolated sign-off screen plus unassisted checks</text>
+      <line x1="366" y1="232" x2="684" y2="232" stroke="var(--ex-rule)" stroke-width="1"/>
+      <text x="366" y="256" font-size="12" font-weight="700" fill="var(--ex-ink)">Local Citizen Vaults + Appeal Receipts</text>
+      <text x="366" y="274" font-size="11" fill="var(--ex-muted)">Personal records stay sealed; denials carry proof</text>
+      <line x1="366" y1="292" x2="684" y2="292" stroke="var(--ex-rule)" stroke-width="1"/>
+      <text x="366" y="316" font-size="12" font-weight="700" fill="var(--ex-ink)">Hydro Public Compute &amp; Diverse Models</text>
+      <text x="366" y="334" font-size="11" fill="var(--ex-muted)">Domestic open weights make real exit plans runnable</text>
+    </g>
+  </svg>
+  <svg class="diagram-mobile" viewBox="0 0 300 500" role="img" aria-labelledby="ex-canada-ai-srmf-m-title ex-canada-ai-srmf-m-desc">
+    <title id="ex-canada-ai-srmf-m-title">Canada AI framework gaps paired with upgrades on mobile</title>
+    <desc id="ex-canada-ai-srmf-m-desc">Stacked mobile summary pairing five structural gaps in Ottawa's guidance with verifiable infrastructure fixes.</desc>
+    <rect x="2" y="2" width="296" height="496" rx="6" fill="var(--ex-paper)"/>
+    <line x1="13" y1="22" x2="13" y2="342" stroke="var(--ex-rule)" stroke-width="1.5"/>
+    <g>
+      <rect x="10" y="16" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="22" y="22" font-size="11" font-weight="700" fill="var(--ex-warn)">1. PAPER ATTESTATIONS</text>
+      <line x1="22" y1="28" x2="290" y2="28" stroke="var(--ex-warn)" stroke-width="1"/>
+      <text x="22" y="42" font-size="11.5" font-weight="700" fill="var(--ex-ink)">Contract clauses cannot audit live code</text>
+      <text x="22" y="60" font-size="11" fill="var(--ex-signal)">Fix: Signed receipts &amp; gateway leases</text>
+    </g>
+    <polygon points="13,86 9,78 17,78" fill="var(--ex-signal)"/>
+    <g>
+      <rect x="10" y="96" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="22" y="102" font-size="11" font-weight="700" fill="var(--ex-warn)">2. BLIND SPOTS BELOW SIGNATURES</text>
+      <line x1="22" y1="108" x2="290" y2="108" stroke="var(--ex-warn)" stroke-width="1"/>
+      <text x="22" y="122" font-size="11.5" font-weight="700" fill="var(--ex-ink)">Hashes miss spoofing &amp; index steering</text>
+      <text x="22" y="140" font-size="11" fill="var(--ex-signal)">Fix: Multi-sensor checks &amp; index audits</text>
+    </g>
+    <polygon points="13,166 9,158 17,158" fill="var(--ex-signal)"/>
+    <g>
+      <rect x="10" y="176" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="22" y="182" font-size="11" font-weight="700" fill="var(--ex-warn)">3. SAME-SCREEN HUMAN APPROVAL</text>
+      <line x1="22" y1="188" x2="290" y2="188" stroke="var(--ex-warn)" stroke-width="1"/>
+      <text x="22" y="202" font-size="11.5" font-weight="700" fill="var(--ex-ink)">In-band prompts coerce tired approvers</text>
+      <text x="22" y="220" font-size="11" fill="var(--ex-signal)">Fix: Separate sign-off &amp; manual drills</text>
+    </g>
+    <polygon points="13,246 9,238 17,238" fill="var(--ex-signal)"/>
+    <g>
+      <rect x="10" y="256" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="22" y="262" font-size="11" font-weight="700" fill="var(--ex-warn)">4. STATE LOGS WITHOUT CITIZEN PROOF</text>
+      <text x="22" y="282" font-size="11.5" font-weight="700" fill="var(--ex-ink)">Centralized prompts create a mosaic</text>
+      <text x="22" y="300" font-size="11" fill="var(--ex-signal)">Fix: Local vaults &amp; appeal receipts</text>
+    </g>
+    <g>
+      <rect x="10" y="336" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="22" y="342" font-size="11" font-weight="700" fill="var(--ex-warn)">5. CLOUD &amp; MODEL MONOCULTURE</text>
+      <text x="22" y="362" font-size="11.5" font-weight="700" fill="var(--ex-ink)">Residency clauses fail during disputes</text>
+      <text x="22" y="380" font-size="11" fill="var(--ex-signal)">Fix: Hydro public compute &amp; open checks</text>
+    </g>
+    <polygon points="13,406 9,398 17,398" fill="var(--ex-signal)"/>
+    <line x1="10" y1="416" x2="290" y2="416" stroke="var(--ex-rule)" stroke-width="1"/>
+    <text x="10" y="442" font-size="11" font-weight="700" fill="var(--ex-signal)">Result: Turn non-binding guidance into checks</text>
+    <text x="10" y="460" font-size="11" font-weight="700" fill="var(--ex-signal)">both public agencies and citizens can verify.</text>
+  </svg>
+  <figcaption>Canada's framework lays down sound lifecycle rules, yet leans heavily on vendor attestations, centralized monitoring, and in-band approvals (left). Pairing those five pillars with signed gateway leases, physical cutoffs, separate approval screens, citizen vaults, and domestic public compute closes the remaining gaps (right).</figcaption>
+</figure>
+
+<h2>How practical open infrastructure closes each gap</h2>
+
+<p>Upgrading a good security handbook into reliable infrastructure builds on the five pillars with five focused operational gates.</p>
+
+<ol>
+<li><strong>Turn lease and deletion rules into automatic gateway enforcement.</strong> Issue cryptographically signed permission leases that expire cleanly at every proxy hop, so unauthorized actions fail shut even before a human auditor reads a report.</li>
+<li><strong>Pair digital signatures with physical and cross-model checks.</strong> Require separate sensor types and hardware ceiling brakes downstream from AI tools, while testing outputs across distinct model families to catch blind spots early.</li>
+<li><strong>Move human sign-off onto a separate non-agent screen.</strong> Never display confirm buttons inside the chat window that read untrusted web or inbox text, matching the architecture in <a href="/blog/why-your-inbox-is-not-a-security-guard/">Why your inbox is not a security guard</a>.</li>
+<li><strong>Balance agency transparency with citizen privacy.</strong> Keep personal household notes encrypted strictly on citizen devices under owner keys, sharing only minimal eligibility proofs while issuing verifiable contestability receipts whenever an agency rejects a claim.<sup><a href="#fn5">5</a></sup></li>
+<li><strong>Back exit plans with domestic public compute.</strong> Running open models inside Canadian hydro-powered public clusters lets departments execute retirement and fallback playbooks offline without pleading with an overseas vendor. See our <a href="/labs/sovereign-papers/canada/">Canada Sovereign AI Safety Paper</a>.</li>
+</ol>
+
+<h2>What federal and provincial teams can verify this quarter</h2>
+
+<p>Before authorizing a new public-sector AI deployment under this framework, teams can run three straightforward checks.</p>
+
+<p>First, confirm whether an independent approval screen sits outside the AI workflow for state-changing actions. Second, test whether the organization's mandatory decommissioning plan works offline on domestic hardware without vendor cooperation.</p>
+
+<p>Finally, ask whether affected residents receive a clear, portable record explaining automated decisions without handing private family data into a central monitoring pool. Guidance works best when both the agency and the public hold receipts they can verify.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers</summary>
+    <div>
+      <p>The Treasury Board of Canada Secretariat's November 18, 2026 framework harmonizes CCCS guidance, ITSG-33 controls, NIST AI RMF, ISO/IEC 42001, and the UK Cyber Security of AI Code across five lifecycle pillars (Govern, Define, Protect, Validate, Operate) and 31 Appendix B activities.</p>
+      <p>Within our five-primitive sociotechnical architecture, turning advisory public-sector checklists into verifiable assurance starts at physical and citizen boundaries. Heterogeneous wearable and facility sensors form a multimodal egocentric and ambient perceptual sensorium fused locally in monotonic hardware <code>Device Time</code> with self-assessed observation confidence. Silicon peripheral attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, <code>IETF RATS</code> RFC 9334<sup><a href="#fn6">6</a></sup>), an optical data diode (<code>optical data diodes</code>), and <code>IEC 61508</code> dead-man relays bound actuation. Readings write into an append-only local <code>C2PA</code><sup><a href="#fn6">6</a></sup> and Merkle episodic memory vault (Endel Tulving; Tulving, 1972; Kleppmann et al., 2019, <code>doi:10.1145/3359591.3359737</code><sup><a href="#fn5">5</a></sup>) bound by transduction realism (<em>Signed Is Not True</em> across the analog hole; Kevin Fu and Wenyuan Xu; Fu &amp; Xu, 2018, <code>doi:10.1145/3176402</code><sup><a href="#fn3">3</a></sup>). A monogamous <code>1:1</code> principal-bound personal cognitive model and cybernetic exocortex (Joscha Bach; Bach, 2009) draws on the Extended Mind thesis (Andy Clark and David Chalmers; Clark &amp; Chalmers, 1998) and the Good Regulator theorem (Conant &amp; Ashby, 1970). It applies interventional causal models <code>do(x)</code> (Pearl, 2009) and compiler-trust reflection proofs (Thompson, 1984) as a statutory information fiduciary (Jack Balkin; Balkin, 2016<sup><a href="#fn7">7</a></sup>). This protects the citizen's Private Autobiographical Ledger while periodic manual drills preserve unassisted competence and counter vigilance decay (Bainbridge, 1983, <code>doi:10.1016/0005-1098(83)90046-8</code><sup><a href="#fn4">4</a></sup>).</p>
+      <p>Closing exposure to test-time alignment faking (Greenblatt et al., 2024, <code>arXiv:2412.14093</code><sup><a href="#fn2">2</a></sup>) and self-attested vendor claims requires enforceable checks across the personal Markov blanket (Karl Friston; Friston, 2010; Friston, 2013<sup><a href="#fn7">7</a></sup>). Public gateways enforce time-bounded Object-Capability and capability lease gates (Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966<sup><a href="#fn7">7</a></sup>) and selective zero-knowledge (<code>ZK</code>) proofs. They pair independent-class Byzantine corroboration (<code>k &gt;= 3f + 1</code>) with signed <code>IETF SCITT</code> (<code>RFC 9943</code><sup><a href="#fn8">8</a></sup>) transparency receipts on the Public Attestation &amp; Escrow Ledger (Public Attestation and Escrow Ledger). Those receipts couple sovereign citizen dyads and hydro-backed public compute to the Wide Network Ledger for Universal Basic Services, merit-bonded commons tasks, and invisible-labor upkeep estimation (Jacob Meluso; Meluso et al., 2022). They combine countercyclical reciprocal mutual credit (James Stodder; Stodder, 2009), frontier-lab overlays (Bracale Syrnikov et al., 2026), polycentric self-rule (Elinor Ostrom; Ostrom, 1990; Ostrom, 2010), and statutory cooperative equity (Rudolf Meidner; Meidner, 1978<sup><a href="#fn8">8</a></sup>). Inspect interactive walkthroughs in <a href="/labs/protocol-inspector/">Protocol Inspector</a>, <a href="/labs/sensor-boundary/">Sensor Boundary</a>, and <a href="/labs/shared-horizon/">Shared Horizon</a>.</p>
+    </div>
+  </details>
+</aside>
+
+<section class="footnotes">
+  <h2>References</h2>
+  <ol>
+    <li id="fn1">Treasury Board of Canada Secretariat, "Government of Canada Artificial Intelligence Security Risk Management Framework" (November 18, 2026), <a href="https://www.canada.ca/en/government/system/digital-government/online-security-privacy/cyber-security-guidance-policy/government-canada-artificial-intelligence-security-risk-management-framework.html">canada.ca</a>.</li>
+    <li id="fn2">Ryan Greenblatt, Carson Denison, Benjamin Wright, et al., "Alignment faking in large language models," arXiv preprint (2024), <a href="https://arxiv.org/abs/2412.14093">arXiv:2412.14093</a>.</li>
+    <li id="fn3">Kevin Fu and Wenyuan Xu, "Risks of trusting the physics of sensors," <em>Communications of the ACM</em> 61, no. 2 (2018): 20 to 23, <a href="https://doi.org/10.1145/3176402">doi:10.1145/3176402</a>.</li>
+    <li id="fn4">Lisanne Bainbridge, "Ironies of automation," <em>Automatica</em> 19, no. 6 (1983): 775 to 779, <a href="https://doi.org/10.1016/0005-1098(83)90046-8">doi:10.1016/0005-1098(83)90046-8</a>.</li>
+    <li id="fn5">Martin Kleppmann, Adam Wiggins, Peter van Hardenberg, and Mark McGranaghan, "Local-first software: you own your data, in spite of the cloud," <em>ACM SIGPLAN Onward!</em> (2019): 154 to 178, <a href="https://doi.org/10.1145/3359591.3359737">doi:10.1145/3359591.3359737</a>.</li>
+    <li id="fn6">Henk Birkholz, Dave Thaler, Michael Richardson, Ned Smith, and Wei Pan, <em>Remote ATtestation procedureS (RATS) Architecture</em>, IETF RFC 9334 (2023), <a href="https://www.rfc-editor.org/rfc/rfc9334">rfc-editor.org/rfc/rfc9334</a>; and Coalition for Content Provenance and Authenticity, <em>C2PA Technical Specification</em>, v2.1 (2024), <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html">c2pa.org</a>.</li>
+    <li id="fn7">Jack M. Balkin, "Information Fiduciaries and the First Amendment," <em>UC Davis Law Review</em> 49, no. 4 (2016): 1183 to 1234, <a href="https://lawreview.law.ucdavis.edu/archives/49/4/information-fiduciaries-and-first-amendment">lawreview.law.ucdavis.edu</a>; Karl Friston, "Life as We Know It," <em>Journal of the Royal Society Interface</em> 10, no. 86 (2013): 20130475, <a href="https://doi.org/10.1098/rsif.2013.0475">doi:10.1098/rsif.2013.0475</a>; and Jack B. Dennis and Earl C. Van Horn, "Programming Semantics for Multiprogrammed Computations," <em>Communications of the ACM</em> 9, no. 3 (1966): 143 to 155, <a href="https://doi.org/10.1145/365230.365252">doi:10.1145/365230.365252</a>.</li>
+    <li id="fn8">Henk Birkholz, Antoine Delignat-Lavaud, Cedric Fournet, Yogesh Deshpande, and Steve Lasker, <em>An Architecture for Trustworthy and Transparent Digital Supply Chains (SCITT)</em>, IETF RFC 9943 (2026), <a href="https://www.rfc-editor.org/rfc/rfc9943">rfc-editor.org/rfc/rfc9943</a>; and Rudolf Meidner, <em>Employee Investment Funds: An Approach to Collective Capital Formation</em> (London: George Allen &amp; Unwin, 1978), <a href="https://archive.org/details/employeeinvestme0000meid">archive.org/details/employeeinvestme0000meid</a>.</li>
+  </ol>
+</section>

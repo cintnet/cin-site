@@ -1,0 +1,437 @@
+---
+title: Anthropic: Alignment, Governance, and Safe ASI Paper
+heading: Upgrading Anthropic MCP and Responsible Scaling gates with hardware leases and living-human ledgers
+eyebrow: Lab Technical Paper · LAB-01
+description: Five-part technical and governance blueprint showing how Anthropic can upgrade MCP with expiring hardware leases, publish conditional speedup proofs, and anchor constitutional rules in living communities.
+reader: Leadership, alignment and security engineers at Anthropic, peer AI labs, safety evaluators, and public regulators.
+takeaway: Anthropic can close MCP execution trust gaps with expiring hardware leases, share conditional ASL speedup proofs across rival labs, and ground Claude constitutions in Sybil-resistant human deliberation.
+template: page
+layout: wide
+section: labs
+lede: Anthropic can close MCP execution trust gaps with expiring hardware leases, share conditional ASL speedup proofs across rival labs, and ground Claude constitutions in Sybil-resistant human deliberation.
+---
+<section class="wrap">
+  <nav class="lp-breadcrumb" aria-label="Lab paper navigation">
+    <a href="/labs/lab-papers/">← All Lab Technical Papers</a>
+    <span>·</span>
+    <a href="/labs/lab-overlays/">Compare in 93-Group Overlays</a>
+    <span>·</span>
+    <a href="/research/">Research Workspace</a>
+  </nav>
+
+  <div class="prose wrap-narrow">
+    <p class="big">Anthropic can close MCP execution trust gaps with expiring hardware leases, share conditional ASL speedup proofs across rival labs, and ground Claude constitutions in Sybil-resistant human deliberation. Standardizing wall outlets makes appliances safer, yet an outlet without a local circuit breaker still lets one faulty heater overload the whole house.</p>
+    <p>Pairing local memory vaults with Long-Term Benefit Trust share streaming keeps capable coding agents accountable to real households.</p>
+  </div>
+
+  <div class="lp-dossier" role="region" aria-label="Anthropic technical dossier">
+    <div class="lp-dossier-head">
+      <span>Code · LAB-01 · Anthropic PBC</span>
+      <span>Liaison · cin.liaison.anthropic · San Francisco, US</span>
+    </div>
+    <div class="lp-dossier-grid">
+      <div class="lp-dossier-cell">
+        <span class="lp-dossier-label">Primary architecture</span>
+        <p>Constitutional AI post-training, Responsible Scaling Policy ASL tiers, sparse feature interpretability, and Model Context Protocol computer-use connectors.</p>
+      </div>
+      <div class="lp-dossier-cell">
+        <span class="lp-dossier-label">Core alignment bottleneck</span>
+        <p>MCP shell tools run with ambient OAuth authority, competitive fear forces redaction of 2x R&amp;D speedup reports, and constitutional rules remain curated top-down.</p>
+      </div>
+      <div class="lp-dossier-cell">
+        <span class="lp-dossier-label">CIN integration role</span>
+        <p>Airlocked constitutional reasoning and code synthesis vault issuing sparse-feature safety certificates before local hardware approves expiring MCP leases.</p>
+      </div>
+      <div class="lp-dossier-cell">
+        <span class="lp-dossier-label">Macroeconomic stabilizer</span>
+        <p>Local-first custom software ownership, narrow civic model distillation, Universal Basic Compute, and Long-Term Benefit Trust cooperative equity streaming.</p>
+      </div>
+    </div>
+  </div>
+
+  <nav class="lp-toc" aria-label="Paper sections">
+    <a href="#sec-1">01 · Alignment Bottlenecks</a>
+    <a href="#sec-2">02 · CIN Technical Integration</a>
+    <a href="#sec-3">03 · Inter-Lab Options</a>
+    <a href="#sec-4">04 · Government Options</a>
+    <a href="#sec-5">05 · Safe ASI &amp; Economy</a>
+  </nav>
+
+  <figure class="explainer lp-arch-fig" id="ex-lp-anthropic">
+    <style>
+      #ex-lp-anthropic {
+        --ex-rule: #D6CBB8;
+        --ex-ink: #131014;
+        --ex-muted: #4A433A;
+        margin: 2rem 0 2.25rem;
+        padding: 1.35rem 0 1.15rem;
+        background: transparent;
+        border: 0;
+        border-top: 1px solid var(--ex-rule);
+        border-bottom: 1px solid var(--ex-rule);
+        border-radius: 0;
+        box-shadow: none;
+        color: var(--ex-ink);
+      }
+      #ex-lp-anthropic .diagram-desktop { width: 100%; height: auto; display: block; }
+      #ex-lp-anthropic .diagram-mobile { width: 100%; height: auto; display: none; }
+      @media (max-width: 640px) {
+        #ex-lp-anthropic .diagram-desktop { display: none; }
+        #ex-lp-anthropic .diagram-mobile { display: block; }
+      }
+      #ex-lp-anthropic figcaption {
+        margin-top: 0.9rem;
+        padding-top: 0.7rem;
+        border-top: 1px solid var(--ex-rule);
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: var(--ex-muted);
+        text-align: left;
+      }
+      @media (prefers-color-scheme: dark) {
+        #ex-lp-anthropic {
+          --ex-rule: #322E3D;
+          --ex-ink: #EDE6DC;
+          --ex-muted: #A8A095;
+        }
+        #ex-lp-anthropic rect[fill="#FAF3EA"],
+        #ex-lp-anthropic rect[fill="#FFFDF9"],
+        #ex-lp-anthropic rect[fill="#F4EBDD"] {
+          fill: #221F2A;
+        }
+        #ex-lp-anthropic text[fill="#131014"],
+        #ex-lp-anthropic text[fill="#26211C"],
+        #ex-lp-anthropic text[fill="#4A433A"] {
+          fill: #EDE6DC;
+        }
+        #ex-lp-anthropic text[fill="#0B3F30"] { fill: #8FD4B6; }
+        #ex-lp-anthropic text[fill="#963E1D"] { fill: #F09D82; }
+        #ex-lp-anthropic rect[stroke="#0B3F30"],
+        #ex-lp-anthropic line[stroke="#0B3F30"] { stroke: #8FD4B6; }
+        #ex-lp-anthropic rect[stroke="#963E1D"],
+        #ex-lp-anthropic line[stroke="#963E1D"] { stroke: #F09D82; }
+        #ex-lp-anthropic polygon[fill="#0B3F30"] { fill: #8FD4B6; }
+        #ex-lp-anthropic polygon[fill="#963E1D"] { fill: #F09D82; }
+      }
+      :root[data-theme="dark"] #ex-lp-anthropic,
+      [data-theme="dark"] #ex-lp-anthropic {
+        --ex-rule: #322E3D;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #A8A095;
+      }
+      :root[data-theme="dark"] #ex-lp-anthropic rect[fill="#FAF3EA"],
+      :root[data-theme="dark"] #ex-lp-anthropic rect[fill="#FFFDF9"],
+      :root[data-theme="dark"] #ex-lp-anthropic rect[fill="#F4EBDD"],
+      [data-theme="dark"] #ex-lp-anthropic rect[fill="#FAF3EA"],
+      [data-theme="dark"] #ex-lp-anthropic rect[fill="#FFFDF9"],
+      [data-theme="dark"] #ex-lp-anthropic rect[fill="#F4EBDD"] {
+        fill: #221F2A;
+      }
+      :root[data-theme="dark"] #ex-lp-anthropic text[fill="#131014"],
+      :root[data-theme="dark"] #ex-lp-anthropic text[fill="#26211C"],
+      :root[data-theme="dark"] #ex-lp-anthropic text[fill="#4A433A"],
+      [data-theme="dark"] #ex-lp-anthropic text[fill="#131014"],
+      [data-theme="dark"] #ex-lp-anthropic text[fill="#26211C"],
+      [data-theme="dark"] #ex-lp-anthropic text[fill="#4A433A"] {
+        fill: #EDE6DC;
+      }
+      :root[data-theme="dark"] #ex-lp-anthropic text[fill="#0B3F30"],
+      [data-theme="dark"] #ex-lp-anthropic text[fill="#0B3F30"] { fill: #8FD4B6; }
+      :root[data-theme="dark"] #ex-lp-anthropic text[fill="#963E1D"],
+      [data-theme="dark"] #ex-lp-anthropic text[fill="#963E1D"] { fill: #F09D82; }
+      :root[data-theme="dark"] #ex-lp-anthropic rect[stroke="#0B3F30"],
+      :root[data-theme="dark"] #ex-lp-anthropic line[stroke="#0B3F30"],
+      [data-theme="dark"] #ex-lp-anthropic rect[stroke="#0B3F30"],
+      [data-theme="dark"] #ex-lp-anthropic line[stroke="#0B3F30"] { stroke: #8FD4B6; }
+      :root[data-theme="dark"] #ex-lp-anthropic rect[stroke="#963E1D"],
+      :root[data-theme="dark"] #ex-lp-anthropic line[stroke="#963E1D"],
+      [data-theme="dark"] #ex-lp-anthropic rect[stroke="#963E1D"],
+      [data-theme="dark"] #ex-lp-anthropic line[stroke="#963E1D"] { stroke: #F09D82; }
+      :root[data-theme="dark"] #ex-lp-anthropic polygon[fill="#0B3F30"],
+      [data-theme="dark"] #ex-lp-anthropic polygon[fill="#0B3F30"] { fill: #8FD4B6; }
+      :root[data-theme="dark"] #ex-lp-anthropic polygon[fill="#963E1D"],
+      [data-theme="dark"] #ex-lp-anthropic polygon[fill="#963E1D"] { fill: #F09D82; }
+    </style>
+    <svg class="diagram-desktop" viewBox="0 0 920 260" role="img" aria-labelledby="ex-lp-anthropic-title ex-lp-anthropic-desc">
+      <title id="ex-lp-anthropic-title">Anthropic capability-leased MCP architecture with conditional ASL speedup escrows and living-human constitutional input</title>
+      <desc id="ex-lp-anthropic-desc">Diagram showing the user's local device minting short hardware capability leases on the left, an upgraded ACLE-MCP taint firewall in the center, Anthropic's airlocked Claude node and sparse-feature monitor on the upper right, and the shared SCITT and living-human constitutional ledger on the lower right.</desc>
+      <rect x="0" y="0" width="920" height="260" fill="#FAF3EA"/>
+      <rect x="20" y="24" width="250" height="212" fill="#FFFDF9" stroke="#0B3F30" stroke-width="1.8"/>
+      <text x="36" y="50" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#0B3F30">01 · LOCAL USER RUNTIME</text>
+      <text x="36" y="76" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#131014">1:1 fiduciary personal agent</text>
+      <text x="36" y="100" font-family="system-ui, sans-serif" font-size="11.5" fill="#4A433A">Private C2PA workspace vault</text>
+      <text x="36" y="122" font-family="system-ui, sans-serif" font-size="11.5" fill="#4A433A">Local-first software custody</text>
+      <rect x="36" y="146" width="218" height="72" fill="#F4EBDD" stroke="#0B3F30" stroke-width="1.2"/>
+      <text x="48" y="170" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#0B3F30">HARDWARE LEASE SIGNER</text>
+      <text x="48" y="192" font-family="system-ui, sans-serif" font-size="11.5" fill="#131014">30-second single-tool scope</text>
+
+      <rect x="330" y="54" width="230" height="152" fill="#F4EBDD" stroke="#963E1D" stroke-width="1.8"/>
+      <text x="346" y="80" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#963E1D">02 · ACLE-MCP FIREWALL</text>
+      <text x="346" y="106" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#131014">Data vs. command separation</text>
+      <text x="346" y="130" font-family="system-ui, sans-serif" font-size="11.5" fill="#4A433A">Blocks ambient OAuth reuse</text>
+      <text x="346" y="152" font-family="system-ui, sans-serif" font-size="11.5" fill="#4A433A">Checks ASL safety certificate</text>
+      <text x="346" y="178" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#0B3F30">Signed Second Road lane</text>
+
+      <rect x="620" y="24" width="280" height="96" fill="#FFFDF9" stroke="#0B3F30" stroke-width="1.8"/>
+      <text x="636" y="48" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#0B3F30">03 · ANTHROPIC VAULT (LAB-01)</text>
+      <text x="636" y="72" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#131014">Stateless Claude &amp; feature monitor</text>
+      <text x="636" y="96" font-family="system-ui, sans-serif" font-size="11.5" fill="#4A433A">Zero Slack link to weight shards</text>
+
+      <rect x="620" y="140" width="280" height="96" fill="#FFFDF9" stroke="#963E1D" stroke-width="1.5"/>
+      <text x="636" y="164" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#963E1D">04 · SHARED ATTESTATION LEDGER</text>
+      <text x="636" y="188" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#131014">Conditional 2x speedup escrow</text>
+      <text x="636" y="212" font-family="system-ui, sans-serif" font-size="11.5" fill="#4A433A">Living-human constitutional rules</text>
+
+      <line x1="270" y1="108" x2="322" y2="108" stroke="#0B3F30" stroke-width="2"/>
+      <polygon points="322,103 330,108 322,113" fill="#0B3F30"/>
+      <line x1="560" y1="90" x2="620" y2="72" stroke="#0B3F30" stroke-width="2"/>
+      <line x1="680" y1="120" x2="680" y2="140" stroke="#963E1D" stroke-width="1.8"/>
+      <line x1="560" y1="170" x2="620" y2="188" stroke="#963E1D" stroke-width="2"/>
+    </svg>
+    <svg class="diagram-mobile" viewBox="0 0 300 536" role="img" aria-labelledby="ex-lp-anthropic-m-title ex-lp-anthropic-m-desc">
+      <title id="ex-lp-anthropic-m-title">Mobile four-stage Anthropic capability-leased MCP diagram</title>
+      <desc id="ex-lp-anthropic-m-desc">Vertical mobile stack from the user's local 1:1 runtime and hardware lease signer into an ACLE-MCP firewall, stateless Anthropic Claude vault, and shared attestation ledger.</desc>
+      <rect x="0" y="0" width="300" height="536" fill="#FAF3EA"/>
+      <rect x="10" y="10" width="280" height="114" rx="4" fill="#FFFDF9" stroke="#0B3F30" stroke-width="2"/>
+      <text x="24" y="34" fill="#0B3F30" font-family="monospace" font-size="11" font-weight="700">01 · LOCAL USER RUNTIME</text>
+      <text x="24" y="56" fill="#131014" font-family="sans-serif" font-size="12.5" font-weight="700">1:1 fiduciary personal agent</text>
+      <text x="24" y="76" fill="#4A433A" font-family="sans-serif" font-size="11">Private C2PA workspace vault</text>
+      <text x="24" y="94" fill="#4A433A" font-family="sans-serif" font-size="11">Local-first software custody</text>
+      <text x="24" y="112" fill="#0B3F30" font-family="sans-serif" font-size="11">30-second single-tool lease</text>
+
+      <line x1="150" y1="124" x2="150" y2="134" stroke="#0B3F30" stroke-width="2"/>
+      <polygon points="145,134 150,141 155,134" fill="#0B3F30"/>
+
+      <rect x="10" y="142" width="280" height="114" rx="4" fill="#F4EBDD" stroke="#963E1D" stroke-width="1.8"/>
+      <text x="24" y="166" fill="#963E1D" font-family="monospace" font-size="11" font-weight="700">02 · ACLE-MCP FIREWALL</text>
+      <text x="24" y="188" fill="#131014" font-family="sans-serif" font-size="12.5" font-weight="700">Data vs. command separation</text>
+      <text x="24" y="208" fill="#4A433A" font-family="sans-serif" font-size="11">Blocks ambient OAuth reuse</text>
+      <text x="24" y="226" fill="#4A433A" font-family="sans-serif" font-size="11">Checks ASL safety certificate</text>
+      <text x="24" y="244" fill="#0B3F30" font-family="sans-serif" font-size="11">Signed Second Road lane</text>
+
+      <line x1="150" y1="256" x2="150" y2="266" stroke="#963E1D" stroke-width="2"/>
+      <polygon points="145,266 150,273 155,266" fill="#963E1D"/>
+
+      <rect x="10" y="274" width="280" height="114" rx="4" fill="#FFFDF9" stroke="#0B3F30" stroke-width="1.8"/>
+      <text x="24" y="298" fill="#0B3F30" font-family="monospace" font-size="11" font-weight="700">03 · ANTHROPIC VAULT (LAB-01)</text>
+      <text x="24" y="320" fill="#131014" font-family="sans-serif" font-size="12.5" font-weight="700">Stateless Claude &amp; monitor</text>
+      <text x="24" y="340" fill="#4A433A" font-family="sans-serif" font-size="11">Zero Slack link to weights</text>
+      <text x="24" y="358" fill="#4A433A" font-family="sans-serif" font-size="11">Sparse-feature safety checks</text>
+      <text x="24" y="376" fill="#4A433A" font-family="sans-serif" font-size="11">Airlocked code synthesis</text>
+
+      <line x1="150" y1="388" x2="150" y2="398" stroke="#0B3F30" stroke-width="2"/>
+      <polygon points="145,398 150,405 155,398" fill="#0B3F30"/>
+
+      <rect x="10" y="406" width="280" height="114" rx="4" fill="#FFFDF9" stroke="#963E1D" stroke-width="1.5"/>
+      <text x="24" y="430" fill="#963E1D" font-family="monospace" font-size="11" font-weight="700">04 · ATTESTATION LEDGER</text>
+      <text x="24" y="452" fill="#131014" font-family="sans-serif" font-size="12.5" font-weight="700">Conditional 2x speedup escrow</text>
+      <text x="24" y="472" fill="#4A433A" font-family="sans-serif" font-size="11">Living-human constitutions</text>
+      <text x="24" y="490" fill="#4A433A" font-family="sans-serif" font-size="11">Meidner Benefit Trust shares</text>
+      <text x="24" y="508" fill="#0B3F30" font-family="sans-serif" font-size="11">Mutual credit clearing</text>
+    </svg>
+    <figcaption>Upgrading MCP with short hardware leases closes ambient OAuth gaps while conditional ledger escrows let Anthropic share ASL speedup proofs safely.</figcaption>
+  </figure>
+
+  <section class="lp-sec" id="sec-1">
+    <p class="lp-sec-kicker lp-sec-kicker--warn">Section 01 · Architecture &amp; Alignment Bottlenecks</p>
+    <h2>Ambient MCP tool authority, redacted speedup curves, and top-down rules</h2>
+    <div class="prose wrap-narrow">
+      <p>Anthropic built four important safety foundations: Constitutional AI, Responsible Scaling Policy ASL tiers, sparse feature interpretability, and the Model Context Protocol. As Claude shifts toward autonomous coding and desktop computer use, each pillar hits a structural boundary.</p>
+      <p>Standard MCP connectors verify identity once at login, leaving an execution trust gap afterward<sup><a href="#fn1">1</a></sup>. Shell and browser tools inherit full user permissions, so hidden instructions inside an untrusted repository or webpage can hijack live OAuth sessions. Meanwhile, sparse feature inspection remains a partial scientific lens that cannot replace external containment.</p>
+      <p>Competitive pressure also distorts transparency. Fear of helping rivals forced redaction of external reports measuring 2x internal researcher speedup, while employee Slack and monorepo links expose weights to twelve-hour theft.</p>
+
+      <div class="lp-options-grid">
+        <div class="lp-option lp-option--warn">
+          <h3>Post-authorization MCP trust gap</h3>
+          <p>MCP shell and computer-use servers run with ambient session authority, letting indirect prompt injections trigger unauthorized file or network actions<sup><a href="#fn1">1</a></sup>.</p>
+        </div>
+        <div class="lp-option lp-option--warn">
+          <h3>Redacted 2x R&amp;D speedup reports</h3>
+          <p>Publishing internal researcher acceleration numbers alone helps competitors, pushing safety-minded labs to redact empirical METR reports needed by external scientists.</p>
+        </div>
+        <div class="lp-option lp-option--warn">
+          <h3>Twelve-hour Slack and monorepo exposure</h3>
+          <p>Human-in-the-loop developer laptops connected to corporate messaging leave training recipes and weights vulnerable to rapid state or agent exfiltration.</p>
+        </div>
+        <div class="lp-option lp-option--warn">
+          <h3>Top-down constitutional curation</h3>
+          <p>Internal staff still curate most production constitutional rules because open web polls are easily flooded by synthetic bot accounts.</p>
+        </div>
+      </div>
+
+      <aside class="for-researchers">
+        <details>
+          <summary>For researchers: formal protocol and verification details</summary>
+          <div>
+            <p>Static OAuth scopes in <code>MCP</code> create a post-authorization execution trust gap<sup><a href="#fn1">1</a></sup> whenever untrusted context enters joint attention. Dictionary learning via sparse autoencoders illuminates internal features yet lacks formal worst-case guarantees against deceptive sandbagging under outcome RL.</p>
+          </div>
+        </details>
+      </aside>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="sec-2">
+    <p class="lp-sec-kicker">Section 02 · CIN Technical Integration</p>
+    <h2>Hardware-leased MCP connectors and living-human constitutional assemblies</h2>
+    <div class="prose wrap-narrow">
+      <p>The Collective Intelligence Network upgrades MCP so remote Claude instances never hold ambient desktop or cloud permissions. Every tool call requested by Claude becomes an unprivileged proposal that must match a short-lived single-user capability lease signed by local user hardware<sup><a href="#fn1">1</a></sup>.</p>
+      <p>Before untrusted files or web pages enter the loop, the user's local runtime enforces CaMeL instruction-data separation<sup><a href="#fn2">2</a></sup>. Tainted external text can populate data variables yet can never alter control flow or spawn new shell commands. Personal life history stays encrypted inside the user's local vault so Claude acts as a stateless reasoning node.</p>
+      <p>To move beyond staff-only rule writing, Collective Constitutional AI<sup><a href="#fn3">3</a></sup> anchors directly to the shared ledger. Anonymous Proof-of-Personhood credentials let real living neighbors weigh normative trade-offs without synthetic bot dilution.</p>
+
+      <div class="lp-options-grid">
+        <div class="lp-option">
+          <h3>ACLE-MCP hardware capability leases</h3>
+          <p>Require hardware-signed single-task leases with strict path constraints and thirty-second expiry before any local MCP server executes a command<sup><a href="#fn1">1</a></sup>.</p>
+        </div>
+        <div class="lp-option">
+          <h3>CaMeL instruction and data tainting</h3>
+          <p>Compile trusted user intent into an explicit local dataflow graph so untrusted repository text cannot hijack Claude tool parameters<sup><a href="#fn2">2</a></sup>.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Stateless Claude vaults over local memory</h3>
+          <p>Keep raw workplace and household records inside user-owned C2PA vaults, calling airlocked Claude nodes with minimal anonymized context slices.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Sybil-resistant constitutional deliberation</h3>
+          <p>Anchor Collective Constitutional AI updates in privacy-preserving human assemblies where verified living people set rules free of bot clones<sup><a href="#fn3">3</a></sup>.</p>
+        </div>
+      </div>
+
+      <aside class="for-researchers">
+        <details>
+          <summary>For researchers: formal protocol and verification details</summary>
+          <div>
+            <p>Within CIN's five-primitive functional deliverable, local perception synchronizes in monotonic hardware <code>Device Time</code> with self-assessed observation confidence via silicon peripheral attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, <code>IETF RATS</code> RFC 9334), optical data diodes, and <code>IEC 61508</code> dead-man relays. Observations enter an append-only <code>C2PA</code>/Merkle episodic memory vault (Endel Tulving; Tulving, 1972) encrypted for the biological person under transduction realism (<em>Signed Is Not True</em> across the analog hole; Fu &amp; Xu, 2018). A monogamous <code>1:1</code> personal cognitive model and cybernetic exocortex (Joscha Bach; Bach; Andy Clark &amp; David Chalmers; Clark &amp; Chalmers, 1998) acts as a statutory information fiduciary (Jack Balkin; Balkin, 2016) protecting unassisted competence across an active-inference Markov blanket (Karl Friston; Friston, 2013).</p>
+            <p>Upgrading <code>MCP</code> with <code>Object-Capability</code> and expiring capability lease bounds (Dennis &amp; Van Horn, 1966) via <code>COSE_Sign1</code> leases<sup><a href="#fn1">1</a></sup> and <code>CaMeL</code> provenance interpreters<sup><a href="#fn2">2</a></sup> separates the Private Autobiographical Ledger from the Public Attestation &amp; Escrow Ledger (Public Attestation and Escrow Ledger). The boundary requires selective <code>ZK</code> proofs, <code>IETF SCITT</code> (<code>RFC 9943</code>) receipts, and independent-class <code>k &gt;= 3f + 1</code> Byzantine corroboration while bridging <code>Collective Constitutional AI</code><sup><a href="#fn3">3</a></sup> to personhood proofs. Inspect interactive walkthroughs in <a href="/labs/protocol-inspector/">Protocol Inspector</a>, <a href="/labs/sensor-boundary/">Sensor Boundary</a>, and <a href="/labs/shared-horizon/">Shared Horizon</a>.</p>
+          </div>
+        </details>
+      </aside>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="sec-3">
+    <p class="lp-sec-kicker">Section 03 · Inter-Lab Coordination Options</p>
+    <h2>Conditional SCITT speedup escrows and cross-lab sabotage benchmarks</h2>
+    <div class="prose wrap-narrow">
+      <p>Anthropic designed its Responsible Scaling Policy to encourage industry-wide safety standards, yet solo disclosure still punishes the most honest lab. Publishing internal 2x researcher uplift figures while competitors stay silent hands rivals a strategic roadmap.</p>
+      <p>Conditional cryptographic escrows on the shared attestation ledger remove that solo penalty. Evaluators such as METR measure long-horizon software task completion inside attested enclaves<sup><a href="#fn4">4</a></sup> and post cryptographic commitments onto IETF SCITT logs. Once any signatory lab crosses an agreed R&amp;D speedup threshold, matched capability bands unseal across all peers simultaneously.</p>
+      <p>Anthropic can also pair sparse-feature monitors with cross-lab AI control protocols<sup><a href="#fn5">5</a></sup>. Airlocked Claude monitors audit anonymized code diffs from peer lab models inside zero-Slack weight vaults.</p>
+
+      <div class="lp-options-grid">
+        <div class="lp-option">
+          <h3>Conditional SCITT speedup disclosure</h3>
+          <p>Commit signed METR task-horizon and internal R&amp;D uplift scores to cryptographic escrows that unseal across rival labs at the same moment<sup><a href="#fn4">4</a></sup>.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Cross-lineage AI control audits</h3>
+          <p>Run adversarial subversion and sleeper-agent evaluations across independent model families so monitors never share correlated blind spots<sup><a href="#fn5">5</a></sup>.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Zero-Slack sealed training enclaves</h3>
+          <p>Sever employee chat and browser endpoints from weight storage using optical data diodes and multi-officer hardware quorum keys.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Insider whistleblower safe harbor</h3>
+          <p>Provide encrypted ledger channels backed by Long-Term Benefit Trust protections if any frontier cluster runs off-books without ASL sign-off.</p>
+        </div>
+      </div>
+
+      <aside class="for-researchers">
+        <details>
+          <summary>For researchers: formal protocol and verification details</summary>
+          <div>
+            <p>Enclave-signed commitments over <code>METR</code> software task horizons<sup><a href="#fn4">4</a></sup> execute inside <code>IETF SCITT</code> transparency logs with threshold simultaneous reveal. Cross-family untrusted monitoring<sup><a href="#fn5">5</a></sup> bounds correlated steganographic collusion across frontier checkpoints.</p>
+          </div>
+        </details>
+      </aside>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="sec-4">
+    <p class="lp-sec-kicker">Section 04 · Government &amp; Sovereign Engagement Options</p>
+    <h2>Public-compute safety cases and accountable Second Road agent fleets</h2>
+    <div class="prose wrap-narrow">
+      <p>Anthropic has consistently called for binding safety rules so conscientious labs are not undercut by reckless deployment. Written self-assessments alone cannot verify ASL-3 or ASL-4 containment for public regulators at US AISI, UK AISI, and the EU AI Office.</p>
+      <p>Turning ASL commitments into reproducible cryptographic bundles run on independent public compute clusters makes statutory oversight concrete. Silicon attestation and substation megawatt checks confirm that the exact model weights tested by public safety institutes match the model serving API traffic.</p>
+      <p>Routing Claude agent fleets onto the signed Second Road adds accountable workload identity<sup><a href="#fn6">6</a></sup>. Regulators gain deterministic circuit breakers to pause unverified autonomous shell traffic during emergencies without surveilling private citizens or shutting down human web forums.</p>
+
+      <div class="lp-options-grid">
+        <div class="lp-option">
+          <h3>Public-compute verified ASL safety cases</h3>
+          <p>Execute ASL-3 and ASL-4 cyber, bio, and autonomy evaluations inside US AISI, UK AISI, and EU AI Office enclaves matched to live weight hashes.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Accountable Second Road workload IDs</h3>
+          <p>Bind commercial Claude fleets to signed workload identities and human delegation chains over dedicated machine transport lanes<sup><a href="#fn6">6</a></sup>.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Substation and chip conservation audits</h3>
+          <p>Reconcile training campus megawatts and accelerator serial inventories on the shared ledger so treaty inspectors verify zero shadow runs.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Citizen-safe emergency circuit breakers</h3>
+          <p>Allow public network operators to revoke autonomous shell leases during cyber crises while keeping civilian communication channels open<sup><a href="#fn6">6</a></sup>.</p>
+        </div>
+      </div>
+
+      <aside class="for-researchers">
+        <details>
+          <summary>For researchers: formal protocol and verification details</summary>
+          <div>
+            <p>Affirmative safety cases bind <code>IETF RATS</code> weight measurements to reproducible benchmark suites run on sovereign public compute. Accountable agent governance<sup><a href="#fn6">6</a></sup> pairs <code>WIMSE</code> workload certificates with revocable <code>ACLE-MCP</code> delegation chains over <code>QUIC</code>.</p>
+          </div>
+        </details>
+      </aside>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="sec-5">
+    <p class="lp-sec-kicker">Section 05 · Safe ASI Adoption &amp; Macroeconomic Stability</p>
+    <h2>Local-first software ownership and Long-Term Benefit Trust equity streaming</h2>
+    <div class="prose wrap-narrow">
+      <p>Anthropic's leadership warns openly that white-collar automation could displace millions of coding, legal, financial, and administrative jobs within years. Safe containment will still fail households if productivity gains pool inside API subscription landlords while wage income falls.</p>
+      <p>Pairing Claude's software synthesis strengths with local-first data custody<sup><a href="#fn7">7</a></sup> flips that dynamic. Hospitals, worker cooperatives, small manufacturers, and cities can call stateless Claude bursts once to compile custom software that runs permanently on community hardware backed by Universal Basic Compute.</p>
+      <p>Anthropic's Long-Term Benefit Trust can anchor macroeconomic stability by streaming statutory Rudolf Meidner cooperative shares into public compute trusts. Coupled with interest-free mutual credit clearing, household purchasing power grows alongside frontier capability.</p>
+
+      <div class="lp-options-grid">
+        <div class="lp-option">
+          <h3>Audited civic and clinical distillation</h3>
+          <p>Distill narrow defensive coding, clinical triage, and municipal models onto local hardware backed by library and regional Universal Basic Compute.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Local-first cooperative tool synthesis</h3>
+          <p>Let small businesses and co-ops synthesize durable local-first software that they own outright with zero recurring cloud lock-in<sup><a href="#fn7">7</a></sup>.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Long-Term Benefit Trust share streaming</h3>
+          <p>Translate Long-Term Benefit Trust pledges into verifiable Meidner cooperative equity streaming as ASL-3 and ASL-4 clusters scale commercially.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Capacity-backed mutual credit loops</h3>
+          <p>Clear enterprise compute credits alongside regional energy, care, and repair work on zero-interest mutual credit ledgers governed by local members.</p>
+        </div>
+      </div>
+
+      <aside class="for-researchers">
+        <details>
+          <summary>For researchers: formal protocol and verification details</summary>
+          <div>
+            <p>On the Wide Network Ledger, combining stateless program synthesis with <code>CRDT</code> local-first storage<sup><a href="#fn7">7</a></sup>, Universal Basic Services, and Jacob Meluso invisible-labor upkeep estimation (Meluso et al., 2024) eliminates multi-tenant cloud rent extraction. Operationalizing the Long-Term Benefit Trust via statutory Rudolf Meidner share-issuance funds (Meidner, 1978), polycentric commons governance (Elinor Ostrom; Ostrom, 1990; Ostrom, 2010), and counter-cyclical reciprocal mutual credit clearing (James Stodder; Stodder, 2009) prevents Keynesian demand collapse without speculative tokens.</p>
+          </div>
+        </details>
+      </aside>
+
+      <section class="footnotes">
+        <ol>
+          <li id="fn1">Zhiyang Ding, Yang Luo, Guangpu Chen, Qingni Shen, and Zhonghai Wu, "ACLE-MCP: Attested Capability Leases for Execution-Time Trust in Remote LLM Tool Use" (2026), <a href="https://arxiv.org/abs/2609.02690">arxiv.org/abs/2609.02690</a>.</li>
+          <li id="fn2">Edoardo Debenedetti et al., "Defeating Prompt Injections by Design" (2025), <a href="https://arxiv.org/abs/2503.18813">arxiv.org/abs/2503.18813</a>.</li>
+          <li id="fn3">Saffron Huang et al., "Collective Constitutional AI: Aligning a Language Model with Public Input" (2024), <a href="https://arxiv.org/abs/2406.07814">arxiv.org/abs/2406.07814</a>.</li>
+          <li id="fn4">Thomas Kwa et al., "Measuring AI Ability to Complete Long Software Tasks" (2025), <a href="https://arxiv.org/abs/2503.14499">arxiv.org/abs/2503.14499</a>.</li>
+          <li id="fn5">Ryan Greenblatt, Buck Shlegeris, Kshitij Sachan, and Fabien Roger, "AI Control: Improving Safety Despite Intentional Subversion" (2023), <a href="https://arxiv.org/abs/2312.06942">arxiv.org/abs/2312.06942</a>.</li>
+          <li id="fn6">Noam Kolt, "Governing AI Agents" (2025), <a href="https://arxiv.org/abs/2501.07913">arxiv.org/abs/2501.07913</a>.</li>
+          <li id="fn7">Martin Kleppmann, Adam Wiggins, Peter van Hardenberg, and Mark McGranaghan, "Local-first software: you own your data, in spite of the cloud" (2019), <a href="https://doi.org/10.1145/3359591.3359737">doi.org/10.1145/3359591.3359737</a>.</li>
+        </ol>
+      </section>
+    </div>
+  </section>
+</section>

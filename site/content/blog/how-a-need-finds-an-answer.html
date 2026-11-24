@@ -1,0 +1,338 @@
+---
+title: How a need finds an answer
+description: Why asking for help online shouldn't mean broadcasting your private life to strangers, and how concentric circles of trust work.
+reader: General readers and community builders
+takeaway: Understand how a personal assistant can look for answers in concentric circles (your own memory first, then trusted neighbours, then wider networks) revealing less about you at every step.
+template: article
+date: 2026-11-06
+order: 20
+category: Living
+minutes: 9
+lede: When you ask an assistant for help, such as finding a plumber or a ladder, it should search in widening circles. It should check your records first, then trusted contacts, and finally the open network, sharing less about you at each step. Today's commercial platforms do the opposite.
+image: post-how-a-need-finds-an-answer.jpg
+image_alt: Warm book-plate illustration of concentric ripples spreading gently across a quiet pond between neighbourhood houses.
+---
+<p>Understand how a personal assistant can look for answers in concentric circles (your own memory first, then trusted neighbours, then wider networks) revealing less about you at every step. Most online searches for help start by uploading your private life: where you live, when you're home, what you're worried about. Those details become records on a distant server before you get an answer.</p>
+
+<p>We propose that a personal assistant search the way people already do. It checks what you already have, asks people you trust, and only then goes wider, sharing with each circle only what that circle needs to know.</p>
+
+<h2>The hardware store full of shouting salespeople</h2>
+
+<p>Think of what happens when you type a simple practical question into a commercial search engine today. It is like walking into a corner hardware store for a two-cent rubber washer and being surrounded by twenty commissioned salespeople shouting about full kitchen remodels.</p>
+
+<p>The store does not make its money by handing you the right brass washer in thirty seconds. It makes its money by auctioning your footsteps to whoever bids the highest to interrupt you.</p>
+
+<p>Because the platform profits from attention bidding, the first five answers you see are rarely the most honest or neighbourly craftsmen in town. They are simply the firms that spent the most on advertising, and they recoup that ad spend by padding the bill once they step through your door.</p>
+
+<p>Now contrast that noisy showroom with how a small-town librarian or a parish bulletin board works. When a parent asks the librarian whether anyone nearby teaches beginner piano, the librarian does not auction the parent's phone number to fifty music franchises.</p>
+
+<p>She remembers that a retired school music teacher two streets over has a free afternoon slot. She checks with both sides, and introduces them only when both are happy to meet. Nobody's diary is sold, and nobody is hounded by unwanted calls for the next six months.</p>
+
+<figure class="explainer" id="ex-need-finds-answer">
+  <style>
+    #ex-need-finds-answer {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    @media (prefers-color-scheme: dark) {
+      #ex-need-finds-answer {
+        --ex-paper: #1C1A24;
+        --ex-slip: #262331;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #C2B8AC;
+        --ex-rule: #3A3548;
+        --ex-signal: #8FD4B6;
+        --ex-accent: #8FD4B6;
+        --ex-warn: #F09D82;
+        --ex-amber: #E0A64B;
+      }
+    }
+    :root[data-theme="dark"] #ex-need-finds-answer {
+      --ex-paper: #1C1A24;
+      --ex-slip: #262331;
+      --ex-ink: #EDE6DC;
+      --ex-muted: #C2B8AC;
+      --ex-rule: #3A3548;
+      --ex-signal: #8FD4B6;
+      --ex-accent: #8FD4B6;
+      --ex-warn: #F09D82;
+      --ex-amber: #E0A64B;
+    }
+    #ex-need-finds-answer svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-need-finds-answer .diagram-desktop {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    #ex-need-finds-answer .diagram-mobile {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+    #ex-need-finds-answer .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-need-finds-answer .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-need-finds-answer .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-need-finds-answer .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-need-finds-answer .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-need-finds-answer .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-need-finds-answer .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-need-finds-answer .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-need-finds-answer .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-need-finds-answer figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-need-finds-answer .diagram-desktop { display: none; }
+      #ex-need-finds-answer .diagram-mobile { display: block; }
+    }
+    @media (max-width: 600px) {
+      #ex-need-finds-answer .diagram-desktop { display: none; }
+      #ex-need-finds-answer .diagram-mobile { display: block; }
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg class="diagram-desktop" viewBox="0 0 680 356" role="img" aria-labelledby="ex-need-title ex-need-desc">
+      <title id="ex-need-title">Comparing Ad-Driven Attention Bidding to Concentric Signed Need-to-Skill Matching</title>
+      <desc id="ex-need-desc">Two-panel diagram comparing Ad-Driven Attention Bidding, where a household search is auctioned to commissioned bidders, against Concentric Signed Need-to-Skill Matching across a consent bridge.</desc>
+      <g>
+        <rect x="16" y="16" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="29" y="22" font-size="11" font-weight="700" fill="var(--ex-warn)">AD-DRIVEN ATTENTION BIDDING</text>
+        <text x="29" y="38" font-size="11.5" fill="var(--ex-muted)">Household question broadcast to commercial ad auction</text>
+        <line x1="22" y1="62" x2="640" y2="62" stroke="var(--ex-warn)" stroke-width="1.25" stroke-dasharray="4 3"/>
+        <rect x="16" y="59" width="6" height="6" fill="var(--ex-warn)"/>
+        <line x1="19" y1="65" x2="19" y2="77" stroke="var(--ex-warn)" stroke-width="1"/>
+        <text x="16" y="92" font-size="12" font-weight="700" fill="var(--ex-ink)">Tap Washer Query</text>
+        <text x="16" y="108" font-size="11" fill="var(--ex-muted)">Phone &amp; address uploaded</text>
+        <rect x="232" y="59" width="6" height="6" fill="var(--ex-warn)"/>
+        <line x1="235" y1="65" x2="235" y2="77" stroke="var(--ex-warn)" stroke-width="1"/>
+        <text x="232" y="92" font-size="12" font-weight="700" fill="var(--ex-ink)">Central Ad Auction</text>
+        <text x="232" y="108" font-size="11" fill="var(--ex-muted)">Ranks by spend, not craft</text>
+        <rect x="448" y="59" width="6" height="6" fill="var(--ex-warn)"/>
+        <line x1="451" y1="65" x2="451" y2="77" stroke="var(--ex-warn)" stroke-width="1"/>
+        <text x="448" y="92" font-size="12" font-weight="700" fill="var(--ex-ink)">Loudest Bidders Win</text>
+        <text x="448" y="108" font-size="11" fill="var(--ex-muted)">Remodel ads &amp; spam calls</text>
+      </g>
+      <line x1="16" y1="178" x2="664" y2="178" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="16" y="192" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="29" y="198" font-size="11" font-weight="700" fill="var(--ex-signal)">CONCENTRIC NEED-TO-SKILL BRIDGE</text>
+        <text x="29" y="214" font-size="11.5" fill="var(--ex-muted)">Concentric circles strip private detail until both sides say yes</text>
+        <line x1="22" y1="238" x2="640" y2="238" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <rect x="16" y="235" width="6" height="6" fill="var(--ex-signal)"/>
+        <line x1="19" y1="241" x2="19" y2="253" stroke="var(--ex-signal)" stroke-width="1"/>
+        <text x="16" y="268" font-size="12" font-weight="700" fill="var(--ex-ink)">Own Notes &amp; Circle</text>
+        <text x="16" y="284" font-size="11" fill="var(--ex-muted)">Diary stays at home</text>
+        <rect x="232" y="235" width="6" height="6" fill="var(--ex-signal)"/>
+        <line x1="235" y1="241" x2="235" y2="253" stroke="var(--ex-signal)" stroke-width="1"/>
+        <text x="232" y="268" font-size="12" font-weight="700" fill="var(--ex-ink)">Signed Consent Bridge</text>
+        <text x="232" y="284" font-size="11" fill="var(--ex-muted)">Strips name; checks track record</text>
+        <rect x="448" y="235" width="6" height="6" fill="var(--ex-signal)"/>
+        <line x1="451" y1="241" x2="451" y2="253" stroke="var(--ex-signal)" stroke-width="1"/>
+        <text x="448" y="268" font-size="12" font-weight="700" fill="var(--ex-ink)">Local Neighbour Skill</text>
+        <text x="448" y="284" font-size="11" fill="var(--ex-muted)">Direct link, zero ad tax</text>
+      </g>
+    </svg>
+    <svg class="diagram-mobile" viewBox="0 0 300 412" role="img" aria-labelledby="ex-need-m-title ex-need-m-desc">
+      <title id="ex-need-m-title">Comparing Ad-Driven Attention Bidding to Concentric Signed Need-to-Skill Matching (Mobile)</title>
+      <desc id="ex-need-m-desc">Stacked mobile diagram comparing commercial ad auctions against concentric need-to-skill matching with mutual consent.</desc>
+      <g>
+        <rect x="10" y="14" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="22" y="20" font-size="11" font-weight="700" fill="var(--ex-warn)">AD-DRIVEN ATTENTION BIDDING</text>
+        <text x="10" y="38" font-size="11" fill="var(--ex-muted)">Question sent to commercial ad auction</text>
+        <line x1="10" y1="48" x2="290" y2="48" stroke="var(--ex-warn)" stroke-width="1.25" stroke-dasharray="4 3"/>
+        <text x="16" y="70" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Tap Washer Query</text>
+        <text x="16" y="86" font-size="11" fill="var(--ex-muted)">Phone and home address uploaded</text>
+        <line x1="14" y1="90" x2="14" y2="100" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <polygon points="11,98 17,98 14,104" fill="var(--ex-warn)"/>
+        <text x="16" y="118" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Central Ad Auction</text>
+        <text x="16" y="134" font-size="11" fill="var(--ex-muted)">Ranks by ad spend over craft</text>
+        <line x1="14" y1="138" x2="14" y2="148" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <polygon points="11,146 17,146 14,152" fill="var(--ex-warn)"/>
+        <text x="16" y="166" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Loudest Bidders Win</text>
+        <text x="16" y="182" font-size="11" fill="var(--ex-muted)">Remodel pitches and spam calls</text>
+      </g>
+      <line x1="10" y1="202" x2="290" y2="202" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="10" y="218" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="22" y="224" font-size="11" font-weight="700" fill="var(--ex-signal)">CONCENTRIC NEED BRIDGE</text>
+        <text x="10" y="242" font-size="11" fill="var(--ex-muted)">Circles strip detail until mutual consent</text>
+        <line x1="10" y1="252" x2="290" y2="252" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <text x="16" y="274" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Own Notes &amp; Household</text>
+        <text x="16" y="290" font-size="11" fill="var(--ex-muted)">Private diary stays on device</text>
+        <line x1="14" y1="294" x2="14" y2="304" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <polygon points="11,302 17,302 14,308" fill="var(--ex-signal)"/>
+        <text x="16" y="322" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Signed Consent Bridge</text>
+        <text x="16" y="338" font-size="11" fill="var(--ex-muted)">Strips name; checks local receipts</text>
+        <line x1="14" y1="342" x2="14" y2="352" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <polygon points="11,350 17,350 14,356" fill="var(--ex-signal)"/>
+        <text x="16" y="370" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Local Neighbour Skill</text>
+        <text x="16" y="386" font-size="11" fill="var(--ex-muted)">Direct introduction, zero ad tax</text>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Commercial ad auction</span>
+      <div class="ex-spec-body">Exports your contact details to data brokers and ranks replies by ad spend over neighbourhood craft.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Concentric matchmaking bridge</span>
+      <div class="ex-spec-body">Checks your own notes and trusted circles first, introducing a verified local neighbour only after mutual consent.</div>
+    </div>
+  </div>
+  <figcaption>Commercial search turns every everyday need into an auction among commissioned salespeople. Concentric routing checks your own notes and trusted circles first, crossing a matchmaking bridge without selling either person's private contact details.</figcaption>
+</figure>
+
+<h2>The natural geometry of human trust</h2>
+
+<p>Human beings did not evolve to live inside a single global crowd of strangers. We live inside overlapping circles: households, close friends, workshops, neighbourhoods, and wider communities of craft or interest.</p>
+
+<p>The anthropologist Robin Dunbar showed that human social networks naturally arrange themselves into distinct layers of trust.<sup><a href="#fn-1" id="fnref-1">1</a></sup> They scale outward from an inner circle of five close confidants to wider rings of fifteen, fifty, and a hundred and fifty people. Each circle works because it carries a different habit of candour.</p>
+
+<p>With the people in your own kitchen, you share raw context because they already know your life. With a friend of a friend, you share the practical question and leave the personal history at home. With a stranger across town, you share only the barest description of the job until both sides choose to meet. Privacy works as a series of doors that open gradually, matching how much you reveal to how much trust a relationship has earned.</p>
+
+<h2>Four rings, from your own shed to the open commons</h2>
+
+<p>We have been designing a different way for software to help a need find an answer. On your own device, <a href="/blog/an-assistant-that-works-only-for-you/">an assistant that works only for you</a> looks outward in four concentric rings without uploading your problem to a central marketplace. At every step outward, it strips away personal detail, and it stops searching the moment a good answer arrives.</p>
+
+<h3>Ring 1: Your own memory and household</h3>
+
+<p>Before asking anyone else, your assistant checks what you already know and own. Perhaps you saved the card of a reliable appliance repairer two winters ago, or someone at home already has a free hour this week. Many everyday headaches vanish simply by searching your own notes on your own hardware first.</p>
+
+<h3>Ring 2: People you trust directly</h3>
+
+<p>If the answer is not at home, your assistant reaches out to the assistants of friends, family, or neighbours in your trusted circle. Even here, it never copies your raw diary onto their devices. It sends a polite, narrow question, such as whether anyone can lend a folding table on Saturday, and waits to see who is free to help.</p>
+
+<h3>Ring 3: Friends of friends and local co-ops</h3>
+
+<p>When your immediate circle is busy, the request steps out one ring further to friends of friends or a neighbourhood guild. Here, trust is real but indirect. Your assistant removes your name and personal backstory, passing along only the facts needed to spot a match. If a neighbour's cousin knows a retired joiner who repairs wooden window frames, their assistants introduce you only after both sides consent.</p>
+
+<h3>Ring 4: The wider network, stripped to the essentials</h3>
+
+<p>Only when local circles come up empty does a request travel to the open network. By the time it reaches this outer ring, it carries no personal identity at all. Mathematical rules for privacy budgets let your assistant measure and cap how much information leaves your device, so outsiders cannot stitch small clues together to map your life.<sup><a href="#fn-2" id="fnref-2">2</a></sup></p>
+
+<h2>How a student finds a piano teacher two streets over</h2>
+
+<p>Walk through how those four rings handle an ordinary request. Suppose Sam wants beginner piano lessons for his eight-year-old daughter on Thursdays after four o'clock, within walking distance of Elm Street.</p>
+
+<p>Sam tells his personal assistant on his kitchen tablet. In Ring 1, the assistant checks Sam's own contacts and old messages first; nobody in the household book teaches piano. So Sam approves stepping outward to Ring 2 and Ring 3.</p>
+
+<p>Sam's assistant does not post his daughter's name, age, school, or street number on a public web page. Instead, it crafts a short, unsigned note for the neighbourhood co-op bridge: <em>"Looking for beginner piano lessons, Thursdays between four and six, ten minutes' walk from Elm Park."</em></p>
+
+<p>Two streets away lives Mrs. Gable, a retired music teacher who takes three pupils a year. She told her assistant about an open Thursday slot for a beginner vouched for by two parish families.</p>
+
+<p>Their two assistants compare notes across the bridge. Mrs. Gable's assistant verifies that Sam belongs to the neighbourhood association and shares a mutual friend on Oak Avenue, without ever seeing Sam's address book. Sam's assistant sees signed receipts from two local families confirming Mrs. Gable's decades of patient teaching.</p>
+
+<p>Both assistants ask their humans first: <em>"Would you like an introduction?"</em> Only when both Sam and Mrs. Gable tap Yes do their names and phone numbers cross the bridge. No ad platform took a cut, and no data broker learned that an eight-year-old child lives on Elm Street.</p>
+
+<h2>Finding shared goals without showing your hand</h2>
+
+<p>Some needs are too large for one household to solve alone. Imagine ten families on the same street who each wish there were a safe walking group to bring young children home from school. Or picture eight rural clinics that want to pool an order for bandages so distributors do not overcharge them.</p>
+
+<p>In both cases, a standoff often blocks action. Nobody wants to be the first person to post their family routine or clinic budget on a public board if nobody else joins in. Because everyone waits, everyone stays stuck.</p>
+
+<p>Modern cryptography offers a graceful way out of that trap. Using privacy-preserving matching protocols, personal assistants can check whether neighbours share the exact same goal without exposing anyone's private list.<sup><a href="#fn-3" id="fnref-3">3</a></sup> If only two households want the walking group, nothing is revealed. Once ten households match, each family receives a private invitation to begin.</p>
+
+<p>The same coordination works for family shops, independent pharmacies, and rural clinics. Six county clinics can compare monthly supply needs for sterile gauze and blood-pressure cuffs. By pooling orders, they secure fair wholesale terms without opening private patient ledgers to a broker.</p>
+
+<h2>Honest questions we still have to solve</h2>
+
+<p>When help travels through concentric circles, communities can meet most daily needs close to home while keeping <a href="/blog/why-trust-multiplies/">a shared, checkable record</a> of larger public commitments. Still, building this well raises hard human questions:</p>
+
+<ul>
+<li><strong>Clues hidden in rare requests.</strong> Even an unnamed request for a rare medical specialist in a small village can hint at who is unwell. An assistant must warn you before a specific question leaves your trusted rings.</li>
+<li><strong>Making sure newcomers are not left waiting.</strong> If answers flow fastest through established friendships, someone who just moved to town starts with an empty inner circle. Libraries, co-ops, and community centres need simple ways to offer newcomers a warm starting ring.</li>
+<li><strong>Keeping everyday kindness off the scoreboard.</strong> Holding a ladder for twenty minutes or lending a cup of flour does not need a formal receipt. Neighbourly favours should stay informal while structured records track larger shared projects.</li>
+<li><strong>Zero pressure to overshare.</strong> Being open about a project can help people find you, but no system should ever penalise someone who keeps their doors closed.</li>
+</ul>
+
+<h2>Help close to home</h2>
+
+<p>Think of a pebble dropped into a pond between neighbourhood houses. The ripples are strongest right where the stone touches the water, and they soften gently as they travel outward toward the far bank.</p>
+
+<p>When our digital tools respect that same natural geometry, asking for help stops feeling like standing in a hardware store surrounded by shouting salespeople. Most everyday needs are met by people who already know and care about one another, and the wider world sees only what you freely choose to share.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers</summary>
+    <div>
+      <p>Concentric query routing combines Dunbar's layered social graph structure with local differential privacy budgets (Dwork and Roth, 2014) enforced at the on-device Markov blanket boundary (Karl Friston; Friston, 2010; Friston, 2013). Within CIN's five-primitive architecture, wearable and ambient sensors form an egocentric and ambient perceptual sensorium synchronized in hardware Device Time with self-assessed observation confidence and PUF, TCG DICE, DMTF SPDM, and IETF RATS (RFC 9334) attestation. An optical data diode and IEC 61508 dead-man relays isolate physical actuators under analog transduction realism, because Signed Is Not True across the analog hole (Kevin Fu and Wenyuan Xu, 2018; <a href="/labs/sensor-boundary/">/labs/sensor-boundary/</a>). Raw requests remain inside an append-only C2PA v2.1 and Merkle episodic memory vault (Endel Tulving, 1972) served by a monogamous 1:1 personal cognitive model and cybernetic exocortex (Joscha Bach, 2009; Extended Mind, Andy Clark and David Chalmers; Clark &amp; Chalmers, 1998; Good Regulator theorem, Conant &amp; Ashby, 1970; interventional causal inference <code>do(x)</code>, Pearl, 2009; compiler-trust verification, Thompson, 1984) operating as a statutory information fiduciary (Jack Balkin; Balkin, 2016) that preserves unassisted competence.<sup><a href="#fn-4" id="fnref-4">4</a></sup></p>
+      <p>At the boundary between the Private Autobiographical Ledger and the Public Attestation and Escrow Ledger (Public Attestation &amp; Escrow Ledger), each outward hop strips attributes inside an Object-Capability sandbox and expiring capability lease (Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966). Each hop emits selective zero-knowledge (ZK) proofs and verifiable IETF SCITT (RFC 9943) receipts (<a href="/labs/protocol-inspector/">/labs/protocol-inspector/</a>), and corroborates high-stakes claims across independent sensor classes by Byzantine quorum (<code>k &gt;= 3f + 1</code>). Cross-household need matching uses Private Set Intersection with threshold disclosure (Freedman, Nissim, and Pinkas, 2004). Matched dyads settle cooperative and merit-bonded tasks across the Wide Network Ledger to support Universal Basic Services, plural value accounting (Jacob Meluso et al., 2025), reciprocal mutual credit clearing (James Stodder, 2009), Meidner share-issuance funds (Rudolf Meidner, 1978), frontier-lab overlays (Bracale Syrnikov et al., 2026), and polycentric Ostrom commons governance (Elinor Ostrom; Ostrom, 1990; <a href="/labs/shared-horizon/">/labs/shared-horizon/</a>).<sup><a href="#fn-5" id="fnref-5">5</a></sup></p>
+    </div>
+  </details>
+</aside>
+
+<section class="footnotes">
+  <h2>Sources</h2>
+  <ol>
+    <li id="fn-1">Robin I. M. Dunbar (1992), <a href="https://doi.org/10.1016/0047-2484(92)90081-J">"Neocortex Size as a Constraint on Group Size in Primates,"</a> <em>Journal of Human Evolution</em>, 22(6), 469–493. <a href="#fnref-1" aria-label="Back to text">↩</a></li>
+    <li id="fn-2">Cynthia Dwork and Aaron Roth (2014), <a href="https://doi.org/10.1561/0400000042">"The Algorithmic Foundations of Differential Privacy,"</a> <em>Foundations and Trends in Theoretical Computer Science</em>, 9(3–4), 211–407. <a href="#fnref-2" aria-label="Back to text">↩</a></li>
+    <li id="fn-3">Michael J. Freedman, Kobbi Nissim, and Benny Pinkas (2004), <a href="https://doi.org/10.1007/978-3-540-24676-3_1">"Efficient Private Matching and Set Intersection,"</a> in <em>Advances in Cryptology — EUROCRYPT 2004</em>, Lecture Notes in Computer Science, vol. 3027, 1–19. <a href="#fnref-3" aria-label="Back to text">↩</a></li>
+    <li id="fn-4">Kevin Fu and Wenyuan Xu (2018), <a href="https://doi.org/10.1145/3176402">"Risks of Trusting the Physics of Sensors,"</a> <em>Communications of the ACM</em>, 61(2), 20–23; Henk Birkholz et al. (2023), <a href="https://www.rfc-editor.org/rfc/rfc9334">IETF RFC 9334: Remote ATtestation procedureS (RATS) Architecture</a>; Coalition for Content Provenance and Authenticity (2024), <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html">C2PA Technical Specification v2.1</a>; Jack M. Balkin (2016), <a href="https://lawreview.law.ucdavis.edu/issues/49/4/lecture/information-fiduciaries-and-first-amendment">"Information Fiduciaries and the First Amendment,"</a> <em>UC Davis Law Review</em>, 49(4), 1183–1234.</li>
+    <li id="fn-5">Karl Friston (2013), <a href="https://doi.org/10.1098/rsif.2013.0475">"Life as We Know It,"</a> <em>Journal of the Royal Society Interface</em>, 10(86), 20130475; Jack B. Dennis and Earl C. Van Horn (1966), <a href="https://doi.org/10.1145/365230.365252">"Programming Semantics for Multiprogrammed Computations,"</a> <em>Communications of the ACM</em>, 9(3), 143–155; Henk Birkholz et al. (2026), <a href="https://www.rfc-editor.org/rfc/rfc9943">IETF RFC 9943: An Architecture for Trustworthy and Transparent Digital Supply Chains (SCITT)</a>; Rudolf Meidner (1978), <a href="https://archive.org/details/employeeinvestme0000meid"><em>Employee Investment Funds: An Approach to Collective Capital Formation</em></a>; Elinor Ostrom (1990), <a href="https://doi.org/10.1017/CBO9780511807763"><em>Governing the Commons</em></a>.</li>
+  </ol>
+</section>

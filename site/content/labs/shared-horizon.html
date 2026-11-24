@@ -1,0 +1,998 @@
+---
+title: Shared Horizon
+heading: From your own sensors to shared community power.
+eyebrow: Labs · Process & Shared-Interest Cases
+description: Five clear steps from private home sensors and a personal AI that builds custom software, to dual ledgers, organic community alliances, and universal basic compute.
+reader: Everyday citizens, workers, cooperative members, open-source builders, safety researchers, and public officials.
+takeaway: Shared Horizon traces five steps from private home sensors and a 1:1 personal AI to organic community self-rule and public computing, backed by our 348-organisation guidance atlas.
+template: page
+layout: wide
+section: labs
+script: shared-horizon-play.js
+lede: Shared Horizon walks through five practical steps from home sensors and a personal AI to shared ledgers, community alliances, and public compute, alongside our 348-organisation guidance atlas.
+---
+<section class="wrap sh-page">
+<style>
+  .sh-page {
+    padding-bottom: 2rem;
+  }
+  .sh-intro {
+    max-width: 72ch;
+    margin-bottom: 2rem;
+  }
+  .sh-intro p {
+    font-size: 1.04rem;
+    line-height: 1.65;
+    color: #2B251F;
+    margin: 0 0 0.95rem;
+  }
+  .sh-section {
+    margin: 2.6rem 0 3.2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #D8C7B0;
+  }
+  .sh-section-head {
+    max-width: 72ch;
+    margin-bottom: 1.4rem;
+  }
+  .sh-section-head h2 {
+    margin: 0 0 0.5rem;
+  }
+  .sh-section-head p {
+    margin: 0;
+    color: #4A433A;
+    line-height: 1.6;
+  }
+
+  /* Part 1: 5-Phase Process Diagram + Slideshow Details Explorer */
+  #ex-horizon-phases {
+    margin: 0 0 1.25rem;
+    padding: 16px 18px 14px;
+    background: #EFE4D2;
+    border: 1px solid #C5B094;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  #ex-horizon-phases svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  #ex-horizon-phases .sh-zone-home {
+    fill: #E7EFE9;
+    stroke: #AFC4B6;
+    stroke-width: 1;
+  }
+  #ex-horizon-phases .sh-zone-net {
+    fill: #F7EFE2;
+    stroke: #D2BFA4;
+    stroke-width: 1;
+  }
+  #ex-horizon-phases .sh-zone-compute {
+    fill: #FFFDF9;
+    stroke: #0B3F30;
+    stroke-width: 1.5;
+  }
+  #ex-horizon-phases .sh-svg-station {
+    cursor: pointer;
+    outline: none;
+  }
+  #ex-horizon-phases .sh-station-box {
+    fill: #FFFDF9;
+    stroke: #8E7D67;
+    stroke-width: 1.25;
+    transition: fill 150ms ease, stroke 150ms ease, stroke-width 150ms ease;
+  }
+  #ex-horizon-phases .sh-station-badge {
+    fill: #EDE1CE;
+    transition: fill 150ms ease;
+  }
+  #ex-horizon-phases .sh-station-num {
+    fill: #0B3F30;
+    font-weight: 700;
+    transition: fill 150ms ease;
+  }
+  #ex-horizon-phases .sh-svg-station:hover .sh-station-box,
+  #ex-horizon-phases .sh-svg-station:focus-visible .sh-station-box {
+    stroke: #0B3F30;
+    stroke-width: 2;
+  }
+  #ex-horizon-phases .sh-svg-station.is-active .sh-station-box {
+    fill: #FFFDF9;
+    stroke: #963E1D;
+    stroke-width: 2.4;
+  }
+  #ex-horizon-phases .sh-svg-station.is-active .sh-station-badge {
+    fill: #963E1D;
+  }
+  #ex-horizon-phases .sh-svg-station.is-active .sh-station-num {
+    fill: #FFFDF9;
+  }
+  #ex-horizon-phases figcaption {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid #D5C3AA;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: #4A433A;
+  }
+
+  /* Slideshow & Step Navigation Bar */
+  .sh-nav-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px 14px;
+    padding: 12px 16px;
+    background: #0B3F30;
+    color: #FAF3EA;
+    border: 1px solid #0B3F30;
+  }
+  .sh-step-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .sh-step-btn {
+    appearance: none;
+    border: 1px solid rgba(250, 243, 234, 0.38);
+    background: #134C3B;
+    color: #FAF3EA;
+    font: inherit;
+    font-size: 0.84rem;
+    font-weight: 600;
+    padding: 7px 12px;
+    cursor: pointer;
+    transition: background-color 140ms ease, color 140ms ease, border-color 140ms ease;
+  }
+  .sh-step-btn:hover {
+    background: #1B634E;
+    border-color: #FAF3EA;
+  }
+  .sh-step-btn.is-active {
+    background: #FFFDF9;
+    color: #0B3F30;
+    border-color: #FFFDF9;
+  }
+  .sh-slide-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sh-slide-counter {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #D7EBE2;
+    padding: 0 6px;
+  }
+  .sh-arrow-btn {
+    appearance: none;
+    border: 1px solid rgba(250, 243, 234, 0.55);
+    background: transparent;
+    color: #FAF3EA;
+    font: inherit;
+    font-size: 0.83rem;
+    font-weight: 600;
+    padding: 6px 11px;
+    cursor: pointer;
+  }
+  .sh-arrow-btn:hover:not(:disabled) {
+    background: rgba(255, 253, 249, 0.14);
+  }
+  .sh-arrow-btn:disabled {
+    opacity: 0.42;
+    cursor: default;
+  }
+
+  /* Phase Detail Sheet */
+  .sh-phase-deck {
+    border-left: 1px solid #C5B094;
+    border-right: 1px solid #C5B094;
+    border-bottom: 1px solid #C5B094;
+    background: #FFFDF9;
+  }
+  .sh-phase-panel {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 0;
+  }
+  .sh-phase-panel[hidden] {
+    display: none !important;
+  }
+  .sh-phase-main {
+    padding: 24px 26px;
+    border-right: 1px solid #E2D4C0;
+  }
+  .sh-phase-side {
+    padding: 24px 24px;
+    background: #FAF4EA;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .sh-phase-eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #963E1D;
+    margin-bottom: 6px;
+  }
+  .sh-phase-main h3 {
+    margin: 0 0 12px;
+    font-size: 1.38rem;
+    line-height: 1.26;
+    color: #131014;
+  }
+  .sh-phase-main p {
+    margin: 0 0 12px;
+    font-size: 0.98rem;
+    line-height: 1.62;
+    color: #2B251F;
+  }
+  .sh-analogy-box {
+    margin-top: 14px;
+    padding: 13px 15px;
+    background: #F3E9D8;
+    border-left: 3px solid #0B3F30;
+  }
+  .sh-analogy-box p {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: #26211C;
+  }
+  .sh-side-points {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .sh-side-item {
+    padding: 12px 14px;
+    background: #FFFDF9;
+    border: 1px solid #DFD1BE;
+  }
+  .sh-side-label {
+    display: block;
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #0B3F30;
+    margin-bottom: 4px;
+  }
+  .sh-side-label--shift {
+    color: #963E1D;
+  }
+  .sh-side-item p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.52;
+    color: #352F28;
+  }
+  .sh-phase-side aside.for-researchers,
+  .sh-case-panel aside.for-researchers {
+    margin: 4px 0 0;
+  }
+
+  /* Part 2: Three Shared-Interest Case Studies */
+  .sh-case-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .sh-case-tab {
+    appearance: none;
+    text-align: left;
+    padding: 14px 16px;
+    background: #F4EBDD;
+    border: 1px solid #C5B094;
+    color: #131014;
+    font: inherit;
+    cursor: pointer;
+    transition: background-color 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
+  }
+  .sh-case-tab:hover {
+    background: #FFFDF9;
+    border-color: #0B3F30;
+  }
+  .sh-case-tab.is-active {
+    background: #FFFDF9;
+    border-color: #0B3F30;
+    box-shadow: inset 0 3px 0 #0B3F30;
+  }
+  .sh-case-tab-kicker {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #963E1D;
+    margin-bottom: 4px;
+  }
+  .sh-case-tab.is-active .sh-case-tab-kicker {
+    color: #0B3F30;
+  }
+  .sh-case-tab-title {
+    display: block;
+    font-family: var(--serif, Georgia, serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.28;
+    margin-bottom: 4px;
+  }
+  .sh-case-tab-sub {
+    display: block;
+    font-size: 0.84rem;
+    line-height: 1.45;
+    color: #4A433A;
+  }
+
+  .sh-case-panel {
+    background: #FFFDF9;
+    border: 1px solid #C5B094;
+    padding: 24px;
+  }
+  .sh-case-panel[hidden] {
+    display: none !important;
+  }
+  .sh-case-arc {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border: 1px solid #D8C7B0;
+    margin-bottom: 20px;
+  }
+  .sh-arc-step {
+    padding: 16px 18px;
+    border-right: 1px solid #D8C7B0;
+    background: #FAF4EA;
+  }
+  .sh-arc-step:last-child {
+    border-right: 0;
+    background: #EEF4F0;
+  }
+  .sh-arc-step:first-child {
+    background: #FBF1EC;
+  }
+  .sh-arc-kicker {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+    color: #963E1D;
+  }
+  .sh-arc-step:nth-child(2) .sh-arc-kicker {
+    color: #5A5247;
+  }
+  .sh-arc-step:last-child .sh-arc-kicker {
+    color: #0B3F30;
+  }
+  .sh-arc-step h3 {
+    margin: 0 0 6px;
+    font-size: 1.02rem;
+    line-height: 1.3;
+    color: #131014;
+  }
+  .sh-arc-step p {
+    margin: 0;
+    font-size: 0.91rem;
+    line-height: 1.54;
+    color: #2B251F;
+  }
+
+  .sh-allies-heading {
+    margin: 0 0 12px;
+    font-size: 1.08rem;
+    color: #131014;
+  }
+  .sh-allies-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .sh-ally-card {
+    padding: 15px 16px;
+    background: #FAF5EC;
+    border: 1px solid #D8C7B0;
+    border-left: 3px solid #0B3F30;
+  }
+  .sh-ally-card h4 {
+    margin: 0 0 6px;
+    font-size: 0.98rem;
+    color: #131014;
+  }
+  .sh-ally-card p {
+    margin: 0 0 6px;
+    font-size: 0.89rem;
+    line-height: 1.52;
+    color: #352F28;
+  }
+  .sh-ally-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Part 3: Scenario Signpost Watch (12 to 24 Months) */
+  .sh-signpost-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .sh-signpost-card {
+    padding: 16px 18px;
+    background: #FFFDF9;
+    border: 1px solid #C5B094;
+    border-top: 3px solid #963E1D;
+  }
+  .sh-signpost-card.is-lockin {
+    border-top-color: #805113;
+  }
+  .sh-signpost-card.is-shift {
+    border-top-color: #0B3F30;
+    background: #F4F8F5;
+  }
+  .sh-signpost-kicker {
+    display: block;
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #963E1D;
+    margin-bottom: 5px;
+  }
+  .sh-signpost-card.is-lockin .sh-signpost-kicker {
+    color: #805113;
+  }
+  .sh-signpost-card.is-shift .sh-signpost-kicker {
+    color: #0B3F30;
+  }
+  .sh-signpost-card h3 {
+    margin: 0 0 8px;
+    font-size: 1.04rem;
+    line-height: 1.3;
+    color: #131014;
+  }
+  .sh-signpost-card p {
+    margin: 0 0 8px;
+    font-size: 0.9rem;
+    line-height: 1.54;
+    color: #2B251F;
+  }
+  .sh-signpost-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Part 4: Clean Bridge to Institutional Atlas */
+  .sh-atlas-bridge {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 20px;
+    align-items: center;
+    padding: 22px 24px;
+    background: #EFE4D2;
+    border: 1px solid #C5B094;
+    margin: 2.2rem 0;
+  }
+  .sh-atlas-bridge h2 {
+    margin: 0 0 8px;
+    font-size: 1.3rem;
+  }
+  .sh-atlas-bridge p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.58;
+    color: #2B251F;
+  }
+  .sh-atlas-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  @media (max-width: 860px) {
+    #ex-horizon-phases {
+      overflow-x: auto;
+    }
+    #ex-horizon-phases svg {
+      min-width: 680px;
+    }
+    .sh-phase-panel,
+    .sh-case-tabs,
+    .sh-case-arc,
+    .sh-allies-grid,
+    .sh-signpost-grid,
+    .sh-atlas-bridge {
+      grid-template-columns: 1fr;
+    }
+    .sh-phase-main {
+      border-right: 0;
+      border-bottom: 1px solid #E2D4C0;
+      padding: 18px;
+    }
+    .sh-phase-side {
+      padding: 18px;
+    }
+    .sh-arc-step {
+      border-right: 0;
+      border-bottom: 1px solid #D8C7B0;
+    }
+    .sh-arc-step:last-child {
+      border-bottom: 0;
+    }
+  }
+</style>
+
+<div class="sh-intro">
+  <p>Today, visibility runs upside down. Ordinary families have their clicks, locations, and habits tracked every day. Meanwhile, powerful corporations and state agencies make high-stakes AI and economic decisions behind closed doors.</p>
+  <p>Shared Horizon shows how our open architecture flips that arrangement. Personal life stays private at home, and your local AI builds whatever software you need without monopoly rent. Communities then organize naturally across shared ledgers backed by public computing power.</p>
+</div>
+
+<section class="sh-section" id="sh-process-section" aria-labelledby="sh-process-heading">
+  <div class="sh-section-head">
+    <h2 id="sh-process-heading">How it works in five steps</h2>
+    <p>Select any station in the diagram below, or use the Next and Previous buttons, to trace how data moves from your home to community self-rule.</p>
+  </div>
+
+  <figure class="explainer" id="ex-horizon-phases">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 265" role="group" aria-labelledby="ex-horizon-phases-title ex-horizon-phases-desc">
+      <title id="ex-horizon-phases-title">Five phases from personal sensors and local AI to organic community coordination and universal basic compute</title>
+      <desc id="ex-horizon-phases-desc">Process diagram showing Phase 1 Sensors and Home Vault, Phase 2 Your 1:1 Local AI, crossing a Privacy Boundary into Phase 3 Two Separate Ledgers and Phase 4 Organic Communities, supported beneath by Phase 5 Public Computing and Universal Basic Compute.</desc>
+
+      <rect class="sh-zone-home" x="8" y="8" width="448" height="176" />
+      <text x="24" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="11.5" font-weight="700" fill="#0B3F30">PRIVATE HOME ZONE · RAW DATA NEVER LEAVES</text>
+
+      <line x1="472" y1="8" x2="472" y2="184" stroke="#963E1D" stroke-width="2" stroke-dasharray="5 4" />
+      <text x="472" y="198" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#963E1D">PRIVACY BOUNDARY</text>
+
+      <rect class="sh-zone-net" x="488" y="8" width="524" height="176" />
+      <text x="504" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="11.5" font-weight="700" fill="#5A4632">SHARED NETWORK · PROPORTIONAL TRUST &amp; PROOF</text>
+
+      <line x1="216" y1="104" x2="244" y2="104" stroke="#0B3F30" stroke-width="2" />
+      <polygon points="244,99 254,104 244,109" fill="#0B3F30" />
+
+      <line x1="442" y1="104" x2="498" y2="104" stroke="#963E1D" stroke-width="2" />
+      <polygon points="498,99 508,104 498,109" fill="#963E1D" />
+
+      <line x1="734" y1="104" x2="762" y2="104" stroke="#0B3F30" stroke-width="2" />
+      <polygon points="762,99 772,104 762,109" fill="#0B3F30" />
+
+      <g class="sh-svg-station is-active" data-phase-target="1" tabindex="0" role="button" aria-pressed="true" aria-label="01 Sensors &amp; Home Vault Logs daily life locally with honest confidence">
+        <rect class="sh-station-box" x="24" y="48" width="192" height="114" />
+        <rect class="sh-station-badge" x="24" y="48" width="42" height="26" />
+        <text class="sh-station-num" x="45" y="66" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12">01</text>
+        <text x="34" y="94" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#131014">Sensors &amp; Home Vault</text>
+        <text x="34" y="115" font-family="system-ui, sans-serif" font-size="11.5" fill="#3F3931">Logs daily life locally</text>
+        <text x="34" y="133" font-family="system-ui, sans-serif" font-size="11.5" fill="#3F3931">with honest confidence</text>
+      </g>
+
+      <g class="sh-svg-station" data-phase-target="2" tabindex="0" role="button" aria-pressed="false" aria-label="02 Your 1:1 Local AI Loyal only to you; builds any software on demand">
+        <rect class="sh-station-box" x="254" y="48" width="188" height="114" />
+        <rect class="sh-station-badge" x="254" y="48" width="42" height="26" />
+        <text class="sh-station-num" x="275" y="66" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12">02</text>
+        <text x="264" y="94" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#131014">Your 1:1 Local AI</text>
+        <text x="264" y="115" font-family="system-ui, sans-serif" font-size="11.5" fill="#3F3931">Loyal only to you; builds</text>
+        <text x="264" y="133" font-family="system-ui, sans-serif" font-size="11.5" fill="#3F3931">any software on demand</text>
+      </g>
+
+      <g class="sh-svg-station" data-phase-target="3" tabindex="0" role="button" aria-pressed="false" aria-label="03 Two Separate Ledgers Private ledger stays home; minimal proofs cross out">
+        <rect class="sh-station-box" x="508" y="48" width="226" height="114" />
+        <rect class="sh-station-badge" x="508" y="48" width="42" height="26" />
+        <text class="sh-station-num" x="529" y="66" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12">03</text>
+        <text x="518" y="94" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#131014">Two Separate Ledgers</text>
+        <text x="518" y="115" font-family="system-ui, sans-serif" font-size="11.5" fill="#3F3931">Private ledger stays home;</text>
+        <text x="518" y="133" font-family="system-ui, sans-serif" font-size="11.5" fill="#3F3931">minimal proofs cross out</text>
+      </g>
+
+      <g class="sh-svg-station" data-phase-target="4" tabindex="0" role="button" aria-pressed="false" aria-label="04 Organic Communities Groups coordinate across shared ledgers without a boss">
+        <rect class="sh-station-box" x="772" y="48" width="224" height="114" />
+        <rect class="sh-station-badge" x="772" y="48" width="42" height="26" />
+        <text class="sh-station-num" x="793" y="66" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12">04</text>
+        <text x="782" y="94" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#131014">Organic Communities</text>
+        <text x="782" y="115" font-family="system-ui, sans-serif" font-size="11.5" fill="#3F3931">Groups coordinate across</text>
+        <text x="782" y="133" font-family="system-ui, sans-serif" font-size="11.5" fill="#3F3931">shared ledgers without a boss</text>
+      </g>
+
+      <g class="sh-svg-station" data-phase-target="5" tabindex="0" role="button" aria-pressed="false" aria-label="05 Public Computing &amp; Universal Basic Compute Guaranteed computing power for households, clinics, co-ops, and independent safety auditors">
+        <rect class="sh-station-box sh-zone-compute" x="8" y="210" width="1004" height="46" />
+        <rect class="sh-station-badge" x="8" y="210" width="46" height="46" />
+        <text class="sh-station-num" x="31" y="238" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12.5">05</text>
+        <text x="68" y="231" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#131014">Public Computing &amp; Universal Basic Compute</text>
+        <text x="68" y="248" font-family="system-ui, sans-serif" font-size="11.5" fill="#3F3931">Guaranteed computing power for households, clinics, co-ops, and independent safety auditors</text>
+      </g>
+    </svg>
+    <figcaption>Click any station from 01 to 05 to inspect how private local tools and guaranteed public computing enable bottom-up community power.</figcaption>
+  </figure>
+
+  <div class="sh-nav-bar">
+    <div class="sh-step-tabs" role="tablist" aria-label="Five architectural phases">
+      <button type="button" class="sh-step-btn is-active" role="tab" aria-selected="true" data-phase-btn="1">01 · Sensors &amp; Vault</button>
+      <button type="button" class="sh-step-btn" role="tab" aria-selected="false" data-phase-btn="2">02 · Local AI &amp; Software</button>
+      <button type="button" class="sh-step-btn" role="tab" aria-selected="false" data-phase-btn="3">03 · Dual Ledgers</button>
+      <button type="button" class="sh-step-btn" role="tab" aria-selected="false" data-phase-btn="4">04 · Organic Communities</button>
+      <button type="button" class="sh-step-btn" role="tab" aria-selected="false" data-phase-btn="5">05 · Universal Basic Compute</button>
+    </div>
+    <div class="sh-slide-controls">
+      <button type="button" class="sh-arrow-btn" id="sh-phase-prev" disabled>&#8592; Previous</button>
+      <span class="sh-slide-counter" id="sh-phase-counter" aria-live="polite">Step 1 of 5</span>
+      <button type="button" class="sh-arrow-btn" id="sh-phase-next">Next &#8594;</button>
+    </div>
+  </div>
+
+  <div class="sh-phase-deck" id="sh-phase-deck">
+    <!-- Phase 1 -->
+    <article class="sh-phase-panel" data-phase-panel="1">
+      <div class="sh-phase-main">
+        <span class="sh-phase-eyebrow">Step 1 of 5 · Private Capture</span>
+        <h3>Honest sensing and your home vault</h3>
+        <p>Wearable glasses, watches, and room sensors help your system notice daily life. They save those memories inside an encrypted vault on hardware in your own home, never on an advertising cloud.</p>
+        <p>Physical sensors can still be tricked by glare, noise, or tampering. Instead of treating one reading as automatic truth, your vault cross-checks sensors and records how sure each observation actually is.<sup><a href="#fn1">1</a>,<a href="#fn2">2</a></sup></p>
+        <div class="sh-analogy-box">
+          <p><strong>In everyday terms.</strong> Keep your diary and home camera archive in a locked cabinet at home, with an honest note whenever a window was fogged up.</p>
+        </div>
+      </div>
+      <div class="sh-phase-side">
+        <div class="sh-side-points">
+          <div class="sh-side-item">
+            <span class="sh-side-label">What stays under your control</span>
+            <p>Your raw health, voice, location, and daily history stay encrypted strictly for you and your personal model.</p>
+          </div>
+          <div class="sh-side-item">
+            <span class="sh-side-label sh-side-label--shift">Why this changes the rules</span>
+            <p>Tech platforms lose their silent feed of family data. A single faulty sensor reading can never automatically penalize you.</p>
+          </div>
+        </div>
+        <aside class="for-researchers"><details><summary>Scientific terminology &amp; primary sources</summary><div><p>Grounded in hardware root-of-trust peripheral attestation (<code>DMTF SPDM</code>, <code>IETF RATS</code>), append-only <code>C2PA</code> Content Credentials<sup><a href="#fn3">3</a></sup>, and transduction security across the analog hole. Kevin Fu and Wenyuan Xu (2018) show why digital signatures after analog capture cannot guarantee physical truth when signals are spoofed upstream (<code>doi:10.1145/3176402</code>). Kun Wang et al. (2026) extend this analysis to analog hardware sensor trojans (<code>arXiv:2611.06103</code>).<sup><a href="#fn1">1</a>,<a href="#fn2">2</a></sup></p></div></details></aside>
+      </div>
+    </article>
+
+    <!-- Phase 2 -->
+    <article class="sh-phase-panel" data-phase-panel="2" hidden>
+      <div class="sh-phase-main">
+        <span class="sh-phase-eyebrow">Step 2 of 5 · Personal Intelligence &amp; Custom Tools</span>
+        <h3>A 1:1 local AI that builds any software you need</h3>
+        <p>One personal AI model works solely for you, bound to your wishes like a family doctor. It steps back so your own skills stay sharp, and says plainly when it is unsure.</p>
+        <p>Capable local agents can also write, test, and run custom software of almost any complexity right inside a safe sandbox on your own hardware.<sup><a href="#fn4">4</a>,<a href="#fn5">5</a></sup> Households, clinics, and small shops no longer have to pay endless monthly software rent or accept rigid apps.<sup><a href="#fn6">6</a></sup></p>
+        <div class="sh-analogy-box">
+          <p><strong>In everyday terms.</strong> Instead of renting pre-made tools from a company store that watches you work, a skilled craftsperson in your corner builds the exact tool you need.</p>
+        </div>
+      </div>
+      <div class="sh-phase-side">
+        <div class="sh-side-points">
+          <div class="sh-side-item">
+            <span class="sh-side-label">What stays under your control</span>
+            <p>Your assistant answers to zero advertisers. Every custom program it builds runs locally under permissions you can inspect and turn off.</p>
+          </div>
+          <div class="sh-side-item">
+            <span class="sh-side-label sh-side-label--shift">Why this changes the rules</span>
+            <p>When any person or cooperative can recreate complex software on demand, software monopolies lose their lock-in and artificial paywalls.</p>
+          </div>
+        </div>
+        <aside class="for-researchers"><details><summary>Scientific terminology &amp; primary sources</summary><div><p>Combines principal-aligned information fiduciaries with local-first malleable software (Martin Kleppmann et al., 2019, <code>doi:10.1145/3359591.3359737</code>) and capability-sandboxed program synthesis (<code>WASI</code>). Ripon Chandra Malo, Zimeng Yu, and Tong Qiu (2026) show empirically how coding agents shift software from rented SaaS subscriptions to user-built local tools (<code>arXiv:2610.30307</code>). Thomas Kwa et al. (2025, <code>arXiv:2503.14499</code>) measure expanding software task horizons, while Eugene Bagdasarian et al. (2024, <code>arXiv:2405.05175</code>) bound context leakage.<sup><a href="#fn4">4</a>,<a href="#fn5">5</a>,<a href="#fn6">6</a>,<a href="#fn7">7</a></sup></p></div></details></aside>
+      </div>
+    </article>
+
+    <!-- Phase 3 -->
+    <article class="sh-phase-panel" data-phase-panel="3" hidden>
+      <div class="sh-phase-main">
+        <span class="sh-phase-eyebrow">Step 3 of 5 · Crossing the Boundary Safely</span>
+        <h3>Coordinating across private and shared ledgers</h3>
+        <p>To work with the outside world without exposing your life, your assistant keeps two separate books. Your private ledger stays inside your home and holds your raw memories, health notes, and finances.</p>
+        <p>When you book a service, verify a license, or share work, your assistant talks to a shared remote ledger across a strict privacy boundary.<sup><a href="#fn8">8</a></sup> It shares only the minimum mathematical proof needed for that one task, using a temporary permission that expires automatically.<sup><a href="#fn9">9</a>,<a href="#fn10">10</a></sup></p>
+        <div class="sh-analogy-box">
+          <p><strong>In everyday terms.</strong> Prove at a doorway that you are old enough to enter, without handing over your home address, diary, or bank history.</p>
+        </div>
+      </div>
+      <div class="sh-phase-side">
+        <div class="sh-side-points">
+          <div class="sh-side-item">
+            <span class="sh-side-label">What stays under your control</span>
+            <p>Outside software never gets direct access to your home vault or permanent keys to your accounts.</p>
+          </div>
+          <div class="sh-side-item">
+            <span class="sh-side-label sh-side-label--shift">Why this changes the rules</span>
+            <p>People can verify facts, settle agreements, and hold outside agents to tamper-evident records without surrendering personal privacy.</p>
+          </div>
+        </div>
+        <aside class="for-researchers"><details><summary>Scientific terminology &amp; primary sources</summary><div><p>Implements a statistical Markov blanket separating internal state from external network state (Karl Friston, 2013, <code>doi:10.1098/rsif.2013.0475</code>), paired with zero-knowledge proofs (Haochen Sun et al., 2024, <code>arXiv:2404.16109</code>). Peer-to-peer verified shared records follow David Hyland-Wood and Rob Ewin (2026, <code>arXiv:2611.06034</code>), bounded by selective online containment airlocks (Zhonghao Zhan et al., 2026, <code>arXiv:2611.06727</code>).<sup><a href="#fn8">8</a>,<a href="#fn9">9</a>,<a href="#fn10">10</a>,<a href="#fn11">11</a></sup></p></div></details></aside>
+      </div>
+    </article>
+
+    <!-- Phase 4 -->
+    <article class="sh-phase-panel" data-phase-panel="4" hidden>
+      <div class="sh-phase-main">
+        <span class="sh-phase-eyebrow">Step 4 of 5 · Bottom-Up Collective Action</span>
+        <h3>How communities organize organically across shared ledgers</h3>
+        <p>Real communities connect neighbours, small shops, unions, and public agencies who hold different levels of trust. Multi-trust ledgers let them verify shared facts, build joint software, and pool buying power without a central corporate boss.<sup><a href="#fn12">12</a>,<a href="#fn13">13</a></sup></p>
+        <p>Because each person keeps their own boundary while linking shared rules, alliances form naturally around common interests.<sup><a href="#fn14">14</a></sup> Home life keeps zero public exposure, while actions carrying high risk to society require open proof.</p>
+        <div class="sh-analogy-box">
+          <p><strong>In everyday terms.</strong> Independent grocers, local farms, and town clinics pool delivery routes and wholesale orders on a shared logbook while staying independent.</p>
+        </div>
+      </div>
+      <div class="sh-phase-side">
+        <div class="sh-side-points">
+          <div class="sh-side-item">
+            <span class="sh-side-label">What stays under your control</span>
+            <p>Communities write their own local rules from the ground up, and every member can leave with their records intact.</p>
+          </div>
+          <div class="sh-side-item">
+            <span class="sh-side-label sh-side-label--shift">Why this changes the rules</span>
+            <p>High-risk labs, monopolies, and agencies can no longer play isolated citizens off against each other. Operating at scale requires open proof.</p>
+          </div>
+        </div>
+        <aside class="for-researchers"><details><summary>Scientific terminology &amp; primary sources</summary><div><p>Draws on polycentric governance of complex economic systems (Elinor Ostrom, 2010 Nobel Lecture, <code>doi:10.1257/aer.100.3.641</code>) and scale-free collective intelligence across bounded subunits (Michael Levin, 2019, <code>doi:10.3389/fpsyg.2019.02688</code>). Formal accountability bounds follow Arin Mukhopadhyay and Aris Filos-Ratsikas (2026, <code>arXiv:2610.21746</code>), alongside cyclic mutual-credit clearing (George Iosifidis et al., 2018, <code>doi:10.1038/s41562-018-0450-0</code>).<sup><a href="#fn12">12</a>,<a href="#fn13">13</a>,<a href="#fn14">14</a>,<a href="#fn15">15</a></sup></p></div></details></aside>
+      </div>
+    </article>
+
+    <!-- Phase 5 -->
+    <article class="sh-phase-panel" data-phase-panel="5" hidden>
+      <div class="sh-phase-main">
+        <span class="sh-phase-eyebrow">Step 5 of 5 · Essential Civic Infrastructure</span>
+        <h3>Why public computing and universal basic compute matter</h3>
+        <p>Open software blueprints mean little if three giant companies own all the data centers and chips required to run them.<sup><a href="#fn16">16</a></sup> Economists warn that cash handouts alone fail if families must spend every dollar renting intelligence back from cloud monopolies.<sup><a href="#fn17">17</a>,<a href="#fn18">18</a></sup></p>
+        <p>Treating core computing power like public libraries, roads, or clean water changes that equation. A guaranteed baseline of universal basic compute and regional public clusters gives households, co-ops, clinics, and independent safety auditors real capacity of their own.<sup><a href="#fn19">19</a></sup></p>
+        <div class="sh-analogy-box">
+          <p><strong>In everyday terms.</strong> Public roads and municipal electricity mean a local bakery or clinic never has to beg a conglomerate to turn on the lights.</p>
+        </div>
+      </div>
+      <div class="sh-phase-side">
+        <div class="sh-side-points">
+          <div class="sh-side-item">
+            <span class="sh-side-label">What stays under your control</span>
+            <p>Guaranteed baseline compute lets households run capable local agents, and lets independent scientists audit frontier AI without corporate charity.</p>
+          </div>
+          <div class="sh-side-item">
+            <span class="sh-side-label sh-side-label--shift">Why this changes the rules</span>
+            <p>Preventing chip and cloud enclosure stops monopolies from becoming permanent toll collectors over human thought and economic life.</p>
+          </div>
+        </div>
+        <aside class="for-researchers"><details><summary>Scientific terminology &amp; primary sources</summary><div><p>Girish Sastry et al. (2024, <code>arXiv:2402.08797</code>) establish compute as a primary governance lever for frontier AI, while Nur Ahmed and Muntasir Wahed (2020, <code>arXiv:2010.15581</code>) measure the compute divide. Anton Korinek and Joseph Stiglitz (2017, <code>doi:10.3386/w24174</code>) and Daron Acemoglu and Pascual Restrepo (2019, <code>doi:10.1257/jep.33.2.3</code>) show why automation without broad productive ownership concentrates rents, motivating public compute utilities (<code>NSF NAIRR</code>, <code>EuroHPC</code>) and Universal Basic Compute.<sup><a href="#fn16">16</a>,<a href="#fn17">17</a>,<a href="#fn18">18</a>,<a href="#fn19">19</a></sup></p></div></details></aside>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="sh-section" id="sh-cases-section" aria-labelledby="sh-cases-heading">
+  <div class="sh-section-head">
+    <h2 id="sh-cases-heading">Where shared interests meet in three real-world cases</h2>
+    <p>Concentrated power rarely gives up control out of goodwill. Select a challenge below to see why isolated people lose today, who shares a stake, and how the five steps flip the incentive.</p>
+  </div>
+
+  <div class="sh-case-tabs" role="tablist" aria-label="Three shared-interest case studies">
+    <button type="button" class="sh-case-tab is-active" role="tab" aria-selected="true" data-case-btn="1">
+      <span class="sh-case-tab-kicker">Case 01 · AI Power Consolidation</span>
+      <span class="sh-case-tab-title">Closed frontier AI races &amp; hidden safety risks</span>
+      <span class="sh-case-tab-sub">A few labs racing behind closed doors while redacting failure tests.</span>
+    </button>
+    <button type="button" class="sh-case-tab" role="tab" aria-selected="false" data-case-btn="2">
+      <span class="sh-case-tab-kicker">Case 02 · Captured Governance</span>
+      <span class="sh-case-tab-title">Lobbying capture &amp; surveillance vs. public interest</span>
+      <span class="sh-case-tab-sub">Governments stalling safety rules for donors or expanding state surveillance.</span>
+    </button>
+    <button type="button" class="sh-case-tab" role="tab" aria-selected="false" data-case-btn="3">
+      <span class="sh-case-tab-kicker">Case 03 · Economic Extraction</span>
+      <span class="sh-case-tab-title">Software rents &amp; post-labor wealth concentration</span>
+      <span class="sh-case-tab-sub">Automation gains pooling at the top while families and shops lose leverage.</span>
+    </button>
+  </div>
+
+  <!-- Case 1 -->
+  <article class="sh-case-panel" data-case-panel="1">
+    <div class="sh-case-arc">
+      <div class="sh-arc-step">
+        <span class="sh-arc-kicker">1. Why people lose alone</span>
+        <h3>The race-to-deploy trap</h3>
+        <p>A few labs hold the largest compute clusters and launch autonomous systems behind trade secrets. Inside engineers risk firing if they speak up, outside auditors depend on donated credits, and citizens cannot check what is safe.</p>
+      </div>
+      <div class="sh-arc-step">
+        <span class="sh-arc-kicker">2. How the five steps connect them</span>
+        <h3>Local boundaries and public testbeds</h3>
+        <p>Public compute gives independent researchers hardware of their own to stress-test models. Meanwhile, 1:1 household and business assistants automatically reject outside agent calls that lack verifiable safety proofs.</p>
+      </div>
+      <div class="sh-arc-step">
+        <span class="sh-arc-kicker">3. Why concentrated power yields</span>
+        <h3>Openness becomes the price of entry</h3>
+        <p>Public agencies, businesses, and personal assistants all require reproducible safety records on the shared ledger before high-risk software can transact. Keeping a model inside a black box locks it out of adoption.</p>
+      </div>
+    </div>
+
+    <h3 class="sh-allies-heading">Who shares a direct stake in Case 01</h3>
+    <div class="sh-allies-grid">
+      <div class="sh-ally-card">
+        <h4>Conscientious engineers inside AI labs</h4>
+        <p><strong>Shared stake:</strong> Want enforceable safety red lines so launch pressure cannot bury dangerous test results.</p>
+        <p><strong>Practical move:</strong> Back protected whistleblower disclosures and pre-deployment capability commitments tied to checkable audit records.</p>
+      </div>
+      <div class="sh-ally-card">
+        <h4>Independent safety &amp; security researchers</h4>
+        <p><strong>Shared stake:</strong> Need guaranteed public compute so an honest safety critique never costs them next quarter's server grant.</p>
+        <p><strong>Practical move:</strong> Run reproducible containment and deception tests on public clusters and publish open results.</p>
+      </div>
+      <div class="sh-ally-card">
+        <h4>Households, hospitals &amp; local businesses</h4>
+        <p><strong>Shared stake:</strong> Refuse to be guinea pigs for autonomous software that can move money or fail without a human off-switch.</p>
+        <p><strong>Practical move:</strong> Set local 1:1 assistants to block unverified outside agents and enforce temporary permissions.</p>
+      </div>
+      <div class="sh-ally-card">
+        <h4>Public procurement &amp; infrastructure officials</h4>
+        <p><strong>Shared stake:</strong> Carry legal and public responsibility when uninspected software fails inside power grids, courts, or hospitals.</p>
+        <p><strong>Practical move:</strong> Require independent safety proofs and named human accountability before high-risk models clear public contracts.</p>
+      </div>
+    </div>
+
+    <aside class="for-researchers"><details><summary>Real-world precedents &amp; primary sources</summary><div><p>Grounded in untrusted-monitor AI Control evaluations (Ryan Greenblatt et al., 2023, <code>arXiv:2312.06942</code>) and compute-indexed governance thresholds (Girish Sastry et al., 2024, <code>arXiv:2402.08797</code>). Selective multi-agent containment airlocks follow Zhonghao Zhan et al. (2026, <code>arXiv:2611.06727</code>), alongside the 2024 AI Seoul Summit <em>Frontier AI Safety Commitments</em> and public compute testbeds (<code>NSF NAIRR</code>, <code>EuroHPC</code>).<sup><a href="#fn11">11</a>,<a href="#fn16">16</a>,<a href="#fn19">19</a>,<a href="#fn20">20</a></sup></p></div></details></aside>
+  </article>
+
+  <!-- Case 2 -->
+  <article class="sh-case-panel" data-case-panel="2" hidden>
+    <div class="sh-case-arc">
+      <div class="sh-arc-step">
+        <span class="sh-arc-kicker">1. Why people lose alone</span>
+        <h3>Lobbying capture or state overreach</h3>
+        <p>Leading governments often fall into one of two traps. Corporate lobbyists stall public-interest safety rules until after a crisis, or centralized ministries use AI to monitor citizens without consent.</p>
+      </div>
+      <div class="sh-arc-step">
+        <span class="sh-arc-kicker">2. How the five steps connect them</span>
+        <h3>Surveillance flipped right-side up</h3>
+        <p>Home vaults keep family life sealed locally, while shared ledgers require open proof whenever public funds or state authority are used. Local agents also let cities build open civic software without vendor lock-in.</p>
+      </div>
+      <div class="sh-arc-step">
+        <span class="sh-arc-kicker">3. Why concentrated power yields</span>
+        <h3>Backroom waivers become visible</h3>
+        <p>Citizens, journalists, unions, and principled officials verify public contracts on the same open ledger. Because towns can run open-source alternatives on public compute, vendors cannot hide public rules behind trade secrets.</p>
+      </div>
+    </div>
+
+    <h3 class="sh-allies-heading">Who shares a direct stake in Case 02</h3>
+    <div class="sh-allies-grid">
+      <div class="sh-ally-card">
+        <h4>Citizens &amp; neighbourhood groups</h4>
+        <p><strong>Shared stake:</strong> Want private home life protected from surveillance, and plain answers when public systems affect their town.</p>
+        <p><strong>Practical move:</strong> Keep personal records in home vaults while demanding public registers and human appeals for city AI systems.</p>
+      </div>
+      <div class="sh-ally-card">
+        <h4>Investigative journalists &amp; civic watchdogs</h4>
+        <p><strong>Shared stake:</strong> Need real-time, tamper-evident procurement and lobbying trails instead of multi-year public-records delays.</p>
+        <p><strong>Practical move:</strong> Cross-check public contract logs and audit trails across cities using open verification tools.</p>
+      </div>
+      <div class="sh-ally-card">
+        <h4>Principled lawmakers &amp; civil servants</h4>
+        <p><strong>Shared stake:</strong> Want practical, inspectable alternatives when lobbyists claim that open audits are technically impossible.</p>
+        <p><strong>Practical move:</strong> Ban secret clauses over public decision rules, and build open civic software with local agents on public compute.</p>
+      </div>
+      <div class="sh-ally-card">
+        <h4>Open-source builders &amp; civic technologists</h4>
+        <p><strong>Shared stake:</strong> Want public infrastructure to run on auditable code rather than closed commercial black boxes.</p>
+        <p><strong>Practical move:</strong> Maintain open verification tools and local-first templates that any town or cooperative can deploy.</p>
+      </div>
+    </div>
+
+    <aside class="for-researchers"><details><summary>Real-world precedents &amp; primary sources</summary><div><p>Grounded in Elinor Ostrom's empirical work showing polycentric self-governance outperforming purely centralized or privatized regimes (2010, <code>doi:10.1257/aer.100.3.641</code>). Formal bounds on accountability in delegated governance follow Arin Mukhopadhyay and Aris Filos-Ratsikas (2026, <code>arXiv:2610.21746</code>), paired with representative citizen deliberation (OECD, 2020, <code>doi:10.1787/339306da-en</code>) and NIST AI RMF accountability standards (<code>doi:10.6028/NIST.AI.100-1</code>).<sup><a href="#fn12">12</a>,<a href="#fn14">14</a>,<a href="#fn21">21</a></sup></p></div></details></aside>
+  </article>
+
+  <!-- Case 3 -->
+  <article class="sh-case-panel" data-case-panel="3" hidden>
+    <div class="sh-case-arc">
+      <div class="sh-arc-step">
+        <span class="sh-arc-kicker">1. Why people lose alone</span>
+        <h3>Software tolls &amp; wage displacement</h3>
+        <p>As AI automates work, wealth and pricing power pool inside a few platforms while workers and small shops lose leverage. Cash handouts alone get clawed back as rent if monopolies own all the compute and tools.</p>
+      </div>
+      <div class="sh-arc-step">
+        <span class="sh-arc-kicker">2. How the five steps connect them</span>
+        <h3>Custom local software and basic compute</h3>
+        <p>Universal basic compute lets every household and cooperative run capable local AI. Local agents build complex software without monthly subscriptions, and communities trade directly across mutual-credit ledgers.</p>
+      </div>
+      <div class="sh-arc-step">
+        <span class="sh-arc-kicker">3. Why concentrated power yields</span>
+        <h3>Monopoly tollbooths lose lock-in</h3>
+        <p>Shops, clinics, workers, and families can generate custom software on demand, pool wholesale orders privately, and co-own automated tools. Extractive middlemen must drop rent-seeking fees or lose business.</p>
+      </div>
+    </div>
+
+    <h3 class="sh-allies-heading">Who shares a direct stake in Case 03</h3>
+    <div class="sh-allies-grid">
+      <div class="sh-ally-card">
+        <h4>Workers, unions &amp; skilled trades</h4>
+        <p><strong>Shared stake:</strong> Want AI to clear away repetitive paperwork and share ownership dividends rather than deskilling jobs.</p>
+        <p><strong>Practical move:</strong> Bargain for human sign-off on critical work and cooperative worker-community share funds in automated plants.</p>
+      </div>
+      <div class="sh-ally-card">
+        <h4>Small businesses, clinics, farms &amp; co-ops</h4>
+        <p><strong>Shared stake:</strong> Tired of paying heavy platform commissions and software subscriptions that drain local margins.</p>
+        <p><strong>Practical move:</strong> Use local AI agents to build custom operational software, pool wholesale orders privately, and clear regional credit interest-free.</p>
+      </div>
+      <div class="sh-ally-card">
+        <h4>Economists &amp; public-compute advocates</h4>
+        <p><strong>Shared stake:</strong> Recognize that broad prosperity in an automated economy requires distributed ownership of computing power.</p>
+        <p><strong>Practical move:</strong> Design Universal Basic Compute allocations and public compute utilities alongside rules against algorithmic price fixing.</p>
+      </div>
+      <div class="sh-ally-card">
+        <h4>Households &amp; everyday consumers</h4>
+        <p><strong>Shared stake:</strong> Want affordable essentials and fair competition without surveillance pricing or hidden junk fees.</p>
+        <p><strong>Practical move:</strong> Use loyal 1:1 personal assistants to spot coordinated markups and route spending toward transparent cooperatives.</p>
+      </div>
+    </div>
+
+    <aside class="for-researchers"><details><summary>Real-world precedents &amp; primary sources</summary><div><p>Ripon Chandra Malo, Zimeng Yu, and Tong Qiu (2026, <code>arXiv:2610.30307</code>) show how AI coding agents rewrite SaaS software economics. Macroeconomic analyses by Anton Korinek and Joseph Stiglitz (2017, <code>doi:10.3386/w24174</code>) and Daron Acemoglu and Pascual Restrepo (2019, <code>doi:10.1257/jep.33.2.3</code>) explain rent concentration under automation, complemented by public governance against LLM collusion (Marcantonio Bracale Syrnikov and Federico Pierucci, 2026, <code>arXiv:2601.11369</code>) and Sardex mutual-credit networks (George Iosifidis et al., 2018, <code>doi:10.1038/s41562-018-0450-0</code>).<sup><a href="#fn4">4</a>,<a href="#fn15">15</a>,<a href="#fn17">17</a>,<a href="#fn18">18</a>,<a href="#fn22">22</a></sup></p></div></details></aside>
+  </article>
+</section>
+
+<section class="sh-section" id="sh-signposts-section" aria-labelledby="sh-signposts-heading">
+  <div class="sh-section-head">
+    <h2 id="sh-signposts-heading">Three paths over the next two years, and what to watch for</h2>
+    <p>Nobody knows which future will win by 2028. We track observable signs every month to see whether AI rules are drifting toward closed clouds or verifiable human oversight.</p>
+  </div>
+
+  <div class="sh-signpost-grid">
+    <article class="sh-signpost-card">
+      <span class="sh-signpost-kicker">Path 01 · Unchecked Drift (45%)</span>
+      <h3>Paper checklists and leaky routers</h3>
+      <p>Organizations keep trusting vendor privacy checkboxes and human review of long machine logs, even when tests miss subtle errors or middlemen retain prompts.</p>
+      <p><strong>What to watch:</strong> More silent data leaks across API resellers and automated safety audits passed on self-graded scores without independent re-runs.</p>
+    </article>
+
+    <article class="sh-signpost-card is-lockin">
+      <span class="sh-signpost-kicker">Path 02 · Closed Lock-In (35%)</span>
+      <h3>Giant walled clouds cut out outsiders</h3>
+      <p>After public lawsuits and leaks, big labs pull tools behind closed corporate walls and strict non-disclosure rules. Leaks slow down, yet outside safety groups lose access to verify anything.</p>
+      <p><strong>What to watch:</strong> Bans on independent testing, rising compute tolls, and safety staff still needing to resign to warn the public.</p>
+    </article>
+
+    <article class="sh-signpost-card is-shift">
+      <span class="sh-signpost-kicker">Path 03 · Shared Safeguards (20%)</span>
+      <h3>Local vaults, canary checks, and open receipts</h3>
+      <p>Labs, public buyers, and households pair local 1:1 software with hardware walls, canary checks, and signed logs on public clusters.</p>
+      <p><strong>What to watch by 2028:</strong> Safety institutes requiring blinded repeat runs, public tenders checking decoy canaries, and 25% of open audits running on local or public compute.</p>
+    </article>
+  </div>
+
+  <aside class="for-researchers"><details><summary>Scenario calibration &amp; recent November 2026 signposts</summary><div><p>The three-path Futures Cone pairs directly with our deterministic scoring meters (<code>oversight</code>, <code>concentration</code>, <code>trust</code>, and <code>pace</code>). Keshav Shenoy et al. (2026, <code>arXiv:2611.21832</code>) show human transcript auditors achieve <code>0.59</code> AUROC and <code>17%</code> exact sabotage identification, motivating blinded perturbation replication (<em>experiment diffing</em>). HD Moore / Dragos (2026) seeded nearly two million canary prompts and found compromises at three providers alongside routine reseller logging, while METR's Q4 2026 capability update (Kinniment et al., 2026) measures autonomous horizons doubling every <code>3.61</code> months alongside <code>+0.2</code> model-judge inflation. Fail-closed runtime mediation (Adam Mazzocchetti, 2026, <code>arXiv:2608.16891</code>) and provenance-DAG selective containment (<code>arXiv:2611.06727</code>) ground Path 03 signposts.<sup><a href="#fn11">11</a>,<a href="#fn23">23</a>,<a href="#fn24">24</a>,<a href="#fn25">25</a></sup></p></div></details></aside>
+</section>
+
+<div class="sh-atlas-bridge">
+  <div>
+    <h2>Explore all 348 organisations in the Institutional Atlas</h2>
+    <p>Our live repository compiles over 750 verified real-world moves and encounters across 348 AI labs, public regulators, safety institutes, open-source foundations, unions, and cooperatives. Everything on this page runs locally in your browser with zero cookies or tracking.</p>
+  </div>
+  <div class="sh-atlas-links">
+    <a class="st-action-btn" href="/labs/institutions/">Open the 348-Organisation Institutional Atlas &#8599;</a>
+    <a class="st-action-btn" href="/labs/lab-overlays/">Compare 40 AI Labs &amp; 50 Safety Groups &#8599;</a>
+    <a class="st-action-btn" href="/blog/public-computing-explained/">Read: Public computing, explained &#8599;</a>
+  </div>
+</div>
+
+<section class="footnotes">
+  <p id="fn1">1. Kevin Fu and Wenyuan Xu, "Risks of trusting the physics of sensors," <em>Communications of the ACM</em> 61, no. 2 (2018), <a href="https://doi.org/10.1145/3176402">doi:10.1145/3176402</a>.</p>
+  <p id="fn2">2. Kun Wang, Ruochen Zhou et al., "SenTrojan: Revealing Analog Hardware Trojan Attacks on Sensors" (2026), <a href="https://arxiv.org/abs/2611.06103">arxiv.org/abs/2611.06103</a>.</p>
+  <p id="fn3">3. Coalition for Content Provenance and Authenticity, <em>C2PA Technical Specification v2.1</em> (2024), <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html">c2pa.org/specifications</a>.</p>
+  <p id="fn4">4. Ripon Chandra Malo, Zimeng Yu and Tong Qiu, "The Customer Is the Builder: How AI Coding Agents Are Rewriting the Economics of Software" (2026), <a href="https://arxiv.org/abs/2610.30307">arxiv.org/abs/2610.30307</a>.</p>
+  <p id="fn5">5. Thomas Kwa, Ben West et al., "Measuring AI Ability to Complete Long Software Tasks" (2025), <a href="https://arxiv.org/abs/2503.14499">arxiv.org/abs/2503.14499</a>.</p>
+  <p id="fn6">6. Martin Kleppmann, Adam Wiggins, Peter van Hardenberg and Mark McGranaghan, "Local-first software: you own your data, in spite of the cloud," <em>ACM SIGPLAN Onward!</em> (2019), <a href="https://doi.org/10.1145/3359591.3359737">doi:10.1145/3359591.3359737</a>.</p>
+  <p id="fn7">7. Eugene Bagdasarian, Ren Yi et al., "AirGapAgent: Protecting Privacy-Conscious Conversational Agents" (2024), <a href="https://arxiv.org/abs/2405.05175">arxiv.org/abs/2405.05175</a>.</p>
+  <p id="fn8">8. Karl Friston, "Life as we know it," <em>Journal of the Royal Society Interface</em> 10, no. 86 (2013), <a href="https://doi.org/10.1098/rsif.2013.0475">doi:10.1098/rsif.2013.0475</a>.</p>
+  <p id="fn9">9. Haochen Sun, Jason Li et al., "zkLLM: Zero Knowledge Proofs for Large Language Models" (2024), <a href="https://arxiv.org/abs/2404.16109">arxiv.org/abs/2404.16109</a>.</p>
+  <p id="fn10">10. David Hyland-Wood and Rob Ewin, "CoordX Protocol: Peer to Peer Cryptographically Verified Shared Records" (2026), <a href="https://arxiv.org/abs/2611.06034">arxiv.org/abs/2611.06034</a>.</p>
+  <p id="fn11">11. Zhonghao Zhan, Javad Forough et al., "Airlock: Bounding the Multi-Agent Blast Radius via Selective Online Containment" (2026), <a href="https://arxiv.org/abs/2611.06727">arxiv.org/abs/2611.06727</a>.</p>
+  <p id="fn12">12. Elinor Ostrom, "Beyond Markets and States: Polycentric Governance of Complex Economic Systems," <em>American Economic Review</em> 100, no. 3 (2010), <a href="https://doi.org/10.1257/aer.100.3.641">doi:10.1257/aer.100.3.641</a>.</p>
+  <p id="fn13">13. Michael Levin, "The Computational Boundary of a 'Self': Developmental Bioelectricity Drives Multicellularity and Scale-Free Cognition," <em>Frontiers in Psychology</em> 10 (2019), <a href="https://doi.org/10.3389/fpsyg.2019.02688">doi:10.3389/fpsyg.2019.02688</a>.</p>
+  <p id="fn14">14. Arin Mukhopadhyay and Aris Filos-Ratsikas, "The Delegation Dilemma: Economies of Scale, Accountability, and Polycentric Governance" (2026), <a href="https://arxiv.org/abs/2610.21746">arxiv.org/abs/2610.21746</a>.</p>
+  <p id="fn15">15. George Iosifidis, Yanick Charette, Edoardo M. Airoldi, Giuseppe Littera, Leandros Tassiulas and Nicholas A. Christakis, "Cyclic motifs in the Sardex monetary network," <em>Nature Human Behaviour</em> 2 (2018), <a href="https://doi.org/10.1038/s41562-018-0450-0">doi:10.1038/s41562-018-0450-0</a>.</p>
+  <p id="fn16">16. Girish Sastry, Lennart Heim, Haydn Belfield, Markus Anderljung, Miles Brundage et al., "Computing Power and the Governance of Artificial Intelligence" (2024), <a href="https://arxiv.org/abs/2402.08797">arxiv.org/abs/2402.08797</a>.</p>
+  <p id="fn17">17. Anton Korinek and Joseph Stiglitz, "Artificial Intelligence and Its Implications for Income Distribution and Unemployment," NBER Working Paper 24174 (2017), <a href="https://doi.org/10.3386/w24174">doi:10.3386/w24174</a>.</p>
+  <p id="fn18">18. Daron Acemoglu and Pascual Restrepo, "Automation and New Tasks: How Technology Displaces and Reinstates Labor," <em>Journal of Economic Perspectives</em> 33, no. 2 (2019), <a href="https://doi.org/10.1257/jep.33.2.3">doi:10.1257/jep.33.2.3</a>.</p>
+  <p id="fn19">19. Nur Ahmed and Muntasir Wahed, "The De-democratization of AI: Deep Learning and the Compute Divide in Artificial Intelligence Research" (2020), <a href="https://arxiv.org/abs/2010.15581">arxiv.org/abs/2010.15581</a>; U.S. National Science Foundation, <em>National Artificial Intelligence Research Resource (NAIRR) Pilot</em>, <a href="https://nairrpilot.org/about">nairrpilot.org/about</a>; European High Performance Computing Joint Undertaking, <a href="https://www.eurohpc-ju.europa.eu/about/discover-eurohpc-ju_en">eurohpc-ju.europa.eu</a>.</p>
+  <p id="fn20">20. Ryan Greenblatt, Buck Shlegeris, Kshitij Sachan and Fabien Roger, "AI Control: Improving Safety Despite Intentional Subversion" (2023), <a href="https://arxiv.org/abs/2312.06942">arxiv.org/abs/2312.06942</a>; UK DSIT and Republic of Korea, <em>Frontier AI Safety Commitments, AI Seoul Summit 2024</em>, <a href="https://www.gov.uk/government/publications/frontier-ai-safety-commitments-ai-seoul-summit-2024/frontier-ai-safety-commitments-ai-seoul-summit-2024">gov.uk/frontier-ai-safety-commitments</a>.</p>
+  <p id="fn21">21. National Institute of Standards and Technology, <em>Artificial Intelligence Risk Management Framework (AI RMF 1.0)</em> (2023), <a href="https://doi.org/10.6028/NIST.AI.100-1">doi:10.6028/NIST.AI.100-1</a>; OECD, <em>Innovative Citizen Participation and New Democratic Institutions</em> (2020), <a href="https://doi.org/10.1787/339306da-en">doi:10.1787/339306da-en</a>.</p>
+  <p id="fn22">22. Marcantonio Bracale Syrnikov and Federico Pierucci, "Institutional AI: Governing LLM Collusion in Multi-Agent Cournot Markets via Public Governance" (2026), <a href="https://arxiv.org/abs/2601.11369">arxiv.org/abs/2601.11369</a>.</p>
+  <p id="fn23">23. Keshav Shenoy, Anthony Zang, Eric Gan, Jacqueline Tay, Amy Ngo, Sebastian Prasanna, Julian Stastny and Vivek Hebbar, "Auditors Struggle to Catch Sabotage in End-to-End Transcripts of AI Safety Research" (2026), <a href="https://arxiv.org/abs/2611.21832">arxiv.org/abs/2611.21832</a>.</p>
+  <p id="fn24">24. HD Moore / Dragos Threat Research, "AI Supply Chain Security: What Canary Tokens Found" (2026), <a href="https://www.dragos.com/blog/ai-supply-chain-security-canary-tokens">dragos.com/blog/ai-supply-chain-security-canary-tokens</a>; Megan Kinniment, Manish Shetty et al., "AI R&amp;D-relevant model capabilities are improving rapidly and are getting harder to measure," METR (2026-11-20), <a href="https://metr.org/blog/2026-11-20-q4-2026-capability-update/">metr.org/blog/2026-11-20-q4-2026-capability-update</a>.</p>
+  <p id="fn25">25. Adam Mazzocchetti, "Runtime Governance for Agentic AI: Action-Boundary Control with Trusted Provenance and Fail-Closed Execution" (2026), <a href="https://arxiv.org/abs/2608.16891">arxiv.org/abs/2608.16891</a>.</p>
+</section>
+</section>

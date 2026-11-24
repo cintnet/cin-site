@@ -1,0 +1,250 @@
+---
+title: Proving one fact without handing over the rest
+description: When you show your ID to prove you are an adult, you shouldn't have to show your home address and licence number too. Here is how software assistants can answer questions without handing over your whole life.
+reader: Anyone who has had to photocopy a passport, upload a utility bill or share a full bank statement just to prove one simple fact.
+takeaway: Selective disclosure and zero-knowledge proofs let software prove a specific statement is true without disclosing any of the underlying documents or private details.
+template: article
+date: 2026-11-06
+order: 2
+category: Seeing
+minutes: 8
+image: post-proving-one-fact.jpg
+image_alt: A delicate pen-and-ink contour sketch with pastel watercolor washes of an open wooden desk and ledger, where a brass shutter covers private records and reveals only a single verified wax seal.
+lede: Software can prove a single fact about you, such as being over 19 or earning three times the rent, without revealing the documents behind it. Selective disclosure and zero-knowledge proofs make this possible, and AI assistants that fill in forms for you should use them by default.
+---
+<p>To prove you are old enough or earn enough, you usually hand over a full driver's licence, passport or three months of bank statements. The landlord or pharmacist needed one answer, and received your address, date of birth and spending history. Paper can't redact itself, so we have grown used to oversharing, and assistants that fill in forms automatically make the habit worse.</p>
+
+<h2>Software assistants are making the habit worse</h2>
+
+<p>You might hope moving from paper to software would fix this oversharing. So far, it has done the opposite.</p>
+
+<p>When you ask a digital assistant to apply for an apartment or book medical care, the app often asks you to "link your account" or "upload your documents". The assistant then sends whole PDF files and raw data across the wire. Those files sit on distant servers, where they can be stored indefinitely, combined with advertising profiles, or leaked in a security breach.</p>
+
+<p>We are teaching software to be as careless with our private papers as paper bureaucracies were fifty years ago. But software does not have to work this way.</p>
+
+<h2>The bouncer at the door</h2>
+
+<p>Picture standing outside a concert hall on a cold evening. A security guard at the door needs to know if you are nineteen or older.</p>
+
+<p>Today, you pull out a plastic card. The guard sees your photo, your birth year, your home address, your postal code, and your licence number. If the venue scans the card, their database now records where you live and when you arrived.</p>
+
+<p>Now picture a better card. You slide it into a small wooden sleeve that covers your address, your birth date, and your photo. It exposes only one small green badge that says: <em>Age over 19: Verified</em>.</p>
+
+<p>The town clerk's stamp is pressed into the corner, proving the card is genuine. The guard sees the answer they need, sees the official seal, and waves you through. They never learn your address, and they have nothing to store.</p>
+
+<figure class="explainer" id="ex-selective-proof">
+  <style>
+    #ex-selective-proof {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-selective-proof svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-selective-proof .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-selective-proof .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-selective-proof .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-selective-proof .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-selective-proof .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-selective-proof .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-selective-proof .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-selective-proof .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-selective-proof .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-selective-proof figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-selective-proof .ex-canvas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #ex-selective-proof .ex-canvas svg {
+        min-width: 540px;
+      }
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg viewBox="0 0 680 340" role="group" aria-labelledby="ex-selective-proof-title ex-selective-proof-desc">
+      <title id="ex-selective-proof-title">Comparison of full document dumping versus selective disclosure proof</title>
+      <desc id="ex-selective-proof-desc">Side by side comparison. On the left, a traditional document dump reveals full name, birth date, home address, and identification numbers. On the right, a selective cryptographic proof verifies that the user is over 19 and holds a valid issuer signature while completely hiding all private personal details.</desc>
+      <line x1="340" y1="14" x2="340" y2="328" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="14" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="27" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">FULL DOCUMENT DUMP</text>
+        <text x="14" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Entire ID card copied at the door</text>
+        <line x1="14" y1="50" x2="328" y2="50" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <line x1="22" y1="64" x2="22" y2="228" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+        <rect x="19" y="62" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Full Name &amp; Photo</text>
+        <text x="34" y="85" font-size="11" fill="var(--ex-muted)">Exposed to venue scanner</text>
+        <line x1="34" y1="132" x2="328" y2="132" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="142" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="149" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Exact Birth Date</text>
+        <text x="34" y="165" font-size="11" fill="var(--ex-muted)">Day, month &amp; year logged</text>
+        <line x1="34" y1="212" x2="328" y2="212" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="222" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="229" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Address &amp; ID Code</text>
+        <text x="34" y="245" font-size="11" fill="var(--ex-muted)">Stored in third-party database</text>
+        <line x1="14" y1="303" x2="328" y2="303" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="14" y="311" width="5" height="5" fill="var(--ex-warn)"/>
+        <text x="25" y="316" font-size="11" font-weight="700" fill="var(--ex-warn)">Status: Permanent tracking &amp; leak risk</text>
+      </g>
+      <g>
+        <rect x="354" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="367" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">SELECTIVE PROOF</text>
+        <text x="354" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Answers one question, hides the rest</text>
+        <line x1="354" y1="50" x2="666" y2="50" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <line x1="362" y1="64" x2="362" y2="228" stroke="var(--ex-signal)" stroke-width="1"/>
+        <rect x="359" y="62" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Exact Question</text>
+        <text x="374" y="85" font-size="11" fill="var(--ex-muted)">Holder 19 or older? Yes</text>
+        <line x1="374" y1="132" x2="666" y2="132" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="359" y="142" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="149" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Sealed Details</text>
+        <text x="374" y="165" font-size="11" fill="var(--ex-muted)">Address &amp; birthdate stay home</text>
+        <line x1="374" y1="212" x2="666" y2="212" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="359" y="222" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="229" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Issuer Signature</text>
+        <text x="374" y="245" font-size="11" fill="var(--ex-muted)">Civic seal verified, zero leak</text>
+        <line x1="354" y1="303" x2="666" y2="303" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="354" y="311" width="5" height="5" fill="var(--ex-signal)"/>
+        <text x="365" y="316" font-size="11" font-weight="700" fill="var(--ex-signal)">Status: Verified without oversharing</text>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Raw document handover</span>
+      <div class="ex-spec-body">Surrenders your home address, exact birth date, and government ID number just to answer a single age or residency check.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Selective cryptographic proof</span>
+      <div class="ex-spec-body">Proves the exact requested fact and issuer validity mathematically while keeping every other personal field on your device.</div>
+    </div>
+  </div>
+  <figcaption>Handing over a full ID document gives away your home address, exact birth date, and government numbers; a selective cryptographic proof answers the question asked while keeping everything else safely on your device.</figcaption>
+</figure>
+
+<h2>How proving works without showing</h2>
+
+<p>How can you prove a fact is true without showing the numbers behind it? The secret lies in a simple mathematical trick developed over decades by computer scientists.<sup><a href="#fn2">2</a></sup></p>
+
+<p>When an official body issues you a credential (such as a driver's licence, a university degree, or a tax clearance certificate) they sign each line separately. Your device holds those signed lines inside a personal digital wallet.</p>
+
+<p>When a shop or agency asks a question, your assistant does not forward the original document. Instead, it generates a fresh mathematical proof. That proof confirms two things simultaneously: first, that an official authority signed the document, and second, that the statement is true. The proof reveals nothing else. It cannot be used to trace you across different websites, and it cannot be copied by someone else.</p>
+
+<h2>Three places where this changes everyday life</h2>
+
+<p>To understand why this matters, look at three common situations where people are forced to give up their privacy today.</p>
+
+<p><strong>1. Renting an apartment.</strong> When you apply for a flat, landlords routinely ask for bank statements showing your monthly income. In doing so, they see every grocery trip, pharmacy purchase, and donation you made. With selective proof, your bank signs your monthly earnings threshold. Your assistant proves you earn at least three times the rent, without the landlord ever seeing a single coffee purchase.</p>
+
+<p><strong>2. Signing up for local services.</strong> Many public libraries, recreation centres, and civic initiatives offer free access to residents of a specific neighbourhood. Today, proving residency usually means showing a utility bill with your full street address and account number. With selective disclosure, your assistant proves your postal code sits inside the eligible boundary, without disclosing your house number or street name.</p>
+
+<p><strong>3. Claiming student or caregiver discounts.</strong> When booking train tickets or visiting cultural centres, students and caregivers often qualify for lower fares. Currently, this requires flashing school IDs or carrying medical letters. A selective proof lets you prove your current enrolment or caregiver status in seconds, leaving your grades and medical details private.</p>
+
+<div class="callout"><p class="label">What this means</p><p>You can prove you qualify for housing, services, or discounts without giving strangers copies of your private life to file away or lose.</p></div>
+
+<h2>What is already working, and what is missing</h2>
+
+<p>The encouraging news is that international standards for this technology already exist. Global internet standards bodies and mobile phone makers have established formats for verifiable credentials and digital mobile licences.<sup><a href="#fn1">1</a>, <a href="#fn3">3</a></sup> In several regions, digital driver's licences can already answer age verification checks without showing an address.</p>
+
+<p>What is still missing is everyday adoption. Most commercial websites still take the easiest path: they ask you to upload a full photo of your passport or give their app access to your whole email account. They do this because data collection is cheap for them, while the risk of identity theft falls entirely on you.</p>
+
+<p>We are working to make selective disclosure the default across personal AI assistants. When your assistant negotiates on your behalf, it should carry only narrow, checkable proofs, never your master identity files.</p>
+
+<h2>Where this still has hard limits</h2>
+
+<p>We want to be clear about what selective disclosure cannot do on its own.</p>
+
+<p>First, a proof is only as trustworthy as the body that signed it. If a fraudulent organisation issues a certificate claiming you are a registered electrician, a cryptographic proof will only prove that the fake organisation signed it. You still need trusted public registries to back up claims.</p>
+
+<p>Second, revoking credentials cleanly when circumstances change remains a difficult engineering challenge. If a licence is suspended, systems must ensure expired proofs cannot be presented, without building a giant central tracker that watches every check.</p>
+
+<p>Finally, selective disclosure protects your records, not your physical behaviour. If you use an assistant to prove your age at the same corner shop every morning, the shopkeeper will still recognize your face. Cryptography shields your data, but human relationships still require common sense.</p>
+
+<h2>What you can ask for today</h2>
+
+<p>You do not need to understand cryptography to demand better privacy. Next time an app demands your passport or utility bill, pause. Ask three simple questions first:</p>
+
+<p><em>Do you really need my home address to answer this question? Can I prove my eligibility without handing over the entire document? And what happens to my paperwork once this check is done?</em></p>
+
+<p>When enough citizens, tenants, and patients refuse unnecessary document dumps, software makers will build tools that respect our boundaries. Proving who you are should never mean giving up your privacy.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers</summary>
+    <div>
+      <p>Selective disclosure relies on cryptographic multi-message signature schemes, notably BBS+ signatures (Camenisch and Lysyanskaya, 2001; IETF CFRG draft-irtf-cfrg-bbs-signatures) and the W3C Verifiable Credentials Data Model v2.0.</p>
+      <p>Using pairing-based cryptography, a holder can produce a zero-knowledge proof of knowledge of a signature over committed attributes. This reveals only a chosen subset of claims or evaluates predicates, such as age greater than a threshold, without exposing underlying values or allowing linkability across verifiers. Hardware-isolated reference monitors and on-device Object-Capability (OCap) execution sandboxes (Dennis and Van Horn, 1966) ensure credentials remain unexposed to remote model contexts. Standards include SD-JWT (RFC 9901 / OAuth selective disclosure), the European Digital Identity Wallet architecture (eIDAS 2.0 / ARF), and ISO/IEC 18013-5 for mobile driving licences.</p>
+    </div>
+  </details>
+</aside>
+
+<section class="footnotes">
+  <p id="fn1">1. W3C Verifiable Credentials Working Group, <a href="https://www.w3.org/TR/vc-data-model-2.0/">Verifiable Credentials Data Model v2.0</a>, W3C Recommendation (2025); see also companion Data Integrity BBS Cryptosuites.</p>
+  <p id="fn2">2. Jan Camenisch and Anna Lysyanskaya, <a href="https://doi.org/10.1007/3-540-44987-6_7">An Efficient System for Non-transferable Anonymous Credentials with Optional Anonymity Revocation</a>, Advances in Cryptology — EUROCRYPT 2001, Springer LNCS 2045, pp. 93–118.</p>
+  <p id="fn3">3. International Organization for Standardization, <a href="https://www.iso.org/standard/69084.html">ISO/IEC 18013-5:2021: Personal identification — ISO-compliant driving licence — Part 5: Mobile driving licence (mDL) application</a> (September 2021).</p>
+</section>

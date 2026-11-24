@@ -1,0 +1,381 @@
+---
+title: Mistral AI: Alignment, Governance, and Safe ASI Paper
+heading: Running sparse Mistral models inside local personal vaults, EuroHPC audits, and cooperative economies
+eyebrow: Lab Technical Paper · LAB-06
+description: Five-part technical and governance specification pairing Mistral AI sparse mixture-of-experts and Codestral models with local vaults, EuroHPC verification, and European cooperative ownership.
+reader: Leadership, alignment and security engineers at Mistral AI, peer AI labs, safety evaluators, and public regulators.
+takeaway: Mistral AI can anchor sparse local personal models and leased Codestral sandboxes onto EuroHPC public safety vaults and European cooperative share funds.
+template: page
+layout: wide
+section: labs
+lede: Mistral AI can anchor sparse local personal models and leased Codestral sandboxes onto EuroHPC public safety vaults and European cooperative share funds. Efficient sparse weights let households, clinics, and small firms run sovereign software without foreign cloud lock-in.
+---
+<section class="wrap">
+  <nav class="lp-breadcrumb" aria-label="Lab paper navigation"><a href="/labs/lab-papers/">← All Lab Technical Papers</a><span>·</span><a href="/labs/lab-overlays/">Compare in 93-Group Overlays</a><span>·</span><a href="/research/">Research Workspace</a></nav>
+
+  <div class="prose wrap-narrow">
+    <p class="big">Mistral AI can anchor sparse local personal models and leased Codestral sandboxes onto EuroHPC public safety vaults and European cooperative share funds. A regional rail cooperative keeps timetables, signal locks, and maintenance logs inside local stations while sharing one continent-wide safety standard across borders.</p>
+    <p>Headquartered in Paris, Mistral AI builds sparse Mixture-of-Experts models like Mixtral, compact Ministral checkpoints, Codestral coding engines, and Le Chat enterprise workspaces. The Collective Intelligence Network (CIN) turns Mistral's parameter sparsity and European public-compute institutions into a verifiable alternative to closed hyperscaler monopolies.</p>
+  </div>
+
+  <div class="lp-dossier" role="region" aria-label="Mistral AI technical dossier">
+    <div class="lp-dossier-head">
+      <span>LAB-06 · European Open &amp; Frontier Model Lab</span>
+      <span>Jurisdiction: European Union · Liaison: cin.liaison.mistral_ai</span>
+    </div>
+    <div class="lp-dossier-grid">
+      <div class="lp-dossier-cell">
+        <span class="lp-dossier-label">Core Architecture</span>
+        <p>Sparse Mixture-of-Experts open checkpoints (Mixtral, Ministral), Codestral code synthesis, and commercial Mistral Large and Le Chat enterprise deployments.</p>
+      </div>
+      <div class="lp-dossier-cell">
+        <span class="lp-dossier-label">Primary Bottlenecks</span>
+        <p>Split incentives between rapid open releases and EU AI Act systemic-risk rules, uncontestable enterprise retrieval connectors, and compute scale gaps against US and China giants.</p>
+      </div>
+      <div class="lp-dossier-cell">
+        <span class="lp-dossier-label">Existing Convergence</span>
+        <p>Apache-licensed sparse checkpoints run fast on single-user workstations and edge chips, reducing reliance on single-jurisdiction cloud gatekeepers.</p>
+      </div>
+      <div class="lp-dossier-cell">
+        <span class="lp-dossier-label">CIN Integration Target</span>
+        <p>Local 1:1 Mixtral runtimes over home vaults, leased Codestral sandboxes, EuroHPC safety coalitions, citizen appeal receipts, and Mondragon-style cooperative software.</p>
+      </div>
+    </div>
+  </div>
+
+  <nav class="lp-toc" aria-label="Paper sections"><a href="#sec-1">01 · Alignment Bottlenecks</a><a href="#sec-2">02 · CIN Technical Integration</a><a href="#sec-3">03 · Inter-Lab Options</a><a href="#sec-4">04 · Government Options</a><a href="#sec-5">05 · Safe ASI &amp; Economy</a></nav>
+
+  <figure class="explainer lp-arch-fig" id="ex-lp-mistral-ai">
+    <style>
+      #ex-lp-mistral-ai {
+        --ex-rule: #D6CBB8;
+        --ex-ink: #131014;
+        --ex-muted: #4A433A;
+        margin: 2rem 0 2.25rem;
+        padding: 1.35rem 0 1.15rem;
+        background: transparent;
+        border: 0;
+        border-top: 1px solid var(--ex-rule);
+        border-bottom: 1px solid var(--ex-rule);
+        border-radius: 0;
+        box-shadow: none;
+        color: var(--ex-ink);
+      }
+      #ex-lp-mistral-ai .diagram-desktop { width: 100%; height: auto; display: block; }
+      #ex-lp-mistral-ai .diagram-mobile { width: 100%; height: auto; display: none; }
+      @media (max-width: 640px) {
+        #ex-lp-mistral-ai .diagram-desktop { display: none; }
+        #ex-lp-mistral-ai .diagram-mobile { display: block; }
+      }
+      #ex-lp-mistral-ai figcaption {
+        margin-top: 0.9rem;
+        padding-top: 0.7rem;
+        border-top: 1px solid var(--ex-rule);
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: var(--ex-muted);
+        text-align: left;
+      }
+      @media (prefers-color-scheme: dark) {
+        #ex-lp-mistral-ai {
+          --ex-rule: #322E3D;
+          --ex-ink: #EDE6DC;
+          --ex-muted: #A8A095;
+        }
+        #ex-lp-mistral-ai rect[fill="#FAF3EA"],
+        #ex-lp-mistral-ai rect[fill="#FFFDF9"],
+        #ex-lp-mistral-ai rect[fill="#F4EBDD"] {
+          fill: #221F2A;
+        }
+        #ex-lp-mistral-ai text[fill="#131014"],
+        #ex-lp-mistral-ai text[fill="#26211C"],
+        #ex-lp-mistral-ai text[fill="#4A433A"] {
+          fill: #EDE6DC;
+        }
+        #ex-lp-mistral-ai text[fill="#0B3F30"] { fill: #8FD4B6; }
+        #ex-lp-mistral-ai text[fill="#963E1D"] { fill: #F09D82; }
+        #ex-lp-mistral-ai rect[stroke="#0B3F30"],
+        #ex-lp-mistral-ai line[stroke="#0B3F30"] { stroke: #8FD4B6; }
+        #ex-lp-mistral-ai rect[stroke="#963E1D"],
+        #ex-lp-mistral-ai line[stroke="#963E1D"] { stroke: #F09D82; }
+        #ex-lp-mistral-ai polygon[fill="#0B3F30"] { fill: #8FD4B6; }
+        #ex-lp-mistral-ai polygon[fill="#963E1D"] { fill: #F09D82; }
+      }
+      :root[data-theme="dark"] #ex-lp-mistral-ai,
+      [data-theme="dark"] #ex-lp-mistral-ai {
+        --ex-rule: #322E3D;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #A8A095;
+      }
+      :root[data-theme="dark"] #ex-lp-mistral-ai rect[fill="#FAF3EA"],
+      :root[data-theme="dark"] #ex-lp-mistral-ai rect[fill="#FFFDF9"],
+      :root[data-theme="dark"] #ex-lp-mistral-ai rect[fill="#F4EBDD"],
+      [data-theme="dark"] #ex-lp-mistral-ai rect[fill="#FAF3EA"],
+      [data-theme="dark"] #ex-lp-mistral-ai rect[fill="#FFFDF9"],
+      [data-theme="dark"] #ex-lp-mistral-ai rect[fill="#F4EBDD"] {
+        fill: #221F2A;
+      }
+      :root[data-theme="dark"] #ex-lp-mistral-ai text[fill="#131014"],
+      :root[data-theme="dark"] #ex-lp-mistral-ai text[fill="#26211C"],
+      :root[data-theme="dark"] #ex-lp-mistral-ai text[fill="#4A433A"],
+      [data-theme="dark"] #ex-lp-mistral-ai text[fill="#131014"],
+      [data-theme="dark"] #ex-lp-mistral-ai text[fill="#26211C"],
+      [data-theme="dark"] #ex-lp-mistral-ai text[fill="#4A433A"] {
+        fill: #EDE6DC;
+      }
+      :root[data-theme="dark"] #ex-lp-mistral-ai text[fill="#0B3F30"],
+      [data-theme="dark"] #ex-lp-mistral-ai text[fill="#0B3F30"] { fill: #8FD4B6; }
+      :root[data-theme="dark"] #ex-lp-mistral-ai text[fill="#963E1D"],
+      [data-theme="dark"] #ex-lp-mistral-ai text[fill="#963E1D"] { fill: #F09D82; }
+      :root[data-theme="dark"] #ex-lp-mistral-ai rect[stroke="#0B3F30"],
+      :root[data-theme="dark"] #ex-lp-mistral-ai line[stroke="#0B3F30"],
+      [data-theme="dark"] #ex-lp-mistral-ai rect[stroke="#0B3F30"],
+      [data-theme="dark"] #ex-lp-mistral-ai line[stroke="#0B3F30"] { stroke: #8FD4B6; }
+      :root[data-theme="dark"] #ex-lp-mistral-ai rect[stroke="#963E1D"],
+      :root[data-theme="dark"] #ex-lp-mistral-ai line[stroke="#963E1D"],
+      [data-theme="dark"] #ex-lp-mistral-ai rect[stroke="#963E1D"],
+      [data-theme="dark"] #ex-lp-mistral-ai line[stroke="#963E1D"] { stroke: #F09D82; }
+      :root[data-theme="dark"] #ex-lp-mistral-ai polygon[fill="#0B3F30"],
+      [data-theme="dark"] #ex-lp-mistral-ai polygon[fill="#0B3F30"] { fill: #8FD4B6; }
+      :root[data-theme="dark"] #ex-lp-mistral-ai polygon[fill="#963E1D"],
+      [data-theme="dark"] #ex-lp-mistral-ai polygon[fill="#963E1D"] { fill: #F09D82; }
+    </style>
+    <svg class="diagram-desktop" viewBox="0 0 920 260" role="img" aria-labelledby="ex-lp-mistral-ai-title ex-lp-mistral-ai-desc">
+      <title id="ex-lp-mistral-ai-title">CIN local sparse runtime, EuroHPC coalition, and civic contestability architecture for Mistral AI</title>
+      <desc id="ex-lp-mistral-ai-desc">Four-stage diagram showing a sparse Mixtral 1:1 local runtime and leased Codestral sandbox connected to a EuroHPC sovereign verification coalition, live Fundamental Rights Impact Assessment citizen appeal receipts, and regional cooperative software economies.</desc>
+      <rect x="0" y="0" width="920" height="260" fill="#FAF3EA"/>
+      <rect x="20" y="28" width="200" height="204" rx="4" fill="#FFFDF9" stroke="#0B3F30" stroke-width="2"/>
+      <text x="34" y="56" fill="#0B3F30" font-family="monospace" font-size="11" font-weight="700">01 SPARSE LOCAL NODE</text>
+      <text x="34" y="84" fill="#131014" font-family="sans-serif" font-size="13" font-weight="700">Mixtral 1:1 Home Vault</text>
+      <text x="34" y="108" fill="#4A433A" font-family="sans-serif" font-size="11.5">Active-expert NPU speed</text>
+      <text x="34" y="128" fill="#4A433A" font-family="sans-serif" font-size="11.5">Sealed C2PA local memory</text>
+      <text x="34" y="148" fill="#4A433A" font-family="sans-serif" font-size="11.5">Zero cloud call-home</text>
+
+      <line x1="220" y1="130" x2="256" y2="130" stroke="#0B3F30" stroke-width="2"/>
+      <polygon points="256,125 266,130 256,135" fill="#0B3F30"/>
+
+      <rect x="268" y="28" width="192" height="204" rx="4" fill="#F4EBDD" stroke="#0B3F30" stroke-width="1.5"/>
+      <text x="282" y="56" fill="#0B3F30" font-family="monospace" font-size="11" font-weight="700">02 CODESTRAL AIRLOCK</text>
+      <text x="282" y="84" fill="#131014" font-family="sans-serif" font-size="13" font-weight="700">Leased Build Sandbox</text>
+      <text x="282" y="108" fill="#4A433A" font-family="sans-serif" font-size="11.5">CaMeL RAG isolation</text>
+      <text x="282" y="128" fill="#4A433A" font-family="sans-serif" font-size="11.5">ACLE-MCP tool leases</text>
+      <text x="282" y="148" fill="#4A433A" font-family="sans-serif" font-size="11.5">Multi-model code check</text>
+
+      <line x1="460" y1="130" x2="496" y2="130" stroke="#963E1D" stroke-width="2"/>
+      <polygon points="496,125 506,130 496,135" fill="#963E1D"/>
+
+      <rect x="508" y="28" width="184" height="204" rx="4" fill="#FFFDF9" stroke="#963E1D" stroke-width="2"/>
+      <text x="522" y="56" fill="#963E1D" font-family="monospace" font-size="11" font-weight="700">03 EUROHPC COALITION</text>
+      <text x="522" y="84" fill="#131014" font-family="sans-serif" font-size="13" font-weight="700">Sovereign Verification</text>
+      <text x="522" y="108" fill="#4A433A" font-family="sans-serif" font-size="11.5">Jean Zay &amp; JUPITER runs</text>
+      <text x="522" y="128" fill="#4A433A" font-family="sans-serif" font-size="11.5">AI-control red-teaming</text>
+      <text x="522" y="148" fill="#4A433A" font-family="sans-serif" font-size="11.5">SCITT energy receipts</text>
+
+      <line x1="692" y1="130" x2="728" y2="130" stroke="#0B3F30" stroke-width="2"/>
+      <polygon points="728,125 738,130 728,135" fill="#0B3F30"/>
+
+      <rect x="740" y="28" width="160" height="204" rx="4" fill="#FFFDF9" stroke="#0B3F30" stroke-width="1.5"/>
+      <text x="752" y="56" fill="#0B3F30" font-family="monospace" font-size="11" font-weight="700">04 CIVIC &amp; CO-OP</text>
+      <text x="752" y="84" fill="#131014" font-family="sans-serif" font-size="13" font-weight="700">FRIA &amp; SME Commons</text>
+      <text x="752" y="108" fill="#4A433A" font-family="sans-serif" font-size="11.5">Citizen appeal proofs</text>
+      <text x="752" y="128" fill="#4A433A" font-family="sans-serif" font-size="11.5">SME local software</text>
+      <text x="752" y="148" fill="#4A433A" font-family="sans-serif" font-size="11.5">Meidner &amp; mutual credit</text>
+    </svg>
+    <svg class="diagram-mobile" viewBox="0 0 300 536" role="img" aria-labelledby="ex-lp-mistral-ai-m-title ex-lp-mistral-ai-m-desc">
+      <title id="ex-lp-mistral-ai-m-title">Mobile four-stage Mistral AI sparse runtime and EuroHPC verification diagram</title>
+      <desc id="ex-lp-mistral-ai-m-desc">Vertical mobile stack from a sparse local Mixtral home vault into a leased Codestral sandbox, EuroHPC sovereign verification coalition, and civic and cooperative economy.</desc>
+      <rect x="0" y="0" width="300" height="536" fill="#FAF3EA"/>
+      <rect x="10" y="10" width="280" height="114" rx="4" fill="#FFFDF9" stroke="#0B3F30" stroke-width="2"/>
+      <text x="24" y="34" fill="#0B3F30" font-family="monospace" font-size="11" font-weight="700">01 SPARSE LOCAL NODE</text>
+      <text x="24" y="56" fill="#131014" font-family="sans-serif" font-size="12.5" font-weight="700">Mixtral 1:1 Home Vault</text>
+      <text x="24" y="76" fill="#4A433A" font-family="sans-serif" font-size="11">Active-expert NPU speed</text>
+      <text x="24" y="94" fill="#4A433A" font-family="sans-serif" font-size="11">Sealed C2PA local memory</text>
+      <text x="24" y="112" fill="#0B3F30" font-family="sans-serif" font-size="11">Zero cloud call-home</text>
+
+      <line x1="150" y1="124" x2="150" y2="134" stroke="#0B3F30" stroke-width="2"/>
+      <polygon points="145,134 150,141 155,134" fill="#0B3F30"/>
+
+      <rect x="10" y="142" width="280" height="114" rx="4" fill="#F4EBDD" stroke="#0B3F30" stroke-width="1.5"/>
+      <text x="24" y="166" fill="#0B3F30" font-family="monospace" font-size="11" font-weight="700">02 CODESTRAL AIRLOCK</text>
+      <text x="24" y="188" fill="#131014" font-family="sans-serif" font-size="12.5" font-weight="700">Leased Build Sandbox</text>
+      <text x="24" y="208" fill="#4A433A" font-family="sans-serif" font-size="11">CaMeL RAG isolation</text>
+      <text x="24" y="226" fill="#4A433A" font-family="sans-serif" font-size="11">ACLE-MCP tool leases</text>
+      <text x="24" y="244" fill="#4A433A" font-family="sans-serif" font-size="11">Multi-model code check</text>
+
+      <line x1="150" y1="256" x2="150" y2="266" stroke="#963E1D" stroke-width="2"/>
+      <polygon points="145,266 150,273 155,266" fill="#963E1D"/>
+
+      <rect x="10" y="274" width="280" height="114" rx="4" fill="#FFFDF9" stroke="#963E1D" stroke-width="2"/>
+      <text x="24" y="298" fill="#963E1D" font-family="monospace" font-size="11" font-weight="700">03 EUROHPC COALITION</text>
+      <text x="24" y="320" fill="#131014" font-family="sans-serif" font-size="12.5" font-weight="700">Sovereign Verification</text>
+      <text x="24" y="340" fill="#4A433A" font-family="sans-serif" font-size="11">Jean Zay &amp; JUPITER runs</text>
+      <text x="24" y="358" fill="#4A433A" font-family="sans-serif" font-size="11">AI-control red-teaming</text>
+      <text x="24" y="376" fill="#4A433A" font-family="sans-serif" font-size="11">SCITT energy receipts</text>
+
+      <line x1="150" y1="388" x2="150" y2="398" stroke="#0B3F30" stroke-width="2"/>
+      <polygon points="145,398 150,405 155,398" fill="#0B3F30"/>
+
+      <rect x="10" y="406" width="280" height="114" rx="4" fill="#FFFDF9" stroke="#0B3F30" stroke-width="1.5"/>
+      <text x="24" y="430" fill="#0B3F30" font-family="monospace" font-size="11" font-weight="700">04 CIVIC &amp; CO-OP</text>
+      <text x="24" y="452" fill="#131014" font-family="sans-serif" font-size="12.5" font-weight="700">FRIA &amp; SME Commons</text>
+      <text x="24" y="472" fill="#4A433A" font-family="sans-serif" font-size="11">Citizen appeal proofs</text>
+      <text x="24" y="490" fill="#4A433A" font-family="sans-serif" font-size="11">SME local software</text>
+      <text x="24" y="508" fill="#0B3F30" font-family="sans-serif" font-size="11">Meidner &amp; mutual credit</text>
+    </svg>
+    <figcaption>Sparse Mixtral weights power private home runtimes while EuroHPC safety vaults and citizen appeal receipts govern institutional deployments.</figcaption>
+  </figure>
+
+  <section class="lp-sec" id="sec-1">
+    <p class="lp-sec-kicker lp-sec-kicker--warn">Section 01 · Architecture and Alignment Bottlenecks</p>
+    <h2>Open-weight velocity, uncontestable ministry connectors, and compute asymmetry</h2>
+    <div class="prose wrap-narrow">
+      <p>Mistral AI balances Apache-licensed sparse Mixture-of-Experts releases with closed commercial Mistral Large and sovereign defense deployments. Fast release cycles ship with lighter published subversion and AI-control red-teaming<sup><a href="#fn3">3</a></sup> than dedicated safety labs, while closed commercial tiers lack public training-data lineage receipts.</p>
+      <p>Inside European ministries, banks, and industrial firms, Le Chat retrieval connectors read citizen records without issuing cryptographic contestability proofs. Operating with smaller private GPU clusters than US and Chinese hyperscalers also creates pressure to rent foreign clouds or compress safety checks during rapid capability jumps.</p>
+      <div class="lp-options-grid">
+        <div class="lp-option lp-option--warn">
+          <h3>Split open and closed systemic-risk incentives</h3>
+          <p>Balancing rapid open-weight releases with closed enterprise tiers leaves gaps in published autonomous-subversion testing and training-lineage transparency.<sup><a href="#fn3">3</a></sup></p>
+        </div>
+        <div class="lp-option lp-option--warn">
+          <h3>Uncontestable enterprise and ministry RAG</h3>
+          <p>Connecting Le Chat and Mistral Large to administrative files without signed audit receipts leaves citizens unable to challenge automated decisions.</p>
+        </div>
+        <div class="lp-option lp-option--warn">
+          <h3>Indirect prompt injection in workspace connectors</h3>
+          <p>Untrusted PDFs, procurement bids, and emails inside retrieval indices can hijack unseparated enterprise connectors and exfiltrate sensitive dossiers.<sup><a href="#fn1">1</a></sup></p>
+        </div>
+        <div class="lp-option lp-option--warn">
+          <h3>Hyperscale compute-scale asymmetry</h3>
+          <p>Smaller private accelerator budgets create pressure either to depend on foreign hyperscaler clouds or rush unverified coding checkpoints into critical industry.</p>
+        </div>
+      </div>
+      <aside class="for-researchers"><details><summary>For researchers: formal protocol and verification details</summary><div><p>Sparse <code>MoE</code> routing activates <code>k &lt;&lt; N</code> experts per token, cutting inference energy across edge hardware. Agentic <code>Codestral</code> and <code>Le Chat</code> connectors still face indirect prompt injection<sup><a href="#fn1">1</a></sup> and intentional-subversion backdoors<sup><a href="#fn3">3</a></sup> unless bounded by deterministic control protocols.</p></div></details></aside>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="sec-2">
+    <p class="lp-sec-kicker">Section 02 · CIN Technical Integration</p>
+    <h2>Sparse local 1:1 personal runtimes and leased Codestral sandboxes</h2>
+    <div class="prose wrap-narrow">
+      <p>Because sparse Mixtral and compact Ministral checkpoints activate only a fraction of their parameters per word, they fit comfortably on consumer laptops, clinic workstations, and home NPUs. CIN makes sparse MoE weights the engine for a 1:1 personal model over an encrypted C2PA vault, tapering routine help so human skill stays sharp.</p>
+      <p>For enterprise teams, CIN wraps Le Chat retrieval connectors inside CaMeL privilege separation.<sup><a href="#fn1">1</a></sup> Codestral build runners stay bounded inside hardware-signed capability leases<sup><a href="#fn2">2</a></sup> so untrusted files never seize repository or network privileges.</p>
+      <div class="lp-options-grid">
+        <div class="lp-option">
+          <h3>Workstation-resident 1:1 Mixtral vaults</h3>
+          <p>Run sparse four-day specialist reasoning and multilingual models locally over encrypted home memory vaults with zero cloud call-home.</p>
+        </div>
+        <div class="lp-option">
+          <h3>CaMeL isolation for Le Chat retrieval</h3>
+          <p>Separate trusted user instructions from quarantined PDFs and database rows so indirect prompt injections cannot trigger enterprise tool calls.<sup><a href="#fn1">1</a></sup></p>
+        </div>
+        <div class="lp-option">
+          <h3>Leased WebAssembly sandboxes for Codestral</h3>
+          <p>Ship default ACLE-MCP capability-lease profiles with Codestral so every build, test, or API call requires short-lived hardware authorization.<sup><a href="#fn2">2</a></sup></p>
+        </div>
+        <div class="lp-option">
+          <h3>Independent multi-model code verification</h3>
+          <p>Check security-critical patches generated by Codestral across independent verifier classes before merging into industrial or municipal repositories.<sup><a href="#fn3">3</a></sup></p>
+        </div>
+      </div>
+      <aside class="for-researchers"><details><summary>For researchers: formal protocol and verification details</summary><div><p>Within CIN's five-primitive functional deliverable, local perception synchronizes in monotonic hardware <code>Device Time</code> with self-assessed observation confidence under <code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, and <code>IETF RATS</code> RFC 9334 peripheral attestation, separated by optical data diodes and <code>IEC 61508</code> dead-man relays. Observations enter an append-only <code>C2PA</code>/Merkle episodic memory vault (Endel Tulving; Tulving, 1972) under transduction realism (<em>Signed Is Not True</em> across the analog hole; Fu &amp; Xu, 2018), governed by a monogamous <code>1:1</code> personal cognitive model and cybernetic exocortex (Joscha Bach; Bach; Andy Clark &amp; David Chalmers; Clark &amp; Chalmers, 1998) acting as a statutory information fiduciary (Jack Balkin; Balkin, 2016) protecting unassisted competence across an active-inference Markov blanket (Karl Friston; Friston, 2013).</p><p>Across the Private Autobiographical Ledger and the Public Attestation &amp; Escrow Ledger (Public Attestation and Escrow Ledger), <code>Codestral</code> executes inside <code>WASI</code> <code>Object-Capability</code> sandboxes with expiring capability lease bounds (Dennis &amp; Van Horn, 1966) via <code>ACLE-MCP</code><sup><a href="#fn2">2</a></sup>, selective <code>ZK</code> proofs, <code>IETF SCITT</code> (<code>RFC 9943</code>) receipts, and independent-class <code>k &gt;= 3f + 1</code> Byzantine corroboration. Inspect interactive walkthroughs in <a href="/labs/protocol-inspector/">Protocol Inspector</a>, <a href="/labs/sensor-boundary/">Sensor Boundary</a>, and <a href="/labs/shared-horizon/">Shared Horizon</a>.</p></div></details></aside>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="sec-3">
+    <p class="lp-sec-kicker">Section 03 · Inter-Lab Coordination Options</p>
+    <h2>Leading a sovereign-open verification coalition across safety and energy receipts</h2>
+    <div class="prose wrap-narrow">
+      <p>Mistral AI does not need to surrender weight custody to US cloud gatekeepers to match frontier safety rigor. Together with Kyutai, Aleph Alpha, Hugging Face, AI2, and global peers, Mistral can anchor a Sovereign-Open Verification Coalition on CIN's shared ledger.</p>
+      <p>Coalition labs pool red-teaming talent to run unredacted AI-control and intentional-subversion evaluations,<sup><a href="#fn3">3</a></sup> while publishing signed transparency receipts for dataset opt-outs, reproducible build hashes, and training energy efficiency.<sup><a href="#fn4">4</a></sup></p>
+      <div class="lp-options-grid">
+        <div class="lp-option">
+          <h3>Shared AI-control and subversion testbeds</h3>
+          <p>Pool coalition red teams with Kyutai, Hugging Face, and AI2 to publish unredacted subversion and sandbagging transcripts across open and commercial models.<sup><a href="#fn3">3</a></sup></p>
+        </div>
+        <div class="lp-option">
+          <h3>Signed SCITT lineage and energy receipts</h3>
+          <p>Publish tamper-evident receipts verifying creator opt-out compliance, model build hashes, and watt-hours per token across sparse architectures.<sup><a href="#fn4">4</a></sup></p>
+        </div>
+        <div class="lp-option">
+          <h3>Provenance chains for community fine-tunes</h3>
+          <p>Partner with open model hubs to run graph-peeling cartel checks that flag poisoned or backdoored Mixtral and Codestral adapters before deployment.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Hardware-sealed commercial weight enclaves</h3>
+          <p>Protect Mistral Large training shards inside multi-party hardware enclaves to block twelve-hour credential theft without closing open research.</p>
+        </div>
+      </div>
+      <aside class="for-researchers"><details><summary>For researchers: formal protocol and verification details</summary><div><p>Coalition members log <code>IETF SCITT</code> receipts covering <code>AI Control</code> trusted-monitoring protocols,<sup><a href="#fn3">3</a></sup> training compute and energy telemetry,<sup><a href="#fn4">4</a></sup> and dataset provenance hashes, paired with <code>k</code>-truss and <code>e</code>-means Sybil cartel detection across open fine-tuning repositories.</p></div></details></aside>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="sec-4">
+    <p class="lp-sec-kicker">Section 04 · Government and Sovereign Engagement Options</p>
+    <h2>EuroHPC public safety vaults, live FRIA appeal receipts, and municipal registers</h2>
+    <div class="prose wrap-narrow">
+      <p>Europe owns world-class public supercomputers across Jean Zay, JUPITER, and LUMI alongside strong fundamental-rights law. Partnering with EuroHPC and the EU AI Office lets Mistral run clean-room systemic-risk audits on public hardware<sup><a href="#fn4">4</a></sup> without leaking weights across jurisdictions.</p>
+      <p>Linking Mistral ministry deployments to municipal algorithm registers upgrades EU AI Act Fundamental Rights Impact Assessments<sup><a href="#fn5">5</a></sup> into live zero-knowledge appeal receipts. Citizens can contest automated decisions while agency bots stay on the signed Second Road.</p>
+      <div class="lp-options-grid">
+        <div class="lp-option">
+          <h3>Audited EuroHPC public-compute safety vaults</h3>
+          <p>Execute EU systemic-risk evaluations and sovereign training runs on Jean Zay, JUPITER, and LUMI enclaves with verified power and safety logs.<sup><a href="#fn4">4</a></sup></p>
+        </div>
+        <div class="lp-option">
+          <h3>Live cryptographic FRIA citizen appeal receipts</h3>
+          <p>Turn Fundamental Rights Impact Assessments into signed per-decision proofs so citizens and their local agents can appeal housing, tax, or clinical outcomes.<sup><a href="#fn5">5</a></sup></p>
+        </div>
+        <div class="lp-option">
+          <h3>Municipal algorithm register integration</h3>
+          <p>Publish live model hashes, calibration uncertainty bars, and scope limits directly into Amsterdam, Helsinki, and Paris style public registers.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Second Road procurement rules for EU agencies</h3>
+          <p>Require ministry, banking, and utility agents to transact over signed machine lanes with expiring capability leases, keeping civic portals human.</p>
+        </div>
+      </div>
+      <aside class="for-researchers"><details><summary>For researchers: formal protocol and verification details</summary><div><p><code>EuroHPC</code> clean-room enclaves reconcile accelerator FLOPs and substation draw<sup><a href="#fn4">4</a></sup> for the <code>EU AI Office</code> while protecting lab whistleblowers. Public-law deployments bind Article 27 <code>FRIA</code> templates<sup><a href="#fn5">5</a></sup> to zero-knowledge contestability receipts and accountable Second Road transport (Kolt, 2025).</p></div></details></aside>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="sec-5">
+    <p class="lp-sec-kicker">Section 05 · Safe ASI Adoption and Macroeconomic Stability</p>
+    <h2>Industrial SME local software, Mondragon cooperatives, and Meidner share funds</h2>
+    <div class="prose wrap-narrow">
+      <p>Europe's industrial backbone of precision small firms, works councils, and Mondragon-style cooperatives fits naturally with decentralized AI ownership. Pairing EuroHPC Universal Basic Compute with local Codestral synthesis lets small manufacturers, clinics, and towns build and own bespoke software<sup><a href="#fn6">6</a></sup> without renting foreign SaaS seats.</p>
+      <p>To keep high-speed automation from hollowing out regional wages,<sup><a href="#fn7">7</a></sup> frontier deployments stream statutory Rudolf Meidner shares into worker-citizen funds while settling regional B2B trade through Sardex-inspired mutual credit.</p>
+      <div class="lp-options-grid">
+        <div class="lp-option">
+          <h3>Public EuroHPC capacity for universal local compute</h3>
+          <p>Allocate public and municipal compute capacity alongside sparse Mistral open weights for libraries, clinics, trade schools, and households.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Codestral local software for SMEs and co-ops</h3>
+          <p>Enable European workshops, farms, and municipalities to synthesize and own local-first scheduling and logistics software onshore.<sup><a href="#fn6">6</a></sup></p>
+        </div>
+        <div class="lp-option">
+          <h3>Statutory Meidner worker-citizen share funds</h3>
+          <p>Channel a statutory slice of frontier compute equity into regional worker and citizen funds while investing in skilled human reinstatement work.<sup><a href="#fn7">7</a></sup></p>
+        </div>
+        <div class="lp-option">
+          <h3>Regional B2B reciprocal mutual credit</h3>
+          <p>Clear productive capacity across regional SMEs and cooperatives using interest-free cyclic credit networks modeled on Sardinia's Sardex circuit.</p>
+        </div>
+      </div>
+      <aside class="for-researchers"><details><summary>For researchers: formal protocol and verification details</summary><div><p>On the Wide Network Ledger, local <code>Codestral</code> synthesis<sup><a href="#fn6">6</a></sup> over <code>CRDT</code> local-first state (Kleppmann et al., 2019), Universal Basic Services, and Jacob Meluso invisible-labor upkeep estimation (Meluso et al., 2024) eliminates SaaS data exfiltration for industrial SMEs. Statutory Rudolf Meidner share funds (Meidner, 1978) counterbalance capital-share concentration under polycentric commons rules (Elinor Ostrom; Ostrom, 1990; Ostrom, 2010) while supporting labor-reinstating tasks<sup><a href="#fn7">7</a></sup> and counter-cyclical reciprocal mutual credit clearing (James Stodder; Stodder, 2009; Iosifidis et al., 2018).</p></div></details></aside>
+    </div>
+  </section>
+
+  <div class="prose wrap-narrow">
+    <section class="footnotes">
+      <ol>
+        <li id="fn1">Edoardo Debenedetti et al., "Defeating Prompt Injections by Design" (2025), <a href="https://arxiv.org/abs/2503.18813">arxiv.org/abs/2503.18813</a>.</li>
+        <li id="fn2">Zhiyang Ding, Yang Luo, Guangpu Chen, Qingni Shen, and Zhonghai Wu, "ACLE-MCP: Attested Capability Leases for Execution-Time Trust in Remote LLM Tool Use" (2026), <a href="https://arxiv.org/abs/2609.02690">arxiv.org/abs/2609.02690</a>.</li>
+        <li id="fn3">Ryan Greenblatt, Buck Shlegeris, Kshitij Sachan, and Fabien Roger, "AI Control: Improving Safety Despite Intentional Subversion" (2023), <a href="https://arxiv.org/abs/2312.06942">arxiv.org/abs/2312.06942</a>.</li>
+        <li id="fn4">Girish Sastry et al., "Computing Power and the Governance of Artificial Intelligence" (2024), <a href="https://arxiv.org/abs/2402.08797">arxiv.org/abs/2402.08797</a>.</li>
+        <li id="fn5">Alessandro Mantelero, "The Fundamental Rights Impact Assessment (FRIA) in the AI Act: Roots, legal obligations and key elements for a model template" (2024), <a href="https://arxiv.org/abs/2411.15149">arxiv.org/abs/2411.15149</a>.</li>
+        <li id="fn6">Ripon Chandra Malo, Zimeng Yu, and Tong Qiu, "The Customer Is the Builder: How AI Coding Agents Are Rewriting the Economics of Software" (2026), <a href="https://arxiv.org/abs/2610.30307">arxiv.org/abs/2610.30307</a>.</li>
+        <li id="fn7">Daron Acemoglu and Pascual Restrepo, "Automation and New Tasks: How Technology Displaces and Reinstates Labor" (2019), <a href="https://doi.org/10.1257/jep.33.2.3">doi.org/10.1257/jep.33.2.3</a>.</li>
+      </ol>
+    </section>
+  </div>
+</section>

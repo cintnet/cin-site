@@ -1,0 +1,270 @@
+---
+title: AI agents should hold permissions that expire
+description: Most AI agents get standing access that lasts until someone remembers to revoke it. We propose narrow permissions, tied to one task, that expire unless a person renews them.
+reader: People who deploy or buy AI agents, including public-sector IT and procurement staff, and researchers working on agent security.
+takeaway: Every permission an AI agent holds should be narrow, tied to one task, narrower at each hand-off to another agent, revocable on its own, and set to expire unless a person renews it.
+template: article
+date: 2026-11-04
+order: 6
+category: Governing
+minutes: 6
+image: post-power-on-loan.jpg
+image_alt: An hourglass with a young oak sapling growing up from its base, and a few fallen autumn leaves beside it.
+lede: Most AI agents are given standing access, a login that works until someone remembers to revoke it. We propose the opposite default. Every permission an agent holds should be narrow, tied to one task, and set to expire unless a person renews it.
+---
+<h2>What goes wrong with standing access</h2>
+
+<p>Every permission an AI agent holds should be narrow, tied to one task, narrower at each hand-off to another agent, revocable on its own, and set to expire unless a person renews it. An agent deployed in an office today usually logs in with a service account. That account can read folders, edit records and send email across several systems, for as long as the account exists. Three things make this risky.</p>
+
+<p><strong>Agents can be talked into misusing their access.</strong> Security researchers call it the confused deputy: a program holding authority is tricked into using it on someone else's behalf.<sup><a href="#fn1">1</a></sup> For a language-model agent, the trick can be a sentence hidden in an email or web page it reads. Writing "never touch unrelated files" into the agent's instructions doesn't prevent this, because the same model that can be misled is the one deciding whether an action is allowed.<sup><a href="#fn2">2</a></sup></p>
+
+<p><strong>Agents hand work to other agents.</strong> A booking assistant calls a clinic's scheduling agent, which calls a calendar service. The easy design passes the first agent's full credentials down the chain. One test of a four-party healthcare workflow rejected 14 of 15 attacks. It also found that authority was not narrowed at each hop, and that any party holding the shared key could rewrite the authority being claimed.<sup><a href="#fn3">3</a></sup></p>
+
+<p><strong>People forget.</strong> Access granted for one job stays open after the job ends. Under standing permissions, every forgotten grant is a risk that stays open indefinitely.</p>
+
+<p>There is also a longer-term reason. A system pursuing almost any goal does better with more access and resources, so a capable system will tend to accumulate them.<sup><a href="#fn4">4</a></sup> Expiry means accumulated access drains away by default.</p>
+
+<h2>What we propose</h2>
+
+<ol>
+<li><strong>Narrow.</strong> A permission names the task, the data and the actions: read the 2026 tax folder, nothing else. A credential the agent never holds can't be misused, however the agent is manipulated.<sup><a href="#fn5">5</a></sup></li>
+<li><strong>Short-lived.</strong> It expires on its own. Distributed systems have used time-limited leases this way since the 1980s,<sup><a href="#fn6">6</a></sup> and current zero-trust guidance assumes short-lived credentials.<sup><a href="#fn7">7</a></sup></li>
+<li><strong>Narrower at each hand-off.</strong> An agent that calls a helper passes on a subset of its permission, never its own key. Recent designs let the scope, budget and lifetime of a delegated permission shrink but never grow.<sup><a href="#fn2">2</a>,<a href="#fn8">8</a></sup></li>
+<li><strong>Revocable one at a time.</strong> Taking back one permission should stop exactly the agents that depended on it and leave the rest of the job running. Current agent frameworks get this wrong in both directions: they cut off too much when agents share a helper, and too little when work crosses organisations.<sup><a href="#fn9">9</a></sup></li>
+</ol>
+
+<p>All four have to be enforced outside the model, by a separate component that checks every tool call. Instructions to the model are not enforcement.</p>
+
+<figure class="explainer" id="ex-power-lease">
+  <style>
+    #ex-power-lease {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    @media (prefers-color-scheme: dark) {
+      #ex-power-lease {
+        --ex-paper: #1C1A24;
+        --ex-slip: #262331;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #C2B8AC;
+        --ex-rule: #3A3548;
+        --ex-signal: #8FD4B6;
+        --ex-accent: #8FD4B6;
+        --ex-warn: #F09D82;
+        --ex-amber: #E0A64B;
+      }
+    }
+    :root[data-theme="dark"] #ex-power-lease {
+      --ex-paper: #1C1A24;
+      --ex-slip: #262331;
+      --ex-ink: #EDE6DC;
+      --ex-muted: #C2B8AC;
+      --ex-rule: #3A3548;
+      --ex-signal: #8FD4B6;
+      --ex-accent: #8FD4B6;
+      --ex-warn: #F09D82;
+      --ex-amber: #E0A64B;
+    }
+    #ex-power-lease svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-power-lease .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-power-lease .diagram-desktop {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    #ex-power-lease .diagram-mobile {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+    #ex-power-lease figcaption {
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-power-lease .diagram-desktop { display: none; }
+      #ex-power-lease .diagram-mobile { display: block; }
+    }
+    @media (max-width: 600px) {
+      #ex-power-lease .diagram-desktop { display: none; }
+      #ex-power-lease .diagram-mobile { display: block; }
+    }
+  </style>
+  <svg class="diagram-desktop" viewBox="0 0 760 320" role="img" aria-labelledby="ex-power-lease-title ex-power-lease-desc">
+    <title id="ex-power-lease-title">Standing Service Access versus Expiring Capability Leases</title>
+    <desc id="ex-power-lease-desc">An architectural comparison contrasting broad standing service accounts with narrow, time-bounded capability leases that expire and shrink across delegation hops.</desc>
+    <line x1="380" y1="14" x2="380" y2="306" stroke="var(--ex-rule)" stroke-width="1"/>
+    <g>
+      <rect x="16" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="30" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">Standing service account</text>
+      <text x="16" y="42" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Permanent access and accumulating risk</text>
+      <line x1="16" y1="52" x2="368" y2="52" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <line x1="25" y1="68" x2="25" y2="214" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+      <rect x="22" y="67" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="74" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Broad ambient scope</text>
+      <text x="38" y="91" font-size="11" fill="var(--ex-muted)">Holds standing access across all folders and records</text>
+      <line x1="38" y1="126" x2="368" y2="126" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="22" y="137" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="144" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Indefinite lifetime</text>
+      <text x="38" y="161" font-size="11" fill="var(--ex-muted)">Credentials stay active until manually revoked</text>
+      <line x1="38" y1="196" x2="368" y2="196" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="22" y="207" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="214" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Transitive key expansion</text>
+      <text x="38" y="231" font-size="11" fill="var(--ex-muted)">Helpers inherit master keys; one breach hits all</text>
+      <line x1="16" y1="278" x2="368" y2="278" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="16" y="287" width="5" height="5" fill="var(--ex-warn)"/>
+      <text x="28" y="292" font-size="11" font-weight="700" fill="var(--ex-warn)">Failure: One breach hits the whole system</text>
+    </g>
+    <g>
+      <rect x="396" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="410" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">Expiring capability lease</text>
+      <text x="396" y="42" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Narrow, time-limited power on loan</text>
+      <line x1="396" y1="52" x2="744" y2="52" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <line x1="405" y1="68" x2="405" y2="214" stroke="var(--ex-signal)" stroke-width="1"/>
+      <rect x="402" y="67" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="418" y="74" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Task-scoped valet pass</text>
+      <text x="418" y="91" font-size="11" fill="var(--ex-muted)">Names exact folder and action; read-only default</text>
+      <line x1="418" y1="126" x2="744" y2="126" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="402" y="137" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="418" y="144" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Automatic sunset clock</text>
+      <text x="418" y="161" font-size="11" fill="var(--ex-muted)">Unrenewed access lapses automatically to zero</text>
+      <line x1="418" y1="196" x2="744" y2="196" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="402" y="207" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="418" y="214" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Monotonic narrowing at every hop</text>
+      <text x="418" y="231" font-size="11" fill="var(--ex-muted)">Sub-helpers receive smaller slices; clean revoke</text>
+      <line x1="396" y1="278" x2="744" y2="278" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="396" y="287" width="5" height="5" fill="var(--ex-signal)"/>
+      <text x="408" y="292" font-size="11" font-weight="700" fill="var(--ex-signal)">Assurance: Revoke halts only one branch</text>
+    </g>
+  </svg>
+  <svg class="diagram-mobile" viewBox="0 0 300 560" role="img" aria-labelledby="ex-power-lease-m-title ex-power-lease-m-desc">
+    <title id="ex-power-lease-m-title">Standing Service Access versus Expiring Capability Leases (Mobile)</title>
+    <desc id="ex-power-lease-m-desc">Stacked mobile layout contrasting broad standing service accounts with narrow, time-bounded capability leases that expire and shrink across delegation hops.</desc>
+    <g>
+      <rect x="8" y="14" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="20" y="20" font-size="11" font-weight="700" fill="var(--ex-warn)">Standing service account</text>
+      <text x="8" y="38" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Permanent access and accumulating risk</text>
+      <line x1="8" y1="47" x2="290" y2="47" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <line x1="12" y1="62" x2="12" y2="188" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+      <polygon points="9,117 15,117 12,123" fill="var(--ex-warn)"/>
+      <polygon points="9,178 15,178 12,184" fill="var(--ex-warn)"/>
+      <rect x="9" y="60" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="24" y="67" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Broad ambient scope</text>
+      <text x="24" y="84" font-size="11" fill="var(--ex-muted)">Standing access across all folders</text>
+      <line x1="24" y1="112" x2="290" y2="112" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="121" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="24" y="128" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Indefinite lifetime</text>
+      <text x="24" y="145" font-size="11" fill="var(--ex-muted)">Stays active until manually revoked</text>
+      <line x1="24" y1="173" x2="290" y2="173" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="182" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="24" y="189" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Transitive key expansion</text>
+      <text x="24" y="206" font-size="11" fill="var(--ex-muted)">Helpers inherit full master keys</text>
+      <line x1="8" y1="246" x2="290" y2="246" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="8" y="255" width="5" height="5" fill="var(--ex-warn)"/>
+      <text x="19" y="260" font-size="11" font-weight="700" fill="var(--ex-warn)">Failure: One breach hits the whole system</text>
+    </g>
+    <line x1="8" y1="280" x2="290" y2="280" stroke="var(--ex-rule)" stroke-width="1.25"/>
+    <g>
+      <rect x="8" y="294" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="20" y="300" font-size="11" font-weight="700" fill="var(--ex-signal)">Expiring capability lease</text>
+      <text x="8" y="318" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Narrow, time-limited power on loan</text>
+      <line x1="8" y1="327" x2="290" y2="327" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <line x1="12" y1="342" x2="12" y2="470" stroke="var(--ex-signal)" stroke-width="1"/>
+      <polygon points="9,398 15,398 12,404" fill="var(--ex-signal)"/>
+      <polygon points="9,460 15,460 12,466" fill="var(--ex-signal)"/>
+      <rect x="9" y="340" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="24" y="347" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Task-scoped valet pass</text>
+      <text x="24" y="364" font-size="11" fill="var(--ex-muted)">Names exact folder; read-only default</text>
+      <line x1="24" y1="393" x2="290" y2="393" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="402" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="24" y="409" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Automatic sunset clock</text>
+      <text x="24" y="426" font-size="11" fill="var(--ex-muted)">Unrenewed access lapses to zero</text>
+      <line x1="24" y1="455" x2="290" y2="455" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="464" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="24" y="471" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Monotonic narrowing</text>
+      <text x="24" y="488" font-size="11" fill="var(--ex-muted)">Sub-helpers get smaller scope slices</text>
+      <line x1="8" y1="528" x2="290" y2="528" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="8" y="537" width="5" height="5" fill="var(--ex-signal)"/>
+      <text x="19" y="542" font-size="11" font-weight="700" fill="var(--ex-signal)">Assurance: Revoke halts only one branch</text>
+    </g>
+  </svg>
+  <figcaption>Standing service accounts grant permanent access across entire systems. Expiring capability leases keep power on loan. Each lease names one specific task, automatically lapses when its clock runs out, shrinks across helper hand-offs, and revokes cleanly without stopping unrelated work.</figcaption>
+</figure>
+
+<h2>What it looks like in practice</h2>
+
+<p>You ask an assistant to prepare your tax return. It gets a 14-day pass to your 2026 tax folder, read-only. On day 15 the pass lapses, and in October the assistant can't read your new bank statements because it never could.</p>
+
+<p>A community clinic gives a scheduling agent a 30-day permission to send appointment reminders and draft supply orders. At the end of the month the manager sees a receipt from the independent enforcement layer, never from the agent itself. It lists the reminders sent and orders drafted, and confirms that no clinical notes were opened. She renews it or lets it lapse.</p>
+
+<p>If a permission runs out mid-task, the agent stops starting new actions, saves its work and leaves a note. Renewal picks up where it stopped.</p>
+
+<h2>What a buyer can require now</h2>
+
+<ul>
+<li>Agents get a separate credential per task, not a shared service account.</li>
+<li>Every credential has an expiry date, and the default is days, not years.</li>
+<li>Permissions are checked by a component outside the model, and every grant and use is logged there.</li>
+<li>A sub-agent can never receive more access than the agent that called it.</li>
+<li>Any single grant can be revoked without stopping unrelated work.</li>
+</ul>
+
+<h2>The obvious objection</h2>
+
+<p>If permissions keep expiring, people will be asked to renew them constantly, and they will click "yes" without reading. That's a real failure mode, and it is why renewal should come at task boundaries, a few times a month, with a short receipt that replaces a constant stream of pop-ups. See <a href="/blog/why-your-inbox-is-not-a-security-guard/">why your inbox is not a security guard</a> for what happens when approvals are designed badly.</p>
+
+<h2>What's unsolved</h2>
+
+<ul>
+<li><strong>Who renews, on what evidence.</strong> If a system is better at persuasion than the person reviewing it, it could time requests for when reviewers are rushed, or summarise its own work flatteringly. Receipts written by the enforcement layer help. They don't settle it.</li>
+<li><strong>How long a lease should be</strong> for different kinds of work. We are testing durations in simulation before recommending numbers.</li>
+<li><strong>Agents that approve each other.</strong> Renewal by another agent can turn into collusion.</li>
+<li><strong>Standards.</strong> Researchers are converging on the pieces (task-scoped tokens, delegation that only narrows, targeted revocation) but not yet on a complete architecture.<sup><a href="#fn10">10</a></sup></li>
+</ul>
+
+<aside class="for-researchers"><details><summary>For researchers</summary><div><p>We model these as time-bounded Object-Capability leases (capability lease; Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966) enforced by an external reference monitor across the personal Markov blanket (Karl Friston; Friston, 2010; Friston, 2013), with monotonic attenuation across delegation edges and edge-level revocation. Within CIN's five-primitive architecture, wearable and ambient sensors form an egocentric and ambient perceptual sensorium synchronized in hardware Device Time with self-assessed observation confidence and PUF, TCG DICE, DMTF SPDM, and IETF RATS (RFC 9334) attestation. An optical data diode and IEC 61508 dead-man relays isolate physical actuators under analog transduction realism, because Signed Is Not True across the analog hole (Kevin Fu and Wenyuan Xu, 2018; <a href="/labs/sensor-boundary/">/labs/sensor-boundary/</a>). Raw user records stay inside a local append-only C2PA v2.1 and Merkle episodic memory vault (Endel Tulving, 1972) served by a monogamous 1:1 personal cognitive model and cybernetic exocortex (Joscha Bach, 2009; Extended Mind, Andy Clark and David Chalmers; Clark &amp; Chalmers, 1998; Good Regulator theorem, Conant &amp; Ashby, 1970; interventional causal inference <code>do(x)</code>, Pearl, 2009; compiler-trust verification, Thompson, 1984) bound as a statutory information fiduciary (Jack Balkin; Balkin, 2016) that preserves unassisted competence.<sup><a href="#fn11">11</a></sup></p><p>At the boundary between the Private Autobiographical Ledger and the Public Attestation and Escrow Ledger (Public Attestation &amp; Escrow Ledger), every capability grant and attenuation hop emits selective zero-knowledge (ZK) proofs, is recorded via verifiable IETF SCITT (RFC 9943) receipts (<a href="/labs/protocol-inspector/">/labs/protocol-inspector/</a>), and corroborates high-stakes transitions across independent sensor classes by Byzantine quorum (<code>k &gt;= 3f + 1</code>). Cooperative and merit-bonded tasks settle across the Wide Network Ledger to sustain Universal Basic Services, plural value accounting (Jacob Meluso et al., 2025), reciprocal mutual credit clearing (James Stodder, 2009), Meidner share-issuance funds (Rudolf Meidner, 1978), frontier-lab overlays (Bracale Syrnikov et al., 2026), and polycentric Ostrom commons self-rule (Elinor Ostrom; Ostrom, 1990; <a href="/labs/shared-horizon/">/labs/shared-horizon/</a>).<sup><a href="#fn12">12</a></sup> Related work: AgentCap and DelegateGuard (runtime capability mediation), Donno et al. (multi-hop A2A delegation), VERA (edge revocation), Tallam (authorization propagation).</p></div></details></aside>
+
+<section class="footnotes">
+<h2>Sources</h2>
+<p id="fn1">1. Norm Hardy, "The Confused Deputy (or why capabilities might have been invented)," <em>ACM SIGOPS Operating Systems Review</em> 22, no. 4 (1988): 36–38, <a href="https://doi.org/10.1145/54289.871709">doi:10.1145/54289.871709</a>.</p>
+<p id="fn2">2. Aravinda Kashyap Kabbinamakki Suresh and Peng Gao, "AgentCap: Capability-Based Runtime Authorization for Secure LLM Agent Execution" (2026), <a href="https://arxiv.org/abs/2611.00729">arXiv:2611.00729</a>.</p>
+<p id="fn3">3. Gabriele Donno, Kashif Mehmood and Katina Kralevska, "Authorization Propagation in Agent2Agent Systems: An Experimental Security Evaluation of Multi-Hop Delegation" (2026), <a href="https://arxiv.org/abs/2611.07050">arXiv:2611.07050</a>.</p>
+<p id="fn4">4. Alexander Matt Turner, Logan Smith, Rohin Shah, Andrew Critch and Prasad Tadepalli, "Optimal Policies Tend to Seek Power" (2019), <a href="https://arxiv.org/abs/1912.01683">arXiv:1912.01683</a>.</p>
+<p id="fn5">5. Halil Burak Noyan, "Dynamic Capability Scoping for Enterprise AI Agents: A Synthetic Dataset and Three-Source Permission Architecture" (2026), <a href="https://arxiv.org/abs/2607.22445">arXiv:2607.22445</a>.</p>
+<p id="fn6">6. Cary G. Gray and David R. Cheriton, "Leases: An Efficient Fault-Tolerant Mechanism for Distributed File Cache Consistency," <em>SOSP '89</em> (1989): 202–210, <a href="https://doi.org/10.1145/74850.74870">doi:10.1145/74850.74870</a>.</p>
+<p id="fn7">7. Scott Rose, Oliver Borchert, Stu Mitchell and Sean Connelly, <em>Zero Trust Architecture</em>, NIST SP 800-207 (2020), <a href="https://doi.org/10.6028/NIST.SP.800-207">doi:10.6028/NIST.SP.800-207</a>.</p>
+<p id="fn8">8. Phat T. Tran-Truong, Ha Vo, Nhut Tran et al., "DelegateGuard: Purpose-Bound Capabilities for Delegated LLM Agent Workflows" (2026), <a href="https://arxiv.org/abs/2610.16005">arXiv:2610.16005</a>.</p>
+<p id="fn9">9. Lifei Liu, Haoran Yu and Xiaochong Jiang, "VERA: Authority-Preserving Edge Revocation for Federated AI-Agent Workflows" (2026), <a href="https://arxiv.org/abs/2608.30091">arXiv:2608.30091</a>.</p>
+<p id="fn10">10. Krti Tallam, "Authorization Propagation in Multi-Agent AI Systems: Identity Governance as Infrastructure" (2026), <a href="https://arxiv.org/abs/2605.05440">arXiv:2605.05440</a>.</p>
+<p id="fn11">11. Kevin Fu and Wenyuan Xu (2018), <a href="https://doi.org/10.1145/3176402">"Risks of Trusting the Physics of Sensors,"</a> <em>Communications of the ACM</em>, 61(2), 20–23; Henk Birkholz et al. (2023), <a href="https://www.rfc-editor.org/rfc/rfc9334">IETF RFC 9334: Remote ATtestation procedureS (RATS) Architecture</a>; Coalition for Content Provenance and Authenticity (2024), <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html">C2PA Technical Specification v2.1</a>; Jack M. Balkin (2016), <a href="https://lawreview.law.ucdavis.edu/issues/49/4/lecture/information-fiduciaries-and-first-amendment">"Information Fiduciaries and the First Amendment,"</a> <em>UC Davis Law Review</em>, 49(4), 1183–1234.</p>
+<p id="fn12">12. Karl Friston (2013), <a href="https://doi.org/10.1098/rsif.2013.0475">"Life as We Know It,"</a> <em>Journal of the Royal Society Interface</em>, 10(86), 20130475; Jack B. Dennis and Earl C. Van Horn (1966), <a href="https://doi.org/10.1145/365230.365252">"Programming Semantics for Multiprogrammed Computations,"</a> <em>Communications of the ACM</em>, 9(3), 143–155; Henk Birkholz et al. (2026), <a href="https://www.rfc-editor.org/rfc/rfc9943">IETF RFC 9943: An Architecture for Trustworthy and Transparent Digital Supply Chains (SCITT)</a>; Rudolf Meidner (1978), <a href="https://archive.org/details/employeeinvestme0000meid"><em>Employee Investment Funds: An Approach to Collective Capital Formation</em></a>; Elinor Ostrom (1990), <a href="https://doi.org/10.1017/CBO9780511807763"><em>Governing the Commons</em></a>.</p>
+</section>

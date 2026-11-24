@@ -1,0 +1,270 @@
+---
+title: Five questions to ask before buying an AI agent
+description: Before a public body lets software act on its behalf, five plain-language questions in the tender can separate an accountable tool from a future public inquiry.
+reader: Public officials, municipal and national procurement staff, and policy advisors evaluating AI systems for public services.
+takeaway: Five concrete questions any public buyer can put into a tender today to keep auditability, scoped permissions, edge-case testing, human appeal and exit rights in public hands.
+template: article
+date: 2026-11-06
+order: 13
+category: Governing
+minutes: 10
+image: post-five-questions-before-buying-an-ai-agent.jpg
+image_alt: A sunlit civic council table holding five brass keys beside an open bound ledger with a terracotta wax postmark seal and an hourglass, overlooking a calm town square through an arched stone window.
+lede: Public bodies buying AI agents can protect residents with five simple questions in the tender. These cover action receipts, expiring permissions, edge-case tests, human appeals, and contract exit rights.
+---
+<p>A vendor's demo shows an agent drafting replies to residents, sorting benefit applications or summarising case files in seconds. The questions that matter come after the demo. What happens when the agent misreads a file? Who notices if it changes how it ranks housing applications? When an ombudsman asks why a decision was made, what can the agency show?</p>
+
+<p>When an AI agent acts on a public body's behalf, procurement is policy. These five questions belong in the tender, and in the room.</p>
+
+<figure class="explainer" id="ex-procurement-rubric">
+  <style>
+    #ex-procurement-rubric {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-procurement-rubric svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-procurement-rubric .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    #ex-procurement-rubric [role="button"] {
+      cursor: pointer;
+      transition: opacity 160ms ease;
+    }
+    #ex-procurement-rubric [role="button"]:hover,
+    #ex-procurement-rubric [role="button"]:focus-visible {
+      opacity: 0.88;
+      outline: 2px solid var(--ex-accent);
+      outline-offset: 2px;
+    }
+    #ex-procurement-rubric .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.5rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-procurement-rubric .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-procurement-rubric .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-procurement-rubric .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-procurement-rubric .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.25rem;
+    }
+    #ex-procurement-rubric .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 640px) {
+      #ex-procurement-rubric .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+      #ex-procurement-rubric .ex-canvas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #ex-procurement-rubric .ex-canvas svg {
+        min-width: 540px;
+      }
+    }
+    #ex-procurement-rubric figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg viewBox="0 0 700 340" role="group" aria-labelledby="ex-rubric-title ex-rubric-desc">
+      <title id="ex-rubric-title">Comparing standard vendor demo claims with accountable public tender rules</title>
+      <desc id="ex-rubric-desc">Side-by-side rubric contrasting fragile vendor pitch claims with five accountable tender rules covering external action receipts, bounded capability leases, edge-case stress testing, human appeal override, and contract data sovereignty.</desc>
+      <text id="ex-rubric-status" x="16" y="26" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Status: Comparing demo claims vs. tender rules</text>
+      <g id="ex-rubric-toggle" role="button" tabindex="0" aria-pressed="false" aria-controls="ex-rubric-status" aria-label="Highlight Tender: Toggle tender checklist inspection">
+        <rect x="560" y="10" width="124" height="25" rx="2" fill="#0B3F30" stroke="var(--ex-rule)" stroke-width="1"/>
+        <text x="622" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">Highlight Tender</text>
+      </g>
+      <line x1="16" y1="42" x2="684" y2="42" stroke="var(--ex-rule)" stroke-width="1"/>
+      <line x1="350" y1="52" x2="350" y2="326" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g id="ex-rubric-left-panel">
+        <rect x="16" y="56" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="30" y="62" font-size="11" font-weight="700" fill="var(--ex-warn)">FRAGILE: VENDOR DEMO CLAIM</text>
+        <line x1="16" y1="72" x2="338" y2="72" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <line x1="23" y1="90" x2="23" y2="248" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+        <rect x="20" y="86" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="34" y="92" font-size="10.5" font-weight="600" fill="var(--ex-muted)">1. Audit</text>
+        <text x="34" y="108" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Vendor cloud summary; no external receipts</text>
+        <line x1="34" y1="128" x2="338" y2="128" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="20" y="138" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="34" y="144" font-size="10.5" font-weight="600" fill="var(--ex-muted)">2. Access</text>
+        <text x="34" y="160" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Standing master key with no expiry</text>
+        <line x1="34" y1="180" x2="338" y2="180" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="20" y="190" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="34" y="196" font-size="10.5" font-weight="600" fill="var(--ex-muted)">3. Testing</text>
+        <text x="34" y="212" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Generic benchmarks; untested on local edge cases</text>
+        <line x1="34" y1="232" x2="338" y2="232" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="20" y="242" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="34" y="248" font-size="10.5" font-weight="600" fill="var(--ex-muted)">4. Appeal &amp; exit</text>
+        <text x="34" y="264" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Vendor helpdesk; records locked in black box</text>
+        <line x1="16" y1="302" x2="338" y2="302" stroke="var(--ex-rule)" stroke-width="1"/>
+        <text x="16" y="318" font-size="11" font-weight="700" fill="var(--ex-warn)">Result: Vendor lock-in &amp; unaccountable errors</text>
+      </g>
+      <g id="ex-rubric-right-panel">
+        <rect x="366" y="56" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="380" y="62" font-size="11" font-weight="700" fill="var(--ex-signal)">ACCOUNTABLE TENDER RULE</text>
+        <line x1="366" y1="72" x2="684" y2="72" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <line x1="373" y1="90" x2="373" y2="248" stroke="var(--ex-signal)" stroke-width="1"/>
+        <rect x="370" y="86" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="384" y="92" font-size="10.5" font-weight="600" fill="var(--ex-accent)">1. External receipt</text>
+        <text x="384" y="108" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Tamper-evident logs held directly by agency</text>
+        <line x1="384" y1="128" x2="684" y2="128" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="370" y="138" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="384" y="144" font-size="10.5" font-weight="600" fill="var(--ex-accent)">2. Capability lease</text>
+        <text x="384" y="160" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Task-scoped pass; auto-expires in minutes</text>
+        <line x1="384" y1="180" x2="684" y2="180" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="370" y="190" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="384" y="196" font-size="10.5" font-weight="600" fill="var(--ex-accent)">3. Edge-case audit</text>
+        <text x="384" y="212" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Stress-tested on messy local resident cases</text>
+        <line x1="384" y1="232" x2="684" y2="232" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="370" y="242" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="384" y="248" font-size="10.5" font-weight="600" fill="var(--ex-accent)">4. Appeal &amp; exit</text>
+        <text x="384" y="264" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Same-day human override &amp; open export formats</text>
+        <line x1="366" y1="302" x2="684" y2="302" stroke="var(--ex-rule)" stroke-width="1"/>
+        <text x="366" y="318" font-size="11" font-weight="700" fill="var(--ex-signal)">Outcome: Public auditability &amp; contestable control</text>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Five vendor pitch red flags</span>
+      <div class="ex-spec-body">Vendor-hosted dashboards, standing API keys, generic leaderboard scores, ticket-queue appeals, and proprietary log formats.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Five public tender requirements</span>
+      <div class="ex-spec-body">Agency-held signed receipts, expiring task leases, local edge-case stress audits, same-day staff override, and open data export.</div>
+    </div>
+  </div>
+  <figcaption>Side-by-side comparison of standard vendor pitch claims against five accountable public tender rules that preserve auditability, bounded permissions, and human contestability.</figcaption>
+</figure>
+
+<h2>1. Does every action leave a receipt that our auditors can inspect?</h2>
+
+<p>When a public servant makes a decision, they leave a paper trail. Notes go into a case file, and approvals carry a name and a date. An auditor looking back a year later can see what happened and why.</p>
+
+<p>Many AI vendors offer a summary dashboard owned by the vendor instead. It shows monthly totals and average speed, not what the software did to a specific resident's file. Accepting a vendor's summary dashboard in place of an audit trail is like hiring a bookkeeper who refuses to show itemized receipts. A sticky note saying the monthly totals looked fine will not satisfy an auditor.</p>
+
+<p>That receipt must be recorded by the surrounding software, not summarized by the model itself. It should show what information the system looked at, what rule or database it used, and who authorized the step. These records stay under the public body's own retention rules, like a vehicle service log paired with an itemized workshop invoice.</p>
+
+<p>In practice, test this during the demo. Pick a single sample decision on the screen and ask the vendor to export the raw action receipt right there. If they can only show you a chat transcript or cloud promises, your auditors will be flying blind.</p>
+
+<div class="callout"><p class="label">What to put in the tender.</p><p>Require a tamper-evident, append-only receipt of inputs, database calls and authorizations for every action. These records must be stored outside the model in an open format held by the public body.</p></div>
+
+<h2>2. What are the boundaries of its permission, and when do they expire?</h2>
+
+<p>Older software only did what its code explicitly instructed. An AI agent can chain several steps together: reading a database, drafting a notice, updating a file and sending a message.</p>
+
+<p>That flexibility helps until the system reaches for a database or action it was never meant to touch. Giving an AI agent a standing master key is like handing a parking valet your house keys, passport, and power of attorney. All you needed was the car parked for twenty minutes.</p>
+
+<p>In a well-run public building, a visiting contractor never gets a permanent master key. They get a temporary badge that opens two specific doors until five o'clock.</p>
+
+<p>Like a library card or a visitor pass, an agent's access should be narrowly scoped. In a municipal housing office or clinic, the assistant might hold a ten-minute lease to read one intake table and place a draft into staff review. Outside that boundary, it remains unable to issue a final denial or alter payment records. Every permission should expire automatically unless renewed after review.</p>
+
+<h2>3. How has it been tested on the cases where being wrong hurts someone?</h2>
+
+<p>Demos always use easy cases. The form is complete, the resident's history is tidy, and the rules fit neatly. Everything finishes in seconds, and everyone in the room nods.</p>
+
+<p>Buying software after watching a vendor's scripted demo is like test-driving a car for thirty seconds in a flat, sunny dealership lot. You only learn whether the brakes and steering are trustworthy when you test them on wet cobblestones with a heavy load.</p>
+
+<p>Public services meet people in steep, unpredictable moments. Think of a seasonal worker with shifting income, a grandparent raising children after an emergency, or a family navigating complex disability rules. Those are the cases where being wrong hurts someone.</p>
+
+<p>Real-world failures show the cost of skipping this test. In Australia's automated debt-recovery system, known as Robodebt, flawed income-averaging rules sent hundreds of thousands of unlawful debt notices to citizens before courts forced the government to halt it. A subsequent Royal Commission condemned the scheme as "neither fair nor legal."<sup><a href="#fn1">1</a></sup></p>
+
+<p>Public-facing chatbots fail in quieter ways too. In March 2024, an investigation by The Markup caught New York City's MyCity business chatbot advising small-business owners to break housing and labour laws.<sup><a href="#fn2">2</a></sup> It told bosses they could take workers' tips and refuse tenants with housing vouchers.<sup><a href="#fn2">2</a></sup></p>
+
+<p>Before you buy, do not rely on generic benchmark scores from a glossy brochure. Pull fifty messy edge cases from your own past appeals backlog and run the vendor's tool against them. Test the handwritten notes, split addresses, and sudden job changes. Ask to see the exact error rates for the residents most hurt by a mistake.</p>
+
+<h2>4. When a citizen disagrees with what the software did, how do they reach a person with the power to fix it?</h2>
+
+<p>Every institution makes mistakes. Trust depends on whether a citizen can tell that software played a role, get a plain explanation, and reach a person with the power to fix it.</p>
+
+<p>Strong public standards already require this. Canada's Directive on Automated Decision-Making requires federal bodies to complete an Algorithmic Impact Assessment and provide notice, explanation and human intervention scaled to risk.<sup><a href="#fn3">3</a></sup></p>
+
+<p>Similarly, the NIST Artificial Intelligence Risk Management Framework organizes governance around four continuous functions: govern, map, measure and manage.<sup><a href="#fn4">4</a></sup> A central test in that framework is whether people affected by an AI system have a workable way to contest and correct its decisions.<sup><a href="#fn4">4</a></sup></p>
+
+<p>Trace that path in the room before you sign. Picture a resident standing at the counter because an automated check flagged their heating assistance renewal. Can your front-line caseworker open the action receipt on their screen, see the exact line that triggered the flag, and override the error before lunch? If your staffer has to file a support ticket with the vendor and wait two weeks while the resident goes cold, the human is not in charge.</p>
+
+<h2>5. If we end this contract in two years, what do we keep?</h2>
+
+<p>When you finish paying for a car, you hold the title and the keys, and any local mechanic can open the bonnet. When a credit union changes bookkeepers, the ledgers and receipts stay in the credit union's safe.</p>
+
+<p>Public institutions shouldn't become permanent tenants of a software vendor's black box. Vendors raise prices, get acquired or retire products, while public duties endure for decades.</p>
+
+<p>Write exit and data-use rights into the contract from day one. All case records, audit trails, prompts, local rule definitions, and evaluation results must stay with the public body in open, documented formats. Another team should be able to read them without paying for the vendor's software, and resident data must never be siphoned off to train the vendor's commercial models.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers and technical procurement reviewers</summary>
+    <div>
+      <p>In systems architecture, these five tender clauses map to verifiable mechanisms. Question 1 requires environment-level, signed append-only action provenance (similar to in-toto supply-chain attestations or Certificate Transparency logs, RFC 6962) paired with Proof-Carrying policy checks. Question 2 enforces Object-Capability sandboxing with short-lived capability leases subject to automatic time-to-live expiry (authority demurrage). Question 3 requires disaggregated error-rate reporting across demographic and edge-case slices. Question 4 requires actionable recourse backed by logged human override authority. Question 5 ensures contractual data isolation and full portability of audit logs, evaluation suites, agency prompts and any fine-tuned adapter weights (such as LoRA) in open formats.</p>
+    </div>
+  </details>
+</aside>
+
+<h2>Where checklists fall short</h2>
+
+<p>We want to be honest about limits. A procurement checklist cannot fix an understaffed appeals office. Human review means very little if an overworked clerk has thirty seconds to rubber-stamp what the screen suggests.</p>
+
+<p>Checklists also turn into box-ticking if nobody checks the answers after launch. No city buys a fleet of buses, inspects the brakes on delivery day, and then welds the garage doors shut for five years. Software drifts as laws, forms, and neighbourhood caseloads shift, so auditors must keep sampling the receipts every quarter long after the contract is signed.</p>
+
+<p>Frontline staff should sit at the table during those quarterly reviews. The clerks, nurses, and caseworkers who handle resident phone calls every morning are always the first to spot when a tool stumbles on a new housing rule.</p>
+
+<p>Even so, asking these five questions before you sign changes the room. Just like checking the service log and brakes before buying a car, it tells vendors you value clear sightlines over flashy demos. Most of all, it keeps public decisions in public hands.</p>
+
+<p>If your team is drafting tender language, reviewing an automated decision policy or evaluating an AI pilot, we would be glad to help. Visit our page <a href="/get-involved/policy/">for policy makers</a> to read our briefings or share the questions you are facing.</p>
+
+<section class="footnotes">
+  <p id="fn1">1. Commonwealth of Australia, <a href="https://robodebt.royalcommission.gov.au/publications/report">Report of the Royal Commission into the Robodebt Scheme</a> (July 2023).</p>
+  <p id="fn2">2. Colin Lecher, <a href="https://themarkup.org/news/2024/03/29/nycs-ai-chatbot-tells-businesses-to-break-the-law">NYC's AI Chatbot Tells Businesses to Break the Law</a>, The Markup (March 29, 2024).</p>
+  <p id="fn3">3. Treasury Board of Canada Secretariat, <a href="https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32592">Directive on Automated Decision-Making</a> (Government of Canada).</p>
+  <p id="fn4">4. National Institute of Standards and Technology, <a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf">Artificial Intelligence Risk Management Framework (AI RMF 1.0)</a>, NIST AI 100-1 (January 2023).</p>
+</section>

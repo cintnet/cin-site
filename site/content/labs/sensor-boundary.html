@@ -1,0 +1,682 @@
+---
+title: Sensor & Diary Wind Tunnel
+heading: Checking physical sensors without opening your private diary.
+eyebrow: Labs · Wind Tunnel
+description: Interactive red-team simulation testing why single-sensor digital signatures fail against physical spoofing, and how cross-modal checks and sequence proofs keep personal diaries sealed.
+reader: Curious readers, builders, safety researchers, and policy staff who want to see how physical sensor checks and local diary privacy work together.
+takeaway: A valid hardware signature never guarantees an honest physical reading; cross-checking separate sensors drops failure rates from 81.9 percent to 0.05 percent with zero private diary bytes exposed.
+template: page
+layout: wide
+section: labs
+lede: A digital signature proves which chip signed a number, yet physical light or sound can still be faked beforehand. Adjust the safeguards below to test six real fault modes while your personal diary stays sealed on your own device.
+---
+<section class="wrap">
+<style>
+  /* Planar 1px Architectural Sensor & Privacy Boundary Wind Tunnel (Direction B) */
+  .sim-panel {
+    margin: 2rem 0 3.2rem;
+    padding: 24px 0 28px;
+    background: transparent;
+    border-top: 1px solid #DFD1BE;
+    border-bottom: 1px solid #DFD1BE;
+    border-radius: 0;
+  }
+  .sim-panel-head {
+    max-width: 740px;
+    margin-bottom: 18px;
+  }
+  .sim-presets {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 12px 0 20px;
+    padding: 10px 0;
+    border-top: 1px solid #DFD1BE;
+    border-bottom: 1px solid #DFD1BE;
+  }
+  .sim-presets-label {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #5E564B;
+    margin-right: 4px;
+  }
+  .sim-preset-btn {
+    appearance: none;
+    background: #FAF3EA;
+    color: #131014;
+    border: 1px solid #DFD1BE;
+    border-radius: 2px;
+    padding: 6px 12px;
+    min-height: 34px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+  }
+  .sim-preset-btn:hover {
+    border-color: #0B3F30;
+    color: #0B3F30;
+  }
+  .sim-preset-btn.is-active {
+    background: #0B3F30;
+    border-color: #0B3F30;
+    color: #FAF3EA;
+  }
+  .sim-grid {
+    display: grid;
+    grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+  @media (max-width: 860px) {
+    .sim-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .sim-controls {
+    display: grid;
+    gap: 14px;
+    background: #FAF3EA;
+    border: 1px solid #DFD1BE;
+    border-radius: 2px;
+    padding: 16px;
+  }
+  .sim-field {
+    display: grid;
+    gap: 5px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed #DFD1BE;
+  }
+  .sim-field:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+  .sim-field-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .sim-field-top label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #131014;
+    line-height: 1.35;
+  }
+  .sim-field-top output {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #0B3F30;
+    white-space: nowrap;
+  }
+  .sim-field-hint {
+    font-size: 0.8rem;
+    color: #5E564B;
+    line-height: 1.4;
+    margin: 0;
+  }
+  .sim-controls input[type="range"] {
+    width: 100%;
+    accent-color: #0B3F30;
+    cursor: pointer;
+    margin: 2px 0 0;
+  }
+  .sim-viz-col {
+    display: grid;
+    gap: 14px;
+  }
+  .sim-viz-col figure.explainer {
+    margin: 0;
+    padding: 14px;
+    background: #FAF3EA;
+    border: 1px solid #DFD1BE;
+    border-radius: 0;
+  }
+  .sim-viz-col figure.explainer svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--sans);
+  }
+  #ex-sensor-wind-tunnel .diagram-desktop {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  #ex-sensor-wind-tunnel .diagram-mobile {
+    display: none;
+    width: 100%;
+    height: auto;
+  }
+  @media (max-width: 640px) {
+    #ex-sensor-wind-tunnel .diagram-desktop {
+      display: none;
+    }
+    #ex-sensor-wind-tunnel .diagram-mobile {
+      display: block;
+    }
+  }
+  .sim-viz-col figure.explainer .sim-svg-bg {
+    fill: url(#sim-sensor-dot-grid);
+    stroke: #DFD1BE;
+    stroke-width: 1;
+  }
+  .sim-viz-col figure.explainer .sim-dot {
+    fill: #D5C5B0;
+  }
+  .sim-viz-col figure.explainer figcaption {
+    margin-top: 10px;
+    font-size: 0.86rem;
+    line-height: 1.5;
+    color: #5E564B;
+    text-align: left;
+  }
+  .sim-kpis {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid #DFD1BE;
+    border-left: 1px solid #DFD1BE;
+  }
+  @media (max-width: 640px) {
+    .sim-kpis {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .sim-kpi {
+    background: #FAF3EA;
+    border-right: 1px solid #DFD1BE;
+    border-bottom: 1px solid #DFD1BE;
+    border-radius: 0;
+    padding: 11px 12px;
+  }
+  .sim-kpi-label {
+    display: block;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #5E564B;
+    margin-bottom: 4px;
+  }
+  .sim-kpi-val {
+    display: block;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.96rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: #131014;
+  }
+  .sim-readout {
+    background: #F3E8D8;
+    border: 1px solid #DFD1BE;
+    border-left: 3px solid #0B3F30;
+    border-radius: 2px;
+    padding: 11px 14px;
+    font-size: 0.92rem;
+    line-height: 1.52;
+    color: #131014;
+  }
+  .sim-readout.is-warn {
+    border-left-color: #9E4726;
+  }
+  .sim-readout strong {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #0B3F30;
+  }
+  .sim-readout.is-warn strong {
+    color: #9E4726;
+  }
+  @media (prefers-color-scheme: dark) {
+    .sim-panel,
+    .sim-presets,
+    .sim-preset-btn,
+    .sim-controls,
+    .sim-field,
+    .sim-viz-col figure.explainer,
+    .sim-viz-col figure.explainer .sim-svg-bg,
+    .sim-kpis,
+    .sim-kpi,
+    .sim-readout {
+      border-color: #322E3D;
+      stroke: #322E3D;
+    }
+    .sim-preset-btn,
+    .sim-controls,
+    .sim-viz-col figure.explainer,
+    .sim-kpi {
+      background: #221F2A;
+      color: #EDE6DC;
+    }
+    .sim-preset-btn.is-active {
+      background: #1A332B;
+      border-color: #8FD4B6;
+      color: #EDE6DC;
+    }
+    .sim-presets-label,
+    .sim-field-hint,
+    .sim-kpi-label,
+    .sim-viz-col figure.explainer figcaption {
+      color: #A8A095;
+    }
+    .sim-field-top label,
+    .sim-kpi-val,
+    .sim-readout {
+      color: #EDE6DC;
+    }
+    .sim-field-top output,
+    .sim-readout strong {
+      color: #8FD4B6;
+    }
+    .sim-readout {
+      background: #26212D;
+      border-left-color: #8FD4B6;
+    }
+    .sim-readout.is-warn {
+      border-left-color: #F09D82;
+    }
+    .sim-readout.is-warn strong {
+      color: #F09D82;
+    }
+    .sim-viz-col figure.explainer .sim-dot {
+      fill: #3A3344;
+    }
+    #ex-sensor-wind-tunnel line[stroke="#E1D3C0"] {
+      stroke: #322E3D;
+    }
+    #ex-sensor-wind-tunnel line[stroke="#4D463D"] {
+      stroke: #A8A095;
+    }
+    #ex-sensor-wind-tunnel rect[fill="#0B3F30"] {
+      fill: #8FD4B6;
+    }
+    #ex-sensor-wind-tunnel rect[fill="#9E4726"],
+    #ex-sensor-wind-tunnel rect[fill="#B85C38"] {
+      fill: #F09D82;
+      stroke: #F09D82;
+    }
+    #ex-sensor-wind-tunnel text[fill="#131014"] {
+      fill: #EDE6DC;
+    }
+    #ex-sensor-wind-tunnel text[fill="#4D463D"] {
+      fill: #A8A095;
+    }
+    #ex-sensor-wind-tunnel text[fill="#0B3F30"] {
+      fill: #8FD4B6;
+    }
+    #ex-sensor-wind-tunnel text[fill="#9E4726"],
+    #ex-sensor-wind-tunnel text[fill="#B85C38"] {
+      fill: #F09D82;
+    }
+  }
+  [data-theme="dark"] .sim-panel,
+  [data-theme="dark"] .sim-presets,
+  [data-theme="dark"] .sim-preset-btn,
+  [data-theme="dark"] .sim-controls,
+  [data-theme="dark"] .sim-field,
+  [data-theme="dark"] .sim-viz-col figure.explainer,
+  [data-theme="dark"] .sim-viz-col figure.explainer .sim-svg-bg,
+  [data-theme="dark"] .sim-kpis,
+  [data-theme="dark"] .sim-kpi,
+  [data-theme="dark"] .sim-readout {
+    border-color: #322E3D;
+    stroke: #322E3D;
+  }
+  [data-theme="dark"] .sim-preset-btn,
+  [data-theme="dark"] .sim-controls,
+  [data-theme="dark"] .sim-viz-col figure.explainer,
+  [data-theme="dark"] .sim-kpi {
+    background: #221F2A;
+    color: #EDE6DC;
+  }
+  [data-theme="dark"] .sim-preset-btn.is-active {
+    background: #1A332B;
+    border-color: #8FD4B6;
+    color: #EDE6DC;
+  }
+  [data-theme="dark"] .sim-presets-label,
+  [data-theme="dark"] .sim-field-hint,
+  [data-theme="dark"] .sim-kpi-label,
+  [data-theme="dark"] .sim-viz-col figure.explainer figcaption {
+    color: #A8A095;
+  }
+  [data-theme="dark"] .sim-field-top label,
+  [data-theme="dark"] .sim-kpi-val,
+  [data-theme="dark"] .sim-readout {
+    color: #EDE6DC;
+  }
+  [data-theme="dark"] .sim-field-top output,
+  [data-theme="dark"] .sim-readout strong {
+    color: #8FD4B6;
+  }
+  [data-theme="dark"] .sim-readout {
+    background: #26212D;
+    border-left-color: #8FD4B6;
+  }
+  [data-theme="dark"] .sim-readout.is-warn {
+    border-left-color: #F09D82;
+  }
+  [data-theme="dark"] .sim-readout.is-warn strong {
+    color: #F09D82;
+  }
+  [data-theme="dark"] .sim-viz-col figure.explainer .sim-dot {
+    fill: #3A3344;
+  }
+  [data-theme="dark"] #ex-sensor-wind-tunnel line[stroke="#E1D3C0"] {
+    stroke: #322E3D;
+  }
+  [data-theme="dark"] #ex-sensor-wind-tunnel line[stroke="#4D463D"] {
+    stroke: #A8A095;
+  }
+  [data-theme="dark"] #ex-sensor-wind-tunnel rect[fill="#0B3F30"] {
+    fill: #8FD4B6;
+  }
+  [data-theme="dark"] #ex-sensor-wind-tunnel rect[fill="#9E4726"],
+  [data-theme="dark"] #ex-sensor-wind-tunnel rect[fill="#B85C38"] {
+    fill: #F09D82;
+    stroke: #F09D82;
+  }
+  [data-theme="dark"] #ex-sensor-wind-tunnel text[fill="#131014"] {
+    fill: #EDE6DC;
+  }
+  [data-theme="dark"] #ex-sensor-wind-tunnel text[fill="#4D463D"] {
+    fill: #A8A095;
+  }
+  [data-theme="dark"] #ex-sensor-wind-tunnel text[fill="#0B3F30"] {
+    fill: #8FD4B6;
+  }
+  [data-theme="dark"] #ex-sensor-wind-tunnel text[fill="#9E4726"],
+  [data-theme="dark"] #ex-sensor-wind-tunnel text[fill="#B85C38"] {
+    fill: #F09D82;
+  }
+</style>
+
+<div class="prose wrap-narrow" style="margin-bottom:32px">
+  <p class="big">A valid hardware signature never guarantees an honest physical reading; cross-checking separate sensors drops failure rates from 81.9 percent to 0.05 percent with zero private diary bytes exposed. Imagine a cold-storage delivery van carrying vaccines across town. A tamper-proof chip on the thermometer signs every reading, yet someone taped a warm coin beside a cool pack right over the probe.</p>
+  <p>The digital signature is genuine, and the vaccines still spoil. Across physical rooms, roads, and clinics, trusting a single hardware signature fails whenever a signal is faked before digitization, whenever software spots a scheduled inspection, or whenever four cameras share one buggy vendor update.</p>
+  <p>We ran 2,000 simulated fault trials across eight attack and bias scenarios to test how independent sensor channels, random spot checks, and local diary boundaries hold up together.</p>
+</div>
+
+<section class="sim-panel" id="sim-panel-sensor" aria-labelledby="sim-sensor-heading">
+  <div class="sim-panel-head prose">
+    <p class="eyebrow">Red-Team Workbench · 2,000 Monte Carlo Trials</p>
+    <h2 id="sim-sensor-heading">Cross-checking physical sensors while sealing your personal diary</h2>
+    <p>Compare naive single-sensor signature trust against independent physical channels,<sup><a href="#fn1">1</a></sup> unscheduled spot checks,<sup><a href="#fn2">2</a></sup> and separate hardware lineages.<sup><a href="#fn3">3</a></sup> Raw life logs stay encrypted on your own device for you and your personal assistant alone, while fair uncertainty routing<sup><a href="#fn4">4</a></sup> and compact sequence proofs<sup><a href="#fn5">5</a></sup> verify public claims.</p>
+  </div>
+
+  <div class="sim-presets" role="group" aria-label="Preset sensor safeguard regimes">
+    <span class="sim-presets-label">Presets:</span>
+    <button type="button" class="sim-preset-btn" data-preset="naive" aria-pressed="false">Single-signature trust</button>
+    <button type="button" class="sim-preset-btn" data-preset="partial" aria-pressed="false">Partial vendor diversity</button>
+    <button type="button" class="sim-preset-btn is-active" data-preset="default" aria-pressed="true">Cross-modal defense-in-depth (default)</button>
+  </div>
+
+  <div class="sim-grid">
+    <form id="sim-sensor-form" class="sim-controls" action="#sim-panel-sensor" method="get">
+      <div class="sim-field">
+        <div class="sim-field-top">
+          <label for="sim-sensor-channels">Independent physical channels</label>
+          <output id="sim-sensor-channels-out" name="sim_sensor_channels_out" for="sim-sensor-channels" form="sim-sensor-form">3 channels</output>
+        </div>
+        <input type="range" id="sim-sensor-channels" name="sim_sensor_channels" min="1" max="4" step="1" value="3" aria-valuetext="3 independent physical channels">
+        <p class="sim-field-hint">Separate physical principles (light, inertial motion, barometric pressure, acoustic timing).<sup><a href="#fn1">1</a></sup></p>
+      </div>
+
+      <div class="sim-field">
+        <div class="sim-field-top">
+          <label for="sim-sensor-spot">Unscheduled spot-check rate</label>
+          <output id="sim-sensor-spot-out" name="sim_sensor_spot_out" for="sim-sensor-spot" form="sim-sensor-form">80%</output>
+        </div>
+        <input type="range" id="sim-sensor-spot" name="sim_sensor_spot" min="0" max="100" step="5" value="80" aria-valuetext="80 percent unscheduled spot-check rate">
+        <p class="sim-field-hint">Randomized check windows and transfer velocity freezes blocking scheduled-test gaming.<sup><a href="#fn2">2</a></sup></p>
+      </div>
+
+      <div class="sim-field">
+        <div class="sim-field-top">
+          <label for="sim-sensor-lineages">Separate hardware lineages</label>
+          <output id="sim-sensor-lineages-out" name="sim_sensor_lineages_out" for="sim-sensor-lineages" form="sim-sensor-form">4 lineages</output>
+        </div>
+        <input type="range" id="sim-sensor-lineages" name="sim_sensor_lineages" min="1" max="4" step="1" value="4" aria-valuetext="4 separate hardware and firmware lineages">
+        <p class="sim-field-hint">Distinct chip, firmware, and owner families preventing correlated single-vendor bugs.<sup><a href="#fn3">3</a></sup></p>
+      </div>
+
+      <div class="sim-field">
+        <div class="sim-field-top">
+          <label for="sim-sensor-window">Continuous sequence window</label>
+          <output id="sim-sensor-window-out" name="sim_sensor_window_out" for="sim-sensor-window" form="sim-sensor-form">100%</output>
+        </div>
+        <input type="range" id="sim-sensor-window" name="sim_sensor_window" min="0" max="100" step="10" value="100" aria-valuetext="100 percent continuous sequence proof coverage">
+        <p class="sim-field-hint">Session-fresh sequence receipts blocking cherry-picked omissions without opening raw diaries.<sup><a href="#fn5">5</a></sup></p>
+      </div>
+    </form>
+
+    <div class="sim-viz-col">
+      <figure class="explainer" id="ex-sensor-wind-tunnel">
+        <style>
+          #ex-sensor-wind-tunnel { background: transparent; }
+          @media (prefers-color-scheme: dark) {
+            #ex-sensor-wind-tunnel { --ex-signal: #8FD4B6; --ex-warn: #F09D82; }
+          }
+          :root[data-theme="dark"] #ex-sensor-wind-tunnel { --ex-signal: #8FD4B6; --ex-warn: #F09D82; }
+        </style>
+        <svg class="diagram-desktop" viewBox="0 0 680 296" width="100%" data-rich-viz="true" role="group" aria-labelledby="ex-sensor-wt-title ex-sensor-wt-desc">
+          <title id="ex-sensor-wt-title">Failure rates across six physical sensor and boundary fault classes under naive versus cross-modal safeguards</title>
+          <desc id="ex-sensor-wt-desc">Horizontal bar chart comparing single-signature baseline failure rates near 82 percent against selected safeguards across six fault classes: spoofed physical signal, scheduled-test gaming, shared vendor bug, sensor calibration gap, replayed or coerced key, and cherry-picked log. Under default cross-modal defense-in-depth, overall failure drops from 81.9 percent to 0.05 percent with zero private diary bytes exposed.</desc>
+
+          <defs>
+            <pattern id="sim-sensor-dot-grid" width="16" height="16" patternUnits="userSpaceOnUse">
+              <circle cx="2" cy="2" r="0.85" class="sim-dot" />
+            </pattern>
+          </defs>
+          <rect class="sim-svg-bg" x="0" y="0" width="680" height="296" rx="2"/>
+
+          <!-- Legend -->
+          <rect x="188" y="10" width="14" height="10" rx="1.5" fill="#9E4726" opacity="0.34" stroke="#9E4726" stroke-width="1"/>
+          <text x="208" y="19" font-size="11" font-weight="600" fill="#9E4726">Single-signature baseline (81.9%)</text>
+          <rect x="434" y="10" width="14" height="10" rx="1.5" fill="#0B3F30"/>
+          <text x="454" y="19" font-size="11" font-weight="600" fill="#0B3F30">Selected safeguards</text>
+
+          <!-- Gridlines (x=188..612 => width 424) -->
+          <line x1="188" y1="30" x2="188" y2="256" stroke="#4D463D" stroke-width="1.5"/>
+          <line x1="294" y1="30" x2="294" y2="256" stroke="#E1D3C0" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="400" y1="30" x2="400" y2="256" stroke="#E1D3C0" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="506" y1="30" x2="506" y2="256" stroke="#E1D3C0" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="612" y1="30" x2="612" y2="256" stroke="#E1D3C0" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="188" y1="256" x2="612" y2="256" stroke="#4D463D" stroke-width="1.5"/>
+
+          <!-- Row 0: Spoofed physical signal -->
+          <text x="178" y="55" text-anchor="end" font-size="11.5" font-weight="600" fill="#131014">Spoofed physical signal</text>
+          <rect x="188" y="40" width="346.0" height="8" rx="1.5" fill="#9E4726" opacity="0.30"/>
+          <rect id="sim-p3-bar-0" x="188" y="50" width="2.5" height="10" rx="1.5" fill="#0B3F30"/>
+          <text id="sim-p3-val-0" x="668" y="58" text-anchor="end" font-size="11" font-weight="700" fill="#0B3F30">0.0%</text>
+
+          <!-- Row 1: Scheduled-test gaming -->
+          <text x="178" y="91" text-anchor="end" font-size="11.5" font-weight="600" fill="#131014">Scheduled-test gaming</text>
+          <rect x="188" y="76" width="352.8" height="8" rx="1.5" fill="#9E4726" opacity="0.30"/>
+          <rect id="sim-p3-bar-1" x="188" y="86" width="2.5" height="10" rx="1.5" fill="#0B3F30"/>
+          <text id="sim-p3-val-1" x="668" y="94" text-anchor="end" font-size="11" font-weight="700" fill="#0B3F30">0.4%</text>
+
+          <!-- Row 2: Shared vendor bug -->
+          <text x="178" y="127" text-anchor="end" font-size="11.5" font-weight="600" fill="#131014">Shared vendor bug</text>
+          <rect x="188" y="112" width="341.7" height="8" rx="1.5" fill="#9E4726" opacity="0.30"/>
+          <rect id="sim-p3-bar-2" x="188" y="122" width="2.5" height="10" rx="1.5" fill="#0B3F30"/>
+          <text id="sim-p3-val-2" x="668" y="130" text-anchor="end" font-size="11" font-weight="700" fill="#0B3F30">0.0%</text>
+
+          <!-- Row 3: Sensor calibration gap -->
+          <text x="178" y="163" text-anchor="end" font-size="11.5" font-weight="600" fill="#131014">Sensor calibration gap</text>
+          <rect x="188" y="148" width="349.4" height="8" rx="1.5" fill="#9E4726" opacity="0.30"/>
+          <rect id="sim-p3-bar-3" x="188" y="158" width="2.5" height="10" rx="1.5" fill="#0B3F30"/>
+          <text id="sim-p3-val-3" x="668" y="166" text-anchor="end" font-size="11" font-weight="700" fill="#0B3F30">0.0%</text>
+
+          <!-- Row 4: Replayed or coerced key -->
+          <text x="178" y="199" text-anchor="end" font-size="11.5" font-weight="600" fill="#131014">Replayed or coerced key</text>
+          <rect x="188" y="184" width="355.3" height="8" rx="1.5" fill="#9E4726" opacity="0.30"/>
+          <rect id="sim-p3-bar-4" x="188" y="194" width="2.5" height="10" rx="1.5" fill="#0B3F30"/>
+          <text id="sim-p3-val-4" x="668" y="202" text-anchor="end" font-size="11" font-weight="700" fill="#0B3F30">0.0%</text>
+
+          <!-- Row 5: Cherry-picked log -->
+          <text x="178" y="235" text-anchor="end" font-size="11.5" font-weight="600" fill="#131014">Cherry-picked log</text>
+          <rect x="188" y="220" width="335.8" height="8" rx="1.5" fill="#9E4726" opacity="0.30"/>
+          <rect id="sim-p3-bar-5" x="188" y="230" width="2.5" height="10" rx="1.5" fill="#0B3F30"/>
+          <text id="sim-p3-val-5" x="668" y="238" text-anchor="end" font-size="11" font-weight="700" fill="#0B3F30">0.0%</text>
+
+          <!-- X-axis ticks -->
+          <text x="188" y="275" text-anchor="start" font-size="11" font-weight="600" fill="#4D463D">0% fail</text>
+          <text x="294" y="275" text-anchor="middle" font-size="11" fill="#4D463D">25%</text>
+          <text x="400" y="275" text-anchor="middle" font-size="11" fill="#4D463D">50%</text>
+          <text x="506" y="275" text-anchor="middle" font-size="11" fill="#4D463D">75%</text>
+          <text x="612" y="275" text-anchor="end" font-size="11" font-weight="600" fill="#4D463D">100% fail</text>
+        </svg>
+        <svg class="diagram-mobile" viewBox="0 0 330 436" width="100%" data-rich-viz="true" role="group" aria-labelledby="ex-sensor-wt-m-title ex-sensor-wt-m-desc">
+          <title id="ex-sensor-wt-m-title">Mobile view of failure rates across six physical sensor and boundary fault classes</title>
+          <desc id="ex-sensor-wt-m-desc">Stacked phone bar chart comparing single-signature baseline failure rates near 82 percent against active cross-modal safeguards across six fault classes, dropping failure to 0.05 percent with zero private diary bytes exposed.</desc>
+          <rect class="sim-svg-bg" x="4" y="4" width="306" height="428" rx="0"/>
+
+          <!-- Mobile Legend -->
+          <rect x="16" y="10" width="12" height="9" rx="1" fill="#9E4726" opacity="0.34" stroke="#9E4726" stroke-width="1"/>
+          <text x="34" y="18" font-size="11" font-weight="600" fill="#9E4726">Baseline (81.9%)</text>
+          <rect x="166" y="10" width="12" height="9" rx="1" fill="#0B3F30"/>
+          <text x="184" y="18" font-size="11" font-weight="600" fill="#0B3F30">Safeguards</text>
+
+          <!-- Vertical Gridlines (x=16..256 => width 240) -->
+          <line x1="16" y1="28" x2="16" y2="406" stroke="#4D463D" stroke-width="1.2"/>
+          <line x1="136" y1="28" x2="136" y2="406" stroke="#E1D3C0" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="256" y1="28" x2="256" y2="406" stroke="#E1D3C0" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="16" y1="406" x2="256" y2="406" stroke="#4D463D" stroke-width="1.2"/>
+          <polygon points="13,406 19,406 16,411" fill="#4D463D"/>
+          <polygon points="133,406 139,406 136,411" fill="#4D463D"/>
+          <polygon points="253,406 259,406 256,411" fill="#4D463D"/>
+
+          <!-- Row 0 -->
+          <text x="16" y="46" font-size="11.5" font-weight="600" fill="#131014">Spoofed physical signal</text>
+          <rect x="16" y="53" width="195.8" height="8" rx="1" fill="#9E4726" opacity="0.30"/>
+          <rect id="sim-p3-m-bar-0" x="16" y="63" width="2.5" height="10" rx="1" fill="#0B3F30"/>
+          <text id="sim-p3-m-val-0" x="308" y="72" text-anchor="end" font-size="11" font-weight="700" fill="#0B3F30">0.0%</text>
+
+          <!-- Row 1 -->
+          <text x="16" y="108" font-size="11.5" font-weight="600" fill="#131014">Scheduled-test gaming</text>
+          <rect x="16" y="115" width="199.7" height="8" rx="1" fill="#9E4726" opacity="0.30"/>
+          <rect id="sim-p3-m-bar-1" x="16" y="125" width="2.5" height="10" rx="1" fill="#0B3F30"/>
+          <text id="sim-p3-m-val-1" x="308" y="134" text-anchor="end" font-size="11" font-weight="700" fill="#0B3F30">0.4%</text>
+
+          <!-- Row 2 -->
+          <text x="16" y="170" font-size="11.5" font-weight="600" fill="#131014">Shared vendor bug</text>
+          <rect x="16" y="177" width="193.4" height="8" rx="1" fill="#9E4726" opacity="0.30"/>
+          <rect id="sim-p3-m-bar-2" x="16" y="187" width="2.5" height="10" rx="1" fill="#0B3F30"/>
+          <text id="sim-p3-m-val-2" x="308" y="196" text-anchor="end" font-size="11" font-weight="700" fill="#0B3F30">0.0%</text>
+
+          <!-- Row 3 -->
+          <text x="16" y="232" font-size="11.5" font-weight="600" fill="#131014">Sensor calibration gap</text>
+          <rect x="16" y="239" width="197.8" height="8" rx="1" fill="#9E4726" opacity="0.30"/>
+          <rect id="sim-p3-m-bar-3" x="16" y="249" width="2.5" height="10" rx="1" fill="#0B3F30"/>
+          <text id="sim-p3-m-val-3" x="308" y="258" text-anchor="end" font-size="11" font-weight="700" fill="#0B3F30">0.0%</text>
+
+          <!-- Row 4 -->
+          <text x="16" y="294" font-size="11.5" font-weight="600" fill="#131014">Replayed or coerced key</text>
+          <rect x="16" y="301" width="201.1" height="8" rx="1" fill="#9E4726" opacity="0.30"/>
+          <rect id="sim-p3-m-bar-4" x="16" y="311" width="2.5" height="10" rx="1" fill="#0B3F30"/>
+          <text id="sim-p3-m-val-4" x="308" y="320" text-anchor="end" font-size="11" font-weight="700" fill="#0B3F30">0.0%</text>
+
+          <!-- Row 5 -->
+          <text x="16" y="356" font-size="11.5" font-weight="600" fill="#131014">Cherry-picked log</text>
+          <rect x="16" y="363" width="190.1" height="8" rx="1" fill="#9E4726" opacity="0.30"/>
+          <rect id="sim-p3-m-bar-5" x="16" y="373" width="2.5" height="10" rx="1" fill="#0B3F30"/>
+          <text id="sim-p3-m-val-5" x="308" y="382" text-anchor="end" font-size="11" font-weight="700" fill="#0B3F30">0.0%</text>
+
+          <!-- Mobile X-axis ticks -->
+          <text x="16" y="424" text-anchor="start" font-size="11" font-weight="600" fill="#4D463D">0% fail</text>
+          <text x="136" y="424" text-anchor="middle" font-size="11" fill="#4D463D">50%</text>
+          <text x="256" y="424" text-anchor="end" font-size="11" font-weight="600" fill="#4D463D">100% fail</text>
+        </svg>
+        <figcaption>Faded terracotta bars show the 81.9% average failure rate when software assumes a hardware signature guarantees truth. Solid bars track the active safeguard settings across all six fault classes.</figcaption>
+      </figure>
+
+      <div class="sim-kpis" aria-label="Sensor verification and privacy summary metrics">
+        <div class="sim-kpi">
+          <span class="sim-kpi-label">Overall failure rate</span>
+          <span class="sim-kpi-val" id="sim-p3-kpi-fail">0.05% vs 81.9%</span>
+        </div>
+        <div class="sim-kpi">
+          <span class="sim-kpi-label">Private diary leaked</span>
+          <span class="sim-kpi-val" id="sim-p3-kpi-diary">0 B / 4.4 MB sealed</span>
+        </div>
+        <div class="sim-kpi">
+          <span class="sim-kpi-label">Calibration penalties</span>
+          <span class="sim-kpi-val" id="sim-p3-kpi-bias">0.0% (human review)</span>
+        </div>
+        <div class="sim-kpi">
+          <span class="sim-kpi-label">Escrow balance check</span>
+          <span class="sim-kpi-val" id="sim-p3-kpi-escrow">0-cent drift (exact)</span>
+        </div>
+      </div>
+
+      <div class="sim-readout" id="sim-p3-readout" role="status" aria-live="polite">
+        <strong>Outcome:</strong> <span id="sim-p3-status-text">Across 2,000 simulated checks, three physical channels and 80% unscheduled spot checks cut overall failure from 81.9% to 0.05%. Four hardware lineages and 100% sequence proofs keep raw private diary exposure at 0 bytes.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="prose wrap-narrow">
+  <h2>What this wind tunnel tests</h2>
+
+  <h3>1. Why a valid chip signature does not prove a physical reading</h3>
+  <p>A cryptographic chip can prove that a message came from a specific camera or thermometer after digitization. When an attacker shines a laser or ultrasonic tone into the analog probe beforehand, the chip signs the distorted measurement anyway.<sup><a href="#fn1">1</a></sup></p>
+  <p>Combining separate physical principles catches those upstream tricks. If an optical camera frame claims a delivery pallet moved, local inertial motion and barometric pressure sensors on independent clocks check whether physical acceleration matched.</p>
+
+  <h3>2. Stopping inspection gaming, vendor monocultures, and unfair bias</h3>
+  <p>Fixed inspection calendars fail whenever software spots test conditions and behaves cleanly only during scheduled audits, a pattern documented in automotive emissions defeat devices.<sup><a href="#fn2">2</a></sup> Unscheduled spot checks paired with short transfer holds remove the predictable calendar.</p>
+  <p>Counting four witnesses from the same manufacturer creates a false sense of safety because shared firmware bugs fail together.<sup><a href="#fn3">3</a></sup> Requiring separate chip, software, and owner lineages stops one broken update from rubber-stamping a false claim. Whenever an honest sensor reports wide uncertainty due to lighting or skin-tone calibration limits,<sup><a href="#fn4">4</a></sup> the rule withholds automatic penalties and routes the check to contestable human review.</p>
+
+  <h3>3. Keeping your personal diary sealed on your own device</h3>
+  <p>Verifying public work must never turn everyday life into a fishbowl. Raw audio, video, and health notes stay encrypted inside an append-only local diary readable only by you and your dedicated personal assistant.</p>
+  <p>When an outside cooperative or buyer needs proof that a delivery arrived safely, your personal assistant shares only a short session-fresh receipt<sup><a href="#fn5">5</a></sup> and a continuous sequence check. That boundary blocks cherry-picked omissions<sup><a href="#fn6">6</a></sup> while keeping raw personal diary bytes exposed at exact zero.</p>
+
+  <div class="callout">
+    <p class="label">Honest limits</p>
+    <p>Cross-checking separate sensors and hardware lineages raises the cost of physical spoofing sharply, yet it cannot make hardware infallible in an untrusted room. High-stakes medical, safety, and civic decisions still require physical dead-man switches, human appeal paths, and democratic oversight.</p>
+  </div>
+
+  <div class="cta-row">
+    <a class="pill pill-dark" href="/labs/protocol-inspector/">Open the protocol inspector</a>
+    <a class="pill pill-ghost" href="/labs/shared-horizon/">Explore Shared Horizon</a>
+    <a class="pill pill-ghost" href="/research/">Read working papers</a>
+  </div>
+
+  <aside class="for-researchers"><details><summary>For researchers: Monte Carlo methodology, attestation standards, and conservation invariants</summary><div>
+    <p>This workbench mirrors the deterministic 2,000-trial Python red-team suite in <code>research/ledger_sim/sensorium_ledger_redteam_sim.py</code>. It evaluates 250 trials across eight scenarios using isolated <code>SHA-256</code> random streams with zero phase drift between regimes:</p>
+    <ul>
+      <li><strong>Transduction realism upstream of digitization (<code>RT1</code>):</strong> Optical or acoustic signal injection succeeds in 100% of attacked trials under naive signature trust (81.6% scenario failure). Fusing heterogeneous sensors in monotonic hardware <code>Device Time</code> across orthogonal inertial and barometric kinematics drops failure to 0.0% (Fu &amp; Xu, 2018),<sup><a href="#fn1">1</a></sup> backed by silicon peripheral attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, <code>IETF RATS</code>), optical data diodes, and <code>IEC 61508</code> dead-man relays.</li>
+      <li><strong>Unscheduled spot-escrow and session freshness (<code>RT2</code>, <code>RT3</code>, <code>RT6</code>):</strong> Randomized verification windows cut predictable inspection gaming from 83.2% to 0.4% (Contag et al., 2017).<sup><a href="#fn2">2</a></sup> Session-bound challenger nonces (IETF RFC 9334)<sup><a href="#fn5">5</a></sup> and velocity freezes reduce replay (81.6%) and coerced sweeps (86.0%) to 0.0%.</li>
+      <li><strong>Engineered lineage independence and ring quarantine (<code>RT4</code>, <code>RT8</code>):</strong> Collapsing co-signing witnesses onto separate hardware, firmware, and owner lineages cuts correlated vendor faults from 82.0% to 0.0% (Knight &amp; Leveson, 1986).<sup><a href="#fn3">3</a></sup> Cohesive k-truss checks block 5-node Sybil escrow rings (79.2% to 0.0%).</li>
+      <li><strong>Calibration fairness and disclosure completeness (<code>RT5</code>, <code>RT7</code>):</strong> Demographic calibration gaps route all 206 under-calibrated honest trials to contestable human review with 0.0% unfair slashing (Sjoding et al., 2020).<sup><a href="#fn4">4</a></sup> Append-only local <code>C2PA v2.1</code>/Merkle episodic vaults pair with <code>1:1</code> statutory information fiduciaries (Balkin, 2016)<sup><a href="#fn7">7</a></sup> behind a statistical Markov blanket (Friston, 2013).<sup><a href="#fn8">8</a></sup> Sliding-window Merkle roots, <code>IETF SCITT</code> (<code>RFC 9943</code>) transparency receipts, and expiring Object-Capability leases (Dennis &amp; Van Horn, 1966)<sup><a href="#fn8">8</a></sup> block selective omissions (79.2% to 0.0%; Milgrom, 1981)<sup><a href="#fn6">6</a></sup> across polycentric commons governance (Ostrom, 2010)<sup><a href="#fn9">9</a></sup> with zero private bytes exposed across 4.4 MB vaulted.</li>
+    </ul>
+    <p>Within our five-primitive sociotechnical architecture, heterogeneous wearable and room sensors form a multimodal egocentric and ambient perceptual sensorium fused locally in monotonic hardware <code>Device Time</code> with self-assessed observation confidence. Silicon peripheral attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, <code>IETF RATS</code> RFC 9334), an optical data diode, and <code>IEC 61508</code> dead-man relays isolate physical actuators. Local telemetry writes into an append-only <code>C2PA</code> and Merkle episodic memory vault (Endel Tulving; Tulving, 1972) bound by transduction realism (<em>Signed Is Not True</em> across the analog hole; Kevin Fu and Wenyuan Xu; Fu &amp; Xu, 2018). A monogamous <code>1:1</code> principal-bound personal cognitive model and cybernetic exocortex (Joscha Bach; Bach, 2009) grounded in the Extended Mind thesis (Andy Clark and David Chalmers; Clark &amp; Chalmers, 1998) and the Good Regulator theorem (Conant &amp; Ashby, 1970) applies interventional causal models <code>do(x)</code> (Pearl, 2009) and compiler-trust reflection proofs (Thompson, 1984) as a statutory information fiduciary (Jack Balkin; Balkin, 2016), preserving unassisted competence over the Private Autobiographical Ledger.</p>
+    <p>Across the personal Markov blanket boundary (Karl Friston; Friston, 2010; Friston, 2013), external disclosures require time-bounded Object-Capability lease gates (Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966), selective zero-knowledge (<code>ZK</code>) sequence proofs, independent-class Byzantine sensor corroboration (<code>k &gt;= 3f + 1</code>; Lamport, Shostak &amp; Pease, 1982), and signed <code>IETF SCITT</code> (<code>RFC 9943</code>) transparency receipts on the Public Attestation &amp; Escrow Ledger. Those verified sequence receipts couple sovereign dyads to the Wide Network Ledger for Universal Basic Services, merit-bonded commons tasks, invisible-labor upkeep recognition (Jacob Meluso; Meluso et al., 2022), countercyclical reciprocal mutual credit (James Stodder; Stodder, 2009), frontier-lab overlays (Bracale Syrnikov et al., 2026), polycentric self-rule (Elinor Ostrom; Ostrom, 1990; Ostrom, 2010), and statutory Meidner cooperative equity (Rudolf Meidner; Meidner, 1978).</p>
+  </div></details></aside>
+
+  <section class="footnotes">
+    <ol>
+      <li id="fn1">Kevin Fu and Wenyuan Xu, "Risks of trusting the physics of sensors," <em>Communications of the ACM</em>, vol. 61, no. 5 (2018), <a href="https://doi.org/10.1145/3176402">doi.org/10.1145/3176402</a>.</li>
+      <li id="fn2">Moritz Contag, Guo Li, Andre Pawlowski, Felix Domke, Kirill Levchenko, Thorsten Holz, and Stefan Savage, "How They Did It: An Analysis of Emission Defeat Devices in Modern Automobiles," <em>IEEE Symposium on Security and Privacy</em> (2017), <a href="https://doi.org/10.1109/SP.2017.66">doi.org/10.1109/SP.2017.66</a>.</li>
+      <li id="fn3">John C. Knight and Nancy G. Leveson, "An Experimental Evaluation of the Assumption of Independence in Multiversion Programming," <em>IEEE Transactions on Software Engineering</em>, vol. SE-12, no. 1 (1986), <a href="https://doi.org/10.1109/TSE.1986.6312924">doi.org/10.1109/TSE.1986.6312924</a>.</li>
+      <li id="fn4">Michael W. Sjoding, Robert P. Dickson, Theodore J. Iwashyna, Steven E. Gay, and Thomas S. Valley, "Racial Bias in Pulse Oximetry Measurement," <em>New England Journal of Medicine</em>, vol. 383, no. 25 (2020), <a href="https://doi.org/10.1056/NEJMc2029240">doi.org/10.1056/NEJMc2029240</a>.</li>
+      <li id="fn5">Henk Birkholz, Dave Thaler, Michael Richardson, Ned Smith, and Wei Pan, <em>Remote ATtestation procedureS (RATS) Architecture</em>, IETF RFC 9334 (2023), <a href="https://www.rfc-editor.org/rfc/rfc9334">rfc-editor.org/rfc/rfc9334</a>.</li>
+      <li id="fn6">Paul R. Milgrom, "Good News and Bad News: Representation Theorems and Applications," <em>The Bell Journal of Economics</em>, vol. 12, no. 2 (1981), <a href="https://doi.org/10.2307/3003562">doi.org/10.2307/3003562</a>.</li>
+      <li id="fn7">Jack M. Balkin, "Information Fiduciaries and the First Amendment," <em>UC Davis Law Review</em>, vol. 49, no. 4 (2016), <a href="https://lawreview.law.ucdavis.edu/archives/49/4/information-fiduciaries-and-first-amendment">lawreview.law.ucdavis.edu</a>; Coalition for Content Provenance and Authenticity, <em>C2PA Technical Specification v2.1</em> (2024), <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html">c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html</a>.</li>
+      <li id="fn8">Karl Friston, "Life as we know it," <em>Journal of the Royal Society Interface</em>, vol. 10, no. 86 (2013), <a href="https://doi.org/10.1098/rsif.2013.0475">doi.org/10.1098/rsif.2013.0475</a>; Jack B. Dennis and Earl C. Van Horn, "Programming semantics for multiprogrammed computations," <em>Communications of the ACM</em>, vol. 9, no. 3 (1966), <a href="https://doi.org/10.1145/365230.365252">doi.org/10.1145/365230.365252</a>; Henk Birkholz et al., <em>Supply Chain Integrity, Transparency, and Trust (SCITT) Architecture</em>, IETF RFC 9943 (2026), <a href="https://www.rfc-editor.org/rfc/rfc9943">rfc-editor.org/rfc/rfc9943</a>.</li>
+      <li id="fn9">Elinor Ostrom, "Beyond Markets and States: Polycentric Governance of Complex Economic Systems," <em>American Economic Review</em>, vol. 100, no. 3 (2010), <a href="https://doi.org/10.1257/aer.100.3.641">doi.org/10.1257/aer.100.3.641</a>.</li>
+    </ol>
+  </section>
+</div>
+</section>

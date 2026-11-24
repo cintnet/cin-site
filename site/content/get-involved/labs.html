@@ -1,0 +1,305 @@
+---
+title: For AI labs
+heading: For people at AI labs
+eyebrow: Get involved
+description: Practical steps AI labs can take so people can see what agents do in their name, and how we can help.
+reader: Researchers, engineers, safety and policy staff at companies and institutes building AI systems.
+takeaway: Practical, low-cost steps labs can take toward accountable agents, and how CIN can help.
+template: page
+section: get-involved
+lede: Most people building AI want it to go well. We're not here to cast anyone as the villain. A few practical steps you can ship now would make a real difference.
+---
+<div class="prose wrap-narrow">
+<p class="big">In the early days of aviation, every aircraft maker built its own cockpit gauges, radio frequencies, and landing rules. Pilots switching planes misread dials in bad weather, and competing airlines felt pressured to fly into storms so they wouldn't lose a mail contract. Aviation became safe only when engineers, pilots, and regulators agreed on shared flight recorders, standard transponders, and weather minimums that applied to every carrier alike.</p>
+
+<p>People working inside frontier AI labs face a similar bind today. Most researchers, safety engineers, and policy staff want the systems they build to remain honest, steerable, and genuinely helpful to the public. Yet when every lab invents its own private logs and races a quarterly release clock, individual goodwill gets squeezed by competitive pressure.</p>
+
+<p>That is why shared, verifiable standards help conscientious lab teams as much as they help the public. When every ship paints the same load line on its hull, no captain has to gamble with safety just to stay in business.</p>
+
+<h2>Six practical steps a lab team can ship now</h2>
+
+<p><strong>1. Put a licence plate and a receipt on every outward agent action.</strong> When your model calls an external tool, sends an email, or books a transaction, don't let it act as an unmarked ghost. Attach a signed envelope stating which user or organisation authorised the task and what narrow lease it received. Pair that envelope with a tamper-evident receipt the user can keep on their own device. Backing open workload-identity standards and attested capability leases makes this interoperable across labs.<sup><a href="#fn1">1</a>,<a href="#fn6">6</a></sup></p>
+
+<p><strong>2. Separate untrusted reading from tool execution.</strong> An agent that browses the open web or reads incoming messages in the same privileged loop that controls bank transfers or email is an accident waiting to happen. Treat incoming text like mail arriving at a quarantine desk: parse and summarise it inside an unprivileged sandbox. Require explicit, user-visible capability checks before any external tool fires.<sup><a href="#fn4">4</a></sup></p>
+
+<p><strong>3. Measure and bound long-horizon autonomy, not just single-turn chat.</strong> A model that is polite in a three-turn conversation can still drift badly on the twelfth step of a multi-hour software errand. Extend your frontier safety frameworks to measure autonomous task horizons and multi-agent interaction risks. Build automatic checkpoint pauses where the agent must renew its lease with a human principal.<sup><a href="#fn2">2</a></sup></p>
+
+<p><strong>4. Train and reward honest uncertainty over confident bluffing.</strong> Today, many post-training benchmarks still reward models for guessing an answer when they should say <em>I don't know, and here is what we would need to check</em>. Like a country doctor who orders a lab swab before prescribing, an assistant that states its uncertainty plainly and pauses before irreversible actions is far safer than one trained to sound polished.<sup><a href="#fn5">5</a></sup></p>
+
+<p><strong>5. Protect independent red-teaming from pre-publication vetoes.</strong> Internal evaluations are essential, but every kitchen smells its own cooking differently than a health inspector does. Give independent academic and public-interest evaluators stable, pre-deployment access to frontier models and agent harnesses, with a clear legal safe harbour and the right to publish findings without a commercial veto.<sup><a href="#fn3">3</a></sup></p>
+
+<p><strong>6. Support portable user memory and clean exits.</strong> Users should never feel trapped inside one assistant because years of personal notes and preferences are locked in a proprietary cloud format. Let people export, inspect, and delete their preference profiles on their own hardware anytime, like taking your own medical chart when you change clinics.</p>
+
+<p>When frontier models connect to a 1:1 personal assistant that works on your side with a duty of loyalty, user notes and wearable streams stay in a local memory vault encrypted on your device. Because a noisy sensor reading can be spoofed before signing, physical cutoff relays and human judgment remain in charge.</p>
+
+<figure class="explainer" id="ex-lab-safeguards">
+<style>
+#ex-lab-safeguards {
+  --ex-paper: #FAF3EA;
+  --ex-slip: #F3E8D8;
+  --ex-ink: #131014;
+  --ex-muted: #5E564B;
+  --ex-rule: #D8C8B2;
+  --ex-signal: #0B3F30;
+  --ex-warn: #B85C38;
+  margin: 2.1rem 0;
+  padding: 1.35rem 0 1.15rem;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--ex-rule);
+  border-bottom: 1px solid var(--ex-rule);
+  border-radius: 0;
+  color: var(--ex-ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  #ex-lab-safeguards {
+    --ex-paper: #18161E;
+    --ex-slip: #221F2A;
+    --ex-ink: #EDE6DC;
+    --ex-muted: #A8A095;
+    --ex-rule: #322E3D;
+    --ex-signal: #8FD4B6;
+    --ex-warn: #F09D82;
+  }
+  #ex-lab-safeguards rect[fill="#FAF3EA"],
+  #ex-lab-safeguards rect[fill="#FDFBF7"] { fill: #18161E; stroke: #322E3D; }
+  #ex-lab-safeguards rect[fill="#F4EFEA"],
+  #ex-lab-safeguards rect[fill="#F3E8D8"] { fill: #221F2A; stroke: #322E3D; }
+  #ex-lab-safeguards line[stroke="#E1D3C0"] { stroke: #322E3D; }
+  #ex-lab-safeguards text[fill="#0B3F30"] { fill: #8FD4B6; }
+  #ex-lab-safeguards text[fill="#5E564B"] { fill: #A8A095; }
+  #ex-lab-safeguards text[fill="#3A352F"] { fill: #EDE6DC; }
+}
+:root[data-theme="dark"] #ex-lab-safeguards,
+[data-theme="dark"] #ex-lab-safeguards {
+  --ex-paper: #18161E;
+  --ex-slip: #221F2A;
+  --ex-ink: #EDE6DC;
+  --ex-muted: #A8A095;
+  --ex-rule: #322E3D;
+  --ex-signal: #8FD4B6;
+  --ex-warn: #F09D82;
+}
+:root[data-theme="dark"] #ex-lab-safeguards rect[fill="#FAF3EA"],
+:root[data-theme="dark"] #ex-lab-safeguards rect[fill="#FDFBF7"],
+[data-theme="dark"] #ex-lab-safeguards rect[fill="#FAF3EA"],
+[data-theme="dark"] #ex-lab-safeguards rect[fill="#FDFBF7"] { fill: #18161E; stroke: #322E3D; }
+:root[data-theme="dark"] #ex-lab-safeguards rect[fill="#F4EFEA"],
+:root[data-theme="dark"] #ex-lab-safeguards rect[fill="#F3E8D8"],
+[data-theme="dark"] #ex-lab-safeguards rect[fill="#F4EFEA"],
+[data-theme="dark"] #ex-lab-safeguards rect[fill="#F3E8D8"] { fill: #221F2A; stroke: #322E3D; }
+:root[data-theme="dark"] #ex-lab-safeguards line[stroke="#E1D3C0"],
+[data-theme="dark"] #ex-lab-safeguards line[stroke="#E1D3C0"] { stroke: #322E3D; }
+:root[data-theme="dark"] #ex-lab-safeguards text[fill="#0B3F30"],
+[data-theme="dark"] #ex-lab-safeguards text[fill="#0B3F30"] { fill: #8FD4B6; }
+:root[data-theme="dark"] #ex-lab-safeguards text[fill="#5E564B"],
+[data-theme="dark"] #ex-lab-safeguards text[fill="#5E564B"] { fill: #A8A095; }
+:root[data-theme="dark"] #ex-lab-safeguards text[fill="#3A352F"],
+[data-theme="dark"] #ex-lab-safeguards text[fill="#3A352F"] { fill: #EDE6DC; }
+#ex-lab-safeguards .diagram-desktop { display: block; width: 100%; height: auto; }
+#ex-lab-safeguards .diagram-mobile { display: none; width: 100%; height: auto; }
+#ex-lab-safeguards svg { border-radius: 0; background: var(--ex-paper); border: 0; }
+.ls-badge { fill: var(--ex-slip); stroke: var(--ex-rule); stroke-width: 1; }
+.ls-num { font-size: 11px; font-weight: 700; fill: var(--ex-signal); letter-spacing: 0.05em; }
+.ls-title { font-size: 13px; font-weight: 700; fill: var(--ex-ink); }
+.ls-sub { font-size: 11px; fill: var(--ex-muted); }
+.ls-item { font-size: 11px; fill: var(--ex-ink); }
+#ex-lab-safeguards figcaption {
+  margin-top: 0.9rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--ex-rule);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--ex-muted);
+  text-align: left;
+}
+@media (max-width: 640px) {
+  #ex-lab-safeguards { padding: 1rem 0 0.85rem; }
+  #ex-lab-safeguards .diagram-desktop { display: none; }
+  #ex-lab-safeguards .diagram-mobile { display: block; }
+}
+@media (max-width: 600px) {
+  #ex-lab-safeguards { padding: 1rem 0 0.85rem; }
+  #ex-lab-safeguards .diagram-desktop { display: none; }
+  #ex-lab-safeguards .diagram-mobile { display: block; }
+}
+</style>
+<svg class="diagram-desktop" viewBox="0 0 720 440" role="img" aria-labelledby="ex-lab-safeguards-title ex-lab-safeguards-desc">
+<title id="ex-lab-safeguards-title">Six Practical Safeguards for Accountable AI Agent Deployments</title>
+<desc id="ex-lab-safeguards-desc">A structured technical diagram outlining six operational safeguards for frontier AI laboratories: signed action receipts and short-lived leases, isolated reading sandboxes, bounded autonomous task horizons, calibrated uncertainty rewards, protected third-party red-teaming, and portable user data ownership.</desc>
+<rect x="18" y="14" width="684" height="42" rx="8" fill="#F4EFEA" stroke="#E1D3C0" stroke-width="1.2" />
+<text x="360" y="39" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0B3F30" letter-spacing="0.06em">SIX OPERATIONAL BOUNDARIES · STEERABLE, AUDITABLE, AND BOUNDED AGENTS</text>
+
+<g transform="translate(18, 68)">
+  <rect x="0" y="0" width="216" height="144" rx="8" fill="#FDFBF7" stroke="#E1D3C0" stroke-width="1.2" />
+  <rect class="ls-badge" x="10" y="10" width="196" height="18" rx="4" />
+  <text class="ls-num" x="108" y="23" text-anchor="middle">01 · SIGNED RECEIPTS &amp; LEASES</text>
+  <text class="ls-title" x="12" y="46">Signed receipts &amp; leases</text>
+  <line x1="12" y1="67" x2="204" y2="67" stroke="#E1D3C0" stroke-width="1" />
+  <text class="ls-item" x="12" y="92">• Signed action envelopes &amp; leases</text>
+  <text class="ls-item" x="12" y="116">• Device-held caller receipts</text>
+</g>
+
+<g transform="translate(252, 68)">
+  <rect x="0" y="0" width="216" height="144" rx="8" fill="#FDFBF7" stroke="#E1D3C0" stroke-width="1.2" />
+  <rect class="ls-badge" x="10" y="10" width="196" height="18" rx="4" />
+  <text class="ls-num" x="108" y="23" text-anchor="middle">02 · QUARANTINED READING</text>
+  <text class="ls-title" x="12" y="46">Quarantined reading</text>
+  <line x1="12" y1="67" x2="204" y2="67" stroke="#E1D3C0" stroke-width="1" />
+  <text class="ls-item" x="12" y="92">• Isolated parser sandbox</text>
+  <text class="ls-item" x="12" y="116">• Explicit capability checks</text>
+</g>
+
+<g transform="translate(486, 68)">
+  <rect x="0" y="0" width="216" height="144" rx="8" fill="#FDFBF7" stroke="#E1D3C0" stroke-width="1.2" />
+  <rect class="ls-badge" x="10" y="10" width="196" height="18" rx="4" />
+  <text class="ls-num" x="108" y="23" text-anchor="middle">03 · BOUNDED HORIZONS</text>
+  <text class="ls-title" x="12" y="46">Bounded horizons</text>
+  <line x1="12" y1="67" x2="204" y2="67" stroke="#E1D3C0" stroke-width="1" />
+  <text class="ls-item" x="12" y="92">• Step ceilings &amp; check-in pauses</text>
+  <text class="ls-item" x="12" y="116">• Drift monitors &amp; rollback points</text>
+</g>
+
+<g transform="translate(18, 224)">
+  <rect x="0" y="0" width="216" height="144" rx="8" fill="#FDFBF7" stroke="#E1D3C0" stroke-width="1.2" />
+  <rect class="ls-badge" x="10" y="10" width="196" height="18" rx="4" />
+  <text class="ls-num" x="108" y="23" text-anchor="middle">04 · HONEST CALIBRATION</text>
+  <text class="ls-title" x="12" y="46">Honest calibration</text>
+  <line x1="12" y1="67" x2="204" y2="67" stroke="#E1D3C0" stroke-width="1" />
+  <text class="ls-item" x="12" y="92">• Penalise confident bluffs</text>
+  <text class="ls-item" x="12" y="116">• Reward stating doubt early</text>
+</g>
+
+<g transform="translate(252, 224)">
+  <rect x="0" y="0" width="216" height="144" rx="8" fill="#FDFBF7" stroke="#E1D3C0" stroke-width="1.2" />
+  <rect class="ls-badge" x="10" y="10" width="196" height="18" rx="4" />
+  <text class="ls-num" x="108" y="23" text-anchor="middle">05 · INDEPENDENT RED-TEAMS</text>
+  <text class="ls-title" x="12" y="46">Independent red-teams</text>
+  <line x1="12" y1="67" x2="204" y2="67" stroke="#E1D3C0" stroke-width="1" />
+  <text class="ls-item" x="12" y="92">• Pre-deployment outside access</text>
+  <text class="ls-item" x="12" y="116">• No commercial report vetoes</text>
+</g>
+
+<g transform="translate(486, 224)">
+  <rect x="0" y="0" width="216" height="144" rx="8" fill="#FDFBF7" stroke="#E1D3C0" stroke-width="1.2" />
+  <rect class="ls-badge" x="10" y="10" width="196" height="18" rx="4" />
+  <text class="ls-num" x="108" y="23" text-anchor="middle">06 · PORTABLE USER MEMORY</text>
+  <text class="ls-title" x="12" y="46">Portable user memory</text>
+  <line x1="12" y1="67" x2="204" y2="67" stroke="#E1D3C0" stroke-width="1" />
+  <text class="ls-item" x="12" y="92">• Open export &amp; local storage</text>
+  <text class="ls-item" x="12" y="116">• Direct profile deletion rights</text>
+</g>
+
+<rect x="18" y="380" width="684" height="46" rx="8" fill="#F3E8D8" stroke="#E1D3C0" stroke-width="1.2" />
+<text x="360" y="399" text-anchor="middle" font-size="11" font-weight="700" fill="#0B3F30" letter-spacing="0.05em">INVARIANT: EXPLICIT TIME-BOUNDED PERMISSION LEASES</text>
+<text x="360" y="415" text-anchor="middle" font-size="11" fill="#5E564B">No agent acts without an explicit, time-bounded lease signed by the human or organisation it represents.</text>
+</svg>
+<svg class="diagram-mobile" viewBox="0 0 330 830" role="img" aria-labelledby="ex-lab-safeguards-m-title ex-lab-safeguards-m-desc">
+<title id="ex-lab-safeguards-m-title">Six Practical Safeguards for Accountable AI Agent Deployments (Mobile View)</title>
+<desc id="ex-lab-safeguards-m-desc">A mobile card overview of six practical safeguards for frontier AI laboratories: signed action receipts and short-lived leases, isolated reading sandboxes, bounded autonomous task horizons, calibrated uncertainty rewards, protected third-party red-teaming, and portable user data ownership.</desc>
+<rect x="0" y="0" width="310" height="830" fill="#FAF3EA" />
+<rect x="10" y="12" width="300" height="52" rx="8" fill="#F4EFEA" stroke="#E1D3C0" stroke-width="1.2" />
+<text x="165" y="32" text-anchor="middle" font-size="12" font-weight="700" fill="#0B3F30" letter-spacing="0.05em">SIX PRACTICAL SAFEGUARDS</text>
+<text x="165" y="49" text-anchor="middle" font-size="11" fill="#5E564B">Boundaries that keep agents steerable</text>
+
+<g transform="translate(12, 72)">
+  <rect x="0" y="0" width="306" height="104" rx="8" fill="#FDFBF7" stroke="#E1D3C0" stroke-width="1.2" />
+  <rect class="ls-badge" x="10" y="10" width="286" height="18" rx="4" />
+  <text class="ls-num" x="153" y="23" text-anchor="middle" font-size="11" font-weight="700" fill="#0B3F30">1. A receipt for every action</text>
+  <line x1="14" y1="42" x2="292" y2="42" stroke="#E1D3C0" stroke-width="1" />
+  <text class="ls-item" x="14" y="64" font-size="11.5" fill="#3A352F">• Signed action envelopes and short leases</text>
+  <text class="ls-item" x="14" y="86" font-size="11.5" fill="#3A352F">• Device-held receipts &amp; caller identity</text>
+</g>
+<line x1="165" y1="176" x2="165" y2="185" stroke="#0B3F30" stroke-width="1.5" />
+<polygon points="162,183 168,183 165,188" fill="#0B3F30" />
+
+<g transform="translate(12, 188)">
+  <rect x="0" y="0" width="306" height="104" rx="8" fill="#FDFBF7" stroke="#E1D3C0" stroke-width="1.2" />
+  <rect class="ls-badge" x="10" y="10" width="286" height="18" rx="4" />
+  <text class="ls-num" x="153" y="23" text-anchor="middle" font-size="11" font-weight="700" fill="#0B3F30">2. Read in a separate room</text>
+  <line x1="14" y1="42" x2="292" y2="42" stroke="#E1D3C0" stroke-width="1" />
+  <text class="ls-item" x="14" y="64" font-size="11.5" fill="#3A352F">• Isolated parser sandbox on web inputs</text>
+  <text class="ls-item" x="14" y="86" font-size="11.5" fill="#3A352F">• Explicit capability checks on tools</text>
+</g>
+<line x1="165" y1="292" x2="165" y2="301" stroke="#0B3F30" stroke-width="1.5" />
+<polygon points="162,299 168,299 165,304" fill="#0B3F30" />
+
+<g transform="translate(12, 304)">
+  <rect x="0" y="0" width="306" height="104" rx="8" fill="#FDFBF7" stroke="#E1D3C0" stroke-width="1.2" />
+  <rect class="ls-badge" x="10" y="10" width="286" height="18" rx="4" />
+  <text class="ls-num" x="153" y="23" text-anchor="middle" font-size="11" font-weight="700" fill="#0B3F30">3. Limits on long tasks</text>
+  <line x1="14" y1="42" x2="292" y2="42" stroke="#E1D3C0" stroke-width="1" />
+  <text class="ls-item" x="14" y="64" font-size="11.5" fill="#3A352F">• Step ceilings and human check-in pauses</text>
+  <text class="ls-item" x="14" y="86" font-size="11.5" fill="#3A352F">• Multi-step drift monitors and rollbacks</text>
+</g>
+<line x1="165" y1="408" x2="165" y2="417" stroke="#0B3F30" stroke-width="1.5" />
+<polygon points="162,415 168,415 165,420" fill="#0B3F30" />
+
+<g transform="translate(12, 420)">
+  <rect x="0" y="0" width="306" height="104" rx="8" fill="#FDFBF7" stroke="#E1D3C0" stroke-width="1.2" />
+  <rect class="ls-badge" x="10" y="10" width="286" height="18" rx="4" />
+  <text class="ls-num" x="153" y="23" text-anchor="middle" font-size="11" font-weight="700" fill="#0B3F30">4. Reward saying I don't know</text>
+  <line x1="14" y1="42" x2="292" y2="42" stroke="#E1D3C0" stroke-width="1" />
+  <text class="ls-item" x="14" y="64" font-size="11.5" fill="#3A352F">• Penalise confident bluffs and guesses</text>
+  <text class="ls-item" x="14" y="86" font-size="11.5" fill="#3A352F">• Reward stating doubt before actions</text>
+</g>
+<line x1="165" y1="524" x2="165" y2="533" stroke="#0B3F30" stroke-width="1.5" />
+<polygon points="162,531 168,531 165,536" fill="#0B3F30" />
+
+<g transform="translate(12, 536)">
+  <rect x="0" y="0" width="306" height="104" rx="8" fill="#FDFBF7" stroke="#E1D3C0" stroke-width="1.2" />
+  <rect class="ls-badge" x="10" y="10" width="286" height="18" rx="4" />
+  <text class="ls-num" x="153" y="23" text-anchor="middle" font-size="11" font-weight="700" fill="#0B3F30">5. Protect outside testers</text>
+  <line x1="14" y1="42" x2="292" y2="42" stroke="#E1D3C0" stroke-width="1" />
+  <text class="ls-item" x="14" y="64" font-size="11.5" fill="#3A352F">• Independent red teams before launch</text>
+  <text class="ls-item" x="14" y="86" font-size="11.5" fill="#3A352F">• No commercial veto on published findings</text>
+</g>
+<line x1="165" y1="640" x2="165" y2="649" stroke="#0B3F30" stroke-width="1.5" />
+<polygon points="162,647 168,647 165,652" fill="#0B3F30" />
+
+<g transform="translate(12, 652)">
+  <rect x="0" y="0" width="306" height="104" rx="8" fill="#FDFBF7" stroke="#E1D3C0" stroke-width="1.2" />
+  <rect class="ls-badge" x="10" y="10" width="286" height="18" rx="4" />
+  <text class="ls-num" x="153" y="23" text-anchor="middle" font-size="11" font-weight="700" fill="#0B3F30">6. Take your memory with you</text>
+  <line x1="14" y1="42" x2="292" y2="42" stroke="#E1D3C0" stroke-width="1" />
+  <text class="ls-item" x="14" y="64" font-size="11.5" fill="#3A352F">• Open export formats and local storage</text>
+  <text class="ls-item" x="14" y="86" font-size="11.5" fill="#3A352F">• Direct user deletion rights on profiles</text>
+</g>
+
+<rect x="10" y="768" width="300" height="50" rx="8" fill="#F3E8D8" stroke="#E1D3C0" stroke-width="1.2" />
+<text x="165" y="788" text-anchor="middle" font-size="11" font-weight="700" fill="#0B3F30" letter-spacing="0.05em">SHORT-LIVED PERMISSION LEASES</text>
+<text x="165" y="804" text-anchor="middle" font-size="11" fill="#5E564B">Every action needs an explicit lease</text>
+</svg>
+<figcaption>Six practical steps frontier labs can take so people can see, bound, and steer what agents do in their name.</figcaption>
+</figure>
+
+<aside class="for-researchers"><details><summary>For researchers</summary><div><p>For system-level architectures that defeat indirect prompt injection via control-data separation and capability-based policies, see CaMeL (Debenedetti et al., 2025, <a href="https://arxiv.org/abs/2503.18813">arXiv:2503.18813</a>) and Object-Capability security models (capability lease; Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966<sup><a href="#fn7">7</a></sup>). For short-lived execution leases and tool admission gates under remote tool protocols, see ACLE-MCP (Ding et al., 2026<sup><a href="#fn6">6</a></sup>). For open workload credentials and scoped multi-system identity federation, see IETF WIMSE (Salowey et al., 2026<sup><a href="#fn1">1</a></sup>). For empirical evaluations of sandbagging and strategic deception under safety evaluations, see van der Weij et al. (2024) and Apollo Research (2024–2026<sup><a href="#fn3">3</a></sup>). Frontier models interface with a monogamous <code>1:1</code> personal cognitive model (cybernetic exocortex; Joscha Bach; Bach; Conant &amp; Ashby, 1970, Good Regulator theorem; Andy Clark and David Chalmers; Clark &amp; Chalmers, 1998, Extended Mind; multiscale collective intelligence, Michael Levin; Levin, 2019). It pairs with a local <code>C2PA</code> and <code>Merkle</code> episodic memory vault (Endel Tulving; Tulving, 1972; C2PA v2.1<sup><a href="#fn9">9</a></sup>) bound by a statutory information fiduciary duty of loyalty (Jack Balkin; Balkin, 2016<sup><a href="#fn8">8</a></sup>) that preserves causal <code>do(x)</code> unassisted competence (Pearl, 2009). A personal Markov blanket (Karl Friston; Friston, 2010; Friston, 2013<sup><a href="#fn7">7</a></sup>) separates the Private Autobiographical Ledger from the Public Attestation &amp; Escrow Ledger (Public Attestation and Escrow Ledger) using selective zero-knowledge (<code>ZK</code>) proofs, <code>IETF SCITT</code> transparency receipts (<code>RFC 9943</code><sup><a href="#fn7">7</a></sup>), and independent-class <code>k &gt;= 3f + 1</code> Byzantine corroboration. Across the multimodal egocentric and ambient perceptual sensorium, hardware-timed (<code>Device Time</code>) peripheral attestation with self-assessed observation confidence (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, and <code>IETF RATS</code> under <code>RFC 9334</code><sup><a href="#fn9">9</a></sup>), an optical data diode (<code>optical data diodes</code>), and physical dead-man safety relays (<code>IEC 61508</code>) pair with transduction realism (<em>Signed Is Not True</em> across the analog hole; Thompson, 1984; Kevin Fu and Wenyuan Xu; Fu &amp; Xu, 2018<sup><a href="#fn9">9</a></sup>). On the polycentric collective coordination substrate and Wide Network Ledger, commons governance supports Universal Basic Services, merit-bonded tasks, reciprocal mutual credit (James Stodder; Stodder, 2009), and invisible maintenance recognition (Jacob Meluso; Meluso et al., 2024). It also coordinates frontier-lab overlays and statutory cooperative share pools (Elinor Ostrom; Ostrom, 1990<sup><a href="#fn10">10</a></sup>; Rudolf Meidner; Meidner, 1978<sup><a href="#fn10">10</a></sup>) while bounding multi-agent strategic failure modes (Bracale Syrnikov et al., 2026), verifiable in <a href="/labs/protocol-inspector/">/labs/protocol-inspector/</a>, <a href="/labs/sensor-boundary/">/labs/sensor-boundary/</a>, <a href="/labs/shared-horizon/">/labs/shared-horizon/</a>, <a href="/labs/lab-overlays/">/labs/lab-overlays/</a>, and <a href="/labs/lab-papers/">/labs/lab-papers/</a>.</p></div></details></aside>
+
+<h2>How your organisation is evaluated in Shared Horizon</h2>
+
+<p>In our <a href="/labs/shared-horizon/">Shared Horizon</a> institutional explorer, we evaluate over three hundred organisations, including frontier labs, cloud providers, open-weight builders, and safety institutes. Each profile looks at five public-interest dimensions: human oversight, provenance receipts, decentralisation, independent safety evaluation, and democratic voice.</p>
+
+<p>Those profiles are a working map of concrete next moves, and we update them. Perhaps your team has shipped a new provenance standard, opened an evaluation harness, or updated a responsible scaling policy that our dossier missed. Send us the primary link and we will update the record openly.</p>
+
+<h2>What we can offer your team</h2>
+
+<p>We have no commercial product to sell, no venture investors to please, and no stake in which company wins a benchmark race. Our team can review draft specifications for workload identity, capability leases, and multi-agent failure harnesses.</p>
+
+<p>Across the 90 labs and safety groups tracked in our lab overlays, we also test how a household's private ledger stays separate from a public ledger on an accountable network for software agents. That separation lets consenting people coordinate public tasks, mutual credit clearing, and cooperative share rules from the bottom up.</p>
+
+<p>Write to us at <a href="mailto:contact@collectiveintelligencenetwork.org">contact@collectiveintelligencenetwork.org</a>. A person reads every message, and together we can build cockpit instruments that keep people safely at the controls.</p>
+
+<section class="footnotes">
+<p id="fn1">1. J. Salowey, Y. Rosomakho, and H. Tschofenig, <a href="https://datatracker.ietf.org/doc/draft-ietf-wimse-arch/"><em>Workload Identity in a Multi System Environment (WIMSE) Architecture</em></a>, IETF Internet-Draft (2026); M. Jones et al., <a href="https://datatracker.ietf.org/doc/draft-ietf-wimse-workload-creds/"><em>WIMSE Workload Credentials</em></a>, IETF Internet-Draft (2024–2026); and A. Schwenkschuster and Y. Rosomakho, <a href="https://datatracker.ietf.org/doc/draft-ietf-wimse-workload-identity-practices/"><em>Workload Identity Practices</em></a>, IETF Internet-Draft (2026).</p>
+<p id="fn2">2. Thomas Kwa et al. (METR), <a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/"><em>Measuring AI Ability to Complete Long Tasks</em></a>, arXiv:2503.14499 (March 2025).</p>
+<p id="fn3">3. UK AI Safety Institute, <a href="https://www.gov.uk/government/organisations/ai-safety-institute"><em>Frontier AI Task and Deployment Evaluations</em></a> (2024–2026); and Apollo Research, <a href="https://www.apolloresearch.ai/research"><em>Auditing Agentic Deception and Scheming</em></a> (2024–2026).</p>
+<p id="fn4">4. Edoardo Debenedetti et al., <a href="https://arxiv.org/abs/2503.18813"><em>CaMeL: Defeating Prompt Injection via Capability-Based Access Control</em></a>, arXiv:2503.18813 (March 2025).</p>
+<p id="fn5">5. Dylan Hadfield-Menell, Stuart J. Russell, Pieter Abbeel, and Anca Dragan, <a href="https://arxiv.org/abs/1606.03137"><em>Cooperative Inverse Reinforcement Learning</em></a>, NeurIPS (2016), arXiv:1606.03137.</p>
+<p id="fn6">6. Zhiyang Ding, Yang Luo, Guangpu Chen, Qingni Shen, and Zhonghai Wu, <a href="https://arxiv.org/abs/2609.02690"><em>ACLE-MCP: Attested Capability Leases for Execution-Time Trust in Remote LLM Tool Use</em></a>, arXiv:2609.02690 (September 2026).</p>
+<p id="fn7">7. Jack B. Dennis and Earl C. Van Horn, <a href="https://doi.org/10.1145/365230.365252">"Programming Semantics for Multiprogrammed Computations,"</a> <em>Communications of the ACM</em>, Vol. 9, No. 3 (1966), pp. 143–155; Karl Friston, <a href="https://doi.org/10.1098/rsif.2013.0475">"Life as We Know It,"</a> <em>Journal of the Royal Society Interface</em>, Vol. 10, No. 86 (2013); and H. Birkholz et al., <a href="https://www.rfc-editor.org/rfc/rfc9943"><em>Supply Chain Integrity, Transparency, and Trust (SCITT) Architecture</em></a>, IETF RFC 9943 (2026).</p>
+<p id="fn8">8. Jack M. Balkin, <a href="https://lawreview.law.ucdavis.edu/archives/49/4/information-fiduciaries-and-first-amendment">"Information Fiduciaries and the First Amendment,"</a> <em>UC Davis Law Review</em>, Vol. 49, No. 4 (2016), pp. 1183–1234; Andy Clark and David J. Chalmers, "The Extended Mind," <em>Analysis</em> 58, no. 1 (1998): 7–19, <a href="https://doi.org/10.1093/analys/58.1.7">doi:10.1093/analys/58.1.7</a>; Karl Friston, "The Free-Energy Principle: A Unified Brain Theory?" <em>Nature Reviews Neuroscience</em> 11, no. 2 (2010): 127–138; Judea Pearl, <em>Causality: Models, Reasoning, and Inference</em>, 2nd ed. (Cambridge University Press, 2009); Ken Thompson, "Reflections on Trusting Trust," <em>Communications of the ACM</em> 27, no. 8 (1984): 761–763; Roger C. Conant and W. Ross Ashby, "Every Good Regulator of a System Must Be a Model of That System," <em>International Journal of Systems Science</em> 1, no. 2 (1970): 89–97; and Niccolò Bracale Syrnikov et al., "STRATEGIC: Game-Theoretic Evaluation of Multi-Agent LLM Systems" (2026).</p>
+<p id="fn9">9. Kevin Fu and Wenyuan Xu, <a href="https://doi.org/10.1145/3176402">"Risks of Trusting the Physics of Sensors,"</a> <em>Communications of the ACM</em>, Vol. 61, No. 2 (2018), pp. 20–23; Henk Birkholz, Dave Thaler, Michael Richardson, Ned Smith, and Wei Pan, <a href="https://www.rfc-editor.org/rfc/rfc9334"><em>Remote ATtestation procedureS (RATS) Architecture</em></a>, IETF RFC 9334 (2023); and Coalition for Content Provenance and Authenticity, <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html"><em>C2PA Technical Specification</em>, v2.1</a> (2024).</p>
+<p id="fn10">10. Elinor Ostrom, <a href="https://doi.org/10.1017/CBO9780511807763"><em>Governing the Commons: The Evolution of Institutions for Collective Action</em></a> (Cambridge University Press, 1990); and Rudolf Meidner, <a href="https://archive.org/details/employeeinvestme0000meid"><em>Employee Investment Funds: An Approach to Collective Capital Formation</em></a> (George Allen &amp; Unwin, 1978).</p>
+</section>
+</div>

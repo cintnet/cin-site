@@ -1,0 +1,233 @@
+---
+title: Locking an errand to your touch
+description: When an AI assistant runs a sensitive chore, remote services need proof you approved it. Learn why that proof should never require giving away your fingerprint.
+reader: Software engineers, identity architects, and curious readers exploring how personal AI assistants can act safely on human instructions.
+takeaway: Never upload raw biometric scans to verify human authority. Use local biometric cryptosystems that combine sensor readings with task scopes to produce safe, non-invertible proofs on your device.
+template: article
+date: 2026-11-08
+order: 52
+category: Seeing
+minutes: 6
+image: post-locking-an-errand-to-your-touch.jpg
+image_alt: A delicate pastel watercolor vignette of a vintage brass combination lock resting on an aged wooden potting bench beside dried lavender sprigs on warm cream paper.
+lede: Services that want proof you approved an AI agent's action should never receive your raw fingerprint or face scan. A password can be changed after a leak, but a fingerprint can't. We propose on-device schemes that combine the biometric reading with the specific task and send out only a proof that can't be turned back into the biometric.
+---
+<p>As AI agents buy tickets and sign agreements on people's behalf, services want proof that a real person approved the action. A common proposal is to upload a face scan, iris image or fingerprint to a central database and match against it. That turns the database into a target: once it leaks, those credentials are compromised for life, because you can't issue a replacement thumb.</p>
+
+<h2>The honey pot on the server</h2>
+
+<p>Uploading raw biometric scans creates an irreversible hazard. Passwords and digital keys can be rotated when a server leaks. If an attacker steals your API key, you revoke it and create another in thirty seconds. But you cannot revoke your thumb. You cannot issue a replacement retina after a company database spills onto the dark web.</p>
+
+<p>Centralized biometric registries turn ordinary platforms into high-value honey pots. Once an attacker breaches the central database, they obtain permanent credentials for thousands of individuals. Worse still, ambient bearer credentials allow rogue software to replay past approvals without fresh human consent.</p>
+
+<div class="callout"><p class="label">What this means</p><p>You can change a compromised password in seconds. You cannot change your fingerprint or your face after a remote server leaks them.</p></div>
+
+<h2>Locking the key inside the sensor</h2>
+
+<p>In recent security research, investigators demonstrated a cleaner path for autonomous systems.<sup><a href="#fn1">1</a></sup> Rather than transmitting biometric data to distant servers, the entire verification happens on the user's personal hardware.</p>
+
+<p>The system uses an on-device biometric lock.<sup><a href="#fn2">2</a></sup> When you press your thumb against your phone or laptop, the physical sensor never outputs your raw biometric template. Instead, it measures subtle ridge patterns with slight natural noise.</p>
+
+<p>The local operating system combines that physical reading with a random cryptographic secret and an error-correcting code. It produces helper data that binds the secret to your biometric imprint. This helper data is mathematically non-invertible: an adversary looking at the helper data cannot reconstruct your fingerprint.</p>
+
+<p>When you want your assistant to execute a specific task, your physical touch releases that local key. The key signs a narrow, short-lived delegation voucher for the assistant. The assistant carries that voucher to the remote merchant or service. The merchant verifies the signature using public cryptography, without ever seeing or storing your biometric features.<sup><a href="#fn1">1</a></sup></p>
+
+<figure class="explainer" id="ex-biometric-binding">
+  <style>
+    #ex-biometric-binding {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-biometric-binding svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-biometric-binding .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-biometric-binding .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-biometric-binding .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-biometric-binding .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-biometric-binding .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-biometric-binding .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-biometric-binding .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-biometric-binding .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-biometric-binding .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-biometric-binding figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-biometric-binding .ex-canvas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #ex-biometric-binding .ex-canvas svg {
+        min-width: 540px;
+      }
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg viewBox="0 0 720 390" role="img" aria-labelledby="ex-bio-title ex-bio-desc">
+      <title id="ex-bio-title">Comparing Centralized Biometric Exposure with Local Cryptographic Binding</title>
+      <desc id="ex-bio-desc">A side-by-side architectural diagram contrasting vulnerable centralized biometric upload schemes against secure on-device fuzzy commitment delegation that keeps raw templates strictly inside local hardware.</desc>
+      <line x1="360" y1="14" x2="360" y2="378" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="14" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="27" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">CENTRAL BIOMETRIC UPLOAD</text>
+        <text x="14" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Raw templates sent to remote cloud</text>
+        <line x1="14" y1="50" x2="348" y2="50" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <line x1="22" y1="64" x2="22" y2="260" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+        <rect x="19" y="62" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Local Sensor Scan</text>
+        <text x="34" y="85" font-size="11" fill="var(--ex-muted)">Reads raw fingerprint or iris</text>
+        <line x1="34" y1="148" x2="348" y2="148" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="158" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="165" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Network Upload</text>
+        <text x="34" y="181" font-size="11" fill="var(--ex-muted)">Template crosses remote wire</text>
+        <line x1="34" y1="244" x2="348" y2="244" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="254" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="261" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Cloud Honey Pot</text>
+        <text x="34" y="277" font-size="11" fill="var(--ex-muted)">Stored in central registry</text>
+        <line x1="14" y1="353" x2="348" y2="353" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="14" y="361" width="5" height="5" fill="var(--ex-warn)"/>
+        <text x="25" y="366" font-size="11" font-weight="700" fill="var(--ex-warn)">Hazard: Breached biometrics never rotate</text>
+      </g>
+      <g>
+        <rect x="374" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="387" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">LOCAL BIOMETRIC BINDING</text>
+        <text x="374" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Hardware enclave signs task pass</text>
+        <line x1="374" y1="50" x2="706" y2="50" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <line x1="382" y1="64" x2="382" y2="260" stroke="var(--ex-signal)" stroke-width="1"/>
+        <rect x="379" y="62" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="394" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Local Touch Only</text>
+        <text x="394" y="85" font-size="11" fill="var(--ex-muted)">Raw template stays sealed</text>
+        <line x1="394" y1="148" x2="706" y2="148" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="379" y="158" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="394" y="165" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Scoped Task Pass</text>
+        <text x="394" y="181" font-size="11" fill="var(--ex-muted)">Binds exact cap &amp; deadline</text>
+        <line x1="394" y1="244" x2="706" y2="244" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="379" y="254" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="394" y="261" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Signature Check</text>
+        <text x="394" y="277" font-size="11" fill="var(--ex-muted)">Verifies proof, zero biometrics</text>
+        <line x1="374" y1="353" x2="706" y2="353" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="374" y="361" width="5" height="5" fill="var(--ex-signal)"/>
+        <text x="385" y="366" font-size="11" font-weight="700" fill="var(--ex-signal)">Defense: Zero remote biometric exposure</text>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Centralized biometric vault</span>
+      <div class="ex-spec-body">Uploading raw iris or fingerprint templates creates an irreversible breach target because human biometrics cannot be reissued.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">On-device cryptographic pass</span>
+      <div class="ex-spec-body">Unlocks a sealed hardware enclave key locally to sign a short-lived, non-replayable task pass without exporting raw biometrics.</div>
+    </div>
+  </div>
+  <figcaption>Figure 1: Contrasting centralized biometric storage hazards against on-device biometric cryptosystems that generate task-bounded delegation proofs.</figcaption>
+</figure>
+
+<h2>Three safeguards for touch-bound agents</h2>
+
+<p>Binding an assistant to physical presence requires three firm engineering safeguards.</p>
+
+<p>First, keep the biometric template inside the secure enclave. Raw sensor readings must never cross process boundaries, let alone travel across networks. The hardware enclave uses the biometric match only to unlock a localized signing credential.<sup><a href="#fn1">1</a></sup></p>
+
+<p>Second, bind every proof to a single task envelope. When you touch the sensor to authorize a purchase, that signature must name the exact merchant, maximum spend limit, and expiration deadline. If an attacker intercepts the signature, they cannot reuse it for a different transaction or a broader scope.<sup><a href="#fn3">3</a></sup></p>
+
+<p>Third, respect non-biometric community paths. Biometrics are not appropriate for every human or every civic group. When community platforms need to separate real residents from automated bot swarms, they should rely on peer trust networks and mutual vouches rather than demanding iris scans.<sup><a href="#fn4">4</a></sup> Physical biometric binding belongs on personal hardware where you control the sensor.</p>
+
+<h2>Honest limits</h2>
+
+<p>Biometric cryptosystems solve the custody dilemma. They let you prove human intent without handing over your biological markers. But physical security still has limits.</p>
+
+<p>A secure sensor cannot tell whether you were tricked into tapping your screen. If an assistant summarizes an agreement misleadingly, a user might touch the sensor without understanding the hidden commitments. Cryptography ensures non-repudiation, but clear interfaces and human comprehension remain irreplaceable.</p>
+
+<p>Hardware sensors also experience natural wear and environmental variability. A sweaty finger or a scratched camera lens introduces noise that error-correcting codes must tolerate without lowering security thresholds. Modern on-device biometric locks handle this balance well, though fallback recovery methods must remain private and accessible.</p>
+
+<p>By locking authority to local touch rather than central servers, we keep human sovereignty at the center of autonomous software. You can inspect verified implementation patterns and civic safeguard cards in our <a href="/labs/shared-horizon/">Shared Horizon action library</a>.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers: biometric cryptosystems, fuzzy commitments, and delegation invariants</summary>
+    <div>
+      <p>This article synthesizes empirical benchmarks, biometric cryptosystems, and authorization protocols for autonomous agent delegation:</p>
+      <ul>
+        <li><strong>Biometric Agent Delegation Binding:</strong> Benjamin, Jain, and Nandakumar (arXiv:2608.04292, August 2026) developed BIND, demonstrating cryptographic binding between human biometrics and autonomous agent authority scopes using on-device fuzzy commitment schemes. Their framework generates non-repudiable delegation proofs without transmitting raw biometric templates to remote servers or centralized registries.</li>
+        <li><strong>Fuzzy Commitment Schemes:</strong> Juels and Wattenberg (ACM CCS, 1999) introduced the fuzzy commitment scheme, formalizing error-tolerant cryptographic binding where biometric feature vectors unlock cryptographic keys via error-correcting codes and non-invertible helper data.</li>
+        <li><strong>Capability Foundations &amp; Least Privilege:</strong> Dennis and Van Horn (CACM, 1966) and Saltzer and Schroeder (IEEE Proceedings, 1975) established the foundational semantics of capabilities and least privilege: subjects must hold only the minimal authority necessary for task execution, enforced through complete mediation.</li>
+        <li><strong>Sybil Defense Without Biometrics:</strong> Douceur (IPTPS, 2002) showed that without a trusted identity authority, one entity can always pose as many. Ramji et al. (arXiv:2611.05586) show that ratings derived from flows through an existing trusted payment network are about 23 times harder to manipulate than standard collaborative filtering, without biometrics.</li>
+        <li><strong>Shared Horizon Integration:</strong> Builders can inspect verified action cards in <a href="/labs/shared-horizon/">Shared Horizon</a> covering biometric delegation binding and community participation verification without surveillance.</li>
+      </ul>
+    </div>
+  </details>
+</aside>
+
+<section class="footnotes">
+  <ol>
+    <li id="fn1">J. G. Benjamin, A. K. Jain, and K. Nandakumar, <a href="https://arxiv.org/abs/2608.04292">&ldquo;Binding Biometrics with AI Agent Identifiers for Delegation of Authority,&rdquo;</a> <em>arXiv preprint arXiv:2608.04292</em> (August 2026).</li>
+    <li id="fn2">A. Juels and M. Wattenberg, <a href="https://doi.org/10.1145/319709.319714">&ldquo;A fuzzy commitment scheme,&rdquo;</a> in <em>Proceedings of the 6th ACM Conference on Computer and Communications Security</em> (1999), 28&ndash;36.</li>
+    <li id="fn3">J. B. Dennis and E. C. Van Horn, <a href="https://doi.org/10.1145/365230.365252">&ldquo;Programming semantics for multiprogrammed computations,&rdquo;</a> <em>Communications of the ACM</em> 9, no. 3 (1966): 143&ndash;155.</li>
+    <li id="fn4">Ramji et al., <a href="https://arxiv.org/abs/2611.05586">&ldquo;Anduin: A sybil-resistant agentic marketplace reputation system,&rdquo;</a> <em>arXiv preprint arXiv:2611.05586</em> (November 2026).</li>
+  </ol>
+</section>

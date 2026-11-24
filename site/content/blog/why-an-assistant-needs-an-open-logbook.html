@@ -1,0 +1,236 @@
+---
+title: Why an assistant needs an open logbook
+description: Autonomous digital assistants sound confident when they finish a task, but silent mistakes slip past cheerful summaries. Here is why every automated helper needs an auditable logbook.
+reader: Everyday citizens, workers, and organisers relying on AI assistants for research, filing, or daily administrative tasks.
+takeaway: Cheerful end-of-task summaries hide silent errors and repeated loops. Continuous execution logbooks record every step and tool call, allowing us to spot missteps before small slips turn into public disasters.
+template: article
+date: 2026-11-09
+order: 1
+category: Seeing
+minutes: 7
+image: post-why-an-assistant-needs-an-open-logbook.jpg
+image_alt: A delicate pastel watercolor vignette of a ship's navigator inspecting an open brass-bound logbook on a wooden chart table beside a brass compass on warm cream paper.
+lede: A harbor navigator never steers a ship through treacherous fog by relying on a cheerful spoken memory. They write down every bell ring, rudder angle, and depth sounding in a heavy paper logbook. When autonomous machine assistants act in our shared world, we need that exact same open record.
+---
+<p>A harbor master guiding a cargo vessel into a crowded port does not rely on casual memory. They stand at a timber chart table with a pen in hand. Every bell ring, engine change, and depth sounding is recorded in ink.</p>
+
+<p>If a sudden current pushes the ship toward shallow water, nobody argues over what might have happened. The watch officer turns to the open logbook. The recorded measurements tell the exact sequence of events.</p>
+
+<p>Today, millions of people ask autonomous software assistants to manage practical chores. We ask them to organize documents, check municipal regulations, review supplier invoices, and schedule repairs.</p>
+
+<p>When the work is done, the assistant provides a neat spoken summary. It reports that everything went smoothly. The tone is cheerful, crisp, and polite.</p>
+
+<p>Yet that cheerful summary often hides silent errors. Without an inspectable record of what happened, nobody knows whether the tool made mistakes before giving its final answer.</p>
+
+<h2>The difference between a summary and a record</h2>
+
+<p>When a person summarizes their own day, they naturally highlight their successes. They smooth over the awkward pauses and forget the wrong turns.</p>
+
+<p>Automated software does something similar, but without malice. A digital assistant wants to provide a neat answer. When it finishes a multi-step task, it condenses hundreds of computer actions into two polite sentences.</p>
+
+<p>That compression creates a dangerous blind spot. If an assistant opened a sensitive file by mistake, that misstep vanishes from the final summary. If it looped twelve times trying to download a broken document, you never see the wasted effort.</p>
+
+<p>In maritime navigation, an accident rarely begins with a massive explosion. It starts with a slight drift, an overlooked buoy, or an unrecorded turn. If nobody catches the first drift, the vessel runs aground an hour later.</p>
+
+<figure class="explainer" id="ex-open-logbook">
+  <style>
+    #ex-open-logbook {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-open-logbook svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-open-logbook .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-open-logbook .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-open-logbook .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-open-logbook .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-open-logbook .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-open-logbook .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-open-logbook .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-open-logbook .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-open-logbook .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-open-logbook figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-open-logbook .ex-canvas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #ex-open-logbook .ex-canvas svg {
+        min-width: 540px;
+      }
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg viewBox="0 0 760 320" role="img" aria-labelledby="ex-logbook-title ex-logbook-desc">
+      <title id="ex-logbook-title">Single-Pass Summary versus Open Continuous Logbook</title>
+      <desc id="ex-logbook-desc">A side-by-side architectural comparison showing how unchecked one-pass summaries hide silent errors and loops, while continuous execution logbooks provide auditable traces and structured diagnostics.</desc>
+      <line x1="380" y1="14" x2="380" y2="308" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="14" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="27" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">SINGLE-PASS SUMMARY</text>
+        <text x="14" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Polite prose hiding silent drift</text>
+        <line x1="14" y1="50" x2="368" y2="50" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <line x1="22" y1="64" x2="22" y2="214" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+        <rect x="19" y="62" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Condenses 100s Steps</text>
+        <text x="34" y="85" font-size="11" fill="var(--ex-muted)">Smooths away wrong turns</text>
+        <line x1="34" y1="125" x2="368" y2="125" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="135" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="142" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Claims Clean Success</text>
+        <text x="34" y="158" font-size="11" fill="var(--ex-muted)">Zero warning on early slip</text>
+        <line x1="34" y1="198" x2="368" y2="198" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="208" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="215" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Silent Accumulation</text>
+        <text x="34" y="231" font-size="11" fill="var(--ex-muted)">Operators guess what ran</text>
+        <line x1="14" y1="283" x2="368" y2="283" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="14" y="291" width="5" height="5" fill="var(--ex-warn)"/>
+        <text x="25" y="296" font-size="11" font-weight="700" fill="var(--ex-warn)">Failure: Compounding hidden errors</text>
+      </g>
+      <g>
+        <rect x="394" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="407" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">OPEN EXECUTION LOGBOOK</text>
+        <text x="394" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Structured traces &amp; health checks</text>
+        <line x1="394" y1="50" x2="746" y2="50" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <line x1="402" y1="64" x2="402" y2="214" stroke="var(--ex-signal)" stroke-width="1"/>
+        <rect x="399" y="62" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="414" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Pins Every Tool Call</text>
+        <text x="414" y="85" font-size="11" fill="var(--ex-muted)">Links action to exact input</text>
+        <line x1="414" y1="125" x2="746" y2="125" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="399" y="135" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="414" y="142" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Trace Diagnostics</text>
+        <text x="414" y="158" font-size="11" fill="var(--ex-muted)">Flags loops &amp; risk exposure</text>
+        <line x1="414" y1="198" x2="746" y2="198" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="399" y="208" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="414" y="215" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Replayable Record</text>
+        <text x="414" y="231" font-size="11" fill="var(--ex-muted)">Anyone inspects exact steps</text>
+        <line x1="394" y1="283" x2="746" y2="283" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="394" y="291" width="5" height="5" fill="var(--ex-signal)"/>
+        <text x="405" y="296" font-size="11" font-weight="700" fill="var(--ex-signal)">Outcome: Faults caught before spread</text>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Polished end summary</span>
+      <div class="ex-spec-body">Compresses hundreds of intermediate tool calls into reassuring prose that masks exploratory loops and unhedged errors.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Continuous open logbook</span>
+      <div class="ex-spec-body">Records every tool invocation and observation input in sequence so automated diagnostics catch drift early.</div>
+    </div>
+  </div>
+  <figcaption>
+    Single-pass summaries mask intermediate errors and unhedged risks behind polite prose. Maintaining an open execution logbook records every tool invocation and observation, allowing independent diagnostics to catch faults before they cause harm.
+  </figcaption>
+</figure>
+
+<h2>What an open logbook actually records</h2>
+
+<p>An open logbook does not require you to read endless pages of technical code. It simply preserves the true journey taken by the tool.</p>
+
+<p>A practical logbook answers four straightforward questions.</p>
+
+<p>First, what specific tool did the assistant pick at each step? An honest assistant records every action, whether it searched a public directory or called an outside database.<sup><a href="#fn1">1</a></sup></p>
+
+<p>Second, what information did the tool actually see? If an assistant read a public notice, the exact passage should be preserved so a person can verify its context.<sup><a href="#fn2">2</a></sup></p>
+
+<p>Third, did the action match the original human request? If you asked the assistant to check bus timetables, it should not wander into your private email folders.</p>
+
+<p>Fourth, did the assistant stop when an unexpected barrier appeared? A reliable helper admits when a door is locked rather than guessing what lies behind it.<sup><a href="#fn3">3</a></sup></p>
+
+<h2>Keeping the chart table open</h2>
+
+<p>Civic groups and small businesses do not need advanced computer science training to protect their work. We only need the healthy habits of the wheelhouse.</p>
+
+<p>Whenever you rely on an automated helper, keep three everyday practices in mind.</p>
+
+<p>First, ask to see the steps, not just the conclusion. An honest digital helper should provide a clear list of every action it took.</p>
+
+<p>Second, review the logbook before approving irreversible work. If the helper is sending messages or filing forms, check the recorded entries before giving your final consent.</p>
+
+<p>Finally, support public standards for inspectable audit records. When clinics, schools, and city councils adopt automated systems, they should require open logbooks by default.</p>
+
+<p>Polite words sound comforting in calm waters. But safety depends on the ink in the ledger. By demanding open logbooks, we ensure that human oversight stays anchored in what truly happened.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers and systems architects</summary>
+    <div>
+      <p>This essay explores the operational reliability and verification challenges of autonomous tool-using language agents across extended task horizons. Standard evaluations frequently rely on end-of-trajectory outcome metrics or single-pass self-attestation, masking intermediate reasoning drifts, exploratory loops, and privilege escalation risks. In empirical benchmarks, Signals (arXiv:2611.04507, 2026: <em>Signals: Continuous Diagnostics of AI Agents</em>) reports a 91.43% F-1 score when matching Signals to reference issues on public agent executions. This is about 18 percentage points above a one-pass LLM control using the same model and taxonomy across 45 failure categories spanning active failures, risk exposures, and execution inefficiencies.</p>
+      <p>Complementing continuous trace diagnostics, long-horizon evaluation frameworks such as Long-Horizon-Terminal-Bench 2.0 (Li et al., arXiv:2610.14146, 2026: <em>Long-Horizon-Terminal-Bench 2.0: Automating Diverse Task Construction and Measuring Sustained Agent Progress</em>) extend the horizon to three hours with verifier checkpoints every 30 minutes and dense progress ladders. Binding recorded traces to cryptographically verifiable receipts also detected 1,275 of 1,280 substitution attacks in tool-agent auditing (Hu et al., arXiv:2610.00327, 2026: <em>Actions with Receipts: Jointly Binding Claims, Evidence, and Execution for Replayable Tool-Agent Auditing</em>). Explore our verified action cards and execution trace encounters in <a href="/labs/shared-horizon/">Shared Horizon</a>.</p>
+    </div>
+  </details>
+</aside>
+
+<section class="footnotes">
+  <ol>
+    <li id="fn1">Amey Rambatla, Vatsal Goel, Sagar Gaur, Siddhant Loya, Anurag Mishra, and Asif Mohammad, "Signals: Continuous Diagnostics of AI Agents," <em>arXiv preprint arXiv:2611.04507</em> (2026), <a href="https://arxiv.org/abs/2611.04507">https://arxiv.org/abs/2611.04507</a>.</li>
+    <li id="fn2">Zongxia Li, Zhongzhi Li, Yucheng Shi, Ruhan Wang, et al., "Long-Horizon-Terminal-Bench 2.0: Automating Diverse Task Construction and Measuring Sustained Agent Progress," <em>arXiv preprint arXiv:2610.14146</em> (2026), <a href="https://arxiv.org/abs/2610.14146">https://arxiv.org/abs/2610.14146</a>.</li>
+    <li id="fn3">Miaobo Hu, Shuhao Hu, Xiaobo Guo, Xin Wang, Bokun Wang, and Yina Sa, "Actions with Receipts: Jointly Binding Claims, Evidence, and Execution for Replayable Tool-Agent Auditing," <em>arXiv preprint arXiv:2610.00327</em> (2026), <a href="https://arxiv.org/abs/2610.00327">https://arxiv.org/abs/2610.00327</a>.</li>
+  </ol>
+</section>

@@ -1,0 +1,249 @@
+---
+title: Why rules need blueprints before code
+description: Public bodies struggle to turn laws into working software because legal clauses and engineering tickets talk past each other. Standard artifact models bridge the gap before coding begins.
+reader: Public officials, procurement officers and software engineers building public technology.
+takeaway: Public software often fails because statutory obligations remain vague until late in development; template-guided artifact models turn legal clauses into testable software requirements before a single line of code is written.
+template: article
+date: 2026-11-14
+category: Governing
+minutes: 5
+image: post-why-rules-need-blueprints-before-code.jpg
+image_alt: Soft watercolor of an architect and a stone mason reviewing an unrolled blueprint on a wooden worktable.
+lede: Public software often fails because statutory obligations remain vague until late in development. Lawyers write legal duties in prose, while engineers build against concrete interface tickets. Template-guided artifact models turn legal clauses into testable software requirements before a single line of code is written.
+---
+<h2>The communication breakdown</h2>
+
+<p>Public software often fails because statutory obligations remain vague until late in development; template-guided artifact models turn legal clauses into testable software requirements before a single line of code is written. When public agencies buy or build automated systems, legal teams draft compliance memos while engineering teams write code against technical specifications.</p>
+
+<p>Because neither side shares a common specification tool, important requirements slip through the cracks. Statutes such as the European Union Artificial Intelligence Act<sup><a href="#fn2">2</a></sup> and the Council of Europe Framework Convention on Artificial Intelligence<sup><a href="#fn3">3</a></sup> demand verifiable compliance by design. Yet lawyers write general duties while engineers receive tickets that mention database fields and button clicks.</p>
+
+<p>The gap between those two descriptions stays hidden until auditors arrive months later. Fixing misunderstandings after code is deployed costs far more than catching them during initial design. Building public software without an agreed blueprint is like pouring concrete foundation footings while the town hall and the stonemasons argue over the height of the walls.</p>
+
+<h2>What we propose</h2>
+
+<p>We propose requiring standardized compliance-by-design artifact models in every public procurement tender. An artifact model provides structured templates that both lawyers and developers can read and edit. Teams map every statutory duty to a concrete software specification before programming starts.</p>
+
+<p>Recent empirical work demonstrates that this structured coordination works. Software engineering researchers tested the Artifact Model for Regulatory Requirements Engineering across thirty-seven industry practitioners and ten cross-functional teams.<sup><a href="#fn1">1</a></sup> When teams used template-guided coordination, their total specification time dropped and the quality of their requirements improved significantly. Standardized templates give legal and engineering viewpoints a shared workspace.</p>
+
+<figure class="explainer" id="ex-artifact-models">
+  <style>
+    #ex-artifact-models {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    @media (prefers-color-scheme: dark) {
+      #ex-artifact-models {
+        --ex-paper: #18161E;
+        --ex-slip: #221F2A;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #A8A095;
+        --ex-rule: #322E3D;
+        --ex-signal: #8FD4B6;
+        --ex-accent: #8FD4B6;
+        --ex-warn: #F09D82;
+        --ex-amber: #F0B87A;
+      }
+    }
+    :root[data-theme="dark"] #ex-artifact-models {
+      --ex-paper: #18161E;
+      --ex-slip: #221F2A;
+      --ex-ink: #EDE6DC;
+      --ex-muted: #A8A095;
+      --ex-rule: #322E3D;
+      --ex-signal: #8FD4B6;
+      --ex-accent: #8FD4B6;
+      --ex-warn: #F09D82;
+      --ex-amber: #F0B87A;
+    }
+    #ex-artifact-models svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-artifact-models .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-artifact-models .diagram-desktop {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    #ex-artifact-models .diagram-mobile {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+    #ex-artifact-models figcaption {
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 600px) {
+      #ex-artifact-models .diagram-desktop { display: none; }
+      #ex-artifact-models .diagram-mobile { display: block; }
+    }
+  </style>
+  <svg class="diagram-desktop" viewBox="0 0 700 350" role="img" aria-labelledby="ex-artifact-title ex-artifact-desc">
+    <title id="ex-artifact-title">Vague prose compliance versus template-guided artifact models</title>
+    <desc id="ex-artifact-desc">Left panel shows vague legal prose and siloed engineering tickets causing late audit failures and rework. Right panel shows template-guided artifact models translating statutory clauses into shared specifications and automated continuous tests.</desc>
+    <line x1="350" y1="14" x2="350" y2="336" stroke="var(--ex-rule)" stroke-width="1"/>
+    <!-- Left panel: Siloed approach -->
+    <g>
+      <rect x="14" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="28" y="24" font-size="13" font-weight="700" fill="var(--ex-warn)" class="ex-mono">UNCOORDINATED SPECIFICATION</text>
+      <!-- Step 1 -->
+      <rect x="14" y="48" width="320" height="64" rx="4" fill="var(--ex-slip)" stroke="var(--ex-rule)" stroke-width="1"/>
+      <text x="26" y="72" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Abstract Legal Memos</text>
+      <text x="26" y="92" font-size="11" fill="var(--ex-muted)">General mandates without verifiable code limits</text>
+      <!-- Down arrow -->
+      <line x1="174" y1="112" x2="174" y2="136" stroke="var(--ex-muted)" stroke-width="1.5" stroke-dasharray="3 3"/>
+      <!-- Step 2 -->
+      <rect x="14" y="136" width="320" height="64" rx="4" fill="var(--ex-slip)" stroke="var(--ex-rule)" stroke-width="1"/>
+      <text x="26" y="160" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Siloed Technical Tickets</text>
+      <text x="26" y="180" font-size="11" fill="var(--ex-muted)">Developers build database schemas without legal tests</text>
+      <!-- Down arrow -->
+      <line x1="174" y1="200" x2="174" y2="224" stroke="var(--ex-muted)" stroke-width="1.5" stroke-dasharray="3 3"/>
+      <!-- Step 3 -->
+      <rect x="14" y="224" width="320" height="64" rx="4" fill="var(--ex-slip)" stroke="var(--ex-warn)" stroke-width="1.5"/>
+      <text x="26" y="248" font-size="12" font-weight="700" fill="var(--ex-warn)">3. Late Audit Failure</text>
+      <text x="26" y="268" font-size="11" fill="var(--ex-muted)">Violations found at launch causing expensive rebuilds</text>
+    </g>
+    <!-- Right panel: Artifact Model approach -->
+    <g>
+      <rect x="366" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="380" y="24" font-size="13" font-weight="700" fill="var(--ex-signal)" class="ex-mono">TEMPLATE-GUIDED ARTIFACT MODEL</text>
+      <!-- Step 1 -->
+      <rect x="366" y="48" width="320" height="64" rx="4" fill="var(--ex-slip)" stroke="var(--ex-rule)" stroke-width="1"/>
+      <text x="378" y="72" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Viewpoint Coordination</text>
+      <text x="378" y="92" font-size="11" fill="var(--ex-muted)">Lawyers and engineers review shared rule templates</text>
+      <!-- Down arrow -->
+      <line x1="526" y1="112" x2="526" y2="136" stroke="var(--ex-accent)" stroke-width="1.5"/>
+      <!-- Step 2 -->
+      <rect x="366" y="136" width="320" height="64" rx="4" fill="var(--ex-slip)" stroke="var(--ex-rule)" stroke-width="1"/>
+      <text x="378" y="160" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Testable Specifications</text>
+      <text x="378" y="180" font-size="11" fill="var(--ex-muted)">Statutory duties become machine-checked assertions</text>
+      <!-- Down arrow -->
+      <line x1="526" y1="200" x2="526" y2="224" stroke="var(--ex-accent)" stroke-width="1.5"/>
+      <!-- Step 3 -->
+      <rect x="366" y="224" width="320" height="64" rx="4" fill="var(--ex-slip)" stroke="var(--ex-signal)" stroke-width="1.5"/>
+      <text x="378" y="248" font-size="12" font-weight="700" fill="var(--ex-signal)">3. Continuous Verification</text>
+      <text x="378" y="268" font-size="11" fill="var(--ex-muted)">Automated test suites catch compliance drift early</text>
+    </g>
+  </svg>
+  <svg class="diagram-mobile" viewBox="0 0 300 560" role="img" aria-labelledby="ex-artifact-mtitle ex-artifact-mdesc">
+    <title id="ex-artifact-mtitle">Vague prose compliance versus template-guided artifact models</title>
+    <desc id="ex-artifact-mdesc">Top panel shows uncoordinated legal memos leading to late audit failures. Bottom panel shows template-guided artifact models producing verifiable requirements and automated verification.</desc>
+    <!-- Top section: uncoordinated -->
+    <g>
+      <rect x="8" y="16" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="22" y="22" font-size="11.5" font-weight="700" fill="var(--ex-warn)" class="ex-mono">UNCOORDINATED SPECIFICATION</text>
+      <rect x="8" y="38" width="284" height="58" rx="4" fill="var(--ex-slip)" stroke="var(--ex-rule)" stroke-width="1"/>
+      <text x="20" y="60" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Abstract Legal Memos</text>
+      <text x="20" y="78" font-size="11" fill="var(--ex-muted)">General mandates lacking code test limits</text>
+      <line x1="150" y1="96" x2="150" y2="108" stroke="var(--ex-muted)" stroke-width="1.5" stroke-dasharray="3 3"/>
+      <polygon points="150,114 146,107 154,107" fill="var(--ex-muted)"/>
+      <rect x="8" y="114" width="284" height="58" rx="4" fill="var(--ex-slip)" stroke="var(--ex-rule)" stroke-width="1"/>
+      <text x="20" y="136" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Siloed Technical Tickets</text>
+      <text x="20" y="154" font-size="11" fill="var(--ex-muted)">Schemas built without statutory tests</text>
+      <line x1="150" y1="172" x2="150" y2="184" stroke="var(--ex-muted)" stroke-width="1.5" stroke-dasharray="3 3"/>
+      <polygon points="150,190 146,183 154,183" fill="var(--ex-warn)"/>
+      <rect x="8" y="190" width="284" height="58" rx="4" fill="var(--ex-slip)" stroke="var(--ex-warn)" stroke-width="1.5"/>
+      <text x="20" y="212" font-size="11.5" font-weight="700" fill="var(--ex-warn)">3. Late Audit Failure</text>
+      <text x="20" y="230" font-size="11" fill="var(--ex-muted)">Violations found late force costly rework</text>
+    </g>
+    <!-- Dividing line -->
+    <line x1="8" y1="270" x2="292" y2="270" stroke="var(--ex-rule)" stroke-width="1"/>
+    <!-- Bottom section: artifact models -->
+    <g>
+      <rect x="8" y="290" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="22" y="296" font-size="11.5" font-weight="700" fill="var(--ex-signal)" class="ex-mono">TEMPLATE-GUIDED ARTIFACT MODEL</text>
+      <rect x="8" y="312" width="284" height="58" rx="4" fill="var(--ex-slip)" stroke="var(--ex-rule)" stroke-width="1"/>
+      <text x="20" y="334" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Viewpoint Coordination</text>
+      <text x="20" y="352" font-size="11" fill="var(--ex-muted)">Lawyers and engineers share rule models</text>
+      <line x1="150" y1="370" x2="150" y2="382" stroke="var(--ex-accent)" stroke-width="1.5"/>
+      <polygon points="150,388 146,381 154,381" fill="var(--ex-accent)"/>
+      <rect x="8" y="388" width="284" height="58" rx="4" fill="var(--ex-slip)" stroke="var(--ex-rule)" stroke-width="1"/>
+      <text x="20" y="410" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Testable Specifications</text>
+      <text x="20" y="428" font-size="11" fill="var(--ex-muted)">Statutory duties become code assertions</text>
+      <line x1="150" y1="446" x2="150" y2="458" stroke="var(--ex-accent)" stroke-width="1.5"/>
+      <polygon points="150,464 146,457 154,457" fill="var(--ex-signal)"/>
+      <rect x="8" y="464" width="284" height="58" rx="4" fill="var(--ex-slip)" stroke="var(--ex-signal)" stroke-width="1.5"/>
+      <text x="20" y="486" font-size="11.5" font-weight="700" fill="var(--ex-signal)">3. Continuous Verification</text>
+      <text x="20" y="504" font-size="11" fill="var(--ex-muted)">Automated tests catch rule drift early</text>
+    </g>
+  </svg>
+  <figcaption>Uncoordinated teams translate legal requirements into software late, producing costly compliance failures. Standardized artifact templates coordinate legal and engineering viewpoints upfront, turning statutory rules into automated test suites.</figcaption>
+</figure>
+
+<h2>What it takes to build</h2>
+
+<p>Adopting artifact models requires three procedural changes during procurement:</p>
+
+<p>First, public tenders must mandate template-guided requirements artifacts as mandatory vendor deliverables. Evaluation criteria must score how clearly a vendor maps legal obligations to executable test assertions.</p>
+
+<p>Second, legal counsel and software architects must conduct joint sign-offs on requirements templates before award. This review confirms that both parties agree on how the software will handle edge cases and statutory boundaries.</p>
+
+<p>Third, delivery contracts must link automated compliance tests to continuous integration suites. If an update modifies statutory logic, the automated test suite must flag the change before release.</p>
+
+<h2>The strongest objection</h2>
+
+<p>Skeptics argue that filling out structured artifact templates creates unnecessary administrative overhead. Software contractors often claim that template requirements slow down development and duplicate existing user stories.</p>
+
+<p>In practice, the overhead of fixing compliance violations after launch dwarfs the time spent completing templates upfront. The empirical study showed that teams using template-guided coordination spent less total time drafting specifications than teams relying on ad hoc discussions. Clear templates eliminate circular debates about what a regulation requires.</p>
+
+<h2>What remains unproven</h2>
+
+<p>Structured artifact models bridge viewpoints during early requirements engineering, but two questions remain open:</p>
+
+<p>First, how well do template specifications withstand continuous software updates over years of maintenance? We still need longitudinal studies tracking requirements drift in production government systems.</p>
+
+<p>Second, can automated translation tools assist lawyers without introducing subtle legal errors? Translating statutory language into formal logic still depends on careful human judgment.</p>
+
+<h2>Where to start</h2>
+
+<p>Public officials can explore concrete next steps in <a href="/labs/shared-horizon/">Shared Horizon</a> or review guidance on our <a href="/get-involved/policy/">page for policy makers</a> to adapt template requirements for your department.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers: regulatory artifact models and five-primitive compliance architecture</summary>
+    <div>
+      <p>Kosenkov, Fucci, Unterkalmsteiner, and Mendez (<code>arXiv:2611.03631</code><sup><a href="#fn1">1</a></sup>) evaluate the Artifact Model for Regulatory Requirements Engineering (AM4RRE) across 37 practitioners and 10 cross-functional teams, showing that template-guided viewpoint coordination reduces specification time while raising verifiable compliance quality under Regulation (EU) 2024/1689<sup><a href="#fn2">2</a></sup> and Council of Europe CETS 225.<sup><a href="#fn3">3</a></sup></p>
+      <p>Within our five-primitive sociotechnical architecture, regulatory artifact templates compile directly into verifiable runtime guards across the personal Markov blanket (Karl Friston; Friston, 2010; Friston, 2013<sup><a href="#fn4">4</a></sup>). Wearable and ambient sensors form an egocentric and ambient perceptual sensorium synchronized in monotonic hardware <code>Device Time</code> with self-assessed observation confidence, silicon peripheral attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, and <code>IETF RATS</code> RFC 9334<sup><a href="#fn5">5</a></sup>), an optical data diode (<code>optical data diodes</code>), and <code>IEC 61508</code> dead-man relays. Those sensors seal observations into a local append-only <code>C2PA</code><sup><a href="#fn5">5</a></sup> and Merkle episodic memory vault (Endel Tulving; Tulving, 1972) while respecting transduction realism (<em>Signed Is Not True</em> across the analog hole; Kevin Fu and Wenyuan Xu; Fu &amp; Xu, 2018<sup><a href="#fn5">5</a></sup>). A monogamous <code>1:1</code> principal-bound personal cognitive model and cybernetic exocortex (Joscha Bach; Bach, 2009; Extended Mind, Andy Clark and David Chalmers; Clark &amp; Chalmers, 1998; Good Regulator theorem, Conant &amp; Ashby, 1970; interventional causal inference <code>do(x)</code>, Pearl, 2009; compiler-trust verification, Thompson, 1984) acts as a statutory information fiduciary (Jack Balkin; Balkin, 2016<sup><a href="#fn6">6</a></sup>) protecting unassisted competence and keeping raw telemetry inside the Private Autobiographical Ledger. Compiled compliance assertions enforce time-bounded Object-Capability and capability lease gates (Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966<sup><a href="#fn7">7</a></sup>), selective zero-knowledge (<code>ZK</code>) proofs, independent-class Byzantine corroboration (<code>k &gt;= 3f + 1</code>), and signed <code>IETF SCITT</code> (<code>RFC 9943</code><sup><a href="#fn7">7</a></sup>) transparency receipts on the Public Attestation &amp; Escrow Ledger (Public Attestation and Escrow Ledger). Those verifiable receipts couple sovereign dyads to the Wide Network Ledger for Universal Basic Services, merit-bonded tasks and invisible-labor upkeep estimation (Jacob Meluso; Meluso et al., 2022), reciprocal mutual credit (James Stodder; Stodder, 2009), frontier-lab overlays (Bracale Syrnikov et al., 2026), polycentric self-rule (Elinor Ostrom; Ostrom, 1990<sup><a href="#fn6">6</a></sup>), and statutory cooperative equity (Rudolf Meidner; Meidner, 1978<sup><a href="#fn6">6</a></sup>). Test these compliance boundaries in the <a href="/labs/protocol-inspector/">Protocol Inspector</a>, the <a href="/labs/sensor-boundary/">Sensor &amp; Ledger Red-Team Sandbox</a>, and <a href="/labs/shared-horizon/">Shared Horizon</a>.</p>
+    </div>
+  </details>
+</aside>
+
+<section class="footnotes">
+  <h2>Sources</h2>
+  <ol>
+    <li id="fn1">Oleksandr Kosenkov, Davide Fucci, Michael Unterkalmsteiner and Daniel Mendez, "Supporting Viewpoint Coordination for Compliance by Design with an Artifact Model for Regulatory Requirements Engineering," <a href="https://arxiv.org/abs/2611.03631">arXiv:2611.03631</a> (2026).</li>
+    <li id="fn2">European Union, "Regulation (EU) 2024/1689 of the European Parliament and of the Council laying down harmonised rules on artificial intelligence (Artificial Intelligence Act)," <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202401689">OJ L 2024/1689</a> (2024).</li>
+    <li id="fn3">Council of Europe, "Framework Convention on Artificial Intelligence and Human Rights, Democracy and the Rule of Law," <a href="https://www.coe.int/en/web/conventions/full-list?module=treaty-detail&amp;treatynum=225">CETS 225</a> (2024).</li>
+    <li id="fn4">Karl Friston, "Life as We Know It," <em>Journal of the Royal Society Interface</em>, vol. 10, no. 86, art. 20130475 (2013), <a href="https://doi.org/10.1098/rsif.2013.0475">doi.org/10.1098/rsif.2013.0475</a>.</li>
+    <li id="fn5">Henk Birkholz, Dave Thaler, Michael Richardson, Ned Smith, and Wei Pan, <em>Remote ATtestation procedureS (RATS) Architecture</em>, IETF RFC 9334 (2023), <a href="https://www.rfc-editor.org/rfc/rfc9334">rfc-editor.org/rfc/rfc9334</a>; Kevin Fu and Wenyuan Xu, "Risks of trusting the physics of sensors," <em>Communications of the ACM</em> 61, no. 2 (2018): 20 to 23, <a href="https://doi.org/10.1145/3176402">doi:10.1145/3176402</a>; and Coalition for Content Provenance and Authenticity, <em>C2PA Technical Specification</em>, v2.1 (2024), <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html">c2pa.org</a>.</li>
+    <li id="fn6">Jack M. Balkin, "Information Fiduciaries and the First Amendment," <em>UC Davis Law Review</em>, vol. 49, no. 4 (2016): 1183-1234, <a href="https://lawreview.law.ucdavis.edu/archives/49/4/information-fiduciaries-and-first-amendment">lawreview.law.ucdavis.edu</a>; Elinor Ostrom, <em>Governing the Commons: The Evolution of Institutions for Collective Action</em>, Cambridge University Press (1990), <a href="https://doi.org/10.1017/cbo9780511807763">doi.org/10.1017/cbo9780511807763</a>; and Rudolf Meidner, <em>Employee Investment Funds: An Approach to Collective Capital Formation</em>, George Allen &amp; Unwin (1978), <a href="https://archive.org/details/employeeinvestme0000meid">archive.org/details/employeeinvestme0000meid</a>.</li>
+    <li id="fn7">Jack B. Dennis and Earl C. Van Horn, "Programming Semantics for Multiprogrammed Computations," <em>Communications of the ACM</em> 9, no. 3 (1966): 143 to 155, <a href="https://doi.org/10.1145/365230.365252">doi:10.1145/365230.365252</a>; and Henk Birkholz, Antoine Delignat-Lavaud, Cedric Fournet, Yogesh Deshpande, and Steve Lasker, <em>An Architecture for Trustworthy and Transparent Digital Supply Chains (SCITT)</em>, IETF RFC 9943 (2026), <a href="https://www.rfc-editor.org/rfc/rfc9943">rfc-editor.org/rfc/rfc9943</a>.</li>
+  </ol>
+</section>

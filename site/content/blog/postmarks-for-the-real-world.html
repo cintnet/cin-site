@@ -1,0 +1,253 @@
+---
+title: Postmarks for the real world
+description: When anyone can fake a photo or video in seconds, we need a simple way to know where real evidence came from without exposing the person who took it.
+reader: Anyone who has wondered whether a photo or video is real, and journalists and officials who rely on evidence.
+takeaway: Recording where a piece of media came from, while protecting the people behind it, is practical, partly available today and worth demanding.
+template: article
+date: 2026-11-05
+order: 5
+category: Seeing
+minutes: 9
+image: post-postmark.jpg
+image_alt: A brass hand stamp pressing a seal onto parchment beside a small landscape sketch, while faint copies of the sketch drift away like mist.
+lede: As AI makes realistic fake photos, voices and video cheap, people need a way to check where real media came from. Content credentials that record a file's origin and edits, while protecting the people who made it, are partly available today and worth demanding.
+---
+<p>Anyone can now generate a convincing image, voice clone or video in seconds. Fakes can mislead people long enough to sway a vote or ruin a reputation. The second danger is that real evidence loses its force: once any file might be fabricated, anyone caught on camera can claim it was AI-generated. Bobby Chesney and Danielle Citron call this the liar's dividend.<sup><a href="#fn1">1</a></sup></p>
+
+<h2>Anonymous pages slipped under the door</h2>
+
+<p>To see why our current digital files are so easy to doubt, think about how most photos, audio clips, and documents travel across the internet today. They arrive like anonymous typewritten pages slipped under your front door in the middle of the night.</p>
+
+<p>The page has no envelope, no return address, and no postmark. You cannot tell whether it was typed five minutes ago by a neighbour down the hall, copied ten thousand times by a machine overseas, or rewritten halfway through its journey. If someone retypes a paragraph and slips the altered sheet under the next door, the new copy looks just as clean as the first.</p>
+
+<p>For decades, the web treated that frictionless copying as a feature. Stripping away a file's history made it smaller and faster to share. In a world of effortless synthetic media, however, an unsealed file asks the reader to take everything on faith.</p>
+
+<h2>Four everyday seals: the wax seal, the postmark, the curator's ledger, and the pharmacy ring</h2>
+
+<figure class="explainer" id="ex-postmark-chain">
+  <style>
+    #ex-postmark-chain {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-postmark-chain svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-postmark-chain .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-postmark-chain .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-postmark-chain .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-postmark-chain .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-postmark-chain .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-postmark-chain .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-postmark-chain .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-postmark-chain .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-postmark-chain .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-postmark-chain figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-postmark-chain .ex-canvas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #ex-postmark-chain .ex-canvas svg {
+        min-width: 540px;
+      }
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg viewBox="0 0 680 340" role="group" aria-labelledby="ex-postmark-chain-title ex-postmark-chain-desc">
+      <title id="ex-postmark-chain-title">Comparison of an unverified copy-pasted claim and a postmarked, hardware-signed observation chain</title>
+      <desc id="ex-postmark-chain-desc">Side-by-side diagram contrasting an unverified copy-pasted media file with stripped metadata and unknown origin on the left against a postmarked observation chain on the right, showing a hardware sensor seal, a signed edit ledger, and a witness privacy shield.</desc>
+      <line x1="340" y1="14" x2="340" y2="328" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="14" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="27" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">UNVERIFIED COPY-PASTE</text>
+        <text x="14" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Anonymous file with stripped lineage</text>
+        <line x1="14" y1="50" x2="328" y2="50" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <line x1="22" y1="64" x2="22" y2="228" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+        <rect x="19" y="62" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Unknown Origin</text>
+        <text x="34" y="85" font-size="11" fill="var(--ex-muted)">No sensor seal at capture</text>
+        <line x1="34" y1="132" x2="328" y2="132" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="142" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="149" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Silent Edits</text>
+        <text x="34" y="165" font-size="11" fill="var(--ex-muted)">Metadata stripped on upload</text>
+        <line x1="34" y1="212" x2="328" y2="212" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="222" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="229" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Exposed Witness</text>
+        <text x="34" y="245" font-size="11" fill="var(--ex-muted)">Raw phone ID or zero proof</text>
+        <line x1="14" y1="303" x2="328" y2="303" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="14" y="311" width="5" height="5" fill="var(--ex-warn)"/>
+        <text x="25" y="316" font-size="11" font-weight="700" fill="var(--ex-warn)">Outcome: Fakes pass; real proof doubted</text>
+      </g>
+      <g>
+        <rect x="354" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="367" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">POSTMARKED CHAIN</text>
+        <text x="354" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Hardware seal, edit log &amp; witness shield</text>
+        <line x1="354" y1="50" x2="666" y2="50" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <line x1="362" y1="64" x2="362" y2="228" stroke="var(--ex-signal)" stroke-width="1"/>
+        <rect x="359" y="62" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Hardware Postmark</text>
+        <text x="374" y="85" font-size="11" fill="var(--ex-muted)">Sensor signs at shutter click</text>
+        <line x1="374" y1="132" x2="666" y2="132" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="359" y="142" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="149" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Curator Ledger</text>
+        <text x="374" y="165" font-size="11" fill="var(--ex-muted)">Crops logged; tampering breaks</text>
+        <line x1="374" y1="212" x2="666" y2="212" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="359" y="222" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="229" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Selective Shield</text>
+        <text x="374" y="245" font-size="11" fill="var(--ex-muted)">Proves camera without name</text>
+        <line x1="354" y1="303" x2="666" y2="303" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="354" y="311" width="5" height="5" fill="var(--ex-signal)"/>
+        <text x="365" y="316" font-size="11" font-weight="700" fill="var(--ex-signal)">Outcome: One-click check &amp; safe witness</text>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Stripped copy-paste media</span>
+      <div class="ex-spec-body">Leaves readers unable to distinguish synthetic fabrications from authentic recordings without exposing raw device identities.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Postmarked observation chain</span>
+      <div class="ex-spec-body">Combines a hardware capture signature, a tamper-evident edit log, and selective disclosure that protects human witnesses.</div>
+    </div>
+  </div>
+  <figcaption>An unverified file arrives like an anonymous page with no history (left), whereas a postmarked observation chain combines a hardware sensor seal, a curator's edit ledger, and a witness privacy shield (right).</figcaption>
+</figure>
+
+<p>In the physical world, we solved this problem long ago with three simple tools: a dated wax seal, a pharmacy bottle's tamper-evident ring, and a museum curator's provenance ledger.</p>
+
+<p>Think first about a wax seal and a dated town postmark on an envelope. A postmark doesn't prove that the writer inside the envelope is wise or fair. It proves something narrower and far more practical: this letter entered the mail at a specific post office on a specific morning, and the wax seal hasn't been cracked open since.</p>
+
+<p>Now add the tamper-evident foil ring on a pharmacy medicine bottle. The foil ring doesn't brew the medicine inside. Instead, it gives you a physical guarantee: if the ring is intact when you twist the cap, nobody swapped the tablets between the pharmacy counter and your kitchen table. If the ring is snapped, you know to pause before swallowing.</p>
+
+<p>Finally, think of a museum curator's provenance ledger for an old painting. Over a century, a canvas often needs honest upkeep: a restorer cleans smoky varnish in 1962, or a conservator relines a frayed edge in 1998. The curator doesn't pretend the painting was never touched. Instead, every conservation step is signed and dated in the ledger so visitors can see both the original brushwork and the exact history of care.</p>
+
+<p>Cryptographic provenance brings all three of those everyday habits to digital photos, audio recordings, videos, and public documents:</p>
+<ul>
+<li><strong>The wax seal at the shutter.</strong> When you press the shutter button, a secure chip inside the camera attaches a mathematical seal. It shows that a physical sensor captured real light, rather than a model inventing pixels from a prompt.</li>
+<li><strong>The curator's ledger for edits.</strong> If a photojournalist later crops the edges or adjusts the brightness, or if a transcription tool turns an audio recording into text, each tool adds its own dated stamp to the ledger.</li>
+<li><strong>The pharmacy ring against secret tampering.</strong> If someone alters a face or splices an audio clip in secret and strips the ledger away, the mathematical ring snaps immediately. Anyone viewing the file can inspect that chain in a single click.</li>
+</ul>
+
+<p>This isn't a distant laboratory dream. An open technical standard called Content Credentials, developed by the Coalition for Content Provenance and Authenticity (C2PA), already works this way.<sup><a href="#fn2">2</a></sup> Camera makers, newsrooms, and editing tools are building it into their hardware and software today.</p>
+
+<div class="callout"><p class="label">What this means</p><p>No one can doctor a stamped photo without breaking its seal. An unstamped photo isn't automatically fake, but it asks you to pause and check before you trust it.</p></div>
+
+<h2>From camera shutters to city halls and apartment buildings</h2>
+
+<p>Postmarks matter for far more than breaking-news photographs. They also matter whenever AI assistants summarize, translate, or act on everyday civic information for us.</p>
+
+<p>Suppose a city council publishes a three-hour video of a public zoning hearing, and a resident uses an AI assistant to produce a two-page summary for the street. If the summary carries a signed ledger linking each bullet point to the exact minute of the official recording, any neighbour can tap a claim and hear what was actually said. The assistant saves everyone two hours of listening without asking anyone to trust a black box.</p>
+
+<p>Or consider a tenant association in an older apartment block where the winter heating keeps failing overnight. If tenants record indoor temperature readings and photographs of frosted windows on postmarked sensors, the building's management cannot dismiss the log as a fabricated spreadsheet. Each reading carries a dated seal tying it to a physical thermometer inside the building.</p>
+
+<p>Why do so many photos and clips online still lack these stamps today? Two habits get in the way. Many older phones and cameras haven't turned hardware signing on by default yet, and most major social media platforms still strip provenance ledgers out when they compress uploaded files. Stopping platforms from shearing off the postmark at the door is one of the simplest, highest-leverage fixes available.</p>
+
+<h2>Protecting the people behind the camera</h2>
+
+<p>Here is the hardest catch in designing any provenance system. The people whose evidence matters most to the public often take the biggest personal risks to share it. Think of a safety whistleblower documenting a chemical leak inside a factory, a paramedic recording conditions in a crisis zone, or a bystander filming an abuse of power on a street corner.</p>
+
+<p>If a digital postmark automatically stapled the photographer's legal name, phone serial number, and exact home address to every file, it would put those witnesses in immediate danger. A provenance tool that forces people to choose between proving a video is real and keeping their family safe will fail the very people who need it most.</p>
+
+<p>A trustworthy postmark system has to separate <em>what happened</em> from <em>who is holding the camera</em>. It needs to prove that an authentic physical sensor recorded this scene in this city this morning, unedited, without revealing which individual phone out of ten thousand took the shot.</p>
+
+<p>Modern cryptography makes that separation practical today. Using selective disclosure and zero-knowledge proofs, a file can prove specific facts, such as genuine hardware capture and a coarse time window, while keeping the witness's identity and serial number hidden. It works like showing a bouncer at a venue door that you are over 19 without handing over your name, phone number, or home address.<sup><a href="#fn3">3</a></sup> Getting that balance right is a core part of our research.</p>
+
+<h2>An honest look at what a postmark can't do</h2>
+
+<p>We want to be candid about the limits of any technical seal. Like a wax seal on a paper letter, a digital postmark proves where a file came from and how it was edited, not whether the story around it is fair.</p>
+
+<p>Someone can still point a real, postmarked camera at a staged scene. They can still leave essential context just outside the edge of the frame, or attach a misleading headline to a genuine photograph taken five years ago in another town.</p>
+
+<p>A digital seal is also only as trustworthy as the physical device that created it. If an attacker physically tampers with a camera's sensor or feeds fake signals into its wiring before the shutter clicks, the device can still stamp a falsehood. Catching that kind of hardware spoofing requires cross-checking multiple independent clues, a challenge we explore in <a href="/blog/why-a-signed-sensor-can-still-be-fooled/">Why a signed sensor can still be fooled</a>, <a href="/blog/who-is-really-there/">Who is really there?</a>, and <a href="/blog/who-is-actually-acting/">Who is actually acting?</a></p>
+
+<p>Postmarks do not replace human judgement, independent journalism, or careful cross-checking. What they do is clear away effortless, industrial-scale forgery so human judgement has solid ground to stand on.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers</summary>
+    <div>
+      <p>Our provenance work bridges C2PA cryptographic manifest graphs (C2PA v2.1) with zero-knowledge selective disclosure (Goldwasser, Micali and Rackoff, 1989; W3C Verifiable Credentials v2.0). Hardware-attested sensor capture is bound to unlinkable anonymous credentials rather than static device serial numbers.</p>
+      <p>Consequently, a witness can prove that a media asset originated from a non-revoked physical capture device within a coarse spacetime bound, and that all downstream transformations carry Proof-Carrying lineage (Necula, 1997), without leaking device-unique identifiers or social graph metadata.</p>
+    </div>
+  </details>
+</aside>
+
+<h2>What you can do today</h2>
+
+<p>If you publish photos, audio, or video, check whether your cameras and editing tools support Content Credentials, and turn them on so your work carries a checkable chain of origin.<sup><a href="#fn2">2</a></sup> If you run an online forum, news site, or community platform, configure your image uploader to preserve provenance manifests rather than stripping them out during compression.</p>
+
+<p>If you read the news, notice which outlets show where their images came from, and pause before forwarding dramatic clips that carry no trace of origin. And if you work in local government or public policy, ask whether agencies should attach open postmarks to official hearing transcripts, public notices, and inspection logs. You can explore more practical steps on our <a href="/get-involved/everyone/">page for everyone</a>.</p>
+
+<p>We are entering a world where seeing is no longer automatically believing. Postmarks won't solve that alone, and they should never become a licence required for ordinary human speech. Still, they protect something every free community depends on: the ability to look at real evidence together and agree on what happened.</p>
+
+<section class="footnotes">
+  <p id="fn1">1. Bobby Chesney and Danielle Keats Citron, "Deep Fakes: A Looming Challenge for Privacy, Democracy, and National Security," <em>California Law Review</em> 107, no. 6 (December 2019): 1753–1820 (discussing the "liar's dividend" at 1785–1786). <a href="https://doi.org/10.15779/Z38RV0D15J">doi.org/10.15779/Z38RV0D15J</a></p>
+  <p id="fn2">2. Coalition for Content Provenance and Authenticity (C2PA), <em>Content Credentials: C2PA Technical Specification</em>, v2.1. <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html">c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html</a></p>
+  <p id="fn3">3. Shafi Goldwasser, Silvio Micali and Charles Rackoff, "The Knowledge Complexity of Interactive Proof Systems," <em>SIAM Journal on Computing</em> 18, no. 1 (1989): 186–208, <a href="https://doi.org/10.1137/0218012">doi.org/10.1137/0218012</a>; World Wide Web Consortium (W3C), <em>Verifiable Credentials Data Model v2.0</em>, <a href="https://www.w3.org/TR/vc-data-model-2.0/">w3.org/TR/vc-data-model-2.0</a>.</p>
+</section>

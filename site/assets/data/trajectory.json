@@ -1,0 +1,82 @@
+{
+ "updated": "2026-11-09T01:04:29+00:00",
+ "overall": 86.1,
+ "overall_24h_ago": 86.2,
+ "signals_total": 4529,
+ "signals_7d": 1376,
+ "course_changes_7d": 0,
+ "stories_7d": 1342,
+ "second_opinions": 6040,
+ "agreement": 0.91,
+ "toward": 2681,
+ "away": 825,
+ "stories_30d": 4342,
+ "one_sided": false,
+ "categories": {
+  "person": {
+   "name": "You and your information",
+   "index": 86.1,
+   "signals": 561,
+   "toward": 334,
+   "away": 148,
+   "one_sided": false
+  },
+  "economy": {
+   "name": "Money and the transition",
+   "index": 86.5,
+   "signals": 508,
+   "toward": 280,
+   "away": 107,
+   "one_sided": false
+  },
+  "gov": {
+   "name": "Deciding together",
+   "index": 91.3,
+   "signals": 714,
+   "toward": 439,
+   "away": 149,
+   "one_sided": false
+  },
+  "measure": {
+   "name": "Measuring and checking",
+   "index": 85.9,
+   "signals": 2229,
+   "toward": 1303,
+   "away": 494,
+   "one_sided": false
+  },
+  "agents": {
+   "name": "Agents",
+   "index": 89.6,
+   "signals": 3447,
+   "toward": 2186,
+   "away": 652,
+   "one_sided": false
+  },
+  "plural": {
+   "name": "Many ways of being good",
+   "index": 92.7,
+   "signals": 372,
+   "toward": 244,
+   "away": 46,
+   "one_sided": true
+  },
+  "global": {
+   "name": "Everyone, everywhere",
+   "index": 58.5,
+   "signals": 95,
+   "toward": 38,
+   "away": 34,
+   "one_sided": false
+  },
+  "adopt": {
+   "name": "Earning a place",
+   "index": 97.9,
+   "signals": 1383,
+   "toward": 1064,
+   "away": 57,
+   "one_sided": true
+  }
+ },
+ "method": "Each source an AI agent read and the engine verified counts toward or away from a group of principles, weighted by importance, confidence and kind of source (original sources count most, commentary least), and fading with a 7-day half-life over 30 days. Several reports of one event count once. The reading is the balance of evidence toward and away, not how much was read: with little evidence it stays near 50. A second agent rates many sources independently; where they disagree, the majority reading counts. 50 is level. This is an experimental, AI-curated reading of public sources, not a measurement."
+}

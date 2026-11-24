@@ -1,0 +1,258 @@
+---
+title: When software makes a decision about you, what should you be able to see?
+description: A rental application turned down in thirty seconds. A health claim denied. When software shapes a decision about your life, four simple things should always be visible.
+reader: Anyone who has applied for a job, a home, insurance or a public benefit and wondered how a computer arrived at the answer.
+takeaway: When software shapes a consequential decision about your life, four things should be clear. You should see that software was used, its inputs, what would change the outcome, and who can fix errors.
+template: article
+date: 2026-11-06
+order: 16
+category: Governing
+minutes: 9
+image: post-when-software-decides-about-you.jpg
+image_alt: An open wooden cabinet on warm sunlit paper where a formerly locked brass box is open, revealing a neatly ruled ledger page, a brass magnifying lens, a key and an olive branch.
+lede: When software shapes a decision about your housing, job, or benefits, four facts must be visible. You need to see that software ran, its underlying facts, what would change the result, and how to reach a human supervisor.
+---
+<p>A rental application is turned down in thirty seconds. A rehabilitation claim is denied overnight. When you call to ask why, the clerk's screen doesn't say either. Most people don't object to software handling routine paperwork. They object to life-shaping decisions that nobody can explain or correct.</p>
+
+<h2>We have been here before</h2>
+
+<p>Half a century ago, credit bureaus began collecting household dossiers that decided who could get a mortgage, an apartment or a job. Choices that once happened across a local bank desk moved into distant filing cabinets.</p>
+
+<p>Families regularly lost out on homes because of a simple clerical error inside a folder they were never allowed to inspect. A neighbour's unpaid utility bill got filed under the wrong middle initial, or a debt paid off years earlier stayed marked as delinquent.</p>
+
+<p>Now contrast that locked cabinet with a municipal building inspector's checklist. When an inspector checks the wiring or stairs in a house and marks an item as failed, they do not hand you a mysterious score out of a thousand.</p>
+
+<p>Instead, their checklist points to the exact rule that was missed, such as a handrail two inches too low. It tells you exactly what to fix before they return. You can verify the measurement yourself with a tape measure.</p>
+
+<p>Laws like the United States Fair Credit Reporting Act of 1970 pushed credit files closer to that inspector's checklist.<sup><a href="#fn1">1</a></sup> They did not ban credit scores; instead, they established a basic right to see the file, know the main reasons for an adverse decision, and correct untrue records.</p>
+
+<p>Today's screening software is faster and more complex than a room full of paper folders. Yet the human problem is identical. An opaque cabinet is still an opaque cabinet, whether it is built out of steel drawers or neural network weights.</p>
+
+<figure class="explainer" id="ex-contestable-decision">
+  <style>
+    #ex-contestable-decision {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-contestable-decision svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-contestable-decision .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-contestable-decision .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-contestable-decision .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-contestable-decision .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-contestable-decision .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-contestable-decision .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-contestable-decision .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-contestable-decision .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-contestable-decision .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-contestable-decision figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-contestable-decision .ex-canvas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #ex-contestable-decision .ex-canvas svg {
+        min-width: 540px;
+      }
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg viewBox="0 0 680 350" role="group" aria-labelledby="ex-contestable-decision-title ex-contestable-decision-desc">
+      <title id="ex-contestable-decision-title">Black-Box Rejection Stamp vs. Contestable Decision Receipt</title>
+      <desc id="ex-contestable-decision-desc">Side-by-side comparison showing an unexplainable Black-Box Rejection Stamp on the left with hidden inputs, secret scoring, and a powerless call centre, versus a Contestable Decision Receipt on the right showing exact inputs used, the specific policy rule cited, what would change the outcome, and a human appeal path with authority to fix errors.</desc>
+      <line x1="340" y1="14" x2="340" y2="338" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="14" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="27" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">BLACK-BOX REJECTION STAMP</text>
+        <text x="14" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Locked slot with hidden inputs</text>
+        <line x1="14" y1="50" x2="328" y2="50" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <line x1="22" y1="64" x2="22" y2="234" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+        <rect x="19" y="62" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Hidden Automation</text>
+        <text x="34" y="85" font-size="11" fill="var(--ex-muted)">Generic rejection notice</text>
+        <line x1="34" y1="135" x2="328" y2="135" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="145" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="152" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Unseen Scrape</text>
+        <text x="34" y="168" font-size="11" fill="var(--ex-muted)">Stale third-party record</text>
+        <line x1="34" y1="218" x2="328" y2="218" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="228" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="235" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Powerless Desk</text>
+        <text x="34" y="251" font-size="11" fill="var(--ex-muted)">Staff cannot override score</text>
+        <line x1="14" y1="313" x2="328" y2="313" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="14" y="321" width="5" height="5" fill="var(--ex-warn)"/>
+        <text x="25" y="326" font-size="11" font-weight="700" fill="var(--ex-warn)">Result: Unchecked mistake stands</text>
+      </g>
+      <g>
+        <rect x="354" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="367" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">CONTESTABLE RECEIPT</text>
+        <text x="354" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Inspector list with appeal authority</text>
+        <line x1="354" y1="50" x2="666" y2="50" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <line x1="362" y1="64" x2="362" y2="234" stroke="var(--ex-signal)" stroke-width="1"/>
+        <rect x="359" y="62" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Named Screen</text>
+        <text x="374" y="85" font-size="11" fill="var(--ex-muted)">Automated v4.2 · Receipt #8841</text>
+        <line x1="374" y1="135" x2="666" y2="135" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="359" y="145" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="152" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Exact Facts Shown</text>
+        <text x="374" y="168" font-size="11" fill="var(--ex-muted)">Tenure: 10 mos · Rule 3.2</text>
+        <line x1="374" y1="218" x2="666" y2="218" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="359" y="228" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="235" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Empowered Appeal</text>
+        <text x="374" y="251" font-size="11" fill="var(--ex-muted)">Upload paystub -&gt; human fix</text>
+        <line x1="354" y1="313" x2="666" y2="313" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="354" y="321" width="5" height="5" fill="var(--ex-signal)"/>
+        <text x="365" y="326" font-size="11" font-weight="700" fill="var(--ex-signal)">Result: Error corrected &amp; logged</text>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Opaque rejection notice</span>
+      <div class="ex-spec-body">Conceals stale third-party data behind a proprietary score and leaves helpdesk staff unable to override errors.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Contestable decision receipt</span>
+      <div class="ex-spec-body">Discloses exact recorded inputs, cites the specific rule and threshold, and routes corrections to a reviewer with authority.</div>
+    </div>
+  </div>
+  <figcaption>Figure 1: Replacing the locked courthouse slot (left) with a building-inspector style Contestable Decision Receipt (right) shows the exact inputs used, the rule cited, and a human appeal path with authority to fix mistakes.</figcaption>
+</figure>
+
+<h2>Four things you should be able to see</h2>
+
+<p>What does that building-inspector bargain look like when software makes or shapes a consequential decision about you today? We think every person should be able to see four straightforward things.</p>
+
+<p><strong>1. Plain notice that software was involved.</strong> You should never have to guess whether a human reviewer read your file or an automated program filtered it out before anyone looked.</p>
+
+<p>That disclosure does not belong buried on page forty of a general terms-of-service document. It belongs right on the letter, email or screen where the decision is delivered, alongside the name of the system used.</p>
+
+<p><strong>2. The specific facts the system used about you.</strong> Many "algorithmic errors" in everyday life are mundane. A stale eviction record belongs to someone with a similar surname, a date was misread on a scan, or a tax form went missing and nobody asked you to check.</p>
+
+<p>No formula on earth can produce a fair answer if the facts fed into it are wrong. Before arguing over fifty variables, you should receive a clean copy of the records used about you. You also need a direct way to correct false items.</p>
+
+<p><strong>3. What would have changed the outcome, in plain language.</strong> Organisations sometimes claim that modern machine learning is too complex to explain to an ordinary citizen, or that explaining a score would expose proprietary trade secrets.</p>
+
+<p>You do not need the company's source code or a spreadsheet of ten million neural weights. Like the homeowner reading the building inspector's checklist, you need an honest, checkable reason: which specific factor mattered most, and what would need to change for the answer to become "yes."<sup><a href="#fn2">2</a></sup></p>
+
+<p>Imagine an apartment notice with an exact reason: "Your application was declined because our screen showed ten months at your employer, while policy requires twelve." You can check that statement in ten seconds.</p>
+
+<p>If the tenant-screening broker scraped an old record and you have actually worked there for fourteen months, you know which pay stub to upload. If the ten-month figure is accurate, you know immediately whether adding a co-signer solves the problem.</p>
+
+<p><strong>4. A doorway to a real person with both the time and the authority to overturn a mistake.</strong> Many institutions boast that they keep a person in the loop. Too often, that means a call-centre worker given ninety seconds per call. Their screen is greyed out, with no button to override the software.</p>
+
+<p>An appeal to a representative who may not overrule the computer gives you no real remedy. Real contestability means reaching a reviewer who has both the time to read corrected evidence and the institutional authority to reverse the decision.</p>
+
+<div class="callout"><p class="label">The four questions</p><p>When software shapes a decision about you, ask: Did software score or filter this? What specific records about me did it use? What would have changed the answer? And who has the authority to overturn a mistake?</p></div>
+
+<h2>Walkthrough: two mornings with the same mistake</h2>
+
+<p>To see why these four pieces must work together, picture a nurse named Elena applying for a flat near her hospital after moving across the province. A data broker mixes up her file with another person's old utility arrears from a city she has never visited.</p>
+
+<p>In the locked-courthouse version of that morning, the property manager's portal rejects Elena in twenty seconds with a generic message saying her composite tenant score fell below the required mark. The leasing agent shrugs and says the software decision is final. Elena loses the apartment and still has no idea a stranger's unpaid bill is attached to her name, waiting to sink her next three applications.</p>
+
+<p>In the contestable version of that morning, the rejection screen attaches a signed decision receipt. Elena sees immediately that an automated screening tool ran, spots the unfamiliar utility account listed under "Inputs Used," and clicks the appeal link to attach her actual utility history. A human leasing supervisor reviews the mismatch that afternoon, clears the false record, and approves the lease.</p>
+
+<h2>Rules you can already rely on</h2>
+
+<p>None of these four expectations is wishful thinking. Across several jurisdictions, citizens can already invoke existing rules, or press their representatives to close the loopholes that remain.</p>
+
+<p>In the United States, the Consumer Financial Protection Bureau has stated clearly that lenders cannot hide behind "complex algorithms" or black-box models to avoid giving specific, accurate reasons for denying credit.<sup><a href="#fn3">3</a></sup> Even when a machine-learning system makes the call, the lender must name the principal factors that drove the outcome.</p>
+
+<p>In Canada, the federal <em>Directive on Automated Decision-Making</em> governs administrative systems. Departments must publish an impact assessment, provide plain notice, and explain how a decision was reached.<sup><a href="#fn4">4</a></sup></p>
+
+<p>In the European Union, data protection law restricts significant decisions made solely by automated processing, establishing rights to obtain human intervention, express a point of view, and contest the decision. Still, organisations often try to sidestep those protections by placing a nominal rubber-stamper at the end of the queue.<sup><a href="#fn5">5</a></sup></p>
+
+<p>Where the biggest gap remains is in everyday scope and enforcement. Rules that cover a bank mortgage or federal pension are often weaker when software screens job applicants, scores tenants, or flags insurance claims.</p>
+
+<h2>An honest look at the limits</h2>
+
+<p>We also need to be candid about where explanations fail on their own.</p>
+
+<p>First, handing someone an explanation only helps if the record cannot be rewritten afterwards. If a system turns you down and invents a tidy excuse when you complain later, the explanation is theatre.</p>
+
+<p>Everything the software used at the moment of the decision (the inputs, the model version, and the explanation rule) must be sealed into a receipt right then. That way, an auditor can replay the check and confirm the reason was genuine.</p>
+
+<p>Second, a right to ask questions fails if people are punished for asking. If a renter fears that challenging a screening score will land them on an informal blacklist, most renters will stay silent. Contestability requires clear rules against retaliation.</p>
+
+<aside class="for-researchers"><details><summary>For researchers</summary><div><p>Requirement 3 builds on unconditional counterfactual explanations (Wachter, Mittelstadt and Russell, 2018), which provide actionable recourse without exposing proprietary model weights. However, non-linear models admit many valid counterfactuals, enabling post-hoc "fairwashing" where an operator cherry-picks a socially palatable explanation. Our proposed protocol binds the input feature vector, cryptographic model commitment, fixed counterfactual cost metric, and resulting counterfactual witness into a signed, tamper-evident receipt at decision time for deterministic auditor replay.</p></div></details></aside>
+
+<h2>A step you can take this week</h2>
+
+<p>Next time an employer, insurer or agency turns you down using automated software, ask in writing for two things. Request a copy of the exact records used, and ask for a review by a person authorized to correct errors.</p>
+
+<p>If you belong to a union, tenant association or neighbourhood co-op, ask those questions together. One applicant is easy to brush off with a form letter. A tenant union or workplace group asking an institution to audit its screening tools is much harder to ignore.</p>
+
+<p>You can find practical templates on our <a href="/get-involved/everyone/">For everyone</a> page, and briefing checklists on our <a href="/get-involved/policy/">For policy makers</a> page. Software can help institutions move faster, but it should never become a locked door that lets them stop answering to the public.</p>
+
+<section class="footnotes">
+<p id="fn1">1. United States Fair Credit Reporting Act (1970), 15 U.S.C. § 1681 et seq., Federal Trade Commission Legal Library: <a href="https://www.ftc.gov/legal-library/browse/statutes/fair-credit-reporting-act">ftc.gov/legal-library/browse/statutes/fair-credit-reporting-act</a>.</p>
+<p id="fn2">2. Sandra Wachter, Brent Mittelstadt and Chris Russell, <a href="https://arxiv.org/abs/1711.00399">Counterfactual Explanations without Opening the Black Box: Automated Decisions and the GDPR</a>, <em>Harvard Journal of Law &amp; Technology</em>, Vol. 31, No. 2 (2018).</p>
+<p id="fn3">3. Consumer Financial Protection Bureau, <a href="https://www.consumerfinance.gov/compliance/circulars/circular-2022-03-adverse-action-notification-requirements-in-connection-with-credit-decisions-based-on-complex-algorithms/">Consumer Financial Protection Circular 2022-03: Adverse Action Notification Requirements in Connection with Credit Decisions Based on Complex Algorithms</a> (May 2022).</p>
+<p id="fn4">4. Treasury Board of Canada Secretariat, <a href="https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32592">Directive on Automated Decision-Making</a> (Policy ID 32592).</p>
+<p id="fn5">5. European Union, <a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj">Regulation (EU) 2016/679 (General Data Protection Regulation)</a>, Article 22 (Automated individual decision-making, including profiling).</p>
+</section>

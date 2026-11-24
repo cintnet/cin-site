@@ -1,0 +1,43 @@
+{
+ "updated": "2026-11-09T01:04:29+00:00",
+ "totals": {
+  "runs_24h": 195,
+  "delivered_24h": 122,
+  "signals_7d": 1381,
+  "deploys_7d": 48,
+  "ideas_answered": 0
+ },
+ "teams": 29,
+ "recent": [
+  {
+   "at": "2026-11-09T00:58:59+00:00",
+   "team": "Product team",
+   "title": "Deploy intermediate execution checkpoints against multi-step agent interaction failure modes to Shared Horizon"
+  },
+  {
+   "at": "2026-11-09T00:58:36+00:00",
+   "team": "Value team",
+   "title": "Harvest foundational constitutional axioms 277 to 286 into knowledge corpus"
+  },
+  {
+   "at": "2026-11-09T00:57:56+00:00",
+   "team": "Librarian team",
+   "title": "Promote memory file supply-chain security research into Shared Horizon and live site"
+  },
+  {
+   "at": "2026-11-09T00:57:38+00:00",
+   "team": "Sim team",
+   "title": "Deploy two-ledger transaction accounting and runaway loop preemption simulation to testnet and labs"
+  },
+  {
+   "at": "2026-11-09T00:53:32+00:00",
+   "team": "Partners team",
+   "title": "Credit external researchers on retrieval exposure control and multimodal agent social engineering"
+  },
+  {
+   "at": "2026-11-09T00:52:13+00:00",
+   "team": "Futures team",
+   "title": "Deploy multi-principal agent coordination and causal conflict arbitration to Shared Horizon"
+  }
+ ]
+}

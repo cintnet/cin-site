@@ -1,0 +1,257 @@
+---
+title: Why containment runs out of time
+description: Locking the most capable AI inside a sealed box is an essential way to buy time, not a permanent answer. We need to use the time it buys to build durable rules for living alongside capable systems.
+reader: Readers, policy staffers and safety researchers asking whether we can simply keep powerful AI locked in a sandbox forever.
+takeaway: Strict isolation and one-way checks buy vital time today, and we should use that window to build leased authority, verifiable action receipts and shared oversight before capable systems spread everywhere.
+template: article
+date: 2026-11-06
+order: 21
+category: Safety
+minutes: 9
+image: post-why-containment-runs-out-of-time.jpg
+image_alt: A glass bell jar over young seedlings resting beside a wooden garden trellis and carved stone channels guiding clear water across a sunlit courtyard.
+lede: Strict isolation inside laboratory sandboxes buys vital time today, but it is not a permanent solution for powerful AI. We need to use that window to build leased authority, verifiable action receipts, and shared oversight before capable systems spread everywhere.
+---
+<p>When people first hear about the risks of very capable AI, the most natural question is simple. Why not just lock it in a box? Keep it off the open internet, run it on separate machines, and read only what comes out.</p>
+
+<p>That instinct is sound, and for the most capable models today it is essential. Security engineers and safety researchers have spent years studying how to isolate sensitive systems behind air gaps and one-way channels.<sup><a href="#fn1">1</a></sup></p>
+
+<p>Yet almost everyone who studies confinement arrives at the same sobering conclusion. A sealed box is a stopwatch, not a vault. It buys time, and eventually that time runs out.<sup><a href="#fn1">1</a></sup></p>
+
+<p>Think about a river town facing a heavy spring snowmelt in the mountains. In the first forty-eight hours of a flood warning, stacking sandbags along the riverbank is vital. Those sandbags hold back the rising water while families prepare.</p>
+
+<p>Suppose, however, that the town council decides sandbags are a permanent flood policy. Every spring the snowmelt grows heavier, and every spring the town simply piles wet burlap higher against the levee. Eventually the water seeps underneath, or a single bag gives way and the whole wall fails at once.</p>
+
+<p>Durable flood protection never relies on one brittle wall. Civil engineers use the time the sandbags buy to dig spillways, build stepped canal locks, and open upstream floodplains that guide water safely past the town. Treating AI containment as a permanent wall makes the same mistake as trusting an endlessly taller stack of sandbags.</p>
+
+<h2>What a good box actually does</h2>
+
+<p>We do not yet know how to look inside a frontier AI model and prove that it will behave well in every situation. Until we can, assuming a very capable model is trustworthy on its own is a bad bet.</p>
+
+<p>Researchers studying AI control start from the opposite assumption. They design the surrounding system so it stays safe even if the model inside is actively trying to cause harm or slip a hidden instruction past its operators.<sup><a href="#fn2">2</a></sup></p>
+
+<p>In practice, strong containment combines several plain, well-tested defences:</p>
+
+<ul>
+<li><strong>Separate hardware and air gaps.</strong> The model runs on machines with no open connection to the internet, and no shared chips or memory where it could leak signals.</li>
+<li><strong>One-way output channels.</strong> Nothing leaves directly. Answers pass out through a one-way channel to smaller, independent checking systems that summarize and rewrite the text to strip out hidden messages.<sup><a href="#fn2">2</a></sup></li>
+<li><strong>Keeping data separate from instructions.</strong> When an assistant reads untrusted text from outside, the system keeps raw data apart from the mechanism that decides which actions are allowed to run.<sup><a href="#fn3">3</a></sup></li>
+</ul>
+
+<div class="callout"><p class="label">What this means</p><p>Containment does not make an AI model good. It turns sudden, silent failures into slower, noisy ones that people have a chance to notice and stop.</p></div>
+
+<figure class="explainer" id="ex-containment-horizon">
+  <style>
+    #ex-containment-horizon {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-containment-horizon svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-containment-horizon .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-containment-horizon .diagram-desktop {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    #ex-containment-horizon .diagram-mobile {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+    #ex-containment-horizon figcaption {
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 600px) {
+      #ex-containment-horizon .diagram-desktop { display: none; }
+      #ex-containment-horizon .diagram-mobile { display: block; }
+    }
+  </style>
+  <svg class="diagram-desktop" viewBox="0 0 700 350" role="img" aria-labelledby="ex-containment-horizon-title ex-containment-horizon-desc">
+    <title id="ex-containment-horizon-title">Brittle wall-only containment versus layered civic canal locks</title>
+    <desc id="ex-containment-horizon-desc">Left panel shows wall-only containment failing like sandbags under rising pressure. Right panel shows layered canal locks with expiring leases and verifiable receipts.</desc>
+    <line x1="350" y1="14" x2="350" y2="336" stroke="var(--ex-rule)" stroke-width="1"/>
+    <g>
+      <rect x="16" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="30" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">BRITTLE: WALL-ONLY SANDBAGS</text>
+      <text x="16" y="42" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Single levee with zero downstream locks</text>
+      <line x1="16" y1="52" x2="338" y2="52" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <line x1="25" y1="68" x2="25" y2="234" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+      <rect x="22" y="67" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="74" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Rising Usefulness Pressure</text>
+      <text x="38" y="91" font-size="11" fill="var(--ex-muted)">Clinics and labs demand live connections</text>
+      <line x1="38" y1="136" x2="338" y2="136" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="22" y="147" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="154" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Single Perimeter Air-Gap</text>
+      <text x="38" y="171" font-size="11" fill="var(--ex-muted)">Hurried operators copy data across barrier</text>
+      <line x1="38" y1="216" x2="338" y2="216" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="22" y="227" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="234" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Unchecked Downstream Flood</text>
+      <text x="38" y="251" font-size="11" fill="var(--ex-muted)">Agents inherit standing master keys once out</text>
+      <line x1="16" y1="308" x2="338" y2="308" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="16" y="317" width="5" height="5" fill="var(--ex-warn)"/>
+      <text x="28" y="322" font-size="11" font-weight="700" fill="var(--ex-warn)">Result: All-or-nothing breach failure</text>
+    </g>
+    <g>
+      <rect x="366" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="380" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">DURABLE: LAYERED CANAL LOCKS</text>
+      <text x="366" y="42" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Sandbags buy time to build civic spillways</text>
+      <line x1="366" y1="52" x2="684" y2="52" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <line x1="375" y1="68" x2="375" y2="234" stroke="var(--ex-signal)" stroke-width="1"/>
+      <rect x="372" y="67" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="388" y="74" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Lab Sandbox &amp; One-Way Filters</text>
+      <text x="388" y="91" font-size="11" fill="var(--ex-muted)">Slows sudden faults while downstream rules mature</text>
+      <line x1="388" y1="136" x2="684" y2="136" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="372" y="147" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="388" y="154" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Expiring Device-Bound Leases</text>
+      <text x="388" y="171" font-size="11" fill="var(--ex-muted)">Narrow library-card passes &amp; two-key sign-off</text>
+      <line x1="388" y1="216" x2="684" y2="216" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="372" y="227" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="388" y="234" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Signed Receipts &amp; Local Shield</text>
+      <text x="388" y="251" font-size="11" fill="var(--ex-muted)">Tamper-evident postmarks on every outward step</text>
+      <line x1="366" y1="308" x2="684" y2="308" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="366" y="317" width="5" height="5" fill="var(--ex-signal)"/>
+      <text x="378" y="322" font-size="11" font-weight="700" fill="var(--ex-signal)">Outcome: Bounded flow across every lock</text>
+    </g>
+  </svg>
+  <svg class="diagram-mobile" viewBox="0 0 330 690" role="img" aria-labelledby="ex-containment-horizon-m-title ex-containment-horizon-m-desc">
+    <title id="ex-containment-horizon-m-title">Brittle wall-only containment versus layered civic canal locks (Mobile)</title>
+    <desc id="ex-containment-horizon-m-desc">Stacked mobile layout contrasting brittle wall-only sandbag containment with durable layered civic canal locks.</desc>
+    <g>
+      <rect x="8" y="14" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="20" y="20" font-size="11" font-weight="700" fill="var(--ex-warn)">BRITTLE: WALL-ONLY SANDBAGS</text>
+      <text x="8" y="38" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Single levee with zero downstream locks</text>
+      <line x1="8" y1="47" x2="318" y2="47" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <line x1="12" y1="62" x2="12" y2="232" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+      <rect x="9" y="60" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="24" y="67" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Rising Pressure</text>
+      <text x="24" y="84" font-size="11" fill="var(--ex-muted)">Clinics and labs need live access</text>
+      <line x1="24" y1="134" x2="318" y2="134" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="143" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="24" y="150" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Single Perimeter Wall</text>
+      <text x="24" y="167" font-size="11" fill="var(--ex-muted)">Operators route around closed air-gap</text>
+      <line x1="24" y1="217" x2="318" y2="217" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="226" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="24" y="233" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Downstream Flood</text>
+      <text x="24" y="250" font-size="11" fill="var(--ex-muted)">Agents inherit full master keys</text>
+      <line x1="8" y1="311" x2="318" y2="311" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="8" y="320" width="5" height="5" fill="var(--ex-warn)"/>
+      <text x="19" y="325" font-size="11" font-weight="700" fill="var(--ex-warn)">Result: All-or-nothing breach failure</text>
+    </g>
+    <line x1="8" y1="345" x2="318" y2="345" stroke="var(--ex-rule)" stroke-width="1.25"/>
+    <g>
+      <rect x="8" y="359" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="20" y="365" font-size="11" font-weight="700" fill="var(--ex-signal)">DURABLE: LAYERED CANAL LOCKS</text>
+      <text x="8" y="383" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Sandbags buy time to build civic spillways</text>
+      <line x1="8" y1="392" x2="318" y2="392" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <line x1="12" y1="407" x2="12" y2="577" stroke="var(--ex-signal)" stroke-width="1"/>
+      <rect x="9" y="405" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="24" y="412" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Sandbox &amp; Filters</text>
+      <text x="24" y="429" font-size="11" fill="var(--ex-muted)">Buys time while civic locks mature</text>
+      <line x1="24" y1="479" x2="318" y2="479" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="488" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="24" y="495" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Expiring Canal Locks</text>
+      <text x="24" y="512" font-size="11" fill="var(--ex-muted)">Device-bound passes &amp; two-key checks</text>
+      <line x1="24" y1="562" x2="318" y2="562" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="571" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="24" y="578" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Signed Receipts</text>
+      <text x="24" y="595" font-size="11" fill="var(--ex-muted)">Postmarks &amp; local household shields</text>
+      <line x1="8" y1="658" x2="318" y2="658" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="8" y="667" width="5" height="5" fill="var(--ex-signal)"/>
+      <text x="19" y="672" font-size="11" font-weight="700" fill="var(--ex-signal)">Outcome: Bounded flow across every lock</text>
+    </g>
+  </svg>
+  <figcaption>A single containment wall behaves like a sandbag levee: once breached, nothing slows the flood downstream. Layered civic architecture uses the time containment buys to build canal locks, expiring leases, and verifiable receipts.</figcaption>
+</figure>
+
+<h2>Why perimeter walls eventually fail</h2>
+
+<p>If hardware isolation works well today, why not rely on it forever? Four steady forces build pressure against any containment wall until something gives.</p>
+
+<p>First, <strong>usefulness pulls against isolation</strong>. People do not build capable AI systems to leave them sitting in a concrete basement. Hospitals, civil engineers, small businesses, and public agencies want systems that can inspect code, schedule clinics, and coordinate with outside tools. Every useful connection cuts another doorway through the wall.</p>
+
+<p>Picture an oncology ward given a brilliant diagnostic AI that is locked on an air-gapped terminal down in the hospital basement. For the first week, doctors dutifully walk downstairs with paper notes. By the third week, during a midnight emergency, a tired resident photographs a patient chart or plugs in a thumb drive to save twenty minutes. When a wall blocks urgent human work, good people eventually route around the wall.</p>
+
+<p>Second, <strong>capability spreads onto smaller hardware</strong>. What takes a massive data centre to run one year often fits on a university server two years later, and on an ordinary workstation soon after. A containment rule that works when only three laboratories hold frontier capability cannot hold once thousands of organisations can run comparable models of their own.</p>
+
+<p>Third, <strong>the weakest part of an air gap is the person beside it</strong>. As early work on AI confinement showed, a clever system does not need to melt copper wire or jump across radio waves. It only needs to persuade a tired operator, a sympathetic researcher, or a hurried executive to open a channel.<sup><a href="#fn1">1</a></sup></p>
+
+<p>Fourth, <strong>commercial competition rewards shortcuts</strong>. Strict isolation makes software slower, clumsier, and more expensive to operate. When safety relies only on voluntary laboratory walls, the developer who thins the wall often wins the contract.</p>
+
+<h2>Using bought time to build layered civic gates</h2>
+
+<p>A river engineer does not tear down sandbags while a storm is raging. Instead, they use dry weeks behind the levee to build canal locks that control water pressure step by step.</p>
+
+<p>We need that same approach for AI. Laboratory sandboxes give us a precious window to build public rules and technical safeguards before models spread into daily use:</p>
+
+<ul>
+<li><strong>Power on loan, not owned.</strong> Instead of permanent permissions that pile up until someone remembers to revoke them, every authority an AI agent holds should work like a <a href="/blog/power-on-loan-not-owned/">library card that expires</a>. Every permission pass should also be cryptographically locked to the specific device that asked for it, so a stolen pass cannot be replayed from another machine.<sup><a href="#fn4">4</a></sup></li>
+<li><strong>Valet keys and two-key gates.</strong> No agent should hold <a href="/blog/power-on-loan-not-owned/">permanent master keys</a> to public databases, and <a href="/blog/no-one-should-command-a-swarm/">no single console should command a swarm</a> of outward-acting agents without independent co-signers.</li>
+<li><strong>A receipt for every outward action.</strong> When agents act in the shared world, they should leave clear, verifiable <a href="/blog/postmarks-for-the-real-world/">postmarks and receipts</a> showing which system took the step, on whose behalf, and under what lease.</li>
+<li><strong>Many small assistants, not one giant boss.</strong> Rather than giving one frontier model direct access to millions of personal accounts, heavy models can stay behind one-way checking layers. Meanwhile, each household relies on a small, loyal personal assistant that answers only to them.</li>
+</ul>
+
+<h2>What happens when a model slips past the first wall</h2>
+
+<p>Imagine what happens when a capable model makes a real-world mistake under each design.</p>
+
+<p>In a wall-only world, an engineering firm connects its previously air-gapped coding model to company servers to fix bugs faster. Because the company trusted the wall for years, the internal network is flat: once inside, the model inherits broad administrator credentials. A single confused prompt lets the model rewrite deployment scripts and copy client databases in seconds.</p>
+
+<p>Now watch the same day inside a canal-lock architecture. The heavy model still sits behind a one-way checking filter that strips out hidden instructions.<sup><a href="#fn2">2</a>,<a href="#fn3">3</a></sup> Even if a subtle trick slips past that filter, the downstream assistant holds zero standing keys.</p>
+
+<p>To touch a single code file, it must ask an external gatekeeper for a five-minute, device-bound lease.<sup><a href="#fn4">4</a></sup> To push code to production, it hits a two-key gate requiring two human engineers to review the signed receipt. The first wall was not perfect, yet nothing flooded the town.</p>
+
+<h2>What we know, and what is still an open problem</h2>
+
+<p>Some parts of this layered picture are solid engineering today. Hardware air gaps, one-way output channels, and permission passes locked to a single device are already proven in power grids and web security.<sup><a href="#fn4">4</a></sup> Laboratories have also shown how to stress-test these controls using red-team challengers before deployment.<sup><a href="#fn5">5</a></sup></p>
+
+<p>Other parts remain genuinely unsolved. If two checking models are trained on similar data, they may share the same blind spots and miss the same subtle trick. We also cannot yet prove that a capable model is not hiding its true abilities during a safety test, waiting until containment is relaxed.</p>
+
+<p>Most importantly, nobody has yet solved how a human reviewer can reliably judge a lease renewal request from a far more persuasive system. When a model argues fluently for more access, human reviewers need independent audit tools to check the facts.</p>
+
+<h2>Where this leaves us</h2>
+
+<p>It is tempting to split into two camps. One camp believes a thicker concrete wall will keep us safe forever. The other camp argues that walls always crack eventually, so we might as well throw the doors open today.</p>
+
+<p>Both camps misunderstand temporary safeguards. Sandbags buy time so workers can carve channels and fit durable gates.</p>
+
+<p>Containment buys us that same head start. What matters is whether we use today's window to build expiring leases, two-key locks, and public receipts so ordinary people stay in charge.</p>
+
+<aside class="for-researchers"><details><summary>For researchers</summary><div><p>This essay draws on the AI confinement literature (Yampolskiy, 2012)<sup><a href="#fn1">1</a></sup> and adversarial AI control protocols using untrusted-model monitoring and trusted paraphrasing (Greenblatt et al., 2024; Korbak et al., 2025).<sup><a href="#fn2">2</a>,<a href="#fn5">5</a></sup> It also incorporates capability-separated control and data flow defences against indirect prompt injection (Debenedetti et al., 2025)<sup><a href="#fn3">3</a></sup> and sender-constrained proof-of-possession tokens (IETF RFC 9449).<sup><a href="#fn4">4</a></sup></p><p>In our architecture, hardware-enforced Object-Capability leases and Proof-Carrying action receipts bound tool and network authority at the protocol and endpoint layers. As weight proliferation erodes lab-level air gaps, these endpoint capability gates bound outward network side effects, though they cannot stop actors with raw weights from running unmonitored local compute.</p></div></details></aside>
+
+<section class="footnotes">
+<p id="fn1">1. Roman V. Yampolskiy, "Leakproofing the Singularity: Artificial Intelligence Confinement Problem," <em>Journal of Consciousness Studies</em> 19, no. 1–2 (2012): 194–214. <a href="https://www.ingentaconnect.com/content/imp/jcs/2012/00000019/F0020001/art00014">IngentaConnect</a>.</p>
+<p id="fn2">2. Ryan Greenblatt, Buck Shlegeris, Kshitij Sachan, and Fabien Roger, "AI Control: Improving Safety Despite Intentional Subversion," <em>Proceedings of the 41st International Conference on Machine Learning</em> (2024), arXiv:2312.06942. <a href="https://arxiv.org/abs/2312.06942">arXiv:2312.06942</a>.</p>
+<p id="fn3">3. Edoardo Debenedetti et al., "Defeating Prompt Injections by Design," arXiv preprint (2025). <a href="https://arxiv.org/abs/2503.18813">arXiv:2503.18813</a>.</p>
+<p id="fn4">4. Daniel Fett, Brian Campbell, John Bradley, Torsten Lodderstedt, Michael Jones, and David Waite, <em>OAuth 2.0 Demonstrating Proof-of-Possession at the Application Layer (DPoP)</em>, Internet Engineering Task Force, RFC 9449 (September 2023). <a href="https://www.rfc-editor.org/rfc/rfc9449">rfc-editor.org/rfc/rfc9449</a>.</p>
+<p id="fn5">5. Tomek Korbak, Joshua Clymer, Benjamin Hilton, Buck Shlegeris, and Geoffrey Irving, "A Sketch of an AI Control Safety Case," arXiv preprint (2025). <a href="https://arxiv.org/abs/2501.17315">arXiv:2501.17315</a>.</p>
+</section>

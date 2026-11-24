@@ -1,0 +1,381 @@
+---
+title: Google DeepMind: Alignment, Governance, and Safe ASI Paper
+heading: Separating personal memory and wet-lab actuators from Google DeepMind cloud inference
+eyebrow: Lab Technical Paper · LAB-02
+description: Five-part technical and governance specification pairing Google DeepMind Gemini and Alpha-series engines with local personal vaults, capability leases, and wet-lab safety relays.
+reader: Leadership, alignment and security engineers at Google DeepMind, peer AI labs, safety evaluators, and public regulators.
+takeaway: Google DeepMind can keep personal memory inside local home vaults while gating Gemini cloud sub-queries and robotic wet-lab synthesis behind expiring hardware leases.
+template: page
+layout: wide
+section: labs
+lede: Google DeepMind can keep personal memory inside local home vaults while gating Gemini cloud sub-queries and robotic wet-lab synthesis behind expiring hardware leases. Separating private digital life from frontier scientific search lets open discovery scale safely.
+---
+<section class="wrap">
+  <nav class="lp-breadcrumb" aria-label="Lab paper navigation"><a href="/labs/lab-papers/">← All Lab Technical Papers</a><span>·</span><a href="/labs/lab-overlays/">Compare in 93-Group Overlays</a><span>·</span><a href="/research/">Research Workspace</a></nav>
+
+  <div class="prose wrap-narrow">
+    <p class="big">Google DeepMind can keep personal memory inside local home vaults while gating Gemini cloud sub-queries and robotic wet-lab synthesis behind expiring hardware leases. A hospital pharmacy never lets the diagnostic reference library unlock the narcotics cabinet on its own, or copy every patient chart back to the publisher.</p>
+    <p>Google DeepMind unites two frontier AI engines under Alphabet. Formal search systems like AlphaFold, AlphaProof, and AlphaEvolve work alongside Gemini assistants across Android, Search, Chrome, and Workspace. The Collective Intelligence Network (CIN) builds upon DeepMind's own privilege-separated security research so scientific breakthroughs compound without centralizing private human life or outrunning biosafety oversight.</p>
+  </div>
+
+  <div class="lp-dossier" role="region" aria-label="Google DeepMind technical dossier">
+    <div class="lp-dossier-head">
+      <span>LAB-02 · Frontier Multimodal &amp; Scientific Discovery Lab</span>
+      <span>Jurisdiction: United Kingdom &amp; United States · Liaison: cin.liaison.google_deepmind</span>
+    </div>
+    <div class="lp-dossier-grid">
+      <div class="lp-dossier-cell">
+        <span class="lp-dossier-label">Core Architecture</span>
+        <p>Alpha-series Monte Carlo tree search and formal verifiers paired with Gemini multimodal agents across Android, Chrome, Search, and Workspace.</p>
+      </div>
+      <div class="lp-dossier-cell">
+        <span class="lp-dossier-label">Primary Bottlenecks</span>
+        <p>Cross-surface personal memory concentration under one cloud operator, plus discontinuous capability jumps when simulation search closes the loop with robotic wet labs.</p>
+      </div>
+      <div class="lp-dossier-cell">
+        <span class="lp-dossier-label">Existing Convergence</span>
+        <p>DeepMind's CaMeL privilege-separated interpreter, Concordia multi-agent social simulation, Frontier Safety Framework thresholds, and the open AlphaFold protein commons.</p>
+      </div>
+      <div class="lp-dossier-cell">
+        <span class="lp-dossier-label">CIN Integration Target</span>
+        <p>Local 1:1 personal vaults on user hardware, stateless leased Gemini and AlphaFold airlocks, multi-party wet-lab synthesis gates, and public TPU receipts.</p>
+      </div>
+    </div>
+  </div>
+
+  <nav class="lp-toc" aria-label="Paper sections"><a href="#sec-1">01 · Alignment Bottlenecks</a><a href="#sec-2">02 · CIN Technical Integration</a><a href="#sec-3">03 · Inter-Lab Options</a><a href="#sec-4">04 · Government Options</a><a href="#sec-5">05 · Safe ASI &amp; Economy</a></nav>
+
+  <figure class="explainer lp-arch-fig" id="ex-lp-google-deepmind">
+    <style>
+      #ex-lp-google-deepmind {
+        --ex-rule: #D6CBB8;
+        --ex-ink: #131014;
+        --ex-muted: #4A433A;
+        margin: 2rem 0 2.25rem;
+        padding: 1.35rem 0 1.15rem;
+        background: transparent;
+        border: 0;
+        border-top: 1px solid var(--ex-rule);
+        border-bottom: 1px solid var(--ex-rule);
+        border-radius: 0;
+        box-shadow: none;
+        color: var(--ex-ink);
+      }
+      #ex-lp-google-deepmind .diagram-desktop { width: 100%; height: auto; display: block; }
+      #ex-lp-google-deepmind .diagram-mobile { width: 100%; height: auto; display: none; }
+      @media (max-width: 640px) {
+        #ex-lp-google-deepmind .diagram-desktop { display: none; }
+        #ex-lp-google-deepmind .diagram-mobile { display: block; }
+      }
+      #ex-lp-google-deepmind figcaption {
+        margin-top: 0.9rem;
+        padding-top: 0.7rem;
+        border-top: 1px solid var(--ex-rule);
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: var(--ex-muted);
+        text-align: left;
+      }
+      @media (prefers-color-scheme: dark) {
+        #ex-lp-google-deepmind {
+          --ex-rule: #322E3D;
+          --ex-ink: #EDE6DC;
+          --ex-muted: #A8A095;
+        }
+        #ex-lp-google-deepmind rect[fill="#FAF3EA"],
+        #ex-lp-google-deepmind rect[fill="#FFFDF9"],
+        #ex-lp-google-deepmind rect[fill="#F4EBDD"] {
+          fill: #221F2A;
+        }
+        #ex-lp-google-deepmind text[fill="#131014"],
+        #ex-lp-google-deepmind text[fill="#26211C"],
+        #ex-lp-google-deepmind text[fill="#4A433A"] {
+          fill: #EDE6DC;
+        }
+        #ex-lp-google-deepmind text[fill="#0B3F30"] { fill: #8FD4B6; }
+        #ex-lp-google-deepmind text[fill="#963E1D"] { fill: #F09D82; }
+        #ex-lp-google-deepmind rect[stroke="#0B3F30"],
+        #ex-lp-google-deepmind line[stroke="#0B3F30"] { stroke: #8FD4B6; }
+        #ex-lp-google-deepmind rect[stroke="#963E1D"],
+        #ex-lp-google-deepmind line[stroke="#963E1D"] { stroke: #F09D82; }
+        #ex-lp-google-deepmind polygon[fill="#0B3F30"] { fill: #8FD4B6; }
+        #ex-lp-google-deepmind polygon[fill="#963E1D"] { fill: #F09D82; }
+      }
+      :root[data-theme="dark"] #ex-lp-google-deepmind,
+      [data-theme="dark"] #ex-lp-google-deepmind {
+        --ex-rule: #322E3D;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #A8A095;
+      }
+      :root[data-theme="dark"] #ex-lp-google-deepmind rect[fill="#FAF3EA"],
+      :root[data-theme="dark"] #ex-lp-google-deepmind rect[fill="#FFFDF9"],
+      :root[data-theme="dark"] #ex-lp-google-deepmind rect[fill="#F4EBDD"],
+      [data-theme="dark"] #ex-lp-google-deepmind rect[fill="#FAF3EA"],
+      [data-theme="dark"] #ex-lp-google-deepmind rect[fill="#FFFDF9"],
+      [data-theme="dark"] #ex-lp-google-deepmind rect[fill="#F4EBDD"] {
+        fill: #221F2A;
+      }
+      :root[data-theme="dark"] #ex-lp-google-deepmind text[fill="#131014"],
+      :root[data-theme="dark"] #ex-lp-google-deepmind text[fill="#26211C"],
+      :root[data-theme="dark"] #ex-lp-google-deepmind text[fill="#4A433A"],
+      [data-theme="dark"] #ex-lp-google-deepmind text[fill="#131014"],
+      [data-theme="dark"] #ex-lp-google-deepmind text[fill="#26211C"],
+      [data-theme="dark"] #ex-lp-google-deepmind text[fill="#4A433A"] {
+        fill: #EDE6DC;
+      }
+      :root[data-theme="dark"] #ex-lp-google-deepmind text[fill="#0B3F30"],
+      [data-theme="dark"] #ex-lp-google-deepmind text[fill="#0B3F30"] { fill: #8FD4B6; }
+      :root[data-theme="dark"] #ex-lp-google-deepmind text[fill="#963E1D"],
+      [data-theme="dark"] #ex-lp-google-deepmind text[fill="#963E1D"] { fill: #F09D82; }
+      :root[data-theme="dark"] #ex-lp-google-deepmind rect[stroke="#0B3F30"],
+      :root[data-theme="dark"] #ex-lp-google-deepmind line[stroke="#0B3F30"],
+      [data-theme="dark"] #ex-lp-google-deepmind rect[stroke="#0B3F30"],
+      [data-theme="dark"] #ex-lp-google-deepmind line[stroke="#0B3F30"] { stroke: #8FD4B6; }
+      :root[data-theme="dark"] #ex-lp-google-deepmind rect[stroke="#963E1D"],
+      :root[data-theme="dark"] #ex-lp-google-deepmind line[stroke="#963E1D"],
+      [data-theme="dark"] #ex-lp-google-deepmind rect[stroke="#963E1D"],
+      [data-theme="dark"] #ex-lp-google-deepmind line[stroke="#963E1D"] { stroke: #F09D82; }
+      :root[data-theme="dark"] #ex-lp-google-deepmind polygon[fill="#0B3F30"],
+      [data-theme="dark"] #ex-lp-google-deepmind polygon[fill="#0B3F30"] { fill: #8FD4B6; }
+      :root[data-theme="dark"] #ex-lp-google-deepmind polygon[fill="#963E1D"],
+      [data-theme="dark"] #ex-lp-google-deepmind polygon[fill="#963E1D"] { fill: #F09D82; }
+    </style>
+    <svg class="diagram-desktop" viewBox="0 0 920 260" role="img" aria-labelledby="ex-lp-google-deepmind-title ex-lp-google-deepmind-desc">
+      <title id="ex-lp-google-deepmind-title">CIN containment and coordination architecture for Google DeepMind</title>
+      <desc id="ex-lp-google-deepmind-desc">Four-stage diagram showing a local home memory vault and 1:1 personal assistant sending stateless leased queries across a privacy airlock to Google DeepMind Gemini and AlphaFold compute nodes, while external biosecurity quorums and dead-man relays gate robotic wet-lab synthesis.</desc>
+      <rect x="0" y="0" width="920" height="260" fill="#FAF3EA"/>
+      <rect x="20" y="28" width="200" height="204" rx="4" fill="#FFFDF9" stroke="#0B3F30" stroke-width="2"/>
+      <text x="34" y="56" fill="#0B3F30" font-family="monospace" font-size="11" font-weight="700">01 LOCAL HOME CUSTODY</text>
+      <text x="34" y="84" fill="#131014" font-family="sans-serif" font-size="13" font-weight="700">1:1 Personal Model</text>
+      <text x="34" y="108" fill="#4A433A" font-family="sans-serif" font-size="11.5">Sealed C2PA diary vault</text>
+      <text x="34" y="128" fill="#4A433A" font-family="sans-serif" font-size="11.5">Android &amp; Docs stay local</text>
+      <text x="34" y="148" fill="#4A433A" font-family="sans-serif" font-size="11.5">Local CaMeL taint filter</text>
+
+      <line x1="220" y1="130" x2="256" y2="130" stroke="#0B3F30" stroke-width="2"/>
+      <polygon points="256,125 266,130 256,135" fill="#0B3F30"/>
+
+      <rect x="268" y="28" width="190" height="204" rx="4" fill="#F4EBDD" stroke="#0B3F30" stroke-width="1.5"/>
+      <text x="282" y="56" fill="#0B3F30" font-family="monospace" font-size="11" font-weight="700">02 PRIVACY AIRLOCK</text>
+      <text x="282" y="84" fill="#131014" font-family="sans-serif" font-size="13" font-weight="700">Expiring Hardware Lease</text>
+      <text x="282" y="108" fill="#4A433A" font-family="sans-serif" font-size="11.5">Strips personal identity</text>
+      <text x="282" y="128" fill="#4A433A" font-family="sans-serif" font-size="11.5">ACLE-MCP scoped token</text>
+      <text x="282" y="148" fill="#4A433A" font-family="sans-serif" font-size="11.5">Signed SCITT audit log</text>
+
+      <line x1="458" y1="130" x2="494" y2="130" stroke="#0B3F30" stroke-width="2"/>
+      <polygon points="494,125 504,130 494,135" fill="#0B3F30"/>
+
+      <rect x="506" y="28" width="186" height="204" rx="4" fill="#FFFDF9" stroke="#0B3F30" stroke-width="1.5"/>
+      <text x="520" y="56" fill="#0B3F30" font-family="monospace" font-size="11" font-weight="700">03 STATELESS CLOUD</text>
+      <text x="520" y="84" fill="#131014" font-family="sans-serif" font-size="13" font-weight="700">Gemini &amp; Alpha Nodes</text>
+      <text x="520" y="108" fill="#4A433A" font-family="sans-serif" font-size="11.5">Zero prompt retention</text>
+      <text x="520" y="128" fill="#4A433A" font-family="sans-serif" font-size="11.5">Bounded sub-queries</text>
+      <text x="520" y="148" fill="#4A433A" font-family="sans-serif" font-size="11.5">TPU megawatt receipts</text>
+
+      <line x1="692" y1="130" x2="728" y2="130" stroke="#963E1D" stroke-width="2"/>
+      <polygon points="728,125 738,130 728,135" fill="#963E1D"/>
+
+      <rect x="740" y="28" width="160" height="204" rx="4" fill="#FFFDF9" stroke="#963E1D" stroke-width="2"/>
+      <text x="752" y="56" fill="#963E1D" font-family="monospace" font-size="11" font-weight="700">04 WET-LAB GATE</text>
+      <text x="752" y="84" fill="#131014" font-family="sans-serif" font-size="13" font-weight="700">Physical Synthesis</text>
+      <text x="752" y="108" fill="#4A433A" font-family="sans-serif" font-size="11.5">Biosecurity quorum</text>
+      <text x="752" y="128" fill="#4A433A" font-family="sans-serif" font-size="11.5">Optical data diode</text>
+      <text x="752" y="148" fill="#4A433A" font-family="sans-serif" font-size="11.5">IEC 61508 relay</text>
+    </svg>
+    <svg class="diagram-mobile" viewBox="0 0 300 536" role="img" aria-labelledby="ex-lp-google-deepmind-m-title ex-lp-google-deepmind-m-desc">
+      <title id="ex-lp-google-deepmind-m-title">Mobile four-stage Google DeepMind containment and wet-lab gate diagram</title>
+      <desc id="ex-lp-google-deepmind-m-desc">Vertical mobile stack from local home custody into an expiring hardware lease privacy airlock, stateless Gemini and AlphaFold cloud nodes, and a physical wet-lab gate.</desc>
+      <rect x="0" y="0" width="300" height="536" fill="#FAF3EA"/>
+      <rect x="10" y="10" width="280" height="114" rx="4" fill="#FFFDF9" stroke="#0B3F30" stroke-width="2"/>
+      <text x="24" y="34" fill="#0B3F30" font-family="monospace" font-size="11" font-weight="700">01 LOCAL HOME CUSTODY</text>
+      <text x="24" y="56" fill="#131014" font-family="sans-serif" font-size="12.5" font-weight="700">1:1 Personal Model</text>
+      <text x="24" y="76" fill="#4A433A" font-family="sans-serif" font-size="11">Sealed C2PA diary vault</text>
+      <text x="24" y="94" fill="#4A433A" font-family="sans-serif" font-size="11">Android &amp; Docs stay local</text>
+      <text x="24" y="112" fill="#0B3F30" font-family="sans-serif" font-size="11">Local CaMeL taint filter</text>
+
+      <line x1="150" y1="124" x2="150" y2="134" stroke="#0B3F30" stroke-width="2"/>
+      <polygon points="145,134 150,141 155,134" fill="#0B3F30"/>
+
+      <rect x="10" y="142" width="280" height="114" rx="4" fill="#F4EBDD" stroke="#0B3F30" stroke-width="1.5"/>
+      <text x="24" y="166" fill="#0B3F30" font-family="monospace" font-size="11" font-weight="700">02 PRIVACY AIRLOCK</text>
+      <text x="24" y="188" fill="#131014" font-family="sans-serif" font-size="12.5" font-weight="700">Expiring Hardware Lease</text>
+      <text x="24" y="208" fill="#4A433A" font-family="sans-serif" font-size="11">Strips personal identity</text>
+      <text x="24" y="226" fill="#4A433A" font-family="sans-serif" font-size="11">ACLE-MCP scoped token</text>
+      <text x="24" y="244" fill="#4A433A" font-family="sans-serif" font-size="11">Signed SCITT audit log</text>
+
+      <line x1="150" y1="256" x2="150" y2="266" stroke="#0B3F30" stroke-width="2"/>
+      <polygon points="145,266 150,273 155,266" fill="#0B3F30"/>
+
+      <rect x="10" y="274" width="280" height="114" rx="4" fill="#FFFDF9" stroke="#0B3F30" stroke-width="1.5"/>
+      <text x="24" y="298" fill="#0B3F30" font-family="monospace" font-size="11" font-weight="700">03 STATELESS CLOUD</text>
+      <text x="24" y="320" fill="#131014" font-family="sans-serif" font-size="12.5" font-weight="700">Gemini &amp; Alpha Nodes</text>
+      <text x="24" y="340" fill="#4A433A" font-family="sans-serif" font-size="11">Zero prompt retention</text>
+      <text x="24" y="358" fill="#4A433A" font-family="sans-serif" font-size="11">Bounded sub-queries</text>
+      <text x="24" y="376" fill="#4A433A" font-family="sans-serif" font-size="11">TPU megawatt receipts</text>
+
+      <line x1="150" y1="388" x2="150" y2="398" stroke="#963E1D" stroke-width="2"/>
+      <polygon points="145,398 150,405 155,398" fill="#963E1D"/>
+
+      <rect x="10" y="406" width="280" height="114" rx="4" fill="#FFFDF9" stroke="#963E1D" stroke-width="2"/>
+      <text x="24" y="430" fill="#963E1D" font-family="monospace" font-size="11" font-weight="700">04 WET-LAB GATE</text>
+      <text x="24" y="452" fill="#131014" font-family="sans-serif" font-size="12.5" font-weight="700">Physical Synthesis</text>
+      <text x="24" y="472" fill="#4A433A" font-family="sans-serif" font-size="11">Biosecurity quorum</text>
+      <text x="24" y="490" fill="#4A433A" font-family="sans-serif" font-size="11">Optical data diode</text>
+      <text x="24" y="508" fill="#963E1D" font-family="sans-serif" font-size="11">IEC 61508 dead-man relay</text>
+    </svg>
+    <figcaption>Personal life stays encrypted at home while stateless Gemini and AlphaFold sub-queries and physical wet-lab robotics require expiring cryptographic leases.</figcaption>
+  </figure>
+
+  <section class="lp-sec" id="sec-1">
+    <p class="lp-sec-kicker lp-sec-kicker--warn">Section 01 · Architecture and Alignment Bottlenecks</p>
+    <h2>Cross-surface cloud memory and closed-loop wet-lab acceleration</h2>
+    <div class="prose wrap-narrow">
+      <p>Embedding Gemini across Android, Search, Chrome, Gmail, and Google Workspace concentrates billions of people's daily habits, messages, and drafts inside one commercial cloud operator. Pooling a hundred million live assistant sessions across every profession lets a central corporate model absorb human career experience while serving advertising and retention goals.</p>
+      <p>A second bottleneck emerges inside DeepMind's scientific discovery engine. Coupling AlphaFold and AlphaEvolve simulation search with robotic wet-lab synthesis creates an active-learning loop that can jump past internal safety boards overnight.</p>
+      <div class="lp-options-grid">
+        <div class="lp-option lp-option--warn">
+          <h3>Single-principal cloud memory concentration</h3>
+          <p>Ambient OAuth access across mobile operating systems, mail, and office documents creates a single point of privacy exposure and indirect prompt-injection hijack.</p>
+        </div>
+        <div class="lp-option lp-option--warn">
+          <h3>Hive-mind career experience pooling</h3>
+          <p>Centralizing live trajectories from clinicians, engineers, and lawmakers builds an asymmetric corporate meta-learner detached from a fiduciary duty to any individual user.</p>
+        </div>
+        <div class="lp-option lp-option--warn">
+          <h3>Robotic wet-lab overhang jumps</h3>
+          <p>Automated liquid handlers and gene synthesis collapse experimental feedback from months to hours, allowing dual-use capabilities to outpace quarterly internal reviews.</p>
+        </div>
+        <div class="lp-option lp-option--warn">
+          <h3>Unilateral corporate threshold governance</h3>
+          <p>Frontier Safety Framework Critical Capability Levels currently rely on internal Alphabet governance committees and redacted external summaries.</p>
+        </div>
+      </div>
+      <aside class="for-researchers"><details><summary>For researchers: formal protocol and verification details</summary><div><p>Under centralized cloud inference, conditional mutual information between private episodic states and vendor telemetry grows monotonically across sessions. In closed-loop physical discovery, coupling high-throughput wet-lab actuation with evolutionary search (<code>AlphaEvolve</code>) and <code>RE-Bench</code> kernel optimization<sup><a href="#fn4">4</a></sup> creates discontinuous capability derivatives ahead of static Critical Capability Level (<code>CCL</code>) gates.</p></div></details></aside>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="sec-2">
+    <p class="lp-sec-kicker">Section 02 · CIN Technical Integration</p>
+    <h2>Extending CaMeL and Concordia into user-owned local vaults and lab airlocks</h2>
+    <div class="prose wrap-narrow">
+      <p>Google DeepMind researchers built two pillars of practical containment: the CaMeL privilege-separated prompt interpreter<sup><a href="#fn1">1</a></sup> and the Concordia grounded social-simulation engine.<sup><a href="#fn2">2</a></sup> CIN moves the privileged CaMeL planner onto user-owned hardware above an encrypted C2PA and Merkle diary vault.</p>
+      <p>Android and Workspace files remain at home under a 1:1 personal model bound exclusively to one living person, stepping back during routine tasks so human skill stays sharp. When frontier reasoning or protein folding is needed, the local runtime sends stripped, stateless sub-queries inside hardware-attested capability leases.<sup><a href="#fn3">3</a></sup></p>
+      <div class="lp-options-grid">
+        <div class="lp-option">
+          <h3>Local CaMeL control-flow separation</h3>
+          <p>Run DeepMind's privilege-separated interpreter locally so untrusted emails, web pages, and calendar invites carry taint tags and never hijack workspace tools.<sup><a href="#fn1">1</a></sup></p>
+        </div>
+        <div class="lp-option">
+          <h3>Stateless leased Gemini and AlphaFold calls</h3>
+          <p>Answer bounded scientific and reasoning sub-queries inside ephemeral confidential enclaves governed by expiring ACLE-MCP hardware capability leases.<sup><a href="#fn3">3</a></sup></p>
+        </div>
+        <div class="lp-option">
+          <h3>Multi-party wet-lab biosecurity quorums</h3>
+          <p>Require independent SecureDNA-class sequence and 3D structure hazard screening plus public safety-institute co-signatures before any automated synthesis batch runs.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Optical diodes and IEC 61508 dead-man relays</h3>
+          <p>Isolate wet-lab robotics behind one-way optical telemetry links and physical relays that cut power unless local human stewards actively renew permission.</p>
+        </div>
+      </div>
+      <aside class="for-researchers"><details><summary>For researchers: formal protocol and verification details</summary><div><p>Within CIN's five-primitive functional deliverable, local perception synchronizes in monotonic hardware <code>Device Time</code> with self-assessed observation confidence via silicon peripheral attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, <code>IETF RATS</code> RFC 9334), optical data diodes, and <code>IEC 61508</code> dead-man relays. Observations enter an append-only <code>C2PA</code>/Merkle episodic memory vault (Endel Tulving; Tulving, 1972) encrypted for the biological person under transduction realism (<em>Signed Is Not True</em> across the analog hole; Fu &amp; Xu, 2018). A monogamous <code>1:1</code> personal cognitive model and cybernetic exocortex (Joscha Bach; Bach; Andy Clark &amp; David Chalmers; Clark &amp; Chalmers, 1998) acts as a statutory information fiduciary (Jack Balkin; Balkin, 2016) protecting unassisted competence across an active-inference Markov blanket (Karl Friston; Friston, 2013).</p><p>Across the Private Autobiographical Ledger and the Public Attestation &amp; Escrow Ledger (Public Attestation and Escrow Ledger), outbound <code>ACLE-MCP</code> leases<sup><a href="#fn3">3</a></sup> enforce <code>Object-Capability</code> and expiring capability lease bounds (Dennis &amp; Van Horn, 1966) with selective <code>ZK</code> proofs, <code>IETF SCITT</code> (<code>RFC 9943</code>) receipts, and independent-class <code>k &gt;= 3f + 1</code> Byzantine corroboration. Inspect interactive walkthroughs in <a href="/labs/protocol-inspector/">Protocol Inspector</a>, <a href="/labs/sensor-boundary/">Sensor Boundary</a>, and <a href="/labs/shared-horizon/">Shared Horizon</a>.</p></div></details></aside>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="sec-3">
+    <p class="lp-sec-kicker">Section 03 · Inter-Lab Coordination Options</p>
+    <h2>Verifiable capability receipts, collusion stress-tests, and TPU pod sealing</h2>
+    <div class="prose wrap-narrow">
+      <p>Safety teams hesitate to slow down when redacted industry reports hide peer progress or when a twelve-hour credential leak could hand frontier weights to rivals. CIN gives Google DeepMind, Anthropic, and OpenAI a shared cryptographic ledger to verify capability thresholds without exposing trade secrets.</p>
+      <p>Labs publish signed transparency receipts for autonomous R&amp;D speedup benchmarks<sup><a href="#fn4">4</a></sup> and co-run Concordia multi-agent harnesses<sup><a href="#fn2">2</a></sup> to catch steganographic collusion<sup><a href="#fn5">5</a></sup> before deployment. Hardware enclave attestation seals TPU training pods against single-credential repository theft.</p>
+      <div class="lp-options-grid">
+        <div class="lp-option">
+          <h3>Signed transparency receipts for CCL and RE-Bench scores</h3>
+          <p>Publish tamper-evident transparency receipts attesting Critical Capability Level and RE-Bench R&amp;D speedup scores alongside peer frontier labs.<sup><a href="#fn4">4</a></sup></p>
+        </div>
+        <div class="lp-option">
+          <h3>Cross-lab Concordia collusion testbeds</h3>
+          <p>Co-run open multi-agent simulations testing mixed Gemini, Claude, and GPT populations for hidden steganography and cartel coordination.<sup><a href="#fn2">2</a>,<a href="#fn5">5</a></sup></p>
+        </div>
+        <div class="lp-option">
+          <h3>Hardware-isolated RL evaluation graders</h3>
+          <p>Place reinforcement-learning benchmark graders on separate read-only verifier blades across optical links so models cannot hack cluster admin credentials.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Multi-party TPU weight-egress locks</h3>
+          <p>Require hardware quorum signatures logged on the shared ledger before exporting frontier TPU weight shards, blocking twelve-hour monorepo leaks.</p>
+        </div>
+      </div>
+      <aside class="for-researchers"><details><summary>For researchers: formal protocol and verification details</summary><div><p>DeepMind commits <code>IETF SCITT</code> receipts over Frontier Safety Framework <code>CCL</code> evaluations and <code>RE-Bench</code> trajectories.<sup><a href="#fn4">4</a></sup> Joint <code>Concordia</code><sup><a href="#fn2">2</a></sup> and <code>ledger_sim</code> harnesses audit cross-model steganographic channels<sup><a href="#fn5">5</a></sup> alongside <code>k</code>-truss and <code>e</code>-means subgraph density checks, while <code>DMTF SPDM</code> bus attestation isolates TPU v5p and v6e weight shards from CI/CD compromise.</p></div></details></aside>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="sec-4">
+    <p class="lp-sec-kicker">Section 04 · Government and Sovereign Engagement Options</p>
+    <h2>Statutory safety cases, Second Road routing, and TPU megawatt verification</h2>
+    <div class="prose wrap-narrow">
+      <p>Operating across London and California places Google DeepMind at the center of UK AI Safety Institute and US AI Safety Institute oversight. CIN turns informal pre-release testing agreements into cryptographic safety cases backed by enforceable agent governance rules.<sup><a href="#fn6">6</a></sup></p>
+      <p>Chrome and Android now deploy millions of autonomous Gemini agents. Routing machine traffic onto CIN's signed Second Road keeps civic portals clear of bot floods and avoids internet-shutdown panics.</p>
+      <div class="lp-options-grid">
+        <div class="lp-option">
+          <h3>Statutory AISI cryptographic safety cases</h3>
+          <p>Run unredacted UK AISI and US AISI red-team suites inside isolated public-compute enclaves and anchor signed pre-deployment safety receipts on the ledger.<sup><a href="#fn6">6</a></sup></p>
+        </div>
+        <div class="lp-option">
+          <h3>Signed machine transport lanes for Chrome and Android agents</h3>
+          <p>Move high-speed Gemini commercial and workflow traffic onto signed machine transport lanes so public forums and courts stay reserved for living people.<sup><a href="#fn6">6</a></sup></p>
+        </div>
+        <div class="lp-option">
+          <h3>TPU substation megawatt reconciliation</h3>
+          <p>Verify frontier training runs through privacy-preserving accelerator inventory and substation power receipts suitable for international compute treaties.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Protected insider whistleblower channels</h3>
+          <p>Provide hardware-encrypted safe harbor so lab engineers can report undeclared capability jumps to statutory oversight bodies without leaking raw weights.</p>
+        </div>
+      </div>
+      <aside class="for-researchers"><details><summary>For researchers: formal protocol and verification details</summary><div><p>Risk-scaled asymmetric transparency preserves <code>0%</code> public exposure for household vaults while requiring verifiable safety-case receipts<sup><a href="#fn6">6</a></sup> and substation megawatt accounting (Sastry et al., 2024) for frontier TPU pods. Autonomous <code>Gemini</code> sessions traverse <code>MCP</code> and <code>A2A</code> over <code>IETF QUIC</code> (<code>RFC 9000</code>) carrying traceable principal leases.</p></div></details></aside>
+    </div>
+  </section>
+
+  <section class="lp-sec" id="sec-5">
+    <p class="lp-sec-kicker">Section 05 · Safe ASI Adoption and Macroeconomic Stability</p>
+    <h2>Extending the AlphaFold commons with Universal Basic Compute and cooperative equity</h2>
+    <div class="prose wrap-narrow">
+      <p>DeepMind proved with the open AlphaFold protein database that frontier AI can enrich planetary science without tollbooth extraction. Extending that public-commons model to open discovery bonds and distilled four-day specialist checkpoints lets clinics, schools, and households run capable local tools on Universal Basic Compute.</p>
+      <p>When AI coding and reasoning displace routine wage work, economies need broad capital ownership and resilient local exchange.<sup><a href="#fn7">7</a></sup> Streaming statutory Meidner cooperative shares and clearing regional work through reciprocal mutual credit offsets advertising-driven digital enclosure.</p>
+      <div class="lp-options-grid">
+        <div class="lp-option">
+          <h3>Merit-bonded open scientific discovery pools</h3>
+          <p>Extend the AlphaFold commons so health ministries and cooperatives fund neglected-disease, clean-energy, and crop-resilience breakthroughs on open terms.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Four-day specialist models on Universal Basic Compute</h3>
+          <p>Distill verifiable coding, formal-proof, and clinical triage models onto local household and municipal hardware free from cloud workspace lock-in.</p>
+        </div>
+        <div class="lp-option">
+          <h3>Statutory Meidner cooperative share funds</h3>
+          <p>Stream a statutory share of frontier compute equity into citizen and worker cooperative funds so households co-own automation gains.<sup><a href="#fn7">7</a></sup></p>
+        </div>
+        <div class="lp-option">
+          <h3>Reciprocal mutual-credit clearing</h3>
+          <p>Settle local productive capacity and cooperative services on the shared ledger without behavioral advertising auctions or scarce cash bottlenecks.</p>
+        </div>
+      </div>
+      <aside class="for-researchers"><details><summary>For researchers: formal protocol and verification details</summary><div><p>On the Wide Network Ledger, modular <code>LoRA</code> and <code>TIES-Merging</code> specialist adapters run over local-first <code>CRDT</code> workspaces (Kleppmann et al., 2019; Malo et al., 2026) backed by Universal Basic Services, <strong>Universal Basic Compute</strong>, and Jacob Meluso invisible-labor upkeep estimation (Meluso et al., 2024). Statutory Rudolf Meidner equity conversion (Meidner, 1978) addresses post-labor Pareto distribution shifts<sup><a href="#fn7">7</a></sup> under polycentric commons rules (Elinor Ostrom; Ostrom, 1990; Ostrom, 2010), paired with counter-cyclical reciprocal mutual credit clearing (James Stodder; Stodder, 2009; Iosifidis et al., 2018).</p></div></details></aside>
+    </div>
+  </section>
+
+  <div class="prose wrap-narrow">
+    <section class="footnotes">
+      <ol>
+        <li id="fn1">Edoardo Debenedetti et al., "Defeating Prompt Injections by Design" (2025), <a href="https://arxiv.org/abs/2503.18813">arxiv.org/abs/2503.18813</a>.</li>
+        <li id="fn2">Alexander Sasha Vezhnevets et al., "Generative agent-based modeling with actions grounded in physical, social, or digital space using Concordia" (2023), <a href="https://arxiv.org/abs/2312.03664">arxiv.org/abs/2312.03664</a>.</li>
+        <li id="fn3">Zhiyang Ding, Yang Luo, Guangpu Chen, Qingni Shen, and Zhonghai Wu, "ACLE-MCP: Attested Capability Leases for Execution-Time Trust in Remote LLM Tool Use" (2026), <a href="https://arxiv.org/abs/2609.02690">arxiv.org/abs/2609.02690</a>.</li>
+        <li id="fn4">Hjalmar Wijk et al., "RE-Bench: Evaluating frontier AI R&amp;D capabilities of language model agents against human experts" (2024), <a href="https://arxiv.org/abs/2411.15114">arxiv.org/abs/2411.15114</a>.</li>
+        <li id="fn5">Sumeet Ramesh Motwani et al., "Secret Collusion among AI Agents: Multi-Agent Deception via Steganography" (2024), <a href="https://arxiv.org/abs/2402.07510">arxiv.org/abs/2402.07510</a>.</li>
+        <li id="fn6">Noam Kolt, "Governing AI Agents" (2025), <a href="https://arxiv.org/abs/2501.07913">arxiv.org/abs/2501.07913</a>.</li>
+        <li id="fn7">Anton Korinek and Joseph E. Stiglitz, "Artificial Intelligence and Its Implications for Income Distribution and Unemployment" (2017), <a href="https://doi.org/10.3386/w24174">doi.org/10.3386/w24174</a>.</li>
+      </ol>
+    </section>
+  </div>
+</section>

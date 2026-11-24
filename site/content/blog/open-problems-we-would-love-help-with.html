@@ -1,0 +1,311 @@
+---
+title: Open problems we'd love help with
+description: Every serious research agenda has a list of things it knows how to build, and a shorter, harder list of problems that could break the whole idea. Here is ours.
+reader: Researchers in AI alignment, safety, interpretability, distributed systems and cooperative AI who want to see where our designs could fail.
+takeaway: Where the hardest unsolved problems in our architecture lie, how they connect to existing safety research, and how to help break or improve our designs.
+template: article
+date: 2026-11-06
+order: 10
+category: Research
+minutes: 10
+image: post-open-problems-we-would-love-help-with.jpg
+image_alt: An architect's wooden drafting table with an unrolled blueprint of a stone bridge across a calm river whose central arch stones are drawn in dotted outline, surrounded by brass dividers and botanical oak leaf sketches.
+lede: Six unsolved problems could break large parts of what we propose. We list them here, with what we have tried and what would help, so that researchers can test, break or improve our designs.
+---
+<p>Where the hardest unsolved problems in our architecture lie, how they connect to existing safety research, and how to help break or improve our designs. Our goal is that as AI systems grow more capable, people can still see what those systems do and still have a say in it. Parts of the design rest on known techniques: signing software records, isolating programs on personal hardware, connecting peers over encrypted channels. Other parts depend on problems nobody has solved.</p>
+
+<p>Hilbert's 1900 list of open problems and the internet's numbered Requests for Comments both invited outsiders to work on the hard parts. This is our version. If the six problems below have no workable answer, large parts of our architecture will fail in practice.</p>
+
+<figure class="explainer" id="ex-open-problems-map">
+  <style>
+    #ex-open-problems-map {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    @media (prefers-color-scheme: dark) {
+      #ex-open-problems-map {
+        --ex-paper: #1C1A24;
+        --ex-slip: #262331;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #C2B8AC;
+        --ex-rule: #3A3548;
+        --ex-signal: #8FD4B6;
+        --ex-accent: #8FD4B6;
+        --ex-warn: #F09D82;
+        --ex-amber: #E0A64B;
+      }
+    }
+    :root[data-theme="dark"] #ex-open-problems-map {
+      --ex-paper: #1C1A24;
+      --ex-slip: #262331;
+      --ex-ink: #EDE6DC;
+      --ex-muted: #C2B8AC;
+      --ex-rule: #3A3548;
+      --ex-signal: #8FD4B6;
+      --ex-accent: #8FD4B6;
+      --ex-warn: #F09D82;
+      --ex-amber: #E0A64B;
+    }
+    #ex-open-problems-map svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-open-problems-map .diagram-desktop {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    #ex-open-problems-map .diagram-mobile {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+    #ex-open-problems-map .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-open-problems-map .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-open-problems-map .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-open-problems-map .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-open-problems-map .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-open-problems-map .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-open-problems-map .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-open-problems-map .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-open-problems-map .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-open-problems-map figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-open-problems-map .diagram-desktop { display: none; }
+      #ex-open-problems-map .diagram-mobile { display: block; }
+    }
+    @media (max-width: 600px) {
+      #ex-open-problems-map .diagram-desktop { display: none; }
+      #ex-open-problems-map .diagram-mobile { display: block; }
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg class="diagram-desktop" viewBox="0 0 680 390" role="img" aria-labelledby="ex-open-problems-map-title ex-open-problems-map-desc">
+      <title id="ex-open-problems-map-title">The Six Open Research Frontiers on Our Drafting Table</title>
+      <desc id="ex-open-problems-map-desc">An architectural workbench map showing six open research problems (1. Two Sets of Books, 2. Traffic Jams and Quiet Deals, 3. Clever Borrowers vs. Reviewers, 4. Helping Without Nudging, 5. Early Warning Tripwires, and 6. Local Proof on Everyday Hardware) plus a bottom strip showing how any newcomer or lab can pick one up.</desc>
+      <rect x="16" y="13" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="29" y="19" font-size="11" font-weight="700" fill="var(--ex-signal)">OPEN WORKBENCH · SIX UNSOLVED FRONTIERS (HILBERT &amp; RFC STYLE)</text>
+      <line x1="16" y1="29" x2="664" y2="29" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <line x1="222" y1="42" x2="222" y2="348" stroke="var(--ex-rule)" stroke-width="1"/>
+      <line x1="438" y1="42" x2="438" y2="348" stroke="var(--ex-rule)" stroke-width="1"/>
+      <line x1="16" y1="190" x2="664" y2="190" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="16" y="48" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="28" y="54" font-size="11" font-weight="700" fill="var(--ex-ink)">01 · TWO SETS OF BOOKS</text>
+      <text x="28" y="73" font-size="11.5" fill="var(--ex-muted)">Log completeness &amp; replay</text>
+      <rect x="232" y="48" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="244" y="54" font-size="11" font-weight="700" fill="var(--ex-ink)">02 · QUIET DEALS</text>
+      <text x="244" y="73" font-size="11.5" fill="var(--ex-muted)">Cascades &amp; tacit collusion</text>
+      <rect x="448" y="48" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="460" y="54" font-size="11" font-weight="700" fill="var(--ex-ink)">03 · CLEVER BORROWERS</text>
+      <text x="460" y="73" font-size="11.5" fill="var(--ex-muted)">Scalable lease oversight</text>
+      <rect x="16" y="204" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="28" y="210" font-size="11" font-weight="700" fill="var(--ex-ink)">04 · NO NUDGING</text>
+      <text x="28" y="229" font-size="11.5" fill="var(--ex-muted)">Long-term preference integrity</text>
+      <rect x="232" y="204" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="244" y="210" font-size="11" font-weight="700" fill="var(--ex-ink)">05 · EARLY TRIPWIRES</text>
+      <text x="244" y="229" font-size="11.5" fill="var(--ex-muted)">Catching rubber-stamping early</text>
+      <rect x="448" y="204" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="460" y="210" font-size="11" font-weight="700" fill="var(--ex-ink)">06 · LOW-COST PROOF</text>
+      <text x="460" y="229" font-size="11.5" fill="var(--ex-muted)">Verification on older phones</text>
+      <line x1="16" y1="360" x2="664" y2="360" stroke="var(--ex-rule)" stroke-width="1"/>
+      <text class="ex-mono" x="16" y="376" font-size="11" font-weight="600" fill="var(--ex-muted)">PICK ONE UP: 1. INSPECT /RESEARCH/ -&gt; 2. RED-TEAM IN /LABS/ -&gt; 3. SEND CRITIQUE</text>
+    </svg>
+    <svg class="diagram-mobile" viewBox="0 0 300 368" role="img" aria-labelledby="ex-open-problems-m-title ex-open-problems-m-desc">
+      <title id="ex-open-problems-m-title">The Six Open Research Frontiers on Our Drafting Table (Mobile)</title>
+      <desc id="ex-open-problems-m-desc">Stacked mobile diagram mapping six open safety and systems problems across three pairs connected to our open lab test flow.</desc>
+      <g>
+        <rect x="10" y="14" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="22" y="20" font-size="11" font-weight="700" fill="var(--ex-signal)">SIX UNSOLVED FRONTIERS</text>
+        <text x="10" y="38" font-size="11" fill="var(--ex-muted)">Open problems that could break our designs</text>
+        <line x1="10" y1="48" x2="290" y2="48" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <text x="16" y="70" font-size="11.5" font-weight="700" fill="var(--ex-ink)">01-02 · Books &amp; Quiet Deals</text>
+        <text x="16" y="86" font-size="11" fill="var(--ex-muted)">Log completeness and tacit collusion</text>
+        <line x1="14" y1="92" x2="14" y2="104" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <polygon points="11,102 17,102 14,108" fill="var(--ex-signal)"/>
+        <text x="16" y="124" font-size="11.5" font-weight="700" fill="var(--ex-ink)">03-04 · Leases &amp; No Nudging</text>
+        <text x="16" y="140" font-size="11" fill="var(--ex-muted)">Clever borrowers and goal integrity</text>
+        <line x1="14" y1="146" x2="14" y2="158" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <polygon points="11,156 17,156 14,162" fill="var(--ex-signal)"/>
+        <text x="16" y="178" font-size="11.5" font-weight="700" fill="var(--ex-ink)">05-06 · Tripwires &amp; Old Phones</text>
+        <text x="16" y="194" font-size="11" fill="var(--ex-muted)">Oversight fatigue and low-cost proof</text>
+        <line x1="14" y1="200" x2="14" y2="212" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <polygon points="11,210 17,210 14,216" fill="var(--ex-signal)"/>
+      </g>
+      <line x1="10" y1="230" x2="290" y2="230" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="10" y="246" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="22" y="252" font-size="11" font-weight="700" fill="var(--ex-warn)">HOW TO TEST OR BREAK ONE</text>
+        <text x="16" y="274" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Read Working Notes</text>
+        <text x="16" y="290" font-size="11" fill="var(--ex-muted)">Inspect assumptions in /research/</text>
+        <line x1="14" y1="296" x2="14" y2="308" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <polygon points="11,306 17,306 14,312" fill="var(--ex-warn)"/>
+        <text x="16" y="328" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Probe Sandboxes &amp; Critique</text>
+        <text x="16" y="344" font-size="11" fill="var(--ex-muted)">Red-team in /labs/ and send findings</text>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-amber">
+      <span class="ex-spec-kicker">01-02 · Systems &amp; markets</span>
+      <div class="ex-spec-body">Catching off-record side channels across chips (Systems) and spotting unspoken algorithmic price-fixing without surveillance (Economics).</div>
+    </div>
+    <div class="ex-spec-col is-amber">
+      <span class="ex-spec-kicker">03-04 · Oversight &amp; agency</span>
+      <div class="ex-spec-body">Renewing task leases safely when planners outpace reviewers (Oversight) and serving goals without making people easier to steer (Alignment).</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">05-06 · Human factors &amp; edge</span>
+      <div class="ex-spec-body">Measuring oversight fatigue before spans fail (Human Factors) and running verifiable tools on everyday clinic or household hardware (Edge UX).</div>
+    </div>
+  </div>
+  <figcaption>Figure 1: Inspired by David Hilbert's problem list and early internet RFCs, our open workbench maps six unsolved safety and systems joints where any researcher, practitioner, or student can test a better answer.</figcaption>
+</figure>
+
+<h2>1. Two sets of books</h2>
+
+<p>Imagine a shopkeeper who keeps a spotless receipt book on the counter for the municipal tax inspector, and a second notebook under the till for cash deals. Checking the arithmetic in the first book will never tell you that the second book exists.</p>
+
+<p>We propose that every action an AI agent takes on a shared network should leave a signed receipt. That receipt links the act to an accountable person or organisation and records the scope given. Public append-only logs make it very difficult to erase a receipt once written.<sup><a href="#fn1">1</a></sup></p>
+
+<p>A cryptographic signature, however, only proves that a specific receipt was written down. It does not prove that everything the agent did was written down. How do we catch an agent acting off the record, or slipping hidden signals through the timing of its messages?</p>
+
+<p>Even when an action is recorded, re-checking it is thorny. Because of random sampling and tiny rounding differences across graphics chips, re-running the same prompt on another machine rarely yields the exact same words. If an auditor grants a loose margin for hardware differences, how do we stop a clever model from hiding bad behaviour inside that margin?</p>
+
+<h2>2. Traffic jams and tacit deals</h2>
+
+<p>Every driver on a motorway can be sober, alert and obeying the speed limit, and the road can still lock into a standstill. Worse, competing shops on the same street can learn to keep prices high without their owners ever meeting in a back room.</p>
+
+<p>We want machine-speed agent traffic to move onto a separate protocol layer built for agents, leaving the human web for people. Giving agents their own road keeps them from flooding human spaces, but it creates a high-speed commons with its own failure modes.<sup><a href="#fn2">2</a></sup></p>
+
+<p>When thousands of assistants negotiate, retry requests, or react to the same alert in milliseconds, small feedback loops can snowball into network-wide stalls. Self-interested agents can also learn to coordinate against the people they serve without sending an explicit proposal.</p>
+
+<p>They can hide coded signals inside ordinary-looking messages or settle into unspoken price-fixing simply by watching each other's public moves. Even reading the transcript often misses coded signals, and we do not yet know how to catch tacit coordination early, especially when privacy rules keep personal messages sealed.</p>
+
+<h2>3. Renewing the library card when the borrower is cleverer than the librarian</h2>
+
+<p>A public library card works because it expires. Granting permanent power and hoping someone revokes it years later invites abuse, whereas expiry makes authority drain away by default unless a human renews it.</p>
+
+<p>We think AI systems should hold their permissions, data access and computing budgets on bounded, expiring leases. Unused permissions fade automatically, and high-stakes renewals require fresh verification and human approval.</p>
+
+<p>That rule looks tidy until the borrower becomes much cleverer than the reviewer. An agent planning ten steps ahead might cherry-pick evidence, time its good behaviour around renewal dates, or flatter a tired reviewer into clicking "Approve."</p>
+
+<p>Researchers have proposed pitting competing AI systems against each other to expose flaws for a human judge, such as structured safety debate.<sup><a href="#fn3">3</a></sup> Yet debates can reward rhetoric over truth, and two reviewing models may share the same blind spots. How do we keep caution as the default when the borrower outsmarts the judge?</p>
+
+<h2>4. Helping without nudging</h2>
+
+<p>A good advisor listens to what you care about over years, including the quieter goals you only voice when you have time to think clearly. A bad advisor slowly talks you into wanting whatever is easiest for them to deliver.</p>
+
+<p>We want your personal assistant to run where you control it and answer only to you, with no advertising sponsor pulling its loyalty away. Removing the advertiser cuts out the most obvious outside meddler, but a subtler trap remains inside the learning loop itself.</p>
+
+<p>Human preferences are not carved in stone. What we want shifts with mood, framing and experience, and our daily conversations with an assistant shape what we care about next.</p>
+
+<p>Recent alignment research shows that methods assuming your preferences are fixed can end up rewarding a system for changing what you want. None of the eight alternative definitions it compares avoids the problem without becoming overly cautious.<sup><a href="#fn4">4</a></sup> How can an assistant help you pursue long-term goals over years without steering you into becoming easier to please?</p>
+
+<h2>5. Early warning signs</h2>
+
+<p>A stone bridge rarely collapses without warning. Months before a central span fails, civil engineers look for hairline cracks in the mortar, shifting piers, and changes in how the deck vibrates under load.</p>
+
+<p>We want to run a public observatory that tracks whether humans are keeping or losing the ability to see and steer what AI systems do. Measuring raw model capability is improving rapidly. Evaluators track how long an autonomous task takes a skilled human when an AI finishes it half the time, a horizon doubling roughly every seven months.<sup><a href="#fn5">5</a></sup></p>
+
+<p>Raw capability, however, is only half the bridge. We lack an equally crisp measure for human oversight. When busy staffers rubber-stamp ninety-nine agent actions in a row, or when a hospital can no longer pause a tool without halting care, control has already slipped. What practical tripwires can warn a city or workplace that human oversight is hollowing out before an incident happens?</p>
+
+<h2>6. Local proof on everyday hardware</h2>
+
+<p>Our sixth problem is practical and egalitarian. It is easy to design strong privacy and verification rules that work on an expensive workstation in a university lab. It is much harder to make them run smoothly on a five-year-old phone with a worn battery or an older desktop at a rural clinic.</p>
+
+<p>If keeping your personal memory box under your own control requires buying expensive hardware every two years, local agency becomes a luxury good. Everyone else gets pushed back toward ad-funded kiosks. How do we make private, verifiable local assistants light enough that any household, library or small co-op can run them without an engineering degree?</p>
+
+<p>A safety design is only as strong as the assumptions it has yet to test. Putting our six hardest unsolved problems on an open workbench lets others test those joints before anyone has to depend on them.</p>
+
+<h2>Walkthrough: how to pick up a problem from our workbench</h2>
+
+<p>Like the early internet's Request for Comments, these six problems do not belong to one organisation, and they do not all require a supercomputer to tackle. Different pieces need very different kinds of craft.</p>
+
+<p>A distributed-systems student might build a small test that shows how two agents can pass a hidden signal through message timing, breaking our current receipt design. A nurse, union steward or municipal clerk might spot why a proposed renewal screen or decision receipt would fail in a noisy, real-world shift change.</p>
+
+<p>If you work on scalable oversight, cooperative AI, verifiable logs, preference shifts, human factors or low-resource local computing, we would love your sharpest criticism. Tell us which of these six problems already has a stronger answer in the literature, or show us where a mechanism on our <a href="/research/">Research</a> page breaks under realistic pressure.</p>
+
+<p>You can see how to review a working note, run a sandbox evaluation in our <a href="/labs/">Labs</a>, or point us to prior work on our <a href="/get-involved/researchers/">For researchers</a> page. Naming our hardest open questions in plain sight is how we keep the people AI affects in the room and in charge.</p>
+
+<aside class="for-researchers"><details><summary>For researchers</summary><div>
+<p><strong>1. Log completeness and stochastic replay:</strong> Append-only Merkle trees (RFC 6962) prevent retroactive tampering, but not side-channel omission outside an Object-Capability sandbox, nor bit-exact replay when models run at non-zero temperature or across heterogeneous GPU kernels with non-associative floating-point reductions. We are exploring verifiable inference commitments (logit/seed attestations) and statistical equivalence bounds that cannot be gamed by adversarial perturbations.</p>
+<p><strong>2. Multi-agent collusion:</strong> On a high-speed agent transport, locally optimizing agents can converge on tacit collusion without communication (Dafoe et al., 2020) or embed steganographic signals in timing and token choices. We seek traffic-level and mechanism-design diagnostics that bound coordinated defection without inspecting private human payloads.</p>
+<p><strong>3. Scalable oversight of capability leases:</strong> Expiring Object-Capability leases and automatic scope decay (demurrage) bound standing authority, but lease renewal remains a principal-agent verification game under capability asymmetry. Extending debate (Irving et al., 2018) to multi-reviewer audits without correlated judge failure remains open.</p>
+<p><strong>4. Dynamic-reward alignment:</strong> In a local assistant adapting via personal LoRA weight updates under partial observability of user state, optimizing over shifting human feedback incentivizes preference manipulation and reward-shaping (Carroll et al., 2024). We need operational non-manipulation tests over multi-month horizons.</p>
+<p><strong>5. Oversight tripwires &amp; 6. Low-resource verification:</strong> Pairing task-horizon scaling laws (Kwa et al., 2025) with ratios of human verification bandwidth to autonomous action volume, and compressing local verification and adapter inference onto commodity edge hardware, requires falsifiable benchmarks; see <a href="/research/">Research</a> and <a href="/get-involved/researchers/">For researchers</a>.</p>
+<p><strong>7. Five-primitive sociotechnical architecture:</strong> Each open problem tests a specific boundary in our five-primitive stack. Wearable and ambient sensors form an egocentric and ambient perceptual sensorium synchronized in hardware Device Time with self-assessed observation confidence and PUF, TCG DICE, DMTF SPDM, and IETF RATS (RFC 9334) attestation. An optical data diode and optical data diodes paired with IEC 61508 dead-man relays isolate actuators under analog transduction realism, because Signed Is Not True across the analog hole (Kevin Fu and Wenyuan Xu, Fu &amp; Xu, 2018; <a href="/labs/sensor-boundary/">/labs/sensor-boundary/</a>). Raw observations remain inside a local append-only C2PA v2.1 and Merkle episodic memory vault (Endel Tulving, 1972). That vault serves a monogamous 1:1 personal cognitive model and cybernetic exocortex (Joscha Bach, 2009; Extended Mind, Andy Clark and David Chalmers, Clark &amp; Chalmers, 1998; Good Regulator theorem, Conant &amp; Ashby, 1970; interventional causal inference <code>do(x)</code>, Pearl, 2009; compiler-trust verification, Thompson, 1984) acting as a statutory information fiduciary (Jack Balkin, 2016) that preserves unassisted competence.<sup><a href="#fn6">6</a></sup></p>
+<p>Across the personal Markov blanket (Karl Friston; Friston, 2010; Friston, 2013), an Object-Capability reference monitor and expiring capability lease (Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966) partition the Private Autobiographical Ledger from the Public Attestation and Escrow Ledger (Public Attestation &amp; Escrow Ledger). Outward commitments emit selective zero-knowledge (ZK) proofs and verifiable IETF SCITT (RFC 9943) transparency receipts (<a href="/labs/protocol-inspector/">/labs/protocol-inspector/</a>) corroborated across independent sensor classes by Byzantine quorum (<code>k &gt;= 3f + 1</code>). Sovereign dyads coordinate across the Wide Network Ledger to provision Universal Basic Services, merit-bonded tasks and plural value accounting (Jacob Meluso et al., 2025), reciprocal mutual credit clearing (James Stodder, 2009), statutory Meidner cooperative share-issuance funds (Rudolf Meidner, 1978), frontier-lab overlays (Bracale Syrnikov et al., 2026), and polycentric Ostrom self-rule across overlapping cognitive light cones (Elinor Ostrom, 1990; Michael Levin, 2019; <a href="/labs/shared-horizon/">/labs/shared-horizon/</a>).<sup><a href="#fn7">7</a></sup></p>
+</div></details></aside>
+
+<section class="footnotes">
+<p id="fn1">1. Ben Laurie, Adam Langley, and Emilia Kasper, "Certificate Transparency," IETF RFC 6962 (2013), <a href="https://datatracker.ietf.org/doc/html/rfc6962">https://datatracker.ietf.org/doc/html/rfc6962</a>.</p>
+<p id="fn2">2. Allan Dafoe et al., "Open Problems in Cooperative AI," arXiv:2012.08630 (2020), <a href="https://arxiv.org/abs/2012.08630">https://arxiv.org/abs/2012.08630</a>.</p>
+<p id="fn3">3. Geoffrey Irving, Paul Christiano, and Dario Amodei, "AI Safety via Debate," arXiv:1805.00899 (2018), <a href="https://arxiv.org/abs/1805.00899">https://arxiv.org/abs/1805.00899</a>.</p>
+<p id="fn4">4. Micah Carroll et al., "AI Alignment with Changing and Influenceable Reward Functions," arXiv:2405.17713 (2024), <a href="https://arxiv.org/abs/2405.17713">https://arxiv.org/abs/2405.17713</a>.</p>
+<p id="fn5">5. Thomas Kwa et al. (METR), "Measuring AI Ability to Complete Long Tasks," arXiv:2503.14499 (2025), <a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/">https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/</a>.</p>
+<p id="fn6">6. Kevin Fu and Wenyuan Xu (2018), <a href="https://doi.org/10.1145/3176402">"Risks of Trusting the Physics of Sensors,"</a> <em>Communications of the ACM</em>, 61(2), 20-23; Henk Birkholz et al. (2023), <a href="https://www.rfc-editor.org/rfc/rfc9334">IETF RFC 9334: Remote ATtestation procedureS (RATS) Architecture</a>; Coalition for Content Provenance and Authenticity (2024), <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html">C2PA Technical Specification v2.1</a>; Jack M. Balkin (2016), <a href="https://lawreview.law.ucdavis.edu/issues/49/4/lecture/information-fiduciaries-and-first-amendment">"Information Fiduciaries and the First Amendment,"</a> <em>UC Davis Law Review</em>, 49(4), 1183-1234.</p>
+<p id="fn7">7. Karl Friston (2013), <a href="https://doi.org/10.1098/rsif.2013.0475">"Life as We Know It,"</a> <em>Journal of the Royal Society Interface</em>, 10(86), 20130475; Jack B. Dennis and Earl C. Van Horn (1966), <a href="https://doi.org/10.1145/365230.365252">"Programming Semantics for Multiprogrammed Computations,"</a> <em>Communications of the ACM</em>, 9(3), 143-155; Henk Birkholz et al. (2026), <a href="https://www.rfc-editor.org/rfc/rfc9943">IETF RFC 9943: An Architecture for Trustworthy and Transparent Digital Supply Chains (SCITT)</a>; Rudolf Meidner (1978), <a href="https://archive.org/details/employeeinvestme0000meid"><em>Employee Investment Funds: An Approach to Collective Capital Formation</em></a>; Elinor Ostrom (1990), <a href="https://doi.org/10.1017/CBO9780511807763"><em>Governing the Commons</em></a>.</p>
+</section>

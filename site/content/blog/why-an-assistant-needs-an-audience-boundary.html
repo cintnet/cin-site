@@ -1,0 +1,260 @@
+---
+title: Why an assistant needs an audience boundary
+description: When an AI assistant remembers personal notes, bringing old memories into a new conversation can accidentally leak confidential details. Audience boundaries keep unshared facts private.
+reader: Everyday citizens, workers, and organisers relying on AI assistants across home, work, and shared community chats.
+takeaway: Loading memories without checking who is present leaks private notes into shared conversations, while an audience boundary keeps unshared facts out.
+template: article
+date: 2026-11-10
+order: 1
+category: Protecting
+minutes: 7
+image: post-why-an-assistant-needs-an-audience-boundary.jpg
+image_alt: A pastel watercolor vignette of a handwritten journal resting on a wooden reading desk beside an open brass key on warm cream paper.
+lede: A family doctor never leaves your medical chart on the desk when another patient enters the room. Today's digital assistants often do the exact opposite. When software helpers remember your life, they must check who is in the room before opening past notes.
+---
+<p>Loading memories without checking who is present leaks private notes into shared conversations, while an audience boundary keeps unshared facts out. A family doctor never leaves your medical chart on the desk when another patient enters the room. If an electrician arrives to fix the examination lamp, the doctor turns the folder face down. The file stays closed until privacy returns.</p>
+
+<p>That careful habit protects your confidence. The physician does not rely on willpower to ignore sensitive notes. They keep the folder shut.</p>
+
+<p>Today, people expect artificial intelligence assistants to remember daily life across many months. We want them to recall prescription names, family budgets, work projects, and community volunteer rosters.</p>
+
+<p>Yet most assistant systems lack the doctor's simple discretion. When you start a new conversation, the software searches past memory notes for anything that sounds related. It immediately pulls those past records into working memory.</p>
+
+<p>Once private notes enter the working conversation, leaks happen easily. Loading memories without an audience check places sensitive recollections directly into the active prompt. In early evaluations, filtering recollections before they enter prompt context keeps unshared information safe.</p>
+
+<h2>The hidden danger of a helpful memory</h2>
+
+<p>Long-term memory makes software feel attentive. An assistant that remembers your dietary limits or your child's school schedule saves you from repeating basic facts every morning.</p>
+
+<p>The danger begins when the assistant enters a shared space. Imagine asking your assistant to schedule a team review in a shared workplace chat. If the software recalls that you attended a medical appointment that morning, it might mention that schedule conflict in front of colleagues.</p>
+
+<p>When software pulls memories without checking who is present, forbidden facts enter the active conversation immediately. In synthetic testing, once private recollections enter the active prompt, follow-up queries can uncover them. The study's author notes that this benchmark evidence remains preliminary.<sup><a href="#fn1">1</a></sup></p>
+
+<p>Researchers call this problem cross-audience memory leakage. Asking a language model to hide words already placed in its thoughts is like telling someone not to think of a white bear.</p>
+
+<figure class="explainer" id="ex-audience-boundary" role="group">
+  <style>
+    #ex-audience-boundary {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    @media (prefers-color-scheme: dark) {
+      #ex-audience-boundary {
+        --ex-paper: #1B1922;
+        --ex-slip: #23202C;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #A8A095;
+        --ex-rule: #322E3D;
+        --ex-signal: #8FD4B6;
+        --ex-accent: #8FD4B6;
+        --ex-warn: #F09D82;
+        --ex-amber: #E5B976;
+      }
+    }
+    :root[data-theme="dark"] #ex-audience-boundary {
+      --ex-paper: #1B1922;
+      --ex-slip: #23202C;
+      --ex-ink: #EDE6DC;
+      --ex-muted: #A8A095;
+      --ex-rule: #322E3D;
+      --ex-signal: #8FD4B6;
+      --ex-accent: #8FD4B6;
+      --ex-warn: #F09D82;
+      --ex-amber: #E5B976;
+    }
+    #ex-audience-boundary svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-audience-boundary .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-audience-boundary .diagram-desktop {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    #ex-audience-boundary .diagram-mobile {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+    #ex-audience-boundary figcaption {
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-audience-boundary .diagram-desktop { display: none; }
+      #ex-audience-boundary .diagram-mobile { display: block; }
+    }
+  </style>
+  <svg class="diagram-desktop" viewBox="0 0 680 320" role="img" aria-labelledby="ex-boundary-title ex-boundary-desc">
+    <title id="ex-boundary-title">Comparison of Naive Memory Retrieval versus Audience Boundary Filtering</title>
+    <desc id="ex-boundary-desc">A technical diagram showing that naive assistants load private memories into prompts where prompt injection leaks them, whereas an audience boundary filters memories outside the model based on current channel membership.</desc>
+    <text class="ex-mono" x="16" y="20" font-size="11" font-weight="700" fill="var(--ex-muted)">AUDIENCE BOUNDARY: FILTERING MEMORY OUTSIDE THE MODEL</text>
+    <line x1="16" y1="28" x2="664" y2="28" stroke="var(--ex-rule)" stroke-width="1"/>
+    <line x1="340" y1="40" x2="340" y2="306" stroke="var(--ex-rule)" stroke-width="1"/>
+    <g>
+      <rect x="16" y="44" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="30" y="50" font-size="11" font-weight="700" fill="var(--ex-warn)">NAIVE MEMORY INJECTION</text>
+      <text x="16" y="68" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Loads private records into shared prompt</text>
+      <line x1="16" y1="78" x2="328" y2="78" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <line x1="25" y1="94" x2="25" y2="224" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+      <rect x="22" y="93" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="100" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Stored Personal Notes</text>
+      <text x="38" y="117" font-size="11" fill="var(--ex-muted)">Health logs, balances, and family drafts</text>
+      <line x1="38" y1="144" x2="328" y2="144" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="22" y="155" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="162" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Unfiltered Context Dump</text>
+      <text x="38" y="179" font-size="11" fill="var(--ex-muted)">Search pulls private notes into active prompt</text>
+      <line x1="38" y1="206" x2="328" y2="206" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="22" y="217" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="38" y="224" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Cross-Channel Leakage</text>
+      <text x="38" y="241" font-size="11" fill="var(--ex-muted)">Soft prompt rules fail in group threads</text>
+      <line x1="16" y1="278" x2="328" y2="278" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="16" y="287" width="5" height="5" fill="var(--ex-warn)"/>
+      <text x="28" y="292" font-size="11" font-weight="700" fill="var(--ex-warn)">Result: Secrets leak into shared chats</text>
+    </g>
+    <g>
+      <rect x="356" y="44" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="370" y="50" font-size="11" font-weight="700" fill="var(--ex-signal)">AUDIENCE BOUNDARY GATE</text>
+      <text x="356" y="68" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Filters viewers before prompt construction</text>
+      <line x1="356" y1="78" x2="664" y2="78" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <line x1="365" y1="94" x2="365" y2="224" stroke="var(--ex-signal)" stroke-width="1"/>
+      <rect x="362" y="93" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="378" y="100" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Audience-Tagged Notes</text>
+      <text x="378" y="117" font-size="11" fill="var(--ex-muted)">Each record lists original channel viewers</text>
+      <line x1="378" y1="144" x2="664" y2="144" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="362" y="155" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="378" y="162" font-size="12" font-weight="700" fill="var(--ex-ink)">2. External Membership Gate</text>
+      <text x="378" y="179" font-size="11" fill="var(--ex-muted)">Verifies all current viewers match tag</text>
+      <line x1="378" y1="206" x2="664" y2="206" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="362" y="217" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="378" y="224" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Selective Context Load</text>
+      <text x="378" y="241" font-size="11" fill="var(--ex-muted)">Unshared notes remain locked on local disk</text>
+      <line x1="356" y1="278" x2="664" y2="278" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="356" y="287" width="5" height="5" fill="var(--ex-signal)"/>
+      <text x="368" y="292" font-size="11" font-weight="700" fill="var(--ex-signal)">Outcome: Model cannot leak unseen words</text>
+    </g>
+  </svg>
+  <svg class="diagram-mobile" viewBox="0 0 330 520" role="img" aria-labelledby="ex-boundary-m-title ex-boundary-m-desc">
+    <title id="ex-boundary-m-title">How an audience boundary filters private memories on mobile</title>
+    <desc id="ex-boundary-m-desc">Stacked mobile diagram comparing naive memory injection that leaks private notes with an audience boundary gate that filters memories outside the model.</desc>
+    <g>
+      <rect x="8" y="14" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="20" y="20" font-size="11" font-weight="700" fill="var(--ex-warn)">NAIVE MEMORY INJECTION</text>
+      <text x="8" y="38" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Loads private records into shared prompt</text>
+      <line x1="8" y1="47" x2="318" y2="47" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <line x1="12" y1="62" x2="12" y2="174" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+      <polygon points="9,102 15,102 12,108" fill="var(--ex-warn)"/>
+      <polygon points="9,156 15,156 12,162" fill="var(--ex-warn)"/>
+      <rect x="9" y="60" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="24" y="67" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Stored Personal Notes</text>
+      <text x="24" y="84" font-size="11" fill="var(--ex-muted)">Health logs, balances, family drafts</text>
+      <line x1="24" y1="105" x2="318" y2="105" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="114" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="24" y="121" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Unfiltered Context</text>
+      <text x="24" y="138" font-size="11" fill="var(--ex-muted)">Search loads notes into active prompt</text>
+      <line x1="24" y1="159" x2="318" y2="159" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="168" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="24" y="175" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Group Thread Leak</text>
+      <text x="24" y="192" font-size="11" fill="var(--ex-muted)">Private details spill to third parties</text>
+      <line x1="8" y1="226" x2="318" y2="226" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="8" y="235" width="5" height="5" fill="var(--ex-warn)"/>
+      <text x="19" y="240" font-size="11" font-weight="700" fill="var(--ex-warn)">Result: Secrets leak into shared chats</text>
+    </g>
+    <line x1="8" y1="260" x2="318" y2="260" stroke="var(--ex-rule)" stroke-width="1.25"/>
+    <g>
+      <rect x="8" y="274" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="20" y="280" font-size="11" font-weight="700" fill="var(--ex-signal)">AUDIENCE BOUNDARY GATE</text>
+      <text x="8" y="298" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Filters viewers before prompt construction</text>
+      <line x1="8" y1="307" x2="318" y2="307" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <line x1="12" y1="322" x2="12" y2="436" stroke="var(--ex-signal)" stroke-width="1"/>
+      <polygon points="9,363 15,363 12,369" fill="var(--ex-signal)"/>
+      <polygon points="9,418 15,418 12,424" fill="var(--ex-signal)"/>
+      <rect x="9" y="320" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="24" y="327" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Audience-Tagged Notes</text>
+      <text x="24" y="344" font-size="11" fill="var(--ex-muted)">Records list original room viewers</text>
+      <line x1="24" y1="366" x2="318" y2="366" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="375" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="24" y="382" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. External Gate Check</text>
+      <text x="24" y="399" font-size="11" fill="var(--ex-muted)">Verifies all viewers match original room</text>
+      <line x1="24" y1="421" x2="318" y2="421" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="9" y="430" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="24" y="437" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Safe Context Load</text>
+      <text x="24" y="454" font-size="11" fill="var(--ex-muted)">Unshared notes stay locked on disk</text>
+      <line x1="8" y1="488" x2="318" y2="488" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="8" y="497" width="5" height="5" fill="var(--ex-signal)"/>
+      <text x="19" y="502" font-size="11" font-weight="700" fill="var(--ex-signal)">Outcome: Model cannot leak unseen words</text>
+    </g>
+  </svg>
+  <figcaption>Naive assistants place private memories directly into the conversation prompt, where conversational leaks happen easily. An audience boundary checks channel membership before prompt construction so unshared records never enter working context.</figcaption>
+</figure>
+
+<h2>Checking the door before speaking</h2>
+
+<p>The solution is straightforward: enforce authorization before context. Without relying on language models to keep secrets, we enforce boundaries in the software code that feeds the model.</p>
+
+<p>Every stored memory record receives a simple tag listing the audience present when the note was created. A private note written during solitary planning has an audience of one person.</p>
+
+<p>When you ask your assistant for help, the boundary gate checks who is participating in the current session. If the current channel includes outside coworkers, guests, or public web tools, the gate filters the memory database.</p>
+
+<p>A memory enters working context only when every participant in the current room belonged to the original audience. If a stranger or third-party service is present, the gate holds the note back. The private record stays locked on your local drive.<sup><a href="#fn2">2</a></sup></p>
+
+<p>This design keeps out sensitive facts provided that each memory's audience tag and the channel's participant list are accurate. When channel metadata is ambiguous, the system falls back to treating the channel as public so unshared memories stay locked.</p>
+
+<h2>What this means for everyday use</h2>
+
+<p>Protecting memory boundaries changes how we interact with digital tools in three practical ways.</p>
+
+<p>First, it removes constant anxiety from shared conversations. You can invite your assistant into family plans or group errands without wondering what private notes it might blurt out.</p>
+
+<p>Second, it establishes clear boundaries between work life, civic organizing, and household routines. An errand run for a neighbourhood food co-op will never expose your personal medical history to fellow volunteers.</p>
+
+<p>Finally, it aligns software tools with basic human dignity. People naturally adjust what they say based on who is listening. Our software helpers should honour that same simple courtesy.<sup><a href="#fn3">3</a></sup></p>
+
+<p>You can inspect how independent developers build client-side privacy controls into collaborative agent tools in our <a href="/labs/shared-horizon/">Shared Horizon</a> path library.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers and systems architects</summary>
+    <div>
+      <p>This essay addresses cross-audience memory leakage and the limitations of conversational reference monitoring in long-term personal agent twins. When memory retrieval relies purely on embedding similarity, stored episodic tokens are injected into prompt context regardless of channel composition. Sibo Liu (arXiv:2608.17148, 2026: <em>Authorization Before Context: A Model-Neutral Audience Boundary Against Cross-Audience Memory Leakage in Agentic Systems</em>) formalizes this vulnerability, demonstrating that unscoped baselines include forbidden facts by construction on a synthetic evaluation suite, while characterizing this evidence as preliminary. The paper proposes Authorization Before Context (ABC), a deterministic reference monitor enforcing an audience lattice at the retrieval boundary that falls back to public access when channel metadata is ambiguous.</p>
+      <p>Complementing input-stage filtering, Shouju Wang, Fenglin Yu, Xirui Liu, Xiaoting Qin, Jue Zhang, Qingwei Lin, Dongmei Zhang, and Saravan Rajmohan (arXiv:2509.17488, 2025: <em>Privacy in Action: Towards Realistic Privacy Mitigation and Evaluation for LLM-Powered Agents</em>) show that inference-time contextual integrity interception reduces agent attribute leakage from 36.1% to 7.3%. In multi-agent toolchains, Zimo Ji et al. (arXiv:2601.11893, 2026: <em>Taming Various Privilege Escalation in LLM-Based Agent Systems: A Mandatory Access Control Framework</em>) formalize attribute-based mandatory access control across information flow graphs to neutralize confused deputy attacks. See the <a href="/labs/shared-horizon/">Shared Horizon action card on client-side privacy interception and contextual integrity</a>.</p>
+      <p>Within our five-primitive sociotechnical architecture, heterogeneous wearable and room sensors form a multimodal egocentric and ambient perceptual sensorium fused locally in monotonic hardware <code>Device Time</code> with self-assessed observation confidence. Silicon peripheral attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, <code>IETF RATS</code> RFC 9334), an optical data diode, and <code>IEC 61508</code> dead-man relays isolate physical actuators. Channel observations and audience tags write into an append-only <code>C2PA</code> and Merkle episodic memory vault (Endel Tulving; Tulving, 1972) bound by transduction realism (<em>Signed Is Not True</em> across the analog hole; Kevin Fu and Wenyuan Xu; Fu &amp; Xu, 2018). A monogamous <code>1:1</code> principal-bound personal cognitive model and cybernetic exocortex (Joscha Bach; Bach, 2009) grounded in the Extended Mind thesis (Andy Clark and David Chalmers; Clark &amp; Chalmers, 1998) and the Good Regulator theorem (Conant &amp; Ashby, 1970) applies interventional causal models <code>do(x)</code> (Pearl, 2009) and compiler-trust reflection proofs (Thompson, 1984) as a statutory information fiduciary (Jack Balkin; Balkin, 2016), preserving unassisted competence over the Private Autobiographical Ledger.</p>
+      <p>Across the personal Markov blanket boundary (Karl Friston; Friston, 2010; Friston, 2013), cross-audience retrieval and outward actions require time-bounded Object-Capability lease gates (Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966), selective zero-knowledge (<code>ZK</code>) membership proofs, independent-class Byzantine corroboration (<code>k &gt;= 3f + 1</code>; Lamport, Shostak &amp; Pease, 1982), and signed <code>IETF SCITT</code> (<code>RFC 9943</code>) transparency receipts on the Public Attestation &amp; Escrow Ledger. Those verified boundary receipts couple sovereign dyads to the Wide Network Ledger for Universal Basic Services, merit-bonded commons tasks, invisible-labor upkeep recognition (Jacob Meluso; Meluso et al., 2022), countercyclical reciprocal mutual credit (James Stodder; Stodder, 2009), frontier-lab overlays (Bracale Syrnikov et al., 2026), polycentric self-rule (Elinor Ostrom; Ostrom, 1990; Ostrom, 2010), and statutory Meidner cooperative equity (Rudolf Meidner; Meidner, 1978).</p>
+    </div>
+  </details>
+</aside>
+
+<section class="footnotes">
+  <ol>
+    <li id="fn1">Sibo Liu, "Authorization Before Context: A Model-Neutral Audience Boundary Against Cross-Audience Memory Leakage in Agentic Systems," <em>arXiv preprint arXiv:2608.17148</em> (2026), <a href="https://arxiv.org/abs/2608.17148">https://arxiv.org/abs/2608.17148</a>.</li>
+    <li id="fn2">Shouju Wang, Fenglin Yu, Xirui Liu, Xiaoting Qin, Jue Zhang, Qingwei Lin, Dongmei Zhang, and Saravan Rajmohan, "Privacy in Action: Towards Realistic Privacy Mitigation and Evaluation for LLM-Powered Agents," <em>arXiv preprint arXiv:2509.17488</em> (2025), <a href="https://arxiv.org/abs/2509.17488">https://arxiv.org/abs/2509.17488</a>.</li>
+    <li id="fn3">Zimo Ji, Daoyuan Wu, Wenyuan Jiang, Pingchuan Ma, Zongjie Li, Yudong Gao, Shuai Wang, and Yingjiu Li, "Taming Various Privilege Escalation in LLM-Based Agent Systems: A Mandatory Access Control Framework," <em>arXiv preprint arXiv:2601.11893</em> (2026), <a href="https://arxiv.org/abs/2601.11893">https://arxiv.org/abs/2601.11893</a>.</li>
+  </ol>
+</section>

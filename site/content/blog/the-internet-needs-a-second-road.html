@@ -1,0 +1,506 @@
+---
+title: Why the internet needs a second road
+description: Bots now make up more of the web's traffic than people do. We think AI agents need a network of their own, so the human internet can stay human.
+reader: Curious readers and policy staff who have noticed the web filling up with bots and wonder what can be done.
+takeaway: Separating agent traffic from human spaces, with receipts on every agent action, could protect both.
+template: article
+date: 2026-11-06
+order: 2
+category: Seeing
+minutes: 9
+image: post-second-road.jpg
+image_alt: A canal lock with boats carrying sealed parcels below, a lock-keeper's cottage, and people walking across a stone bridge above.
+lede: Cities learned long ago to keep freight trains off the footpaths. Both need to move. Neither should get in the other's way. The internet is about to learn the same lesson.
+---
+<p>Separating agent traffic from human spaces, with receipts on every agent action, could protect both. Here is a fact that would have sounded like science fiction a decade ago. In 2024, for the first time in ten years, automated traffic made up more of the web than human traffic did, an estimated 51 percent.<sup><a href="#fn1">1</a></sup> Some of those bots are helpful, like the crawlers that let search engines index a library catalogue. Many aren't.</p>
+
+<p>Now add AI agents to that crowded street. Unlike older bots that followed rigid scripts, modern agents can read a page, click buttons, fill in forms, and reply in warm, plausible sentences just like you would. Sometimes they say they're software. Often they don't.</p>
+
+<p>You've probably felt the result already in daily frustrations. Product reviews you can't trust because hundreds were written in an afternoon by a synthetic swarm. Replies that sound almost human until you notice the same phrase repeated twenty times down the page. Customer service lines where one chatbot argues endlessly with another.</p>
+
+<p>None of this happened because the original internet was poorly designed. It happened because we are asking one narrow road to carry two completely different kinds of traffic at once.</p>
+
+<h2>A medieval market street with forty-ton trucks</h2>
+
+<p>The early internet was built as a single shared road. People, simple scripts, and now AI agents all travel down that same lane together, wearing the same digital clothes, and they are hard to tell apart. That worked when software only did simple chores in the background. It breaks down when software can write, persuade, and act faster than any person can follow.</p>
+
+<p>Picture a medieval market street in an old stone town. The lane was laid out centuries ago for neighbours walking on foot, parents pushing handcarts, and stallholders setting out baskets of bread and apples. People move at walking speed. They stop to talk, look a baker in the eye, and judge whether the fruit looks fresh.</p>
+
+<p>Now imagine routing forty-ton freight trucks, automated forklifts, and high-speed delivery vans straight down that same narrow cobblestone lane. Many of those trucks are carrying real timber, grain, and medicine that the town genuinely needs. Yet because heavy freight and pedestrians are squeezed into the same passage, the market becomes unlivable. Walkers are pressed flat against shopfronts, and conversations are drowned out by diesel engines.</p>
+
+<p>The usual fix on today's web is to bolt stricter turnstiles onto every shop door. Websites add aggressive filters and endless CAPTCHAs, asking you to click blurry bicycles and traffic lights to prove you're human. That helps for a moment. Mostly, it makes the footpath exhausting for real people, especially anyone using a screen reader or a shared library connection. Meanwhile, commercial bots keep getting better at passing the test in milliseconds.</p>
+
+<h2>A second road: the freight canal and the lock-keeper</h2>
+
+<figure class="explainer" id="ex-two-roads" data-stage="switchyard">
+<style>
+#ex-two-roads {
+  --ex-paper: #FAF3EA;
+  --ex-slip: #F3EADF;
+  --ex-ink: #131014;
+  --ex-muted: #5E564B;
+  --ex-rule: #DFD1BE;
+  --ex-signal: #1F6B4E;
+  --ex-accent: #0B3F30;
+  --ex-warn: #9E4726;
+  --ex-brass: #805113;
+  --ex-brass-hi: #8A5A10;
+  --ex-key-top: #FDF9F2;
+  --ex-key-side: #D4C3AC;
+  margin: 2rem 0;
+  padding: 1.35rem 0 1.15rem;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--ex-rule);
+  border-bottom: 1px solid var(--ex-rule);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--ex-ink);
+}
+@media (prefers-color-scheme: dark) {
+  #ex-two-roads {
+    --ex-paper: #1C1A24;
+    --ex-slip: #262331;
+    --ex-ink: #EDE6DC;
+    --ex-muted: #C2B8AC;
+    --ex-rule: #3A3548;
+    --ex-signal: #8FD4B6;
+    --ex-accent: #8FD4B6;
+    --ex-warn: #F09D82;
+    --ex-brass: #E0A64B;
+    --ex-brass-hi: #E0A64B;
+    --ex-key-top: #262331;
+    --ex-key-side: #3A3548;
+  }
+}
+:root[data-theme="dark"] #ex-two-roads {
+  --ex-paper: #1C1A24;
+  --ex-slip: #262331;
+  --ex-ink: #EDE6DC;
+  --ex-muted: #C2B8AC;
+  --ex-rule: #3A3548;
+  --ex-signal: #8FD4B6;
+  --ex-accent: #8FD4B6;
+  --ex-warn: #F09D82;
+  --ex-brass: #E0A64B;
+  --ex-brass-hi: #E0A64B;
+  --ex-key-top: #262331;
+  --ex-key-side: #3A3548;
+}
+#ex-two-roads .ex-sr-radio {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+#ex-two-roads .ex-bench-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-bottom: 0.95rem;
+  border-bottom: 1px solid var(--ex-rule);
+}
+#ex-two-roads .ex-bench-prompt {
+  font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ex-muted);
+}
+#ex-two-roads .ex-lever-group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+#ex-two-roads .ex-lever-key {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.46rem 0.78rem;
+  font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.73rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ex-ink);
+  background: var(--ex-key-top);
+  border: 1px solid var(--ex-ink);
+  border-radius: 2px;
+  box-shadow: 0 3px 0 var(--ex-key-side), 0 4px 0 var(--ex-ink);
+  cursor: pointer;
+  user-select: none;
+  transform: translateY(0);
+  transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 180ms cubic-bezier(0.22, 1, 0.36, 1), background-color 180ms ease;
+}
+#ex-two-roads .ex-lever-pip {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: var(--ex-brass);
+  border: 1px solid var(--ex-ink);
+}
+#ex-two-roads #sw-road-crowded:focus-visible ~ .ex-bench-bar label[for="sw-road-crowded"],
+#ex-two-roads #sw-road-rail:focus-visible ~ .ex-bench-bar label[for="sw-road-rail"] {
+  outline: 2px solid var(--ex-signal);
+  outline-offset: 3px;
+}
+#ex-two-roads #sw-road-crowded:checked ~ .ex-bench-bar label[for="sw-road-crowded"] {
+  transform: translateY(3px);
+  box-shadow: 0 0 0 var(--ex-key-side), 0 1px 0 var(--ex-ink);
+  background: var(--ex-slip);
+  border-color: var(--ex-warn);
+}
+#ex-two-roads #sw-road-crowded:checked ~ .ex-bench-bar label[for="sw-road-crowded"] .ex-lever-pip {
+  background: var(--ex-warn);
+}
+#ex-two-roads #sw-road-rail:checked ~ .ex-bench-bar label[for="sw-road-rail"] {
+  transform: translateY(3px);
+  box-shadow: 0 0 0 var(--ex-key-side), 0 1px 0 var(--ex-ink);
+  background: var(--ex-slip);
+  border-color: var(--ex-signal);
+}
+#ex-two-roads #sw-road-rail:checked ~ .ex-bench-bar label[for="sw-road-rail"] .ex-lever-pip {
+  background: var(--ex-signal);
+}
+#ex-two-roads .ex-switchyard-canvas {
+  padding: 0.9rem 0 0.65rem;
+}
+#ex-two-roads svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+#ex-two-roads .diagram-desktop {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+#ex-two-roads .diagram-mobile {
+  display: none;
+  width: 100%;
+  height: auto;
+}
+#ex-two-roads .ex-mono {
+  font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+#ex-two-roads .ex-sans {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 12px;
+}
+#ex-two-roads .st-rail { display: none; }
+#ex-two-roads #sw-road-rail:checked ~ .ex-switchyard-canvas .st-crowded { display: none; }
+#ex-two-roads #sw-road-rail:checked ~ .ex-switchyard-canvas .st-rail { display: inline; }
+#ex-two-roads .ex-telemetry {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--ex-rule);
+}
+#ex-two-roads .ex-tel-cell {
+  padding: 0.75rem 0.85rem 0.65rem 0;
+  border-right: 1px solid var(--ex-rule);
+}
+#ex-two-roads .ex-tel-cell:nth-child(2) {
+  padding-left: 0.85rem;
+}
+#ex-two-roads .ex-tel-cell:last-child {
+  padding-left: 0.85rem;
+  padding-right: 0;
+  border-right: 0;
+}
+#ex-two-roads .ex-tel-kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ex-muted);
+  margin-bottom: 0.28rem;
+}
+#ex-two-roads .ex-pip-sq {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--ex-muted);
+}
+#ex-two-roads .ex-tel-val {
+  font-size: 0.88rem;
+  line-height: 1.42;
+  color: var(--ex-ink);
+}
+#ex-two-roads .tel-rail { display: none; }
+#ex-two-roads #sw-road-rail:checked ~ .ex-telemetry .tel-crowded { display: none; }
+#ex-two-roads #sw-road-rail:checked ~ .ex-telemetry .tel-rail { display: block; }
+#ex-two-roads #sw-road-crowded:checked ~ .ex-telemetry .pip-dynamic { background: var(--ex-warn); }
+#ex-two-roads #sw-road-rail:checked ~ .ex-telemetry .pip-dynamic { background: var(--ex-signal); }
+#ex-two-roads figcaption {
+  margin-top: 0.75rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--ex-rule);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ex-muted);
+}
+@media (max-width: 640px) {
+  #ex-two-roads .ex-telemetry {
+    grid-template-columns: 1fr;
+  }
+  #ex-two-roads .ex-tel-cell,
+  #ex-two-roads .ex-tel-cell:nth-child(2),
+  #ex-two-roads .ex-tel-cell:last-child {
+    padding: 0.65rem 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--ex-rule);
+  }
+  #ex-two-roads .ex-tel-cell:last-child {
+    border-bottom: 0;
+  }
+  #ex-two-roads .diagram-desktop { display: none; }
+  #ex-two-roads .diagram-mobile { display: block; }
+}
+@media (max-width: 600px) {
+  #ex-two-roads .diagram-desktop { display: none; }
+  #ex-two-roads .diagram-mobile { display: block; }
+}
+</style>
+
+<input type="radio" name="sw-two-roads" id="sw-road-crowded" class="ex-sr-radio" checked />
+<input type="radio" name="sw-two-roads" id="sw-road-rail" class="ex-sr-radio" />
+
+<div class="ex-bench-bar">
+  <span class="ex-bench-prompt">Brass switchyard lever &#183; select track state</span>
+  <div class="ex-lever-group">
+    <label for="sw-road-crowded" class="ex-lever-key"><span class="ex-lever-pip"></span>1 &#183; Shared footpath: crowded</label>
+    <label for="sw-road-rail" class="ex-lever-key"><span class="ex-lever-pip"></span>2 &#183; Parallel agent rail: verified</label>
+  </div>
+</div>
+
+<div class="ex-switchyard-canvas">
+  <svg class="diagram-desktop" viewBox="0 0 720 248" width="100%" role="img" aria-labelledby="ex-two-roads-title ex-two-roads-desc">
+    <title id="ex-two-roads-title">Two roads for the internet: the human footpath, the inspection lock, and the agent freight canal</title>
+    <desc id="ex-two-roads-desc">Horizontal split-track switchyard comparing a crowded shared footpath where automated bot freight cars trip roadblocks against a parallel lower agent rail where freight stamps verified logbook ticks at gantries before reaching your assistant lock.</desc>
+
+    <!-- Baseline architectural hairlines -->
+    <line x1="0" y1="74" x2="710" y2="74" stroke="var(--ex-ink)" stroke-width="1.25"/>
+    <line x1="0" y1="80" x2="710" y2="80" stroke="var(--ex-rule)" stroke-width="1"/>
+    <line x1="210" y1="194" x2="626" y2="194" stroke="var(--ex-ink)" stroke-width="1.25"/>
+    <line x1="210" y1="200" x2="626" y2="200" stroke="var(--ex-rule)" stroke-width="1"/>
+
+    <!-- Track coordinate labels -->
+    <rect x="4" y="20" width="6" height="6" fill="var(--ex-signal)"/>
+    <text x="16" y="27" class="ex-mono" font-size="11" fill="var(--ex-ink)" font-weight="700">01 &#183; Upper human footpath</text>
+    <rect x="210" y="218" width="6" height="6" fill="var(--ex-brass)"/>
+    <text x="222" y="225" class="ex-mono" font-size="11" fill="var(--ex-muted)" font-weight="600">02 &#183; Dedicated agent freight rail</text>
+
+    <!-- Switchyard pivot post at x=136 -->
+    <line x1="136" y1="42" x2="136" y2="112" stroke="var(--ex-rule)" stroke-width="1" stroke-dasharray="3 3"/>
+    <rect x="131" y="69" width="10" height="10" fill="var(--ex-brass)" stroke="var(--ex-ink)" stroke-width="1"/>
+    <text x="136" y="34" text-anchor="middle" class="ex-mono" font-size="11" fill="var(--ex-brass)" font-weight="700">SWITCH</text>
+
+    <!-- Walkers on entry footpath -->
+    <circle cx="38" cy="56" r="4.5" fill="var(--ex-signal)"/>
+    <line x1="38" y1="61" x2="38" y2="73" stroke="var(--ex-signal)" stroke-width="1.6"/>
+    <circle cx="72" cy="56" r="4.5" fill="var(--ex-signal)"/>
+    <line x1="72" y1="61" x2="72" y2="73" stroke="var(--ex-signal)" stroke-width="1.6"/>
+
+    <!-- ==================== STATE 1: CROWDED SHARED FOOTPATH ==================== -->
+    <g class="st-crowded">
+      <!-- Brass switch blade locked straight onto human footpath -->
+      <line x1="136" y1="74" x2="220" y2="74" stroke="var(--ex-warn)" stroke-width="3"/>
+      <line x1="136" y1="74" x2="210" y2="194" stroke="var(--ex-rule)" stroke-width="1" stroke-dasharray="4 4"/>
+
+      <!-- Bot freight cars crowding upper footpath -->
+      <rect x="226" y="48" width="102" height="22" fill="var(--ex-slip)" stroke="var(--ex-warn)" stroke-width="1.2"/>
+      <text x="277" y="63" text-anchor="middle" class="ex-mono" font-size="11" fill="var(--ex-warn)" font-weight="700">SCRAPER BOT</text>
+
+      <rect x="336" y="48" width="96" height="22" fill="var(--ex-slip)" stroke="var(--ex-warn)" stroke-width="1.2"/>
+      <text x="384" y="63" text-anchor="middle" class="ex-mono" font-size="11" fill="var(--ex-warn)" font-weight="700">AD SWARM</text>
+
+      <!-- CAPTCHA turnstile roadblock -->
+      <line x1="448" y1="34" x2="448" y2="96" stroke="var(--ex-warn)" stroke-width="2" stroke-dasharray="3 2"/>
+      <rect x="458" y="44" width="146" height="24" fill="var(--ex-paper)" stroke="var(--ex-warn)" stroke-width="1"/>
+      <text x="531" y="60" text-anchor="middle" class="ex-mono" font-size="11" fill="var(--ex-warn)" font-weight="700">CAPTCHA ROADBLOCK</text>
+
+      <text x="616" y="63" class="ex-mono" font-size="11" fill="var(--ex-warn)" font-weight="700">&#9632; JAMMED</text>
+      <text x="328" y="182" class="ex-mono" font-size="11" fill="var(--ex-muted)">Lower agent canal unbuilt &#183; freight crowds walkers</text>
+    </g>
+
+    <!-- ==================== STATE 2: PARALLEL AGENT RAIL VERIFIED ==================== -->
+    <g class="st-rail">
+      <!-- Brass switch blade thrown downward onto parallel agent rail -->
+      <line x1="136" y1="74" x2="210" y2="194" stroke="var(--ex-brass)" stroke-width="2.75"/>
+      <line x1="136" y1="74" x2="220" y2="74" stroke="var(--ex-signal)" stroke-width="1.75"/>
+
+      <!-- Calm upper human footpath -->
+      <circle cx="290" cy="56" r="4.5" fill="var(--ex-signal)"/>
+      <line x1="290" y1="61" x2="290" y2="73" stroke="var(--ex-signal)" stroke-width="1.6"/>
+      <circle cx="316" cy="56" r="4.5" fill="var(--ex-signal)"/>
+      <line x1="316" y1="61" x2="316" y2="73" stroke="var(--ex-signal)" stroke-width="1.6"/>
+      <text x="342" y="63" class="ex-sans" font-size="12" fill="var(--ex-signal)" font-weight="600">Calm walking &amp; reading pace</text>
+
+      <!-- Gantry 1: Owner Licence -->
+      <line x1="308" y1="146" x2="308" y2="204" stroke="var(--ex-ink)" stroke-width="1"/>
+      <rect x="234" y="166" width="68" height="22" fill="var(--ex-slip)" stroke="var(--ex-signal)" stroke-width="1"/>
+      <text x="268" y="181" text-anchor="middle" class="ex-mono" font-size="11" fill="var(--ex-ink)">PARCEL</text>
+      <text x="314" y="158" class="ex-mono" font-size="11" fill="var(--ex-signal)" font-weight="700">&#9632; LOGGED: OWNER ID</text>
+
+      <!-- Gantry 2: Rate & Scope Receipt -->
+      <line x1="478" y1="146" x2="478" y2="204" stroke="var(--ex-ink)" stroke-width="1"/>
+      <text x="484" y="158" class="ex-mono" font-size="11" fill="var(--ex-signal)" font-weight="700">&#9632; LOGGED: RECEIPT</text>
+
+      <!-- Vertical Inspection Lock rising to human footpath at x=626 -->
+      <line x1="626" y1="74" x2="626" y2="194" stroke="var(--ex-signal)" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <rect x="576" y="116" width="100" height="22" fill="var(--ex-paper)" stroke="var(--ex-signal)" stroke-width="1"/>
+      <text x="626" y="131" text-anchor="middle" class="ex-mono" font-size="11" fill="var(--ex-signal)" font-weight="700">LOCK FILTER</text>
+      <text x="634" y="63" class="ex-mono" font-size="11" fill="var(--ex-signal)" font-weight="700">&#9632; 1 NOTE</text>
+    </g>
+  </svg>
+  <svg class="diagram-mobile" viewBox="0 0 300 260" width="100%" role="img" aria-labelledby="ex-two-roads-m-title ex-two-roads-m-desc">
+    <title id="ex-two-roads-m-title">Two roads for the internet: the human footpath, the inspection lock, and the agent freight canal (Mobile)</title>
+    <desc id="ex-two-roads-m-desc">Stacked mobile diagram comparing a crowded shared footpath against a dedicated lower agent freight rail with a personal inspection lock.</desc>
+    <g class="st-crowded">
+      <rect x="10" y="12" width="280" height="104" fill="var(--ex-slip)" stroke="var(--ex-warn)" stroke-width="1.2"/>
+      <text class="ex-mono" x="20" y="32" font-size="11" font-weight="700" fill="var(--ex-warn)">01 &#183; SHARED FOOTPATH: CROWDED</text>
+      <text x="20" y="54" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Scrapers and ad swarms share lane</text>
+      <text x="20" y="74" font-size="11" fill="var(--ex-muted)">CAPTCHA turnstiles block walkers</text>
+      <text x="20" y="96" font-size="11" font-weight="700" fill="var(--ex-warn)">Status: Footpath jammed by bots</text>
+      <line x1="150" y1="116" x2="150" y2="128" stroke="var(--ex-warn)" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <polygon points="146,126 154,126 150,132" fill="var(--ex-warn)"/>
+      <rect x="10" y="132" width="280" height="96" fill="var(--ex-paper)" stroke="var(--ex-warn)" stroke-width="1.2" stroke-dasharray="4 3"/>
+      <text class="ex-mono" x="20" y="152" font-size="11" font-weight="700" fill="var(--ex-warn)">02 &#183; NO INSPECTION LOCK</text>
+      <text x="20" y="174" font-size="11" fill="var(--ex-ink)">34 unverified pings hit inbox</text>
+      <text x="20" y="194" font-size="11" fill="var(--ex-muted)">No owner ID or signed receipt</text>
+    </g>
+    <g class="st-rail">
+      <rect x="10" y="12" width="280" height="92" fill="var(--ex-paper)" stroke="var(--ex-signal)" stroke-width="1.3"/>
+      <text class="ex-mono" x="20" y="32" font-size="11" font-weight="700" fill="var(--ex-signal)">01 &#183; UPPER HUMAN FOOTPATH</text>
+      <text x="20" y="54" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Calm walking and reading pace</text>
+      <text x="20" y="74" font-size="11" fill="var(--ex-signal)">1 verified note delivered at lock</text>
+      <line x1="150" y1="104" x2="150" y2="128" stroke="var(--ex-signal)" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <polygon points="146,126 154,126 150,132" fill="var(--ex-signal)"/>
+      <line x1="250" y1="132" x2="250" y2="108" stroke="var(--ex-signal)" stroke-width="1.5"/>
+      <polygon points="246,110 254,110 250,104" fill="var(--ex-signal)"/>
+      <rect x="10" y="132" width="280" height="104" fill="var(--ex-slip)" stroke="var(--ex-signal)" stroke-width="1.3"/>
+      <text class="ex-mono" x="20" y="152" font-size="11" font-weight="700" fill="var(--ex-signal)">02 &#183; DEDICATED AGENT RAIL</text>
+      <text x="20" y="174" font-size="11" fill="var(--ex-ink)">Logged: Owner ID and task scope</text>
+      <text x="20" y="194" font-size="11" fill="var(--ex-ink)">Logged: Signed receipt at lock</text>
+      <text x="20" y="214" font-size="11" font-weight="700" fill="var(--ex-signal)">32 uninvited spam barges dropped</text>
+    </g>
+  </svg>
+</div>
+
+<div class="ex-telemetry">
+  <div class="ex-tel-cell">
+    <div class="ex-tel-kicker"><span class="ex-pip-sq pip-dynamic"></span>Upper footpath</div>
+    <div class="ex-tel-val tel-crowded">Scrapers, pricing bots, and promotional swarms share the pedestrian lane and trip endless CAPTCHA gates.</div>
+    <div class="ex-tel-val tel-rail">Reserved for people reading and talking at walking pace, with zero automated swarms shouting for attention.</div>
+  </div>
+  <div class="ex-tel-cell">
+    <div class="ex-tel-kicker"><span class="ex-pip-sq pip-dynamic"></span>Inspection lock</div>
+    <div class="ex-tel-val tel-crowded">No lock wall: thirty-four unverified automated pings land straight in your morning inbox before coffee.</div>
+    <div class="ex-tel-val tel-rail">Your personal lock-keeper drops uninvited spam barges and hands you one verified note when schedules change.</div>
+  </div>
+  <div class="ex-tel-cell">
+    <div class="ex-tel-kicker"><span class="ex-pip-sq pip-dynamic"></span>Agent freight rail</div>
+    <div class="ex-tel-val tel-crowded">Unmarked automated scripts impersonate human browsers because no dedicated machine lane exists.</div>
+    <div class="ex-tel-val tel-rail">Every automated parcel carries a registered owner, a scoped permission manifest, rate limits, and a signed receipt.</div>
+  </div>
+</div>
+
+<figcaption>Goods and automated requests travel at machine speed along the agent canal below, carrying a registered owner and a checkable receipt. Outside agents never step onto the human footpath directly; they check in at the lock, where your own assistant verifies the receipt and passes along only what deserves your attention.</figcaption>
+</figure>
+
+<p>We think there's a better approach than turning the whole web into a checkpoint: give software agents a network of their own.</p>
+
+<p>Picture how trading towns solved their traffic crisis when heavy cargo outgrew the cobblestone streets. They dug a dedicated freight canal running beside the town, separated from the pedestrian lanes by stone walls. Barges move timber, coal, and parcels along the water quickly and in bulk. Above the water, people stroll, browse market stalls, and talk at a human pace on the footpaths.</p>
+
+<p>The canal and the footpath never blur into one another. They meet only at specific basins, like a canal lock with a lock-keeper and a harbour pilot. Every vessel has to slow down at the lock, show its papers, and state its business before anything crosses onto the quay.</p>
+
+<p>On the agent freight canal, three simple rules apply to every vessel on the water:</p>
+<ul>
+<li><strong>Every barge carries a hull number and a registered owner.</strong> Every software agent is tied to an accountable person or organisation that stands behind its actions.</li>
+<li><strong>Every parcel travels with a customs manifest and a receipt.</strong> Each message states what the agent is allowed to do, and leaves a signed receipt you can check.</li>
+<li><strong>Harbour pilots enforce speed and rate limits automatically.</strong> Agents deal with other agents at machine speed in structured lanes, without crowding human spaces.</li>
+</ul>
+
+<p>Meanwhile, on the human side of the wall, spaces meant for people stay human. An outside agent doesn't nudge or message you directly on the footpath. It pulls up to the outer gate of your lock, where your own assistant, working only for you, filters by the rules you set.</p>
+
+<h2>A morning at the lock</h2>
+
+<p>To see how this feels in practice, walk through an ordinary morning when your personal assistant acts as the lock-keeper between the freight canal and your footpath.</p>
+
+<p>At eight in the morning, while you are making coffee, four different pieces of software try to reach you on the canal. First, your dental clinic's scheduling agent sends a notice that a hygienist is out sick and offers three new times next week. Second, a rail line's dispatch agent reports that your Friday train connection has shifted by forty minutes. Third, thirty-two promotional bots from various retailers try to pitch you seasonal discounts.</p>
+
+<p>On today's single-road internet, all thirty-four of those messages would pile directly into your inbox or buzz your phone before breakfast. You would have to act as your own customs inspector before taking a sip of coffee.</p>
+
+<p>With a second road, none of those outside agents step onto your footpath. At the outer lock gate, your assistant immediately turns away the thirty-two promotional barges because they carry no invitation from you. Next, it checks the clinic and rail manifests, verifies their signatures, and compares their proposed times against your private calendar without exposing your diary.</p>
+
+<p>When you sit down at 8:20, you don't face thirty-four pop-ups. Your lock-keeper hands you one calm note over coffee: Friday's train seat is updated, and Thursday at ten is held for the dentist if you tap to confirm. Fewer bots pretend to be people, automated errands leave a clear customs receipt, and the footpath respects your attention.</p>
+
+<h2>What happens when the freight moves off the path</h2>
+
+<p>Moving automated traffic onto a dedicated canal doesn't just make morning errands calmer. It also gives communities a chance to reclaim the public square.</p>
+
+<p>Think about the places online that only work when real people are in the room. A local parenting forum swapping advice on school bus routes. A neighbourhood group debating a new bike lane, or a patient support group sharing recovery stories. When synthetic bots flood those rooms to scrape data or stir up arguments, trust evaporates and people retreat into closed chats.</p>
+
+<p>When heavy automated traffic has its own canal, human spaces can breathe again. Small forums don't have to surround themselves with hostile walls, and neighbours can speak in their normal voices knowing they are talking to other human beings.</p>
+
+<h2>Why would anyone move to the second road?</h2>
+
+<p>Any engineer will ask the obvious question: why would an automated scraper, spammer or bot operator move onto a network that demands signatures, rate limits and accountable owners? They won't do it out of goodwill.</p>
+
+<p>The push comes from both ends. For legitimate services, including clinics, rail lines, banks and ticket offices, the open web is becoming unmanageable. Defending public websites against automated scrapers consumes engineering time and forces sites to annoy real visitors with CAPTCHAs. On a dedicated agent canal, servers can offer fast, structured endpoints with higher limits and deterministic receipts to any caller with an attested identity.</p>
+
+<p>For assistants doing real work, the open web is brittle. Filling in web forms through simulated clicks breaks when a layout changes and triggers anti-bot bans. An agent canal gives an assistant reliable delivery and an enforceable receipt when a booking fails.</p>
+
+<p>Malicious bots and scrapers will still try to roam the open web. A second road does not reform bad actors. What it changes is the defensive posture of human websites. Once legitimate automation moves to the dedicated channel, websites can treat heavy automated traffic on the public web as unauthorized by default. They can apply strict human-speed rate limits and proof-of-work puzzles without breaking legitimate commerce.</p>
+
+<p>The hard open problem is avoiding collateral harm. Setting strict speed limits on the public web risks locking out people on slow connections, shared library terminals or assistive screen readers. We have not solved how to keep the human road open to everyone while making unsigned swarms too expensive to run.</p>
+
+<h2>Wouldn't this just be more control?</h2>
+
+<p>It's a fair worry. Any system that tracks actions could be misused if it were pointed at citizens when it should apply only to software.</p>
+
+<p>That is why the boundary between the footpath and the canal matters so much. Hull numbers, customs manifests, and receipts attach strictly to software agents acting on someone's behalf, never to people simply reading or talking online. We require commercial delivery trucks to display a licence plate and carry a manifest precisely so ordinary pedestrians can walk down the pavement without carrying identity papers.</p>
+
+<p>Just as important, the canal cannot belong to one company or one government. Its lock rules and receipt formats must be open public standards, like the rules that let email travel between different providers, so anyone can check the record.</p>
+
+<p>The aim is to make software accountable without watching people any more closely than today.</p>
+
+<h2>Where this stands</h2>
+
+<p>Pieces of this canal already exist. Agents are starting to use common standards to exchange structured requests, and technical groups are designing identity checks and message signatures for software.<sup><a href="#fn2">2</a>, <a href="#fn3">3</a></sup> We explore how individual action receipts work in <a href="/blog/who-is-actually-acting/">Who is actually acting?</a>, and how personal assistants stay loyal to you in <a href="/blog/an-assistant-that-works-only-for-you/">An assistant that works only for you</a>.</p>
+
+<p>What doesn't exist yet is the shared road itself: an accountable network built specifically for agents, paired with a personal lock-keeper on your side of the wall. We're writing that proposal up in the format the internet's standards bodies use, and we'll publish it for critique first. We expect it to change a lot. It should.</p>
+
+<p>The internet's first road was built for people sharing knowledge. It would be a shame to lose that footpath just because we didn't think to dig a canal for the freight.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers</summary>
+    <div>
+      <p>Architecturally, separating the Human Road from the Agent Road pairs local Object-Capability sandboxes and expiring capability lease checks (Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966) across the personal Markov blanket (Karl Friston; Friston, 2010; Friston, 2013) with dedicated agent-to-agent transport over IETF QUIC streams and datagrams (RFC 9000; RFC 9221) across ICE peer-to-peer channels (RFC 8445). Within CIN's five-primitive architecture, wearable and ambient sensors form an egocentric and ambient perceptual sensorium synchronized in hardware Device Time with self-assessed observation confidence and PUF, TCG DICE, DMTF SPDM, and IETF RATS (RFC 9334) attestation. An optical data diode and IEC 61508 dead-man relays isolate physical actuators under analog transduction realism, because Signed Is Not True across the analog hole (Kevin Fu and Wenyuan Xu, 2018; <a href="/labs/sensor-boundary/">/labs/sensor-boundary/</a>). Personal history remains encrypted inside a local append-only C2PA v2.1 and Merkle episodic memory vault (Endel Tulving, 1972) served by a monogamous 1:1 personal cognitive model and cybernetic exocortex (Joscha Bach, 2009; Extended Mind, Andy Clark and David Chalmers; Clark &amp; Chalmers, 1998; Good Regulator theorem, Conant &amp; Ashby, 1970; interventional causal inference <code>do(x)</code>, Pearl, 2009; compiler-trust verification, Thompson, 1984) bound as a statutory information fiduciary (Jack Balkin; Balkin, 2016) that preserves unassisted competence.<sup><a href="#fn4">4</a></sup></p>
+      <p>At the boundary between the Private Autobiographical Ledger and the Public Attestation and Escrow Ledger (Public Attestation &amp; Escrow Ledger), cross-domain agent requests traverse the user's inspection lock as capability-bounded envelopes with selective zero-knowledge (ZK) proofs. Envelopes are signed via HTTP Message Signatures (RFC 9421), WIMSE workload identity tokens, and verifiable IETF SCITT (RFC 9943) receipts (<a href="/labs/protocol-inspector/">/labs/protocol-inspector/</a>), with high-stakes physical claims corroborated across independent sensor classes by Byzantine quorum (<code>k &gt;= 3f + 1</code>). Cooperative freight, merit-bonded, and commons tasks settle across the Wide Network Ledger to sustain Universal Basic Services, plural value accounting (Jacob Meluso et al., 2025), reciprocal mutual credit clearing (James Stodder, 2009), Meidner share-issuance funds (Rudolf Meidner, 1978), frontier-lab overlays (Bracale Syrnikov et al., 2026), and polycentric Ostrom commons governance (Elinor Ostrom; Ostrom, 1990; <a href="/labs/shared-horizon/">/labs/shared-horizon/</a>).<sup><a href="#fn5">5</a></sup></p>
+    </div>
+  </details>
+</aside>
+
+<section class="footnotes">
+  <p id="fn1">1. Imperva (Thales), <em>2025 Bad Bot Report</em> (April 2025), analyzing 2024 global web traffic. The report also estimates that bad bots alone made up 37 percent of traffic. <a href="https://www.imperva.com/resources/resource-library/reports/2025-bad-bot-report/">imperva.com/resources/resource-library/reports/2025-bad-bot-report</a>; announcement at <a href="https://www.imperva.com/blog/2025-imperva-bad-bot-report-how-ai-is-supercharging-the-bot-threat/">imperva.com/blog/2025-imperva-bad-bot-report-how-ai-is-supercharging-the-bot-threat</a>.</p>
+  <p id="fn2">2. See the Model Context Protocol specification (<a href="https://modelcontextprotocol.io/specification">modelcontextprotocol.io/specification</a>) and the IETF Workload Identity in Multi System Environments (WIMSE) working group charter (<a href="https://datatracker.ietf.org/wg/wimse/about/">datatracker.ietf.org/wg/wimse/about</a>).</p>
+  <p id="fn3">3. For transport and cryptographic message-signing building blocks on the agent canal, see IETF <a href="https://www.rfc-editor.org/rfc/rfc9000">RFC 9000: QUIC: A UDP-Based Multiplexed and Secure Transport</a> (May 2021) and <a href="https://www.rfc-editor.org/rfc/rfc9421">RFC 9421: HTTP Message Signatures</a> (February 2024).</p>
+  <p id="fn4">4. Kevin Fu and Wenyuan Xu (2018), <a href="https://doi.org/10.1145/3176402">"Risks of Trusting the Physics of Sensors,"</a> <em>Communications of the ACM</em>, 61(2), 20–23; Henk Birkholz et al. (2023), <a href="https://www.rfc-editor.org/rfc/rfc9334">IETF RFC 9334: Remote ATtestation procedureS (RATS) Architecture</a>; Coalition for Content Provenance and Authenticity (2024), <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html">C2PA Technical Specification v2.1</a>; Jack M. Balkin (2016), <a href="https://lawreview.law.ucdavis.edu/issues/49/4/lecture/information-fiduciaries-and-first-amendment">"Information Fiduciaries and the First Amendment,"</a> <em>UC Davis Law Review</em>, 49(4), 1183–1234.</p>
+  <p id="fn5">5. Karl Friston (2013), <a href="https://doi.org/10.1098/rsif.2013.0475">"Life as We Know It,"</a> <em>Journal of the Royal Society Interface</em>, 10(86), 20130475; Jack B. Dennis and Earl C. Van Horn (1966), <a href="https://doi.org/10.1145/365230.365252">"Programming Semantics for Multiprogrammed Computations,"</a> <em>Communications of the ACM</em>, 9(3), 143–155; Henk Birkholz et al. (2026), <a href="https://www.rfc-editor.org/rfc/rfc9943">IETF RFC 9943: An Architecture for Trustworthy and Transparent Digital Supply Chains (SCITT)</a>; Rudolf Meidner (1978), <a href="https://archive.org/details/employeeinvestme0000meid"><em>Employee Investment Funds: An Approach to Collective Capital Formation</em></a>; Elinor Ostrom (1990), <a href="https://doi.org/10.1017/CBO9780511807763"><em>Governing the Commons</em></a>.</p>
+</section>

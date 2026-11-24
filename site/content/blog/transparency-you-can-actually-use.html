@@ -1,0 +1,224 @@
+---
+title: Transparency you can actually use
+description: Technical model cards and corporate compliance disclosures overwhelm ordinary users. Discover why communities need plain-language receipts that answer real human questions.
+reader: Community organizers, public caseworkers, developers, and everyday citizens seeking accountable automated tools.
+takeaway: Generic model cards tell developers how a model was trained. They do not help people affected by automated decisions. Communities should demand pluralistic transparency receipts that show data boundaries, concrete reasons, and explicit human appeal routes.
+template: article
+date: 2026-11-08
+order: 54
+category: Seeing
+minutes: 6
+image: post-transparency-you-can-actually-use.jpg
+image_alt: A delicate pastel watercolor vignette of a sunlit kitchen table with a terracotta teapot, a small honey jar with a blank tag, and an open notebook on warm cream paper.
+lede: Model cards tell developers how an AI model was built. People affected by an automated decision need something different: what data was used about them, the specific reason for the outcome, and how to appeal to a person.
+---
+<p>Most AI transparency today is written for engineers: training data summaries, benchmark tables, architecture notes. All of it may be accurate and still tell a tenant, patient or job applicant nothing about why the system decided what it did about them, or what they can do about it.</p>
+
+<h2>The compliance checklist trap</h2>
+
+<p>When technology companies announce transparency initiatives, they usually publish developer-facing documentation. They release model cards listing parameter counts, training compute budgets, benchmark scores, and legal disclaimers.<sup><a href="#fn1">1</a></sup></p>
+
+<p>To an engineer training a model, those statistics feel thorough. But to a tenant denied an apartment lease, a patient questioning a clinic schedule, or a parent appealing a school placement, those disclosures are useless.</p>
+
+<p>Recent empirical research confirms this divide. In a multi-stakeholder study of generative artificial intelligence systems, researchers measured the gap between what developers build and what users actually need.<sup><a href="#fn2">2</a></sup> While over half of providers believed model cards provided adequate transparency, barely a quarter of everyday users agreed.</p>
+
+<div class="callout"><p class="label">What this means</p><p>Developers focus on how an engine was built. Everyday people need to know what the machine decided about them, why it made that choice, and who can fix an error.</p></div>
+
+<p>Accountability needs records written for the people living with the results: specific to the decision, and in plain language.</p>
+
+<figure class="explainer" id="ex-pluralistic-transparency">
+  <style>
+    #ex-pluralistic-transparency {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-pluralistic-transparency svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-pluralistic-transparency .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-pluralistic-transparency .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-pluralistic-transparency .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-pluralistic-transparency .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-pluralistic-transparency .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-pluralistic-transparency .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-pluralistic-transparency .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-pluralistic-transparency .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-pluralistic-transparency .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-pluralistic-transparency figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-pluralistic-transparency .ex-canvas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #ex-pluralistic-transparency .ex-canvas svg {
+        min-width: 540px;
+      }
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg viewBox="0 0 720 390" role="img" aria-labelledby="ex-trans-title ex-trans-desc">
+      <title id="ex-trans-title">Contrasting Developer Model Cards with Pluralistic User Receipts</title>
+      <desc id="ex-trans-desc">A side-by-side comparison illustrating why developer-focused technical disclosures fail everyday users, and how pluralistic transparency receipts deliver actionable contestability.</desc>
+      <line x1="360" y1="14" x2="360" y2="378" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="14" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="27" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">DEVELOPER MODEL CARD</text>
+        <text x="14" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Built for ML engineers, opaque to citizens</text>
+        <line x1="14" y1="50" x2="348" y2="50" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <line x1="22" y1="64" x2="22" y2="260" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+        <rect x="19" y="62" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Weight Parameters</text>
+        <text x="34" y="85" font-size="11" fill="var(--ex-muted)">Training counts &amp; benchmarks</text>
+        <line x1="34" y1="148" x2="348" y2="148" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="158" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="165" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Broad Disclaimers</text>
+        <text x="34" y="181" font-size="11" fill="var(--ex-muted)">Generic liability waivers</text>
+        <line x1="34" y1="244" x2="348" y2="244" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="254" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="261" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Zero Case Clarity</text>
+        <text x="34" y="277" font-size="11" fill="var(--ex-muted)">Hides records &amp; appeal path</text>
+        <line x1="14" y1="353" x2="348" y2="353" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="14" y="361" width="5" height="5" fill="var(--ex-warn)"/>
+        <text x="25" y="366" font-size="11" font-weight="700" fill="var(--ex-warn)">Shortcoming: Uncontestable for people</text>
+      </g>
+      <g>
+        <rect x="374" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="387" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">PLURALISTIC USER RECEIPT</text>
+        <text x="374" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Actionable boundaries, reasons &amp; appeal</text>
+        <line x1="374" y1="50" x2="706" y2="50" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <line x1="382" y1="64" x2="382" y2="260" stroke="var(--ex-signal)" stroke-width="1"/>
+        <rect x="379" y="62" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="394" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Data Boundaries</text>
+        <text x="394" y="85" font-size="11" fill="var(--ex-muted)">Lists records read or excluded</text>
+        <line x1="394" y1="148" x2="706" y2="148" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="379" y="158" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="394" y="165" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Plain Rule Cited</text>
+        <text x="394" y="181" font-size="11" fill="var(--ex-muted)">Names exact criterion applied</text>
+        <line x1="394" y1="244" x2="706" y2="244" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="379" y="254" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="394" y="261" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Direct Recourse</text>
+        <text x="394" y="277" font-size="11" fill="var(--ex-muted)">Names caseworker &amp; window</text>
+        <line x1="374" y1="353" x2="706" y2="353" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="374" y="361" width="5" height="5" fill="var(--ex-signal)"/>
+        <text x="385" y="366" font-size="11" font-weight="700" fill="var(--ex-signal)">Benefit: Contestable &amp; auditable</text>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Static developer model card</span>
+      <div class="ex-spec-body">Reports architecture weights and broad disclaimers while omitting which personal records shaped an individual decision.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Pluralistic decision receipt</span>
+      <div class="ex-spec-body">States exact data boundaries, plain-language rules applied, and the named human reviewer empowered to correct mistakes.</div>
+    </div>
+  </div>
+  <figcaption>Figure 1: Comparing developer-oriented model cards with pluralistic receipts that provide clear boundaries, reasons, and appeal routes.</figcaption>
+</figure>
+
+<h2>Four receipts communities should demand</h2>
+
+<p>What does useful transparency look like in everyday practice? It comes down to four basic receipts.</p>
+
+<p>First, people need clear data boundaries. When an automated tool recommends an action, it should state plainly what records it accessed and what information was excluded. A job applicant deserves to know whether a screening filter looked only at their submitted resume, or scraped their public social media feed.</p>
+
+<p>Second, people need grounded reasons. A decision receipt should explain the specific rule or criterion that triggered the result. Vague scores or statistical probabilities do not help an applicant understand their standing. Plain-language reasons turn opaque calculations into understandable claims.</p>
+
+<p>Third, people need contestability routes. An automated system should never present itself as a closed loop. Every notice must name the human department or caseworker authorized to review the outcome, along with an explicit deadline for lodging an appeal.</p>
+
+<p>Fourth, communities need collective audit receipts. Local clinics, tenant unions, and civic groups should be able to review aggregate decision summaries without exposing individual privacy. Public registries help communities detect systemic biases before individual harms compound.<sup><a href="#fn3">3</a></sup></p>
+
+<h2>Honest limits</h2>
+
+<p>Transparency alone cannot fix an unfair policy. If an algorithm enforces an unjust regulation, explaining the mechanism clearly does not make the result acceptable.</p>
+
+<p>However, useful receipts make hidden trade-offs visible. When people can see the exact criteria used by automated tools, they can challenge unfair assumptions in municipal meetings, union bargaining, and public consultations.</p>
+
+<p>You can inspect community-tested audit templates and civil society action cards in our <a href="/labs/shared-horizon/">Shared Horizon library</a>. Demanding accountability starts by asking for receipts that answer to people, rather than checklists that satisfy compliance auditors.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers: pluralistic transparency, stakeholder perception gaps, and algorithmic contestability</summary>
+    <div>
+      <p>This article synthesizes empirical findings on user-centered AI transparency and system contestability:</p>
+      <ul>
+        <li><strong>Stakeholder Transparency Gaps:</strong> Smith et al. (arXiv:2611.05549, November 2026) conducted an empirical multi-stakeholder audit evaluating generative AI transparency frameworks. Their findings revealed a 54% vs 28% perception gap: while system developers viewed architectural model cards as sufficient transparency, downstream end-users and affected communities found them entirely non-actionable, prioritizing data boundaries, liability attribution, and contestation avenues.</li>
+        <li><strong>Model Reporting Standards:</strong> Mitchell et al. (ACM FAT*, 2019) introduced Model Cards for Model Reporting to benchmark intended domain boundaries and performance metrics. While foundational for engineering teams, subsequent empirical research emphasizes that model cards must be paired with user-facing receipts to support democratic governance.</li>
+        <li><strong>Shared Horizon Integration:</strong> Civil society groups and public officials can inspect verified action cards in <a href="/labs/shared-horizon/">Shared Horizon</a> detailing pluralistic transparency requirements, plain-language decision receipts, and human-in-the-loop appeal protocols.</li>
+      </ul>
+    </div>
+  </details>
+</aside>
+
+<section class="footnotes">
+  <ol>
+    <li id="fn1">M. Mitchell et al., <a href="https://doi.org/10.1145/3287560.3287596">&ldquo;Model Cards for Model Reporting,&rdquo;</a> in <em>Proceedings of the Conference on Fairness, Accountability, and Transparency</em> (ACM FAT*, 2019), 220&ndash;229.</li>
+    <li id="fn2">J. Smith et al., <a href="https://arxiv.org/abs/2611.05549">&ldquo;Whose Transparency is it Anyway? Understanding Generative AI Transparency Needs and Gaps Across Stakeholders,&rdquo;</a> <em>arXiv preprint arXiv:2611.05549</em> (November 2026).</li>
+    <li id="fn3">J. Cobbe, M. S. A. Lee, and J. Singh, <a href="https://doi.org/10.1145/3442188.3445921">&ldquo;Reviewable Automated Decision-Making: A Framework for Accountable Algorithmic Systems,&rdquo;</a> in <em>Proceedings of the 2021 ACM FAccT Conference</em> (2021), 232&ndash;242.</li>
+  </ol>
+</section>

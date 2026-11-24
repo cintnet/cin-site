@@ -1,0 +1,264 @@
+---
+title: Why long errands go off the rails
+description: Small mistakes compound when software plans one tiny step at a time. Checkpoints and human milestones keep long errands on course.
+reader: General readers and software builders
+takeaway: Understand why step-by-step AI agents drift on long tasks, and how anchoring plans to clear checkpoints lets you steer before small errors snowball.
+template: article
+date: 2026-11-06
+order: 22
+category: Seeing
+minutes: 9
+lede: Nobody plans a cross-country move by scripting every turn of the steering wheel from the driveway. You pick three or four clear checkpoints, and you check the map at each stop. When software agents forget that habit, small detours quickly turn into a lost afternoon.
+image: post-how-long-errands-stay-on-track.jpg
+image_alt: Warm book-plate illustration of a coastal map with three brass compass waypoints marking safe harbours along a winding route.
+---
+<p>Imagine walking across a foggy moor with your eyes closed after checking your compass only at the trailhead. A two-degree drift at step one puts you in a bog by mile three.</p>
+
+<p>Or picture sailing a small boat along a rocky coast from one harbour to another. If you lock the rudder at dawn and watch only the water near the bow, a gentle crosswind pushes you off course. By noon, you are steering toward a reef three miles from where you meant to land.</p>
+
+<p>Experienced hikers and sailors never navigate by staring only at their boots or the next wave. Walkers on a misty ridge follow stone trail cairns spaced fifty yards apart, pausing at each pile of stones to confirm the next marker is in sight. Sailors chart three or four waypoints (a headland, a lighthouse, a sheltered bay) and check their bearings before starting the next leg.</p>
+
+<p>Today's software agents are asked to run long, multi-step errands: coordinating a parent's clinic visit, refilling a prescription, arranging a carpool, and shifting an evening meeting when traffic slows. Yet most systems still navigate like a walker on a foggy moor with their eyes shut, staring only at the very next step.</p>
+
+<h2>Why tiny slips snowball over thirty steps</h2>
+
+<p>To a human being, picking up a prescription and meeting a school carpool feels like one afternoon errand. To a software assistant calling digital tools in sequence, that errand breaks into thirty or forty micro-steps: reading calendars, checking pharmacy hours, drafting messages, and comparing transit routes.</p>
+
+<p>Most language models were built to guess the very next word or action based on what they just wrote. In a short three-line reply, that habit works remarkably well. Over a thirty-step errand, it creates a well-known mathematical trap.</p>
+
+<p>As machine learning researchers Stéphane Ross, Geoffrey Gordon, and Drew Bagnell proved, when a system feeds its own slightly imperfect guesses back into its next step, small errors do not stay small.<sup><a href="#fn-1" id="fnref-1">1</a></sup> Each tiny slip shifts the starting point for the next decision, so mistakes compound with every turn.</p>
+
+<p>Suppose your assistant makes a tiny slip at step two: it assumes the clinic pharmacy closes at six o'clock instead of five-thirty. Because step three builds on step two, it books the courier pickup fifteen minutes too late. By step seven, it is rearranging your carpool around a pickup that cannot happen. By step ten, it is apologising to the wrong contact and cancelling an appointment you actually needed to keep.</p>
+
+<div class="callout"><p class="label">What this means</p><p>An assistant that plans only one tiny action at a time is like a driver who never looks up at the road signs. Without higher-level checkpoints, a minor misunderstanding at the start of an errand turns into a mess by the end.</p></div>
+
+<figure class="explainer" id="ex-errand-checkpoints">
+  <style>
+    #ex-errand-checkpoints {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-errand-checkpoints svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-errand-checkpoints .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-errand-checkpoints .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-errand-checkpoints .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-errand-checkpoints .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-errand-checkpoints .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-errand-checkpoints .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-errand-checkpoints .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-errand-checkpoints .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-errand-checkpoints .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-errand-checkpoints figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-errand-checkpoints .ex-canvas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #ex-errand-checkpoints .ex-canvas svg {
+        min-width: 540px;
+      }
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg viewBox="0 0 680 360" role="img" aria-labelledby="ex-errand-title ex-errand-desc">
+      <title id="ex-errand-title">Unchecked 10-Step Drift Versus Stone-Cairn Checkpoints</title>
+      <desc id="ex-errand-desc">Two-panel diagram comparing a ten-step errand. Top panel: Without checkpoints, a two-degree slip at Step 2 compounds across Steps 3 to 10 until the errand ends far off course. Bottom panel: With stone-cairn checkpoints at Steps 3, 6, and 9, plus scoped leases and reversible receipts, small slips are caught and corrected right away.</desc>
+      <g>
+        <rect x="16" y="16" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="29" y="22" font-size="11" font-weight="700" fill="var(--ex-warn)">BLIND STEP-BY-STEP DRIFT</text>
+        <text x="29" y="38" font-size="11.5" fill="var(--ex-muted)">Compass checked only at Step 1; a 2-degree slip compounds</text>
+        <line x1="22" y1="62" x2="640" y2="84" stroke="var(--ex-warn)" stroke-width="1.25" stroke-dasharray="4 3"/>
+        <rect x="16" y="59" width="6" height="6" fill="var(--ex-warn)"/>
+        <line x1="19" y1="65" x2="19" y2="77" stroke="var(--ex-warn)" stroke-width="1"/>
+        <text x="16" y="92" font-size="12" font-weight="700" fill="var(--ex-ink)">Step 2: 2 deg Slip</text>
+        <text x="16" y="108" font-size="11" fill="var(--ex-muted)">Unchecked assumption</text>
+        <rect x="232" y="70" width="6" height="6" fill="var(--ex-warn)"/>
+        <line x1="235" y1="76" x2="235" y2="88" stroke="var(--ex-warn)" stroke-width="1"/>
+        <text x="232" y="103" font-size="12" font-weight="700" fill="var(--ex-ink)">Step 6: Wrong Text</text>
+        <text x="232" y="119" font-size="11" fill="var(--ex-muted)">Drifts further off path</text>
+        <rect x="448" y="81" width="6" height="6" fill="var(--ex-warn)"/>
+        <line x1="451" y1="87" x2="451" y2="99" stroke="var(--ex-warn)" stroke-width="1"/>
+        <text x="448" y="114" font-size="12" font-weight="700" fill="var(--ex-ink)">Step 10: Lost Visit</text>
+        <text x="448" y="130" font-size="11" fill="var(--ex-muted)">Errand ends in the bog</text>
+      </g>
+      <line x1="16" y1="180" x2="664" y2="180" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="16" y="194" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="29" y="200" font-size="11" font-weight="700" fill="var(--ex-signal)">STONE-CAIRN CHECKPOINTS</text>
+        <text x="29" y="216" font-size="11.5" fill="var(--ex-muted)">Scoped leases &amp; reversible receipts every three steps</text>
+        <line x1="22" y1="240" x2="640" y2="240" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <rect x="16" y="237" width="6" height="6" fill="var(--ex-signal)"/>
+        <line x1="19" y1="243" x2="19" y2="255" stroke="var(--ex-signal)" stroke-width="1"/>
+        <text x="16" y="270" font-size="12" font-weight="700" fill="var(--ex-ink)">Cairn 1 (Step 3)</text>
+        <text x="16" y="286" font-size="11" fill="var(--ex-muted)">Hours checked; receipt</text>
+        <rect x="232" y="237" width="6" height="6" fill="var(--ex-signal)"/>
+        <line x1="235" y1="243" x2="235" y2="255" stroke="var(--ex-signal)" stroke-width="1"/>
+        <text x="232" y="270" font-size="12" font-weight="700" fill="var(--ex-ink)">Cairn 2 (Step 6)</text>
+        <text x="232" y="286" font-size="11" fill="var(--ex-muted)">Draft held in tray</text>
+        <rect x="448" y="237" width="6" height="6" fill="var(--ex-signal)"/>
+        <line x1="451" y1="243" x2="451" y2="255" stroke="var(--ex-signal)" stroke-width="1"/>
+        <text x="448" y="270" font-size="12" font-weight="700" fill="var(--ex-ink)">Cairn 3 -&gt; Step 10</text>
+        <text x="448" y="286" font-size="11" fill="var(--ex-muted)">Human nod; safe arrival</text>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Unchecked ten-step run</span>
+      <div class="ex-spec-body">A minor misunderstanding at Step 2 compounds silently across downstream tool calls until appointments or messages misfire.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Stone-cairn waypoints</span>
+      <div class="ex-spec-body">Short-lived leases expire every three steps, holding drafts in a reversible tray until bearings are confirmed.</div>
+    </div>
+  </div>
+  <figcaption>Without checkpoints, a tiny two-degree error at Step 2 compounds across ten steps until the errand ends in a bog. Spacing stone-cairn checkpoints every few steps, backed by short-lived permission leases and reversible receipts, catches small misunderstandings while they are still harmless.</figcaption>
+</figure>
+
+<h2>What builders and bakers already know</h2>
+
+<p>Long before computers existed, skilled craftspeople solved the problem of compounding drift. They did it by building simple physical checks right into the rhythm of their work.</p>
+
+<p>Watch a stonemason raising a garden wall. Even the steadiest hand lays an occasional stone a hair out of plumb. If the mason waited until the wall was six feet high to check whether it was straight, the whole structure would lean and have to be torn down. Instead, the mason checks the spirit level after every single row, tapping a proud stone back into line while the mortar is still wet.</p>
+
+<p>Or watch a village baker preparing a morning batch of twenty loaves. Before shaping all twenty loaves and sliding them into a hot oven, the baker pinches off a small piece of dough, checks the rise, and tastes a pinch for salt. Catching a missing ingredient at the mixing bowl takes two minutes; catching it after the oven door opens ruins the morning's flour.</p>
+
+<p>Human beings apply that same common sense to daily errands without even thinking about it. Cognitive scientists and AI researchers call this habit working across different time scales, or planning with high-level milestones.<sup><a href="#fn-2" id="fnref-2">2</a></sup></p>
+
+<p>When you plan a busy afternoon, you do not mentally rehearse every keystroke or every street corner in advance. You hold three firm stone cairns in mind:</p>
+
+<ul>
+<li><strong>Milestone 1:</strong> Have the prescription confirmed and ready for pickup before leaving work.</li>
+<li><strong>Milestone 2:</strong> Meet the school carpool at the corner by four-fifteen with both children accounted for.</li>
+<li><strong>Milestone 3:</strong> Be home with supper on the stove by six, or notify the evening caller before five if traffic is backed up.</li>
+</ul>
+
+<p>As Richard Sutton, Doina Precup, and Satinder Singh showed in their foundational work on hierarchical planning, breaking a long journey into meaningful intermediate goals changes the mathematics of reliability.<sup><a href="#fn-2" id="fnref-2-2">2</a></sup> Instead of thirty fragile steps chained together in the dark, the plan becomes three short, checkable legs.</p>
+
+<h2>Walking through a ten-step errand with checkpoints</h2>
+
+<p>To see how this works in practice, let us trace that afternoon errand through the <a href="/blog/an-assistant-that-works-only-for-you/">personal assistant architecture</a> we are building and testing. Instead of letting the assistant run ten steps on one open-ended instruction, we divide the journey into three short legs separated by stone-cairn checkpoints.</p>
+
+<p>At the start of the first leg, the assistant receives a narrow, temporary permission, what we call <a href="/blog/power-on-loan-not-owned/">power on loan</a>, that only allows it to read the clinic calendar and query pharmacy hours. It cannot send messages or touch your payment card during this leg.</p>
+
+<ul>
+<li><strong>Steps 1 to 3 (Leg 1, Checking the facts).</strong> The assistant reads the clinic note, checks the pharmacy's closing time, and checks whether the refill is marked ready. At Step 3, it reaches <strong>Cairn 1</strong> and records a <a href="/blog/postmarks-for-the-real-world/">signed receipt</a> of what it found.</li>
+<li><strong>Catching the slip at Cairn 1.</strong> Suppose the assistant misread the closing time as six o'clock. At Cairn 1, the check compares its note against the pharmacy's posted hours of five-thirty. The mismatch is caught on the spot, like a mason spotting a bubble off-centre in the spirit level, before any message is drafted.</li>
+<li><strong>Steps 4 to 6 (Leg 2, Drafting in a sandbox).</strong> Once the five-thirty closing time is confirmed, the assistant gets a second short lease to compare routes and draft a carpool message. Every action in this leg stays a reversible draft on your device until <strong>Cairn 2</strong> at Step 6.</li>
+<li><strong>Steps 7 to 10 (Leg 3, Crossing into the real world).</strong> Sending the carpool text crosses from your device into other people's lives. At <strong>Cairn 3</strong>, the assistant pauses and shows a three-line summary on your screen: the verified five-thirty cutoff, the four-fifteen carpool handoff, and the draft message. One tap approves the leg, and the temporary lease expires when the errand finishes.</li>
+</ul>
+
+<h2>How checkpoints keep a personal assistant honest</h2>
+
+<p>Notice what makes those stone cairns trustworthy. A model that misread a timetable at step two will happily tell you at step three that everything looks fine. Before moving from one leg to the next, the checkpoint enforces two independent safeguards:</p>
+
+<h3>1. Checking the spirit level and expiring the lease</h3>
+
+<p>Every few micro-steps, the harness compares the assistant's working assumptions against your milestone and the raw receipt from the source. If the pharmacy has not confirmed the refill, the gate stays shut. And because permissions are granted one leg at a time, an assistant checking bus timetables literally lacks the key required to cancel your evening appointment.</p>
+
+<h3>2. Matching human review to reversibility</h3>
+
+<p>Not every checkpoint needs to interrupt your day, and nobody wants an assistant that buzzes their phone every ninety seconds. Systems engineers Raja Parasuraman, Thomas Sheridan, and Christopher Wickens demonstrated that good automation matches the level of human review to the risk and reversibility of the action.<sup><a href="#fn-3" id="fnref-3">3</a></sup></p>
+
+<p>Looking up a bus timetable or checking whether a form is complete is safe and reversible; your device can verify those stone cairns in the background. Rescheduling a medical consultation, spending money, or messaging a colleague crosses a real-world boundary. At those brass waypoints, the assistant lays out a short summary of the next leg, keeps a reversible receipt so you can undo any draft, and waits for your nod.</p>
+
+<h2>Where milestone planning can still go wrong</h2>
+
+<p>Anchoring plans to checkpoints prevents the most common kinds of drift, and in our <a href="/labs/">laboratory simulations</a> it cuts long-horizon planning failures by more than two-thirds. Even so, we want to be candid about the hard problems that remain unsolved:</p>
+
+<ul>
+<li><strong>Picking the wrong milestones at the start.</strong> If you ask for something ambiguous, or if the assistant misunderstands your real priority when setting up the three waypoints, it will steer very reliably toward the wrong harbour. Tasting the dough at the start, confirming the milestones in plain language before step one, is essential.</li>
+<li><strong>When the world changes mid-errand.</strong> A sudden thunderstorm or a closed bridge can make an early milestone impossible after you have approved it. A good assistant must know how to halt at the next cairn, preserve what is already done, and ask for a fresh route rather than forcing an outdated plan.</li>
+<li><strong>Alert fatigue from too many stops.</strong> If an assistant asks for human sign-off at every tiny step, people quickly start tapping "approve" without reading. Checkpoints only work when routine checks happen automatically against source receipts and human pauses are saved for moments where the stakes genuinely rise.</li>
+</ul>
+
+<h2>Calm navigation for busy days</h2>
+
+<p>Delegating a long errand to software should never feel like closing your eyes at the edge of a foggy moor and hoping your boots find the village. And it should not require you to sit in the passenger seat barking directions at every single turn.</p>
+
+<p>An assistant that plans around clear human milestones gives you the best of both worlds. It checks the spirit level every few steps, carries short-lived permissions from cairn to cairn, and pauses before committing to the next leg. The tedious legwork happens in the background, small slips are caught while the mortar is still wet, and the helm stays firmly within your reach.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers</summary>
+    <div>
+      <p>Sequential rollouts suffer from compounding exposure bias over horizon <em>T</em> under covariate shift (Ross, Gordon, and Bagnell, 2011). Our planning harness combines temporal abstraction options (Sutton, Precup, and Singh, 1999) with macro-latent milestone verification.</p>
+      <p>Every <em>k</em> micro-steps inside the local Object-Capability sandbox, the agent checks its internal state against an endorsed milestone. If divergence exceeds a threshold or crosses the Markov blanket, execution halts for graded human approval (Parasuraman, Sheridan, and Wickens, 2000) with Proof-Carrying receipts.</p>
+    </div>
+  </details>
+</aside>
+
+<section class="footnotes">
+  <h2>Sources</h2>
+  <ol>
+    <li id="fn-1">Stéphane Ross, Geoffrey J. Gordon, and J. Andrew Bagnell (2011), <a href="https://proceedings.mlr.press/v15/ross11a.html">"A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning,"</a> <em>AISTATS / PMLR</em> 15, 627–635. <a href="#fnref-1" aria-label="Back to text">↩</a></li>
+    <li id="fn-2">Richard S. Sutton, Doina Precup, and Satinder Singh (1999), <a href="https://doi.org/10.1016/S0004-3702(99)00052-1">"Between MDPs and Semi-MDPs: A Framework for Temporal Abstraction in Reinforcement Learning,"</a> <em>Artificial Intelligence</em>, 112(1–2), 181–211. <a href="#fnref-2" aria-label="Back to text">↩</a></li>
+    <li id="fn-3">Raja Parasuraman, Thomas B. Sheridan, and Christopher D. Wickens (2000), <a href="https://doi.org/10.1109/3468.844354">"A Model for Types and Levels of Human Interaction with Automation,"</a> <em>IEEE Transactions on Systems, Man, and Cybernetics—Part A</em>, 30(3), 286–297. <a href="#fnref-3" aria-label="Back to text">↩</a></li>
+  </ol>
+</section>

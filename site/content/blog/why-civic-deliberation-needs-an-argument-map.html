@@ -1,0 +1,219 @@
+---
+title: Why civic deliberation needs an argument map
+description: Unstructured language model summaries exhibit input order bias and underrepresent minority viewpoints in public consultations. Premise-conclusion argument maps are designed to preserve dissenting objections before decisions are made.
+reader: Civic organizers, public officials, and technologists designing public consultations.
+takeaway: Unstructured AI summaries underrepresent minority viewpoints and show sensitivity to input order, while structured argument graphs are designed to preserve dissenting objections.
+template: article
+date: 2026-11-10
+category: Governing
+minutes: 8
+image: post-why-civic-deliberation-needs-an-argument-map.jpg
+image_alt: A sunlit community workshop hall with paper motion sheets and structured deliberation cards pinned to a wooden board.
+lede: When software summarizes public consultations, automated summaries exhibit sensitivity to input order and underrepresent minority perspectives. Structuring discussion into premise-conclusion maps is designed to keep overlooked objections visible before votes are cast.
+---
+<p>When software summarizes a public consultation from a long list of citizen comments, the resulting synthesis can shift based on input ordering. In evaluations of eighteen language models across thousands of participants, automated summaries exhibited persistent input-order bias and underrepresented minority perspectives.</p>
+
+<p>Picture an evening town hall in a crowded municipal hall. Two hundred residents gather to debate a proposed transit corridor. The first three people at the microphone speak in favor of a new bus lane. For the next hour, a dozen parents point out that rerouting the morning bus would remove the only safe crosswalk near an elementary school. Right before the gavel falls, one final speaker endorses the bus lane again.</p>
+
+<p>If a meeting recorder only jots down an impressionistic summary from memory, early and late remarks often overshadow the middle of the discussion. The specific warning about the school crosswalk gets condensed into a vague line about general traffic concerns. When citizens take the time to offer practical local knowledge, having their specific objection smoothed away breeds cynicism.</p>
+
+<h2>What flat summaries erase</h2>
+
+<p>Automated language models exhibit a similar weakness when processing civic testimony. When an algorithm ingests large volumes of public comments as a single stream of text, the output is sensitive to the order in which contributions are presented. Low-frequency viewpoints are particularly vulnerable during synthesis. When models condense broad discussions, uncommon perspectives are frequently left out.</p>
+
+<p>Researchers testing large-scale opinion aggregation evaluated eighteen leading language models using DeliberationBank, a benchmark grounded in contributions from thousands of human participants.<sup><a href="#fn1">1</a></sup> Their evaluation revealed persistent weaknesses across all tested models, showing that automated summaries systematically underrepresent minority positions and vary according to input sequence.</p>
+
+<figure class="explainer" id="ex-argument-map">
+  <style>
+    #ex-argument-map {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-argument-map svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-argument-map .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-argument-map .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-argument-map .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-argument-map .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-argument-map .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-argument-map .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-argument-map .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-argument-map .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-argument-map .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-argument-map figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-argument-map .ex-canvas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #ex-argument-map .ex-canvas svg {
+        min-width: 540px;
+      }
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg viewBox="0 0 680 340" role="img" aria-labelledby="ex-argument-map-title ex-argument-map-desc">
+      <title id="ex-argument-map-title">Flat summary versus structured argument map in civic deliberation</title>
+      <desc id="ex-argument-map-desc">Comparison showing how flat summaries risk underrepresenting minority objections due to input-order sensitivity, while structured argument graphs are designed to preserve premise links and minority dissent.</desc>
+      <text class="ex-mono" x="14" y="19" font-size="10.5" font-weight="700" fill="var(--ex-muted)">DELIBERATION ARCHITECTURE · FLAT STREAM VS PREMISE-CONCLUSION GRAPH</text>
+      <line x1="14" y1="27" x2="666" y2="27" stroke="var(--ex-rule)" stroke-width="1"/>
+      <line x1="340" y1="38" x2="340" y2="328" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="14" y="42" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="27" y="48" font-size="11" font-weight="700" fill="var(--ex-warn)">FLAT MODEL SUMMARY</text>
+        <text x="14" y="65" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Sequential comment stream ingestion</text>
+        <line x1="14" y1="74" x2="328" y2="74" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <line x1="22" y1="88" x2="22" y2="236" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+        <rect x="19" y="86" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="93" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Stream Order Bias</text>
+        <text x="34" y="109" font-size="11" fill="var(--ex-muted)">Loads comments 1 to 200</text>
+        <line x1="34" y1="148" x2="328" y2="148" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="158" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="165" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Sequence Shift</text>
+        <text x="34" y="181" font-size="11" fill="var(--ex-muted)">Summary flips if reordered</text>
+        <line x1="34" y1="220" x2="328" y2="220" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="230" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="237" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Compressed Dissent</text>
+        <text x="34" y="253" font-size="11" fill="var(--ex-muted)">Rare objections smoothed out</text>
+        <line x1="14" y1="303" x2="328" y2="303" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="14" y="311" width="5" height="5" fill="var(--ex-warn)"/>
+        <text x="25" y="316" font-size="11" font-weight="700" fill="var(--ex-warn)">Result: Unrepresentative summary</text>
+      </g>
+      <g>
+        <rect x="354" y="42" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="367" y="48" font-size="11" font-weight="700" fill="var(--ex-signal)">STRUCTURED ARGUMENT MAP</text>
+        <text x="354" y="65" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Order-invariant premise graph</text>
+        <line x1="354" y1="74" x2="666" y2="74" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <line x1="362" y1="88" x2="362" y2="236" stroke="var(--ex-signal)" stroke-width="1"/>
+        <rect x="359" y="86" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="93" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Premise Parsing</text>
+        <text x="374" y="109" font-size="11" fill="var(--ex-muted)">Splits claims &amp; assumptions</text>
+        <line x1="374" y1="148" x2="666" y2="148" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="359" y="158" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="165" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Order Invariance</text>
+        <text x="374" y="181" font-size="11" fill="var(--ex-muted)">Links hold in any sequence</text>
+        <line x1="374" y1="220" x2="666" y2="220" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="359" y="230" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="237" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Dissent Register</text>
+        <text x="374" y="253" font-size="11" fill="var(--ex-muted)">Minority points stay visible</text>
+        <line x1="354" y1="303" x2="666" y2="303" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="354" y="311" width="5" height="5" fill="var(--ex-signal)"/>
+        <text x="365" y="316" font-size="11" font-weight="700" fill="var(--ex-signal)">Proposed: Retained public dissent</text>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Order-sensitive prose summary</span>
+      <div class="ex-spec-body">Feeding hundreds of resident comments into one prompt shifts conclusions by entry order and erases low-frequency safety warnings.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Premise-conclusion graph</span>
+      <div class="ex-spec-body">Maps claims and counter-arguments structurally regardless of arrival order so minority objections remain attached to their premises.</div>
+    </div>
+  </div>
+  <figcaption>Flat summaries can shift based on input ordering and miss minority points, while structured argument maps are designed to keep each objection linked to its underlying premise.</figcaption>
+</figure>
+
+<h2>How an argument map preserves overlooked objections</h2>
+
+<p>A structured argument map is designed to address this blind spot. Instead of asking software to compress an unstructured stream of paragraphs, participants parse the debate into distinct claims, premises, and counterarguments. Every objection attaches directly to the specific premise it challenges.</p>
+
+<p>When an objection connects directly to a premise, its survival no longer depends on repetition. A school crosswalk hazard remains visible on the board whether one parent raised it or fifty did. The assembly can review the complete argument tree, inspect unaddressed objections, and verify that minority concerns were recorded before making a final choice.</p>
+
+<p>This graph architecture is designed to reduce presentation order bias. In a graph representation, each critique connects directly to the relevant premise. The logical relationship holds whether an objection arrived at nine in the morning or nine at night. The system evaluates the claim by its logical links rather than its position in a queue.</p>
+
+<h2>What civic assemblies gain</h2>
+
+<p>Treating public deliberation as an argument graph changes how assemblies work. It turns an opaque summary into a map that anyone can inspect and challenge.</p>
+
+<p>First, it creates an uncompressed dissent register. In traditional civic summaries, unusual critiques get discarded to keep the text short. In an argument map, unresolved challenges stay highlighted. When council members vote, they can see the exact list of objections that the main motion failed to answer.</p>
+
+<p>Second, it is intended to help citizens spot potential algorithmic steering. If an opaque language model summarizes discussions, bias in the synthesis can be hard to detect. An explicit map displays every claim and objection as a visible edge. If an objection is omitted or misplaced, participants can inspect the diagram directly and point out the missing branch.</p>
+
+<p>Third, it invites genuine participation from people who cannot attend every session. A resident reading the map can see where their neighbours agree, where evidence is missing, and where a new fact might resolve a deadlock.</p>
+
+<h2>Putting maps into practice</h2>
+
+<p>Community platforms do not require massive computing clusters to test structured deliberation. Independent builders can implement order-invariant aggregation and explicit dissent registers in local civic software today.</p>
+
+<p>To explore practical steps for deploying these tools in your community, see our Shared Horizon action cards on <a href="/labs/shared-horizon/">parsing civic deliberation into premise-conclusion graphs</a>. You can also review our card on <a href="/labs/shared-horizon/">separating argument mapping from civic voting to prevent manufactured consensus</a>. For our broader work on maintaining human control across public institutions, read <a href="/blog/when-every-assistant-agrees/">When every assistant agrees</a> and <a href="/blog/instructions-are-clues-not-orders/">Instructions are clues, not orders</a>.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers</summary>
+    <div>
+      <p>DeliberationBank evaluations across 18 leading language models reveal persistent weaknesses in deliberation summarization, specifically the underrepresentation of minority positions and sensitivity to input order (Zhu et al., 2025<sup><a href="#fn1">1</a></sup>).</p>
+      <p>We propose addressing these vulnerabilities by mapping citizen statements into directed acyclic argument graphs grounded in formal argumentation theory. Defeasible inference links isolate undercutters and rebuttals, an approach designed to preserve minority dissent in an explicit register, though live public assembly trials remain necessary to evaluate the method in practice.</p>
+    </div>
+  </details>
+</aside>
+
+<section class="footnotes">
+  <p id="fn1">1. Shenzhe Zhu, Shu Yang, Michiel A. Bakker, Alex Pentland, and Jiaxin Pei, <a href="https://arxiv.org/abs/2510.05154">"Can AI Truly Represent Your Voice in Deliberations? A Comprehensive Study of Large-Scale Opinion Aggregation with LLMs,"</a> arXiv:2510.05154 (October 2025).</p>
+</section>

@@ -1,0 +1,238 @@
+---
+title: Why watermarking breaks the words
+description: Embedding statistical watermarks inside generated text causes subtle factual errors. Attaching an unperturbed cryptographic receipt keeps words true.
+reader: Public readers, developers, researchers, and public officials exploring AI provenance and transparency rules.
+takeaway: Origin verification must never alter the underlying words. Factual text stays unperturbed, while cryptographic receipts prove origin deterministically.
+template: article
+date: 2026-11-07
+order: 44
+category: Truth
+minutes: 8
+image: post-why-watermarking-breaks-the-words.jpg
+image_alt: A brass wax seal stamp resting on an archival parchment letter alongside crisp handwriting and a ribbon.
+lede: Watermarks hidden in AI-generated text work by changing which words the model chooses, which can hurt accuracy, and they can often be removed. A better way to prove where text came from is a cryptographic signature attached to it, which leaves the words untouched.
+---
+<p>Text watermarking nudges a model toward particular word choices so that a detector can later recognise the pattern.<sup><a href="#fn2">2</a></sup> Platforms and some regulatory proposals now call for it.<sup><a href="#fn1">1</a></sup> The proof of origin is mixed into the content itself. For factual or technical text, changing the words to carry a signal is the wrong trade.</p>
+
+<h2>How statistical watermarks alter thought</h2>
+
+<p>To understand why text watermarks cause trouble, we must look at how digital assistants write. An artificial intelligence model does not speak in fully formed thoughts. It generates language one piece at a time, predicting which word or fragment is most likely to follow the previous ones.</p>
+
+<p>At each step, the model considers a list of candidate words. Some choices fit the context naturally. Other choices sound awkward, irrelevant, or inaccurate.</p>
+
+<p>Statistical watermarking interferes directly with this choice. To embed a hidden pattern into the text, the watermarking algorithm uses a secret mathematical key to split the dictionary into two buckets: a favored green list and a discouraged red list.<sup><a href="#fn2">2</a></sup></p>
+
+<p>Whenever the model prepares to choose a word, the watermarking system nudges it toward the green list. If the most accurate, truthful word happens to fall on the red list, the system penalizes it. The assistant is forced to select an inferior synonym just to satisfy the hidden watermark detector.</p>
+
+<p>In casual banter or playful fiction, choosing a slight synonym rarely matters. Swapping the word "glad" for "pleased" does no harm. But in high-consequence work, language must be exact.</p>
+
+<p>Consider a patient portal summarizing a surgical recovery plan. An assistant reading hospital discharge papers should quote exact medication dosages, recovery timelines, and warning signs. If the watermarking filter nudges a dosage threshold or alters a clinical instruction, it introduces confident misinformation. The assistant hallucinates errors not because it lacked the facts, but because the watermark forced it to bend the words.</p>
+
+<figure class="explainer" id="ex-watermarking-vs-provenance">
+  <style>
+    #ex-watermarking-vs-provenance {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-watermarking-vs-provenance svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-watermarking-vs-provenance .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-watermarking-vs-provenance .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-watermarking-vs-provenance .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-watermarking-vs-provenance .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-watermarking-vs-provenance .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-watermarking-vs-provenance .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-watermarking-vs-provenance .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-watermarking-vs-provenance .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-watermarking-vs-provenance .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-watermarking-vs-provenance figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-watermarking-vs-provenance .ex-canvas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #ex-watermarking-vs-provenance .ex-canvas svg {
+        min-width: 540px;
+      }
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg viewBox="0 0 680 340" role="img" aria-labelledby="ex-watermarking-title ex-watermarking-desc">
+      <title id="ex-watermarking-title">Statistical text watermarking versus out-of-band cryptographic receipts</title>
+      <desc id="ex-watermarking-desc">A comparative diagram showing how in-band statistical watermarking distorts word choices and risks hallucinations, while out-of-band cryptographic provenance preserves exact facts and provides deterministic verification.</desc>
+      <line x1="340" y1="14" x2="340" y2="328" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="14" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="27" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">IN-BAND TEXT WATERMARK</text>
+        <text x="14" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Biases token choices to hide pattern</text>
+        <line x1="14" y1="50" x2="328" y2="50" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <line x1="22" y1="64" x2="22" y2="228" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+        <rect x="19" y="62" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Green-List Bias</text>
+        <text x="34" y="85" font-size="11" fill="var(--ex-muted)">Suppresses exact terminology</text>
+        <line x1="34" y1="132" x2="328" y2="132" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="142" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="149" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Word Distortion</text>
+        <text x="34" y="165" font-size="11" fill="var(--ex-muted)">Shifts dosages, dates &amp; code</text>
+        <line x1="34" y1="212" x2="328" y2="212" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="222" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="229" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Fragile Guess</text>
+        <text x="34" y="245" font-size="11" fill="var(--ex-muted)">Stripped by simple edits</text>
+        <line x1="14" y1="303" x2="328" y2="303" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="14" y="311" width="5" height="5" fill="var(--ex-warn)"/>
+        <text x="25" y="316" font-size="11" font-weight="700" fill="var(--ex-warn)">Risk: Degraded facts &amp; false flags</text>
+      </g>
+      <g>
+        <rect x="354" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="367" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">OUT-OF-BAND PROVENANCE</text>
+        <text x="354" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Leaves words pure; signs envelope</text>
+        <line x1="354" y1="50" x2="666" y2="50" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <line x1="362" y1="64" x2="362" y2="228" stroke="var(--ex-signal)" stroke-width="1"/>
+        <rect x="359" y="62" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Natural Decoding</text>
+        <text x="374" y="85" font-size="11" fill="var(--ex-muted)">Zero token distortion</text>
+        <line x1="374" y1="132" x2="666" y2="132" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="359" y="142" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="149" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Hardware Key Stamp</text>
+        <text x="374" y="165" font-size="11" fill="var(--ex-muted)">Signs hash in header receipt</text>
+        <line x1="374" y1="212" x2="666" y2="212" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="359" y="222" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="374" y="229" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Exact Public Check</text>
+        <text x="374" y="245" font-size="11" fill="var(--ex-muted)">Deterministic yes or no</text>
+        <line x1="354" y1="303" x2="666" y2="303" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="354" y="311" width="5" height="5" fill="var(--ex-signal)"/>
+        <text x="365" y="316" font-size="11" font-weight="700" fill="var(--ex-signal)">Assurance: Pure prose &amp; exact proof</text>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Statistical token steering</span>
+      <div class="ex-spec-body">Nudges word probabilities to embed a hidden pattern, risking subtle factual shifts in medical dosages, dates, or code.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Cryptographic envelope receipt</span>
+      <div class="ex-spec-body">Leaves every generated word untouched and attaches a hardware-signed hash in metadata for deterministic verification.</div>
+    </div>
+  </div>
+  <figcaption>Comparing token-level watermarking with out-of-band cryptographic provenance. In-band watermarking degrades factual precision to embed statistical traces, while cryptographic receipts prove origin deterministically without altering a single word.</figcaption>
+</figure>
+
+<h2>The illusion of durable protection</h2>
+
+<p>Supporters of statistical watermarking often argue that hidden patterns survive even when a user copies text into another application. But recent security research reveals that this durability is an illusion.</p>
+
+<p>Automated software agents can readily detect and erase statistical watermarks. By running text through a lightweight paraphrasing filter or querying the model across boundaries, an attacker can strip the watermark with near-perfect success.<sup><a href="#fn3">3</a></sup></p>
+
+<p>Worse still, embedding secret watermarking keys creates privacy risks. A malicious model provider can make a watermark depend on what a user said earlier in a conversation, so that a later, unrelated image reveals, for example, that the user mentioned depression.<sup><a href="#fn4">4</a></sup></p>
+
+<p>This creates an upside-down outcome. People with malicious intentions strip the watermarks in milliseconds using freely available tools. Meanwhile, honest doctors, teachers, researchers, and public servants are stuck with degraded, unreliable answers.</p>
+
+<h2>The alternative: A seal on the envelope</h2>
+
+<p>Human society solved this verification problem centuries ago. We do not authenticate deeds by tampering with the parchment. We place a seal upon the envelope.</p>
+
+<p>In modern digital architecture, this approach is known as out-of-band cryptographic provenance.<sup><a href="#fn5">5</a></sup> Instead of distorting the generation process, the assistant generates text naturally, selecting the most accurate and truthful words possible.</p>
+
+<p>Once the response is complete, the local device creates a cryptographic receipt. This receipt contains a secure mathematical hash of the generated text, signed by an attested hardware key held on the device. The signature travels alongside the document as an open metadata envelope.</p>
+
+<p>This separation provides three profound advantages:</p>
+
+<p>First, truth comes first. The model is free to quote source documents verbatim without artificial steering. Numbers, dates, and dosages remain completely unperturbed.</p>
+
+<p>Second, verification is deterministic. Anyone can verify the cryptographic signature using standard public keys. Verification does not rely on guessing statistical probabilities or tuning threshold curves. Either the document matches the signed hash, or it does not.</p>
+
+<p>Third, people retain local custody. Origin proofs are generated right at the edge of the user's personal hardware. Proving where a document originated never requires uploading sensitive medical notes or personal correspondence to a centralized platform.</p>
+
+<p>Proof of origin must never come at the expense of truth. By moving authentication out of the words and into the envelope, we keep digital tools honest, verifiable, and safe for everyone.</p>
+
+<p>In the <a href="/labs/shared-horizon/">Shared Horizon action library</a>, public teams and developers can explore practical steps for privacy-preserving watermark auditing, and track how open content credentials establish origin across community software.</p>
+
+<p class="muted"><strong>Related essays:</strong> <a href="/blog/paying-for-words-instead-of-the-repair/">Paying for words instead of the repair</a> · <a href="/blog/when-the-middleman-pads-the-meter/">When the middleman pads the meter</a> · <a href="/blog/postmarks-for-the-real-world/">Postmarks for the real world</a> · <a href="/blog/who-is-really-there/">Who is really there?</a>. Further reading: <a href="/blog/why-an-ai-agent-will-not-audit-itself/">Why an AI agent will not audit itself</a> · <a href="/blog/when-an-agent-forgets-who-said-what/">When an agent forgets who said what</a>.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers: Statistical decoding bias, bypass dynamics, and cryptographic attestation</summary>
+    <div>
+      <p>Statistical text watermarking operates by partitioning the model vocabulary into a pseudo-random green list and red list at decoding step, derived from a hash of the preceding tokens. A bias parameter is added to the logits of tokens in the green partition (Kirchenbauer et al., 2023). Distortion-free schemes avoid this bias: in TextSeal2 (Sander et al., arXiv:2610.40613) the output follows the model's own distribution exactly, even under speculative decoding. What every text watermark shares is that paraphrasing or editing can weaken the signal, and that detection says which model produced a text, not whether it is accurate.</p>
+      <p>Empirical security evaluations demonstrate that in-band watermarks fail to provide unforgeable provenance. Image watermarks have the same weakness: Yao et al.'s ProxyEraseAgent (arXiv:2610.11290) removes invisible watermarks from a single image by using public watermark decoders as stand-ins for the hidden one. In addition, watermarks can themselves leak private information: Braun et al. (arXiv:2610.05453) show a multimodal model that hides a detectable watermark in later images when a sensitive topic came up earlier in the conversation.</p>
+      <p>In contrast, out-of-band cryptographic provenance relies on the Coalition for Content Provenance and Authenticity (C2PA 2.1) specification, IETF RFC 9421 (HTTP Message Signatures), and hardware-rooted attestation (NIST SP 800-207 Zero Trust Architecture). The model output is generated under unperturbed greedy or temperature-controlled decoding. A cryptographically bound claim manifest containing a SHA-256 digest of the canonical text is signed by an on-device TPM 2.0 or secure enclave key, producing deterministic offline verification without token degradation.</p>
+    </div>
+  </details>
+</aside>
+
+<section class="footnotes">
+  <h2>Footnotes</h2>
+  <ol>
+    <li id="fn1">For statutory transparency obligations and watermarking proposals, see the European Union Artificial Intelligence Act, Article 50 (Transparency obligations for providers and deployers of certain AI systems), <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj">EUR-Lex 2024/1689</a>.</li>
+    <li id="fn2">John Kirchenbauer et al., "A Watermark for Large Language Models," Proceedings of the 40th International Conference on Machine Learning (ICML 2023), <a href="https://arxiv.org/abs/2301.10226">arXiv:2301.10226</a>. See also TextSeal2 on copula mixing (Oct 2026), <a href="https://arxiv.org/abs/2610.40613">arXiv:2610.40613</a>.</li>
+    <li id="fn3">Jun Yao, Chao Wang, Yupeng Qiu et al., "ProxyEraseAgent: Blind Watermark Removal in the Wild," <a href="https://arxiv.org/abs/2610.11290">arXiv:2610.11290</a> (Oct 2026).</li>
+    <li id="fn4">Tobias Braun, Jonas Henry Grebe, Emil Sivic et al., "The Poisoned Conversation: Privacy-Leaking Watermarks in Unified Multimodal Models," <a href="https://arxiv.org/abs/2610.05453">arXiv:2610.05453</a> (Oct 2026).</li>
+    <li id="fn5">Coalition for Content Provenance and Authenticity (C2PA), "Content Credentials Specification 2.1," <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html">C2PA Technical Specification</a> (2024-2026).</li>
+  </ol>
+</section>

@@ -1,0 +1,250 @@
+---
+title: Who should own intelligence?
+description: A few companies own the machines that more and more of our thinking runs on. We think that infrastructure deserves the kind of thought we give to roads, water and libraries.
+reader: Policy makers and engaged citizens thinking about who benefits from AI.
+takeaway: Concentrated ownership of computing power is a choice, and there are practical ways to share it more widely.
+template: article
+date: 2026-11-06
+order: 3
+category: Owning
+minutes: 9
+image: post-who-owns-intelligence.jpg
+image_alt: A stone aqueduct carrying water across a valley to many small homes, with one channel diverted toward a single walled tower.
+lede: Imagine if a handful of companies owned all the electricity. Not the power stations in one country, but nearly all of it, everywhere. Every home, hospital and school would rent from them. That's not quite where AI is. But it's the direction it's heading.
+---
+<p>The most capable AI systems need enormous amounts of computing power, both to build and to run. That computing sits in specialized data centres that only a handful of organisations on Earth can afford to assemble and power. Independent estimates by Epoch AI show that the cost of training the largest frontier models has risen roughly two-and-a-half times every year since 2016.<sup><a href="#fn1">1</a></sup></p>
+
+<p>The result is a bottleneck. A tiny number of technology companies build and own the largest systems. Almost everyone else (universities, hospitals, small businesses, courtrooms and local governments) rents access to them through a monthly subscription or a metered software connection.</p>
+
+<p>This concentration isn't anyone's secret plot. It happens naturally whenever a technology is extraordinarily expensive to build and immediately useful to millions of people. Still, it matters to all of us, because more of our daily thinking now runs through these machines whenever we search, write, learn, diagnose and decide.</p>
+
+<h2>Why ownership matters here</h2>
+
+<p>When one company owns a shoe factory, it doesn't shape how your town thinks. If their boots get too expensive or their stitching falls apart, another cobbler opens down the street. When a few companies own the infrastructure that millions of people rely on to understand the world, the stakes are different.</p>
+
+<p>Whoever owns the underlying machines sets the default rules for everyone upstream and downstream. They decide who gets access, how much it costs, which questions the system refuses to answer, and what happens to the sensitive problems people type in. Even when the executives in charge have good intentions, putting that much influence in a few boardrooms is a fragile way to run a democratic society.</p>
+
+<p>Think of nineteenth-century cities before public waterworks and municipal fire departments. In early London and Philadelphia, private fire brigades nailed cast-iron insurance plaques to the front walls of paying subscribers' houses. When a chimney caught fire on a crowded street, rival brigades raced to the scene and checked the wall for their company's metal mark. If the burning house carried the wrong plaque, they stood by with folded arms, or even blocked another crew's hoses.</p>
+
+<p>Private water companies worked the same way. They laid wooden pipes under wealthy avenues where mansions could pay high fees, while leaving working-class tenement districts to draw from contaminated wells. Eventually, city residents realized that fire and cholera do not stop at property lines. Some foundations are too bound up with everyone's safety to be rationed exclusively by private tollgates.</p>
+
+<p>Concentrated ownership of AI computing also starves independent science. Researchers have documented a growing "compute divide" between a handful of commercial laboratories and the university departments that originally pioneered modern deep learning.<sup><a href="#fn2">2</a></sup></p>
+
+<p>When outside scientists cannot afford the computing power needed to test and audit frontier systems, the public must take commercial safety claims on trust. The people best trained to spot deep flaws have the least access to the machinery.</p>
+
+<div class="callout"><p class="label">What this means</p><p>The question isn't whether private companies should build AI. They will, and much of it will be useful. The question is whether the rest of us only ever rent from them, or also share infrastructure of our own.</p></div>
+
+<h2>How communities solved this before</h2>
+
+<p>We have faced versions of this bottleneck before, and history offers encouraging, practical models. Each time a new foundation of modern life started out as a concentrated luxury, communities invented public and cooperative institutions to balance private industry.</p>
+
+<p>Consider electricity in the 1930s. Private utilities wired large cities quickly where profits were dense, but left nine out of ten rural farms in the dark. Stringing copper poles down country roads simply did not pay back fast enough for private shareholders. Only when governments backed rural electric cooperatives, member-owned utilities governed by the farming towns they served, did affordable power reach the countryside.</p>
+
+<p>Or consider Andrew Carnegie's public libraries at the turn of the twentieth century. In an era when technical handbooks, encyclopedias and scientific journals were locked in private collections or sold at prices factory apprentices could never pay, towns built thousands of free public libraries. Nobody banned private bookshops or commercial publishers when public libraries opened. Instead, a guaranteed civic baseline made the whole reading public more capable.</p>
+
+<p>Modern science relies on two even closer relatives: the national weather service and the university telescope time-share. Running a global atmospheric physics simulation takes a giant supercomputer fed by satellites, weather balloons and ocean buoys. It would be absurd for every farming county, fishing boat and town snowplow crew to build its own private weather supercomputer. It would be even worse if one private firm owned the only storm forecast and charged coastal towns surge pricing during a hurricane.</p>
+
+<p>Instead, a public weather service runs the heavy foundational model in the open and publishes the forecast streams as a public good. Commercial weather apps, airlines, farmers and local emergency managers all build on top of that shared foundation. Likewise, no single university astronomy department can afford to build a giant mountain observatory alone. By pooling construction into a shared consortium and allocating observing nights by peer-reviewed scientific merit, hundreds of smaller universities do world-class astrophysics together.</p>
+
+<p>Something similar is beginning to take shape for AI computing. In 2024, the U.S. National Science Foundation launched the NAIRR pilot, giving university and non-profit researchers shared access to computing and datasets they could never afford alone.<sup><a href="#fn3">3</a></sup> Several European nations, Canada and Japan are investing in sovereign supercomputing commons of their own. We explore how these models work in depth in <a href="/blog/public-computing-explained/">Public computing, explained</a>.</p>
+
+<h2>A three-layer civic compute commons</h2>
+
+<p>You do not need a single giant state monopoly to balance private concentration. In fact, a mix of public, cooperative and personal layers is far healthier and harder to capture. Think of it as a three-layer civic compute commons working alongside commercial providers.</p>
+
+<figure class="explainer" id="ex-public-compute">
+  <style>
+    #ex-public-compute {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-public-compute svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-public-compute .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-public-compute .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.4rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-public-compute .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-public-compute .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-public-compute .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-public-compute .ex-spec-col.is-amber {
+      border-left-color: var(--ex-amber);
+    }
+    #ex-public-compute .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.22rem;
+    }
+    #ex-public-compute .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 680px) {
+      #ex-public-compute .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+    #ex-public-compute figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 640px) {
+      #ex-public-compute .ex-canvas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #ex-public-compute .ex-canvas svg {
+        min-width: 540px;
+      }
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg viewBox="0 0 720 290" role="img" aria-labelledby="ex-compute-title ex-compute-desc">
+      <title id="ex-compute-title">Concentrated Private Toll-Road Compute versus Three-Layer Civic Compute Commons</title>
+      <desc id="ex-compute-desc">Side-by-side comparison showing a concentrated private tollgate where hospitals, schools, and citizens rent closed access, versus a three-layer civic compute commons combining public library supercomputers, regional cooperative grids, and personal devices.</desc>
+      <line x1="360" y1="14" x2="360" y2="278" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g>
+        <rect x="14" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="27" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">PRIVATE TOLL-ROAD MODEL</text>
+        <text x="14" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Hyperscale landlords own the stack</text>
+        <line x1="14" y1="50" x2="348" y2="50" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <line x1="22" y1="64" x2="22" y2="194" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+        <rect x="19" y="62" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Closed Data Centres</text>
+        <text x="34" y="85" font-size="11" fill="var(--ex-muted)">Metered APIs &amp; closed weights</text>
+        <line x1="34" y1="115" x2="348" y2="115" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="125" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="132" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Unilateral Terms</text>
+        <text x="34" y="148" font-size="11" fill="var(--ex-muted)">Sudden price or rule shifts</text>
+        <line x1="34" y1="178" x2="348" y2="178" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="19" y="188" width="6" height="6" fill="var(--ex-warn)"/>
+        <text x="34" y="195" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Renter Dependency</text>
+        <text x="34" y="211" font-size="11" fill="var(--ex-muted)">Clinics &amp; towns lack audit</text>
+        <line x1="14" y1="253" x2="348" y2="253" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="14" y="261" width="5" height="5" fill="var(--ex-warn)"/>
+        <text x="25" y="266" font-size="11" font-weight="700" fill="var(--ex-warn)">Result: Concentrated tollgate lock-in</text>
+      </g>
+      <g>
+        <rect x="374" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="387" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">THREE-LAYER CIVIC COMMONS</text>
+        <text x="374" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Shared foundation from lab to home</text>
+        <line x1="374" y1="50" x2="706" y2="50" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <line x1="382" y1="64" x2="382" y2="194" stroke="var(--ex-signal)" stroke-width="1"/>
+        <rect x="379" y="62" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="394" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Public Research Layer</text>
+        <text x="394" y="85" font-size="11" fill="var(--ex-muted)">Open science &amp; base models</text>
+        <line x1="394" y1="115" x2="706" y2="115" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="379" y="125" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="394" y="132" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Co-op &amp; Civic Grid</text>
+        <text x="394" y="148" font-size="11" fill="var(--ex-muted)">Clinics &amp; schools pool nodes</text>
+        <line x1="394" y1="178" x2="706" y2="178" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="379" y="188" width="6" height="6" fill="var(--ex-signal)"/>
+        <text x="394" y="195" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Personal Device Layer</text>
+        <text x="394" y="211" font-size="11" fill="var(--ex-muted)">Private local assistants</text>
+        <line x1="374" y1="253" x2="706" y2="253" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="374" y="261" width="5" height="5" fill="var(--ex-signal)"/>
+        <text x="385" y="266" font-size="11" font-weight="700" fill="var(--ex-signal)">Result: Pluralistic ownership &amp; exit</text>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Concentrated corporate tollgate</span>
+      <div class="ex-spec-body">Forces universities, clinics, and municipalities to rent closed APIs month-to-month under unilateral pricing and terms.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Three-layer civic stack</span>
+      <div class="ex-spec-body">Combines public research supercomputers, regional cooperative grids, and private local devices so communities retain autonomy.</div>
+    </div>
+  </div>
+  <figcaption>Instead of renting everything through a single corporate tollgate, a three-layer civic commons combines public research supercomputers, regional cooperative pools, and private local devices.</figcaption>
+</figure>
+
+<ul>
+  <li><strong>Layer 1: Public libraries and weather-service supercomputers.</strong> Funded by research consortia on the telescope time-share model, these facilities train open foundational models and host public scientific datasets.<sup><a href="#fn3">3</a></sup> They also give university labs and independent safety auditors the horsepower to test commercial systems without asking permission from the companies they are evaluating.</li>
+  <li><strong>Layer 2: Co-operatives and municipal computing pools.</strong> Just like rural electric co-ops, credit unions, community hospitals, school boards and small businesses can pool regional servers to run smaller, specialized open models on their own terms. A regional health co-op can audit billing records or summarize clinical notes inside its own firewall, without streaming patient histories to a distant ad or cloud conglomerate.</li>
+  <li><strong>Layer 3: Personal devices at the edge.</strong> For everyday tasks like sorting mail, drafting notes, or guarding your calendar, compact models can run directly on your laptop or phone. Your private life stays on hardware you physically control.</li>
+  <li><strong>Fair rules tying public support to openness.</strong> Whenever public tax credits, public grid upgrades or publicly funded research help build a system, independent experts should gain a clear statutory right to inspect its safety, energy footprint and reliability.</li>
+</ul>
+
+<p>To see how those three layers fit together in daily life, imagine a rural county hospital network. The doctors do not need to train a giant frontier model from scratch. Instead, they start with an open medical base model trained on the national public research layer and audited by university scientists.</p>
+
+<p>Next, through a regional health co-op, ten county clinics share a modest local server room to run and fine-tune that model on their own clinical templates. Finally, a nurse visiting a patient at home runs a lightweight scheduling and transcription assistant directly on a tablet that works even when cell service drops out.</p>
+
+<h2>An honest look at the limits</h2>
+
+<p>We want to be candid about what can go wrong with public and cooperative infrastructure too. Publicly funded computing projects can get bogged down in slow procurement rules, lose maintenance funding after the ribbon-cutting photo, or fall behind fast-moving commercial chip cycles.</p>
+
+<p>Environmental limits are just as real. Large data centres draw heavy loads of electricity and cooling water from local watersheds.<sup><a href="#fn4">4</a></sup> According to the International Energy Agency, data-centre electricity demand is projected to more than double by the end of the decade.<sup><a href="#fn4">4</a></sup> Whether a cluster is owned by a private corporation or a public agency, local communities deserve honest accounting of its power and water footprint before it is sited.</p>
+
+<p>Above all, public infrastructure must be insulated from political censorship. If a government computing commons lets whichever party is in office decide which questions researchers may ask, trading a corporate landlord for a state gatekeeper leaves nobody freer. Independent charters, modeled on a public library board, a university grant council, or a telescope time-allocation committee rather than a government press office, matter as much as the hardware itself.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers</summary>
+    <div>
+      <p>The empirical compute divide (Ahmed and Wahed, 2020; Cottier et al., 2024) has direct consequences for scientific reproducibility, external red-teaming, and mechanism design. When frontier training runs scale at ~2.4× per year in amortized compute cost, academic laboratories without shared national infrastructure (such as NAIRR) are restricted to black-box API probing.</p>
+      <p>In our research on federated and local-first architectures, we study how Low-Rank Adaptation (LoRA), model merging (TIES-Merging), and compact domain-specialized models lower the minimum viable compute threshold. Pairing these techniques with Proof-Carrying Code verification and Data Shapley attribution allows regional cooperatives and edge devices to compose auditable specialist capabilities without hyperscale cloud lock-in.</p>
+    </div>
+  </details>
+</aside>
+
+<h2>What you can do today</h2>
+
+<p>If you work in municipal, provincial or national government, examine your technology budget closely. How much goes toward permanent, shared public capability and open standards versus recurring rent on closed systems that vanish the day a vendor raises its prices? Ask what independent audit rights come attached to every public contract. You can find practical procurement questions on our <a href="/get-involved/policy/">page for policy makers</a>.</p>
+
+<p>If you work at a university, hospital, credit union or co-op, look at where your institution can pool computing and open models with peers rather than signing isolated lock-in contracts. And if you are a citizen, put that same question to your elected representatives. Intelligence may become the defining infrastructure of this century. We still have time to make sure we share that foundation, rather than renting our future from a few landlords.</p>
+
+<section class="footnotes">
+  <p id="fn1">1. Ben Cottier, Robi Rahman, Loredana Fattorini, Nestor Maslej, Tamay Besiroglu and David Owen, <em>The rising costs of training frontier AI models</em>, Epoch AI (May 2024). Training costs for frontier models have grown by roughly 2.4× per year since 2016. <a href="https://arxiv.org/abs/2405.21015">arxiv.org/abs/2405.21015</a> · <a href="https://epoch.ai/blog/how-much-does-it-cost-to-train-frontier-ai-models">epoch.ai/blog/how-much-does-it-cost-to-train-frontier-ai-models</a></p>
+  <p id="fn2">2. Nur Ahmed and Muntasir Wahed, "The De-democratization of AI: Deep Learning and the Compute Divide in Artificial Intelligence Research," <em>arXiv:2010.15581</em> (October 2020). <a href="https://arxiv.org/abs/2010.15581">arxiv.org/abs/2010.15581</a></p>
+  <p id="fn3">3. U.S. National Science Foundation (NSF), National Artificial Intelligence Research Resource (NAIRR) pilot (launched January 2024). <a href="https://new.nsf.gov/focus-areas/artificial-intelligence/nairr">new.nsf.gov/focus-areas/artificial-intelligence/nairr</a> · <a href="https://nairrpilot.org/about">nairrpilot.org/about</a></p>
+  <p id="fn4">4. International Energy Agency (IEA), <em>Energy and AI</em>, World Energy Outlook Special Report (Paris: IEA, April 2025). <a href="https://www.iea.org/reports/energy-and-ai">iea.org/reports/energy-and-ai</a></p>
+</section>

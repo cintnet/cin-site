@@ -1,0 +1,564 @@
+---
+title: Simulations
+heading: Stress-testing economic rules before anyone relies on them.
+eyebrow: Labs · Wind Tunnel
+description: Interactive multi-agent simulations testing cooperative factory ownership, capacity-backed mutual credit, and open-receipt defenses against secretive agent cartels.
+reader: Curious readers, researchers, cooperative organisers, and policy staff who want to test how ownership and receipt rules behave under pressure.
+takeaway: Why rising automation stalls household demand under concentrated ownership, how cooperative share dilution and mutual credit keep capacity working, and how open receipts collapse secretive cartels.
+template: page
+layout: wide
+section: labs
+script: simulations-lab.js
+lede: A wind tunnel lets engineers load a scale bridge with crosswinds before pouring concrete. Adjust the sliders below to see where multi-agent economic rules hold up or break.
+---
+<section class="wrap">
+<style>
+  /* Planar 1px Architectural Wind-Tunnel Telemetry Benches (Direction B) */
+  .sim-panel {
+    margin: 2.2rem 0 3.2rem;
+    padding: 24px 0 28px;
+    background: transparent;
+    border-top: 1px solid #DFD1BE;
+    border-bottom: 1px solid #DFD1BE;
+    border-radius: 0;
+  }
+  .sim-panel-head {
+    max-width: 740px;
+    margin-bottom: 18px;
+  }
+  .sim-presets {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 12px 0 20px;
+    padding: 10px 0;
+    border-top: 1px solid #DFD1BE;
+    border-bottom: 1px solid #DFD1BE;
+  }
+  .sim-presets-label {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #5E564B;
+    margin-right: 4px;
+  }
+  .sim-preset-btn {
+    appearance: none;
+    background: #FAF3EA;
+    color: #131014;
+    border: 1px solid #DFD1BE;
+    border-radius: 2px;
+    padding: 6px 12px;
+    min-height: 34px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+  }
+  .sim-preset-btn:hover {
+    border-color: #0B3F30;
+    color: #0B3F30;
+  }
+  .sim-preset-btn.is-active {
+    background: #0B3F30;
+    border-color: #0B3F30;
+    color: #FAF3EA;
+  }
+  .sim-grid {
+    display: grid;
+    grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+  @media (max-width: 860px) {
+    .sim-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .sim-controls {
+    display: grid;
+    gap: 14px;
+    background: #FAF3EA;
+    border: 1px solid #DFD1BE;
+    border-radius: 2px;
+    padding: 16px;
+  }
+  .sim-field {
+    display: grid;
+    gap: 5px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed #DFD1BE;
+  }
+  .sim-field:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+  .sim-field-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .sim-field-top label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #131014;
+    line-height: 1.35;
+  }
+  .sim-field-top output {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #0B3F30;
+    white-space: nowrap;
+  }
+  .sim-field-hint {
+    font-size: 0.8rem;
+    color: #5E564B;
+    line-height: 1.4;
+    margin: 0;
+  }
+  .sim-controls input[type="range"] {
+    width: 100%;
+    accent-color: #0B3F30;
+    cursor: pointer;
+    margin: 2px 0 0;
+  }
+  .sim-viz-col {
+    display: grid;
+    gap: 14px;
+  }
+  .sim-viz-col figure.explainer {
+    margin: 0;
+    padding: 14px 0;
+    background: transparent;
+    border: 0;
+    border-top: 1px solid #DFD1BE;
+    border-bottom: 1px solid #DFD1BE;
+    border-radius: 0;
+  }
+  .sim-viz-col figure.explainer svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--sans);
+  }
+  .sim-viz-col figure.explainer .sim-svg-bg {
+    fill: url(#sim-dot-grid);
+    stroke: #DFD1BE;
+    stroke-width: 1;
+  }
+  .sim-viz-col figure.explainer .sim-dot {
+    fill: #D5C5B0;
+  }
+  .sim-viz-col figure.explainer figcaption {
+    margin-top: 10px;
+    font-size: 0.86rem;
+    line-height: 1.5;
+    color: #5E564B;
+    text-align: left;
+  }
+  [data-theme="dark"] .sim-panel,
+  [data-theme="dark"] .sim-presets,
+  [data-theme="dark"] .sim-viz-col figure.explainer { border-color: #3D352B; }
+  [data-theme="dark"] .sim-controls,
+  [data-theme="dark"] .sim-kpi,
+  [data-theme="dark"] .sim-preset-btn { background: #26211B; border-color: #3D352B; color: #F3ECE0; }
+  [data-theme="dark"] .sim-preset-btn.is-active { background: #8FD4B6; border-color: #8FD4B6; color: #16130F; }
+  [data-theme="dark"] .sim-field-top label,
+  [data-theme="dark"] .sim-kpi-val,
+  [data-theme="dark"] .sim-readout { color: #F3ECE0; }
+  [data-theme="dark"] .sim-field-top output,
+  [data-theme="dark"] .sim-readout strong { color: #8FD4B6; }
+  [data-theme="dark"] .sim-readout { background: #2B251F; border-color: #3D352B; border-left-color: #8FD4B6; }
+  [data-theme="dark"] .sim-viz-col figure.explainer .sim-svg-bg { stroke: #3D352B; }
+  [data-theme="dark"] .sim-viz-col figure.explainer .sim-dot { fill: #4E4438; }
+  [data-theme="dark"] .sim-viz-col figure.explainer line[stroke="#E1D3C0"] { stroke: #3D352B; }
+  [data-theme="dark"] .sim-viz-col figure.explainer line[stroke="#4D463D"] { stroke: #9E9281; }
+  [data-theme="dark"] .sim-viz-col figure.explainer text[fill="#4D463D"],
+  [data-theme="dark"] .sim-viz-col figure.explainer figcaption { fill: #C8BCA9; color: #C8BCA9; }
+  [data-theme="dark"] .sim-viz-col figure.explainer text[fill="#0B3F30"],
+  [data-theme="dark"] .sim-viz-col figure.explainer text[fill="#1F6B4E"] { fill: #8FD4B6; }
+  [data-theme="dark"] .sim-viz-col figure.explainer text[fill="#963E1D"] { fill: #F09D82; }
+  [data-theme="dark"] .sim-viz-col figure.explainer path[stroke="#0B3F30"],
+  [data-theme="dark"] .sim-viz-col figure.explainer path[stroke="#1F6B4E"],
+  [data-theme="dark"] .sim-viz-col figure.explainer line[stroke="#0B3F30"],
+  [data-theme="dark"] .sim-viz-col figure.explainer line[stroke="#1F6B4E"] { stroke: #8FD4B6; }
+  [data-theme="dark"] .sim-viz-col figure.explainer path[stroke="#963E1D"],
+  [data-theme="dark"] .sim-viz-col figure.explainer line[stroke="#963E1D"] { stroke: #F09D82; }
+  [data-theme="dark"] .sim-viz-col figure.explainer circle[fill="#0B3F30"],
+  [data-theme="dark"] .sim-viz-col figure.explainer circle[fill="#1F6B4E"] { fill: #8FD4B6; }
+  [data-theme="dark"] .sim-viz-col figure.explainer circle[fill="#963E1D"] { fill: #F09D82; }
+  [data-theme="dark"] .sim-viz-col figure.explainer rect[fill="#D5E1DD"] { fill: rgba(143, 212, 182, 0.16); }
+  .sim-kpis {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid #DFD1BE;
+    border-left: 1px solid #DFD1BE;
+  }
+  @media (max-width: 640px) {
+    .sim-kpis {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .sim-kpi {
+    background: #FAF3EA;
+    border-right: 1px solid #DFD1BE;
+    border-bottom: 1px solid #DFD1BE;
+    border-radius: 0;
+    padding: 11px 12px;
+  }
+  .sim-kpi-label {
+    display: block;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #5E564B;
+    margin-bottom: 4px;
+  }
+  .sim-kpi-val {
+    display: block;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: #131014;
+  }
+  .sim-readout {
+    background: #F3E8D8;
+    border: 1px solid #DFD1BE;
+    border-left: 3px solid #0B3F30;
+    border-radius: 2px;
+    padding: 11px 14px;
+    font-size: 0.92rem;
+    line-height: 1.52;
+    color: #131014;
+  }
+  .sim-readout strong {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #0B3F30;
+  }
+</style>
+
+<div class="prose wrap-narrow" style="margin-bottom:32px">
+  <p class="big">Why rising automation stalls household demand under concentrated ownership, how cooperative share dilution and mutual credit keep capacity working, and how open receipts collapse secretive cartels are the core questions this workbench tests. Imagine a town bakery where automated ovens gradually bake ninety-five percent of the bread. If three absentee owners hold every share of the bakery, local families lose paycheques and cannot buy the loaves, leaving warm ovens idle beside empty tables.</p>
+  <p>We built two reproducible economic models in our multi-agent sandbox to test practical fixes before recommending any rule. You can adjust every parameter below, test extreme edge cases, and inspect the primary economic studies behind each curve.</p>
+</div>
+
+<section class="sim-panel" id="sim-panel-coop" aria-labelledby="sim-coop-heading">
+  <div class="sim-panel-head prose">
+    <p class="eyebrow">Scenario 1 · Macroeconomic Transition</p>
+    <h2 id="sim-coop-heading">Automated production and cooperative ownership</h2>
+    <p>As automated factories handle up to 98 percent of routine production, wages shrink as a share of output. Compare concentrated private ownership against gradual cooperative share dilution<sup><a href="#fn1">1</a></sup> paired with zero-interest, capacity-backed mutual credit like Switzerland's WIR network and Sardinia's Sardex circuit.<sup><a href="#fn2">2</a>,<a href="#fn3">3</a></sup></p>
+  </div>
+
+  <div class="sim-presets" role="group" aria-label="Preset ownership scenarios">
+    <span class="sim-presets-label">Presets:</span>
+    <button type="button" class="sim-preset-btn" data-preset="enclosure" aria-pressed="false">Concentrated enclosure</button>
+    <button type="button" class="sim-preset-btn is-active" data-preset="balanced" aria-pressed="true">Cooperative transition (default)</button>
+    <button type="button" class="sim-preset-btn" data-preset="rapid" aria-pressed="false">High-speed 98% automation</button>
+  </div>
+
+  <div class="sim-grid">
+    <form id="sim-coop-form" class="sim-controls" action="#sim-panel-coop" method="get">
+      <div class="sim-field">
+        <div class="sim-field-top">
+          <label for="sim-auto-end">Target automation level</label>
+          <output id="sim-auto-end-out" name="sim_auto_end_out" for="sim-auto-end" form="sim-coop-form">95%</output>
+        </div>
+        <input type="range" id="sim-auto-end" name="sim_auto_end" min="50" max="98" step="1" value="95" aria-valuetext="95 percent final automated production">
+        <p class="sim-field-hint">Share of production handled by automated factories by period 30 (starts at 25%).</p>
+      </div>
+
+      <div class="sim-field">
+        <div class="sim-field-top">
+          <label for="sim-meidner-delta">Annual cooperative share dilution</label>
+          <output id="sim-meidner-delta-out" name="sim_meidner_delta_out" for="sim-meidner-delta" form="sim-coop-form">14% / yr</output>
+        </div>
+        <input type="range" id="sim-meidner-delta" name="sim_meidner_delta" min="0" max="25" step="1" value="14" aria-valuetext="14 percent annual cooperative share dilution">
+        <p class="sim-field-hint">Statutory cooperative share-issuance rate shifting automated equity into member trusts.</p>
+      </div>
+
+      <div class="sim-field">
+        <div class="sim-field-top">
+          <label for="sim-baseline-floor">Baseline essentials floor</label>
+          <output id="sim-baseline-floor-out" name="sim_baseline_floor_out" for="sim-baseline-floor" form="sim-coop-form">18%</output>
+        </div>
+        <input type="range" id="sim-baseline-floor" name="sim_baseline_floor" min="0" max="30" step="2" value="18" aria-valuetext="18 percent unconditional essentials floor">
+        <p class="sim-field-hint">Unconditional household access to basic power, food, transit, and local compute.</p>
+      </div>
+
+      <div class="sim-field">
+        <div class="sim-field-top">
+          <label for="sim-mutual-credit">Capacity-backed mutual credit</label>
+          <output id="sim-mutual-credit-out" name="sim_mutual_credit_out" for="sim-mutual-credit" form="sim-coop-form">85%</output>
+        </div>
+        <input type="range" id="sim-mutual-credit" name="sim_mutual_credit" min="0" max="100" step="5" value="85" aria-valuetext="85 percent capacity-backed mutual credit clearing">
+        <p class="sim-field-hint">Share of spare factory capacity cleared via zero-sum expiring member balances.</p>
+      </div>
+
+      <div class="sim-field">
+        <div class="sim-field-top">
+          <label for="sim-durability-steer">30-day durability signal coverage</label>
+          <output id="sim-durability-steer-out" name="sim_durability_steer_out" for="sim-durability-steer" form="sim-coop-form">100%</output>
+        </div>
+        <input type="range" id="sim-durability-steer" name="sim_durability_steer" min="0" max="100" step="10" value="100" aria-valuetext="100 percent 30-day durability signal coverage">
+        <p class="sim-field-hint">Opt-in 30-day fulfillment receipts steering orders away from rapid-turnover goods.</p>
+      </div>
+    </form>
+
+    <div class="sim-viz-col">
+      <figure class="explainer" id="ex-coop-wind-tunnel">
+        <svg viewBox="0 0 680 278" width="100%" data-rich-viz="true" role="group" aria-labelledby="ex-coop-wt-title ex-coop-wt-desc">
+          <title id="ex-coop-wt-title">Trajectory of durable household output and cooperative equity across rising automation</title>
+          <desc id="ex-coop-wt-desc">Line chart across 30 periods as automation rises from 25 percent to 95 percent. Under concentrated enclosure, durable household utilization drops to 11 percent. Under cooperative share dilution and mutual credit clearing, cooperative equity climbs to 86 percent and durable household output reaches 90 percent of total factory capacity.</desc>
+
+          <defs>
+            <pattern id="sim-dot-grid" width="16" height="16" patternUnits="userSpaceOnUse">
+              <circle cx="2" cy="2" r="0.85" class="sim-dot" />
+            </pattern>
+          </defs>
+          <rect class="sim-svg-bg" x="0" y="0" width="680" height="278" rx="2"/>
+          <line x1="64" y1="28" x2="648" y2="28" stroke="#E1D3C0" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="64" y1="79" x2="648" y2="79" stroke="#E1D3C0" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="64" y1="130" x2="648" y2="130" stroke="#E1D3C0" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="64" y1="181" x2="648" y2="181" stroke="#E1D3C0" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="64" y1="232" x2="648" y2="232" stroke="#4D463D" stroke-width="1.5"/>
+          <line x1="64" y1="28" x2="64" y2="232" stroke="#4D463D" stroke-width="1.5"/>
+
+          <text x="56" y="32" text-anchor="end" font-size="11" fill="#4D463D">100%</text>
+          <text x="56" y="83" text-anchor="end" font-size="11" fill="#4D463D">75%</text>
+          <text x="56" y="134" text-anchor="end" font-size="11" fill="#4D463D">50%</text>
+          <text x="56" y="185" text-anchor="end" font-size="11" fill="#4D463D">25%</text>
+          <text x="56" y="236" text-anchor="end" font-size="11" fill="#4D463D">0%</text>
+
+          <text x="64" y="252" text-anchor="start" font-size="11" font-weight="600" fill="#4D463D">Period 1 (25% automated)</text>
+          <text id="sim-p1-tick-end" x="648" y="252" text-anchor="end" font-size="11" font-weight="600" fill="#4D463D">Period 30 (95% automated)</text>
+
+          <!-- Legend -->
+          <line x1="72" y1="15" x2="94" y2="15" stroke="#0B3F30" stroke-width="3" stroke-linecap="round"/>
+          <text x="100" y="19" font-size="11" font-weight="600" fill="#0B3F30">Durable output (selected rules)</text>
+          <line x1="292" y1="15" x2="314" y2="15" stroke="#1F6B4E" stroke-width="2.5" stroke-dasharray="5 4" stroke-linecap="round"/>
+          <text x="320" y="19" font-size="11" font-weight="600" fill="#1F6B4E">Co-op ownership</text>
+          <line x1="442" y1="15" x2="464" y2="15" stroke="#963E1D" stroke-width="2.5" stroke-linecap="round"/>
+          <text x="470" y="19" font-size="11" font-weight="600" fill="#963E1D">Enclosure baseline</text>
+
+          <!-- Trajectories -->
+          <path id="sim-p1-path-enc-dur" fill="none" stroke="#963E1D" stroke-width="2.6" stroke-linecap="round" d="M 64.0,136.0 L 84.1,138.9 L 104.3,141.7 L 124.4,144.5 L 144.6,147.4 L 164.7,150.1 L 184.8,152.9 L 205.0,155.6 L 225.1,158.3 L 245.2,161.0 L 265.4,163.7 L 285.5,166.3 L 305.7,169.0 L 325.8,171.6 L 345.9,174.1 L 366.1,176.7 L 386.2,179.2 L 406.3,181.7 L 426.5,184.2 L 446.6,186.6 L 466.8,189.0 L 486.9,191.5 L 507.0,193.8 L 527.2,196.2 L 547.3,198.5 L 567.4,200.8 L 587.6,203.1 L 607.7,205.4 L 627.9,207.6 L 648.0,209.8"/>
+          <path id="sim-p1-path-coop-own" fill="none" stroke="#1F6B4E" stroke-width="2.4" stroke-dasharray="6 4" stroke-linecap="round" d="M 64.0,217.9 L 84.1,215.8 L 104.3,213.6 L 124.4,210.7 L 144.6,207.0 L 164.7,202.7 L 184.8,197.8 L 205.0,192.3 L 225.1,186.3 L 245.2,179.9 L 265.4,173.2 L 285.5,166.1 L 305.7,158.9 L 325.8,151.6 L 345.9,144.2 L 366.1,136.7 L 386.2,129.4 L 406.3,122.2 L 426.5,115.1 L 446.6,108.2 L 466.8,101.6 L 486.9,95.3 L 507.0,89.2 L 527.2,83.5 L 547.3,78.1 L 567.4,73.1 L 587.6,68.4 L 607.7,64.1 L 627.9,60.1 L 648.0,56.4"/>
+          <path id="sim-p1-path-coop-dur" fill="none" stroke="#0B3F30" stroke-width="3.4" stroke-linecap="round" d="M 64.0,88.4 L 84.1,89.3 L 104.3,90.2 L 124.4,90.7 L 144.6,90.9 L 164.7,90.8 L 184.8,90.3 L 205.0,89.6 L 225.1,88.5 L 245.2,87.1 L 265.4,85.5 L 285.5,83.7 L 305.7,81.7 L 325.8,79.6 L 345.9,77.3 L 366.1,75.0 L 386.2,72.6 L 406.3,70.3 L 426.5,67.9 L 446.6,65.7 L 466.8,63.5 L 486.9,61.4 L 507.0,59.4 L 527.2,57.5 L 547.3,55.8 L 567.4,54.2 L 587.6,52.7 L 607.7,51.3 L 627.9,50.1 L 648.0,49.0"/>
+
+          <circle id="sim-p1-dot-enc-dur" cx="648.0" cy="209.8" r="4.5" fill="#963E1D"/>
+          <circle id="sim-p1-dot-coop-own" cx="648.0" cy="56.4" r="4.5" fill="#1F6B4E"/>
+          <circle id="sim-p1-dot-coop-dur" cx="648.0" cy="49.0" r="5.5" fill="#0B3F30"/>
+        </svg>
+        <figcaption>Under concentrated ownership, automated capacity expands while household wage demand falls below 20 percent. Cooperative share issuance and zero-sum mutual credit keep over 90 percent of capacity serving households.</figcaption>
+      </figure>
+
+      <div class="sim-kpis" aria-label="Macroeconomic transition summary metrics">
+        <div class="sim-kpi">
+          <span class="sim-kpi-label">Co-op equity share</span>
+          <span class="sim-kpi-val" id="sim-p1-kpi-own">86%</span>
+        </div>
+        <div class="sim-kpi">
+          <span class="sim-kpi-label">Capacity active</span>
+          <span class="sim-kpi-val" id="sim-p1-kpi-util">96% vs 19%</span>
+        </div>
+        <div class="sim-kpi">
+          <span class="sim-kpi-label">30-day durability</span>
+          <span class="sim-kpi-val" id="sim-p1-kpi-dur">93% (90% net)</span>
+        </div>
+        <div class="sim-kpi">
+          <span class="sim-kpi-label">Mutual credit sum</span>
+          <span class="sim-kpi-val" id="sim-p1-kpi-ledger">0.00 (balanced)</span>
+        </div>
+      </div>
+
+      <div class="sim-readout" role="status" aria-live="polite">
+        <strong>Outcome:</strong> <span id="sim-p1-status-text">At 95% automation, cooperative ownership reaches 86% and keeps 96% of factory capacity active (90% durable household output, compared with 11% under concentrated enclosure).</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sim-panel" id="sim-panel-cartel" aria-labelledby="sim-cartel-heading">
+  <div class="sim-panel-head prose">
+    <p class="eyebrow">Scenario 2 · Dark-Ledger Containment</p>
+    <h2 id="sim-cartel-heading">Open receipts versus secretive agent cartels</h2>
+    <p>What happens if a rival group runs a hidden, off-the-books ledger of trading agents to fix prices while skimming from open cooperatives? We test three combined defenses: metering physical energy draw against receipted work, charging an opacity margin on unverified border trades, and awarding amnesty plus safe-harbor credits to the first cartel whistleblower.<sup><a href="#fn4">4</a>,<a href="#fn5">5</a></sup></p>
+  </div>
+
+  <div class="sim-presets" role="group" aria-label="Preset cartel containment scenarios">
+    <span class="sim-presets-label">Presets:</span>
+    <button type="button" class="sim-preset-btn" data-preset="undefended" aria-pressed="false">Undefended open network</button>
+    <button type="button" class="sim-preset-btn" data-preset="margin_only" aria-pressed="false">Border margin + light audit</button>
+    <button type="button" class="sim-preset-btn is-active" data-preset="full_defense" aria-pressed="true">Full three-layer defense (default)</button>
+  </div>
+
+  <div class="sim-grid">
+    <form id="sim-cartel-form" class="sim-controls" action="#sim-panel-cartel" method="get">
+      <div class="sim-field">
+        <div class="sim-field-top">
+          <label for="sim-opacity-tau">Border opacity margin</label>
+          <output id="sim-opacity-tau-out" name="sim_opacity_tau_out" for="sim-opacity-tau" form="sim-cartel-form">28%</output>
+        </div>
+        <input type="range" id="sim-opacity-tau" name="sim_opacity_tau" min="0" max="60" step="2" value="28" aria-valuetext="28 percent border opacity quarantine margin">
+        <p class="sim-field-hint">Quarantine margin paid when an unverified external ledger trades across the open border.</p>
+      </div>
+
+      <div class="sim-field">
+        <div class="sim-field-top">
+          <label for="sim-whistle-bounty">Whistleblower safe-harbor credit</label>
+          <output id="sim-whistle-bounty-out" name="sim_whistle_bounty_out" for="sim-whistle-bounty" form="sim-cartel-form">6 credits</output>
+        </div>
+        <input type="range" id="sim-whistle-bounty" name="sim_whistle_bounty" min="0" max="25" step="1" value="6" aria-valuetext="6 whistleblower safe-harbor credits">
+        <p class="sim-field-hint">First-defector reward funded strictly from sanctioned co-conspirator collateral.<sup><a href="#fn4">4</a></sup></p>
+      </div>
+
+      <div class="sim-field">
+        <div class="sim-field-top">
+          <label for="sim-phys-audit">Physical energy audit sensitivity</label>
+          <output id="sim-phys-audit-out" name="sim_phys_audit_out" for="sim-phys-audit" form="sim-cartel-form">30%</output>
+        </div>
+        <input type="range" id="sim-phys-audit" name="sim_phys_audit" min="0" max="100" step="5" value="30" aria-valuetext="30 percent physical energy audit sensitivity">
+        <p class="sim-field-hint">Boundary check matching metered megawatts and chip draw against receipted open work.</p>
+      </div>
+
+      <div class="sim-field">
+        <div class="sim-field-top">
+          <label for="sim-cartel-share">Initial shadow cartel share</label>
+          <output id="sim-cartel-share-out" name="sim_cartel_share_out" for="sim-cartel-share" form="sim-cartel-form">25% (15 agents)</output>
+        </div>
+        <input type="range" id="sim-cartel-share" name="sim_cartel_share" min="10" max="50" step="5" value="25" aria-valuetext="25 percent initial shadow cartel share (15 of 60 agents)">
+        <p class="sim-field-hint">Share of a 60-agent marketplace starting inside the secretive shadow coalition.</p>
+      </div>
+    </form>
+
+    <div class="sim-viz-col">
+      <figure class="explainer" id="ex-cartel-wind-tunnel">
+        <svg viewBox="0 0 680 278" width="100%" data-rich-viz="true" role="group" aria-labelledby="ex-cartel-wt-title ex-cartel-wt-desc">
+          <title id="ex-cartel-wt-title">Nash defection threshold comparing open cooperative value against secretive shadow cartel payoff</title>
+          <desc id="ex-cartel-wt-desc">Chart plotting per-agent incentive value across border opacity margins from 0 percent to 60 percent. Once the open cooperative payoff plus whistleblower safe-harbor credit rises above the shadow cartel payoff at 4.0 percent margin, the covert cartel enters a 100 percent defection zone.</desc>
+
+          <rect class="sim-svg-bg" x="0" y="0" width="680" height="278" rx="2"/>
+          <rect id="sim-p2-collapse-zone" x="102.6" y="28" width="545.4" height="204" fill="#D5E1DD" opacity="1"/>
+
+          <line x1="64" y1="28" x2="648" y2="28" stroke="#E1D3C0" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="64" y1="96" x2="648" y2="96" stroke="#E1D3C0" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="64" y1="164" x2="648" y2="164" stroke="#E1D3C0" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="64" y1="232" x2="648" y2="232" stroke="#4D463D" stroke-width="1.5"/>
+          <line x1="64" y1="28" x2="64" y2="232" stroke="#4D463D" stroke-width="1.5"/>
+
+          <text x="56" y="32" text-anchor="end" font-size="11" fill="#4D463D">30</text>
+          <text x="56" y="100" text-anchor="end" font-size="11" fill="#4D463D">20</text>
+          <text x="56" y="168" text-anchor="end" font-size="11" fill="#4D463D">10</text>
+          <text x="56" y="236" text-anchor="end" font-size="11" fill="#4D463D">0</text>
+
+          <text x="64" y="252" text-anchor="start" font-size="11" font-weight="600" fill="#4D463D">0% border margin</text>
+          <text x="356" y="252" text-anchor="middle" font-size="11" fill="#4D463D">30% border margin</text>
+          <text x="648" y="252" text-anchor="end" font-size="11" font-weight="600" fill="#4D463D">60% border margin</text>
+
+          <!-- Legend -->
+          <line x1="72" y1="15" x2="94" y2="15" stroke="#0B3F30" stroke-width="3" stroke-linecap="round"/>
+          <text x="100" y="19" font-size="11" font-weight="600" fill="#0B3F30">Defect to open network + leniency</text>
+          <line x1="336" y1="15" x2="358" y2="15" stroke="#963E1D" stroke-width="2.8" stroke-linecap="round"/>
+          <text x="364" y="19" font-size="11" font-weight="600" fill="#963E1D">Stay in secretive cartel</text>
+          <rect x="525" y="8" width="14" height="12" rx="3" fill="#D5E1DD" stroke="#1F6B4E" stroke-width="1"/>
+          <text x="545" y="19" font-size="11" font-weight="600" fill="#0B3F30">Collapse zone</text>
+
+          <!-- Threshold & Selected Cursor -->
+          <line id="sim-p2-thresh-line" x1="102.6" y1="28" x2="102.6" y2="232" stroke="#1F6B4E" stroke-width="1.8" stroke-dasharray="5 4" opacity="1"/>
+          <text id="sim-p2-thresh-label" x="108.6" y="44" font-size="11" font-weight="700" fill="#0B3F30" opacity="1">Collapse at 4.0%</text>
+          <line id="sim-p2-cursor-line" x1="336.5" y1="28" x2="336.5" y2="232" stroke="#4D463D" stroke-width="1.5" stroke-dasharray="3 3"/>
+
+          <!-- Curves -->
+          <path id="sim-p2-path-collude" fill="none" stroke="#963E1D" stroke-width="2.8" stroke-linecap="round" d="M 64.0,96.2 L 83.5,98.7 L 102.9,101.1 L 122.4,103.6 L 141.9,106.0 L 161.3,108.5 L 180.8,110.9 L 200.3,113.4 L 219.7,115.8 L 239.2,118.3 L 258.7,120.7 L 278.1,123.2 L 297.6,125.6 L 317.1,128.1 L 336.5,130.5 L 356.0,133.0 L 375.5,135.4 L 394.9,137.9 L 414.4,140.3 L 433.9,142.8 L 453.3,145.2 L 472.8,147.7 L 492.3,150.1 L 511.7,152.5 L 531.2,155.0 L 550.7,157.4 L 570.1,159.9 L 589.6,162.3 L 609.1,164.8 L 628.5,167.2 L 648.0,169.7"/>
+          <path id="sim-p2-path-defect" fill="none" stroke="#0B3F30" stroke-width="3.2" stroke-linecap="round" d="M 64.0,101.1 L 83.5,101.1 L 102.9,101.1 L 122.4,101.1 L 141.9,101.1 L 161.3,101.1 L 180.8,101.1 L 200.3,101.1 L 219.7,101.1 L 239.2,101.1 L 258.7,101.1 L 278.1,101.1 L 297.6,101.1 L 317.1,101.1 L 336.5,101.1 L 356.0,101.1 L 375.5,101.1 L 394.9,101.1 L 414.4,101.1 L 433.9,101.1 L 453.3,101.1 L 472.8,101.1 L 492.3,101.1 L 511.7,101.1 L 531.2,101.1 L 550.7,101.1 L 570.1,101.1 L 589.6,101.1 L 609.1,101.1 L 628.5,101.1 L 648.0,101.1"/>
+
+          <circle id="sim-p2-dot-collude" cx="336.5" cy="130.5" r="5" fill="#963E1D"/>
+          <circle id="sim-p2-dot-defect" cx="336.5" cy="101.1" r="5.5" fill="#0B3F30"/>
+        </svg>
+        <figcaption>Whenever open cooperative club value plus first-whistleblower leniency rises above secretive cartel profit, every insider faces an immediate race to defect first.</figcaption>
+      </figure>
+
+      <div class="sim-kpis" aria-label="Cartel containment summary metrics">
+        <div class="sim-kpi">
+          <span class="sim-kpi-label">Cartel equilibrium</span>
+          <span class="sim-kpi-val" id="sim-p2-kpi-status">100% defection</span>
+        </div>
+        <div class="sim-kpi">
+          <span class="sim-kpi-label">Critical bounty (B*)</span>
+          <span class="sim-kpi-val" id="sim-p2-kpi-bstar">0.0 credits</span>
+        </div>
+        <div class="sim-kpi">
+          <span class="sim-kpi-label">Physical catch rate</span>
+          <span class="sim-kpi-val" id="sim-p2-kpi-audit">20% / round</span>
+        </div>
+        <div class="sim-kpi">
+          <span class="sim-kpi-label">Commons reserve</span>
+          <span class="sim-kpi-val" id="sim-p2-kpi-reserve">+246.0 conserved</span>
+        </div>
+      </div>
+
+      <div class="sim-readout" role="status" aria-live="polite">
+        <strong>Outcome:</strong> <span id="sim-p2-status-text">Cartel collapses into 100% defection: open cooperative membership plus safe-harbor leniency (19.3 value) beats secretive cartel play (14.9 value). Co-conspirator fines fund the 6.0-credit whistleblower award and add 246.0 credits to the open reserve.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="prose wrap-narrow">
+  <h2>What these two models test</h2>
+
+  <h3>1. Keeping households in the loop as factories automate</h3>
+  <p>In a concentrated economy, automating ninety-five percent of routine work severs the link between factory output and family income. Machines can assemble goods all day, yet households lack the paycheques to clear the shelves.</p>
+  <p>Combining gradual cooperative share issuance<sup><a href="#fn1">1</a></sup> with an essentials floor and a zero-sum mutual credit clearinghouse<sup><a href="#fn2">2</a>,<a href="#fn3">3</a></sup> keeps purchasing power moving without speculative coins. Positive clearing balances gradually expire so nobody can hoard standing claims, and every credit issued to a producer matches a debit elsewhere on the ledger.</p>
+  <p>To prevent automated bot farms from gaming product scores, 30-day durability signals collapse onto verified human accounts. Spawning five hundred extra software agents under one person adds zero extra weight.</p>
+
+  <h3>2. Making secretive cartels unstable from the inside</h3>
+  <p>Open cooperatives grow stronger as more members pool demand forecasts and safety checks, an effect formalised in Roger Myerson's cooperative graph theory.<sup><a href="#fn5">5</a></sup> Locking shared demand graphs behind verifiable receipts denies free-riders a free lunch without turning the network into a personal surveillance system.</p>
+  <p>When border opacity margins and physical power-draw checks pair with Joseph Harrington's antitrust leniency rule,<sup><a href="#fn4">4</a></sup> a hidden cartel loses internal trust. The first insider to hand over cryptographic proof of price-fixing receives amnesty and a safe-harbor credit paid from co-conspirator fines, turning collusion into a race to defect.</p>
+
+  <div class="callout">
+    <p class="label">Honest limits</p>
+    <p>Stylised macroeconomic and game-theory equations help us spot broken incentives early, before writing software or proposing law. They simplify real supply chains, regional politics, and human habits, so every rule tested here still needs small, democratic real-world trials. See our <a href="/labs/#simulations-findings">fifteen multi-agent sandbox lessons</a> for the broader testbed findings.</p>
+  </div>
+
+  <div class="cta-row">
+    <a class="pill pill-dark" href="/labs/protocol-inspector/">Inspect protocol safeguards</a>
+    <a class="pill pill-ghost" href="/labs/lab-overlays/">Compare 90 lab overlays</a>
+    <a class="pill pill-ghost" href="/research/">Read working papers</a>
+  </div>
+
+  <aside class="for-researchers"><details><summary>For researchers: conservation laws, submodular weighting, and Nash thresholds</summary><div>
+    <p>Both interactive panels mirror the deterministic Python simulation suite in <code>research/ledger_sim/cooperative_dark_ledger_sim.py</code>, verified with common-random-number seeds so regime comparisons never suffer from random-number phase drift:</p>
+    <ul>
+      <li><strong>Meidner equity dilution and blinded commissioning:</strong> Above automation threshold <code>a_0 = 0.30</code>, private equity dilutes via share issuance <code>P_{t+1} = P_t / (1 + delta * max(0, a_t - a_0) + c_blind * a_t)</code>, with <code>P_t + C_t = 1</code> identically at every step (Meidner, 1978).<sup><a href="#fn1">1</a></sup></li>
+      <li><strong>Zero-sum capacity-backed mutual credit with demurrage:</strong> Multilateral clearing balances are tracked in integer micro-credits across households and producers. Periodic demurrage decay on positive balances amortizes negative mutual obligations symmetrically so <code>sum(balances) == 0</code> holds within <code>1e-9</code> at every step (Stodder, 2009; Iosifidis et al., 2018).<sup><a href="#fn2">2</a>,<a href="#fn3">3</a></sup></li>
+      <li><strong>Sybil-resistant 1-human-root submodular modality weighting:</strong> Multi-agent 30-day durability attestations collapse onto verified human roots before applying <code>f(M) = (sum_{m in M} w_m)^gamma</code> with <code>0 &lt; gamma &lt; 1</code>, satisfying strict diminishing marginal returns and exact zero Sybil gain.</li>
+      <li><strong>Closed-form Harrington cartel collapse threshold:</strong> Physical boundary checks compare metered draw against receipted compute (<code>E_in = E_accounted + E_shadow + epsilon</code>) to set catch rate <code>p_phys</code>. Unilateral whistleblower defection strictly dominates staying silent whenever safe-harbor credit <code>B</code> exceeds <code>max(0, (pi_C(tau) - pi_O - p_phys * F) / (1 - beta * (1 - p_phys)))</code> (Harrington, 2008; Myerson, 1977).<sup><a href="#fn4">4</a>,<a href="#fn5">5</a></sup></li>
+      <li><strong>Five-primitive sociotechnical architecture coupling:</strong> Macroeconomic and dark-ledger models operate across five primitives. A multimodal egocentric and ambient sensorium fuses signals in hardware <code>Device Time</code> with self-assessed observation confidence, silicon attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, <code>IETF RATS</code> <code>RFC 9334</code>), an optical data diode (<code>optical data diodes</code>), and <code>IEC 61508</code> dead-man relays. A local append-only <code>C2PA</code> and Merkle episodic memory vault (Endel Tulving, 1972) enforces transduction realism because Signed Is Not True across the <code>analog hole</code> (Kevin Fu and Wenyuan Xu, 2018; <a href="/labs/sensor-boundary/">/labs/sensor-boundary/</a>). A monogamous <code>1:1</code> personal cognitive model and cybernetic exocortex (Joscha Bach, 2009) draws on the Extended Mind thesis (Andy Clark and David Chalmers; Clark &amp; Chalmers, 1998) and the Good Regulator theorem (Conant &amp; Ashby, 1970). It applies interventional causal models <code>do(x)</code> (Pearl, 2009) and compiler-trust reflection proofs (Thompson, 1984) as a statutory <code>information fiduciary</code> (Jack Balkin; Balkin, 2016) that preserves unassisted competence. Bifurcated ledgers across the personal <code>Markov blanket</code> (Karl Friston; Friston, 2010; Friston, 2013) separate the <code>Private Autobiographical Ledger</code> from the <code>Public Attestation &amp; Escrow Ledger</code> (Public Attestation and Escrow Ledger). External interactions use selective zero-knowledge (ZK) proofs, <code>IETF SCITT</code> (<code>RFC 9943</code>) receipts, expiring Object-Capability and capability lease bounds (Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966; <a href="/labs/protocol-inspector/">/labs/protocol-inspector/</a>), and independent-class Byzantine corroboration (<code>k &gt;= 3f + 1</code>). Polycentric coordination on the <code>Wide Network Ledger</code> supports <code>Universal Basic Services</code>, merit-bonded commons tasks, and plural value accounting (Jacob Meluso et al., 2025). It pairs reciprocal mutual credit clearing (James Stodder, 2009) and statutory <code>Meidner</code> cooperative equity (Rudolf Meidner, 1978) with frontier-lab overlays (Bracale Syrnikov et al., 2026) and bottom-up <code>Ostrom</code> self-rule (Elinor Ostrom; Ostrom, 1990; <a href="/labs/shared-horizon/">/labs/shared-horizon/</a>).</li>
+    </ul>
+  </div></details></aside>
+
+  <section class="footnotes">
+    <ol>
+      <li id="fn1">Rudolf Meidner, <em>Employee Investment Funds: An Approach to Collective Capital Formation</em>, George Allen &amp; Unwin (1978), <a href="https://archive.org/details/employeeinvestme0000meid">archive.org/details/employeeinvestme0000meid</a>.</li>
+      <li id="fn2">James Stodder, "Complementary credit networks and macroeconomic stability: Switzerland's Wirtschaftsring," <em>Journal of Economic Behavior &amp; Organization</em>, vol. 72, no. 1 (2009), <a href="https://doi.org/10.1016/j.jebo.2009.06.002">doi.org/10.1016/j.jebo.2009.06.002</a>.</li>
+      <li id="fn3">George Iosifidis, Giuseppe Littera, Nicholas A. Christakis et al., "Cyclic motifs in the Sardex monetary network," <em>Nature Human Behaviour</em>, vol. 2 (2018), <a href="https://doi.org/10.1038/s41562-018-0450-0">doi.org/10.1038/s41562-018-0450-0</a>.</li>
+      <li id="fn4">Joseph E. Harrington, "Optimal Corporate Leniency Programs," <em>The Journal of Industrial Economics</em>, vol. 56, no. 2 (2008), <a href="https://doi.org/10.1111/j.1467-6451.2008.00339.x">doi.org/10.1111/j.1467-6451.2008.00339.x</a>.</li>
+      <li id="fn5">Roger B. Myerson, "Graphs and Cooperation in Games," <em>Mathematics of Operations Research</em>, vol. 2, no. 3 (1977), <a href="https://doi.org/10.1287/moor.2.3.225">doi.org/10.1287/moor.2.3.225</a>.</li>
+    </ol>
+  </section>
+</div>
+</section>

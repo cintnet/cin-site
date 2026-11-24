@@ -1,0 +1,80 @@
+---
+title: Privacy
+heading: Privacy
+eyebrow: Policies · Privacy
+description: What this website collects about you: nothing beyond standard server logs.
+reader: Any visitor who wants to know how the site works and how to reach us.
+takeaway: What this website collects about you: nothing beyond standard server logs.
+template: page
+section: 
+---
+<div class="prose wrap-narrow"><h2>The short version</h2><p>You should be able to read a website without being followed around the internet. This site sets no cookies, runs no analytics, loads nothing from third parties, and has no accounts or forms. We don't know who you are, and we don't try to find out.</p>
+
+<figure class="explainer" id="ex-privacy-boundary">
+  <div class="st-stage" data-stage="switchyard" data-rail-mode="edge">
+    <div class="st-stage-bar">
+      <span class="st-tag"><span class="st-pip"></span> PRIVACY OVERVIEW · WHAT THIS WEBSITE COLLECTS</span>
+      <span data-rail-status>ZERO COOKIES OR TRACKING</span>
+    </div>
+    <div class="st-lever-bar">
+      <div class="st-lever-group" role="group" aria-label="Reading boundary mode">
+        <button type="button" class="st-rail-btn is-active" data-rail-option="edge" aria-pressed="true"
+          data-status="ZERO COOKIES OR TRACKING"
+          data-readout="CIN EDGE: Static HTML and SVG arrive directly from edge caches with zero cookies, scripts, or ad brokers.">
+          <span class="st-pip"></span> CIN zero-tracking edge.
+        </button>
+        <button type="button" class="st-rail-btn" data-rail-option="tracked" data-rail-tone="warn" aria-pressed="false"
+          data-status="SURVEILLANCE PIPELINE EXPOSED."
+          data-readout="TYPICAL WEB: Third-party scripts read clicks, plant persistent cookies, and ship browsing graphs to brokers.">
+          <span class="st-pip st-pip--warn"></span> Typical surveillance web.
+        </button>
+      </div>
+    </div>
+    <div class="st-switchyard-canvas">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 220" role="img" aria-labelledby="ex-privacy-boundary-title ex-privacy-boundary-desc">
+        <title id="ex-privacy-boundary-title">The surveillance web versus a zero-tracking reading boundary</title>
+        <desc id="ex-privacy-boundary-desc">Comparative signal schematic contrasting static CDN edge delivery without cookies or third-party scripts against typical cross-domain tracking pipelines.</desc>
+
+        <line x1="24" y1="36" x2="656" y2="36" stroke="var(--st-rule, #E1D3C0)" stroke-width="1" />
+        <text x="24" y="24" font-family="ui-monospace, monospace" font-size="10" font-weight="700" fill="var(--st-muted, #5E564B)" letter-spacing="0.08em">PACKET PATH · READER BROWSER TO EDGE</text>
+
+        <g data-rail-view="edge">
+          <rect x="24" y="76" width="12" height="28" fill="var(--st-forest, #0B3F30)" />
+          <text x="46" y="72" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="var(--st-forest, #0B3F30)">01 · STATIC EDGE HTML</text>
+          <line x1="36" y1="90" x2="310" y2="90" stroke="var(--st-forest, #0B3F30)" stroke-width="2.5" />
+          <circle cx="315" cy="90" r="5" fill="var(--st-forest, #0B3F30)" />
+          <line x1="320" y1="90" x2="640" y2="90" stroke="var(--st-forest, #0B3F30)" stroke-width="2.5" />
+          <rect x="640" y="78" width="14" height="24" fill="var(--st-forest, #0B3F30)" />
+          <text x="332" y="72" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="var(--st-forest, #0B3F30)">02 · CLEAN READER STATE</text>
+          <text x="332" y="112" font-family="system-ui, sans-serif" font-size="11.5" fill="var(--st-ink, #131014)">No cookies · No analytics · No fingerprinting</text>
+
+          <line x1="315" y1="164" x2="415" y2="136" stroke="var(--st-terracotta, #B85C38)" stroke-width="2.5" />
+          <circle cx="315" cy="164" r="4.5" fill="var(--st-terracotta, #B85C38)" />
+          <text x="46" y="168" font-family="ui-monospace, monospace" font-size="10.5" fill="var(--st-muted, #5E564B)">THIRD-PARTY TRACKER CALLS</text>
+          <text x="430" y="168" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700" fill="var(--st-forest, #0B3F30)">OPEN CIRCUIT · ZERO BROKER TRAFFIC</text>
+        </g>
+
+        <g data-rail-view="tracked">
+          <rect x="24" y="76" width="12" height="28" fill="var(--st-terracotta, #B85C38)" />
+          <text x="46" y="72" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="var(--st-terracotta-ink, #963E1D)">01 · INJECTED TRACKER SCRIPTS</text>
+          <line x1="36" y1="90" x2="315" y2="90" stroke="var(--st-terracotta, #B85C38)" stroke-width="2.5" stroke-dasharray="6 4" />
+          <circle cx="315" cy="90" r="5" fill="var(--st-terracotta, #B85C38)" />
+          <line x1="315" y1="90" x2="315" y2="164" stroke="var(--st-terracotta, #B85C38)" stroke-width="2.5" />
+          <line x1="315" y1="164" x2="640" y2="164" stroke="var(--st-terracotta, #B85C38)" stroke-width="2.5" />
+          <rect x="640" y="152" width="14" height="24" fill="var(--st-terracotta, #B85C38)" />
+          <text x="332" y="150" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="var(--st-terracotta-ink, #963E1D)">02 · PERSISTENT COOKIES &amp; AD BROKERS</text>
+          <text x="332" y="188" font-family="system-ui, sans-serif" font-size="11.5" fill="var(--st-ink, #131014)">Cross-site browsing profile compiled without consent</text>
+        </g>
+      </svg>
+    </div>
+    <div class="st-switchyard-readout" data-rail-readout aria-live="polite">
+      CIN EDGE: Static HTML and SVG arrive directly from edge caches with zero cookies, scripts, or ad brokers.
+    </div>
+  </div>
+  <figcaption>Most commercial websites run third-party scripts and persistent cookies to follow readers. Our site serves static pages from edge caches with zero cookies, zero analytics scripts, and zero ad brokers.</figcaption>
+</figure>
+
+<h2>Server logs</h2><p>Our hosting provider, Google Firebase Hosting, keeps standard technical logs to deliver the site and protect it from abuse. Those logs record basic details like your IP address, the time, and the page you requested. We never use them to identify or profile you.</p>
+<h2>If you email us</h2><p>If you write to us, we keep your message and email address only so we can reply and follow up. We won't add you to a mailing list, and we won't share what you wrote without your permission. If you ever want us to delete your emails, just ask and we will.</p>
+<h2>Interactive labs</h2><p>Our interactive workbenches in <a href="/labs/">Labs</a>, including <a href="/labs/shared-horizon/">Shared Horizon</a> and <a href="/labs/observatory/">the Observatory</a>, run directly in your browser with the same zero-cookie, zero-tracker standard. To see why local data custody anchors our architecture, read our <a href="/vision/">vision</a> or browse <a href="/support/">common questions</a>. See our <a href="/cookies/">cookie notice</a>, <a href="/terms/">terms of use</a>, or <a href="/contact/">contact page</a> if you have questions.</p>
+<h2>Changes</h2><p>If our practices ever change, we'll update this page and tell you clearly so you can decide what you're comfortable with. Last updated: November 6, 2026.</p></div>

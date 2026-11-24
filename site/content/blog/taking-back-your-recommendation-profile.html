@@ -1,0 +1,264 @@
+---
+title: Taking back your recommendation profile
+description: The feeds you use every day map what you care about. You should be able to inspect that map, edit it, and carry it with you when you leave.
+reader: Anyone who has felt trapped by an algorithmic feed they spent years shaping, as well as researchers and policy makers working on platform switching and user control.
+takeaway: The profile of your tastes should stay on your own device. You should be able to read it, correct it, filter what hooks you, and take it to any service you choose.
+template: article
+date: 2026-11-06
+order: 12
+category: Owning
+minutes: 9
+image: post-taking-back-your-recommendation-profile.jpg
+image_alt: A leather-bound field notebook with pressed botanical leaves and a small brass compass resting beside an open traveller's satchel in front of a stone archway between two classical bookshops.
+lede: The profile of your tastes that AI recommendation systems build should belong to you on your own device. It should be something you can read, correct, and take with you when you switch services.
+---
+<p>Years of use teach an app what you enjoy, what you want to learn and what holds your attention. That profile sits on the company's servers. You can't read it, can't remove what no longer fits, and lose it if you leave. It also mixes what genuinely helps you with whatever keeps you scrolling, because the platform is paid for the second.</p>
+
+<h2>Why big feeds seem to read your mind</h2>
+
+<p>When a feed suggests a gentle piece of guitar music right when you need to focus, it is not magic. When it surfaces a woodworking tutorial that matches the exact joint you are cutting, there is a simple reason. Every pause, two-second skip, replay, or saved article updates your place on a vast map of human tastes.</p>
+
+<p>Because these systems compare your choices with millions of other people's choices, they often spot connections you have not put into words yet. Two thousand people who loved the same obscure history podcast also loved a particular local novelist, so the system bridges the gap. That part of modern discovery is genuinely useful.</p>
+
+<p>The catch is who owns the map, and what the map is built to optimise. Today, your taste profile sits on a distant company's servers. It is written in opaque rows of numbers you are never allowed to inspect, and it is tuned above all to keep your eyes glued to the screen for one more advertisement.</p>
+
+<h2>Separating what you love from how they hook you</h2>
+
+<p>Most commercial feeds do not distinguish between what nourishes you and what hijacks your attention. To an engagement counter, forty minutes spent learning to repair a bicycle and forty minutes spent angry at strangers after midnight look equally successful.<sup><a href="#fn1">1</a></sup></p>
+
+<p>That is how the department store traps you in the candy aisle. If you slow down once to rubberneck at an argument or click on an alarming headline when you are tired, the dossier marks you down as someone who wants more outrage tomorrow. Within a week, the shelf in front of you is stacked with sugar and salt.</p>
+
+<p>If an assistant working for you simply copied a platform's profile raw, it would copy those traps along with the genuine insight. We think a profile you own should split those two halves cleanly apart:</p>
+
+<ul>
+<li><strong>What you stand behind when rested:</strong> the questions, crafts, writers, recipes, and music that leave you glad you spent the time.</li>
+<li><strong>Your tripwires:</strong> the patterns that reliably pull you into late-night scrolling, comparison spirals, or impulse clicks that you regret the next morning.</li>
+</ul>
+
+<p>Both halves help you once they live on your own device. The first half acts like your personal library card catalogue, teaching your assistant what you genuinely care about. The second half acts as a mirror and a shield, letting you spot when a feed is leaning on your weak spots and turn the volume down.</p>
+
+<div class="callout"><p class="label">What this means</p><p>You shouldn't have to choose between a system that knows your tastes and a system you control. When your profile lives on your own device, you can keep the insight, filter out the manipulation, and carry your preferences to any new service you try.</p></div>
+
+<figure class="explainer" id="ex-profile-portability">
+  <style>
+    #ex-profile-portability {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-accent: #1F6B4E;
+      --ex-warn: #9E4726;
+      --ex-amber: #805113;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    #ex-profile-portability svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-profile-portability .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    #ex-profile-portability [role="button"] {
+      cursor: pointer;
+      transition: opacity 160ms ease;
+    }
+    #ex-profile-portability [role="button"]:hover,
+    #ex-profile-portability [role="button"]:focus-visible {
+      opacity: 0.88;
+      outline: 2px solid var(--ex-accent);
+      outline-offset: 2px;
+    }
+    #ex-profile-portability .ex-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem 1.5rem;
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    #ex-profile-portability .ex-spec-col {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--ex-rule);
+    }
+    #ex-profile-portability .ex-spec-col.is-signal {
+      border-left-color: var(--ex-signal);
+    }
+    #ex-profile-portability .ex-spec-col.is-warn {
+      border-left-color: var(--ex-warn);
+    }
+    #ex-profile-portability .ex-spec-kicker {
+      display: block;
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ex-muted);
+      margin-bottom: 0.25rem;
+    }
+    #ex-profile-portability .ex-spec-body {
+      color: var(--ex-ink);
+    }
+    @media (max-width: 640px) {
+      #ex-profile-portability .ex-spec-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+      #ex-profile-portability .ex-canvas {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      #ex-profile-portability .ex-canvas svg {
+        min-width: 540px;
+      }
+    }
+    #ex-profile-portability figcaption {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+  </style>
+  <div class="ex-canvas">
+    <svg viewBox="0 0 680 320" role="group" aria-labelledby="ex-profile-title ex-profile-desc">
+      <title id="ex-profile-title">Comparing platform-locked feed profiles with user-owned portable profiles</title>
+      <desc id="ex-profile-desc">Side-by-side comparison showing a platform-locked profile trapped on cloud servers and optimized for screen dwell time on the left, versus a user-owned profile stored on your phone that splits genuine interests from engagement traps and ports to new services on the right.</desc>
+      <line x1="340" y1="14" x2="340" y2="306" stroke="var(--ex-rule)" stroke-width="1"/>
+      <g id="ex-profile-left-card">
+        <rect x="16" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="30" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">PLATFORM-LOCKED PROFILE</text>
+        <line x1="16" y1="34" x2="328" y2="34" stroke="var(--ex-warn)" stroke-width="1.25"/>
+        <line x1="23" y1="52" x2="23" y2="225" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+        <rect x="20" y="48" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="34" y="54" font-size="10.5" font-weight="600" fill="var(--ex-muted)">Where it lives</text>
+        <text x="34" y="70" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Locked on corporate cloud servers</text>
+        <line x1="34" y1="95" x2="328" y2="95" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="20" y="105" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="34" y="111" font-size="10.5" font-weight="600" fill="var(--ex-muted)">What it mixes</text>
+        <text x="34" y="127" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Blends genuine tastes with rage bait</text>
+        <line x1="34" y1="152" x2="328" y2="152" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="20" y="162" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="34" y="168" font-size="10.5" font-weight="600" fill="var(--ex-muted)">Primary goal</text>
+        <text x="34" y="184" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Maximizes screen dwell time and ads</text>
+        <line x1="34" y1="209" x2="328" y2="209" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="20" y="219" width="6" height="6" fill="var(--ex-warn)"/>
+        <text class="ex-mono" x="34" y="225" font-size="10.5" font-weight="600" fill="var(--ex-muted)">Switching apps</text>
+        <text x="34" y="241" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Locked in vault; you start from zero</text>
+        <line x1="16" y1="282" x2="328" y2="282" stroke="var(--ex-rule)" stroke-width="1"/>
+        <text x="16" y="298" font-size="11" font-weight="700" fill="var(--ex-warn)">Status: Walled garden lock-in</text>
+      </g>
+      <g id="ex-profile-right-card">
+        <rect x="356" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="370" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">USER-OWNED PROFILE</text>
+        <line x1="356" y1="34" x2="664" y2="34" stroke="var(--ex-signal)" stroke-width="1.25"/>
+        <line x1="363" y1="52" x2="363" y2="225" stroke="var(--ex-signal)" stroke-width="1"/>
+        <rect x="360" y="48" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="374" y="54" font-size="10.5" font-weight="600" fill="var(--ex-accent)">Where it lives</text>
+        <text x="374" y="70" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Stored privately on your own device</text>
+        <line x1="374" y1="95" x2="664" y2="95" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="360" y="105" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="374" y="111" font-size="10.5" font-weight="600" fill="var(--ex-accent)">What it separates</text>
+        <text x="374" y="127" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Keeps real interests; mutes hooks</text>
+        <line x1="374" y1="152" x2="664" y2="152" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="360" y="162" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="374" y="168" font-size="10.5" font-weight="600" fill="var(--ex-accent)">Primary goal</text>
+        <text x="374" y="184" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Supports your chosen reflective intent</text>
+        <line x1="374" y1="209" x2="664" y2="209" stroke="var(--ex-rule)" stroke-width="1"/>
+        <rect x="360" y="219" width="6" height="6" fill="var(--ex-signal)"/>
+        <text class="ex-mono" x="374" y="225" font-size="10.5" font-weight="600" fill="var(--ex-accent)">Switching apps</text>
+        <text x="374" y="241" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Decoupled profile ports to any feed</text>
+        <line x1="356" y1="282" x2="664" y2="282" stroke="var(--ex-rule)" stroke-width="1"/>
+        <text id="ex-profile-status" x="356" y="298" font-size="11.5" font-weight="700" fill="var(--ex-signal)">Portable Profile</text>
+        <g id="ex-profile-toggle" role="button" tabindex="0" aria-pressed="false" aria-controls="ex-profile-status ex-profile-left-card ex-profile-right-card" aria-label="Highlight Portable: Toggle profile highlight">
+          <rect x="546" y="285" width="118" height="22" rx="2" fill="#9E4726" stroke="var(--ex-signal)" stroke-width="1"/>
+          <text x="605" y="300" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">Highlight Portable</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div class="ex-spec-grid">
+    <div class="ex-spec-col is-warn">
+      <span class="ex-spec-kicker">Platform vault</span>
+      <div class="ex-spec-body">Engagement algorithms fuse deliberate curiosity with compulsive late-night clicks and lock both inside one app.</div>
+    </div>
+    <div class="ex-spec-col is-signal">
+      <span class="ex-spec-kicker">Decoupled user card</span>
+      <div class="ex-spec-body">Inspectable local preference cards travel across services while stripping out dwell-time traps.</div>
+    </div>
+  </div>
+  <figcaption>Comparing today's cloud-locked recommendation profiles with user-owned portable profiles. Decoupled profiles let you move between services without starting over, while filtering out addictive engagement loops (Buhayh et al., ACM UMAP 2026).</figcaption>
+</figure>
+
+<h2>Editing your own lens when life changes</h2>
+
+<p>Think about how often a human life changes chapter. You spend six months researching knee surgery, and then your knee heals. You plan a wedding, or help a parent move house, or finish a degree, and then that season is over.</p>
+
+<p>Platform feeds are notoriously bad at letting go of who you used to be. Because you clicked on fifty articles about knee braces in January, the algorithm keeps serving you medical anxiety in October. Worse, if you spent a rough week scrolling through bitter political fights, the feed treats that rough week as your permanent personality.</p>
+
+<p>When your recommendation profile works like a personal eyeglass prescription in your pocket, you can read it and adjust it whenever your needs change. You can open your notebook on Sunday and cross out old topics. You can ask for thoughtful essays on gardening rather than two-minute clips of people shouting at council meetings.</p>
+
+<p>Because the file is yours, the change takes effect immediately across every discovery tool you use. You do not have to plead with an algorithm by clicking "not interested" a hundred times in the dark.</p>
+
+<p>Recent benchmarking of natural-language profiles shows that editing plain notes gives people far sharper control than silent click tracking. When an assistant lets you write and edit your own preferences, recommendations respect your explicit boundaries much better.<sup><a href="#fn5">5</a></sup> Still, models need careful testing so they follow subtle and niche requests reliably.</p>
+
+<h2>Walking across the street without starting over</h2>
+
+<p>Right now, leaving a large platform feels like losing years of memory. Any new service starts cold, knowing nothing about you. Existing data-protection laws mostly let you download raw click logs, thousands of cryptic timestamps and web addresses, not the living taste profile built from them.<sup><a href="#fn2">2</a></sup></p>
+
+<p>We propose a simpler approach. An assistant running on your own computer can watch what your feeds show you and combine that with your history exports. From those clues, it can rebuild a clean, readable map of your interests locally.</p>
+
+<p>Combining several sources on your own device makes the picture much steadier than any single platform could ever see. A short-post network mostly sees what you argue about; a video site sees what practical skills you want to learn; a music app sees how you unwind after work. Brought together privately on your own hardware, the blind spots of any single platform cancel out.</p>
+
+<p>When you visit a new community forum, an independent bookshop, or a small podcast directory, your assistant does not hand over the whole notebook. Like pulling one index card from your personal library catalogue to show a librarian, it shares only the narrow clue needed to answer today's request.</p>
+
+<p>Simulation studies suggest that letting people choose their recommendation algorithm benefits niche users and creators. A 2026 study adds a caution: how much users gain when they carry their data to a new algorithm varies a lot between algorithms.<sup><a href="#fn4">4</a></sup> Small services can compete on the quality of their catalogue and their community rules, rather than on how much surveillance data they have hoarded.</p>
+
+<h2>Where this is hard</h2>
+
+<p>Several parts of this problem are genuinely tricky:</p>
+
+<ul>
+<li><strong>Shared devices blur the picture.</strong> If two people in a household share one television or tablet account, a naive import mixes their tastes together, blending cartoons with crime dramas. An assistant has to notice distinct clusters and ask which ones are yours.</li>
+<li><strong>A clumsy filter can hide hard truths.</strong> If your assistant mistakes an upsetting subject you truly care about, like a local flood or a school board dispute, for cheap outrage bait, the shield becomes a blindfold. You must always be able to see what was set aside and change the rule yourself.</li>
+<li><strong>Comfort can shrink your world.</strong> If recommendations only ever match your past habits, serendipity disappears. A good profile leaves deliberate room for bridge ideas, books, music, and essays that very different communities found worthwhile.</li>
+<li><strong>Repeated questions can leak clues.</strong> Even when your assistant shares only a small slice of your tastes with an outside catalogue, a clever server could stitch many requests together over time. Keeping those queries private requires careful limits on how often and how specifically your assistant speaks to untrusted servers.</li>
+</ul>
+
+<h2>What to ask for next</h2>
+
+<p>Laws like the European Union's Digital Services Act now require large platforms to explain how their feeds rank posts. They also require at least one feed option that does not rely on personal profiling.<sup><a href="#fn3">3</a></sup></p>
+
+<p>That is a real step forward, but switching a profile off is not the same as taking it with you. Turning profiling off leaves you with a generic firehose of whatever is most popular across the whole country today.</p>
+
+<p>The next step for both software builders and policy makers is practical interoperability: letting people bring their own local recommender to query a service's catalogue without handing over their full history. When platforms must compete as open shelves rather than locked vaults, they have to earn your presence every day.</p>
+
+<p>The map of what you care about was built from years of your attention. It belongs in your own pocket, like your eyeglass prescription and your library card catalogue. You should be able to read it, cross out who you used to be, and carry it into any shop you choose.</p>
+
+<aside class="for-researchers"><details><summary>For researchers</summary><div><p>In our technical notes we study client-side preference distillation and cross-platform de-biasing. An on-device model infers a user's latent preference representation from ranked slate observations and GDPR Article 20 exports, separating endorsed long-term utility from impulsive engagement triggers inside an Object-Capability sandbox.</p><p>Key open problems include identifiability under slate confounding and adversarial slate manipulation, household multi-user disentanglement, cumulative privacy leakage across repeated selective-disclosure queries, and exploration guarantees against filter bubbles.</p></div></details></aside>
+
+<section class="footnotes">
+<p id="fn1">1. On the gap between engagement optimisation and reflective human values in recommender systems, see Jonathan Stray et al., "Building Human Values into Recommender Systems: An Interdisciplinary Synthesis," <em>ACM Transactions on Recommender Systems</em> 2, no. 3, Article 20 (2024), <a href="https://doi.org/10.1145/3632297">doi:10.1145/3632297</a> (<a href="https://arxiv.org/abs/2207.10192">arXiv:2207.10192</a>).</p>
+<p id="fn2">2. Regulation (EU) 2016/679 (General Data Protection Regulation), Article 20, "Right to data portability," which covers personal data actively provided by the data subject but generally excludes inferred algorithmic profiles. <a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj">eur-lex.europa.eu/eli/reg/2016/679/oj</a></p>
+<p id="fn3">3. Regulation (EU) 2022/2065 (Digital Services Act), Article 27 ("Recommender system transparency") and Article 38 ("Recommender systems," requiring very large online platforms to offer at least one option not based on profiling). <a href="https://eur-lex.europa.eu/eli/reg/2022/2065/oj">eur-lex.europa.eu/eli/reg/2022/2065/oj</a></p>
+<p id="fn4">4. Anas Buhayh, Elizabeth McKinnie, Clement Canel, and Robin Burke, "Multistakeholder Impacts of Profile Portability in a Recommender Ecosystem," <em>34th ACM Conference on User Modeling, Adaptation and Personalization (UMAP '26)</em> (arXiv:2604.21750), <a href="https://arxiv.org/abs/2604.21750">arxiv.org/abs/2604.21750</a>.</p>
+<p id="fn5">5. Joyce Zhou, Weijie Zhou, Doug Turnbull, and Thorsten Joachims, "SteerEval: A Framework for Evaluating Steerability with Natural Language Profiles for Recommendation," arXiv preprint <a href="https://arxiv.org/abs/2601.21105">arXiv:2601.21105</a> (2026).</p>
+</section>
