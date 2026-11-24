@@ -1,14 +1,14 @@
 {
  "updated": "2026-11-24",
  "totals": {
-  "action_cards": 541,
-  "encounters": 414,
+  "action_cards": 543,
+  "encounters": 415,
   "institutions": 348
  },
  "by_role": {
   "general_public": {
    "label": "01 · Citizen",
-   "action_cards": 59,
+   "action_cards": 60,
    "institutions": 42,
    "sample_institutions": [
     "American Library Association (ALA)",
@@ -58,7 +58,7 @@
   },
   "civil_society": {
    "label": "06 · Civil Society & Co-ops",
-   "action_cards": 94,
+   "action_cards": 95,
    "institutions": 69,
    "sample_institutions": [
     "Access Now",
@@ -5696,6 +5696,15 @@
    "status": "verified"
   },
   {
+   "id": "card.civil_society.audit-data-centre-lobbying-and-database-diffs-before-rollouts",
+   "role": "civil_society",
+   "title": "Audit data-centre ministerial lobbying and whole-database diffs before rollouts",
+   "description": "Communities lose control of power grids and co-op books when permits bypass local councils and tests check only surface scores. In November 2026, Transparency International Australia tracked 119 ministerial meetings by 10 data-centre operators, 93 external lobbyists, and fast-track laws that strip council oversight. Meanwhile, Shubham Joshi's 635-run accounting benchmark found an Odoo upgrade kept surface completion at 76 percent while raising collateral database damage to 21 percent. Junlin Wang's team also found defects in 25.7 percent of 168 benchmark tests.",
+   "url": "https://www.transparency.org.au/media-release-data-centre-lobbying-of-government-a-growing-corruption-risk",
+   "grade": "A",
+   "status": "verified"
+  },
+  {
    "id": "card.civil_society.audit-multi-agent-collusion-via-public-governance-graphs",
    "role": "civil_society",
    "title": "Audit multi-agent market collusion using public governance graphs",
@@ -7141,6 +7150,15 @@
    "title": "Keep personal memory diaries verbatim and verify local search indexes",
    "description": "Saved memory notes and precomputed search indexes can steer what an AI assistant shows you without changing a word of your diary. Controlled trials show that a single stored publisher preference shifts top cited sources by 33 to 39 percentage points. Meanwhile, model-written summaries drop user rules, and tampered search vectors cut local answer accuracy from 75 percent to 39 percent. Households should keep raw notes append-only on local hardware, display active memory tags, and check index codes on the device.",
    "url": "https://arxiv.org/abs/2611.03939",
+   "grade": "A",
+   "status": "verified"
+  },
+  {
+   "id": "card.general_public.keep-wallet-and-backup-metadata-out-of-cloud-search-accounts",
+   "role": "general_public",
+   "title": "Keep wallet history and backup metadata out of linked cloud search accounts",
+   "description": "Linking payments, files, and backup accounts inside one cloud login exposes family routines. In November 2026, Google Search connected Google Wallet, Drive, and Gemini chat logs directly into search answers. Backblaze also updated its terms effective December 1, 2026 to share account IDs, billing records, and location metadata for targeted ads unless users opt out, even when backup files are encrypted. Meanwhile, Sukjun Hwang, Brandon Wang, and Albert Gu built dynamic byte chunking in H-Net so compact local models can read raw text and code on home laptops.",
+   "url": "https://blog.google/products-and-platforms/products/search/google-search-personal-intelligence-apps/",
    "grade": "A",
    "status": "verified"
   },
