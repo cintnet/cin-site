@@ -619,9 +619,88 @@ def post_card(a: dict, tint: int, assets_dir: Path | None = None, eager: bool = 
 </a>"""
 
 
-def render_article(meta: dict, articles: list[dict]) -> str:
+NO_COMMENT_ROUTES = frozenset({"/privacy/", "/terms/", "/cookies/", "/contact/", "/404/"})
+DISCUSSIONS_REPO = "cintnet/cin-site"
+
+
+def load_page_discussions(assets_dir: Path | None = None) -> dict:
+    base = assets_dir if assets_dir is not None else ASSETS
+    p = base / "data" / "page-discussions.json"
+    if not p.is_file():
+        return {"routes": {}}
+    try:
+        data = json.loads(p.read_text(encoding="utf-8"))
+        return data if isinstance(data, dict) else {"routes": {}}
+    except Exception:
+        return {"routes": {}}
+
+
+def render_comments(meta: dict, discussions_index: dict | None = None) -> str:
+    """Render a zero-tracking, cookie-free page comments section backed by GitHub Discussions."""
+    route = meta.get("route", "")
+    if not route or route in NO_COMMENT_ROUTES:
+        return ""
+    flag = str(meta.get("comments", "")).strip().lower()
+    if flag in {"false", "off", "no", "none", "0"}:
+        return ""
+
+    from urllib.parse import quote
+
+    title = meta.get("title") or meta.get("heading") or route
+    routes_map = (discussions_index or {}).get("routes") or {}
+    entry = routes_map.get(route) if isinstance(routes_map, dict) else None
+
+    if isinstance(entry, dict) and entry.get("discussion_url"):
+        gh_url = str(entry["discussion_url"])
+        gh_label = "Reply on GitHub Discussions"
+        raw_comments = entry.get("comments") or []
+    else:
+        disc_title = quote(f"[{route}] {title}", safe="")
+        gh_url = f"https://github.com/{DISCUSSIONS_REPO}/discussions/new?category=general&title={disc_title}"
+        gh_label = "Comment on GitHub Discussions"
+        raw_comments = []
+
+    mail_subj = quote(f"Feedback: {title} ({route})", safe="")
+    mail_url = f"mailto:contact@collectiveintelligencenetwork.org?subject={mail_subj}"
+
+    items_html = ""
+    if raw_comments:
+        cards = []
+        for c in raw_comments[:20]:
+            if not isinstance(c, dict):
+                continue
+            author = esc(str(c.get("author") or "community"))
+            cdate = esc(str(c.get("created_at") or ""))
+            cbody = esc(str(c.get("body") or ""))
+            if not cbody:
+                continue
+            meta_line = f"{author} · {cdate}" if cdate else author
+            cards.append(
+                f'<li class="comment-card"><p class="comment-meta">{meta_line}</p><p class="comment-body">{cbody}</p></li>'
+            )
+        if cards:
+            items_html = f'<ol class="comment-list">{"".join(cards)}</ol>'
+
+    return (
+        '<section class="page-comments wrap-narrow" id="comments" aria-labelledby="comments-heading">'
+        '<h2 id="comments-heading">Questions, critiques, and comments</h2>'
+        '<p class="comment-intro">Spotted an error, a missing primary source, or an angle we should test next? '
+        'Add a public comment on GitHub Discussions or send an email. '
+        'Valid critiques feed into our <a href="/corrections/">public corrections</a> ledger and follow-up research. '
+        'No third-party scripts or cookies load on this page.</p>'
+        f'{items_html}'
+        '<div class="comment-actions">'
+        f'<a class="comment-btn comment-btn-primary" href="{esc(gh_url)}" rel="noopener noreferrer">{esc(gh_label)}</a>'
+        f'<a class="comment-btn comment-btn-secondary" href="{esc(mail_url)}">Send feedback by email</a>'
+        '</div>'
+        '</section>'
+    )
+
+
+def render_article(meta: dict, articles: list[dict], discussions_index: dict | None = None) -> str:
     others = [a for a in articles if a["route"] != meta["route"]][:3]
     recent = "".join(post_card(a, i) for i, a in enumerate(others))
+    comments_html = render_comments(meta, discussions_index)
     return f"""<article class="article">
   <header class="article-head wrap-narrow reveal">
     <p class="meta"><a href="/blog/">Blog</a> · {esc(meta['category'])} · <time datetime="{esc(meta['date'])}">{nice_date(meta['date'])}</time> · {esc(meta['minutes'])} min read</p>
@@ -634,6 +713,7 @@ def render_article(meta: dict, articles: list[dict]) -> str:
   </div>
   <p class="wrap-narrow back"><a href="/blog/">← All articles</a></p>
 </article>
+{comments_html}
 <section class="recent wrap"><h2 class="section-h">Recent articles</h2><div class="post-grid">{recent}</div></section>"""
 
 
@@ -816,15 +896,17 @@ def enrich_collapsible_disclosures(html_str: str) -> str:
     return out
 
 
-def render_page(meta: dict) -> str:
+def render_page(meta: dict, discussions_index: dict | None = None) -> str:
     eyebrow = f'<p class="eyebrow">{esc(meta["eyebrow"])}</p>' if meta.get("eyebrow") else ""
     lede = f'<p class="lede">{meta["lede"]}</p>' if meta.get("lede") else ""
     head_cls = "page-head head-wide" if meta.get("layout") == "wide" else "page-head"
+    comments_html = render_comments(meta, discussions_index)
     return f"""<header class="{head_cls} reveal">{eyebrow}<h1>{esc(meta['title'] if not meta.get('heading') else meta['heading'])}</h1>{lede}</header>
 <div class="wrap-wide">{figure(meta, 'art art-wide')}</div>
 <div class="page-body">
 {meta['body']}
-</div>"""
+</div>
+{comments_html}"""
 
 
 # ---------------------------------------------------------------- checks
@@ -8035,15 +8117,16 @@ def build() -> int:
 
     pages: dict[str, str] = {}
     errors: list[str] = []
+    discussions_index = load_page_discussions()
     errors += check_duplicates(metas)
     errors += check_citations_and_prose(metas)
     for m in metas:
         if m["template"] == "article":
-            main = render_article(m, articles)
+            main = render_article(m, articles, discussions_index)
         elif m["template"] == "home":
             main = m["body"]
         else:
-            main = render_page(m)
+            main = render_page(m, discussions_index)
         main = main.replace("{{recent_posts}}", "".join(post_card(a, i, eager=True) for i, a in enumerate(articles[:3])))
         main = main.replace("{{all_posts}}", "".join(post_card(a, i, eager=(i < 6)) for i, a in enumerate(articles)))
         if "{{shared_horizon_atlas}}" in main:

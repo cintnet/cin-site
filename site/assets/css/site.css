@@ -2380,4 +2380,157 @@ a.card:focus-visible { outline: 2px solid var(--forest-bright); outline-offset: 
     color: #333;
     word-break: break-all;
   }
+
+  .page-comments .comment-actions {
+    display: none;
+  }
+}
+
+/* Zero-tracking site-wide page comments & critique section */
+.page-comments {
+  margin-top: 3.2rem;
+  margin-bottom: 2.8rem;
+  padding: 1.75rem 1.85rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.page-comments h2 {
+  margin: 0 0 0.65rem;
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 2.2vw, 1.65rem);
+  font-weight: 600;
+  color: var(--ink);
+}
+.page-comments .comment-intro {
+  margin: 0 0 1.25rem;
+  color: var(--ink-2);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+.page-comments .comment-list {
+  list-style: none;
+  margin: 0 0 1.35rem;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+.page-comments .comment-card {
+  padding: 0.95rem 1.1rem;
+  background: var(--canvas);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+.page-comments .comment-meta {
+  margin: 0 0 0.35rem;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--ink-3);
+}
+.page-comments .comment-body {
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.96rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+.page-comments .comment-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.page-comments .comment-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.62rem 1.1rem;
+  border-radius: 999px;
+  font-size: 0.94rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.16s var(--ease), color 0.16s var(--ease), border-color 0.16s var(--ease);
+}
+.page-comments .comment-btn-primary {
+  background: var(--forest);
+  color: #FAF3EA;
+  border: 1px solid var(--forest);
+}
+.page-comments .comment-btn-primary:hover {
+  background: var(--forest-mid);
+  color: #FAF3EA;
+}
+.page-comments .comment-btn-secondary {
+  background: transparent;
+  color: var(--forest);
+  border: 1px solid var(--border);
+}
+.page-comments .comment-btn-secondary:hover {
+  background: var(--surface-sand);
+  border-color: var(--forest);
+}
+@media (max-width: 600px) {
+  .page-comments {
+    padding: 1.25rem 1.15rem;
+    border-radius: 18px;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .page-comments {
+    background: #221F2A;
+    border-color: #322E3D;
+  }
+  .page-comments h2,
+  .page-comments .comment-body {
+    color: #EDE6DC;
+  }
+  .page-comments .comment-intro,
+  .page-comments .comment-meta {
+    color: #B4ACA1;
+  }
+  .page-comments .comment-card {
+    background: #18161E;
+    border-color: #322E3D;
+  }
+  .page-comments .comment-btn-primary {
+    background: #8FD4B6;
+    border-color: #8FD4B6;
+    color: #131014;
+  }
+  .page-comments .comment-btn-secondary {
+    color: #8FD4B6;
+    border-color: #3D4A45;
+  }
+}
+:root[data-theme="dark"] .page-comments,
+[data-theme="dark"] .page-comments {
+  background: #221F2A;
+  border-color: #322E3D;
+}
+:root[data-theme="dark"] .page-comments h2,
+:root[data-theme="dark"] .page-comments .comment-body,
+[data-theme="dark"] .page-comments h2,
+[data-theme="dark"] .page-comments .comment-body {
+  color: #EDE6DC;
+}
+:root[data-theme="dark"] .page-comments .comment-intro,
+:root[data-theme="dark"] .page-comments .comment-meta,
+[data-theme="dark"] .page-comments .comment-intro,
+[data-theme="dark"] .page-comments .comment-meta {
+  color: #B4ACA1;
+}
+:root[data-theme="dark"] .page-comments .comment-card,
+[data-theme="dark"] .page-comments .comment-card {
+  background: #18161E;
+  border-color: #322E3D;
+}
+:root[data-theme="dark"] .page-comments .comment-btn-primary,
+[data-theme="dark"] .page-comments .comment-btn-primary {
+  background: #8FD4B6;
+  border-color: #8FD4B6;
+  color: #131014;
+}
+:root[data-theme="dark"] .page-comments .comment-btn-secondary,
+[data-theme="dark"] .page-comments .comment-btn-secondary {
+  color: #8FD4B6;
+  border-color: #3D4A45;
 }

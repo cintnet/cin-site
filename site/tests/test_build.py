@@ -145,6 +145,35 @@ class SiteTests(unittest.TestCase):
         self.assertIn('<span class="status">Early · In development</span><h3>Observatory</h3>', index_body)
         self.assertIn('<span class="status">Early · In development</span><h3>Observatory</h3>', labs_index_body)
 
+    def test_zero_tracking_page_comments_render_and_escape_safely(self):
+        research_html = (build.DIST / "research" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('id="comments"', research_html)
+        self.assertIn("https://github.com/cintnet/cin-site/discussions", research_html)
+        self.assertIn("mailto:contact@collectiveintelligencenetwork.org", research_html)
+        self.assertNotIn("giscus.app", research_html)
+
+        privacy_html = (build.DIST / "privacy" / "index.html").read_text(encoding="utf-8")
+        self.assertNotIn('id="comments"', privacy_html)
+
+        fixture = {
+            "routes": {
+                "/research/": {
+                    "discussion_url": "https://github.com/cintnet/cin-site/discussions/42",
+                    "comments": [
+                        {
+                            "author": "alice",
+                            "created_at": "2026-11-24",
+                            "body": "<script>alert(1)</script>Check RFC 9334 reference.",
+                        }
+                    ],
+                }
+            }
+        }
+        rendered = build.render_comments({"route": "/research/", "title": "Research"}, fixture)
+        self.assertIn("https://github.com/cintnet/cin-site/discussions/42", rendered)
+        self.assertIn("&lt;script&gt;alert(1)&lt;/script&gt;", rendered)
+        self.assertNotIn("<script>", rendered)
+
 
 if __name__ == "__main__":
     unittest.main()
