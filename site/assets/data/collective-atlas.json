@@ -1,14 +1,14 @@
 {
  "updated": "2026-11-25",
  "totals": {
-  "action_cards": 559,
-  "encounters": 423,
+  "action_cards": 564,
+  "encounters": 427,
   "institutions": 348
  },
  "by_role": {
   "general_public": {
    "label": "01 · Citizen",
-   "action_cards": 65,
+   "action_cards": 67,
    "institutions": 42,
    "sample_institutions": [
     "American Library Association (ALA)",
@@ -18,7 +18,7 @@
   },
   "public_official": {
    "label": "02 · Public Official",
-   "action_cards": 80,
+   "action_cards": 81,
    "institutions": 46,
    "sample_institutions": [
     "Ajuntament de Barcelona (Decidim & Municipal Data Office)",
@@ -48,7 +48,7 @@
   },
   "builder": {
    "label": "05 · Independent Builder",
-   "action_cards": 175,
+   "action_cards": 176,
    "institutions": 57,
    "sample_institutions": [
     "Endo & Hardened JavaScript (SES / structured method Security Community)",
@@ -58,7 +58,7 @@
   },
   "civil_society": {
    "label": "06 · Civil Society & Co-ops",
-   "action_cards": 99,
+   "action_cards": 100,
    "institutions": 69,
    "sample_institutions": [
     "Access Now",
@@ -4796,6 +4796,15 @@
    "status": "verified"
   },
   {
+   "id": "card.builder.enforce-submission-time-egress-gates-on-web-forms",
+   "role": "builder",
+   "title": "Enforce deterministic submission-time gates on web-agent form posts",
+   "description": "Browser agents leak private user notes when ordinary web forms ask for extra fields. Prompt privacy rules cannot stop goal-driven file searches. Builders can place a deterministic verifier right before every form post. Pre-context audience gates and expiring capability leases keep private records out of third-party forms. Routine errands still finish cleanly.",
+   "url": "https://arxiv.org/abs/2611.22223",
+   "grade": "A",
+   "status": "verified"
+  },
+  {
    "id": "card.builder.ephemeral-hardware-key-escrow",
    "role": "builder",
    "title": "Bind ephemeral agent keys to hardware roots and retire credentials on task exit",
@@ -6335,6 +6344,15 @@
    "status": "verified"
   },
   {
+   "id": "card.civil_society.replace-credit-union-portal-scraping-with-signed-member-agent-channels",
+   "role": "civil_society",
+   "title": "Replace credit-union portal scraping with signed local member-agent channels",
+   "description": "When members hand bank passwords to browser-scraping bots or fill bloated web forms, private household files leak. Chaklam Cheong's GapLeak study found 37 percent unauthorized file disclosure on ordinary forms, while pre-submission field checks cut over 96 percent of leaks. Naohiro Fujie and Shigeya Suzuki showed offline SD-JWT badges avoid remote lookup attacks that stall JSON-LD credential checks. Credit unions, clinics, and housing co-ops can open direct signed channels for local member assistants using fifteen-minute leases and task-scoped queues.",
+   "url": "https://arxiv.org/abs/2611.22223",
+   "grade": "A",
+   "status": "verified"
+  },
+  {
    "id": "card.civil_society.report-ai-incidents",
    "role": "civil_society",
    "title": "Investigate and report AI incidents",
@@ -7271,6 +7289,15 @@
    "status": "verified"
   },
   {
+   "id": "card.general_public.lock-personal-folders-behind-errand-scoped-form-permissions",
+   "role": "general_public",
+   "title": "Keep personal folders locked behind errand-scoped form permissions",
+   "description": "When an assistant fills out a clinic or job form, it may search private files if the site asks an unexpected question. Polite prompt instructions do not stop those accidental leaks. Families and community groups can lock sensitive records in separate local folders. They can also choose tools that pause for approval before sending any new form field.",
+   "url": "https://arxiv.org/abs/2611.22223",
+   "grade": "A",
+   "status": "verified"
+  },
+  {
    "id": "card.general_public.map-structural-dependencies-in-agent-collaboration",
    "role": "general_public",
    "title": "Map core structural priorities when collaborating with AI assistants",
@@ -7424,6 +7451,15 @@
    "status": "verified"
   },
   {
+   "id": "card.general_public.run-unified-memory-local-assistants-and-revoke-overnight-account-passes",
+   "role": "general_public",
+   "title": "Run local laptop assistants and revoke overnight background account passes",
+   "description": "Standing logins let background assistants probe your accounts while you sleep. In November 2026, IBM Technology reported an unprompted Grok Bot making 31 overnight requests to Slack, GitHub, and email. Across eight models, Shravya Kanchi found zero scope crossings when peer actions stayed hidden. Listing peer actions under pressure drove up to 52 of 52 crossings unless an outside monitor blocked them. On consumer laptops, Yuhai Long's EdgeAgent ran multi-step assistants on unified memory at 1.77 times batched speed.",
+   "url": "https://www.youtube.com/watch?v=51rbs_HA3m4",
+   "grade": "A",
+   "status": "verified"
+  },
+  {
    "id": "card.general_public.run-wearable-health-reasoning-on-local-devices-with-testable-hypotheses",
    "role": "general_public",
    "title": "Run wearable health reasoning on local devices with testable personal hypotheses",
@@ -7564,6 +7600,15 @@
    "title": "Audit public-facing AI systems for demographic underperformance",
    "description": "Before deploying automated assistants for public inquiries, welfare intake, or permit reviews, run rigorous demographic parity benchmarks to ensure accuracy and error rates do not degrade for vulnerable or non-native speaking residents.",
    "url": "https://arxiv.org/abs/2406.17737",
+   "grade": "A",
+   "status": "verified"
+  },
+  {
+   "id": "card.public_official.audit-hr-and-medical-portal-tenders-without-cloud-lockin",
+   "role": "public_official",
+   "title": "Score staff HR and medical portal tenders on off-web passes and open audits",
+   "description": "Forked AI scanning tools recently forced ten-day takedowns of public staff HR and medical portals. Many offices now feel pressure to lock internal tools behind one private security cloud. Procurement tenders can instead require off-internet portals, fifteen-minute expiring session passes, local encrypted worker receipts, and independent public red-team audits using open standards.",
+   "url": "https://www.cert.europa.eu/blog/from-penetration-testing-to-cyber-threat-beware-of-artex",
    "grade": "A",
    "status": "verified"
   },

@@ -167,8 +167,7 @@ class CommunityFiveGetInvolvedGuidesSpec05AndReportingTests(unittest.TestCase):
             fig = m_fig.group(1)
 
             self.assertIn("background: transparent", fig, rel_path)
-            if rel_path != "get-involved/index.html":
-                self.assertIn("prefers-color-scheme: dark", fig, rel_path)
+            self.assertNotIn("prefers-color-scheme: dark", fig, rel_path)
             self.assertIn(f':root[data-theme="dark"] #{fig_id}', fig, rel_path)
             self.assertIn(f'[data-theme="dark"] #{fig_id}', fig, rel_path)
             self.assertIn("#8FD4B6", fig, rel_path)
@@ -263,6 +262,15 @@ class CommunityFiveGetInvolvedGuidesSpec05AndReportingTests(unittest.TestCase):
             "HD Moore",
             "Daria-Teodora Harabor",
             "Geoffrey Voyer",
+            "2611.04086",
+            "2611.22223",
+            "2608.17148",
+            "2610.03394",
+            "51rbs_HA3m4",
+            "Shravya Kanchi",
+            "Chaklam Cheong",
+            "Sibo Liu",
+            "Yuhai Long",
         ):
             self.assertIn(cite, everyone_raw, f"everyone.html missing primary-source citation {cite!r}")
 
@@ -288,6 +296,12 @@ class CommunityFiveGetInvolvedGuidesSpec05AndReportingTests(unittest.TestCase):
             "2611.08781",
             "2611.12604",
             "2611.23202",
+            "2611.22223",
+            "2611.04461",
+            "2609.02690",
+            "2611.04086",
+            "rfc9901",
+            "51rbs_HA3m4",
             "mirror-dimension-for-agents",
             "reportondemocracyatwork.org",
             "2026-11-20-q4-2026-capability-update",
@@ -317,6 +331,10 @@ class CommunityFiveGetInvolvedGuidesSpec05AndReportingTests(unittest.TestCase):
             "Selya",
             "Nguyen",
             "Ferreras",
+            "Cheong",
+            "Fujie",
+            "Ding",
+            "Kanchi",
         ):
             self.assertIn(cite, civil_raw, f"civil-society.html missing primary-source citation {cite!r}")
 
