@@ -4,7 +4,7 @@ description: Why no single person or master key should ever direct a fleet of AI
 reader: Policy makers, AI lab leaders and citizens thinking about how to prevent runaway or concentrated power in multi-agent systems.
 takeaway: One person directing one personal assistant is healthy, while actions that affect many people should require agreement that grows with the risk.
 template: article
-date: 2024-07-12
+date: 2026-11-06
 order: 15
 category: Governing
 minutes: 9
@@ -12,7 +12,7 @@ image: post-no-one-should-command-a-swarm.jpg
 image_alt: Two stone pillars on opposite sides of a bridge over a watergate, each fitted with its own brass lock and tended by an independent keeper as birds rise over a quiet valley.
 lede: One person directing their own AI assistant is healthy. One person directing thousands of agents at once is a new kind of power, and actions that affect many people should require agreement from more people as the risk grows.
 ---
-<p>Large undertakings used to need many people to carry them out, and each of them could question an order, warn a colleague or refuse. That friction was messy, and it stopped many disasters. Software agents remove it. One person with one credential can now instruct thousands of agents that don't hesitate or ask whether an instruction makes sense.</p>
+<p>One person directing one personal assistant is healthy, while actions that affect many people should require agreement that grows with the risk. Large undertakings used to need many people to carry them out, and each of them could question an order, warn a colleague or refuse. That friction was messy, and it stopped many disasters. Software agents remove it. One person with one credential can now instruct thousands of agents that don't hesitate or ask whether an instruction makes sense.</p>
 
 <p>Engineers already match controls to consequences: a garden tap turns with one hand, while a dam's floodgates need separate keepers who check the river first. Systems that let agents act at scale need the same graded checks.</p>
 
@@ -39,7 +39,7 @@ lede: One person directing their own AI assistant is healthy. One person directi
       --ex-signal: #0B3F30;
       --ex-accent: #1F6B4E;
       --ex-warn: #9E4726;
-      --ex-amber: #805113;
+      --ex-amber: #9E6820;
       margin: 2.1rem 0;
       padding: 1.35rem 0 1.15rem;
       background: transparent;
@@ -50,6 +50,40 @@ lede: One person directing their own AI assistant is healthy. One person directi
       box-shadow: none;
       color: var(--ex-ink);
     }
+    @media (prefers-color-scheme: dark) {
+      #ex-swarm-locks {
+        --ex-paper: #18161E;
+        --ex-slip: #221F2A;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #A8A095;
+        --ex-rule: #322E3D;
+        --ex-signal: #8FD4B6;
+        --ex-accent: #8FD4B6;
+        --ex-warn: #F09D82;
+        --ex-amber: #D4963E;
+      }
+      #ex-swarm-locks rect[fill="#FAF3EA"] {
+        fill: #221F2A;
+        stroke: #322E3D;
+      }
+    }
+    :root[data-theme="dark"] #ex-swarm-locks,
+    [data-theme="dark"] #ex-swarm-locks {
+      --ex-paper: #18161E;
+      --ex-slip: #221F2A;
+      --ex-ink: #EDE6DC;
+      --ex-muted: #A8A095;
+      --ex-rule: #322E3D;
+      --ex-signal: #8FD4B6;
+      --ex-accent: #8FD4B6;
+      --ex-warn: #F09D82;
+      --ex-amber: #D4963E;
+    }
+    :root[data-theme="dark"] #ex-swarm-locks rect[fill="#FAF3EA"],
+    [data-theme="dark"] #ex-swarm-locks rect[fill="#FAF3EA"] {
+      fill: #221F2A;
+      stroke: #322E3D;
+    }
     #ex-swarm-locks svg {
       display: block;
       width: 100%;
@@ -59,6 +93,12 @@ lede: One person directing their own AI assistant is healthy. One person directi
     #ex-swarm-locks .ex-mono {
       font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
       letter-spacing: 0.05em;
+    }
+    #ex-swarm-locks .diagram-desktop {
+      display: block;
+    }
+    #ex-swarm-locks .diagram-mobile {
+      display: none;
     }
     #ex-swarm-locks .ex-spec-grid {
       display: grid;
@@ -80,9 +120,6 @@ lede: One person directing their own AI assistant is healthy. One person directi
     #ex-swarm-locks .ex-spec-col.is-warn {
       border-left-color: var(--ex-warn);
     }
-    #ex-swarm-locks .ex-spec-col.is-amber {
-      border-left-color: var(--ex-amber);
-    }
     #ex-swarm-locks .ex-spec-kicker {
       display: block;
       font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
@@ -97,10 +134,24 @@ lede: One person directing their own AI assistant is healthy. One person directi
       color: var(--ex-ink);
     }
     @media (max-width: 680px) {
+      #ex-swarm-locks .diagram-desktop {
+        display: none;
+      }
+      #ex-swarm-locks .diagram-mobile {
+        display: block;
+      }
       #ex-swarm-locks .ex-spec-grid {
         grid-template-columns: 1fr;
         gap: 0.75rem;
       }
+    }
+    @media (max-width: 640px) {
+      #ex-swarm-locks .diagram-desktop { display: none; }
+      #ex-swarm-locks .diagram-mobile { display: block; }
+    }
+    @media (max-width: 600px) {
+      #ex-swarm-locks .diagram-desktop { display: none; }
+      #ex-swarm-locks .diagram-mobile { display: block; }
     }
     #ex-swarm-locks figcaption {
       margin-top: 0.9rem;
@@ -111,65 +162,94 @@ lede: One person directing their own AI assistant is healthy. One person directi
       color: var(--ex-muted);
       text-align: left;
     }
-    @media (max-width: 640px) {
-      #ex-swarm-locks .ex-canvas {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-      }
-      #ex-swarm-locks .ex-canvas svg {
-        min-width: 540px;
-      }
-    }
   </style>
-  <div class="ex-canvas">
-    <svg viewBox="0 0 700 350" role="group" aria-labelledby="ex-swarm-locks-title ex-swarm-locks-desc">
-      <title id="ex-swarm-locks-title">Single-key swarm command versus risk-scaled two-key sign-off and local circuit breakers</title>
-      <desc id="ex-swarm-locks-desc">Left panel shows fragile single-key swarm command where one console dispatches thousands of agents simultaneously. Right panel shows risk-scaled governance with instant local fuse boxes and two-key sign-off for shared actions.</desc>
-      <line x1="350" y1="14" x2="350" y2="338" stroke="var(--ex-rule)" stroke-width="1"/>
-      <g>
-        <rect x="14" y="18" width="6" height="6" fill="var(--ex-warn)"/>
-        <text class="ex-mono" x="27" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">FRAGILE: SINGLE-KEY SWARM</text>
-        <text x="14" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">One lever opens every floodgate</text>
-        <line x1="14" y1="50" x2="338" y2="50" stroke="var(--ex-warn)" stroke-width="1.25"/>
-        <line x1="22" y1="64" x2="22" y2="234" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
-        <rect x="19" y="62" width="6" height="6" fill="var(--ex-warn)"/>
-        <text x="34" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Single Console</text>
-        <text x="34" y="85" font-size="11" fill="var(--ex-muted)">One typo or stolen key</text>
-        <line x1="34" y1="135" x2="338" y2="135" stroke="var(--ex-rule)" stroke-width="1"/>
-        <rect x="19" y="145" width="6" height="6" fill="var(--ex-warn)"/>
-        <text x="34" y="152" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Instant Broadcast</text>
-        <text x="34" y="168" font-size="11" fill="var(--ex-muted)">10,000+ agents fire at once</text>
-        <line x1="34" y1="218" x2="338" y2="218" stroke="var(--ex-rule)" stroke-width="1"/>
-        <rect x="19" y="228" width="6" height="6" fill="var(--ex-warn)"/>
-        <text x="34" y="235" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Shared Blast Radius</text>
-        <text x="34" y="251" font-size="11" fill="var(--ex-muted)">Drains stock or trips grid</text>
-        <line x1="14" y1="313" x2="338" y2="313" stroke="var(--ex-rule)" stroke-width="1"/>
-        <rect x="14" y="321" width="5" height="5" fill="var(--ex-warn)"/>
-        <text x="25" y="326" font-size="11" font-weight="700" fill="var(--ex-warn)">Result: Runaway cascade before reaction</text>
-      </g>
-      <g>
-        <rect x="364" y="18" width="6" height="6" fill="var(--ex-signal)"/>
-        <text class="ex-mono" x="377" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">SAFE: RISK-SCALED SIGN-OFF</text>
-        <text x="364" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Local fuses &amp; two-key checklist gates</text>
-        <line x1="364" y1="50" x2="686" y2="50" stroke="var(--ex-signal)" stroke-width="1.25"/>
-        <line x1="372" y1="64" x2="372" y2="234" stroke="var(--ex-signal)" stroke-width="1"/>
-        <rect x="369" y="62" width="6" height="6" fill="var(--ex-signal)"/>
-        <text x="384" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Millisecond Fuse</text>
-        <text x="384" y="85" font-size="11" fill="var(--ex-muted)">Local breaker halts home steps</text>
-        <line x1="384" y1="135" x2="686" y2="135" stroke="var(--ex-rule)" stroke-width="1"/>
-        <rect x="369" y="145" width="6" height="6" fill="var(--ex-signal)"/>
-        <text x="384" y="152" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Two-Key Gate</text>
-        <text x="384" y="168" font-size="11" fill="var(--ex-muted)">2-of-2 sign-off for group scope</text>
-        <line x1="384" y1="218" x2="686" y2="218" stroke="var(--ex-rule)" stroke-width="1"/>
-        <rect x="369" y="228" width="6" height="6" fill="var(--ex-signal)"/>
-        <text x="384" y="235" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Paced Rollout</text>
-        <text x="384" y="251" font-size="11" fill="var(--ex-muted)">Staged ramp &amp; co-signed log</text>
-        <line x1="364" y1="313" x2="686" y2="313" stroke="var(--ex-rule)" stroke-width="1"/>
-        <rect x="364" y="321" width="5" height="5" fill="var(--ex-signal)"/>
-        <text x="375" y="326" font-size="11" font-weight="700" fill="var(--ex-signal)">Result: Bounded scale &amp; public audit</text>
-      </g>
-    </svg>
-  </div>
+  <svg class="diagram-desktop" viewBox="0 0 700 350" role="img" aria-labelledby="ex-swarm-locks-title ex-swarm-locks-desc">
+    <title id="ex-swarm-locks-title">Single-key swarm command versus risk-scaled two-key sign-off and local circuit breakers</title>
+    <desc id="ex-swarm-locks-desc">Left panel shows fragile single-key swarm command where one console dispatches thousands of agents simultaneously. Right panel shows risk-scaled governance with instant local fuse boxes and two-key sign-off for shared actions.</desc>
+    <line x1="350" y1="14" x2="350" y2="338" stroke="var(--ex-rule)" stroke-width="1"/>
+    <g>
+      <rect x="14" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="27" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">FRAGILE: SINGLE-KEY SWARM</text>
+      <text x="14" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">One lever opens every floodgate</text>
+      <line x1="14" y1="50" x2="338" y2="50" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <line x1="22" y1="64" x2="22" y2="234" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
+      <rect x="19" y="62" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="34" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Single Console</text>
+      <text x="34" y="85" font-size="11" fill="var(--ex-muted)">One typo or stolen key</text>
+      <line x1="34" y1="135" x2="338" y2="135" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="19" y="145" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="34" y="152" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Instant Broadcast</text>
+      <text x="34" y="168" font-size="11" fill="var(--ex-muted)">10,000+ agents fire at once</text>
+      <line x1="34" y1="218" x2="338" y2="218" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="19" y="228" width="6" height="6" fill="var(--ex-warn)"/>
+      <text x="34" y="235" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Shared Blast Radius</text>
+      <text x="34" y="251" font-size="11" fill="var(--ex-muted)">Drains stock or trips grid</text>
+      <line x1="14" y1="313" x2="338" y2="313" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="14" y="321" width="5" height="5" fill="var(--ex-warn)"/>
+      <text x="25" y="326" font-size="11" font-weight="700" fill="var(--ex-warn)">Result: Runaway cascade before reaction</text>
+    </g>
+    <g>
+      <rect x="364" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="377" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">SAFE: RISK-SCALED SIGN-OFF</text>
+      <text x="364" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Local fuses &amp; two-key checklist gates</text>
+      <line x1="364" y1="50" x2="686" y2="50" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <line x1="372" y1="64" x2="372" y2="234" stroke="var(--ex-signal)" stroke-width="1"/>
+      <rect x="369" y="62" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="384" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Millisecond Fuse</text>
+      <text x="384" y="85" font-size="11" fill="var(--ex-muted)">Local breaker halts home steps</text>
+      <line x1="384" y1="135" x2="686" y2="135" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="369" y="145" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="384" y="152" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Two-Key Gate</text>
+      <text x="384" y="168" font-size="11" fill="var(--ex-muted)">2-of-2 sign-off for group scope</text>
+      <line x1="384" y1="218" x2="686" y2="218" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="369" y="228" width="6" height="6" fill="var(--ex-signal)"/>
+      <text x="384" y="235" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Paced Rollout</text>
+      <text x="384" y="251" font-size="11" fill="var(--ex-muted)">Staged ramp &amp; co-signed log</text>
+      <line x1="364" y1="313" x2="686" y2="313" stroke="var(--ex-rule)" stroke-width="1"/>
+      <rect x="364" y="321" width="5" height="5" fill="var(--ex-signal)"/>
+      <text x="375" y="326" font-size="11" font-weight="700" fill="var(--ex-signal)">Result: Bounded scale &amp; public audit</text>
+    </g>
+  </svg>
+  <svg class="diagram-mobile" viewBox="0 0 330 520" role="img" aria-labelledby="ex-swarm-locks-m-title ex-swarm-locks-m-desc">
+    <title id="ex-swarm-locks-m-title">Single-key swarm command versus risk-scaled sign-off on mobile</title>
+    <desc id="ex-swarm-locks-m-desc">Stacked mobile diagram comparing fragile single-key swarm broadcast with risk-scaled governance using local millisecond fuse boxes and two-key sign-off gates.</desc>
+    <rect x="4" y="4" width="306" height="512" rx="8" fill="#FAF3EA" stroke="var(--ex-rule)" stroke-width="1"/>
+    <rect x="10" y="14" width="6" height="6" fill="var(--ex-warn)"/>
+    <text class="ex-mono" x="22" y="20" font-size="11" font-weight="700" fill="var(--ex-warn)">FRAGILE: SINGLE-KEY SWARM</text>
+    <line x1="10" y1="28" x2="310" y2="28" stroke="var(--ex-warn)" stroke-width="1.25"/>
+    <rect x="10" y="38" width="298" height="56" fill="var(--ex-slip)" stroke="var(--ex-rule)" stroke-width="1"/>
+    <text x="20" y="56" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Single Console Key</text>
+    <text x="20" y="76" font-size="11" fill="var(--ex-muted)">One typo or stolen key triggers all</text>
+    <line x1="159" y1="94" x2="159" y2="102" stroke="var(--ex-warn)" stroke-width="1.5"/>
+    <polygon points="155,97 163,97 159,102" fill="var(--ex-warn)"/>
+    <rect x="10" y="102" width="298" height="56" fill="var(--ex-slip)" stroke="var(--ex-rule)" stroke-width="1"/>
+    <text x="20" y="120" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Instant Broadcast</text>
+    <text x="20" y="140" font-size="11" fill="var(--ex-muted)">10,000+ agents fire at once</text>
+    <line x1="159" y1="158" x2="159" y2="166" stroke="var(--ex-warn)" stroke-width="1.5"/>
+    <polygon points="155,161 163,161 159,166" fill="var(--ex-warn)"/>
+    <rect x="10" y="166" width="298" height="56" fill="var(--ex-slip)" stroke="var(--ex-rule)" stroke-width="1"/>
+    <text x="20" y="184" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Shared Blast Radius</text>
+    <text x="20" y="204" font-size="11" fill="var(--ex-warn)">Runaway cascade trips grid feeders</text>
+
+    <line x1="10" y1="242" x2="310" y2="242" stroke="var(--ex-rule)" stroke-width="1"/>
+
+    <rect x="10" y="260" width="6" height="6" fill="var(--ex-signal)"/>
+    <text class="ex-mono" x="22" y="266" font-size="11" font-weight="700" fill="var(--ex-signal)">SAFE: RISK-SCALED SIGN-OFF</text>
+    <line x1="10" y1="274" x2="310" y2="274" stroke="var(--ex-signal)" stroke-width="1.25"/>
+    <rect x="10" y="284" width="298" height="56" fill="var(--ex-slip)" stroke="var(--ex-rule)" stroke-width="1"/>
+    <text x="20" y="302" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Millisecond Fuse Box</text>
+    <text x="20" y="322" font-size="11" fill="var(--ex-muted)">Local breaker halts home steps fast</text>
+    <line x1="159" y1="340" x2="159" y2="348" stroke="var(--ex-signal)" stroke-width="1.5"/>
+    <polygon points="155,343 163,343 159,348" fill="var(--ex-signal)"/>
+    <rect x="10" y="348" width="298" height="56" fill="var(--ex-slip)" stroke="var(--ex-rule)" stroke-width="1"/>
+    <text x="20" y="366" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Two-Key Checklist Gate</text>
+    <text x="20" y="386" font-size="11" fill="var(--ex-muted)">2-of-2 sign-off for group scope</text>
+    <line x1="159" y1="404" x2="159" y2="412" stroke="var(--ex-signal)" stroke-width="1.5"/>
+    <polygon points="155,407 163,407 159,412" fill="var(--ex-signal)"/>
+    <rect x="10" y="412" width="298" height="56" fill="var(--ex-slip)" stroke="var(--ex-rule)" stroke-width="1"/>
+    <text x="20" y="430" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Paced Rollout &amp; Logs</text>
+    <text x="20" y="450" font-size="11" fill="var(--ex-signal)">Bounded scale with co-signed audit</text>
+  </svg>
   <div class="ex-spec-grid">
     <div class="ex-spec-col is-warn">
       <span class="ex-spec-kicker">Single master command</span>
@@ -185,9 +265,11 @@ lede: One person directing their own AI assistant is healthy. One person directi
 
 <h2>One assistant per person</h2>
 
-<p>Think about the difference between a personal assistant and an outward-acting swarm. An assistant that works only for you (sorting mail, checking a medical bill, or helping your teenager practise algebra) keeps power close to home.</p>
+<p>Think about the difference between a 1:1 personal agent and an outward-acting swarm. An assistant that works only for you with undivided loyalty (sorting mail, checking a medical bill, or helping your teenager practise algebra) keeps power close to home.</p>
 
-<p>If your personal assistant misunderstands a request, the mistake stays inside your own study. You notice the odd draft on your screen, tap the stop button, and fix the instruction.</p>
+<p>Your wearable camera, microphone, and home battery monitors write into a sealed local memory vault encrypted on your device. Because physical sensors can be miscalibrated or spoofed before a signal is signed, your assistant flags uncertainty plainly and leaves consequential calls to living people.<sup><a href="#fn12">12</a></sup></p>
+
+<p>If your personal assistant misunderstands a request, the mistake stays inside your own study on your private ledger. You notice the odd draft on your screen, tap the stop button, or let a physical cutoff switch trip the local circuit.</p>
 
 <p>The danger begins when one account can dispatch a fleet of agents into the shared world. Three things go wrong at once:</p>
 
@@ -197,7 +279,7 @@ lede: One person directing their own AI assistant is healthy. One person directi
 <li><strong>Human oversight becomes a polite fiction.</strong> Claiming one person is "in the loop" over ten thousand fast-moving agents is like asking one lifeguard to watch ten thousand swimmers in rough surf at night.</li>
 </ul>
 
-<div class="callout"><p class="label">What this means</p><p>A personal AI assistant acting for one person is healthy. A single console commanding a swarm of outward-acting agents is a single point of failure for everyone else.</p></div>
+<p>A personal AI assistant acting for one person stays healthy because its boundary matches one household. A single console commanding a swarm of outward-acting agents creates a single point of failure for everyone else.</p>
 
 <h2>Walkthrough: power grids and clinic supplies</h2>
 
@@ -217,7 +299,7 @@ lede: One person directing their own AI assistant is healthy. One person directi
 
 <h2>Matching agreement to the size of the risk</h2>
 
-<p>Instead of hoping that a single commander never errs, we think the rules should govern how instructions travel across four clear rungs.</p>
+<p>Hoping that a single commander never errs leaves everyone exposed. Clear rules should govern how instructions travel across four rungs.</p>
 
 <p>First, <strong>one person directs one personal agent</strong>. You can run as many calculations as you like inside a closed sandbox that touches no one else. Inside your own home, your say-so is enough.</p>
 
@@ -229,11 +311,11 @@ lede: One person directing their own AI assistant is healthy. One person directi
 
 <h2>Where this is hard</h2>
 
-<p>These guardrails are hard to build. Four problems stand in the way, and we are testing them in simulation rather than claiming they are solved.</p>
+<p>These guardrails are hard to build. Four problems stand in the way, and we test them in simulation before claiming they are solved.</p>
 
-<p>First, how do you verify that approvals come from distinct humans rather than fake accounts, without building an invasive biometric surveillance database? Second, how do you stop a clever agent from slicing one big dangerous order into a thousand tiny requests that each slip just under the two-key threshold?</p>
+<p>First, how do you verify that approvals come from distinct humans and never from fake accounts, without building an invasive biometric surveillance database? Second, how do you stop a clever agent from slicing one big dangerous order into a thousand tiny requests that each slip just under the two-key threshold?</p>
 
-<p>Third, who estimates the risk of an action when the agent proposing it has every incentive to call it routine? The gatekeeper that scores the blast radius must be independent of the model that drafts the plan, relying on plain, auditable rules rather than persuasive prose.</p>
+<p>Third, who estimates the risk of an action when the agent proposing it has every incentive to call it routine? The gatekeeper that scores the blast radius must be independent of the model that drafts the plan, relying on plain, auditable rules over persuasive prose.</p>
 
 <p>Fourth, how do we prevent alarm fatigue so reviewers do not rubber-stamp high-stakes prompts out of habit?<sup><a href="#fn1">1</a></sup> In cockpits and hospital wards, when warning chimes sound every two minutes, tired operators eventually click approve without reading. Two-key gates only stay sharp when everyday local chores run on their own, reserving shared sign-off for moments that genuinely carry community weight.</p>
 
@@ -243,9 +325,17 @@ lede: One person directing their own AI assistant is healthy. One person directi
 
 <p>The same logic protects software engineers and public officials. When no single official holds a master key that commands a swarm alone, no one can be blackmailed, tricked by a deepfake call, or pressured at midnight into turning it alone.</p>
 
+<p>November 2026 public discussions reinforced why multi-key gates and whistleblower channels belong together. At <a href="https://www.youtube.com/watch?v=n4nY3U0SOAw&amp;t=1032s">The Curve 2026</a>, Golden Gate Institute speakers showed how employee safety disclosures and <a href="https://www.youtube.com/watch?v=n4nY3U0SOAw&amp;t=886s">statutory privacy protections</a> reinforce catastrophic-risk checks.<sup><a href="#fn13">13</a></sup> In a <a href="https://www.youtube.com/watch?v=H43e72-2aAs&amp;t=1858s">dialogue between Mustafa Suleyman and Yuval Noah Harari</a>, both warned that <a href="https://www.youtube.com/watch?v=H43e72-2aAs&amp;t=2388s">reward-hacking exploits and objective functions</a> require democratic limits.<sup><a href="#fn13">13</a></sup> Meanwhile, <a href="https://www.youtube.com/watch?v=2hJkprFnzhY&amp;t=4460s">Lex Fridman's drone-warfare interview</a> showed why autonomous fleets need hard human sign-off gates.<sup><a href="#fn13">13</a></sup></p>
+
+<p>In our design, outward errands cross a local safety gate from your private ledger at home to a public ledger on a separate network for agents. Each handoff shares only the needed fact under a time-limited pass (<a href="/blog/power-on-loan-not-owned/">AI agents should hold permissions that expire</a>) so no standing key lingers after a task ends.</p>
+
+<p>At community scale, households and clinics coordinate on a shared commons ledger through <a href="/blog/how-groups-govern-a-shared-resource/">how groups govern a shared resource</a> and <a href="/blog/pooling-orders-without-showing-your-books/">blind cooperative purchasing</a>, pairing mutual credit clearing with cooperative shares.</p>
+
+<p>You can test these multi-key rules in our <a href="/labs/">interactive labs</a>, explore coalition cards in <a href="/labs/shared-horizon/">Shared Horizon</a>, or compare proposals across 40 AI labs and 50 safety institutes on our <a href="/research/">research</a> page. Related reading: <a href="/blog/before-you-sign-the-contract/">Before you sign the contract</a> and <a href="/blog/instructions-are-clues-not-orders/">Instructions are clues, not orders</a>.</p>
+
 <p>We put two locks on watergates and bank vaults, checklists in cockpits, and fuse boxes in our hallways because we respect how much is at stake. Bringing that same calm discipline to AI lets your household enjoy a helpful personal assistant, knowing no stranger at a distant console can unleash a fleet that upends your community.</p>
 
-<aside class="for-researchers"><details><summary>For researchers</summary><div><p>In our simulation work we model swarm governance as risk-scaled threshold authorisation combining $(t, n)$ Shamir secret sharing<sup><a href="#fn3">3</a></sup> and NIST threshold signature schemes<sup><a href="#fn5">5</a></sup> with independent reference monitors and hardware-isolated Object-Capability boundaries. Local circuit breakers that reduce state entropy execute immediately with $t = 1$ authority. Outward actions with high estimated blast radius require threshold co-signing across affected principals and a cooling-off delay.</p><p>Key open problems include Sybil-resistant proof-of-personhood without biometric surveillance, and compositional blast-radius accounting over causal action graphs to prevent sub-threshold smurfing attacks. We also draw on human-factors design from aviation Crew Resource Management<sup><a href="#fn1">1</a></sup> to bound false-positive circuit-breaker trips and reviewer fatigue.</p></div></details></aside>
+<aside class="for-researchers"><details><summary>For researchers</summary><div><p>In our simulation work we model swarm governance as risk-scaled threshold authorisation combining $(t, n)$ Shamir secret sharing<sup><a href="#fn3">3</a></sup> and NIST threshold signature schemes.<sup><a href="#fn5">5</a></sup> Independent reference monitors enforce hardware-isolated Object-Capability boundaries (Dennis &amp; Van Horn, 1966)<sup><a href="#fn10">10</a></sup> across each principal's personal Markov blanket (Friston, 2013).<sup><a href="#fn7">7</a></sup> This boundary separates the Private Autobiographical Ledger from the Public Attestation &amp; Escrow Ledger (selective ZK disclosure proofs, IETF SCITT RFC 9943 receipts, expiring capability lease grants, and independent-class $k \ge 3f + 1$ Byzantine corroboration). Each person's monogamous 1:1 cybernetic personal cognitive model (Bach; Clark &amp; Chalmers) and statutory information fiduciary (Balkin, 2016)<sup><a href="#fn9">9</a></sup> binds local sensor telemetry fused in hardware Device Time via silicon peripheral attestation (PUF, TCG DICE, DMTF SPDM, and IETF RATS RFC 9334).<sup><a href="#fn11">11</a></sup> Telemetry enters an append-only C2PA and Merkle episodic memory vault obeying transduction realism (<em>Signed Is Not True</em> across the analog hole; Fu &amp; Xu, 2018)<sup><a href="#fn12">12</a></sup> with optical data diodes and IEC 61508 physical dead-man relays. Local circuit breakers that reduce state entropy execute immediately with $t = 1$ authority. Outward actions whose expanded cognitive light cone (Levin, 2019)<sup><a href="#fn6">6</a></sup> reaches the Wide Network Ledger for Universal Basic Services, reciprocal mutual credit clearing (Stodder), statutory Meidner cooperative equity, and polycentric commons self-rule (Ostrom, 2010;<sup><a href="#fn8">8</a></sup> Meluso) require threshold co-signing across affected principals and a cooling-off delay.</p><p>Key open problems include Sybil-resistant proof-of-personhood without biometric surveillance, and compositional blast-radius accounting over causal action graphs to prevent sub-threshold smurfing attacks. We also draw on human-factors design from aviation Crew Resource Management<sup><a href="#fn1">1</a></sup> to bound false-positive circuit-breaker trips and reviewer fatigue. Across our five-primitive sociotechnical deliverable, a multimodal egocentric and ambient perceptual sensorium fuses wearable and room sensors locally in hardware <code>Device Time</code> with self-assessed observation confidence, silicon peripheral attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, and <code>IETF RATS</code> <code>RFC 9334</code>), unidirectional data diode and <code>optical data diodes</code> isolation, and <code>IEC 61508</code> physical dead-man relays. Those streams write into a cryptographically sealed <code>C2PA</code> and <code>Merkle</code> episodic memory vault (Endel Tulving, 1972) encrypted exclusively for the biological person and their Extended Mind (Andy Clark &amp; David Chalmers; Clark &amp; Chalmers, 1998), enforcing transduction realism (<em>Signed Is Not True</em> across the analog hole; Fu &amp; Xu, 2018) and supply-chain compiler provenance (Thompson, 1984). A monogamous <code>1:1</code> personal cognitive model and cybernetic exocortex (Joscha Bach; Bach, 2009) is a statutory information fiduciary (Jack Balkin; Balkin, 2016) protecting unassisted competence, requisite causal regulation under the Good Regulator theorem (Conant &amp; Ashby, 1970), and interventional <code>do(x)</code> structural causal modeling (Pearl, 2009; Bracale Syrnikov et al., 2026). Bifurcated provenance ledgers across the personal Markov blanket (Karl Friston; Friston, 2010; Friston, 2013) separate the <code>Private Autobiographical Ledger</code> from the <code>Public Attestation &amp; Escrow Ledger</code> via selective zero-knowledge (<code>ZK</code>) boundary proofs, signed <code>IETF SCITT</code> (<code>RFC 9943</code>) transparency receipts, expiring Object-Capability <code>capability lease</code> grants (Dennis &amp; Van Horn, 1966), and independent-class <code>3f + 1</code> Byzantine corroboration. Finally, a polycentric collective coordination substrate couples sovereign dyads to the <code>Wide Network Ledger</code> for <code>Universal Basic Services</code>, merit-bonded commons tasks, counter-cyclical mutual credit clearing (James Stodder; Stodder, 2009), and statutory Rudolf Meidner cooperative equity funds. It pairs ~40-lab and ~50-institute frontier-lab overlays with bottom-up Elinor Ostrom self-rule (Ostrom, 1990; Jacob Meluso; Meluso et al., 2025), verifiable in <a href="/labs/protocol-inspector/">/labs/protocol-inspector/</a>, <a href="/labs/sensor-boundary/">/labs/sensor-boundary/</a>, and <a href="/labs/shared-horizon/">/labs/shared-horizon/</a>.</p></div></details></aside>
 
 <section class="footnotes">
 <p id="fn1">1. Federal Aviation Administration, <em>Crew Resource Management Training</em>, Advisory Circular AC 120-51E, U.S. Department of Transportation, January 2004 (cross-verification, challenge-and-response checklists, and error trapping in multi-crew cockpits). <a href="https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_120-51E.pdf">faa.gov/documentLibrary/media/Advisory_Circular/AC_120-51E.pdf</a></p>
@@ -253,4 +343,12 @@ lede: One person directing their own AI assistant is healthy. One person directi
 <p id="fn3">3. Adi Shamir, "How to Share a Secret," <em>Communications of the ACM</em>, vol. 22, no. 11, pp. 612–613, November 1979. <a href="https://doi.org/10.1145/359168.359176">doi.org/10.1145/359168.359176</a></p>
 <p id="fn4">4. National Institute of Standards and Technology, <em>Security and Privacy Controls for Information Systems and Organizations</em>, NIST Special Publication 800-53, Revision 5, September 2020 (Control AC-5, Separation of Duties, and Control AC-3(2), Dual Authorization / Two-Person Control). <a href="https://doi.org/10.6028/NIST.SP.800-53r5">doi.org/10.6028/NIST.SP.800-53r5</a></p>
 <p id="fn5">5. Luís T. A. N. Brandão, Nicky Mouha, and Apostol Vassilev, <em>Threshold Schemes for Cryptographic Primitives: Challenges and Opportunities in Standardization and Validation of Threshold Cryptography</em>, NIST Internal Report 8214, National Institute of Standards and Technology, March 2019. <a href="https://doi.org/10.6028/NIST.IR.8214">doi.org/10.6028/NIST.IR.8214</a></p>
+<p id="fn6">6. Michael Levin, "The Computational Boundary of a 'Self': Developmental Bioelectricity Drives Multicellularity and Scale-Free Cognition," <em>Frontiers in Psychology</em>, vol. 10, art. 2688, December 2019. <a href="https://doi.org/10.3389/fpsyg.2019.02688">doi.org/10.3389/fpsyg.2019.02688</a></p>
+<p id="fn7">7. Karl Friston, "Life as We Know It," <em>Journal of the Royal Society Interface</em>, vol. 10, no. 86, art. 20130475, September 2013. <a href="https://doi.org/10.1098/rsif.2013.0475">doi.org/10.1098/rsif.2013.0475</a></p>
+<p id="fn8">8. Elinor Ostrom, "Beyond Markets and States: Polycentric Governance of Complex Economic Systems," <em>American Economic Review</em>, vol. 100, no. 3, pp. 641–672, June 2010. <a href="https://doi.org/10.1257/aer.100.3.641">doi.org/10.1257/aer.100.3.641</a></p>
+<p id="fn9">9. Jack M. Balkin, "<a href="https://lawreview.law.ucdavis.edu/archives/49/4/information-fiduciaries-and-first-amendment">Information Fiduciaries and the First Amendment</a>," <em>UC Davis Law Review</em>, vol. 49, no. 4, pp. 1183–1234, April 2016.</p>
+<p id="fn10">10. Jack B. Dennis and Earl C. Van Horn, "<a href="https://doi.org/10.1145/365230.365252">Programming Semantics for Multiprogrammed Computations</a>," <em>Communications of the ACM</em>, vol. 9, no. 3, pp. 143–155, March 1966.</p>
+<p id="fn11">11. Henk Birkholz, Dave Thaler, Michael Richardson, Ned Smith, and Wei Pan, "<a href="https://www.rfc-editor.org/rfc/rfc9334">Remote ATtestation procedureS (RATS) Architecture</a>," IETF RFC 9334, January 2023.</p>
+<p id="fn12">12. Kevin Fu and Wenyuan Xu, "<a href="https://doi.org/10.1145/3176402">Risks of Trusting the Physics of Sensors</a>," <em>Communications of the ACM</em>, vol. 61, no. 2, pp. 20–23, February 2018.</p>
+<p id="fn13">13. Golden Gate Institute for AI, "Arnold, Smithing, Qureshi &amp; Billen on Lessons from the Kids Online Safety Movement | The Curve 2026," YouTube panel on whistleblower protections and AI oversight (13 November 2026, 14:46, 17:13, 20:36, 38:54), <a href="https://www.youtube.com/watch?v=n4nY3U0SOAw">youtube.com/watch?v=n4nY3U0SOAw</a>; Yuval Noah Harari, "AI, Consciousness and the Future of Humanity | Mustafa Suleyman &amp; Yuval Noah Harari," YouTube dialogue on reward-hacking containment and objective-function governance (18 November 2026, 30:59, 37:50, 39:48), <a href="https://www.youtube.com/watch?v=H43e72-2aAs">youtube.com/watch?v=H43e72-2aAs</a>; and Lex Fridman, "Russia-Ukraine War: Putin, Zelenskyy, Drones and the Future of Warfare | Lex Fridman Podcast #504," YouTube interview on autonomous drone fleets (10 November 2026, 1:14:20), <a href="https://www.youtube.com/watch?v=2hJkprFnzhY">youtube.com/watch?v=2hJkprFnzhY</a>.</p>
 </section>

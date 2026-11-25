@@ -4,7 +4,7 @@ description: What people mean when they talk about treating AI computing power l
 reader: Legislators, policy staffers, public servants and citizens who keep hearing the phrase "public compute" and want a plain-English explanation.
 takeaway: Public computing gives universities, hospitals, cities and independent safety researchers shared AI hardware of their own, so public-interest science and oversight do not depend on the goodwill of the companies they study or regulate.
 template: article
-date: 2024-12-11
+date: 2026-11-06
 order: 14
 category: Owning
 minutes: 9
@@ -12,6 +12,7 @@ image: post-public-computing-explained.jpg
 image_alt: A sunlit classical public library reading room with high arched windows and wooden tables where scholars, a nurse and a town planner share open atlases and brass instruments connected by delicate geometric lines.
 lede: Universities, hospitals, cities and independent safety researchers should have shared AI computing of their own, so public-interest science and oversight don't depend on the goodwill of the companies they study or regulate. That is what public computing means.
 ---
+<p>Public computing gives universities, hospitals, cities and independent safety researchers shared AI hardware of their own, so public-interest science and oversight do not depend on the goodwill of the companies they study or regulate.</p>
 <p>"Public compute" now turns up in budget briefings, usually wrapped in talk of chips, substations and sovereign clusters. The underlying question is a familiar one: should the public own some of the infrastructure that science, healthcare and government oversight depend on? Public water systems, libraries and weather services didn't stop private businesses from thriving. They made a lot of independent work possible.</p>
 
 <h2>What "compute" actually means</h2>
@@ -31,139 +32,201 @@ lede: Universities, hospitals, cities and independent safety researchers should 
       --ex-slip: #F3E8D8;
       --ex-ink: #131014;
       --ex-muted: #5E564B;
-      --ex-rule: #D8C8B2;
+      --ex-rule: #E1D3C0;
       --ex-signal: #0B3F30;
-      --ex-accent: #1F6B4E;
-      --ex-warn: #9E4726;
-      --ex-amber: #805113;
-      margin: 2.1rem 0;
-      padding: 1.35rem 0 1.15rem;
+      --ex-warn: #B85C38;
+      margin: 1.8em 0 2em;
+      padding: 18px 0 14px;
       background: transparent;
       border: 0;
       border-top: 1px solid var(--ex-rule);
       border-bottom: 1px solid var(--ex-rule);
       border-radius: 0;
-      box-shadow: none;
       color: var(--ex-ink);
     }
-    #ex-public-computing-layers svg {
-      display: block;
-      width: 100%;
-      height: auto;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    }
-    #ex-public-computing-layers .ex-mono {
-      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
-      letter-spacing: 0.05em;
-    }
-    #ex-public-computing-layers .ex-spec-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.9rem 1.4rem;
-      margin-top: 0.95rem;
-      padding-top: 0.85rem;
-      border-top: 1px solid var(--ex-rule);
-      font-size: 0.88rem;
-      line-height: 1.5;
-    }
-    #ex-public-computing-layers .ex-spec-col {
-      padding-left: 0.75rem;
-      border-left: 2px solid var(--ex-rule);
-    }
-    #ex-public-computing-layers .ex-spec-col.is-signal {
-      border-left-color: var(--ex-signal);
-    }
-    #ex-public-computing-layers .ex-spec-col.is-warn {
-      border-left-color: var(--ex-warn);
-    }
-    #ex-public-computing-layers .ex-spec-col.is-amber {
-      border-left-color: var(--ex-amber);
-    }
-    #ex-public-computing-layers .ex-spec-kicker {
-      display: block;
-      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--ex-muted);
-      margin-bottom: 0.22rem;
-    }
-    #ex-public-computing-layers .ex-spec-body {
-      color: var(--ex-ink);
-    }
-    @media (max-width: 680px) {
-      #ex-public-computing-layers .ex-spec-grid {
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
+    @media (prefers-color-scheme: dark) {
+      #ex-public-computing-layers {
+        --ex-paper: #18161E;
+        --ex-slip: #221F2A;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #A8A095;
+        --ex-rule: #322E3D;
+        --ex-signal: #8FD4B6;
+        --ex-warn: #F09D82;
+      }
+      #ex-public-computing-layers rect[fill="#FAF3EA"],
+      #ex-public-computing-layers rect[fill="#F3E8D8"] {
+        fill: #221F2A;
+        stroke: #322E3D;
+      }
+      #ex-public-computing-layers text[fill="#131014"],
+      #ex-public-computing-layers text[fill="#5E564B"] {
+        fill: #EDE6DC;
+      }
+      #ex-public-computing-layers text[fill="#0B3F30"],
+      #ex-public-computing-layers text[fill="#1F6B4E"] {
+        fill: #8FD4B6;
+      }
+      #ex-public-computing-layers text[fill="#B85C38"] {
+        fill: #F09D82;
       }
     }
-    #ex-public-computing-layers figcaption {
-      margin-top: 0.9rem;
-      padding-top: 0.7rem;
-      border-top: 1px solid var(--ex-rule);
-      font-size: 0.9rem;
-      line-height: 1.55;
-      color: var(--ex-muted);
-      text-align: left;
+    :root[data-theme="dark"] figure#ex-public-computing-layers { color-scheme: dark; }
+    :root[data-theme="dark"] #ex-public-computing-layers,
+    [data-theme="dark"] #ex-public-computing-layers {
+      --ex-paper: #18161E;
+      --ex-slip: #221F2A;
+      --ex-ink: #EDE6DC;
+      --ex-muted: #A8A095;
+      --ex-rule: #322E3D;
+      --ex-signal: #8FD4B6;
+      --ex-warn: #F09D82;
     }
+    [data-theme="dark"] #ex-public-computing-layers rect[fill="#FAF3EA"],
+    [data-theme="dark"] #ex-public-computing-layers rect[fill="#F3E8D8"] {
+      fill: #221F2A;
+      stroke: #322E3D;
+    }
+    [data-theme="dark"] #ex-public-computing-layers text[fill="#131014"],
+    [data-theme="dark"] #ex-public-computing-layers text[fill="#5E564B"] {
+      fill: #EDE6DC;
+    }
+    [data-theme="dark"] #ex-public-computing-layers text[fill="#0B3F30"],
+    [data-theme="dark"] #ex-public-computing-layers text[fill="#1F6B4E"] {
+      fill: #8FD4B6;
+    }
+    [data-theme="dark"] #ex-public-computing-layers text[fill="#B85C38"] {
+      fill: #F09D82;
+    }
+    #ex-public-computing-layers svg { display: block; width: 100%; height: auto; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    #ex-public-computing-layers .ex-mono { font-family: ui-monospace, "Cascadia Mono", Menlo, monospace; letter-spacing: 0.05em; }
+    #ex-public-computing-layers .diagram-desktop { display: block; width: 100%; height: auto; }
+    #ex-public-computing-layers .diagram-mobile { display: none; width: 100%; height: auto; }
+    #ex-public-computing-layers figcaption { margin-top: 12px; font-size: 0.92rem; line-height: 1.5; color: var(--ex-muted); text-align: center; }
     @media (max-width: 640px) {
-      #ex-public-computing-layers .ex-canvas {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-      }
-      #ex-public-computing-layers .ex-canvas svg {
-        min-width: 540px;
-      }
+      #ex-public-computing-layers .diagram-desktop { display: none; }
+      #ex-public-computing-layers .diagram-mobile { display: block; }
+    }
+    @media (max-width: 600px) {
+      #ex-public-computing-layers .diagram-desktop { display: none; }
+      #ex-public-computing-layers .diagram-mobile { display: block; }
     }
   </style>
-  <div class="ex-canvas">
-    <svg viewBox="0 0 680 356" role="group" aria-labelledby="ex-public-computing-layers-title ex-public-computing-layers-desc">
-      <title id="ex-public-computing-layers-title">Comparing Civic Public Infrastructure to Public AI Compute Tiers</title>
-      <desc id="ex-public-computing-layers-desc">A three-tier comparison showing how familiar civic infrastructure—National Weather Radar and Highways, Municipal Water Plants, and Public Libraries—maps directly onto National Research Supercomputers, Regional Hospital and University Enclaves, and Local Civic Audit and Classroom Access.</desc>
-      <text class="ex-mono" x="16" y="20" font-size="11" font-weight="700" fill="var(--ex-muted)">FAMILIAR CIVIC INFRASTRUCTURE</text>
-      <text class="ex-mono" x="372" y="20" font-size="11" font-weight="700" fill="var(--ex-signal)">PUBLIC AI COMPUTING TIERS</text>
-      <line x1="16" y1="30" x2="664" y2="30" stroke="var(--ex-signal)" stroke-width="1.25"/>
-      <rect x="16" y="58" width="6" height="6" fill="var(--ex-amber)"/>
-      <text class="ex-mono" x="28" y="64" font-size="11" font-weight="700" fill="var(--ex-ink)">TIER 1 · NATIONAL COMMONS</text>
-      <text x="28" y="82" font-size="11.5" fill="var(--ex-muted)">Weather radar &amp; highways</text>
-      <line x1="278" y1="68" x2="360" y2="68" stroke="var(--ex-signal)" stroke-width="1" stroke-dasharray="3 3"/>
-      <polygon points="364,68 357,64 357,72" fill="var(--ex-signal)"/>
-      <rect x="372" y="58" width="6" height="6" fill="var(--ex-signal)"/>
-      <text class="ex-mono" x="384" y="64" font-size="11" font-weight="700" fill="var(--ex-signal)">TIER 1 · SHARED CLUSTERS</text>
-      <text x="384" y="82" font-size="11.5" fill="var(--ex-ink)">Open research supercomputers</text>
-      <line x1="16" y1="114" x2="664" y2="114" stroke="var(--ex-rule)" stroke-width="1"/>
-      <rect x="16" y="154" width="6" height="6" fill="var(--ex-amber)"/>
-      <text class="ex-mono" x="28" y="160" font-size="11" font-weight="700" fill="var(--ex-ink)">TIER 2 · MUNICIPAL UTILITY</text>
-      <text x="28" y="178" font-size="11.5" fill="var(--ex-muted)">Water labs &amp; public health</text>
-      <line x1="278" y1="164" x2="360" y2="164" stroke="var(--ex-signal)" stroke-width="1" stroke-dasharray="3 3"/>
-      <polygon points="364,164 357,160 357,168" fill="var(--ex-signal)"/>
-      <rect x="372" y="154" width="6" height="6" fill="var(--ex-signal)"/>
-      <text class="ex-mono" x="384" y="160" font-size="11" font-weight="700" fill="var(--ex-signal)">TIER 2 · REGIONAL ENCLAVES</text>
-      <text x="384" y="178" font-size="11.5" fill="var(--ex-ink)">Teaching hospitals &amp; campuses</text>
-      <line x1="16" y1="210" x2="664" y2="210" stroke="var(--ex-rule)" stroke-width="1"/>
-      <rect x="16" y="250" width="6" height="6" fill="var(--ex-amber)"/>
-      <text class="ex-mono" x="28" y="256" font-size="11" font-weight="700" fill="var(--ex-ink)">TIER 3 · COMMUNITY ACCESS</text>
-      <text x="28" y="274" font-size="11.5" fill="var(--ex-muted)">Carnegie public libraries</text>
-      <line x1="278" y1="260" x2="360" y2="260" stroke="var(--ex-signal)" stroke-width="1" stroke-dasharray="3 3"/>
-      <polygon points="364,260 357,256 357,264" fill="var(--ex-signal)"/>
-      <rect x="372" y="250" width="6" height="6" fill="var(--ex-signal)"/>
-      <text class="ex-mono" x="384" y="256" font-size="11" font-weight="700" fill="var(--ex-signal)">TIER 3 · CIVIC WORKBENCHES</text>
-      <text x="384" y="274" font-size="11.5" fill="var(--ex-ink)">Municipal auditors &amp; co-ops</text>
-      <line x1="16" y1="322" x2="664" y2="322" stroke="var(--ex-rule)" stroke-width="1"/>
-      <text class="ex-mono" x="16" y="340" font-size="10.5" font-weight="600" fill="var(--ex-signal)">PUBLIC BACKBONE ENABLES PRIVATE &amp; COOPERATIVE LIFE AT EVERY SCALE</text>
-    </svg>
-  </div>
-  <div class="ex-spec-grid">
-    <div class="ex-spec-col is-amber">
-      <span class="ex-spec-kicker">Familiar civic backbone</span>
-      <div class="ex-spec-body">Weather radar, municipal water testing labs, and Carnegie public libraries provide trusted shared foundations without crowding out local shops.</div>
-    </div>
-    <div class="ex-spec-col is-signal">
-      <span class="ex-spec-kicker">Three-tier public AI compute</span>
-      <div class="ex-spec-body">Pairs national research clusters with regional hospital enclaves and local municipal audit workbenches so public institutions never depend solely on private rent.</div>
-    </div>
-  </div>
+  <svg class="diagram-desktop" viewBox="0 0 680 356" width="100%" role="img" aria-labelledby="ex-public-computing-layers-title ex-public-computing-layers-desc">
+    <title id="ex-public-computing-layers-title">Comparing Civic Public Infrastructure to Public AI Compute Tiers</title>
+    <desc id="ex-public-computing-layers-desc">A three-tier comparison showing how familiar civic infrastructure (National Weather Radar and Highways, Municipal Water Plants, and Public Libraries) maps directly onto National Research Supercomputers, Regional Hospital and University Enclaves, and Local Civic Audit and Classroom Access.</desc>
+
+    <!-- Header bar -->
+    <rect x="14" y="12" width="652" height="34" rx="10" fill="#0B3F30"/>
+    <text class="ex-mono" x="175" y="33" text-anchor="middle" font-size="11.5" font-weight="600" fill="#FAF3EA">FAMILIAR CIVIC INFRASTRUCTURE</text>
+    <text class="ex-mono" x="505" y="33" text-anchor="middle" font-size="11.5" font-weight="600" fill="#FAF3EA">PUBLIC AI COMPUTING TIERS</text>
+
+    <!-- Tier 1: National Backbone -->
+    <g>
+      <rect x="14" y="58" width="310" height="88" rx="12" fill="#FAF3EA" stroke="#1F6B4E" stroke-width="1.5"/>
+      <text class="ex-mono" x="28" y="78" font-size="11" font-weight="600" fill="#1F6B4E">TIER 1 · NATIONAL COMMONS</text>
+      <text x="28" y="100" font-size="13" font-weight="600" fill="#131014">Weather Radar &amp; Interstate Highways</text>
+      <text x="28" y="120" font-size="11.5" fill="#5E564B">Shared backbone nobody builds alone; enables</text>
+      <text x="28" y="136" font-size="11.5" fill="#5E564B">every local farm, airline &amp; trucking firm.</text>
+
+      <line x1="324" y1="102" x2="352" y2="102" stroke="#0B3F30" stroke-width="2" stroke-dasharray="4 3"/>
+      <polygon points="350,98 356,102 350,106" fill="#0B3F30"/>
+
+      <rect x="356" y="58" width="310" height="88" rx="12" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.75"/>
+      <text class="ex-mono" x="370" y="78" font-size="11" font-weight="600" fill="#0B3F30">TIER 1 · SHARED FRONTIER CLUSTERS</text>
+      <text x="370" y="100" font-size="13" font-weight="600" fill="#131014">NAIRR, EuroHPC &amp; Sovereign Clusters</text>
+      <text x="370" y="120" font-size="11.5" fill="#5E564B">Peer-reviewed supercomputers for climate,</text>
+      <text x="370" y="136" font-size="11.5" fill="#5E564B">open science &amp; independent safety testing.</text>
+    </g>
+
+    <!-- Tier 2: Regional Utility -->
+    <g>
+      <rect x="14" y="158" width="310" height="88" rx="12" fill="#FAF3EA" stroke="#1F6B4E" stroke-width="1.5"/>
+      <text class="ex-mono" x="28" y="178" font-size="11" font-weight="600" fill="#1F6B4E">TIER 2 · MUNICIPAL UTILITY</text>
+      <text x="28" y="200" font-size="13" font-weight="600" fill="#131014">Water Treatment &amp; Public Health Labs</text>
+      <text x="28" y="220" font-size="11.5" fill="#5E564B">Clean, inspected local supply and independent</text>
+      <text x="28" y="236" font-size="11.5" fill="#5E564B">testing labs that do not answer to vendors.</text>
+
+      <line x1="324" y1="202" x2="352" y2="202" stroke="#0B3F30" stroke-width="2" stroke-dasharray="4 3"/>
+      <polygon points="350,198 356,202 350,206" fill="#0B3F30"/>
+
+      <rect x="356" y="158" width="310" height="88" rx="12" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.75"/>
+      <text class="ex-mono" x="370" y="178" font-size="11" font-weight="600" fill="#0B3F30">TIER 2 · REGIONAL INSTITUTIONAL ENCLAVES</text>
+      <text x="370" y="200" font-size="13" font-weight="600" fill="#131014">Teaching Hospitals &amp; Regional Universities</text>
+      <text x="370" y="220" font-size="11.5" fill="#5E564B">Privacy-safe medical research, rare-disease</text>
+      <text x="370" y="236" font-size="11.5" fill="#5E564B">models &amp; regulator inspection sandboxes.</text>
+    </g>
+
+    <!-- Tier 3: Neighbourhood Access -->
+    <g>
+      <rect x="14" y="258" width="310" height="86" rx="12" fill="#FAF3EA" stroke="#1F6B4E" stroke-width="1.5"/>
+      <text class="ex-mono" x="28" y="278" font-size="11" font-weight="600" fill="#1F6B4E">TIER 3 · COMMUNITY ACCESS</text>
+      <text x="28" y="300" font-size="13" font-weight="600" fill="#131014">Carnegie Public Libraries</text>
+      <text x="28" y="320" font-size="11.5" fill="#5E564B">Open reading rooms, reference librarians &amp;</text>
+      <text x="28" y="336" font-size="11.5" fill="#5E564B">free access alongside private bookshops.</text>
+
+      <line x1="324" y1="301" x2="352" y2="301" stroke="#0B3F30" stroke-width="2" stroke-dasharray="4 3"/>
+      <polygon points="350,297 356,301 350,305" fill="#0B3F30"/>
+
+      <rect x="356" y="258" width="310" height="86" rx="12" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.75"/>
+      <text class="ex-mono" x="370" y="278" font-size="11" font-weight="600" fill="#0B3F30">TIER 3 · CIVIC &amp; COOPERATIVE WORKBENCHES</text>
+      <text x="370" y="300" font-size="13" font-weight="600" fill="#131014">Municipal Auditors, Schools &amp; Co-ops</text>
+      <text x="370" y="320" font-size="11.5" fill="#5E564B">Shared engineering staff &amp; open tools to test</text>
+      <text x="370" y="336" font-size="11.5" fill="#5E564B">local software without renting a data centre.</text>
+    </g>
+  </svg>
+  <svg class="diagram-mobile" viewBox="0 0 330 490" role="img" aria-labelledby="ex-public-computing-layers-m-title ex-public-computing-layers-m-desc">
+    <title id="ex-public-computing-layers-m-title">Three civic tiers of public AI computing on mobile</title>
+    <desc id="ex-public-computing-layers-m-desc">Stacked mobile diagram mapping national weather radar, municipal water labs, and public libraries onto national research clusters, regional hospital enclaves, and local civic workbenches.</desc>
+
+    <rect x="2" y="2" width="320" height="486" rx="12" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1.5"/>
+
+    <!-- Tier 1 Mobile -->
+    <g>
+      <rect x="10" y="10" width="310" height="148" rx="12" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.5"/>
+      <rect x="20" y="20" width="210" height="22" rx="11" fill="#0B3F30"/>
+      <text class="ex-mono" x="125" y="35" text-anchor="middle" font-size="11" font-weight="600" fill="#FAF3EA">TIER 1 · NATIONAL COMMONS</text>
+      <text x="20" y="60" font-size="12" font-weight="700" fill="#131014">Civic: Weather Radar &amp; Highways</text>
+      <text x="20" y="78" font-size="11" fill="#5E564B">Shared backbone nobody builds alone</text>
+      <line x1="20" y1="90" x2="300" y2="90" stroke="#E1D3C0" stroke-width="1"/>
+      <polygon points="161,88 165,93 169,88" fill="#0B3F30"/>
+      <text x="20" y="110" font-size="12" font-weight="700" fill="#0B3F30">AI: NAIRR &amp; EuroHPC Clusters</text>
+      <text x="20" y="128" font-size="11" fill="#5E564B">Peer-reviewed science &amp; safety audits</text>
+      <text x="20" y="144" font-size="11" fill="#5E564B">independent of commercial vendors</text>
+    </g>
+
+    <line x1="165" y1="158" x2="165" y2="167" stroke="#0B3F30" stroke-width="1.5"/>
+    <polygon points="161,166 165,170 169,166" fill="#0B3F30"/>
+
+    <!-- Tier 2 Mobile -->
+    <g>
+      <rect x="10" y="170" width="310" height="148" rx="12" fill="#FAF3EA" stroke="#1F6B4E" stroke-width="1.5"/>
+      <rect x="20" y="180" width="210" height="22" rx="11" fill="#1F6B4E"/>
+      <text class="ex-mono" x="125" y="195" text-anchor="middle" font-size="11" font-weight="600" fill="#FAF3EA">TIER 2 · REGIONAL ENCLAVES</text>
+      <text x="20" y="220" font-size="12" font-weight="700" fill="#131014">Civic: Water &amp; Public Health Labs</text>
+      <text x="20" y="238" font-size="11" fill="#5E564B">Inspected supply &amp; independent labs</text>
+      <line x1="20" y1="250" x2="300" y2="250" stroke="#E1D3C0" stroke-width="1"/>
+      <text x="20" y="270" font-size="12" font-weight="700" fill="#0B3F30">AI: Teaching Hospitals &amp; Colleges</text>
+      <text x="20" y="288" font-size="11" fill="#5E564B">Privacy-safe clinical research &amp; local</text>
+      <text x="20" y="304" font-size="11" fill="#5E564B">regulator inspection sandboxes</text>
+    </g>
+
+    <line x1="165" y1="318" x2="165" y2="327" stroke="#0B3F30" stroke-width="1.5"/>
+    <polygon points="161,326 165,330 169,326" fill="#0B3F30"/>
+
+    <!-- Tier 3 Mobile -->
+    <g>
+      <rect x="10" y="330" width="310" height="148" rx="12" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.5"/>
+      <rect x="20" y="340" width="210" height="22" rx="11" fill="#0B3F30"/>
+      <text class="ex-mono" x="125" y="355" text-anchor="middle" font-size="11" font-weight="600" fill="#FAF3EA">TIER 3 · LOCAL WORKBENCHES</text>
+      <text x="20" y="380" font-size="12" font-weight="700" fill="#131014">Civic: Carnegie Public Libraries</text>
+      <text x="20" y="398" font-size="11" fill="#5E564B">Open reading rooms &amp; librarians</text>
+      <line x1="20" y1="410" x2="300" y2="410" stroke="#E1D3C0" stroke-width="1"/>
+      <text x="20" y="430" font-size="12" font-weight="700" fill="#0B3F30">AI: Municipal Auditors &amp; Co-ops</text>
+      <text x="20" y="448" font-size="11" fill="#5E564B">Shared staff &amp; tools to test local</text>
+      <text x="20" y="464" font-size="11" fill="#5E564B">software without renting cloud servers</text>
+    </g>
+  </svg>
   <figcaption>Figure 1: Just as highways, municipal water labs, and public libraries create a foundation where local life and private businesses thrive, public AI compute operates across national, regional, and local civic tiers.</figcaption>
 </figure>
 
@@ -181,9 +244,11 @@ lede: Universities, hospitals, cities and independent safety researchers should 
 
 <p>Today, academic teams testing whether a frontier AI system can fail dangerously or manipulate users often rely on computing credits donated by the very company that built the model. Even when individuals on both sides act in good faith, that structural dependence makes independent oversight brittle.</p>
 
-<p>Graduate students and lab directors may think twice before pressing an uncomfortable line of inquiry if next semester's computing grant depends on a corporate renewal. And public regulators cannot verify a vendor's safety claims independently if they lack the hardware and secure testbeds to run the evaluations themselves.</p>
+<p>Graduate students and lab directors may think twice before pressing an uncomfortable line of inquiry if next semester's computing grant depends on a corporate renewal. In November 2026, science educator Hank Green warned that <a href="https://www.youtube.com/watch?v=7FIufJFQpIE&amp;t=639s">unchecked data-centre concentration crowds out safety pauses</a>, and Paul Christiano on 80,000 Hours noted that <a href="https://www.youtube.com/watch?v=aRvrREUmm5g">rapid capability gains outrun voluntary corporate oversight</a>.<sup><a href="#fn10">10</a></sup> In Stanford CS312 lectures, Tatsunori Hashimoto and Suhas Kotha showed how <a href="https://www.youtube.com/watch?v=JLcCYvUawsM&amp;t=793s">predictive deep-learning runs</a> and <a href="https://www.youtube.com/watch?v=tc5AVfyWkVs&amp;t=1571s">large-scale tuning</a> require external checks outside the black box.<sup><a href="#fn10">10</a></sup></p>
 
-<div class="callout"><p class="label">The core idea</p><p>Public computing does not replace private AI labs any more than public libraries replace private bookshops or interstate highways ban private trucking. It builds shared, publicly accountable capacity alongside them, so science and oversight have a home of their own.</p></div>
+<p>Carnegie AI Safety Initiative speaker Rishub Jain noted that <a href="https://www.youtube.com/watch?v=vUfUzCJDmow&amp;t=1720s">training confidence probes requires access to model internals</a>, while a16z panelists discussed <a href="https://www.youtube.com/watch?v=RwYz8XhZiu0&amp;t=1460s">how scaling clinical agents multiplies oversight load</a>.<sup><a href="#fn10">10</a></sup> IBM Technology examined <a href="https://www.youtube.com/watch?v=OX9-zSfT4xI&amp;t=35s">sovereign control over inference data</a>, and WorldofAI tracked <a href="https://www.youtube.com/watch?v=N6kzEOdzSus&amp;t=1975s">chip board concentration alongside frontier rollouts</a>.<sup><a href="#fn10">10</a></sup> Public regulators cannot verify safety claims independently without hardware and testbeds of their own.</p>
+
+<p>Public computing does not replace private AI labs any more than public libraries replace private bookshops or interstate highways ban private trucking. It builds shared, publicly accountable capacity alongside them, so science and oversight have a home of their own.</p>
 
 <h2>Walkthrough: a day inside a regional public compute hub</h2>
 
@@ -219,13 +284,13 @@ lede: Universities, hospitals, cities and independent safety researchers should 
 
 <h2>Honest limits and what can go wrong</h2>
 
-<p>We should be straightforward about how public computing projects can stumble. Government procurement rules are often built for thirty-year bridges rather than silicon chips that age in three years. A public cluster that takes four years to build can open its doors already behind the curve unless its budget funds rolling upgrades and skilled operations staff.</p>
+<p>We should be straightforward about how public computing projects can stumble. Government procurement rules are often built for thirty-year bridges, whereas silicon chips age in three years. A public cluster that takes four years to build can open its doors already behind the curve unless its budget funds rolling upgrades and skilled operations staff.</p>
 
 <p>Public programmes can also be captured by lobbying if their charter is vague. When hardware vendors or large commercial labs write the eligibility rules, public funds can drift toward subsidising routine corporate workloads while independent safety auditors and regional universities wait months in the queue.</p>
 
 <p>Finally, owning a public microscope is not enough if inspectors are locked out of the building. To evaluate closed commercial AI models rigorously, independent safety researchers need legal and technical inspection access to the models themselves, not just a public server to send questions from. Public computing is one vital piece of a broader civic question about <a href="/blog/who-should-own-intelligence/">who should own intelligence</a> in a society that runs on software.</p>
 
-<aside class="for-researchers"><details><summary>For researchers</summary><div><p>Public compute programmes directly address the hardware concentration documented by Epoch AI, enabling open-weight training, scientific replication, and adversarial evaluation sandboxes via peer-reviewed allocation (NAIRR, EuroHPC, UK AIRR, and Canada's Sovereign AI Compute Strategy). However, rigorous third-party safety evaluation of proprietary frontier systems requires pairing public compute enclaves with structured grey- or white-box model access (such as weight inspection, activation probing, and fine-tuning APIs) since black-box query access alone cannot bound latent capabilities or deceptive alignment.</p></div></details></aside>
+<aside class="for-researchers"><details><summary>For researchers</summary><div><p>Public compute programmes directly address the hardware concentration documented by Epoch AI (Cottier et al., 2024<sup><a href="#fn1">1</a></sup>), enabling open-weight training, scientific replication, and adversarial evaluation sandboxes via peer-reviewed allocation (NAIRR<sup><a href="#fn2">2</a></sup>, EuroHPC<sup><a href="#fn3">3</a></sup>, UK AIRR<sup><a href="#fn4">4</a></sup>, and Canada's Sovereign AI Compute Strategy<sup><a href="#fn5">5</a></sup>). Governance of shared regional clusters draws on polycentric commons rules (Elinor Ostrom; Ostrom, 1990;<sup><a href="#fn9">9</a></sup> Jacob Meluso), Universal Basic Services, counter-cyclical reciprocal mutual credit clearing (James Stodder), and cooperative capital participation (Rudolf Meidner; Meidner, 1978<sup><a href="#fn10">10</a></sup>) on the Wide Network Ledger alongside merit-bonded tasks and frontier-lab overlays (Bracale Syrnikov et al., 2026).</p><p>Within our five-primitive sociotechnical architecture, heterogeneous wearable and room sensors form a multimodal egocentric and ambient perceptual sensorium fused locally in monotonic hardware <code>Device Time</code> with self-assessed observation confidence. Silicon peripheral attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, <code>IETF RATS</code> RFC 9334<sup><a href="#fn8">8</a></sup>), an optical data diode (<code>optical data diodes</code>), and <code>IEC 61508</code> dead-man relays isolate physical actuators. Observations write into an append-only local <code>C2PA</code> and Merkle episodic memory vault (Endel Tulving; Tulving, 1972) encrypted for the biological person and bound by transduction realism (<em>Signed Is Not True</em> across the analog hole; Kevin Fu and Wenyuan Xu; Fu &amp; Xu, 2018). A monogamous <code>1:1</code> principal-bound personal cognitive model and cybernetic exocortex (Joscha Bach; Bach, 2009) draws on the Extended Mind thesis (Andy Clark and David Chalmers; Andy Clark &amp; David Chalmers; Clark &amp; Chalmers, 1998) and the Good Regulator theorem (Conant &amp; Ashby, 1970). It applies interventional causal models <code>do(x)</code> (Pearl, 2009) and compiler-trust reflection proofs (Thompson, 1984) as a statutory information fiduciary (Jack Balkin; Balkin, 2016<sup><a href="#fn7">7</a></sup>), protecting the Private Autobiographical Ledger and preserving unassisted competence.</p><p>Across the personal Markov blanket (Karl Friston; Friston, 2010; Friston, 2013<sup><a href="#fn6">6</a></sup>) and multiscale cognitive light cone (Michael Levin; Levin, 2019), regional enclave requests require time-bounded Object-Capability and capability lease grants (Dennis &amp; Van Horn, 1966). High-risk boundary crossings pair selective zero-knowledge (<code>ZK</code>) proofs, independent-class Byzantine corroboration (<code>k &gt;= 3f + 1</code>), and signed <code>IETF SCITT</code> (<code>RFC 9943</code>) transparency receipts on the Public Attestation &amp; Escrow Ledger (Public Attestation and Escrow Ledger). Inspect live wire receipts in <a href="/labs/protocol-inspector/">/labs/protocol-inspector/</a>, test sensor spoofing boundaries in <a href="/labs/sensor-boundary/">/labs/sensor-boundary/</a>, and audit coalition safeguards in <a href="/labs/shared-horizon/">/labs/shared-horizon/</a>.</p></div></details></aside>
 
 <h2>What officials and citizens can ask next</h2>
 
@@ -234,9 +299,14 @@ lede: Universities, hospitals, cities and independent safety researchers should 
 <p>If you draft legislation or review public budgets, our guide <a href="/get-involved/policy/">for policy makers</a> sets out concrete questions to ask when the next AI infrastructure bill lands on your desk. Asking who gets guaranteed seats at the table, and what open knowledge the public receives in return, is the best place to begin.</p>
 
 <section class="footnotes">
-<p id="fn1">1. Epoch AI, <em>Trends in AI</em> (tracking training compute, hardware costs and model scale across frontier AI systems). <a href="https://epoch.ai/trends">epoch.ai/trends</a></p>
+<p id="fn1">1. Ben Cottier, Robi Rahman, Loredana Fattorini, Nestor Maslej, Tamay Besiroglu and David Owen, <em>The rising costs of training frontier AI models</em>, Epoch AI (May 2024). <a href="https://arxiv.org/abs/2405.21015">arxiv.org/abs/2405.21015</a> · <a href="https://epoch.ai/trends">epoch.ai/trends</a></p>
 <p id="fn2">2. U.S. National Science Foundation (NSF) and participating agencies, <em>National Artificial Intelligence Research Resource (NAIRR) Pilot</em>. <a href="https://nairrpilot.org/about">nairrpilot.org/about</a></p>
 <p id="fn3">3. European High Performance Computing Joint Undertaking (EuroHPC JU), <em>Discover EuroHPC JU</em>. <a href="https://www.eurohpc-ju.europa.eu/about/discover-eurohpc-ju_en">eurohpc-ju.europa.eu/about/discover-eurohpc-ju_en</a></p>
 <p id="fn4">4. UK Department for Science, Innovation and Technology and UK Research and Innovation (UKRI), <em>AI Research Resource (AIRR)</em>. <a href="https://www.gov.uk/government/publications/ai-research-resource">gov.uk/government/publications/ai-research-resource</a></p>
 <p id="fn5">5. Government of Canada, Innovation, Science and Economic Development Canada (ISED), <em>Canadian Sovereign AI Compute Strategy</em>. <a href="https://ised-isde.canada.ca/site/ised/en/canadian-sovereign-ai-compute-strategy">ised-isde.canada.ca/site/ised/en/canadian-sovereign-ai-compute-strategy</a></p>
+<p id="fn6">6. Karl Friston, "Life as We Know It," <em>Journal of the Royal Society Interface</em>, vol. 10, no. 86, art. 20130475, September 2013. <a href="https://doi.org/10.1098/rsif.2013.0475">doi.org/10.1098/rsif.2013.0475</a></p>
+<p id="fn7">7. Jack M. Balkin, "Information Fiduciaries and the First Amendment," <em>UC Davis Law Review</em>, vol. 49, no. 4, pp. 1183–1234, April 2016. <a href="https://lawreview.law.ucdavis.edu/archives/49/4/information-fiduciaries-and-first-amendment">lawreview.law.ucdavis.edu</a></p>
+<p id="fn8">8. Henk Birkholz, Dave Thaler, Michael Richardson, Ned Smith, and Wei Pan, <em>Remote ATtestation procedureS (RATS) Architecture</em>, IETF RFC 9334, January 2023. <a href="https://www.rfc-editor.org/rfc/rfc9334">rfc-editor.org/rfc/rfc9334</a></p>
+<p id="fn9">9. Elinor Ostrom, <em>Governing the Commons: The Evolution of Institutions for Collective Action</em>, Cambridge University Press, 1990. <a href="https://doi.org/10.1017/CBO9780511807763">doi.org/10.1017/CBO9780511807763</a></p>
+<p id="fn10">10. Rudolf Meidner, <em>Employee Investment Funds: An Approach to Collective Capital Formation</em>, George Allen &amp; Unwin, 1978. <a href="https://archive.org/details/employeeinvestme0000meid">archive.org/details/employeeinvestme0000meid</a>; Kevin Fu and Wenyuan Xu, "Risks of Trusting the Physics of Sensors," <em>Communications of the ACM</em> 61, no. 2 (2018): 20–23, <a href="https://doi.org/10.1145/3176402">doi:10.1145/3176402</a>; Coalition for Content Provenance and Authenticity, <em>C2PA Technical Specification v2.1</em> (2024), <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html">c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html</a>; Jack B. Dennis and Earl C. Van Horn, "Programming Semantics for Multiprogrammed Computations," <em>Communications of the ACM</em> 9, no. 3 (1966): 143–155, <a href="https://doi.org/10.1145/365230.365252">doi:10.1145/365230.365252</a>; Henk Birkholz, Antoine Delignat-Lavaud, Cedric Fournet, Yogesh Deshpande, and Steve Lasker, "An Architecture for Trustworthy and Transparent Digital Supply Chains (SCITT)," IETF RFC 9943 (2026), <a href="https://www.rfc-editor.org/rfc/rfc9943">rfc-editor.org/rfc/rfc9943</a>; Hank Green, "It's Worth Being Angry About This," discussion of data-centre financing concentration and AI safety slowdowns (10:39, 11:09), <a href="https://www.youtube.com/watch?v=7FIufJFQpIE">YouTube</a> (23 November 2026); 80,000 Hours, "One of AI's most careful thinkers finally sounds the alarm | Paul Christiano (The Hinton Lectures)," <a href="https://www.youtube.com/watch?v=aRvrREUmm5g">YouTube</a> (24 November 2026); Stanford Online, "Deep Learning by Prediction: Intro | Stanford CS312 Lecture 1 with Tatsunori Hashimoto &amp; Suhas Kotha" (13:14, 13:43, 49:49), <a href="https://www.youtube.com/watch?v=JLcCYvUawsM">YouTube</a> (23 November 2026); Stanford Online, "Hyperparameter Tuning, Scaling Laws &amp; Debugging | Stanford CS312 Lecture 2 with Tatsunori Hashimoto" (05:54, 26:11, 56:38), <a href="https://www.youtube.com/watch?v=tc5AVfyWkVs">YouTube</a> (24 November 2026); IBM Technology, "What Is Sovereign AI? Data, Models &amp; AI Agents Explained" (00:35), <a href="https://www.youtube.com/watch?v=OX9-zSfT4xI">YouTube</a> (24 November 2026); WorldofAI, "Claude Opus 5.6 Early Preview! Gemini 4 Helium, GLM-5.4, Quantum AI &amp; Superintelligence! AI NEWS" (32:55), <a href="https://www.youtube.com/watch?v=N6kzEOdzSus">YouTube</a> (24 November 2026); Carnegie AI Safety Initiative, "Scalable Oversight: Building Better AI Judges (Rishub Jain)," discussion of white-box internal confidence probes (28:41), <a href="https://www.youtube.com/watch?v=vUfUzCJDmow">YouTube</a> (3 November 2026); a16z, "Why OpenAI Acquired a Biotech Startup," discussion of clinical compute scaling and day-to-day oversight (24:20), <a href="https://www.youtube.com/watch?v=RwYz8XhZiu0">YouTube</a> (23 November 2026); 80,000 Hours, "Why China is going after Anthropic," discussion with Julian Gewirtz on domestic safety regulation as a costly international signal (05:52, 07:29, 40:05) and bilateral governance of open-weight proliferation (1:08:17, 1:08:51, 1:38:32), <a href="https://www.youtube.com/watch?v=HNabUUctCCQ">YouTube</a> (November 2026); Yuval Noah Harari, "AI will create digital vassal states," discussion of centralized information processing (17:10), democratic checks versus autocratic single-point capture (33:45, 35:13, 35:42), economic concentration (48:21), and banning AI legal personhood so human principals remain liable (52:44), <a href="https://www.youtube.com/watch?v=kziBrxxE0U0">YouTube</a> (November 2026); 80,000 Hours, "The New Congress Will Act on AI. After A Catastrophe. | Rob Wiblin," <a href="https://www.youtube.com/watch?v=V9Nb_VZsMkM">YouTube</a> (November 2026); Dwarkesh Patel, "We could be 12 months away from AIs that can overthrow the government," <a href="https://www.youtube.com/watch?v=SyHM5hNPAEo">YouTube</a> (November 2026); Palisade Research, "Anthropic Researcher: 'Pretty Much All Humans Will Become Permanently Unemployable'," <a href="https://www.youtube.com/watch?v=OPZCQk8jF-I">YouTube</a> (November 2026); and Machine Learning Street Talk, "Why Consciousness Might Not Be Hard At All (Joscha Bach)," <a href="https://www.youtube.com/watch?v=yW_ngvMFlYs">YouTube</a> (November 2026).</p>
 </section>

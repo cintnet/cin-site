@@ -4,7 +4,7 @@ description: Embedding statistical watermarks inside generated text causes subtl
 reader: Public readers, developers, researchers, and public officials exploring AI provenance and transparency rules.
 takeaway: Origin verification must never alter the underlying words. Factual text stays unperturbed, while cryptographic receipts prove origin deterministically.
 template: article
-date: 2026-10-31
+date: 2026-11-07
 order: 44
 category: Truth
 minutes: 8
@@ -35,151 +35,177 @@ lede: Watermarks hidden in AI-generated text work by changing which words the mo
       --ex-slip: #F3E8D8;
       --ex-ink: #131014;
       --ex-muted: #5E564B;
-      --ex-rule: #D8C8B2;
+      --ex-rule: #E1D3C0;
       --ex-signal: #0B3F30;
       --ex-accent: #1F6B4E;
-      --ex-warn: #9E4726;
-      --ex-amber: #805113;
-      margin: 2.1rem 0;
-      padding: 1.35rem 0 1.15rem;
-      background: transparent;
-      border: 0;
-      border-top: 1px solid var(--ex-rule);
-      border-bottom: 1px solid var(--ex-rule);
-      border-radius: 0;
-      box-shadow: none;
+      --ex-warn: #B85C38;
+      margin: 1.8em 0;
+      padding: 18px 20px 16px;
+      background: var(--ex-slip);
+      border: 1px solid var(--ex-rule);
+      border-radius: 18px;
       color: var(--ex-ink);
     }
+    :root[data-theme="dark"] #ex-watermarking-vs-provenance {
+      --ex-paper: #18161E;
+      --ex-slip: #221F2A;
+      --ex-ink: #EDE6DC;
+      --ex-muted: #A8A095;
+      --ex-rule: #322E3D;
+      --ex-signal: #8FD4B6;
+      --ex-accent: #8FD4B6;
+      --ex-warn: #F09D82;
+    }
+    @media (prefers-color-scheme: dark) {
+      #ex-watermarking-vs-provenance {
+        --ex-paper: #18161E;
+        --ex-slip: #221F2A;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #A8A095;
+        --ex-rule: #322E3D;
+        --ex-signal: #8FD4B6;
+        --ex-accent: #8FD4B6;
+        --ex-warn: #F09D82;
+      }
+      #ex-watermarking-vs-provenance rect[fill="#FAF3EA"],
+      #ex-watermarking-vs-provenance rect[fill="#F3E8D8"] {
+        fill: #221F2A;
+        stroke: #322E3D;
+      }
+      #ex-watermarking-vs-provenance text[fill="#131014"],
+      #ex-watermarking-vs-provenance text[fill="#5E564B"] {
+        fill: #EDE6DC;
+      }
+      #ex-watermarking-vs-provenance text[fill="#0B3F30"],
+      #ex-watermarking-vs-provenance text[fill="#1F6B4E"] {
+        fill: #8FD4B6;
+      }
+      #ex-watermarking-vs-provenance text[fill="#B85C38"] {
+        fill: #F09D82;
+      }
+    }
     #ex-watermarking-vs-provenance svg {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    #ex-watermarking-vs-provenance .diagram-desktop {
       display: block;
       width: 100%;
       height: auto;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
-    #ex-watermarking-vs-provenance .ex-mono {
-      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
-      letter-spacing: 0.05em;
-    }
-    #ex-watermarking-vs-provenance .ex-spec-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.9rem 1.4rem;
-      margin-top: 0.95rem;
-      padding-top: 0.85rem;
-      border-top: 1px solid var(--ex-rule);
-      font-size: 0.88rem;
-      line-height: 1.5;
-    }
-    #ex-watermarking-vs-provenance .ex-spec-col {
-      padding-left: 0.75rem;
-      border-left: 2px solid var(--ex-rule);
-    }
-    #ex-watermarking-vs-provenance .ex-spec-col.is-signal {
-      border-left-color: var(--ex-signal);
-    }
-    #ex-watermarking-vs-provenance .ex-spec-col.is-warn {
-      border-left-color: var(--ex-warn);
-    }
-    #ex-watermarking-vs-provenance .ex-spec-col.is-amber {
-      border-left-color: var(--ex-amber);
-    }
-    #ex-watermarking-vs-provenance .ex-spec-kicker {
-      display: block;
-      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--ex-muted);
-      margin-bottom: 0.22rem;
-    }
-    #ex-watermarking-vs-provenance .ex-spec-body {
-      color: var(--ex-ink);
-    }
-    @media (max-width: 680px) {
-      #ex-watermarking-vs-provenance .ex-spec-grid {
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
-      }
-    }
-    #ex-watermarking-vs-provenance figcaption {
-      margin-top: 0.9rem;
-      padding-top: 0.7rem;
-      border-top: 1px solid var(--ex-rule);
-      font-size: 0.9rem;
-      line-height: 1.55;
-      color: var(--ex-muted);
-      text-align: left;
+    #ex-watermarking-vs-provenance .diagram-mobile {
+      display: none;
+      width: 100%;
+      height: auto;
     }
     @media (max-width: 640px) {
-      #ex-watermarking-vs-provenance .ex-canvas {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-      }
-      #ex-watermarking-vs-provenance .ex-canvas svg {
-        min-width: 540px;
-      }
+      #ex-watermarking-vs-provenance .diagram-desktop { display: none; }
+      #ex-watermarking-vs-provenance .diagram-mobile { display: block; }
+    }
+    #ex-watermarking-vs-provenance figcaption {
+      margin-top: 12px;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: var(--ex-muted);
     }
   </style>
-  <div class="ex-canvas">
-    <svg viewBox="0 0 680 340" role="img" aria-labelledby="ex-watermarking-title ex-watermarking-desc">
-      <title id="ex-watermarking-title">Statistical text watermarking versus out-of-band cryptographic receipts</title>
-      <desc id="ex-watermarking-desc">A comparative diagram showing how in-band statistical watermarking distorts word choices and risks hallucinations, while out-of-band cryptographic provenance preserves exact facts and provides deterministic verification.</desc>
-      <line x1="340" y1="14" x2="340" y2="328" stroke="var(--ex-rule)" stroke-width="1"/>
-      <g>
-        <rect x="14" y="18" width="6" height="6" fill="var(--ex-warn)"/>
-        <text class="ex-mono" x="27" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">IN-BAND TEXT WATERMARK</text>
-        <text x="14" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Biases token choices to hide pattern</text>
-        <line x1="14" y1="50" x2="328" y2="50" stroke="var(--ex-warn)" stroke-width="1.25"/>
-        <line x1="22" y1="64" x2="22" y2="228" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
-        <rect x="19" y="62" width="6" height="6" fill="var(--ex-warn)"/>
-        <text x="34" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Green-List Bias</text>
-        <text x="34" y="85" font-size="11" fill="var(--ex-muted)">Suppresses exact terminology</text>
-        <line x1="34" y1="132" x2="328" y2="132" stroke="var(--ex-rule)" stroke-width="1"/>
-        <rect x="19" y="142" width="6" height="6" fill="var(--ex-warn)"/>
-        <text x="34" y="149" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Word Distortion</text>
-        <text x="34" y="165" font-size="11" fill="var(--ex-muted)">Shifts dosages, dates &amp; code</text>
-        <line x1="34" y1="212" x2="328" y2="212" stroke="var(--ex-rule)" stroke-width="1"/>
-        <rect x="19" y="222" width="6" height="6" fill="var(--ex-warn)"/>
-        <text x="34" y="229" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Fragile Guess</text>
-        <text x="34" y="245" font-size="11" fill="var(--ex-muted)">Stripped by simple edits</text>
-        <line x1="14" y1="303" x2="328" y2="303" stroke="var(--ex-rule)" stroke-width="1"/>
-        <rect x="14" y="311" width="5" height="5" fill="var(--ex-warn)"/>
-        <text x="25" y="316" font-size="11" font-weight="700" fill="var(--ex-warn)">Risk: Degraded facts &amp; false flags</text>
-      </g>
-      <g>
-        <rect x="354" y="18" width="6" height="6" fill="var(--ex-signal)"/>
-        <text class="ex-mono" x="367" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">OUT-OF-BAND PROVENANCE</text>
-        <text x="354" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Leaves words pure; signs envelope</text>
-        <line x1="354" y1="50" x2="666" y2="50" stroke="var(--ex-signal)" stroke-width="1.25"/>
-        <line x1="362" y1="64" x2="362" y2="228" stroke="var(--ex-signal)" stroke-width="1"/>
-        <rect x="359" y="62" width="6" height="6" fill="var(--ex-signal)"/>
-        <text x="374" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Natural Decoding</text>
-        <text x="374" y="85" font-size="11" fill="var(--ex-muted)">Zero token distortion</text>
-        <line x1="374" y1="132" x2="666" y2="132" stroke="var(--ex-rule)" stroke-width="1"/>
-        <rect x="359" y="142" width="6" height="6" fill="var(--ex-signal)"/>
-        <text x="374" y="149" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Hardware Key Stamp</text>
-        <text x="374" y="165" font-size="11" fill="var(--ex-muted)">Signs hash in header receipt</text>
-        <line x1="374" y1="212" x2="666" y2="212" stroke="var(--ex-rule)" stroke-width="1"/>
-        <rect x="359" y="222" width="6" height="6" fill="var(--ex-signal)"/>
-        <text x="374" y="229" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Exact Public Check</text>
-        <text x="374" y="245" font-size="11" fill="var(--ex-muted)">Deterministic yes or no</text>
-        <line x1="354" y1="303" x2="666" y2="303" stroke="var(--ex-rule)" stroke-width="1"/>
-        <rect x="354" y="311" width="5" height="5" fill="var(--ex-signal)"/>
-        <text x="365" y="316" font-size="11" font-weight="700" fill="var(--ex-signal)">Assurance: Pure prose &amp; exact proof</text>
-      </g>
-    </svg>
-  </div>
-  <div class="ex-spec-grid">
-    <div class="ex-spec-col is-warn">
-      <span class="ex-spec-kicker">Statistical token steering</span>
-      <div class="ex-spec-body">Nudges word probabilities to embed a hidden pattern, risking subtle factual shifts in medical dosages, dates, or code.</div>
-    </div>
-    <div class="ex-spec-col is-signal">
-      <span class="ex-spec-kicker">Cryptographic envelope receipt</span>
-      <div class="ex-spec-body">Leaves every generated word untouched and attaches a hardware-signed hash in metadata for deterministic verification.</div>
-    </div>
-  </div>
+  <svg class="diagram-desktop" viewBox="0 0 680 340" width="100%" height="auto" role="img" aria-labelledby="ex-watermarking-title ex-watermarking-desc">
+    <title id="ex-watermarking-title">Statistical text watermarking versus out-of-band cryptographic receipts</title>
+    <desc id="ex-watermarking-desc">A comparative diagram showing how in-band statistical watermarking distorts word choices and risks hallucinations, while out-of-band cryptographic provenance preserves exact facts and provides deterministic verification.</desc>
+    <rect x="2" y="2" width="676" height="336" rx="14" fill="#F3E8D8" stroke="#E1D3C0" stroke-width="1.5"/>
+    <rect x="14" y="12" width="652" height="136" rx="10" fill="#FAF3EA" stroke="#B85C38" stroke-width="1.4"/>
+    <rect x="26" y="22" width="220" height="22" rx="11" fill="#B85C38"/>
+    <text x="136" y="37" text-anchor="middle" fill="#FAF3EA" font-size="11" font-weight="700" letter-spacing="0.04em">IN-BAND STATISTICAL WATERMARK</text>
+    <text x="256" y="37" fill="#131014" font-size="12" font-weight="600">Alters generated tokens to embed statistical patterns</text>
+    <rect x="26" y="56" width="190" height="76" rx="6" fill="#F3E8D8" stroke="#B85C38" stroke-width="1"/>
+    <text x="36" y="73" fill="#B85C38" font-size="11" font-weight="700">1. PROBABILITY BIAS</text>
+    <text x="36" y="90" fill="#131014" font-size="11">Splits dictionary into lists</text>
+    <text x="36" y="106" fill="#5E564B" font-size="11">Forces green-list tokens</text>
+    <text x="36" y="122" fill="#5E564B" font-size="11">Suppresses exact words</text>
+    <line x1="222" y1="94" x2="242" y2="94" stroke="#B85C38" stroke-width="1.5"/>
+    <polygon points="242,90 248,94 242,98" fill="#B85C38"/>
+    <rect x="248" y="56" width="190" height="76" rx="6" fill="#F3E8D8" stroke="#B85C38" stroke-width="1"/>
+    <text x="258" y="73" fill="#B85C38" font-size="11" font-weight="700">2. WORD DISTORTION</text>
+    <text x="258" y="90" fill="#131014" font-size="11">Substitutes loose synonyms</text>
+    <text x="258" y="106" fill="#B85C38" font-size="11" font-weight="600">Hallucination risk rises</text>
+    <text x="258" y="122" fill="#5E564B" font-size="11">Dosages and dates shift</text>
+    <line x1="444" y1="94" x2="464" y2="94" stroke="#B85C38" stroke-width="1.5"/>
+    <polygon points="464,90 470,94 464,98" fill="#B85C38"/>
+    <rect x="470" y="56" width="182" height="76" rx="6" fill="#F3E8D8" stroke="#B85C38" stroke-width="1"/>
+    <text x="480" y="73" fill="#B85C38" font-size="11" font-weight="700">3. WEAK VERIFICATION</text>
+    <text x="480" y="90" fill="#131014" font-size="11">Only statistical guesses</text>
+    <text x="480" y="106" fill="#5E564B" font-size="11">Stripped by simple edits</text>
+    <text x="480" y="122" fill="#5E564B" font-size="11">High false positive rate</text>
+    <rect x="14" y="160" width="652" height="154" rx="10" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.6"/>
+    <rect x="26" y="170" width="220" height="22" rx="11" fill="#0B3F30"/>
+    <text x="136" y="185" text-anchor="middle" fill="#FAF3EA" font-size="11" font-weight="700" letter-spacing="0.04em">OUT-OF-BAND PROVENANCE</text>
+    <text x="256" y="185" fill="#0B3F30" font-size="12" font-weight="600">Leaves words pure and attaches cryptographic proof</text>
+    <rect x="26" y="204" width="190" height="88" rx="6" fill="#F3E8D8" stroke="#0B3F30" stroke-width="1"/>
+    <text x="36" y="221" fill="#0B3F30" font-size="11" font-weight="700">1. NATURAL GENERATION</text>
+    <text x="36" y="238" fill="#131014" font-size="11">Standard greedy decoding</text>
+    <text x="36" y="254" fill="#0B3F30" font-size="11" font-weight="600">Zero token steering</text>
+    <text x="36" y="270" fill="#5E564B" font-size="11">Highest factual accuracy</text>
+    <line x1="222" y1="248" x2="242" y2="248" stroke="#0B3F30" stroke-width="1.5"/>
+    <polygon points="242,244 248,248 242,252" fill="#0B3F30"/>
+    <rect x="248" y="204" width="190" height="88" rx="6" fill="#F3E8D8" stroke="#0B3F30" stroke-width="1"/>
+    <text x="258" y="221" fill="#0B3F30" font-size="11" font-weight="700">2. SIGNED RECEIPT</text>
+    <text x="258" y="238" fill="#131014" font-size="11">Hardware-held private key</text>
+    <text x="258" y="254" fill="#0B3F30" font-size="11" font-weight="600">Cryptographic hash stamp</text>
+    <text x="258" y="270" fill="#5E564B" font-size="11">Receipt in envelope header</text>
+    <line x1="444" y1="248" x2="464" y2="248" stroke="#0B3F30" stroke-width="1.5"/>
+    <polygon points="464,244 470,248 464,252" fill="#0B3F30"/>
+    <rect x="470" y="204" width="182" height="88" rx="6" fill="#F3E8D8" stroke="#0B3F30" stroke-width="1"/>
+    <text x="480" y="221" fill="#0B3F30" font-size="11" font-weight="700">3. EXACT VERIFICATION</text>
+    <text x="480" y="238" fill="#131014" font-size="11">Open public key check</text>
+    <text x="480" y="254" fill="#0B3F30" font-size="11" font-weight="600">Deterministic yes or no</text>
+    <text x="480" y="270" fill="#5E564B" font-size="11">Zero false positive rates</text>
+  </svg>
+  <svg class="diagram-mobile" viewBox="0 0 330 560" width="100%" height="auto" role="img" aria-labelledby="ex-watermarking-m-title ex-watermarking-m-desc">
+    <title id="ex-watermarking-m-title">Mobile comparison of statistical text watermarking and out-of-band cryptographic provenance</title>
+    <desc id="ex-watermarking-m-desc">Stacked mobile diagram contrasting in-band statistical watermarking on top (probability bias, word distortion, weak verification) with out-of-band cryptographic provenance below (natural generation, signed receipt, exact verification).</desc>
+    <rect x="2" y="2" width="326" height="556" rx="14" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1.5"/>
+    <line x1="165" y1="90" x2="165" y2="96" stroke="#B85C38" stroke-width="1.5"/>
+    <polygon points="161,94 165,98 169,94" fill="#B85C38"/>
+    <line x1="165" y1="360" x2="165" y2="366" stroke="#0B3F30" stroke-width="1.5"/>
+    <polygon points="161,364 165,368 169,364" fill="#0B3F30"/>
+    <line x1="165" y1="410" x2="165" y2="416" stroke="#0B3F30" stroke-width="1.5"/>
+    <polygon points="161,414 165,418 169,414" fill="#0B3F30"/>
+
+    <rect x="14" y="14" width="302" height="254" rx="10" fill="#F3E8D8" stroke="#B85C38" stroke-width="1.5"/>
+    <text x="24" y="34" font-size="12" font-weight="700" fill="#B85C38">IN-BAND STATISTICAL WATERMARK</text>
+
+    <rect x="24" y="46" width="282" height="44" rx="6" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1"/>
+    <text x="34" y="63" font-size="11" font-weight="700" fill="#B85C38">1. Probability bias</text>
+    <text x="34" y="81" font-size="11" fill="#131014">Forces green-list token choices</text>
+
+    <rect x="24" y="96" width="282" height="44" rx="6" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1"/>
+    <text x="34" y="113" font-size="11" font-weight="700" fill="#B85C38">2. Word distortion</text>
+    <text x="34" y="131" font-size="11" fill="#131014">Swaps exact dosages &amp; dates</text>
+
+    <rect x="24" y="146" width="282" height="44" rx="6" fill="#FAF3EA" stroke="#B85C38" stroke-width="1"/>
+    <text x="34" y="163" font-size="11" font-weight="700" fill="#B85C38">3. Fragile detection</text>
+    <text x="34" y="181" font-size="11" fill="#131014">Stripped by simple paraphrasing</text>
+
+    <text x="165" y="220" text-anchor="middle" font-size="11" font-weight="700" fill="#B85C38">Flaw: Bends factual words to carry signal</text>
+    <text x="165" y="242" text-anchor="middle" font-size="11" fill="#5E564B">High false positives &amp; privacy leaks</text>
+
+    <rect x="14" y="284" width="302" height="260" rx="10" fill="#FAF3EA" stroke="#1F6B4E" stroke-width="1.5"/>
+    <text x="24" y="304" font-size="12" font-weight="700" fill="#0B3F30">OUT-OF-BAND SIGNED RECEIPT</text>
+
+    <rect x="24" y="316" width="282" height="44" rx="6" fill="#F3E8D8" stroke="#1F6B4E" stroke-width="1"/>
+    <text x="34" y="333" font-size="11" font-weight="700" fill="#0B3F30">1. Unperturbed decoding</text>
+    <text x="34" y="351" font-size="11" fill="#131014">Quotes exact numbers &amp; instructions</text>
+
+    <rect x="24" y="366" width="282" height="44" rx="6" fill="#F3E8D8" stroke="#1F6B4E" stroke-width="1"/>
+    <text x="34" y="383" font-size="11" font-weight="700" fill="#0B3F30">2. Hardware envelope seal</text>
+    <text x="34" y="401" font-size="11" fill="#131014">Signs text hash outside the words</text>
+
+    <rect x="24" y="416" width="282" height="44" rx="6" fill="#F3E8D8" stroke="#1F6B4E" stroke-width="1"/>
+    <text x="34" y="433" font-size="11" font-weight="700" fill="#0B3F30">3. Deterministic check</text>
+    <text x="34" y="451" font-size="11" fill="#131014">Public key verifies origin in one click</text>
+
+    <text x="165" y="490" text-anchor="middle" font-size="11" font-weight="700" fill="#0B3F30">Assurance: Words stay true &amp; checkable</text>
+    <text x="165" y="512" text-anchor="middle" font-size="11" fill="#5E564B">Zero token steering or false guesses</text>
+  </svg>
   <figcaption>Comparing token-level watermarking with out-of-band cryptographic provenance. In-band watermarking degrades factual precision to embed statistical traces, while cryptographic receipts prove origin deterministically without altering a single word.</figcaption>
 </figure>
 
@@ -193,19 +219,19 @@ lede: Watermarks hidden in AI-generated text work by changing which words the mo
 
 <p>This creates an upside-down outcome. People with malicious intentions strip the watermarks in milliseconds using freely available tools. Meanwhile, honest doctors, teachers, researchers, and public servants are stuck with degraded, unreliable answers.</p>
 
-<h2>The alternative: A seal on the envelope</h2>
+<h2>The alternative: a seal on the envelope</h2>
 
 <p>Human society solved this verification problem centuries ago. We do not authenticate deeds by tampering with the parchment. We place a seal upon the envelope.</p>
 
 <p>In modern digital architecture, this approach is known as out-of-band cryptographic provenance.<sup><a href="#fn5">5</a></sup> Instead of distorting the generation process, the assistant generates text naturally, selecting the most accurate and truthful words possible.</p>
 
-<p>Once the response is complete, the local device creates a cryptographic receipt. This receipt contains a secure mathematical hash of the generated text, signed by an attested hardware key held on the device. The signature travels alongside the document as an open metadata envelope.</p>
+<p>Once the response is complete, the local device creates a cryptographic receipt. This receipt contains a secure mathematical hash of the generated text, signed by an attested hardware key held on the device.<sup><a href="#fn9">9</a></sup> The signature travels alongside the document as an open metadata envelope.</p>
 
-<p>This separation provides three profound advantages:</p>
+<p>This separation provides three clear advantages:</p>
 
 <p>First, truth comes first. The model is free to quote source documents verbatim without artificial steering. Numbers, dates, and dosages remain completely unperturbed.</p>
 
-<p>Second, verification is deterministic. Anyone can verify the cryptographic signature using standard public keys. Verification does not rely on guessing statistical probabilities or tuning threshold curves. Either the document matches the signed hash, or it does not.</p>
+<p>Second, verification is deterministic. Anyone can verify the cryptographic signature using standard public keys without guessing statistical probabilities or tuning threshold curves. Either the document matches the signed hash, or it does not. A hardware signature still proves only where a file came from, not whether an upstream sensor was fooled before signing.<sup><a href="#fn10">10</a></sup></p>
 
 <p>Third, people retain local custody. Origin proofs are generated right at the edge of the user's personal hardware. Proving where a document originated never requires uploading sensitive medical notes or personal correspondence to a centralized platform.</p>
 
@@ -217,22 +243,27 @@ lede: Watermarks hidden in AI-generated text work by changing which words the mo
 
 <aside class="for-researchers">
   <details>
-    <summary>For researchers: Statistical decoding bias, bypass dynamics, and cryptographic attestation</summary>
+    <summary>For researchers: statistical decoding bias, bypass dynamics, and cryptographic attestation</summary>
     <div>
-      <p>Statistical text watermarking operates by partitioning the model vocabulary into a pseudo-random green list and red list at decoding step, derived from a hash of the preceding tokens. A bias parameter is added to the logits of tokens in the green partition (Kirchenbauer et al., 2023). Distortion-free schemes avoid this bias: in TextSeal2 (Sander et al., arXiv:2610.40613) the output follows the model's own distribution exactly, even under speculative decoding. What every text watermark shares is that paraphrasing or editing can weaken the signal, and that detection says which model produced a text, not whether it is accurate.</p>
-      <p>Empirical security evaluations demonstrate that in-band watermarks fail to provide unforgeable provenance. Image watermarks have the same weakness: Yao et al.'s ProxyEraseAgent (arXiv:2610.11290) removes invisible watermarks from a single image by using public watermark decoders as stand-ins for the hidden one. In addition, watermarks can themselves leak private information: Braun et al. (arXiv:2610.05453) show a multimodal model that hides a detectable watermark in later images when a sensitive topic came up earlier in the conversation.</p>
-      <p>In contrast, out-of-band cryptographic provenance relies on the Coalition for Content Provenance and Authenticity (C2PA 2.1) specification, IETF RFC 9421 (HTTP Message Signatures), and hardware-rooted attestation (NIST SP 800-207 Zero Trust Architecture). The model output is generated under unperturbed greedy or temperature-controlled decoding. A cryptographically bound claim manifest containing a SHA-256 digest of the canonical text is signed by an on-device TPM 2.0 or secure enclave key, producing deterministic offline verification without token degradation.</p>
+      <p>Statistical text watermarking operates by partitioning the model vocabulary into a pseudo-random green list and red list at each decoding step, derived from a hash of preceding tokens. A bias parameter is added to the logits of tokens in the green partition (Kirchenbauer et al., 2023<sup><a href="#fn2">2</a></sup>). Distortion-free schemes avoid this bias: in TextSeal2 (Sander et al., arXiv:2610.40613<sup><a href="#fn2">2</a></sup>) the output follows the model's own distribution under speculative decoding. What every text watermark shares is that paraphrasing or editing weakens the signal, and that detection indicates which model produced a text rather than whether it is accurate.</p>
+      <p>Empirical security evaluations demonstrate that in-band watermarks fail to provide unforgeable provenance. Image watermarks share the same weakness: Yao et al.'s ProxyEraseAgent (arXiv:2610.11290<sup><a href="#fn3">3</a></sup>) removes invisible watermarks from a single image by using public watermark decoders as stand-ins for the hidden one. In addition, watermarks can leak private information across the personal Markov blanket (Friston, 2013<sup><a href="#fn6">6</a></sup>): Braun et al. (arXiv:2610.05453<sup><a href="#fn4">4</a></sup>) show a multimodal model that embeds a detectable watermark in later images when a sensitive topic arose earlier in conversation.</p>
+      <p>In contrast, our five-primitive sociotechnical architecture pairs a multimodal egocentric and ambient perceptual sensorium fused locally in monotonic hardware <code>Device Time</code> with self-assessed observation confidence. Silicon peripheral attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, <code>IETF RATS</code> RFC 9334<sup><a href="#fn9">9</a></sup>), an optical data diode, and <code>IEC 61508</code> dead-man relays isolate physical actuators. Observations write into an append-only local <code>C2PA</code> v2.1<sup><a href="#fn5">5</a></sup> and Merkle episodic memory vault (Endel Tulving; Tulving, 1972) encrypted strictly for the biological person and their personal cognitive model while obeying transduction realism (<em>Signed Is Not True</em> across the analog hole; Kevin Fu and Wenyuan Xu; Fu &amp; Xu, 2018<sup><a href="#fn10">10</a></sup>). A monogamous <code>1:1</code> principal-bound personal cognitive model and cybernetic exocortex (Joscha Bach; Bach, 2009) draws on the Extended Mind thesis (Andy Clark and David Chalmers; Clark &amp; Chalmers, 1998) and the Good Regulator theorem (Conant &amp; Ashby, 1970). It applies interventional causal models <code>do(x)</code> (Pearl, 2009) and compiler-trust reflection proofs (Thompson, 1984) as a statutory information fiduciary (Jack Balkin; Balkin, 2016<sup><a href="#fn7">7</a></sup>) protecting the Private Autobiographical Ledger and preserving unassisted competence. Across the personal Markov blanket (Karl Friston; Friston, 2010; Friston, 2013<sup><a href="#fn6">6</a></sup>) and multiscale cognitive light cone (Michael Levin; Levin, 2019), external interactions require expiring Object-Capability and capability lease confinement (Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966<sup><a href="#fn8">8</a></sup>). High-risk actions pair selective zero-knowledge (<code>ZK</code>) proofs, independent-class Byzantine corroboration (<code>k &gt;= 3f + 1</code>), and signed <code>IETF SCITT</code> (<code>RFC 9943</code><sup><a href="#fn12">12</a></sup>) transparency receipts on the Public Attestation &amp; Escrow Ledger (Public Attestation and Escrow Ledger). Those receipts couple sovereign dyads to the Wide Network Ledger for Universal Basic Services, merit-bonded commons tasks, and invisible-labor upkeep (Jacob Meluso). They combine reciprocal mutual credit (James Stodder), statutory cooperative equity (Rudolf Meidner; Meidner, 1978<sup><a href="#fn12">12</a></sup>), frontier-lab overlays (Bracale Syrnikov et al., 2026), and polycentric commons verification (Elinor Ostrom; Ostrom, 1990;<sup><a href="#fn11">11</a></sup> Ostrom, 2010). The model output is generated under unperturbed decoding while an on-device enclave key signs a SHA-256 digest checked in <a href="/labs/protocol-inspector/">Protocol Inspector</a>, <a href="/labs/sensor-boundary/">Sensor Boundary</a>, and <a href="/labs/shared-horizon/">Shared Horizon</a>.</p>
     </div>
   </details>
 </aside>
 
 <section class="footnotes">
-  <h2>Footnotes</h2>
-  <ol>
-    <li id="fn1">For statutory transparency obligations and watermarking proposals, see the European Union Artificial Intelligence Act, Article 50 (Transparency obligations for providers and deployers of certain AI systems), <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj">EUR-Lex 2024/1689</a>.</li>
-    <li id="fn2">John Kirchenbauer et al., "A Watermark for Large Language Models," Proceedings of the 40th International Conference on Machine Learning (ICML 2023), <a href="https://arxiv.org/abs/2301.10226">arXiv:2301.10226</a>. See also TextSeal2 on copula mixing (Oct 2026), <a href="https://arxiv.org/abs/2610.40613">arXiv:2610.40613</a>.</li>
-    <li id="fn3">Jun Yao, Chao Wang, Yupeng Qiu et al., "ProxyEraseAgent: Blind Watermark Removal in the Wild," <a href="https://arxiv.org/abs/2610.11290">arXiv:2610.11290</a> (Oct 2026).</li>
-    <li id="fn4">Tobias Braun, Jonas Henry Grebe, Emil Sivic et al., "The Poisoned Conversation: Privacy-Leaking Watermarks in Unified Multimodal Models," <a href="https://arxiv.org/abs/2610.05453">arXiv:2610.05453</a> (Oct 2026).</li>
-    <li id="fn5">Coalition for Content Provenance and Authenticity (C2PA), "Content Credentials Specification 2.1," <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html">C2PA Technical Specification</a> (2024-2026).</li>
-  </ol>
+  <h2>Sources</h2>
+  <p id="fn1">1. European Union Artificial Intelligence Act, Article 50 (Transparency obligations for providers and deployers of certain AI systems), <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj">EUR-Lex 2024/1689</a>.</p>
+  <p id="fn2">2. John Kirchenbauer et al., "A Watermark for Large Language Models," <em>Proceedings of the 40th International Conference on Machine Learning</em> (ICML 2023), <a href="https://arxiv.org/abs/2301.10226">arXiv:2301.10226</a>. See also TextSeal2 on copula mixing (Oct 2026), <a href="https://arxiv.org/abs/2610.40613">arXiv:2610.40613</a>.</p>
+  <p id="fn3">3. Jun Yao, Chao Wang, Yupeng Qiu et al., "ProxyEraseAgent: Blind Watermark Removal in the Wild," <a href="https://arxiv.org/abs/2610.11290">arXiv:2610.11290</a> (October 2026).</p>
+  <p id="fn4">4. Tobias Braun, Jonas Henry Grebe, Emil Sivic et al., "The Poisoned Conversation: Privacy-Leaking Watermarks in Unified Multimodal Models," <a href="https://arxiv.org/abs/2610.05453">arXiv:2610.05453</a> (October 2026).</p>
+  <p id="fn5">5. Coalition for Content Provenance and Authenticity (C2PA), "Content Credentials Specification 2.1," <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html">C2PA Technical Specification</a> (2024–2026).</p>
+  <p id="fn6">6. Karl Friston, "<a href="https://doi.org/10.1098/rsif.2013.0475">Life as We Know It</a>," <em>Journal of the Royal Society Interface</em> 10, no. 86 (2013): 20130475.</p>
+  <p id="fn7">7. Jack M. Balkin, "<a href="https://lawreview.law.ucdavis.edu/archives/49/4/information-fiduciaries-and-first-amendment">Information Fiduciaries and the First Amendment</a>," <em>UC Davis Law Review</em> 49, no. 4 (2016): 1183–1234.</p>
+  <p id="fn8">8. Jack B. Dennis and Earl C. Van Horn, "<a href="https://doi.org/10.1145/365230.365252">Programming Semantics for Multiprogrammed Computations</a>," <em>Communications of the ACM</em> 9, no. 3 (1966): 143–155.</p>
+  <p id="fn9">9. Henk Birkholz, Dave Thaler, Michael Richardson, Ned Smith, and Wei Pan, "<a href="https://www.rfc-editor.org/rfc/rfc9334">Remote ATtestation procedureS (RATS) Architecture</a>," IETF RFC 9334 (January 2023).</p>
+  <p id="fn10">10. Kevin Fu and Wenyuan Xu, "<a href="https://doi.org/10.1145/3176402">Risks of Trusting the Physics of Sensors</a>," <em>Communications of the ACM</em> 61, no. 2 (2018): 20–23.</p>
+  <p id="fn11">11. Elinor Ostrom, <em>Governing the Commons: The Evolution of Institutions for Collective Action</em> (Cambridge University Press, 1990), <a href="https://doi.org/10.1017/CBO9780511807763">doi:10.1017/CBO9780511807763</a>.</p>
+  <p id="fn12">12. Henk Birkholz, Antoine Delignat-Lavaud, Cedric Fournet, Yogesh Deshpande, and Steve Lasker, <em>An Architecture for Trustworthy and Transparent Digital Supply Chains (SCITT)</em>, IETF RFC 9943 (2026), <a href="https://www.rfc-editor.org/rfc/rfc9943">rfc-editor.org/rfc/rfc9943</a>; and Rudolf Meidner, <em>Employee Investment Funds: An Approach to Collective Capital Formation</em> (London: George Allen &amp; Unwin, 1978), <a href="https://archive.org/details/employeeinvestme0000meid">archive.org/details/employeeinvestme0000meid</a>.</p>
 </section>

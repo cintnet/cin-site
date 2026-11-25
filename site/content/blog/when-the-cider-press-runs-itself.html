@@ -4,7 +4,7 @@ description: Automated presses and software assistants can drain local wages and
 reader: Local producers, cooperative members, town councillors, and workers wondering how communities keep purchasing power when machines and software automate seasonal and routine work.
 takeaway: Full plant and software automation erodes wage-funded purchasing power unless ownership widens through gradual cooperative shares, paired with capacity-backed mutual clearing and open receipt ledgers.
 template: article
-date: 2024-01-06
+date: 2026-11-13
 order: 71
 category: Value
 minutes: 8
@@ -12,7 +12,7 @@ image: post-when-the-cider-press-runs-itself.jpg
 image_alt: An autumn orchard press house where red and golden apples move along an optical sorting belt while local growers gather beside a wooden ledger board.
 lede: When automated machinery and software assistants replace most of a plant's seasonal wages, neighboring households lose the paychecks needed to buy what the plant makes. Gradual cooperative shares, capacity-backed mutual clearing, and open receipt ledgers keep abundance anchored in the community.
 ---
-<p>Every October in an orchard valley, twenty small growers haul crates of tart apples to a shared community press house. Sorting bruised fruit, washing jugs, and turning the heavy screw press have paid autumn wages to local mechanics and neighboring households for generations.</p>
+<p>Full plant and software automation erodes wage-funded purchasing power unless ownership widens through gradual cooperative shares, paired with capacity-backed mutual clearing and open receipt ledgers. Every October in an orchard valley, twenty small growers haul crates of tart apples to a shared community press house. Sorting bruised fruit, washing jugs, and turning the heavy screw press have paid autumn wages to local mechanics and neighboring households for generations.</p>
 
 <p>Suppose the press house installs an optical camera sorter and a computer-guided hydraulic press that replace ninety percent of seasonal press-floor wages. Sweet cider fills glass jugs faster and cleaner than before. Yet what happens next depends on who holds the charter.</p>
 
@@ -20,281 +20,202 @@ lede: When automated machinery and software assistants replace most of a plant's
 
 <p>A cooperative charter takes a different path. It gradually issues member shares to growers, mechanics, and local households. During cash crunches, members clear spare harvest capacity on a shared ledger so abundance stays anchored in town.</p>
 
-<figure class="explainer" id="ex-coop-press-loop" data-stage="bench">
+<figure class="explainer" id="ex-coop-press-loop">
   <style>
     #ex-coop-press-loop {
       --ex-paper: #FAF3EA;
-      --ex-slip: #F3EADF;
+      --ex-slip: #F3E8D8;
       --ex-ink: #131014;
       --ex-muted: #5E564B;
-      --ex-rule: #DFD1BE;
-      --ex-signal: #1F6B4E;
+      --ex-rule: #E1D3C0;
+      --ex-signal: #0B3F30;
       --ex-warn: #8C3B24;
-      --ex-key-top: #FDF9F2;
-      --ex-key-side: #D4C3AC;
-      margin: 2rem 0;
-      padding: 1.35rem 0 1.15rem;
+      margin: 1.8em 0 2em;
+      padding: 18px 0 16px;
       background: transparent;
       border: 0;
       border-top: 1px solid var(--ex-rule);
       border-bottom: 1px solid var(--ex-rule);
       border-radius: 0;
-      box-shadow: none;
       color: var(--ex-ink);
     }
-    #ex-coop-press-loop .ex-sr-radio {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
+    @media (prefers-color-scheme: dark) {
+      #ex-coop-press-loop {
+        --ex-paper: #18161E;
+        --ex-slip: #221F2A;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #A8A095;
+        --ex-rule: #322E3D;
+        --ex-signal: #8FD4B6;
+        --ex-warn: #F09D82;
+      }
+      #ex-coop-press-loop rect[fill="#FAF3EA"],
+      #ex-coop-press-loop rect[fill="#FAF1ED"],
+      #ex-coop-press-loop rect[fill="#F4F8F5"] {
+        fill: #221F2A;
+        stroke: #322E3D;
+      }
+      #ex-coop-press-loop text[fill="#131014"],
+      #ex-coop-press-loop text[fill="#5E564B"] {
+        fill: #EDE6DC;
+      }
+      #ex-coop-press-loop text[fill="#0B3F30"],
+      #ex-coop-press-loop text[fill="#1F6B4E"] {
+        fill: #8FD4B6;
+      }
+      #ex-coop-press-loop text[fill="#8C3B24"] {
+        fill: #F09D82;
+      }
     }
-    #ex-coop-press-loop .ex-keybar {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-      padding-bottom: 0.95rem;
-      border-bottom: 1px solid var(--ex-rule);
+        :root[data-theme="dark"] figure#ex-coop-press-loop { color-scheme: dark; }
+    :root[data-theme="dark"] #ex-coop-press-loop,
+    [data-theme="dark"] #ex-coop-press-loop {
+      --ex-paper: #18161E;
+      --ex-slip: #221F2A;
+      --ex-ink: #EDE6DC;
+      --ex-muted: #A8A095;
+      --ex-rule: #322E3D;
+      --ex-signal: #8FD4B6;
+      --ex-warn: #F09D82;
     }
-    #ex-coop-press-loop .ex-bench-kicker {
-      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: var(--ex-muted);
+    [data-theme="dark"] #ex-coop-press-loop rect[fill="#FAF3EA"],
+    [data-theme="dark"] #ex-coop-press-loop rect[fill="#FAF1ED"],
+    [data-theme="dark"] #ex-coop-press-loop rect[fill="#F4F8F5"] {
+      fill: #221F2A;
+      stroke: #322E3D;
     }
-    #ex-coop-press-loop .ex-keys {
-      display: inline-flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
+    [data-theme="dark"] #ex-coop-press-loop text[fill="#131014"],
+    [data-theme="dark"] #ex-coop-press-loop text[fill="#5E564B"] {
+      fill: #EDE6DC;
     }
-    #ex-coop-press-loop .ex-keycap {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.45rem 0.78rem;
-      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--ex-ink);
-      background: var(--ex-key-top);
-      border: 1px solid var(--ex-ink);
-      border-radius: 2px;
-      box-shadow: 0 3px 0 var(--ex-key-side), 0 4px 0 var(--ex-ink);
-      cursor: pointer;
-      user-select: none;
-      transform: translateY(0);
-      transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 180ms cubic-bezier(0.22, 1, 0.36, 1);
+    [data-theme="dark"] #ex-coop-press-loop text[fill="#0B3F30"],
+    [data-theme="dark"] #ex-coop-press-loop text[fill="#1F6B4E"] {
+      fill: #8FD4B6;
     }
-    #ex-coop-press-loop .ex-pip {
-      width: 6px;
-      height: 6px;
-      background: var(--ex-muted);
-    }
-    #ex-coop-press-loop #sw-press-rentier:focus-visible ~ .ex-keybar label[for="sw-press-rentier"],
-    #ex-coop-press-loop #sw-press-commons:focus-visible ~ .ex-keybar label[for="sw-press-commons"] {
-      outline: 2px solid var(--ex-signal);
-      outline-offset: 3px;
-    }
-    #ex-coop-press-loop #sw-press-rentier:checked ~ .ex-keybar label[for="sw-press-rentier"] {
-      transform: translateY(3px);
-      box-shadow: 0 0 0 var(--ex-key-side), 0 1px 0 var(--ex-ink);
-      background: var(--ex-slip);
-      border-color: var(--ex-warn);
-    }
-    #ex-coop-press-loop #sw-press-rentier:checked ~ .ex-keybar label[for="sw-press-rentier"] .ex-pip {
-      background: var(--ex-warn);
-    }
-    #ex-coop-press-loop #sw-press-commons:checked ~ .ex-keybar label[for="sw-press-commons"] {
-      transform: translateY(3px);
-      box-shadow: 0 0 0 var(--ex-key-side), 0 1px 0 var(--ex-ink);
-      background: var(--ex-slip);
-      border-color: var(--ex-signal);
-    }
-    #ex-coop-press-loop #sw-press-commons:checked ~ .ex-keybar label[for="sw-press-commons"] .ex-pip {
-      background: var(--ex-signal);
-    }
-    #ex-coop-press-loop .ex-press-canvas {
-      padding: 0.9rem 0 0.65rem;
+    [data-theme="dark"] #ex-coop-press-loop text[fill="#8C3B24"] {
+      fill: #F09D82;
     }
     #ex-coop-press-loop svg {
-      display: block;
       width: 100%;
       height: auto;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     }
-    #ex-coop-press-loop .ex-mono {
-      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-    #ex-coop-press-loop .st-commons { display: none; }
-    #ex-coop-press-loop #sw-press-commons:checked ~ .ex-press-canvas .st-rentier { display: none; }
-    #ex-coop-press-loop #sw-press-commons:checked ~ .ex-press-canvas .st-commons { display: inline; }
-    #ex-coop-press-loop .ex-ledger-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      border-top: 1px solid var(--ex-rule);
-    }
-    #ex-coop-press-loop .ex-ledger-cell {
-      padding: 0.75rem 0.85rem 0.65rem 0;
-      border-right: 1px solid var(--ex-rule);
-    }
-    #ex-coop-press-loop .ex-ledger-cell:nth-child(2) { padding-left: 0.85rem; }
-    #ex-coop-press-loop .ex-ledger-cell:last-child {
-      padding-left: 0.85rem;
-      padding-right: 0;
-      border-right: 0;
-    }
-    #ex-coop-press-loop .ex-ledger-k {
-      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--ex-muted);
-      margin-bottom: 0.28rem;
-    }
-    #ex-coop-press-loop .ex-ledger-v {
-      font-size: 0.88rem;
-      line-height: 1.42;
-      color: var(--ex-ink);
-    }
-    #ex-coop-press-loop .led-commons { display: none; }
-    #ex-coop-press-loop #sw-press-commons:checked ~ .ex-ledger-grid .led-rentier { display: none; }
-    #ex-coop-press-loop #sw-press-commons:checked ~ .ex-ledger-grid .led-commons { display: block; }
-    #ex-coop-press-loop figcaption {
-      margin-top: 0.75rem;
-      padding-top: 0.7rem;
-      border-top: 1px solid var(--ex-rule);
-      font-size: 0.9rem;
-      line-height: 1.5;
-      color: var(--ex-muted);
-    }
+    #ex-coop-press-loop .diagram-desktop { display: block; }
+    #ex-coop-press-loop .diagram-mobile { display: none; }
     @media (max-width: 640px) {
-      #ex-coop-press-loop .ex-ledger-grid {
-        grid-template-columns: 1fr;
-      }
-      #ex-coop-press-loop .ex-ledger-cell,
-      #ex-coop-press-loop .ex-ledger-cell:nth-child(2),
-      #ex-coop-press-loop .ex-ledger-cell:last-child {
-        padding: 0.65rem 0;
-        border-right: 0;
-        border-bottom: 1px solid var(--ex-rule);
-      }
-      #ex-coop-press-loop .ex-ledger-cell:last-child { border-bottom: 0; }
-      #ex-coop-press-loop .ex-press-canvas {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-      }
-      #ex-coop-press-loop .ex-press-canvas svg {
-        min-width: 540px;
-      }
+      #ex-coop-press-loop .diagram-desktop { display: none; }
+      #ex-coop-press-loop .diagram-mobile { display: block; }
+    }
+    @media (max-width: 600px) {
+      #ex-coop-press-loop .diagram-desktop { display: none; }
+      #ex-coop-press-loop .diagram-mobile { display: block; }
     }
   </style>
 
-  <input type="radio" name="sw-cider-press" id="sw-press-rentier" class="ex-sr-radio" checked />
-  <input type="radio" name="sw-cider-press" id="sw-press-commons" class="ex-sr-radio" />
+  <!-- Desktop SVG (viewBox 0 0 700 340) -->
+  <svg class="diagram-desktop" viewBox="0 0 700 340" width="100%" role="img" aria-labelledby="ex-cpl-title ex-cpl-desc">
+    <title id="ex-cpl-title">Comparing concentrated automation with cooperative conversion and mutual clearing</title>
+    <desc id="ex-cpl-desc">Two-panel diagram contrasting absentee ownership, where automated presses cut local wages and leave capacity idle, against cooperative conversion, where gradual share pools, capacity-backed clearing, and open-ledger trust keep goods circulating locally.</desc>
 
-  <div class="ex-keybar">
-    <span class="ex-bench-kicker">Automated press surplus &amp; clearing bench</span>
-    <div class="ex-keys">
-      <label for="sw-press-rentier" class="ex-keycap"><span class="ex-pip"></span>1 &#183; Absentee rentier enclosure</label>
-      <label for="sw-press-commons" class="ex-keycap"><span class="ex-pip"></span>2 &#183; Mutual credit + Meidner commons</label>
-    </div>
-  </div>
+    <rect x="2" y="2" width="696" height="336" rx="10" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1.5"/>
 
-  <div class="ex-press-canvas">
-    <svg viewBox="0 0 756 226" width="100%" role="img" aria-labelledby="ex-cpl-title ex-cpl-desc">
-      <title id="ex-cpl-title">Comparing concentrated automation with cooperative conversion and mutual clearing</title>
-      <desc id="ex-cpl-desc">Orthogonal surplus-routing schematic showing an automated optical cider press either draining harvest dividends to distant absentee owners while valley capacity sits idle, or converting annual shares into a local steward commons paired with a zero-interest mutual clearing loop.</desc>
+    <!-- Left Panel: Concentrated Automation -->
+    <g transform="translate(14, 14)">
+      <rect x="0" y="0" width="328" height="312" rx="8" fill="#FAF1ED" stroke="#8C3B24" stroke-width="1.5"/>
+      <rect x="10" y="10" width="308" height="24" rx="4" fill="#8C3B24"/>
+      <text x="164" y="26" text-anchor="middle" fill="#FAF3EA" font-size="11" font-weight="700" letter-spacing="0.04em">CONCENTRATED AUTOMATION</text>
+      <text x="164" y="50" text-anchor="middle" fill="#8C3B24" font-size="11" font-weight="600">Absentee shares drain local demand</text>
 
-      <!-- Automated Cider Press Plant Node (Left) -->
-      <rect x="4" y="54" width="176" height="106" fill="var(--ex-slip)" stroke="var(--ex-ink)" stroke-width="1.2"/>
-      <text class="ex-mono" x="14" y="74" font-size="10.5" font-weight="700" fill="var(--ex-ink)">OPTICAL CIDER PRESS</text>
-      <line x1="14" y1="82" x2="170" y2="82" stroke="var(--ex-rule)" stroke-width="1"/>
-      <text x="14" y="102" font-size="11" fill="var(--ex-ink)">Output: 2x harvest jugs</text>
-      <text x="14" y="120" font-size="11" fill="var(--ex-muted)">Floor payroll: -90%</text>
-      <text x="14" y="142" font-size="10.5" font-weight="600" fill="var(--ex-ink)" class="ex-mono">CHARTER VALVE &#8594;</text>
+      <rect x="12" y="64" width="304" height="68" rx="5" fill="#FAF3EA" stroke="#E5BFA8" stroke-width="1"/>
+      <text x="22" y="82" fill="#131014" font-size="11" font-weight="700">1. Absentee shares</text>
+      <text x="22" y="99" fill="#5E564B" font-size="11">Optical press cuts ninety percent of seasonal wages,</text>
+      <text x="22" y="115" fill="#5E564B" font-size="11">sending harvest dividends to distant owners.</text>
+      <line x1="164" y1="132" x2="164" y2="140" stroke="#8C3B24" stroke-width="1.5"/>
+      <polygon points="160,137 164,142 168,137" fill="#8C3B24"/>
 
-      <!-- STATE 1: Absentee Rentier Enclosure -->
-      <g class="st-rentier">
-        <!-- Orthogonal siphon channel up & out of valley -->
-        <polyline points="180,92 248,92 248,36 410,36" fill="none" stroke="var(--ex-warn)" stroke-width="2.2"/>
-        <polygon points="410,36 402,31 402,41" fill="var(--ex-warn)"/>
-        <rect x="414" y="14" width="328" height="46" fill="var(--ex-slip)" stroke="var(--ex-warn)" stroke-width="1.3"/>
-        <text class="ex-mono" x="426" y="33" font-size="10.5" font-weight="700" fill="var(--ex-warn)">&#9632; DISTANT PORTFOLIO TOLL (100%)</text>
-        <text x="426" y="50" font-size="11" fill="var(--ex-ink)">Harvest surplus exits the valley each autumn</text>
+      <rect x="12" y="142" width="304" height="68" rx="5" fill="#FAF3EA" stroke="#E5BFA8" stroke-width="1"/>
+      <text x="22" y="160" fill="#131014" font-size="11" font-weight="700">2. Falling local wages</text>
+      <text x="22" y="177" fill="#5E564B" font-size="11">Growers, mechanics, and households lose winter</text>
+      <text x="22" y="193" fill="#5E564B" font-size="11">paychecks needed for food, repairs, and care.</text>
+      <line x1="164" y1="210" x2="164" y2="218" stroke="#8C3B24" stroke-width="1.5"/>
+      <polygon points="160,215 164,220 168,215" fill="#8C3B24"/>
 
-        <!-- Starved local valley channel below -->
-        <polyline points="180,132 248,132 248,166 312,166" fill="none" stroke="var(--ex-rule)" stroke-width="1.4" stroke-dasharray="4 3"/>
-        <rect x="312" y="126" width="204" height="78" fill="var(--ex-paper)" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="4 3"/>
-        <text class="ex-mono" x="322" y="146" font-size="10.5" font-weight="700" fill="var(--ex-warn)">STARVED VALLEY DEMAND</text>
-        <text x="322" y="166" font-size="11" fill="var(--ex-muted)">Households lack winter pay</text>
-        <text x="322" y="184" font-size="11" fill="var(--ex-muted)">Unsold jugs sit in storage</text>
+      <rect x="12" y="220" width="304" height="80" rx="5" fill="#FAF3EA" stroke="#8C3B24" stroke-width="1" stroke-dasharray="3 3"/>
+      <text x="22" y="239" fill="#8C3B24" font-size="11" font-weight="700">Result: Idle capacity</text>
+      <text x="22" y="257" fill="#5E564B" font-size="11">Pressed cider sits unsold in storage while local</text>
+      <text x="22" y="273" fill="#5E564B" font-size="11">workshops and clinic chairs go underused.</text>
+    </g>
 
-        <rect x="534" y="126" width="208" height="78" fill="var(--ex-paper)" stroke="var(--ex-rule)" stroke-width="1"/>
-        <text class="ex-mono" x="544" y="146" font-size="10.5" font-weight="700" fill="var(--ex-muted)">IDLE NEIGHBORS</text>
-        <text x="544" y="166" font-size="11" fill="var(--ex-muted)">Clinic chairs &amp; welding</text>
-        <text x="544" y="184" font-size="11" fill="var(--ex-muted)">benches sit underused</text>
-      </g>
+    <!-- Right Panel: Cooperative Conversion & Mutual Clearing -->
+    <g transform="translate(358, 14)">
+      <rect x="0" y="0" width="328" height="312" rx="8" fill="#F4F8F5" stroke="#1F6B4E" stroke-width="1.5"/>
+      <rect x="10" y="10" width="308" height="24" rx="4" fill="#0B3F30"/>
+      <text x="164" y="26" text-anchor="middle" fill="#FAF3EA" font-size="11" font-weight="700" letter-spacing="0.04em">COOPERATIVE CONVERSION &amp; CLEARING</text>
+      <text x="164" y="50" text-anchor="middle" fill="#1F6B4E" font-size="11" font-weight="600">Shared equity and capacity-backed trade</text>
 
-      <!-- STATE 2: Mutual Credit + Meidner Commons -->
-      <g class="st-commons">
-        <!-- Upper orthogonal channel: Annual Steward Share Pool -->
-        <polyline points="180,88 242,88 242,38 300,38" fill="none" stroke="var(--ex-signal)" stroke-width="2"/>
-        <polygon points="300,38 292,33 292,43" fill="var(--ex-signal)"/>
-        <rect x="304" y="14" width="438" height="50" fill="var(--ex-slip)" stroke="var(--ex-signal)" stroke-width="1.3"/>
-        <text class="ex-mono" x="316" y="33" font-size="10.5" font-weight="700" fill="var(--ex-signal)">&#9632; GRADUAL STEWARD SHARE POOL (ANNUAL VESTING)</text>
-        <text x="316" y="51" font-size="11" fill="var(--ex-ink)">Sponsors earn early payback; new shares vest to growers, crews &amp; households</text>
+      <rect x="12" y="64" width="304" height="68" rx="5" fill="#FAF3EA" stroke="#A3C9B8" stroke-width="1"/>
+      <text x="22" y="82" fill="#131014" font-size="11" font-weight="700">1. Gradual share pool</text>
+      <text x="22" y="99" fill="#5E564B" font-size="11">Founding sponsors earn early credit as annual</text>
+      <text x="22" y="115" fill="#5E564B" font-size="11">shares vest to growers, crews, and neighbors.</text>
+      <line x1="164" y1="132" x2="164" y2="140" stroke="#1F6B4E" stroke-width="1.5"/>
+      <polygon points="160,137 164,142 168,137" fill="#1F6B4E"/>
 
-        <!-- Lower orthogonal loop: Capacity-Backed Mutual Clearing -->
-        <polyline points="180,132 242,132 242,158 304,158" fill="none" stroke="var(--ex-signal)" stroke-width="1.8"/>
-        <rect x="304" y="96" width="438" height="112" fill="var(--ex-paper)" stroke="var(--ex-signal)" stroke-width="1.2"/>
-        <text class="ex-mono" x="316" y="116" font-size="10.5" font-weight="700" fill="var(--ex-signal)">&#9632; CAPACITY-BACKED MUTUAL CLEARING LOOP (0% INTEREST)</text>
+      <rect x="12" y="142" width="304" height="68" rx="5" fill="#FAF3EA" stroke="#A3C9B8" stroke-width="1"/>
+      <text x="22" y="160" fill="#131014" font-size="11" font-weight="700">2. Capacity-backed clearing</text>
+      <text x="22" y="177" fill="#5E564B" font-size="11">Orchards, clinics, and repair shops trade real</text>
+      <text x="22" y="193" fill="#5E564B" font-size="11">spare capacity directly when cash is scarce.</text>
+      <line x1="164" y1="210" x2="164" y2="218" stroke="#1F6B4E" stroke-width="1.5"/>
+      <polygon points="160,215 164,220 168,215" fill="#1F6B4E"/>
 
-        <rect x="318" y="132" width="120" height="34" fill="var(--ex-slip)" stroke="var(--ex-ink)" stroke-width="1"/>
-        <text x="378" y="153" text-anchor="middle" font-size="11" font-weight="600" fill="var(--ex-ink)">Orchard cider</text>
-        <line x1="438" y1="149" x2="462" y2="149" stroke="var(--ex-signal)" stroke-width="1.6"/>
+      <rect x="12" y="220" width="304" height="80" rx="5" fill="#FAF3EA" stroke="#1F6B4E" stroke-width="1"/>
+      <text x="22" y="239" fill="#0B3F30" font-size="11" font-weight="700">Result: Open-ledger trust</text>
+      <text x="22" y="257" fill="#5E564B" font-size="11">Auditable receipts and whistleblower protection</text>
+      <text x="22" y="273" fill="#5E564B" font-size="11">keep abundance circulating across the valley.</text>
+    </g>
+  </svg>
 
-        <rect x="462" y="132" width="120" height="34" fill="var(--ex-slip)" stroke="var(--ex-ink)" stroke-width="1"/>
-        <text x="522" y="153" text-anchor="middle" font-size="11" font-weight="600" fill="var(--ex-ink)">Repair shop</text>
-        <line x1="582" y1="149" x2="606" y2="149" stroke="var(--ex-signal)" stroke-width="1.6"/>
+  <!-- Mobile SVG (viewBox 0 0 330 520) -->
+  <svg class="diagram-mobile" viewBox="0 0 330 520" width="100%" role="img" aria-labelledby="ex-cpl-m-title ex-cpl-m-desc">
+    <title id="ex-cpl-m-title">Comparing concentrated automation with cooperative conversion on mobile</title>
+    <desc id="ex-cpl-m-desc">Stacked mobile diagram contrasting absentee shares and falling local wages with gradual cooperative share pools, capacity-backed clearing, and open-ledger trust.</desc>
 
-        <rect x="606" y="132" width="120" height="34" fill="var(--ex-slip)" stroke="var(--ex-ink)" stroke-width="1"/>
-        <text x="666" y="153" text-anchor="middle" font-size="11" font-weight="600" fill="var(--ex-ink)">Valley clinic</text>
+    <rect x="2" y="2" width="320" height="516" rx="10" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1.5"/>
 
-        <!-- Return clearing trace -->
-        <polyline points="666,166 666,192 378,192 378,166" fill="none" stroke="var(--ex-signal)" stroke-width="1.3" stroke-dasharray="3 2"/>
-        <text class="ex-mono" x="522" y="186" text-anchor="middle" font-size="10.5" fill="var(--ex-signal)">CLEARING LOOP EXTINGUISHES BALANCES</text>
-      </g>
-    </svg>
-  </div>
+    <!-- Top Section: Concentrated Automation -->
+    <g transform="translate(10, 10)">
+      <rect x="0" y="0" width="310" height="240" rx="8" fill="#FAF1ED" stroke="#8C3B24" stroke-width="1.2"/>
+      <rect x="8" y="8" width="294" height="22" rx="4" fill="#8C3B24"/>
+      <text x="155" y="23" text-anchor="middle" fill="#FAF3EA" font-size="11" font-weight="700">CONCENTRATED AUTOMATION</text>
+      <text x="14" y="50" fill="#8C3B24" font-size="11" font-weight="600">1. Absentee shares take harvest dividends</text>
+      <text x="14" y="74" fill="#5E564B" font-size="11">2. Local seasonal wages drop ninety percent</text>
+      <text x="14" y="98" fill="#5E564B" font-size="11">3. Families lack income to buy valley goods</text>
+      <line x1="155" y1="103" x2="155" y2="112" stroke="#8C3B24" stroke-width="1.5"/>
+      <polygon points="151,111 155,116 159,111" fill="#8C3B24"/>
+      <rect x="8" y="116" width="294" height="114" rx="5" fill="#FAF3EA" stroke="#E5BFA8" stroke-width="1"/>
+      <text x="16" y="138" fill="#8C3B24" font-size="11" font-weight="700">Result: Idle capacity</text>
+      <text x="16" y="160" fill="#5E564B" font-size="11">Automated presses sit full while clinics</text>
+      <text x="16" y="180" fill="#5E564B" font-size="11">and repair shops lose paying neighbors.</text>
+    </g>
 
-  <div class="ex-ledger-grid">
-    <div class="ex-ledger-cell">
-      <div class="ex-ledger-k">01 &#183; Ownership charter</div>
-      <div class="ex-ledger-v led-rentier">Outside equity captures automated press dividends forever while local payroll shrinks by ninety percent.</div>
-      <div class="ex-ledger-v led-commons">Founding lenders recover commissioning capital fairly while annual profit tranches vest into a local steward trust.</div>
-    </div>
-    <div class="ex-ledger-cell">
-      <div class="ex-ledger-k">02 &#183; Valley clearing</div>
-      <div class="ex-ledger-v led-rentier">Cash-strapped orchards, workshops, and clinics sit idle side by side whenever bank credit tightens.</div>
-      <div class="ex-ledger-v led-commons">Neighbors trade verified spare capacity around multi-step loops at zero interest without speculative tokens.</div>
-    </div>
-    <div class="ex-ledger-cell">
-      <div class="ex-ledger-k">03 &#183; Cartel defense</div>
-      <div class="ex-ledger-v led-rentier">Closed pricing rings hide private books and extract tolls from captive local suppliers.</div>
-      <div class="ex-ledger-v led-commons">Auditable delivery receipts and first-insider leniency safe harbors keep open trade stronger than secret rings.</div>
-    </div>
-  </div>
+    <line x1="165" y1="252" x2="165" y2="262" stroke="#1F6B4E" stroke-width="1.5"/>
+    <polygon points="161,261 165,266 169,261" fill="#1F6B4E"/>
+
+    <!-- Bottom Section: Cooperative Conversion -->
+    <g transform="translate(10, 266)">
+      <rect x="0" y="0" width="310" height="244" rx="8" fill="#F4F8F5" stroke="#1F6B4E" stroke-width="1.2"/>
+      <rect x="8" y="8" width="294" height="22" rx="4" fill="#0B3F30"/>
+      <text x="155" y="23" text-anchor="middle" fill="#FAF3EA" font-size="11" font-weight="700">COOPERATIVE CONVERSION &amp; CLEARING</text>
+      <text x="14" y="50" fill="#1F6B4E" font-size="11" font-weight="600">1. Gradual share pool vests to stewards</text>
+      <text x="14" y="74" fill="#5E564B" font-size="11">2. Capacity-backed clearing trades output</text>
+      <text x="14" y="98" fill="#5E564B" font-size="11">3. Open receipts and leniency deter cartels</text>
+      <line x1="155" y1="103" x2="155" y2="112" stroke="#1F6B4E" stroke-width="1.5"/>
+      <polygon points="151,111 155,116 159,111" fill="#1F6B4E"/>
+      <rect x="8" y="116" width="294" height="118" rx="5" fill="#FAF3EA" stroke="#A3C9B8" stroke-width="1"/>
+      <text x="16" y="138" fill="#0B3F30" font-size="11" font-weight="700">Result: Open-ledger trust</text>
+      <text x="16" y="160" fill="#5E564B" font-size="11">Sponsors recover early costs fairly while</text>
+      <text x="16" y="180" fill="#5E564B" font-size="11">purchasing power stays anchored in town.</text>
+    </g>
+  </svg>
 
   <figcaption>When automated presses and software replace local wages under absentee ownership, household demand falls and capacity goes idle. Gradual cooperative share conversion and capacity-backed clearing keep output circulating among local stewards.</figcaption>
 </figure>
@@ -307,7 +228,9 @@ lede: When automated machinery and software assistants replace most of a plant's
 
 <p>Lower production costs help shoppers only if households still have income to spend. When almost every dividend from automated machinery flows to distant portfolios, local purchasing power dries up faster than shelf prices fall.</p>
 
-<p>Waiting years to tax distant profits and mail relief checks back to hollowed-out towns leaves communities vulnerable to every budget fight. Keeping local demand healthy requires widening who owns the productive equipment as automation expands.</p>
+<p>Waiting years to tax distant profits and mail relief checks back to hollowed-out towns leaves communities vulnerable to every budget fight. A November 2026 <a href="https://www.youtube.com/watch?v=N6kzEOdzSus&amp;t=1975s">WorldofAI dispatch on workflow automation and boardroom concentration</a> tracked how automated document reasoning concentrates inside a few firms.<sup><a href="#fn11">11</a></sup></p>
+
+<p>A <a href="https://www.youtube.com/watch?v=RZ4BBkSZ3io&amp;t=614s">20VC discussion of ten-billion-dollar training rounds</a> and an <a href="https://www.youtube.com/watch?v=s5WNy6X_2FI&amp;t=155s">80,000 Hours review of frontier revenue gaps</a> tracked that same hardware concentration.<sup><a href="#fn11">11</a></sup> David Shapiro's reports on <a href="https://www.youtube.com/watch?v=M_Fzx5KzBwY&amp;t=473s">chip supply bottlenecks</a> and <a href="https://www.youtube.com/watch?v=53uYYeNC6Ek&amp;t=192s">semiconductor governance</a> point to the same conclusion: local demand stays healthy only when communities co-own the productive equipment.<sup><a href="#fn11">11</a></sup></p>
 
 <h2>Turning customers and stewards into co-owners</h2>
 
@@ -315,7 +238,7 @@ lede: When automated machinery and software assistants replace most of a plant's
 
 <p>A gradual cooperative conversion charter resolves this tension by separating early payback from permanent control. Founding sponsors and equipment lenders receive priority dividends during a clear commissioning window while they recover their initial investment.</p>
 
-<p>Each profitable year, however, the enterprise issues a modest new slice of shares into a local cooperative pool rather than sending all growth to outside equity.<sup><a href="#fn1">1</a></sup> Swedish economist proposals in the late twentieth century showed how annual share issuance from company profits can steadily widen collective ownership without starving firms of working capital.<sup><a href="#fn1">1</a></sup></p>
+<p>Each profitable year, however, the enterprise issues a modest new slice of shares into a local cooperative pool without exporting all growth to outside equity.<sup><a href="#fn1">1</a></sup> Swedish economist proposals in the late twentieth century showed how annual share issuance from company profits can steadily widen collective ownership without starving firms of working capital.<sup><a href="#fn1">1</a></sup></p>
 
 <p>In a valley press house, those new shares vest across three local groups. Growers supply the fruit, mechanics maintain the rollers, and neighboring households buy the harvest. Governance follows active participation and real local patronage, so distant speculators cannot buy up the trust and strip its equipment.</p>
 
@@ -347,8 +270,9 @@ lede: When automated machinery and software assistants replace most of a plant's
   <details>
     <summary>For researchers and institutional economists</summary>
     <div>
-      <p>This institutional design combines gradual collective capital formation with counter-cyclical mutual credit clearing and antitrust leniency mechanisms. Rudolf Meidner formalized statutory profit-sharing equity issuance in <em>Employee Investment Funds</em> (1978), showing how annual equity tranches dilute concentrated absentee capital into democratically governed steward trusts without impairing retained earnings.<sup><a href="#fn1">1</a></sup></p>
-      <p>Empirical work by James Stodder on Switzerland's Wirtschaftsring demonstrates that capacity-backed mutual credit acts as a counter-cyclical stabilizer during fiat liquidity contractions.<sup><a href="#fn2">2</a></sup> Graph-theoretic analysis of Sardinia's Sardex circuit by George Iosifidis et al. shows how cyclic clearing motifs extinguish multilateral trade imbalances across small firms without speculative interest.<sup><a href="#fn3">3</a></sup> To prevent synthetic account inflation and covert collusion, clearing admission pairs Sybil-resistant community attestation with asymmetric corporate leniency safe harbors modeled by Joseph E. Harrington (2008), making first-insider disclosure strictly dominant over off-ledger cartel maintenance.<sup><a href="#fn4">4</a></sup></p>
+      <p>This institutional design combines gradual collective capital formation with counter-cyclical mutual credit clearing, Universal Basic Services, and antitrust leniency mechanisms on the Wide Network Ledger inside a polycentric commons substrate (Elinor Ostrom; Ostrom, 1990; Ostrom, 2010;<sup><a href="#fn5">5</a></sup> Jacob Meluso). Rudolf Meidner formalized statutory profit-sharing equity issuance in <em>Employee Investment Funds</em> (Meidner, 1978), showing how annual equity tranches dilute concentrated absentee capital into democratically governed steward trusts without impairing retained earnings.<sup><a href="#fn1">1</a></sup> Empirical work by James Stodder on Switzerland's Wirtschaftsring demonstrates that capacity-backed reciprocal mutual credit acts as a counter-cyclical stabilizer during fiat liquidity contractions.<sup><a href="#fn2">2</a></sup> Graph-theoretic analysis of Sardinia's Sardex circuit by George Iosifidis et al. shows how cyclic clearing motifs extinguish multilateral trade imbalances across small firms without speculative interest.<sup><a href="#fn3">3</a></sup> Asymmetric corporate leniency safe harbors modeled by Joseph E. Harrington (2008) make first-insider disclosure strictly dominant over off-ledger cartel maintenance.<sup><a href="#fn4">4</a></sup></p>
+      <p>Within our five-primitive sociotechnical architecture, heterogeneous wearable and room sensors form a multimodal egocentric and ambient perceptual sensorium fused locally in monotonic hardware <code>Device Time</code> with self-assessed observation confidence. Silicon peripheral attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, <code>IETF RATS</code> RFC 9334<sup><a href="#fn9">9</a></sup>), an optical data diode (<code>optical data diodes</code>), and <code>IEC 61508</code> dead-man relays isolate physical actuators. Observations write into an append-only local <code>C2PA</code> and Merkle episodic memory vault (Endel Tulving; Tulving, 1972) encrypted for the biological person and bound by transduction realism (<em>Signed Is Not True</em> across the analog hole; Kevin Fu and Wenyuan Xu; Fu &amp; Xu, 2018<sup><a href="#fn10">10</a></sup>). A monogamous <code>1:1</code> principal-bound personal cognitive model and cybernetic exocortex (Joscha Bach; Bach, 2009) draws on the Extended Mind thesis (Andy Clark and David Chalmers; Andy Clark &amp; David Chalmers; Clark &amp; Chalmers, 1998) and the Good Regulator theorem (Conant &amp; Ashby, 1970). It applies interventional causal models <code>do(x)</code> (Pearl, 2009) and compiler-trust reflection proofs (Thompson, 1984) as a statutory information fiduciary (Jack Balkin; Balkin, 2016<sup><a href="#fn7">7</a></sup>), protecting the Private Autobiographical Ledger and preserving unassisted competence.</p>
+      <p>Across the personal Markov blanket (Karl Friston; Friston, 2010; Friston, 2013<sup><a href="#fn6">6</a></sup>) and multiscale cognitive light cone (Michael Levin; Levin, 2019), external clearing calls require time-bounded Object-Capability and capability lease tokens (Dennis &amp; Van Horn, 1966<sup><a href="#fn8">8</a></sup>). High-risk boundary crossings pair selective zero-knowledge (<code>ZK</code>) proofs, independent-class Byzantine corroboration (<code>k &gt;= 3f + 1</code>), and signed <code>IETF SCITT</code> (<code>RFC 9943</code>) transparency receipts on the Public Attestation &amp; Escrow Ledger (Public Attestation and Escrow Ledger). Those receipts couple sovereign dyads to merit-bonded commons tasks and frontier-lab overlays (Bracale Syrnikov et al., 2026). Inspect live wire receipts in <a href="/labs/protocol-inspector/">/labs/protocol-inspector/</a>, test sensor spoofing boundaries in <a href="/labs/sensor-boundary/">/labs/sensor-boundary/</a>, and audit coalition safeguards in <a href="/labs/shared-horizon/">/labs/shared-horizon/</a>.</p>
     </div>
   </details>
 </aside>
@@ -368,4 +292,11 @@ lede: When automated machinery and software assistants replace most of a plant's
   <p id="fn2">2. James Stodder, "<a href="https://doi.org/10.1016/j.jebo.2009.06.002">Complementary credit networks and macroeconomic stability: Switzerland's Wirtschaftsring</a>," <em>Journal of Economic Behavior &amp; Organization</em> 72(1):79-95 (2009).</p>
   <p id="fn3">3. George Iosifidis, Yanick Charette, Edoardo M. Airoldi, Giuseppe Littera, Leandros Tassiulas, and Nicholas A. Christakis, "<a href="https://doi.org/10.1038/s41562-018-0450-0">Cyclic motifs in the Sardex monetary network</a>," <em>Nature Human Behaviour</em> 2:822-829 (2018).</p>
   <p id="fn4">4. Joseph E. Harrington, "<a href="https://doi.org/10.1111/j.1467-6451.2008.00339.x">Optimal corporate leniency programs</a>," <em>Journal of Industrial Economics</em> 56(2):215-246 (2008).</p>
+  <p id="fn5">5. Elinor Ostrom, "<a href="https://doi.org/10.1257/aer.100.3.641">Beyond Markets and States: Polycentric Governance of Complex Economic Systems</a>," <em>American Economic Review</em> 100(3):641-672 (2010).</p>
+  <p id="fn6">6. Karl Friston, "<a href="https://doi.org/10.1098/rsif.2013.0475">Life as We Know It</a>," <em>Journal of the Royal Society Interface</em> 10(86):20130475 (2013).</p>
+  <p id="fn7">7. Jack M. Balkin, "<a href="https://lawreview.law.ucdavis.edu/archives/49/4/information-fiduciaries-and-first-amendment">Information Fiduciaries and the First Amendment</a>," <em>UC Davis Law Review</em> 49(4):1183-1234 (2016).</p>
+  <p id="fn8">8. Jack B. Dennis and Earl C. Van Horn, "<a href="https://doi.org/10.1145/365230.365252">Programming Semantics for Multiprogrammed Computations</a>," <em>Communications of the ACM</em> 9(3):143-155 (1966).</p>
+  <p id="fn9">9. Henk Birkholz, Dave Thaler, Michael Richardson, Ned Smith, and Wei Pan, "<a href="https://www.rfc-editor.org/rfc/rfc9334">Remote ATtestation procedureS (RATS) Architecture</a>," IETF RFC 9334 (2023).</p>
+  <p id="fn10">10. Kevin Fu and Wenyuan Xu, "<a href="https://doi.org/10.1145/3176402">Risks of Trusting the Physics of Sensors</a>," <em>Communications of the ACM</em> 61(2):20-23 (2018); Coalition for Content Provenance and Authenticity, <em>C2PA Technical Specification v2.1</em> (2024), <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html">c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html</a>; Henk Birkholz, Antoine Delignat-Lavaud, Cedric Fournet, Yogesh Deshpande, and Steve Lasker, "An Architecture for Trustworthy and Transparent Digital Supply Chains (SCITT)," IETF RFC 9943 (2026), <a href="https://www.rfc-editor.org/rfc/rfc9943">rfc-editor.org/rfc/rfc9943</a>; Elinor Ostrom, <em>Governing the Commons: The Evolution of Institutions for Collective Action</em> (Cambridge University Press, 1990), <a href="https://doi.org/10.1017/CBO9780511807763">doi:10.1017/CBO9780511807763</a>.</p>
+  <p id="fn11">11. WorldofAI, "Claude Opus 5.6 Early Preview! Gemini 4 Helium, GLM-5.4, Quantum AI &amp; Superintelligence! AI NEWS," YouTube analysis of workflow automation, document reasoning, and corporate board concentration (24 November 2026, 32:55), <a href="https://www.youtube.com/watch?v=N6kzEOdzSus">youtube.com/watch?v=N6kzEOdzSus</a>; 20VC with Harry Stebbings, "Will Jensen Return to NVIDIA | Kalshi, Mercor, Fractile: Mega-Rounds Continue," YouTube discussion of hardware capital concentration and closed-weight pricing leverage (19 November 2026, 10:14 to 10:42, 15:01), <a href="https://www.youtube.com/watch?v=RZ4BBkSZ3io">youtube.com/watch?v=RZ4BBkSZ3io</a>; 80,000 Hours, "The U.S. Builds the Smartest AI. China Is Doing Something Else.," YouTube briefing on frontier and open-weight economics (10 November 2026, 02:36), <a href="https://www.youtube.com/watch?v=s5WNy6X_2FI">youtube.com/watch?v=s5WNy6X_2FI</a>; David Shapiro, "Jensen is gone. My thoughts.," YouTube commentary on accelerator supply concentration (12 November 2026, 07:53), <a href="https://www.youtube.com/watch?v=M_Fzx5KzBwY">youtube.com/watch?v=M_Fzx5KzBwY</a>; and David Shapiro, '"It was a political hit job" (Huang Gate),' YouTube analysis of semiconductor governance (15 November 2026, 03:12), <a href="https://www.youtube.com/watch?v=53uYYeNC6Ek">youtube.com/watch?v=53uYYeNC6Ek</a>.</p>
 </section>

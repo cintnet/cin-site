@@ -4,7 +4,7 @@ description: When an AI assistant only presents its final choice, we cannot tell
 reader: Anyone who relies on an AI assistant for decisions and wants to understand why it chose one path over another.
 takeaway: Revealing the decision forks an automated assistant considered restores human oversight before small mistakes turn into irreversible actions.
 template: article
-date: 2026-11-07
+date: 2026-11-08
 order: 55
 category: Seeing
 minutes: 8
@@ -28,9 +28,9 @@ lede: Most AI assistants hand you a single, polished answer. What they keep hidd
 
 <p>When software hands you a single confident answer, your brain assumes the problem has only one sensible solution. Human factors researchers call this automation complacency.<sup><a href="#fn3">3</a>, <a href="#fn4">4</a></sup> Because the machine sounds certain, people naturally lower their guard and accept the output without digging deeper.</p>
 
-<p>Recent empirical studies show something striking about human behavior.<sup><a href="#fn1">1</a></sup> When people review an automated answer, they almost never invent alternative routes on their own. We rarely stop to ask what else the model could have done. But when an interface explicitly shows the rejected options, everything changes. People begin inspecting the assistant's reasoning critically.</p>
+<p>Recent empirical studies show something striking about human behavior.<sup><a href="#fn1">1</a></sup> When people review an automated answer, they almost never invent alternative routes on their own. We rarely stop to ask what else the model could have done. When an interface explicitly shows the rejected options, people begin inspecting the assistant's reasoning critically.</p>
 
-<p>Exposing those alternatives breaks the illusion of certainty by revealing the counterfactual choices that were set aside.<sup><a href="#fn2">2</a></sup> It reminds us that every automated action is the result of trade-offs, confidence scores, and heuristic boundaries. When those forks stay invisible, you are not really directing the assistant. You are merely rubber-stamping its private guesses.</p>
+<p>Exposing those alternatives breaks the illusion of certainty by revealing the counterfactual choices that were set aside.<sup><a href="#fn2">2</a></sup> Every automated action comes from trade-offs, confidence scores, and rule boundaries, and even a hardware-signed reading from a wearable camera or room microphone can be fooled before it is recorded.<sup><a href="#fn5">5</a></sup> When those forks stay invisible, you end up rubber-stamping the assistant's private guesses.</p>
 
 <h2>The garden of forking paths: closed vs open choices</h2>
 
@@ -41,152 +41,221 @@ lede: Most AI assistants hand you a single, polished answer. What they keep hidd
       --ex-slip: #F3E8D8;
       --ex-ink: #131014;
       --ex-muted: #5E564B;
-      --ex-rule: #D8C8B2;
+      --ex-rule: #E1D3C0;
       --ex-signal: #0B3F30;
       --ex-accent: #1F6B4E;
-      --ex-warn: #9E4726;
-      --ex-amber: #805113;
-      margin: 2.1rem 0;
-      padding: 1.35rem 0 1.15rem;
-      background: transparent;
-      border: 0;
-      border-top: 1px solid var(--ex-rule);
-      border-bottom: 1px solid var(--ex-rule);
-      border-radius: 0;
-      box-shadow: none;
+      --ex-warn: #8C3B24;
+      margin: 1.8em 0 2em;
+      padding: 18px 18px 14px;
+      background: var(--ex-slip);
+      border: 1px solid var(--ex-rule);
+      border-radius: 20px;
       color: var(--ex-ink);
     }
+    :root[data-theme="dark"] #ex-counterfactual-paths {
+      --ex-paper: #18161E;
+      --ex-slip: #221F2A;
+      --ex-ink: #EDE6DC;
+      --ex-muted: #A8A095;
+      --ex-rule: #322E3D;
+      --ex-signal: #8FD4B6;
+      --ex-accent: #8FD4B6;
+      --ex-warn: #F09D82;
+    }
+    @media (prefers-color-scheme: dark) {
+      #ex-counterfactual-paths {
+        --ex-paper: #18161E;
+        --ex-slip: #221F2A;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #A8A095;
+        --ex-rule: #322E3D;
+        --ex-signal: #8FD4B6;
+        --ex-accent: #8FD4B6;
+        --ex-warn: #F09D82;
+      }
+      #ex-counterfactual-paths rect[fill="#FAF3EA"],
+      #ex-counterfactual-paths rect[fill="#F3E8D8"] {
+        fill: #221F2A;
+        stroke: #322E3D;
+      }
+      #ex-counterfactual-paths text[fill="#131014"],
+      #ex-counterfactual-paths text[fill="#5E564B"] {
+        fill: #EDE6DC;
+      }
+      #ex-counterfactual-paths text[fill="#0B3F30"],
+      #ex-counterfactual-paths text[fill="#1F6B4E"] {
+        fill: #8FD4B6;
+      }
+      #ex-counterfactual-paths text[fill="#B85C38"] {
+        fill: #F09D82;
+      }
+    }
     #ex-counterfactual-paths svg {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-counterfactual-paths .diagram-desktop {
       display: block;
       width: 100%;
       height: auto;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-counterfactual-paths .diagram-mobile {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+    @media (max-width: 640px) {
+      #ex-counterfactual-paths .diagram-desktop { display: none; }
+      #ex-counterfactual-paths .diagram-mobile { display: block; }
     }
     #ex-counterfactual-paths .ex-mono {
       font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
       letter-spacing: 0.05em;
-    }
-    #ex-counterfactual-paths .ex-spec-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.9rem 1.4rem;
-      margin-top: 0.95rem;
-      padding-top: 0.85rem;
-      border-top: 1px solid var(--ex-rule);
-      font-size: 0.88rem;
-      line-height: 1.5;
-    }
-    #ex-counterfactual-paths .ex-spec-col {
-      padding-left: 0.75rem;
-      border-left: 2px solid var(--ex-rule);
-    }
-    #ex-counterfactual-paths .ex-spec-col.is-signal {
-      border-left-color: var(--ex-signal);
-    }
-    #ex-counterfactual-paths .ex-spec-col.is-warn {
-      border-left-color: var(--ex-warn);
-    }
-    #ex-counterfactual-paths .ex-spec-col.is-amber {
-      border-left-color: var(--ex-amber);
-    }
-    #ex-counterfactual-paths .ex-spec-kicker {
-      display: block;
-      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--ex-muted);
-      margin-bottom: 0.22rem;
-    }
-    #ex-counterfactual-paths .ex-spec-body {
-      color: var(--ex-ink);
-    }
-    @media (max-width: 680px) {
-      #ex-counterfactual-paths .ex-spec-grid {
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
-      }
     }
     #ex-counterfactual-paths figcaption {
-      margin-top: 0.9rem;
-      padding-top: 0.7rem;
-      border-top: 1px solid var(--ex-rule);
-      font-size: 0.9rem;
-      line-height: 1.55;
+      margin-top: 12px;
+      font-size: 0.92rem;
+      line-height: 1.5;
       color: var(--ex-muted);
-      text-align: left;
-    }
-    @media (max-width: 640px) {
-      #ex-counterfactual-paths .ex-canvas {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-      }
-      #ex-counterfactual-paths .ex-canvas svg {
-        min-width: 540px;
-      }
+      text-align: center;
     }
   </style>
-  <div class="ex-canvas">
-    <svg viewBox="0 0 680 340" role="img" aria-labelledby="ex-paths-title ex-paths-desc">
-      <title id="ex-paths-title">Comparison of opaque single-path execution versus counterfactual path maps</title>
-      <desc id="ex-paths-desc">Visual diagram showing a closed single-line assistant decision on the left where intermediate options remain hidden, compared to an open branching path map on the right where human reviewers can inspect rejected alternatives, see confidence margins, and rewind execution.</desc>
-      <line x1="340" y1="14" x2="340" y2="328" stroke="var(--ex-rule)" stroke-width="1"/>
-      <g>
-        <rect x="14" y="18" width="6" height="6" fill="var(--ex-warn)"/>
-        <text class="ex-mono" x="27" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">SINGLE-TRACK (OPAQUE)</text>
-        <text x="14" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Prompt: "Schedule annual checkup"</text>
-        <line x1="14" y1="50" x2="328" y2="50" stroke="var(--ex-warn)" stroke-width="1.25"/>
-        <line x1="22" y1="64" x2="22" y2="228" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
-        <rect x="19" y="62" width="6" height="6" fill="var(--ex-warn)"/>
-        <text x="34" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Hidden Pruning</text>
-        <text x="34" y="85" font-size="11" fill="var(--ex-muted)">3 clinic slots dropped unseen</text>
-        <line x1="34" y1="132" x2="328" y2="132" stroke="var(--ex-rule)" stroke-width="1"/>
-        <rect x="19" y="142" width="6" height="6" fill="var(--ex-warn)"/>
-        <text x="34" y="149" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Sole Choice Shown</text>
-        <text x="34" y="165" font-size="11" fill="var(--ex-muted)">Thursday 2:00 PM only</text>
-        <line x1="34" y1="212" x2="328" y2="212" stroke="var(--ex-rule)" stroke-width="1"/>
-        <rect x="19" y="222" width="6" height="6" fill="var(--ex-warn)"/>
-        <text x="34" y="229" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Passive Approval</text>
-        <text x="34" y="245" font-size="11" fill="var(--ex-muted)">User misses trade-offs</text>
-        <line x1="14" y1="303" x2="328" y2="303" stroke="var(--ex-rule)" stroke-width="1"/>
-        <rect x="14" y="311" width="5" height="5" fill="var(--ex-warn)"/>
-        <text x="25" y="316" font-size="11" font-weight="700" fill="var(--ex-warn)">Risk: Automation complacency trap</text>
-      </g>
-      <g>
-        <rect x="354" y="18" width="6" height="6" fill="var(--ex-signal)"/>
-        <text class="ex-mono" x="367" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">PATH MAP (VISIBLE)</text>
-        <text x="354" y="41" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Chosen trail + rejected forks shown</text>
-        <line x1="354" y1="50" x2="666" y2="50" stroke="var(--ex-signal)" stroke-width="1.25"/>
-        <line x1="362" y1="64" x2="362" y2="228" stroke="var(--ex-signal)" stroke-width="1"/>
-        <path d="M 362 66 L 370 146 M 362 66 L 370 226" fill="none" stroke="var(--ex-amber)" stroke-width="1" stroke-dasharray="2 2"/>
-        <rect x="359" y="62" width="6" height="6" fill="var(--ex-signal)"/>
-        <text x="374" y="69" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Chosen: Thu 2:00 PM</text>
-        <text x="374" y="85" font-size="11" fill="var(--ex-muted)">Direct slot (0.88 fit)</text>
-        <line x1="374" y1="132" x2="666" y2="132" stroke="var(--ex-rule)" stroke-width="1"/>
-        <rect x="359" y="142" width="6" height="6" fill="var(--ex-signal)"/>
-        <text x="374" y="149" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Fork A: Fri 10:00 AM</text>
-        <text x="374" y="165" font-size="11" fill="var(--ex-muted)">Shorter doctor consult</text>
-        <line x1="374" y1="212" x2="666" y2="212" stroke="var(--ex-rule)" stroke-width="1"/>
-        <rect x="359" y="222" width="6" height="6" fill="var(--ex-signal)"/>
-        <text x="374" y="229" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Fork B: Wed 3:30 PM</text>
-        <text x="374" y="245" font-size="11" fill="var(--ex-muted)">Requires 2 bus transfers</text>
-        <line x1="354" y1="303" x2="666" y2="303" stroke="var(--ex-rule)" stroke-width="1"/>
-        <rect x="354" y="311" width="5" height="5" fill="var(--ex-signal)"/>
-        <text x="365" y="316" font-size="11" font-weight="700" fill="var(--ex-signal)">Status: 3 paths visible &amp; rewindable</text>
-      </g>
-    </svg>
-  </div>
-  <div class="ex-spec-grid">
-    <div class="ex-spec-col is-warn">
-      <span class="ex-spec-kicker">Opaque single answer</span>
-      <div class="ex-spec-body">Silently discards viable alternatives, nudging people into rubber-stamping schedules or plans with hidden trade-offs.</div>
-    </div>
-    <div class="ex-spec-col is-signal">
-      <span class="ex-spec-kicker">Inspectable branch map</span>
-      <div class="ex-spec-body">Surfaces the top rejected forks and their trade-offs so you can compare options and rewind to an alternate branch in one click.</div>
-    </div>
-  </div>
+  <svg class="diagram-desktop" viewBox="0 0 680 340" width="100%" height="auto" role="img" aria-labelledby="ex-paths-title ex-paths-desc">
+    <title id="ex-paths-title">Comparison of opaque single-path execution versus counterfactual path maps</title>
+    <desc id="ex-paths-desc">Visual diagram showing a closed single-line assistant decision on the left where intermediate options remain hidden, compared to an open branching path map on the right where human reviewers can inspect rejected alternatives, see confidence margins, and rewind execution.</desc>
+
+    <!-- Left Card: Opaque Single-Track Assistant -->
+    <g>
+      <rect x="12" y="12" width="318" height="316" rx="16" fill="#F3E8D8" stroke="#B85C38" stroke-width="1.5"/>
+      <rect x="28" y="26" width="168" height="24" rx="12" fill="#B85C38"/>
+      <text class="ex-mono" x="112" y="42" text-anchor="middle" font-size="11" font-weight="600" fill="#FAF3EA">SINGLE-TRACK (OPAQUE)</text>
+      <rect x="228" y="26" width="86" height="24" rx="12" fill="#FAF3EA" stroke="#B85C38" stroke-width="1"/>
+      <text x="271" y="42" text-anchor="middle" font-size="11" font-weight="600" fill="#131014">Blind box</text>
+      <line x1="28" y1="62" x2="314" y2="62" stroke="#E1D3C0" stroke-width="1"/>
+
+      <!-- Left Row 1: Prompt Input -->
+      <rect x="28" y="72" width="286" height="44" rx="8" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1"/>
+      <text class="ex-mono" x="40" y="88" font-size="11" font-weight="600" fill="#5E564B">Task Prompt</text>
+      <text x="40" y="106" font-size="12" font-weight="600" fill="#131014">"Schedule my annual health checkup"</text>
+
+      <!-- Left Row 2: Hidden Decision Box -->
+      <rect x="28" y="122" width="286" height="44" rx="8" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1"/>
+      <text class="ex-mono" x="40" y="138" font-size="11" font-weight="600" fill="#B85C38">Hidden Calculation</text>
+      <text x="40" y="156" font-size="12" fill="#5E564B">3 alternative slots discarded silently</text>
+
+      <!-- Left Row 3: Single Result -->
+      <rect x="28" y="172" width="286" height="44" rx="8" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1"/>
+      <text class="ex-mono" x="40" y="188" font-size="11" font-weight="600" fill="#5E564B">Final Output</text>
+      <text x="40" y="206" font-size="12" font-weight="600" fill="#131014">Thursday at 2:00 PM (Sole choice shown)</text>
+
+      <!-- Left Row 4: User Reaction -->
+      <rect x="28" y="222" width="286" height="44" rx="8" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1"/>
+      <text class="ex-mono" x="40" y="238" font-size="11" font-weight="600" fill="#B85C38">Human Oversight</text>
+      <text x="40" y="256" font-size="12" fill="#B85C38">Passive approval · No alternatives considered</text>
+
+      <!-- Left Footer Status -->
+      <rect x="28" y="278" width="286" height="34" rx="17" fill="#FAF3EA" stroke="#B85C38" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <text x="171" y="299" text-anchor="middle" font-size="11.5" font-weight="600" fill="#131014">Risk: Automation complacency trap</text>
+    </g>
+
+    <!-- Right Card: Visible Path Map with Counterfactual Forks -->
+    <g>
+      <rect x="350" y="12" width="318" height="316" rx="16" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.75"/>
+      <rect x="366" y="26" width="168" height="24" rx="12" fill="#0B3F30"/>
+      <text class="ex-mono" x="450" y="42" text-anchor="middle" font-size="11" font-weight="600" fill="#FAF3EA">PATH MAP (VISIBLE)</text>
+      <rect x="554" y="26" width="98" height="24" rx="12" fill="#F3E8D8" stroke="#1F6B4E" stroke-width="1"/>
+      <text x="603" y="42" text-anchor="middle" font-size="11" font-weight="600" fill="#0B3F30">Checkable</text>
+      <line x1="366" y1="62" x2="652" y2="62" stroke="#E1D3C0" stroke-width="1"/>
+
+      <!-- Right Row 1: Chosen Route -->
+      <rect x="366" y="72" width="286" height="44" rx="8" fill="#F3E8D8" stroke="#1F6B4E" stroke-width="1"/>
+      <circle cx="382" cy="94" r="5" fill="#1F6B4E"/>
+      <text class="ex-mono" x="394" y="88" font-size="11" font-weight="600" fill="#1F6B4E">Chosen Trail (Confidence 0.88)</text>
+      <text x="394" y="106" font-size="12" font-weight="600" fill="#0B3F30">Thursday 2:00 PM · Direct clinic slot</text>
+
+      <!-- Right Row 2: Rejected Alternative 1 -->
+      <rect x="366" y="122" width="286" height="44" rx="8" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1"/>
+      <circle cx="382" cy="144" r="5" fill="#B85C38"/>
+      <text class="ex-mono" x="394" y="138" font-size="11" font-weight="600" fill="#5E564B">Rejected Fork A (Trade-off)</text>
+      <text x="394" y="156" font-size="12" fill="#131014">Friday 10:00 AM · Doctor has fewer minutes</text>
+
+      <!-- Right Row 3: Rejected Alternative 2 -->
+      <rect x="366" y="172" width="286" height="44" rx="8" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1"/>
+      <circle cx="382" cy="194" r="5" fill="#B85C38"/>
+      <text class="ex-mono" x="394" y="188" font-size="11" font-weight="600" fill="#5E564B">Rejected Fork B (Transit)</text>
+      <text x="394" y="206" font-size="12" fill="#131014">Wednesday 3:30 PM · Requires 2 bus transfers</text>
+
+      <!-- Right Row 4: Rewind & Steer Ability -->
+      <rect x="366" y="222" width="286" height="44" rx="8" fill="#F3E8D8" stroke="#1F6B4E" stroke-width="1"/>
+      <text class="ex-mono" x="378" y="238" font-size="11" font-weight="600" fill="#1F6B4E">Human Control</text>
+      <text x="378" y="256" font-size="12" font-weight="600" fill="#0B3F30">Active judgment · Rewind to any fork</text>
+
+      <!-- RightFooter Status -->
+      <line x1="171" y1="116" x2="171" y2="122" stroke="#B85C38" stroke-width="1.5"/>
+      <polygon points="167,120 171,124 175,120" fill="#B85C38"/>
+      <line x1="171" y1="166" x2="171" y2="172" stroke="#B85C38" stroke-width="1.5"/>
+      <polygon points="167,170 171,174 175,170" fill="#B85C38"/>
+      <line x1="509" y1="116" x2="509" y2="122" stroke="#1F6B4E" stroke-width="1.5"/>
+      <polygon points="505,120 509,124 513,120" fill="#1F6B4E"/>
+      <rect x="366" y="278" width="286" height="34" rx="17" fill="#0B3F30"/>
+      <text x="509" y="299" text-anchor="middle" font-size="12" font-weight="600" fill="#FAF3EA">Status: 3 paths visible · Full human oversight</text>
+    </g>
+  </svg>
+  <svg class="diagram-mobile" viewBox="0 0 330 610" width="100%" height="auto" role="img" aria-labelledby="ex-paths-m-title ex-paths-m-desc">
+    <title id="ex-paths-m-title">Mobile comparison of opaque single-track choices and visible path maps</title>
+    <desc id="ex-paths-m-desc">Stacked mobile diagram comparing a single-track opaque assistant on top with a visible counterfactual path map below that exposes rejected forks and enables instant rewinds.</desc>
+    <rect x="2" y="2" width="326" height="606" rx="14" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1.5"/>
+    <line x1="165" y1="100" x2="165" y2="106" stroke="#B85C38" stroke-width="1.5"/>
+    <polygon points="161,104 165,108 169,104" fill="#B85C38"/>
+    <line x1="165" y1="150" x2="165" y2="156" stroke="#B85C38" stroke-width="1.5"/>
+    <polygon points="161,154 165,158 169,154" fill="#B85C38"/>
+    <line x1="165" y1="394" x2="165" y2="400" stroke="#0B3F30" stroke-width="1.5"/>
+    <polygon points="161,398 165,402 169,398" fill="#0B3F30"/>
+
+    <rect x="14" y="14" width="302" height="278" rx="10" fill="#F3E8D8" stroke="#B85C38" stroke-width="1.5"/>
+    <rect x="24" y="24" width="184" height="24" rx="12" fill="#B85C38"/>
+    <text class="ex-mono" x="116" y="40" text-anchor="middle" fill="#FAF3EA" font-size="11" font-weight="700">SINGLE-TRACK (OPAQUE)</text>
+
+    <rect x="24" y="56" width="282" height="44" rx="6" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1"/>
+    <text x="34" y="73" fill="#B85C38" font-size="11" font-weight="700">1. Task prompt</text>
+    <text x="34" y="91" fill="#131014" font-size="11">Schedule annual health checkup</text>
+
+    <rect x="24" y="106" width="282" height="44" rx="6" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1"/>
+    <text x="34" y="123" fill="#B85C38" font-size="11" font-weight="700">2. Hidden pruning</text>
+    <text x="34" y="141" fill="#131014" font-size="11">3 alternative slots dropped silently</text>
+
+    <rect x="24" y="156" width="282" height="44" rx="6" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1"/>
+    <text x="34" y="173" fill="#B85C38" font-size="11" font-weight="700">3. Sole output</text>
+    <text x="34" y="191" fill="#131014" font-size="11">Thursday 2:00 PM shown alone</text>
+
+    <rect x="24" y="206" width="282" height="44" rx="6" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1"/>
+    <text x="34" y="223" fill="#B85C38" font-size="11" font-weight="700">4. Oversight gap</text>
+    <text x="34" y="241" fill="#131014" font-size="11">User clicks approve without options</text>
+
+    <text x="165" y="276" text-anchor="middle" fill="#B85C38" font-size="11" font-weight="700">Risk: Automation complacency</text>
+
+    <rect x="14" y="308" width="302" height="286" rx="10" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.5"/>
+    <rect x="24" y="318" width="184" height="24" rx="12" fill="#0B3F30"/>
+    <text class="ex-mono" x="116" y="334" text-anchor="middle" fill="#FAF3EA" font-size="11" font-weight="700">PATH MAP (VISIBLE)</text>
+
+    <rect x="24" y="350" width="282" height="44" rx="6" fill="#F3E8D8" stroke="#1F6B4E" stroke-width="1"/>
+    <text x="34" y="367" fill="#0B3F30" font-size="11" font-weight="700">1. Chosen slot (0.88)</text>
+    <text x="34" y="385" fill="#131014" font-size="11">Thursday 2:00 PM direct clinic</text>
+
+    <rect x="24" y="400" width="282" height="44" rx="6" fill="#F3E8D8" stroke="#1F6B4E" stroke-width="1"/>
+    <text x="34" y="417" fill="#0B3F30" font-size="11" font-weight="700">2. Rejected fork A</text>
+    <text x="34" y="435" fill="#131014" font-size="11">Friday 10:00 AM shorter visit</text>
+
+    <rect x="24" y="450" width="282" height="44" rx="6" fill="#F3E8D8" stroke="#1F6B4E" stroke-width="1"/>
+    <text x="34" y="467" fill="#0B3F30" font-size="11" font-weight="700">3. Rejected fork B</text>
+    <text x="34" y="485" fill="#131014" font-size="11">Wednesday 3:30 PM two bus transfers</text>
+
+    <rect x="24" y="500" width="282" height="44" rx="6" fill="#F3E8D8" stroke="#1F6B4E" stroke-width="1"/>
+    <text x="34" y="517" fill="#0B3F30" font-size="11" font-weight="700">4. Rewind and steer</text>
+    <text x="34" y="535" fill="#131014" font-size="11">Switch forks with one tap</text>
+
+    <text x="165" y="574" text-anchor="middle" fill="#0B3F30" font-size="11" font-weight="700">Outcome: Active human steering</text>
+  </svg>
   <figcaption>When an assistant hides its decision branches (left), users accept mistakes complacently. Visual path maps (right) expose rejected options, enabling quick rewinds and meaningful human control.</figcaption>
 </figure>
 
@@ -194,21 +263,19 @@ lede: Most AI assistants hand you a single, polished answer. What they keep hidd
 
 <p>Consider three practical situations where seeing the roads not taken protects daily life.</p>
 
-<p><strong>Rescheduling a clinic visit.</strong> Suppose your assistant reschedules a routine checkup. It presents a confirmation for Thursday at two in the afternoon. What it hides is that it rejected a Friday morning slot because the doctor had fewer open minutes, and rejected a Wednesday visit because it required a transfer between two city buses. If you know that Friday mornings work better for your family, seeing those rejected forks lets you switch with a single tap.</p>
+<p>Suppose your 1:1 personal assistant reschedules a routine clinic checkup under a short, expiring task pass. It presents a confirmation for Thursday at two in the afternoon. Inside your sealed local memory vault on your own device, it also records why it set aside Friday morning (fewer doctor minutes) and Wednesday afternoon (two bus transfers). If Friday morning works better for your family, seeing those rejected forks lets you switch with a single tap while only a minimal signed booking receipt reaches the clinic ledger.</p>
 
-<p><strong>Drafting a sensitive letter.</strong> Imagine asking an assistant to write a note to a landlord about water damage in your ceiling. The assistant drafts a polite request asking for an inspection next week. In doing so, it discarded a formal notice citing tenant rights codes and a casual message without dates. Seeing those discarded tones lets you decide whether your situation calls for friendly patience or formal legal documentation.</p>
+<p>Imagine asking your assistant to write a note to a landlord about water damage in your ceiling. The assistant drafts a polite request asking for an inspection next week, while keeping a formal notice citing tenant rights codes and a brief note without dates as visible branches in your private diary. Seeing those discarded tones lets you decide whether your situation calls for friendly patience or formal legal documentation.</p>
 
-<p><strong>Managing cooperative community funds.</strong> Picture a community garden buying bulk supplies for the winter. The assistant selects a single vendor offering commercial fertilizer. It rejected an organic compost cooperative that charged slightly higher shipping. If the garden committee cannot see that rejected alternative, they miss the chance to align the purchase with their environmental values.</p>
-
-<div class="callout"><p class="label">What this means</p><p>True human oversight does not mean re-doing all the work from scratch. It means being able to see where the assistant paused, inspect what it set aside, and redirect its steps when common sense disagrees with its ranking.</p></div>
+<p>Picture a community garden buying bulk supplies for the winter over a shared clearing network. The assistant selects a vendor offering commercial fertilizer, and also shows that it set aside an organic compost cooperative with slightly higher shipping. Because the garden committee can see that rejected alternative, they can steer the order toward their shared rules and values without re-doing the search from scratch.</p>
 
 <h2>Rewinding the tape instead of starting over</h2>
 
 <p>One of the most frustrating parts of modern AI tools is how brittle they are. If an assistant takes a wrong turn on step four of a complex project, you often have to discard the entire result and begin again. That friction tempts people to settle for mediocre or slightly flawed outputs.</p>
 
-<p>Visual path maps solve that frustration through branching rewinds. When software records its decision forks, you do not need to rewrite the prompt. You simply click on the fork where the assistant hesitated, select the rejected branch, and let the software proceed down the better path.</p>
+<p>Visual path maps solve that frustration through branching rewinds. When software records its decision forks in your private local vault, you do not need to rewrite the prompt. You click on the fork where the assistant hesitated, select the rejected branch, and let the software proceed down the better path.</p>
 
-<p>This turns automated execution into a genuine partnership. The assistant does the heavy lifting of exploring possibilities, while you provide the judgment that keeps work grounded in real-world context.</p>
+<p>The assistant handles the legwork of exploring possibilities, while you keep the final judgment grounded in real-world context.</p>
 
 <h2>What must happen next</h2>
 
@@ -228,16 +295,23 @@ lede: Most AI assistants hand you a single, polished answer. What they keep hidd
   <details>
     <summary>For researchers</summary>
     <div>
-      <p>Our path map specification builds upon empirical findings from <em>Agentic Path Maps: Exposing an Agent's Traversal Through the Garden of Forking Paths</em> by Madeleine Grunde-McLaughlin, Hafsah Usman, Daniel Mitroshkov et al. (<a href="https://arxiv.org/abs/2611.04183">arXiv:2611.04183</a>, November 2026). Their user evaluations demonstrate that while participants rarely generate counterfactual alternatives spontaneously, exposing branch traversal forks curtails automation complacency and encourages critical intervention.</p>
-      <p>Theoretical foundations draw on counterfactual explanation frameworks in algorithmic decision-making (Wachter, Mittelstadt, &amp; Russell, <em>Harvard Journal of Law &amp; Technology</em>, 2017) and classical human factors literature on automation trust calibration and complacency (Parasuraman &amp; Manzey, <em>Human Factors</em>, 2010; Lee &amp; See, <em>Human Factors</em>, 2004). In multi-step autonomous pipelines, recording beam search candidates, Monte Carlo tree search branch evaluations, and intermediate tool selection probabilities provides human supervisors with actionable causal contrastive anchors.</p>
-      <p>Operational implementations integrate with civil society action cards in <a href="/labs/shared-horizon/">Shared Horizon</a>, enforcing verifiable local hash logging of rejected candidate branches and decision boundaries.</p>
+      <p>Our path map specification builds upon empirical findings from <em>Agentic Path Maps: Exposing an Agent's Traversal Through the Garden of Forking Paths</em> by Madeleine Grunde-McLaughlin, Hafsah Usman, Daniel Mitroshkov et al. (<a href="https://arxiv.org/abs/2611.04183">arXiv:2611.04183</a>, November 2026<sup><a href="#fn1">1</a></sup>). Their user evaluations demonstrate that while participants rarely generate counterfactual alternatives spontaneously, exposing branch traversal forks curtails automation complacency (Parasuraman &amp; Manzey, 2010<sup><a href="#fn3">3</a></sup>; Lee &amp; See, 2004<sup><a href="#fn4">4</a></sup>) and provides actionable counterfactual explanations (Wachter, Mittelstadt, &amp; Russell, 2018<sup><a href="#fn2">2</a></sup>).</p>
+      <p>In CIN's five-primitive architecture across the personal Markov blanket (Karl Friston; Friston, 2010; Friston, 2013<sup><a href="#fn6">6</a></sup>) and multiscale cognitive light cone (Michael Levin; Levin, 2019), heterogeneous wearable and room sensors form a multimodal egocentric and ambient perceptual sensorium fused locally in monotonic hardware <code>Device Time</code> with self-assessed observation confidence. Silicon peripheral attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, <code>IETF RATS</code> RFC 9334<sup><a href="#fn7">7</a></sup>), an optical data diode, and <code>IEC 61508</code> dead-man relays isolate physical actuators while respecting transduction limits across the analog hole (<em>Signed Is Not True</em>; Kevin Fu and Wenyuan Xu; Fu &amp; Xu, 2018<sup><a href="#fn5">5</a></sup>). Observations write into an append-only local <code>C2PA</code><sup><a href="#fn11">11</a></sup> and Merkle episodic memory vault (Endel Tulving; Tulving, 1972) encrypted strictly for the biological person and their personal cognitive model.</p>
+      <p>A monogamous <code>1:1</code> principal-bound personal cognitive model and cybernetic exocortex (Joscha Bach; Bach, 2009) grounded in the Extended Mind thesis (Andy Clark and David Chalmers; Clark &amp; Chalmers, 1998), the Good Regulator theorem (Conant &amp; Ashby, 1970), interventional causal models <code>do(x)</code> (Pearl, 2009), and compiler-trust reflection proofs (Thompson, 1984) acts as a statutory information fiduciary (Jack Balkin; Balkin, 2016<sup><a href="#fn8">8</a></sup>) preserving unassisted competence. It logs full rejected candidate branches inside the encrypted Private Autobiographical Ledger while emitting only minimal selective zero-knowledge (<code>ZK</code>) proofs, independent-class Byzantine corroboration (<code>k &gt;= 3f + 1</code>), and signed <code>IETF SCITT</code> (<code>RFC 9943</code><sup><a href="#fn11">11</a></sup>) transparency receipts under expiring Object-Capability and capability lease grants (Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966<sup><a href="#fn9">9</a></sup>) onto the Public Attestation &amp; Escrow Ledger (Public Attestation and Escrow Ledger). Those receipts couple sovereign dyads to the Wide Network Ledger for Universal Basic Services, merit-bonded commons tasks, invisible-labor upkeep (Jacob Meluso), reciprocal mutual credit clearing (James Stodder), statutory cooperative equity (Rudolf Meidner; Meidner, 1978<sup><a href="#fn11">11</a></sup>), frontier-lab overlays (Bracale Syrnikov et al., 2026), and polycentric commons clearing substrates (Elinor Ostrom; Ostrom, 1990; Ostrom, 2010<sup><a href="#fn10">10</a></sup>). Operational cards and interactive checks are available in <a href="/labs/protocol-inspector/">Protocol Inspector</a>, <a href="/labs/sensor-boundary/">Sensor Boundary</a>, and <a href="/labs/shared-horizon/">Shared Horizon</a>.</p>
     </div>
   </details>
 </aside>
 
 <section class="footnotes">
   <p id="fn1">1. Madeleine Grunde-McLaughlin, Hafsah Usman, Daniel Mitroshkov et al., <a href="https://arxiv.org/abs/2611.04183">Agentic Path Maps: Exposing an Agent's Traversal Through the Garden of Forking Paths</a>, arXiv:2611.04183 (November 2026).</p>
-  <p id="fn2">2. Sandra Wachter, Brent Mittelstadt, and Chris Russell, <a href="https://doi.org/10.2139/ssrn.3063289">Counterfactual Explanations Without Opening the Black Box: Automated Decisions and the GDPR</a>, <em>Harvard Journal of Law &amp; Technology</em>, Vol. 31, No. 2, pp. 841–887 (2018); preprint: <a href="https://arxiv.org/abs/1711.00399">arXiv:1711.00399</a>.</p>
-  <p id="fn3">3. Raja Parasuraman and Dietrich H. Manzey, <a href="https://doi.org/10.1177/0018720810376055">Complacency and Bias in Human Use of Automation: An Attentional Integration</a>, <em>Human Factors</em>, Vol. 52, No. 3, pp. 381–410 (June 2010).</p>
-  <p id="fn4">4. John D. Lee and Katrina A. See, <a href="https://doi.org/10.1518/hfes.46.1.50_30392">Trust in Automation: Designing for Appropriate Reliance</a>, <em>Human Factors</em>, Vol. 46, No. 1, pp. 50–80 (Spring 2004).</p>
+  <p id="fn2">2. Sandra Wachter, Brent Mittelstadt, and Chris Russell, <a href="https://doi.org/10.2139/ssrn.3063289">Counterfactual Explanations Without Opening the Black Box: Automated Decisions and the GDPR</a>, <em>Harvard Journal of Law &amp; Technology</em>, Vol. 31, No. 2, pp. 841-887 (2018); preprint: <a href="https://arxiv.org/abs/1711.00399">arXiv:1711.00399</a>.</p>
+  <p id="fn3">3. Raja Parasuraman and Dietrich H. Manzey, <a href="https://doi.org/10.1177/0018720810376055">Complacency and Bias in Human Use of Automation: An Attentional Integration</a>, <em>Human Factors</em>, Vol. 52, No. 3, pp. 381-410 (June 2010).</p>
+  <p id="fn4">4. John D. Lee and Katrina A. See, <a href="https://doi.org/10.1518/hfes.46.1.50_30392">Trust in Automation: Designing for Appropriate Reliance</a>, <em>Human Factors</em>, Vol. 46, No. 1, pp. 50-80 (Spring 2004).</p>
+  <p id="fn5">5. Kevin Fu and Wenyuan Xu, <a href="https://doi.org/10.1145/3176402">Risks of Trusting the Physics of Sensors</a>, <em>Communications of the ACM</em>, Vol. 61, No. 2, pp. 20-23 (February 2018).</p>
+  <p id="fn6">6. Karl Friston, <a href="https://doi.org/10.1098/rsif.2013.0475">Life as We Know It</a>, <em>Journal of the Royal Society Interface</em>, Vol. 10, No. 86, art. 20130475 (September 2013).</p>
+  <p id="fn7">7. Henk Birkholz, Dave Thaler, Michael Richardson, Ned Smith, and Wei Pan, <a href="https://www.rfc-editor.org/rfc/rfc9334">Remote ATtestation procedureS (RATS) Architecture</a>, IETF RFC 9334 (January 2023).</p>
+  <p id="fn8">8. Jack M. Balkin, <a href="https://lawreview.law.ucdavis.edu/archives/49/4/information-fiduciaries-and-first-amendment">Information Fiduciaries and the First Amendment</a>, <em>UC Davis Law Review</em>, Vol. 49, No. 4, pp. 1183-1234 (April 2016).</p>
+  <p id="fn9">9. Jack B. Dennis and Earl C. Van Horn, <a href="https://doi.org/10.1145/365230.365252">Programming Semantics for Multiprogrammed Computations</a>, <em>Communications of the ACM</em>, Vol. 9, No. 3, pp. 143-155 (March 1966).</p>
+  <p id="fn10">10. Elinor Ostrom, <a href="https://doi.org/10.1017/CBO9780511807763">Governing the Commons: The Evolution of Institutions for Collective Action</a>, Cambridge University Press (1990; 2010 lecture).</p>
+  <p id="fn11">11. Coalition for Content Provenance and Authenticity, <em>C2PA Technical Specification</em>, v2.1 (2024), <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html">c2pa.org</a>; Henk Birkholz, Antoine Delignat-Lavaud, Cedric Fournet, Yogesh Deshpande, and Steve Lasker, <em>An Architecture for Trustworthy and Transparent Digital Supply Chains (SCITT)</em>, IETF RFC 9943 (2026), <a href="https://www.rfc-editor.org/rfc/rfc9943">rfc-editor.org/rfc/rfc9943</a>; and Rudolf Meidner, <em>Employee Investment Funds: An Approach to Collective Capital Formation</em> (London: George Allen &amp; Unwin, 1978), <a href="https://archive.org/details/employeeinvestme0000meid">archive.org/details/employeeinvestme0000meid</a>.</p>
 </section>

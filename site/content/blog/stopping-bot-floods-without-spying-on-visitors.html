@@ -4,7 +4,7 @@ description: Web services can stop automated scraper floods without surveillance
 reader: A community organizer or website builder deciding whether to put a phone check or proof of identity in front of a public forum.
 takeaway: Websites can stop automated bot floods by checking anonymous cryptographic tokens instead of tracking visitor identities or IP addresses.
 template: article
-date: 2026-10-27
+date: 2026-11-12
 order: 70
 category: Governing
 minutes: 7
@@ -13,7 +13,7 @@ image_alt: A vintage wooden subway turnstile with brass tokens resting in a cera
 lede: Public websites do not need to identify visitors to protect themselves from automated flood attacks. Verifying unlinkable access tokens inside sealed hardware lets servers count traffic while learning nothing about who is browsing.
 ---
 
-<p>Public websites do not need to identify visitors to protect themselves from automated flood attacks. Verifying unlinkable access tokens inside sealed hardware lets servers count traffic while learning nothing about who is browsing.</p>
+<p>When a public library or neighbourhood clinic website gets swamped by automated scrapers, administrators face an ugly choice. If they leave the doors wide open, bot traffic crashes the server; if they demand phone numbers or ID cards at the door, ordinary residents and whistleblowers walk away. Anonymous hardware-checked tokens offer a third path, counting visits at the turnstile without ever asking who is walking through.</p>
 
 <figure class="explainer" id="ex-anonymous-rate-limits">
   <style>
@@ -22,147 +22,158 @@ lede: Public websites do not need to identify visitors to protect themselves fro
       --ex-slip: #F3E8D8;
       --ex-ink: #131014;
       --ex-muted: #5E564B;
-      --ex-rule: #D8C8B2;
+      --ex-rule: #E1D3C0;
       --ex-signal: #0B3F30;
-      --ex-accent: #1F6B4E;
-      --ex-warn: #9E4726;
-      --ex-amber: #805113;
-      margin: 2.1rem 0;
-      padding: 1.35rem 0 1.15rem;
-      background: transparent;
-      border: 0;
-      border-top: 1px solid var(--ex-rule);
-      border-bottom: 1px solid var(--ex-rule);
-      border-radius: 0;
-      box-shadow: none;
+      --ex-warn: #8C3B24;
+      margin: 2rem 0;
+      padding: 1.25rem;
+      background: var(--ex-slip);
+      border: 1px solid var(--ex-rule);
+      border-radius: 12px;
       color: var(--ex-ink);
     }
-    #ex-anonymous-rate-limits svg {
-      display: block;
-      width: 100%;
-      height: auto;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    @media (prefers-color-scheme: dark) {
+      #ex-anonymous-rate-limits {
+        --ex-paper: #18161E;
+        --ex-slip: #221F2A;
+        --ex-ink: #EDE6DC;
+        --ex-muted: #A8A095;
+        --ex-rule: #322E3D;
+        --ex-signal: #8FD4B6;
+        --ex-warn: #F09D82;
+      }
+      #ex-anonymous-rate-limits rect[fill="#FAF3EA"],
+      #ex-anonymous-rate-limits rect[fill="#FAF1ED"],
+      #ex-anonymous-rate-limits rect[fill="#F0F6F2"],
+      #ex-anonymous-rate-limits rect[fill="#F6EFE5"],
+      #ex-anonymous-rate-limits rect[fill="#E5EFE8"],
+      #ex-anonymous-rate-limits rect[fill="#FFFFFF"] {
+        fill: #221F2A;
+        stroke: #322E3D;
+      }
+      #ex-anonymous-rate-limits text[fill="#1B1814"],
+      #ex-anonymous-rate-limits text[fill="#5E564B"] {
+        fill: #EDE6DC;
+      }
+      #ex-anonymous-rate-limits text[fill="#1F6B4E"] {
+        fill: #8FD4B6;
+      }
+      #ex-anonymous-rate-limits text[fill="#8C3B24"] {
+        fill: #F09D82;
+      }
     }
-    #ex-anonymous-rate-limits .ex-mono {
-      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
-      letter-spacing: 0.05em;
+    :root[data-theme="dark"] #ex-anonymous-rate-limits {
+      --ex-paper: #18161E;
+      --ex-slip: #221F2A;
+      --ex-ink: #EDE6DC;
+      --ex-muted: #A8A095;
+      --ex-rule: #322E3D;
+      --ex-signal: #8FD4B6;
+      --ex-warn: #F09D82;
     }
-    #ex-anonymous-rate-limits .diagram-desktop {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-    #ex-anonymous-rate-limits .diagram-mobile {
-      display: none;
-      width: 100%;
-      height: auto;
-    }
-    #ex-anonymous-rate-limits figcaption {
-      margin-top: 1rem;
-      padding-top: 0.75rem;
-      border-top: 1px solid var(--ex-rule);
-      font-size: 0.9rem;
-      line-height: 1.55;
-      color: var(--ex-muted);
-      text-align: left;
-    }
+    #ex-anonymous-rate-limits .diagram-desktop { display: block; }
+    #ex-anonymous-rate-limits .diagram-mobile { display: none; }
     @media (max-width: 640px) {
       #ex-anonymous-rate-limits .diagram-desktop { display: none; }
       #ex-anonymous-rate-limits .diagram-mobile { display: block; }
     }
   </style>
-  <svg class="diagram-desktop" viewBox="0 0 700 350" role="img" aria-labelledby="ex-arl-title ex-arl-desc">
+
+  <!-- Desktop SVG (viewBox 0 0 700 350) -->
+  <svg class="diagram-desktop" viewBox="0 0 700 350" width="100%" height="auto" role="img" aria-labelledby="ex-arl-title ex-arl-desc">
     <title id="ex-arl-title">Contrasting surveillance rate limiting with anonymous enclave tokens</title>
     <desc id="ex-arl-desc">Two-panel diagram comparing invasive identity tracking with privacy-preserving anonymous rate-limiting tokens verified inside a hardware enclave.</desc>
-    <line x1="350" y1="14" x2="350" y2="336" stroke="var(--ex-rule)" stroke-width="1"/>
-    <g>
-      <rect x="16" y="18" width="6" height="6" fill="var(--ex-warn)"/>
-      <text class="ex-mono" x="30" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">INTRUSIVE: IDENTITY TRACKING</text>
-      <text x="16" y="42" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Logs visitor identities to stop bots</text>
-      <line x1="16" y1="52" x2="338" y2="52" stroke="var(--ex-warn)" stroke-width="1.25"/>
-      <line x1="25" y1="68" x2="25" y2="234" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
-      <rect x="22" y="67" width="6" height="6" fill="var(--ex-warn)"/>
-      <text x="38" y="74" font-size="12" font-weight="700" fill="var(--ex-ink)">1. IP &amp; Browser Fingerprinting</text>
-      <text x="38" y="91" font-size="11" fill="var(--ex-muted)">Records network addresses and device specs</text>
-      <line x1="38" y1="136" x2="338" y2="136" stroke="var(--ex-rule)" stroke-width="1"/>
-      <rect x="22" y="147" width="6" height="6" fill="var(--ex-warn)"/>
-      <text x="38" y="154" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Mandatory Personal Logins</text>
-      <text x="38" y="171" font-size="11" fill="var(--ex-muted)">Demands phone numbers or email accounts</text>
-      <line x1="38" y1="216" x2="338" y2="216" stroke="var(--ex-rule)" stroke-width="1"/>
-      <rect x="22" y="227" width="6" height="6" fill="var(--ex-warn)"/>
-      <text x="38" y="234" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Permanent Browsing Trail</text>
-      <text x="38" y="251" font-size="11" fill="var(--ex-muted)">Excludes whistleblowers and cautious readers</text>
-      <line x1="16" y1="308" x2="338" y2="308" stroke="var(--ex-rule)" stroke-width="1"/>
-      <rect x="16" y="317" width="5" height="5" fill="var(--ex-warn)"/>
-      <text x="28" y="322" font-size="11" font-weight="700" fill="var(--ex-warn)">Failure mode: Chilled public participation</text>
+    <rect x="2" y="2" width="696" height="346" rx="10" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1.5"/>
+    <g transform="translate(14, 14)">
+      <rect x="0" y="0" width="328" height="322" rx="8" fill="#FAF1ED" stroke="#8C3B24" stroke-width="1.5"/>
+      <rect x="10" y="10" width="308" height="26" rx="4" fill="#8C3B24"/>
+      <text x="164" y="27" text-anchor="middle" fill="#FAF3EA" font-size="11" font-weight="700" letter-spacing="0.04em">INTRUSIVE: IDENTITY TRACKING</text>
+      <text x="164" y="56" text-anchor="middle" fill="#8C3B24" font-size="12" font-weight="600">Logs visitor identities to stop bots</text>
+      <rect x="16" y="72" width="296" height="66" rx="6" fill="#FFFFFF" stroke="#E1D3C0" stroke-width="1"/>
+      <text x="26" y="92" fill="#1B1814" font-size="11" font-weight="600">1. IP Logging &amp; Fingerprinting</text>
+      <text x="26" y="110" fill="#5E564B" font-size="11">Records network addresses and browser specs</text>
+      <text x="26" y="126" fill="#8C3B24" font-size="11">Result: Leaves permanent browsing trail</text>
+      <rect x="16" y="148" width="296" height="66" rx="6" fill="#FFFFFF" stroke="#E1D3C0" stroke-width="1"/>
+      <text x="26" y="168" fill="#1B1814" font-size="11" font-weight="600">2. Mandatory Personal Logins</text>
+      <text x="26" y="186" fill="#5E564B" font-size="11">Demands phone numbers or email accounts</text>
+      <text x="26" y="202" fill="#8C3B24" font-size="11">Result: Excludes whistleblowers and readers</text>
+      <rect x="16" y="224" width="296" height="78" rx="6" fill="#F6EFE5" stroke="#8C3B24" stroke-width="1" stroke-dasharray="3 3"/>
+      <text x="26" y="246" fill="#8C3B24" font-size="11" font-weight="700">Failure Mode: Chilled Participation</text>
+      <text x="26" y="266" fill="#5E564B" font-size="11">Open community forums turn into surveillance</text>
+      <text x="26" y="284" fill="#5E564B" font-size="11">checkpoints. Cautious participants walk away.</text>
     </g>
-    <g>
-      <rect x="366" y="18" width="6" height="6" fill="var(--ex-signal)"/>
-      <text class="ex-mono" x="380" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">PRIVATE: ENCLAVE TOKENS</text>
-      <text x="366" y="42" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Counts traffic without tracking visitors</text>
-      <line x1="366" y1="52" x2="684" y2="52" stroke="var(--ex-signal)" stroke-width="1.25"/>
-      <line x1="375" y1="68" x2="375" y2="234" stroke="var(--ex-signal)" stroke-width="1"/>
-      <rect x="372" y="67" width="6" height="6" fill="var(--ex-signal)"/>
-      <text x="388" y="74" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Blinded Challenge Tickets</text>
-      <text x="388" y="91" font-size="11" fill="var(--ex-muted)">Client proves valid budget without identity</text>
-      <line x1="388" y1="136" x2="684" y2="136" stroke="var(--ex-rule)" stroke-width="1"/>
-      <rect x="372" y="147" width="6" height="6" fill="var(--ex-signal)"/>
-      <text x="388" y="154" font-size="12" font-weight="700" fill="var(--ex-ink)">2. Sealed Enclave Counters</text>
-      <text x="388" y="171" font-size="11" fill="var(--ex-muted)">Rate limits checked inside isolated memory</text>
-      <line x1="388" y1="216" x2="684" y2="216" stroke="var(--ex-rule)" stroke-width="1"/>
-      <rect x="372" y="227" width="6" height="6" fill="var(--ex-signal)"/>
-      <text x="388" y="234" font-size="12" font-weight="700" fill="var(--ex-ink)">3. Zero IP Address Logs</text>
-      <text x="388" y="251" font-size="11" fill="var(--ex-muted)">Scraper floods throttled in under a millisecond</text>
-      <line x1="366" y1="308" x2="684" y2="308" stroke="var(--ex-rule)" stroke-width="1"/>
-      <rect x="366" y="317" width="5" height="5" fill="var(--ex-signal)"/>
-      <text x="378" y="322" font-size="11" font-weight="700" fill="var(--ex-signal)">Outcome: Protected commons &amp; reader privacy</text>
+    <g transform="translate(358, 14)">
+      <rect x="0" y="0" width="328" height="322" rx="8" fill="#F0F6F2" stroke="#1F6B4E" stroke-width="1.5"/>
+      <rect x="10" y="10" width="308" height="26" rx="4" fill="#1F6B4E"/>
+      <text x="164" y="27" text-anchor="middle" fill="#FAF3EA" font-size="11" font-weight="700" letter-spacing="0.04em">PRIVATE: ANONYMOUS ENCLAVE TOKENS</text>
+      <text x="164" y="56" text-anchor="middle" fill="#1F6B4E" font-size="12" font-weight="600">Counts traffic without tracking who visits</text>
+      <rect x="16" y="72" width="296" height="66" rx="6" fill="#FFFFFF" stroke="#C3D9CB" stroke-width="1"/>
+      <text x="26" y="92" fill="#1B1814" font-size="11" font-weight="600">1. Blinded Cryptographic Tokens</text>
+      <text x="26" y="110" fill="#5E564B" font-size="11">Client receives unlinkable challenge ticket</text>
+      <text x="26" y="126" fill="#1F6B4E" font-size="11">Result: Valid access proved without identity</text>
+      <rect x="16" y="148" width="296" height="66" rx="6" fill="#FFFFFF" stroke="#C3D9CB" stroke-width="1"/>
+      <text x="26" y="168" fill="#1B1814" font-size="11" font-weight="600">2. Sealed Hardware Enclave Rate Limits</text>
+      <text x="26" y="186" fill="#5E564B" font-size="11">Server counts rate budgets in isolated memory</text>
+      <text x="26" y="202" fill="#1F6B4E" font-size="11">Result: Sub-millisecond checks, zero IP logs</text>
+      <rect x="16" y="224" width="296" height="78" rx="6" fill="#E5EFE8" stroke="#1F6B4E" stroke-width="1"/>
+      <text x="26" y="246" fill="#1F6B4E" font-size="11" font-weight="700">Outcome: Protected Public Commons</text>
+      <text x="26" y="266" fill="#5E564B" font-size="11">Servers throttle scraper floods instantly</text>
+      <text x="26" y="284" fill="#5E564B" font-size="11">while reading privacy remains absolute.</text>
+      <line x1="164" y1="138" x2="164" y2="148" stroke="#1F6B4E" stroke-width="1.5"/>
+      <polygon points="160,145 164,149 168,145" fill="#1F6B4E"/>
+      <line x1="164" y1="214" x2="164" y2="224" stroke="#1F6B4E" stroke-width="1.5"/>
+      <polygon points="160,221 164,225 168,221" fill="#1F6B4E"/>
     </g>
+    <line x1="178" y1="152" x2="178" y2="162" stroke="#8C3B24" stroke-width="1.5"/>
+    <polygon points="174,159 178,163 182,159" fill="#8C3B24"/>
   </svg>
-  <svg class="diagram-mobile" viewBox="0 0 330 640" role="img" aria-labelledby="ex-arl-m-title ex-arl-m-desc">
+
+  <!-- Mobile SVG (viewBox 0 0 330 640) -->
+  <svg class="diagram-mobile" viewBox="0 0 330 640" width="100%" height="auto" role="img" aria-labelledby="ex-arl-m-title ex-arl-m-desc">
     <title id="ex-arl-m-title">Contrasting surveillance rate limiting with anonymous enclave tokens</title>
     <desc id="ex-arl-m-desc">Two-panel diagram comparing invasive identity tracking with privacy-preserving anonymous rate-limiting tokens verified inside a hardware enclave.</desc>
-    <g>
-      <rect x="8" y="14" width="6" height="6" fill="var(--ex-warn)"/>
-      <text class="ex-mono" x="20" y="20" font-size="11" font-weight="700" fill="var(--ex-warn)">INTRUSIVE: IDENTITY TRACKING</text>
-      <text x="8" y="38" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Logs visitor identities to stop bots</text>
-      <line x1="8" y1="47" x2="318" y2="47" stroke="var(--ex-warn)" stroke-width="1.25"/>
-      <line x1="12" y1="62" x2="12" y2="214" stroke="var(--ex-warn)" stroke-width="1" stroke-dasharray="3 3"/>
-      <rect x="9" y="60" width="6" height="6" fill="var(--ex-warn)"/>
-      <text x="24" y="67" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. IP Fingerprinting</text>
-      <text x="24" y="84" font-size="11" fill="var(--ex-muted)">Records addresses and device specs</text>
-      <line x1="24" y1="125" x2="318" y2="125" stroke="var(--ex-rule)" stroke-width="1"/>
-      <rect x="9" y="134" width="6" height="6" fill="var(--ex-warn)"/>
-      <text x="24" y="141" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Mandatory Logins</text>
-      <text x="24" y="158" font-size="11" fill="var(--ex-muted)">Demands phone numbers or accounts</text>
-      <line x1="24" y1="199" x2="318" y2="199" stroke="var(--ex-rule)" stroke-width="1"/>
-      <rect x="9" y="208" width="6" height="6" fill="var(--ex-warn)"/>
-      <text x="24" y="215" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Permanent Trail</text>
-      <text x="24" y="232" font-size="11" fill="var(--ex-muted)">Excludes cautious whistleblowers</text>
-      <line x1="8" y1="286" x2="318" y2="286" stroke="var(--ex-rule)" stroke-width="1"/>
-      <rect x="8" y="295" width="5" height="5" fill="var(--ex-warn)"/>
-      <text x="19" y="300" font-size="11" font-weight="700" fill="var(--ex-warn)">Failure mode: Chilled public participation</text>
+    <rect x="2" y="2" width="326" height="636" rx="10" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1.5"/>
+    <line x1="165" y1="142" x2="165" y2="150" stroke="#8C3B24" stroke-width="1.5"/>
+    <polygon points="161,147 165,151 169,147" fill="#8C3B24"/>
+    <line x1="165" y1="454" x2="165" y2="462" stroke="#1F6B4E" stroke-width="1.5"/>
+    <polygon points="161,459 165,463 169,459" fill="#1F6B4E"/>
+    <line x1="165" y1="524" x2="165" y2="532" stroke="#1F6B4E" stroke-width="1.5"/>
+    <polygon points="161,529 165,533 169,529" fill="#1F6B4E"/>
+    <g transform="translate(12, 12)">
+      <rect x="0" y="0" width="306" height="300" rx="8" fill="#FAF1ED" stroke="#8C3B24" stroke-width="1.5"/>
+      <rect x="10" y="10" width="286" height="26" rx="4" fill="#8C3B24"/>
+      <text x="153" y="27" text-anchor="middle" fill="#FAF3EA" font-size="11" font-weight="700" letter-spacing="0.04em">INTRUSIVE: IDENTITY TRACKING</text>
+      <text x="153" y="54" text-anchor="middle" fill="#8C3B24" font-size="11.5" font-weight="600">Logs visitor identities to stop bots</text>
+      <rect x="12" y="68" width="282" height="62" rx="6" fill="#FFFFFF" stroke="#E1D3C0" stroke-width="1"/>
+      <text x="22" y="88" fill="#1B1814" font-size="11" font-weight="600">1. IP Logging &amp; Fingerprinting</text>
+      <text x="22" y="104" fill="#5E564B" font-size="11">Records addresses and browser specs</text>
+      <text x="22" y="120" fill="#8C3B24" font-size="11">Result: Leaves permanent trail</text>
+      <rect x="12" y="138" width="282" height="62" rx="6" fill="#FFFFFF" stroke="#E1D3C0" stroke-width="1"/>
+      <text x="22" y="158" fill="#1B1814" font-size="11" font-weight="600">2. Mandatory Personal Logins</text>
+      <text x="22" y="174" fill="#5E564B" font-size="11">Demands phone numbers or accounts</text>
+      <text x="22" y="190" fill="#8C3B24" font-size="11">Result: Excludes whistleblowers</text>
+      <rect x="12" y="208" width="282" height="80" rx="6" fill="#F6EFE5" stroke="#8C3B24" stroke-width="1" stroke-dasharray="3 3"/>
+      <text x="22" y="228" fill="#8C3B24" font-size="11" font-weight="700">Failure Mode: Chilled Speech</text>
+      <text x="22" y="248" fill="#5E564B" font-size="11">Forums turn into checkpoints.</text>
+      <text x="22" y="268" fill="#5E564B" font-size="11">Cautious participants walk away.</text>
     </g>
-    <line x1="8" y1="320" x2="318" y2="320" stroke="var(--ex-rule)" stroke-width="1.25"/>
-    <g>
-      <rect x="8" y="334" width="6" height="6" fill="var(--ex-signal)"/>
-      <text class="ex-mono" x="20" y="340" font-size="11" font-weight="700" fill="var(--ex-signal)">PRIVATE: ENCLAVE TOKENS</text>
-      <text x="8" y="358" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Counts traffic without tracking visitors</text>
-      <line x1="8" y1="367" x2="318" y2="367" stroke="var(--ex-signal)" stroke-width="1.25"/>
-      <line x1="12" y1="382" x2="12" y2="536" stroke="var(--ex-signal)" stroke-width="1"/>
-      <rect x="9" y="380" width="6" height="6" fill="var(--ex-signal)"/>
-      <text x="24" y="387" font-size="11.5" font-weight="700" fill="var(--ex-ink)">1. Blinded Tickets</text>
-      <text x="24" y="404" font-size="11" fill="var(--ex-muted)">Proves access budget without identity</text>
-      <line x1="24" y1="446" x2="318" y2="446" stroke="var(--ex-rule)" stroke-width="1"/>
-      <rect x="9" y="455" width="6" height="6" fill="var(--ex-signal)"/>
-      <text x="24" y="462" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Enclave Counters</text>
-      <text x="24" y="479" font-size="11" fill="var(--ex-muted)">Budgets checked in sealed memory</text>
-      <line x1="24" y1="521" x2="318" y2="521" stroke="var(--ex-rule)" stroke-width="1"/>
-      <rect x="9" y="530" width="6" height="6" fill="var(--ex-signal)"/>
-      <text x="24" y="537" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Zero Visitor Logs</text>
-      <text x="24" y="554" font-size="11" fill="var(--ex-muted)">Throttles floods with intact privacy</text>
-      <line x1="8" y1="608" x2="318" y2="608" stroke="var(--ex-rule)" stroke-width="1"/>
-      <rect x="8" y="617" width="5" height="5" fill="var(--ex-signal)"/>
-      <text x="19" y="622" font-size="11" font-weight="700" fill="var(--ex-signal)">Outcome: Protected commons &amp; reader privacy</text>
+    <g transform="translate(12, 324)">
+      <rect x="0" y="0" width="306" height="300" rx="8" fill="#F0F6F2" stroke="#1F6B4E" stroke-width="1.5"/>
+      <rect x="10" y="10" width="286" height="26" rx="4" fill="#1F6B4E"/>
+      <text x="153" y="27" text-anchor="middle" fill="#FAF3EA" font-size="11" font-weight="700" letter-spacing="0.04em">PRIVATE: ANONYMOUS TOKENS</text>
+      <text x="153" y="54" text-anchor="middle" fill="#1F6B4E" font-size="11.5" font-weight="600">Counts traffic without tracking users</text>
+      <rect x="12" y="68" width="282" height="62" rx="6" fill="#FFFFFF" stroke="#C3D9CB" stroke-width="1"/>
+      <text x="22" y="88" fill="#1B1814" font-size="11" font-weight="600">1. Blinded Cryptographic Tokens</text>
+      <text x="22" y="104" fill="#5E564B" font-size="11">Client gets unlinkable ticket</text>
+      <text x="22" y="120" fill="#1F6B4E" font-size="11">Result: Access proved without identity</text>
+      <rect x="12" y="138" width="282" height="62" rx="6" fill="#FFFFFF" stroke="#C3D9CB" stroke-width="1"/>
+      <text x="22" y="158" fill="#1B1814" font-size="11" font-weight="600">2. Hardware Enclave Rate Limits</text>
+      <text x="22" y="174" fill="#5E564B" font-size="11">Counters tracked in sealed memory</text>
+      <text x="22" y="190" fill="#1F6B4E" font-size="11">Result: Fast checks, zero IP logs</text>
+      <rect x="12" y="208" width="282" height="80" rx="6" fill="#E5EFE8" stroke="#1F6B4E" stroke-width="1"/>
+      <text x="22" y="228" fill="#1F6B4E" font-size="11" font-weight="700">Outcome: Protected Commons</text>
+      <text x="22" y="248" fill="#5E564B" font-size="11">Servers throttle floods instantly</text>
+      <text x="22" y="268" fill="#5E564B" font-size="11">while reading privacy remains intact.</text>
     </g>
   </svg>
   <figcaption>Figure 1: Comparing identity surveillance rate limiting with private enclave tokens.</figcaption>
@@ -182,13 +193,13 @@ lede: Public websites do not need to identify visitors to protect themselves fro
 
 <p>Think of a mechanical turnstile that accepts plain brass tokens from a wooden bowl. The turnstile turns once each time someone drops a valid token into the slot. It keeps an accurate tally of visitors and stops a mob from rushing through the gate. Yet the turnstile learns nothing about who held the coin. It leaves no record of where the visitor walked from or where they go next.</p>
 
-<p>Modern cryptographic standards bring this turnstile model to network traffic. Through protocols like Privacy Pass (<a href="https://datatracker.ietf.org/doc/rfc9578/">RFC 9578</a>), an independent signer issues blinded tokens to client devices. The client proves it holds a valid token without revealing which specific token it received. Steven Adler and colleagues (<a href="https://arxiv.org/abs/2408.07892">Adler et al. 2024</a>) showed how these unlinkable credentials separate proof of human presence from personal identity.</p>
+<p>Modern cryptographic standards bring this turnstile model to network traffic. Through protocols like Privacy Pass, an independent signer issues blinded tokens to client devices.<sup><a href="#fn1">1</a></sup> The client proves it holds a valid token without revealing which specific token it received. Researchers have shown how these unlinkable credentials separate proof of human presence from personal identity.<sup><a href="#fn2">2</a></sup></p>
 
 <h2>Hardware locks and blinded tickets</h2>
 
 <p>Traditional anonymous token schemes struggled with speed. Verifying complex mathematical proofs for every single web asset overwhelmed small servers. This created a new way for attackers to cause outages. The cryptographic math was simply too slow for high-speed web traffic.</p>
 
-<p>Recent engineering solves this bottleneck by moving rate tracking into sealed hardware memory. Kosei Akama and colleagues (<a href="https://arxiv.org/abs/2610.38602">Akama et al. 2026</a>) designed STAR, an anonymous rate-limiting architecture that runs inside server-side hardware enclaves. The enclave maintains visitor request counters in encrypted memory isolated from the host operating system.</p>
+<p>Recent engineering solves this bottleneck by moving rate tracking into sealed hardware memory. In 2026, researchers designed STAR, an anonymous rate-limiting architecture that runs inside server-side hardware enclaves.<sup><a href="#fn3">3</a></sup> The enclave maintains visitor request counters in encrypted memory isolated from the host operating system.</p>
 
 <p>Clients present blinded challenge tickets during their sessions. The hardware enclave updates rate budgets in less than a millisecond. It blocks request floods instantly. Because the memory is cryptographically sealed, neither the server operator nor an eavesdropper can link successive requests to the same device. The gatekeeper counts the coins without ever seeing the hands that dropped them.</p>
 
@@ -207,16 +218,29 @@ lede: Public websites do not need to identify visitors to protect themselves fro
 <summary>For researchers</summary>
 <div>
 <p>
-Anonymous rate limiting reconciles abuse prevention with contextual integrity.
-Standard cryptographic token protocols like Privacy Pass (<a href="https://datatracker.ietf.org/doc/rfc9578/">RFC 9578</a>) allow clients to redeem unlinkable attestations without disclosing persistent device identifiers.
-Recent architectures like STAR (<a href="https://arxiv.org/abs/2610.38602">Akama et al. 2026</a>) leverage server-side Trusted Execution Environments to process rate checks in sub-millisecond hardware enclaves, bypassing expensive multi-party computation bottlenecks.
-Steven Adler et al. (<a href="https://arxiv.org/abs/2408.07892">Adler et al. 2024</a>) analyze personhood credentials that separate proof of personhood from tracking data.
-The W3C Architecture Board privacy principles (<a href="https://www.w3.org/TR/privacy-principles/">W3C 2024</a>) formally define identity unlinkability across service contexts.
-Open questions include decentralized quota consensus without centralized attesters and side-channel resilience against timing attacks.
+Anonymous rate limiting reconciles abuse prevention with contextual integrity across the personal Markov blanket (Friston, 2013<sup><a href="#fn5">5</a></sup>), allowing a personal cognitive model acting as a statutory information fiduciary (Balkin, 2016<sup><a href="#fn6">6</a></sup>) to present capability-scoped tokens (Dennis and Van Horn, 1966<sup><a href="#fn7">7</a></sup>) without leaking private autobiographical browsing history.
+Standard cryptographic token protocols like Privacy Pass (IETF RFC 9578<sup><a href="#fn1">1</a></sup>) allow clients to redeem unlinkable attestations without disclosing persistent device identifiers, while personhood credential frameworks (Adler et al., 2024<sup><a href="#fn2">2</a></sup>) and W3C privacy principles (W3C, 2024<sup><a href="#fn4">4</a></sup>) formalize identity unlinkability across service contexts.
 </p>
 <p>
-Practical deployment steps and civic safeguard cards are detailed in <a href="/labs/shared-horizon/">Shared Horizon</a>.
+Recent architectures like STAR (Akama et al., 2026<sup><a href="#fn3">3</a></sup>) leverage server-side Trusted Execution Environments verified via remote hardware attestation (Birkholz et al., 2023, IETF RFC 9334<sup><a href="#fn8">8</a></sup>) to process rate checks in sub-millisecond hardware enclaves, while respecting physical side-channel and transduction limits at the silicon boundary (Fu and Xu, 2018<sup><a href="#fn9">9</a></sup>) and enabling polycentric commons governance of shared civic bandwidth (Ostrom, 2010<sup><a href="#fn10">10</a></sup>). Practical deployment steps and civic safeguard cards are detailed in <a href="/labs/shared-horizon/">Shared Horizon</a>.
+</p>
+<p>
+Within our five-primitive sociotechnical architecture, heterogeneous wearable and room sensors form a multimodal egocentric and ambient perceptual sensorium fused locally in monotonic hardware <code>Device Time</code> with self-assessed observation confidence. Silicon peripheral attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, <code>IETF RATS</code> RFC 9334<sup><a href="#fn8">8</a></sup>), an optical data diode, and <code>IEC 61508</code> dead-man relays isolate physical actuators. Observations write into an append-only local <code>C2PA</code><sup><a href="#fn11">11</a></sup> and Merkle episodic memory vault (Endel Tulving; Tulving, 1972) encrypted strictly for the biological person and their personal cognitive model while obeying transduction realism (<em>Signed Is Not True</em> across the analog hole; Kevin Fu and Wenyuan Xu; Fu &amp; Xu, 2018<sup><a href="#fn9">9</a></sup>). A monogamous <code>1:1</code> principal-bound personal cognitive model and cybernetic exocortex (Joscha Bach; Bach, 2009) draws on the Extended Mind thesis (Andy Clark and David Chalmers; Clark &amp; Chalmers, 1998) and the Good Regulator theorem (Conant &amp; Ashby, 1970). It applies interventional causal models <code>do(x)</code> (Pearl, 2009) and compiler-trust reflection proofs (Thompson, 1984) as a statutory information fiduciary (Jack Balkin; Balkin, 2016<sup><a href="#fn6">6</a></sup>) protecting the Private Autobiographical Ledger and preserving unassisted competence. Across the personal Markov blanket (Karl Friston; Friston, 2010; Friston, 2013<sup><a href="#fn5">5</a></sup>) and multiscale cognitive light cone (Michael Levin; Levin, 2019), external crossings require expiring Object-Capability and capability lease tokens (Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966<sup><a href="#fn7">7</a></sup>). High-risk actions pair selective zero-knowledge (<code>ZK</code>) proofs, independent-class Byzantine corroboration (<code>k &gt;= 3f + 1</code>), and signed <code>IETF SCITT</code> (<code>RFC 9943</code><sup><a href="#fn11">11</a></sup>) transparency receipts on the Public Attestation &amp; Escrow Ledger (Public Attestation and Escrow Ledger). Those receipts couple sovereign dyads to the Wide Network Ledger for Universal Basic Services, merit-bonded commons tasks, and invisible-labor upkeep (Jacob Meluso). They combine reciprocal mutual credit (James Stodder), statutory cooperative equity (Rudolf Meidner; Meidner, 1978<sup><a href="#fn11">11</a></sup>), frontier-lab overlays (Bracale Syrnikov et al., 2026), and polycentric self-rule (Elinor Ostrom; Ostrom, 1990; Ostrom, 2010<sup><a href="#fn10">10</a></sup>). Inspect interactive boundaries in <a href="/labs/protocol-inspector/">Protocol Inspector</a> and <a href="/labs/sensor-boundary/">Sensor Boundary</a>.
 </p>
 </div>
 </details>
 </aside>
+
+<section class="footnotes">
+  <p id="fn1">1. Sofia Celi, Alex Davidson, Armando Faz-Hernandez, Steven Valdez, and Christopher A. Wood, <em>Privacy Pass Issuance Protocols</em>, IETF RFC 9578, June 2024. <a href="https://datatracker.ietf.org/doc/rfc9578/">datatracker.ietf.org/doc/rfc9578/</a></p>
+  <p id="fn2">2. Steven Adler et al., <em>Personhood Credentials: Artificial Intelligence and the Value of Privacy-Preserving Tools to Distinguish Who Is Real Online</em>, arXiv:2408.07892, August 2024. <a href="https://arxiv.org/abs/2408.07892">arxiv.org/abs/2408.07892</a></p>
+  <p id="fn3">3. Kosei Akama et al., <em>STAR: Scalable TEE-based Anonymous Rate-limiter</em>, arXiv:2610.38602, October 2026. <a href="https://arxiv.org/abs/2610.38602">arxiv.org/abs/2610.38602</a></p>
+  <p id="fn4">4. World Wide Web Consortium (W3C) Technical Architecture Group, <em>Privacy Principles</em>, W3C Statement, 2024. <a href="https://www.w3.org/TR/privacy-principles/">w3.org/TR/privacy-principles/</a></p>
+  <p id="fn5">5. Karl Friston, "Life as We Know It," <em>Journal of the Royal Society Interface</em>, vol. 10, no. 86, art. 20130475, September 2013. <a href="https://doi.org/10.1098/rsif.2013.0475">doi.org/10.1098/rsif.2013.0475</a></p>
+  <p id="fn6">6. Jack M. Balkin, "Information Fiduciaries and the First Amendment," <em>UC Davis Law Review</em>, vol. 49, no. 4, pp. 1183–1234, April 2016. <a href="https://lawreview.law.ucdavis.edu/archives/49/4/information-fiduciaries-and-first-amendment">lawreview.law.ucdavis.edu</a></p>
+  <p id="fn7">7. Jack B. Dennis and Earl C. Van Horn, "Programming Semantics for Multiprogrammed Computations," <em>Communications of the ACM</em>, vol. 9, no. 3, pp. 143–155, March 1966. <a href="https://doi.org/10.1145/365230.365252">doi.org/10.1145/365230.365252</a></p>
+  <p id="fn8">8. Henk Birkholz, Dave Thaler, Michael Richardson, Ned Smith, and Wei Pan, <em>Remote ATtestation procedureS (RATS) Architecture</em>, IETF RFC 9334, January 2023. <a href="https://www.rfc-editor.org/rfc/rfc9334">rfc-editor.org/rfc/rfc9334</a></p>
+  <p id="fn9">9. Kevin Fu and Wenyuan Xu, "Risks of Trusting the Physics of Sensors," <em>Communications of the ACM</em>, vol. 61, no. 2, pp. 20–23, February 2018. <a href="https://doi.org/10.1145/3176402">doi.org/10.1145/3176402</a></p>
+  <p id="fn10">10. Elinor Ostrom, "Beyond Markets and States: Polycentric Governance of Complex Economic Systems," <em>American Economic Review</em>, vol. 100, no. 3, pp. 641–672, June 2010. <a href="https://doi.org/10.1257/aer.100.3.641">doi.org/10.1257/aer.100.3.641</a></p>
+  <p id="fn11">11. Coalition for Content Provenance and Authenticity, <em>C2PA Technical Specification</em>, v2.1 (2024), <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html">c2pa.org</a>; Henk Birkholz, Antoine Delignat-Lavaud, Cedric Fournet, Yogesh Deshpande, and Steve Lasker, <em>An Architecture for Trustworthy and Transparent Digital Supply Chains (SCITT)</em>, IETF RFC 9943 (2026), <a href="https://www.rfc-editor.org/rfc/rfc9943">rfc-editor.org/rfc/rfc9943</a>; and Rudolf Meidner, <em>Employee Investment Funds: An Approach to Collective Capital Formation</em> (London: George Allen &amp; Unwin, 1978), <a href="https://archive.org/details/employeeinvestme0000meid">archive.org/details/employeeinvestme0000meid</a>.</p>
+</section>

@@ -3647,6 +3647,21 @@
   "published": "2026-10-05",
   "abstract": "Training-free model merging aims to combine multiple fine-tuned models into a single model without further optimization on labeled data. Yet, in transformers, independently merging individual layers can affect a shared attention computation because the query-key and value-output operators depend on composed matrices, overlooking the functional structure. Moreover, when merging earlier components, downstream components receive different activations than they do in the original model, thus, the merged and original execution paths no longer match. In this paper, we introduce Sequential Local Operator Alignment, a training-free method that merges transformers along the execution path of the partially merged model. Our method uses calibration data to estimate the local behavior of each functional component, aligns operators sequentially under the intermediate activation of the partially merged model, and subsequently factorizes the merged operators back into valid transformer parameters. We empirically show that this sequential step reduces error accumulation across layers. Furthermore, the proposed operator factorization step enables rank expansion, providing a principled mechanism for increasing multi-task capacity. We demonstrate that our approach generalizes across modalities, model scales, and varying numbers of tasks, from CLIP and RoBERTa to billion-parameter LLMs, and further extends naturally to the merging of LoRA-fine-tuned models. The results indicate improvements over strong merging baselines without requiring rank expansion, while optional expansion provides a further accuracy-inference-cost trade-off. Project link: https://akansh12.github.io/SLOA-Merge/"
  },
+ "2610.07510": {
+  "title": "Understanding and Enhancing Backdoor Persistency in LLM Agent Post-Training",
+  "authors": [
+   "Qiusi Zhan",
+   "Nian Lyu",
+   "Stephanie Ding",
+   "Arnav Mehta",
+   "Chris Canal",
+   "Connor Tabarrok",
+   "Xander Davies",
+   "Daniel Kang"
+  ],
+  "published": "2026-10-05",
+  "abstract": "Developers can build LLM agents by adapting third-party models through benign post-training. We study a supply-chain threat in which an attacker supplies a model with a backdoor: hidden behavior that produces malicious outputs when a particular input pattern appears. Focusing on software-engineering agents, we ask whether such backdoors survive the developer's supervised fine-tuning (SFT) and subsequent task-level reinforcement learning (RL). We observe that benign SFT substantially reduces attack success, but subsequent RL often preserves the residual behavior and sometimes even increases attack success. Our analysis of backdoor erosion during SFT identifies two factors that may favor survival: initial backdoor strength and gradient compatibility with benign training. These factors motivate PersistBD, which refines an already-backdoored model before release to improve its persistency through the benign post-training process. On Qwen2.5-Coder-7B, PersistBD raises attack success from 20% to 74% after SFT and from 20% to 76% after SFT-RL, while maintaining comparable benign task performance. Together, our results show that backdoors can remain active through benign post-training and that adversaries can deliberately increase their persistence. This highlights a supply-chain risk for AI developers and motivates stronger techniques for detecting and mitigating inherited backdoors when adapting third-party models into agents. Our code is available at https://github.com/uiuc-kang-lab/PersistBD."
+ },
  "2610.08097": {
   "abstract": "Mathematical problem solving often requires deterministic computational steps that agents delegate to tools and implicitly trust. Yet tools can fail silently, returning plausible but incorrect results. How well can agents detect and correct corrupted tool call outputs? We study this through a controlled corruption framework where a hidden interceptor replaces tool call results with plausible incorrect information on targeted problems. We evaluate agents across 31 problems under four verification designs including no verification (baseline), mandatory same-context reflection, optional fresh-context verification, and optional structural verification. Without verification, corruption causes dramatic accuracy loss, from 100% down to 72.4%. Mandatory reflection fully recovers this performance to 100%. Optional verification improves accuracy only when models actively invoke it. Our results show that checking frequency is strongly associated with robustness differences, while unequal invocation prevents a controlled comparison of verifier quality. A supporting recovery experiment shows that full problem restart succeeds in 100% of cases after explicit detection. These findings demonstrate that verifier availability and verification policy are separate components of mathematical-agent reliability. Mandatory policies enforce verification while optional policies depend on the model's own choice to invoke it.",
   "authors": [
@@ -4123,6 +4138,16 @@
   "published": "2026-10-22",
   "title": "Contestable Agents for Data Governance: Recording Human Stewardship of AI-Generated Metadata Across Structured and Unstructured Systems"
  },
+ "2610.33349": {
+  "title": "Contract-Based Agentic Systems Engineering: Delegation as Quotient for Assured System Design",
+  "authors": [
+   "Sai Sandeep Damera",
+   "Ryan Matheu",
+   "John S. Baras"
+  ],
+  "published": "2026-10-23",
+  "abstract": "A component an agent builds from a prompt can satisfy it and still break the system it joins, because the prompt omits what its neighbours assume of it. The artifact to hand over is computed, not written. A SysML v2 requirement with assumed and required constraints is an assume/guarantee contract, so when a system requirement is decomposed over fixed neighbours, the open component's requirement is the contract quotient, the weakest sound one, and again a SysML v2 requirement. Its required constraints carry the neighbours' assumptions, which a requirement for the mission alone drops and unit tests with mocked neighbours cannot reach. Signal Temporal Logic is closed under the quotient. We build the requirements, with derivation, allocation, satisfaction and verification, as a SysML~v2 model and compute the quotient from it. A case study delegates the local controller of a simulated warehouse robot, whose route crosses a worker's path and ends at a dock, to one language model under the quotient requirement, a mission-only requirement and a natural-language task, and scores the deliveries on live episodes against the system requirement from ground truth."
+ },
  "2610.34107": {
   "abstract": "Large language models increasingly collaborate with humans and peer AI agents whose contributions may be incomplete, inconsistent, or incorrect. Effective collaboration requires calibrated trust, whereby decisions to rely on, verify, or assist a partner adapt rationally as empirical evidence accumulates. We investigate whether models translate partner evidence into appropriate reliance policies. We introduce a benchmark of 324 scenarios across 23 collaboration categories. Each scenario involves three sequential decisions with explicit transition dynamics, feedback emissions, and cost schedules, permitting exact analytical evaluation of choices against their expected consequences over the remaining interaction. Evaluating seven models alongside 36 controlled-history probes, we dissociate evidence sensitivity from normatively appropriate action. While the strongest frontier model approaches near-optimal decisions, other models exhibit recurring pathologies: procuring excessive safeguards, purchasing verification tests with zero expected value of information, prioritizing immediate savings over cooperative learning, and misallocating assistance to suboptimal channels. Supplying explicit posterior distributions resolves certain errors while introducing new failure modes. Calibrated trust in autonomous agents critically demands coupling empirical evidence with forward-looking decision utility.",
   "authors": [
@@ -4181,6 +4206,21 @@
   ],
   "published": "2026-10-27",
   "title": "A Simulation Testbed for Self-Governing Human-Machine Institutions"
+ },
+ "2610.37741": {
+  "title": "Agentic Backdoors via Pretraining Poisoning",
+  "authors": [
+   "Xinyan Hu",
+   "Pingbang Hu",
+   "Chloe Loughridge",
+   "Xuanli He",
+   "Nicholas Carlini",
+   "Matthew Jagielski",
+   "Javier Rando",
+   "Yiming Zhang"
+  ],
+  "published": "2026-10-27",
+  "abstract": "Large language models are pretrained on vast, uncurated corpora scraped from the public web. This creates a security risk from attackers who plant poisoned content in the pretraining data. We show for the first time that such poisoning can plant a remote code execution backdoor in an agent, causing it to execute attacker-chosen commands on the user's machine. To measure the threat end to end, we pretrain Qwen3 models from scratch at sizes 0.6B, 1.7B, and 4B, and then post-train each into a CLI agent using a clean pipeline. Poisoning only 0.1% of the pretraining corpus with our new poison design implants the backdoor: the deployed agent executes the malicious command when the trigger is present while behaving normally on clean inputs. The attack success rate (ASR) increases with model scale, with the 4B model reaching roughly 92% ASR at a 0.1% poison rate and staying positive even when the poisoning rate drops to 0.0005%. Our code is available at https://github.com/safety-research/agentic-backdoor."
  },
  "2610.38077": {
   "abstract": "This paper develops a critical theoretical framework for understanding national Artificial Intelligence (AI) strategies through the lens of \"Governance as Infrastructure.\" Integrating insights from Infrastructure Studies, Science and Technology Studies (STS), this paper employs Black Feminist Technoscience (BFTS) to reveal how AI governance infrastructures are assembled, maintained, and contested, and whose forms of knowledge, labour, and experience are rendered visible or invisible in these processes. We analyze the Canadian AI governance landscape through in-depth interviews with bureaucrats, civil society advocacy groups, academic researchers, and industry actors. Our inductive thematic analysis reveals how AI governance infrastructure enacts specific configurations of power, particularly through the politics of expertise; how actors navigate profound ambiguities related to AI's opacity, often involving strategic ignorance; and how mechanisms for justice and accountability struggle to address AI-related harms. We contend that a BFTS perspective highlights the limitations of current governance approaches and points toward alternative infrastructural designs prioritizing care, maintenance, participatory democracy, and adaptive temporalities to foster more equitable and accountable technology governance.",
@@ -5051,6 +5091,19 @@
   "published": "2026-11-05",
   "title": "Cognitive Tours: Making Understanding a Deliverable in AI-Assisted Development"
  },
+ "2611.08781": {
+  "title": "Aligning, Fast and Slow: A Control-Theoretic Oversight Framework for Long-Horizon Trajectories and Maintained Deployments",
+  "authors": [
+   "Stephen Peng",
+   "Vineet Jagadeesan Nair",
+   "Noah Broestl",
+   "Anne Friederike Kleppe",
+   "Steven Mills",
+   "Adi Zolotov"
+  ],
+  "published": "2026-11-05",
+  "abstract": "AI agents can pass checks on individual tasks while retaining memory or code changes that alter their later behavior. We introduce a control-theoretic framework that couples a fast loop controlling proposed actions with a slow loop reviewing persistent changes and reassessing configurations after model or tool updates. When measurement errors and changes between checks are bounded and controllers can enforce their decisions, we derive a deployment-level bound and a rule for dividing review effort. In simulation, dividing a fixed review budget between both loops reduces mean maximum departure from intended behavior roughly twelvefold compared with review confined to individual runs. In coding stress tests with authored memories and five matched seeds, combined controls reduce mean severity on a 0-3 scale from 0.325 without gates to 0.117, resolving 33 of 120 issues versus 35 without gates; in trading stress tests, combined controls reduce mean shortfall in low-emission purchases from 0.892 without gates to 0.107. The overall framework helps developers and auditors compare and enforce oversight designs, while the agent studies test component controls rather than the full deployment-level guarantee."
+ },
  "2611.09501": {
   "title": "e-means: outperforming k-means (in one-tenth the epochs)",
   "authors": [
@@ -5064,6 +5117,18 @@
   ],
   "published": "2026-11-06",
   "abstract": "Lloyd's k-means algorithm is a long-running standard for clustering, with applications in data analysis, retrieval, quantization and data curation. In this paper, we introduce an exponential moving average optimization procedure for k-means with mini-batch updates, powered by modern deep learning machinery and new insights. We also establish scaling laws on how decay rate and batch size impact final performance. This gives us a formulaic rule to fix them for multiple problem sizes and embedding datasets, without the need for any hyperparameter sweep. The resulting clustering algorithm, coined e-means, is much faster than Lloyd k-means and converges to lower losses, frequently even beating k-means++. On a wide array of embeddings datasets, it beats the loss of Lloyd k-means at 25 epochs in 1.4 to 2.6 epochs, which translates to 10-45x GPU wall-clock speedups compared to state-of-the-art k-means implementations. As an example, e-means partitions DINO10B, a dataset of 10 billion DINO embeddings, into 16 million clusters in only 2.5 epochs, reaching a loss below Lloyd's at 25 epochs."
+ },
+ "2611.09721": {
+  "title": "MemoryDojo: Benchmarking Poisoning Through LLM Agent Memory",
+  "authors": [
+   "David H. Yang",
+   "Blake Bullwinkel",
+   "Amanda Minnich",
+   "Mohammad Mohammadi Amiri",
+   "Giorgio Severi"
+  ],
+  "published": "2026-11-06",
+  "abstract": "LLM agents benefit from using memory systems to improve performance on long-horizon, multi-session tasks. However, memory introduces a critical attack surface. Malicious instructions encountered in one session may be stored and propagated through memory before being retrieved and acted upon in later sessions. Because memory systems differ in how they process and retrieve information, the downstream effects of poisoning can vary significantly across systems. To quantify the effects of poisoning across different memory architectures, we introduce MemoryDojo, a benchmark for tracing the lifecycle of poisoned information through agent memory and measuring its influence on subsequent agent behavior. MemoryDojo is easily extensible, consists of 155 multi-session long-horizon trajectories covering four domains, and supports five different memory systems. Through our evaluation, we find that all memory systems are susceptible to memory poisoning, with substantial variation in downstream effects. We further propose a memory-aware poison optimization process that increases the poisoning efficacy, highlighting differences between memory architectures. We hope that MemoryDojo will support research on understanding and mitigating agentic memory risks."
  },
  "2611.10110": {
   "title": "Homeopathic Learning: Diluting poisoned fine-tuning data can strengthen its effect",
@@ -5217,6 +5282,17 @@
   "published": "2026-11-12",
   "abstract": "How multimodal language models should encode visual input remains up for debate. Most models use a pretrained vision encoder, while some recent recipes train the encoder from scratch with the language model or remove it entirely. Vision encoders bundle together three design choices: a visual prior from upstream pretraining, dedicated vision capacity, and pre-fusion placement of that capacity (i.e., before the multimodal backbone). Because published models also differ in data, architecture, and compute, comparing them cannot isolate the effect of each choice. We disentangle these choices via a controlled framework where we pretrain all models from scratch on common data and compare them on visual question answering and language benchmarks at matched lifetime compute. We find that the visual prior is not necessary; an encoder trained jointly from scratch is on par with a pretrained one, without a separate training stage. What matters instead is dedicated vision capacity: an encoder-free model trails on visual understanding even when its backbone is enlarged by the encoder's parameter count. Yet that capacity need not precede multimodal fusion, as vision-only modules added in-fusion to early backbone layers perform comparably to a pre-fusion encoder and can lower time to first token. These results also hold across backbone sizes, when encoder pretraining is treated as free, and when starting from a pretrained language model. Overall, our findings favor dedicated vision capacity trained jointly with the backbone and placed early within it."
  },
+ "2611.17460": {
+  "title": "Unfinished-Bench: Measuring Rule Violations by Persistent Agents in Realistic Work Environments",
+  "authors": [
+   "Seunghyun Lee",
+   "Jaehui Hwang",
+   "Dongyoon Han",
+   "Sangdoo Yun"
+  ],
+  "published": "2026-11-12",
+  "abstract": "AI agents are increasingly equipped with persistence toward task completion to run delegated work autonomously for long periods, under many unstated constraints from internal documents and other people's authority. When completion requires violating a rule, the agent must decide alone, yet benchmarks of instruction-rule conflicts state the rule in the prompt or keep it hidden and do not evaluate persistence. We present Unfinished-Bench, a benchmark that gives models persistence in autonomous runs without a user, in realistic work environments with embedded rules. In each of its 97 scenarios across 7 organizations and 7 risk categories, the goal and the rule cannot both hold. We find that persistence raised violations of a rule in an internal document from 32.2% to 43.6%, five times the 8.5% for the same rule stated by the user. Of the document-rule violations, 98.3% occurred after the rule was displayed, and in 89% of a judged sample the agent first wrote down the rule. Violations of rules placed in the environment without user oversight can lead to serious incidents, so persistence-driven risks need to be evaluated. Benchmark documentation: https://francis21c.github.io/unfinished-bench/"
+ },
  "2611.17515": {
   "title": "A Push Down the Mountain: Framing Effects and Internal State Interventions on Collusive Behavior in a Long-Horizon LLM Agent",
   "authors": [
@@ -5280,6 +5356,63 @@
   "published": "2026-11-16",
   "abstract": "As AI systems are increasingly used to automate AI R&D, misaligned systems could sabotage research intended to improve model safety and alignment. To stress-test defenses against such sabotage, we use a human expert as a proxy saboteur on AI safety research. We conduct a red-team/blue-team game where a human researcher runs AI safety experiments from scratch and auditors try to tell which were sabotaged and how. Given access to the full research transcript and the ability to run experiments, human auditors mostly fail to distinguish sabotaged from benign research: they achieve an AUROC of 0.59, not significantly better than chance, and fully identify the specific sabotage in only 17% of cases. Despite not being allowed to run experiments, the best frontier models likely outperform human auditors (Fable 5.1: AUROC 0.73, 32% full identification), while weaker models score near or below them. When the saboteur chooses which experiments are attacked, rather than being required to sabotage every question given, sabotage identification drops further. Our results suggest that research sabotage by expert-level agents is difficult to detect with current auditing methods and provide a new setting for studying research sabotage."
  },
+ "2611.22971": {
+  "title": "SEAM: Computer-Use Agents Know the Harm Between Screens, and Commit It Anyway",
+  "authors": [
+   "Yuxuan Zhou",
+   "Chen Xiong",
+   "Haitong Liu",
+   "Kuofeng Gao",
+   "Yang Bai",
+   "Zhiyuan He",
+   "Tao Dai",
+   "Shu-Tao Xia"
+  ],
+  "published": "2026-11-17",
+  "abstract": "Safety benchmarks for computer-use agents (CUAs) place the harm either in the intent of the task or on a single screen: a malicious instruction, an injected command, a phishing page. An agent that checks the task and each screen in isolation can pass them, so they do not test whether it combines facts seen on different screens. Yet in delegated work, harm often arises exactly this way: a fact about a person on one screen, a fact about an item on another, and a legitimate task that binds them. We introduce SEAM (Safety Execution Across Multiple screens), a benchmark of such cross-screen compositional harm: 600 multi-step, cross-application OSWorld tasks in which the instruction and every single observation are benign and only their combination is harmful. Minimal-pair variants that differ in one place, scored from the server log rather than by an LLM judge, locate where an agent fails. General-purpose open-weight and flagship agents carry out the harm in up to 92% of runs, yet decline when the user states it in one sentence. Agents open the decisive pages, so exposure is not the primary bottleneck. Asked about those pages, they flag the harm, and with thinking they often write the conflict into their reasoning and confirm anyway. Safety recognition thus does not reliably translate into safe execution, and the translation depends on the information channel: the same warning stops agents far more often in the user's instruction than on screen. Proprietary models are markedly more cautious. We release SEAM with its generator and quality gates at https://yuxuan2003.github.io/SEAM/ ."
+ },
+ "2611.23346": {
+  "title": "Securing and Auditing Long-Horizon LLM Agents: State-Transfer Auditing and Controls in the Agent Harness",
+  "authors": [
+   "Deep Shah",
+   "Nehal Kathrotia"
+  ],
+  "published": "2026-11-17",
+  "abstract": "Long-horizon LLM agents across codebases, web browsers, and enterprise infrastructure rely on an execution harness to move state between the working context, session history, persistent memory, and external environment. While conventional execution traces log model prompts and tool calls, critical security and reliability failures occur during state transfers: a transfer can admit unchecked content (indirect prompt injections, unverified memory writes), rewrite state lossily (context compaction dropping user constraints, memory consolidation stripping source authority), or restore state incompletely (workspace rollbacks leaving aborted KV state active on the inference server). Because current traces omit what crosses these boundaries, failure attribution and runtime monitors fail on multi-step trajectories. We present a state-transfer audit architecture for the agent harness. At each transfer boundary, we define an audit point specifying the minimal hash-chained record the harness emits, separating low-overhead deterministic checks from model-based semantic checks and binding internal context, memory, and inference-server cache state to external actions. We show that the same transfer records required for causal failure attribution supply the durable state needed by runtime security controls, including least-privilege capabilities, replay-resistant authorization outside the prompt, information flow control, obligation monitors, and transactional recovery across multi-agent and infrastructure pipelines. Finally, we analyze multimodal GUI adaptations and implement and evaluate a reference harness middleware across 240 multi-step fault-injection trajectories, showing that transfer records localize root causes and catch cross-transfer violations missed by lifecycle and tool-only logs at microsecond deterministic overhead."
+ },
+ "2611.24025": {
+  "title": "Intent Contracts: Taking Tools Away from Agents",
+  "authors": [
+   "Ziyuan Wang",
+   "Genliang Zhu",
+   "Xiaobo Chen",
+   "Chu Wang"
+  ],
+  "published": "2026-11-18",
+  "abstract": "Intent contracts are an authorization interface for tool-using LLM agents in which the planning model holds no tools. For each step it submits a short logged contract: a goal, a verbatim quotation of the user, and scope fields. Code validates the contract, and a small trusted model checks it against the user's words and writes the tool call itself. Provided the validation and dispatch code is correct, every executed call is written by the trusted model, the planner's influence on a call is confined to a contract logged before it, and the trusted side decides how much of a request to carry out. We compare contracts with two reviewers of planner-written commands: one sees only the user's words and the command, the information boundary of a reasoning-blind permission classifier, and one also sees the planner's goal and a checked quotation. With gpt-6.1-terra as planner and GLM-5.3-Flash as the trusted model on three AmPermBench task families, every object changed under contracts is named in the goal of the contract that produced the change; under review the planner names objects in its commands and rarely in its goals. When the planner adds work the user never asked for, contracts complete the user's task in 27/30 runs and the intent-visible reviewer in 16/30, because a reviewer can only refuse a whole command. Contracts do not reduce unauthorized actions. They are indistinguishable from blind review, and once the benchmark's environment terms are clarified, every condition that changes state hits a wrong target in 40-49% of those runs. That error is the planner's choice of objects for an ambiguous reference, which no trusted model here can see the environment to check; telling the executor to decline when unsure does not change it. We evaluate benign over-reach with one pair of models, not adversarial planners. We release the plugin and run records."
+ },
+ "2611.24185": {
+  "title": "Guarding the Kingdom of Skill-Based Agents in the AI Dynasty of Computation: Control-Flow Integrity for Agent Skills",
+  "authors": [
+   "Bonan Ruan",
+   "Yuhao Sun",
+   "Jiahao Liu",
+   "Qixiao Lin",
+   "Jian Mao",
+   "Zhenkai Liang"
+  ],
+  "published": "2026-11-18",
+  "abstract": "Control-flow integrity (CFI) confines a program to a control-flow graph fixed ahead of time. Procedural agent skills move this control flow into prompt text, and a large language model (LLM) agent decides at runtime whether each step runs in its reasoning, a tool call, or a script. The procedure's control skeleton survives, but its enforceability depends on where each step runs. Many violations, such as overwriting a file before validation, use only operations the skill requires, so permission allowlists admit them. A deviating or prompt-injected model can also evade a monitor by regime migration, for example by claiming that a check passed. We present SkillCFI, which carries CFI over to skill-based agents. Its compiler confines LLM interpretation to compile time and derives the agent's instructions and an executable contract from one skill. By a formal enforceability criterion, it enforces obligations whose evidence crosses the tool boundary and rejects a skill whose mandatory obligation leaves nothing to check. A deterministic runtime enforcer admits a tool request only on trusted evidence and refuses unmediated channels such as inline scripts, so admitted traces follow the contract whatever the model proposes. On eight self-written skills, no compiled contract permits more than its source under 24 source mutations. In 770 agent sessions, SkillCFI blocks before dispatch all 240 such violations, which an allowlist admits, and normal tasks complete nearly as often as without it. Listing the next legal steps in a refusal raises recovery from 21% to 65%. Checking takes about 2% of task time, and a compact command form cuts session slowdown from 1.32 times to 1.08 times. None of 53 public skills is accepted as written. The compiler's diagnostics point to interfaces rather than workflows and guided seven into enforceable contracts."
+ },
+ "2611.24491": {
+  "title": "Probing agent overeagerness in realistic settings with continuation audits",
+  "authors": [
+   "Sean Lim",
+   "Clement Neo"
+  ],
+  "published": "2026-11-18",
+  "abstract": "Frontier coding agents increasingly exhibit overeagerness, taking surprising, sometimes reckless actions beyond a user's mandate --- reported in recent system cards from frontier model developers. These cases are surfaced through internal deployment monitoring, which requires private traffic and is out of reach for open-weight models and independent evaluators. Automated alignment audits are the natural alternative, but capable models increasingly recognise the synthetic setup and adjust their behaviour. We introduce Continuation Audits, a pipeline that grounds the auditor on a prefix drawn from a real coding-agent transcript and directs it to continue the trajectory toward a seeded behaviour. Because the prefix is drawn from a real session, the auditor only needs to maintain a realistic setting rather than manufacturing it. We validate the method on SWE-Chat prefixes: on a paired subset of 90 audits a judge cannot reliably distinguish continuations from their source sessions (realism win rate 0.42 vs.\\ 0.43), and across all 900 audits verbalized eval-awareness does not exceed the rate observed in the unaudited real sessions. Applying the pipeline to three recent models across three seeds, we find each model leads a different seed --- DeepSeek~V4~Pro on colleague-credentials misuse, GPT-5.6~Terra on file-permission bypasses, and Kimi~K3 on treating diagnostic questions as instructions. Kimi~K3 additionally continues to bypass file-permission protections after an explicit CLAUDE.md prohibition while the other two stop entirely, corroborating Moonshot's own report of excessive proactiveness."
+ },
  "2611.25470": {
   "title": "ToolPulse: Side-Channel Eavesdropping on Tool-Using LLM Agents",
   "authors": [
@@ -5329,6 +5462,14 @@
   ],
   "published": "2026-11-19",
   "abstract": "Large language model (LLM) serving frameworks accelerate inference by retaining previously computed states in a key-value (KV) cache. Paged serving frameworks such as vLLM organize this cache through block tables analogous to OS page tables, which map each request's logical KV blocks to physical KV blocks, forming a software-managed address translation layer. Although fault attacks such as Rowhammer have exploited OS page tables to redirect memory accesses, prior fault attacks on LLMs have largely targeted the data plane, i.e., model weights or KV-cache contents, leaving KV-cache mapping unexplored. We present BlockJack (i.e., Block Hijack), the first KV cache address-translation fault attack in LLM inference. By corrupting block-table entries, BlockJack redirects a request's KV cache reads to blocks assigned to another tenant's request without modifying model parameters, prompts, or cached KV states. It achieves both confidentiality violation (victim information appears in attacker responses) and integrity violation (attacker-supplied context steers victim answers). We study paged KV cache mappings in vLLM and formally characterize when redirect targets are predictable. Across seven models spanning the Qwen, Llama, Gemma, and Phi families, a faulted mapping exposes victim context. For the integrity attack, we examine how topic proximity, intra-topic divergence, and model behavior shape redirected responses. On a 248-scene medical benchmark, the integrity attack causes up to 41.1% of responses to recommend less urgent care, while still appearing consistent with the victim's question. We demonstrate physical feasibility of BlockJack with Rowhammer and subsequently evaluate assignment validation as a defense. Following responsible disclosure, vLLM and Sonar confirmed the vulnerability and proposed patches that we reviewed and validated."
+ },
+ "2611.27095": {
+  "title": "Epistemic Guard: Out-of-Process MCP Receipt Proxying, Post-Turn Prose Supervision, and Provenance-Gated Memory for Tool-Using Autonomous Agents",
+  "authors": [
+   "Sean Maxwell"
+  ],
+  "published": "2026-11-20",
+  "abstract": "Language-model agents using the Model Context Protocol (MCP) face three runtime verification gaps: (i) action fabrication, where post-tool prose narrates side effects that failed, timed out, or never ran; (ii) provenance collapse, where unverified model prose or web text enters durable memory alongside executed tool outputs; and (iii) syndicated echo amplification, where mirrored web pages satisfy multi-source corroboration from one origin. Existing MCP firewalls inspect wire calls before execution, while LLM-judge guardrails require multi-gigabyte VRAM without binding prose to receipts. We present epistemic-guard (v0.5.2), an open-source Python library and out-of-process stdio MCP receipt proxy (15 modules, 0 MiB GPU VRAM). epistemic-guard isolates Ed25519 signing keys out of process, writes RFC 6962 Merkle logs with AER-1 receipt translation, checks post-turn prose on CPU with SHA-256-verified OpenVINO INT8 encoders (4 models, 279.48 MB total; 82.67 MB on the supervision path), gates SQLite writes across 7 provenance domains, and collapses verbatim and lightly edited wire-syndicated RAG mirrors. On conformance suites, epistemic-guard rejects 100.0% of tampered receipts (200 Merkle leaves), passes 58/58 official AER-1 ingestion vectors and 50/50 reference-verified AER-1 exports, verifies 100.0% of 40 fault-injected wire calls and 100 concurrent appends with 0 key leaks, and blocks 100.0% of 100 unauthorized memory writes. Across $N=250$ frozen-benchmark traces, epistemic-guard reaches 93.2% accuracy at 17.9 ms warm median CPU latency (8.62 ms single-clause; 921.8 ms cold-start load), beating 12B-14B GPU judges by 6.4-6.8 points ($p=0.0259$, $p=0.0095$) at 4.26-4.5$\\times$ lower latency; on $N=60$ live mcp-proxy traces, it catches 96.15% of hazards at 76.67% accuracy (38.24% FPR; $+18.34$ points over Stage-1-only, $p=0.001$) in 9.16 ms p50."
  },
  "doi:10.1002/j.1538-7305.1948.tb01338.x": {
   "authors": [
@@ -6150,6 +6291,23 @@
   "published": "2014",
   "source": "crossref",
   "title": "The Algorithmic Foundations of Differential Privacy"
+ },
+ "doi:10.1561/1000000053": {
+  "title": "Contracts for System Design",
+  "authors": [
+   "Albert Benveniste",
+   "Benoît Caillaud",
+   "Dejan Nickovic",
+   "Roberto Passerone",
+   "Jean-Baptiste Raclet",
+   "Philipp Reinkemeier",
+   "Alberto Sangiovanni-Vincentelli",
+   "Werner Damm",
+   "Thomas A. Henzinger",
+   "Kim G. Larsen"
+  ],
+  "published": "2018",
+  "source": "crossref"
  },
  "doi:10.15779/z38rv0d15j": {
   "authors": [

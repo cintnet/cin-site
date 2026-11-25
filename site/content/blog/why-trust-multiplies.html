@@ -4,7 +4,7 @@ description: Trust doesn't just make a group a little more effective. It decides
 reader: Organisers, co-op members and policy staff who want to understand why transparency matters for getting big things done together.
 takeaway: Large groups rarely hold together when everyone has to trust everyone; a shared, checkable record makes large cooperation far more likely, without exposing people's private lives.
 template: article
-date: 2023-11-18
+date: 2026-11-06
 order: 4
 category: Seeing
 minutes: 9
@@ -17,211 +17,240 @@ lede: Large groups, of people or of AI agents, struggle to cooperate when everyo
 <h2>The arithmetic of a group</h2>
 
 <figure class="explainer" id="ex-trust-arithmetic">
-  <style>
-    #ex-trust-arithmetic {
-      --ex-paper: #FAF3EA;
-      --ex-slip: #F3E8D8;
-      --ex-ink: #131014;
-      --ex-muted: #5E564B;
-      --ex-rule: #D8C8B2;
-      --ex-signal: #0B3F30;
-      --ex-accent: #1F6B4E;
-      --ex-warn: #9E4726;
-      --ex-amber: #805113;
-      margin: 2.1rem 0;
-      padding: 1.35rem 0 1.15rem;
-      background: transparent;
-      border: 0;
-      border-top: 1px solid var(--ex-rule);
-      border-bottom: 1px solid var(--ex-rule);
-      border-radius: 0;
-      box-shadow: none;
-      color: var(--ex-ink);
-    }
-    #ex-trust-arithmetic svg {
-      display: block;
-      width: 100%;
-      height: auto;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    }
-    #ex-trust-arithmetic .ex-mono {
-      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-    #ex-trust-arithmetic [role="button"] {
-      cursor: pointer;
-      transition: opacity 160ms ease;
-    }
-    #ex-trust-arithmetic [role="button"]:hover,
-    #ex-trust-arithmetic [role="button"]:focus-visible {
-      opacity: 0.88;
-      outline: 2px solid var(--ex-accent);
-      outline-offset: 2px;
-    }
-    #ex-trust-arithmetic .ex-spec-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.9rem 1.5rem;
-      margin-top: 0.95rem;
-      padding-top: 0.85rem;
-      border-top: 1px solid var(--ex-rule);
-      font-size: 0.88rem;
-      line-height: 1.5;
-    }
-    #ex-trust-arithmetic .ex-spec-col {
-      padding-left: 0.75rem;
-      border-left: 2px solid var(--ex-rule);
-    }
-    #ex-trust-arithmetic .ex-spec-col.is-signal {
-      border-left-color: var(--ex-signal);
-    }
-    #ex-trust-arithmetic .ex-spec-col.is-warn {
-      border-left-color: var(--ex-warn);
-    }
-    #ex-trust-arithmetic .ex-spec-kicker {
-      display: block;
-      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--ex-muted);
-      margin-bottom: 0.25rem;
-    }
-    #ex-trust-arithmetic .ex-spec-body {
-      color: var(--ex-ink);
-    }
-    @media (max-width: 640px) {
-      #ex-trust-arithmetic .ex-spec-grid {
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
-      }
-      #ex-trust-arithmetic .ex-canvas {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-      }
-      #ex-trust-arithmetic .ex-canvas svg {
-        min-width: 540px;
-      }
-    }
-    #ex-trust-arithmetic figcaption {
-      margin-top: 0.9rem;
-      padding-top: 0.7rem;
-      border-top: 1px solid var(--ex-rule);
-      font-size: 0.9rem;
-      line-height: 1.55;
-      color: var(--ex-muted);
-      text-align: left;
-    }
-    #ex-trust-arithmetic .ex-controls,
-    #ex-trust-arithmetic .explainer-controls {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-top: 12px;
-      padding-top: 10px;
-      border-top: 1px solid var(--ex-rule);
-      font-size: 0.92rem;
-      color: var(--ex-ink);
-    }
-    #ex-trust-arithmetic input[type="range"] {
-      flex: 1;
-      accent-color: var(--ex-signal);
-      cursor: pointer;
-    }
-  </style>
-  <div class="ex-canvas">
-    <svg viewBox="0 0 680 350" role="img" aria-labelledby="ex-trust-title ex-trust-desc">
-      <title id="ex-trust-title">Group cooperation odds by group size: pair-by-pair trust versus a shared checkable record</title>
-      <desc id="ex-trust-desc">Line chart for group sizes from 2 to 20 people. When every pair must hold at 90 percent reliability, a 5-person group (10 pairs) holds together 34.9 percent of the time, a 10-person group (45 pairs) drops to 0.9 percent, and a 20-person group (190 pairs) drops near zero. When each person relies on a shared checkable record at 97 percent reliability, a 10-person group holds together 73.7 percent of the time and a 20-person group holds together 54.4 percent of the time.</desc>
-  
-      <!-- Top title & legend -->
-      <text x="80" y="24" font-size="14" font-weight="700" fill="var(--ex-ink)">Chance the whole group holds together</text>
-      <text x="80" y="44" font-size="11.5" fill="var(--ex-muted)">Group sizes from n = 2 to n = 20 people</text>
-  
-      <line x1="366" y1="20" x2="394" y2="20" stroke="var(--ex-signal)" stroke-width="2.5"/>
-      <rect x="377" y="17" width="6" height="6" fill="var(--ex-signal)"/>
-      <text x="402" y="24" font-size="11.5" font-weight="600" fill="var(--ex-signal)">Shared record (97% across n checks)</text>
-  
-      <line x1="366" y1="40" x2="394" y2="40" stroke="var(--ex-warn)" stroke-width="2.5" stroke-dasharray="5 3"/>
-      <rect x="377" y="37" width="6" height="6" fill="var(--ex-warn)"/>
-      <text x="402" y="44" font-size="11.5" font-weight="600" fill="var(--ex-ink)">Pair-by-pair (90% across n(n&#8722;1)/2 pairs)</text>
-  
-      <!-- Hairline plot axes & horizontal gridlines (y = 270 - 2 * pct) -->
-      <g stroke="var(--ex-rule)" stroke-width="1" stroke-dasharray="3 3">
-        <line x1="80" y1="70" x2="620" y2="70"/>
-        <line x1="80" y1="120" x2="620" y2="120"/>
-        <line x1="80" y1="170" x2="620" y2="170"/>
-        <line x1="80" y1="220" x2="620" y2="220"/>
-      </g>
-      <line x1="80" y1="70" x2="80" y2="270" stroke="var(--ex-rule)" stroke-width="1"/>
-      <line x1="80" y1="270" x2="620" y2="270" stroke="var(--ex-ink)" stroke-width="1.2"/>
-  
-      <g font-size="11.5" fill="var(--ex-muted)" text-anchor="end">
-        <text x="70" y="74">100%</text>
-        <text x="70" y="124">75%</text>
-        <text x="70" y="174">50%</text>
-        <text x="70" y="224">25%</text>
-        <text x="70" y="274">0%</text>
-      </g>
-  
-      <g stroke="var(--ex-ink)" stroke-width="1.2">
-        <line x1="80" y1="270" x2="80" y2="276"/>
-        <line x1="170" y1="270" x2="170" y2="276"/>
-        <line x1="320" y1="270" x2="320" y2="276"/>
-        <line x1="470" y1="270" x2="470" y2="276"/>
-        <line x1="620" y1="270" x2="620" y2="276"/>
-      </g>
-      <g font-size="11.5" fill="var(--ex-ink)" text-anchor="middle">
-        <text x="80" y="294">n = 2</text>
-        <text x="170" y="294">n = 5</text>
-        <text x="320" y="294">n = 10</text>
-        <text x="470" y="294">n = 15</text>
-        <text x="620" y="294">n = 20</text>
-      </g>
-      <text x="350" y="324" font-size="12.5" font-weight="600" fill="var(--ex-ink)" text-anchor="middle">Group size (number of people, n)</text>
-  
-      <!-- Curve A: Shared checkable record (0.97^n) -->
-      <path d="M 80 81.8 L 110 87.5 L 140 92.9 L 170 98.3 L 200 103.4 L 230 108.4 L 260 113.3 L 290 118.0 L 320 122.5 L 350 126.9 L 380 131.2 L 410 135.4 L 440 139.4 L 470 143.3 L 500 147.1 L 530 150.8 L 560 154.4 L 590 157.9 L 620 161.2 L 620 270 L 80 270 Z" fill="var(--ex-signal)" fill-opacity="0.08"/>
-      <path id="ex-trust-curve-record" d="M 80 81.8 L 110 87.5 L 140 92.9 L 170 98.3 L 200 103.4 L 230 108.4 L 260 113.3 L 290 118.0 L 320 122.5 L 350 126.9 L 380 131.2 L 410 135.4 L 440 139.4 L 470 143.3 L 500 147.1 L 530 150.8 L 560 154.4 L 590 157.9 L 620 161.2" fill="none" stroke="var(--ex-signal)" stroke-width="2.75"/>
-  
-      <!-- Curve B: Pair-by-pair trust (0.90^(n(n-1)/2)) -->
-      <path id="ex-trust-curve-pairs" d="M 80 90.0 L 110 124.2 L 140 163.7 L 170 200.3 L 200 228.8 L 230 248.1 L 260 259.5 L 290 265.5 L 320 268.3 L 350 269.4 L 380 269.8 L 410 269.9 L 440 270.0 L 470 270.0 L 500 270.0 L 530 270.0 L 560 270.0 L 590 270.0 L 620 270.0" fill="none" stroke="var(--ex-warn)" stroke-width="2.75" stroke-dasharray="6 4"/>
-  
-      <text x="170" y="85" font-size="11.5" font-weight="600" fill="var(--ex-signal)" text-anchor="middle">85.9% at n=5</text>
-      <text x="184" y="203" font-size="11.5" font-weight="600" fill="var(--ex-warn)" text-anchor="start">34.9% at n=5 (10 pairs)</text>
-      <text x="614" y="142" font-size="11.5" font-weight="600" fill="var(--ex-signal)" text-anchor="end">54.4% at n=20</text>
-  
-      <!-- Interactive vertical marker line (default n = 10 -> x = 320) -->
-      <line id="ex-trust-marker-line" x1="320" y1="70" x2="320" y2="270" stroke="var(--ex-ink)" stroke-width="1.4" stroke-dasharray="4 3"/>
-  
-      <!-- Planar hairline readout slip -->
-      <g id="ex-trust-readout-box">
-        <rect x="392" y="176" width="218" height="78" fill="var(--ex-slip)" stroke="var(--ex-rule)" stroke-width="1"/>
-        <line x1="392" y1="176" x2="392" y2="254" stroke="var(--ex-signal)" stroke-width="2.5"/>
-        <text id="ex-trust-readout-n" x="404" y="197" font-size="12.5" font-weight="700" fill="var(--ex-ink)">10 people · 45 pairs</text>
-        <rect x="404" y="211" width="6" height="6" fill="var(--ex-signal)"/>
-        <text id="ex-trust-readout-record" x="416" y="218" font-size="12" font-weight="600" fill="var(--ex-signal)">Shared record: 73.7%</text>
-        <rect x="404" y="233" width="6" height="6" fill="var(--ex-warn)"/>
-        <text id="ex-trust-readout-pairs" x="416" y="240" font-size="12" font-weight="600" fill="var(--ex-ink)">Pair-by-pair: 0.9%</text>
-      </g>
-  
-      <circle id="ex-trust-dot-record" cx="320" cy="122.5" r="5.5" fill="var(--ex-signal)" stroke="var(--ex-paper)" stroke-width="2"/>
-      <circle id="ex-trust-dot-pairs" cx="320" cy="268.3" r="5.5" fill="var(--ex-warn)" stroke="var(--ex-paper)" stroke-width="2"/>
-    </svg>
-  </div>
-  <div class="ex-spec-grid">
-    <div class="ex-spec-col is-warn">
-      <span class="ex-spec-kicker">Pairwise handshakes · n(n-1)/2 links</span>
-      <div class="ex-spec-body">Ten people require 45 separate bilateral promises; at 90% per pair, group reliability falls below 1%.</div>
-    </div>
-    <div class="ex-spec-col is-signal">
-      <span class="ex-spec-kicker">Shared checkable record · n links</span>
-      <div class="ex-spec-body">Each member checks one tamper-evident common ledger; at 97% per check, a 10-person group holds at 73.7%.</div>
-    </div>
-  </div>
-  <figcaption>As a group grows from 2 to 20 people, person-to-person pairs grow from 1 to 190. At 90% pairwise trust (dashed), a 10-person group (45 pairs) holds together just 0.9% of the time, and even raising pairwise trust to 97% only reaches 25.4% (about 30× higher). With a shared, checkable record at 97% reliability (solid), only n checks must hold, lifting a 10-person group to 73.7% and a 20-person group to 54.4%.</figcaption>
+<style>
+#ex-trust-arithmetic {
+  --ex-paper: #FAF3EA;
+  --ex-slip: #F3E8D8;
+  --ex-ink: #131014;
+  --ex-muted: #5E564B;
+  --ex-rule: #E1D3C0;
+  --ex-signal: #0B3F30;
+  --ex-accent: #1F6B4E;
+  --ex-warn: #B85C38;
+  margin: 1.8em 0;
+  padding: 20px 22px 18px;
+  background: var(--ex-slip);
+  border: 1px solid var(--ex-rule);
+  border-radius: 18px;
+  color: var(--ex-ink);
+}
+:root[data-theme="dark"] #ex-trust-arithmetic {
+  --ex-paper: #18161E;
+  --ex-slip: #221F2A;
+  --ex-ink: #EDE6DC;
+  --ex-muted: #A8A095;
+  --ex-rule: #322E3D;
+  --ex-signal: #8FD4B6;
+  --ex-accent: #8FD4B6;
+  --ex-warn: #F09D82;
+}
+@media (prefers-color-scheme: dark) {
+  #ex-trust-arithmetic {
+    --ex-paper: #18161E;
+    --ex-slip: #221F2A;
+    --ex-ink: #EDE6DC;
+    --ex-muted: #A8A095;
+    --ex-rule: #322E3D;
+    --ex-signal: #8FD4B6;
+    --ex-accent: #8FD4B6;
+    --ex-warn: #F09D82;
+  }
+  #ex-trust-arithmetic rect[fill="#FAF3EA"],
+  #ex-trust-arithmetic rect[fill="#F3E8D8"] {
+    fill: #221F2A;
+    stroke: #322E3D;
+  }
+  #ex-trust-arithmetic text[fill="#131014"],
+  #ex-trust-arithmetic text[fill="#5E564B"] {
+    fill: #EDE6DC;
+  }
+  #ex-trust-arithmetic text[fill="#0B3F30"],
+  #ex-trust-arithmetic text[fill="#1F6B4E"] {
+    fill: #8FD4B6;
+  }
+  #ex-trust-arithmetic text[fill="#B85C38"] {
+    fill: #F09D82;
+  }
+  #ex-trust-arithmetic #ex-trust-curve-record,
+  #ex-trust-arithmetic line[stroke="#0B3F30"] {
+    stroke: #8FD4B6;
+  }
+  #ex-trust-arithmetic #ex-trust-curve-pairs,
+  #ex-trust-arithmetic line[stroke="#B85C38"] {
+    stroke: #F09D82;
+  }
+  #ex-trust-arithmetic circle[fill="#0B3F30"] {
+    fill: #8FD4B6;
+  }
+  #ex-trust-arithmetic circle[fill="#B85C38"] {
+    fill: #F09D82;
+  }
+}
+#ex-trust-arithmetic svg {
+  overflow: visible;
+  font-family: var(--sans, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
+}
+#ex-trust-arithmetic .diagram-desktop {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+#ex-trust-arithmetic .diagram-mobile {
+  display: none;
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 640px) {
+  #ex-trust-arithmetic .diagram-desktop { display: none; }
+  #ex-trust-arithmetic .diagram-mobile { display: block; }
+}
+#ex-trust-arithmetic figcaption {
+  margin-top: 12px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--ex-muted);
+}
+#ex-trust-arithmetic .ex-controls,
+#ex-trust-arithmetic .explainer-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--ex-rule);
+  font-size: 0.92rem;
+  color: var(--ex-ink);
+}
+#ex-trust-arithmetic input[type="range"] {
+  flex: 1;
+  accent-color: #0B3F30;
+  cursor: pointer;
+}
+</style>
+<svg class="diagram-desktop" viewBox="0 0 680 350" width="100%" height="auto" role="img" aria-labelledby="ex-trust-title ex-trust-desc">
+  <title id="ex-trust-title">Group cooperation odds by group size: pair-by-pair trust versus a shared checkable record</title>
+  <desc id="ex-trust-desc">Line chart for group sizes from 2 to 20 people. When every pair must hold at 90 percent reliability, a 5-person group (10 pairs) holds together 34.9 percent of the time, a 10-person group (45 pairs) drops to 0.9 percent, and a 20-person group (190 pairs) drops near zero. When each person relies on a shared checkable record at 97 percent reliability, a 10-person group holds together 73.7 percent of the time and a 20-person group holds together 54.4 percent of the time.</desc>
+
+  <rect x="80" y="70" width="540" height="200" rx="6" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1"/>
+
+  <text x="80" y="26" font-size="14" font-weight="600" fill="#131014">Chance the whole group holds together</text>
+  <text x="80" y="46" font-size="12" fill="#5E564B">For group sizes from n = 2 to n = 20 people</text>
+
+  <line x1="376" y1="22" x2="400" y2="22" stroke="#0B3F30" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="388" cy="22" r="4" fill="#0B3F30"/>
+  <text x="408" y="26" font-size="12" font-weight="600" fill="#0B3F30">Shared record (97% across n checks)</text>
+
+  <line x1="376" y1="42" x2="400" y2="42" stroke="#B85C38" stroke-width="3" stroke-dasharray="6 4" stroke-linecap="round"/>
+  <circle cx="388" cy="42" r="4" fill="#B85C38"/>
+  <text x="408" y="46" font-size="12" font-weight="600" fill="#131014">Pair-by-pair (90% across n(n&#8722;1)/2 pairs)</text>
+
+  <g stroke="#E1D3C0" stroke-width="1" stroke-dasharray="3 3">
+    <line x1="80" y1="70" x2="620" y2="70"/>
+    <line x1="80" y1="120" x2="620" y2="120"/>
+    <line x1="80" y1="170" x2="620" y2="170"/>
+    <line x1="80" y1="220" x2="620" y2="220"/>
+  </g>
+  <line x1="80" y1="270" x2="620" y2="270" stroke="#5E564B" stroke-width="1.2"/>
+
+  <g font-size="12" fill="#5E564B" text-anchor="end">
+    <text x="70" y="74" font-size="12">100%</text>
+    <text x="70" y="124" font-size="12">75%</text>
+    <text x="70" y="174" font-size="12">50%</text>
+    <text x="70" y="224" font-size="12">25%</text>
+    <text x="70" y="274" font-size="12">0%</text>
+  </g>
+
+  <g stroke="#5E564B" stroke-width="1.2">
+    <line x1="80" y1="270" x2="80" y2="276"/>
+    <line x1="170" y1="270" x2="170" y2="276"/>
+    <line x1="320" y1="270" x2="320" y2="276"/>
+    <line x1="470" y1="270" x2="470" y2="276"/>
+    <line x1="620" y1="270" x2="620" y2="276"/>
+  </g>
+  <g font-size="12" fill="#131014" text-anchor="middle">
+    <text x="80" y="294" font-size="12">n = 2</text>
+    <text x="170" y="294" font-size="12">n = 5</text>
+    <text x="320" y="294" font-size="12">n = 10</text>
+    <text x="470" y="294" font-size="12">n = 15</text>
+    <text x="620" y="294" font-size="12">n = 20</text>
+  </g>
+  <text x="350" y="324" font-size="13" font-weight="600" fill="#131014" text-anchor="middle">Group size (number of people, n)</text>
+
+  <path d="M 80 81.8 L 110 87.5 L 140 92.9 L 170 98.3 L 200 103.4 L 230 108.4 L 260 113.3 L 290 118.0 L 320 122.5 L 350 126.9 L 380 131.2 L 410 135.4 L 440 139.4 L 470 143.3 L 500 147.1 L 530 150.8 L 560 154.4 L 590 157.9 L 620 161.2 L 620 270 L 80 270 Z" fill="#1F6B4E" fill-opacity="0.08"/>
+
+  <path id="ex-trust-curve-record" d="M 80 81.8 L 110 87.5 L 140 92.9 L 170 98.3 L 200 103.4 L 230 108.4 L 260 113.3 L 290 118.0 L 320 122.5 L 350 126.9 L 380 131.2 L 410 135.4 L 440 139.4 L 470 143.3 L 500 147.1 L 530 150.8 L 560 154.4 L 590 157.9 L 620 161.2" fill="none" stroke="#0B3F30" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <path id="ex-trust-curve-pairs" d="M 80 90.0 L 110 124.2 L 140 163.7 L 170 200.3 L 200 228.8 L 230 248.1 L 260 259.5 L 290 265.5 L 320 268.3 L 350 269.4 L 380 269.8 L 410 269.9 L 440 270.0 L 470 270.0 L 500 270.0 L 530 270.0 L 560 270.0 L 590 270.0 L 620 270.0" fill="none" stroke="#B85C38" stroke-width="3" stroke-dasharray="6 4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <text x="170" y="85" font-size="12" font-weight="600" fill="#1F6B4E" text-anchor="middle">85.9% at n=5</text>
+  <text x="184" y="203" font-size="12" font-weight="600" fill="#131014" text-anchor="start">34.9% at n=5 (10 pairs)</text>
+  <text x="614" y="142" font-size="12" font-weight="600" fill="#1F6B4E" text-anchor="end">54.4% at n=20</text>
+
+  <line id="ex-trust-marker-line" x1="320" y1="70" x2="320" y2="270" stroke="#131014" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+  <g id="ex-trust-readout-box">
+    <rect x="392" y="176" width="214" height="78" rx="8" fill="#F3E8D8" stroke="#E1D3C0" stroke-width="1.2"/>
+    <text id="ex-trust-readout-n" x="406" y="198" font-size="13" font-weight="700" fill="#131014">10 people · 45 pairs</text>
+    <circle cx="411" cy="218" r="4.5" fill="#0B3F30"/>
+    <text id="ex-trust-readout-record" x="422" y="222" font-size="13" font-weight="600" fill="#0B3F30">Shared record: 73.7%</text>
+    <circle cx="411" cy="240" r="4.5" fill="#B85C38"/>
+    <text id="ex-trust-readout-pairs" x="422" y="244" font-size="13" font-weight="600" fill="#131014">Pair-by-pair: 0.9%</text>
+  </g>
+
+  <circle id="ex-trust-dot-record" cx="320" cy="122.5" r="6" fill="#0B3F30" stroke="#FAF3EA" stroke-width="2"/>
+  <circle id="ex-trust-dot-pairs" cx="320" cy="268.3" r="6" fill="#B85C38" stroke="#FAF3EA" stroke-width="2"/>
+  <polygon points="316,76 320,70 324,76" fill="#0B3F30"/>
+  <polygon points="316,264 320,270 324,264" fill="#B85C38"/>
+  <polygon points="614,266 620,270 614,274" fill="#5E564B"/>
+</svg>
+<svg class="diagram-mobile" viewBox="0 0 330 560" width="100%" height="auto" role="img" aria-labelledby="ex-trust-m-title ex-trust-m-desc">
+  <title id="ex-trust-m-title">Mobile comparison of pair-by-pair handshakes and a shared checkable record</title>
+  <desc id="ex-trust-m-desc">Stacked mobile diagram contrasting pair-by-pair trust on top (45 pairs at n=10 holding 0.9 percent of the time) with a shared checkable record below (10 radial checks at n=10 holding 73.7 percent of the time).</desc>
+  <rect x="2" y="2" width="326" height="556" rx="14" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1.5"/>
+  <line x1="165" y1="90" x2="165" y2="96" stroke="#B85C38" stroke-width="1.5"/>
+  <polygon points="161,94 165,98 169,94" fill="#B85C38"/>
+  <line x1="165" y1="360" x2="165" y2="366" stroke="#0B3F30" stroke-width="1.5"/>
+  <polygon points="161,364 165,368 169,364" fill="#0B3F30"/>
+  <line x1="165" y1="410" x2="165" y2="416" stroke="#0B3F30" stroke-width="1.5"/>
+  <polygon points="161,414 165,418 169,414" fill="#0B3F30"/>
+
+  <rect x="14" y="14" width="302" height="254" rx="10" fill="#F3E8D8" stroke="#B85C38" stroke-width="1.5"/>
+  <text x="24" y="34" font-size="12" font-weight="700" fill="#B85C38">PAIR-BY-PAIR HANDSHAKES (90%)</text>
+
+  <rect x="24" y="46" width="282" height="44" rx="6" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1"/>
+  <text x="34" y="63" font-size="11" font-weight="700" fill="#131014">1. Five people (10 pairs)</text>
+  <text x="34" y="81" font-size="11" fill="#5E564B">Group holds together 34.9% of time</text>
+
+  <rect x="24" y="96" width="282" height="44" rx="6" fill="#FAF3EA" stroke="#E1D3C0" stroke-width="1"/>
+  <text x="34" y="113" font-size="11" font-weight="700" fill="#B85C38">2. Ten people (45 pairs)</text>
+  <text x="34" y="131" font-size="11" fill="#131014">Group holds together just 0.9%</text>
+
+  <rect x="24" y="146" width="282" height="44" rx="6" fill="#FAF3EA" stroke="#B85C38" stroke-width="1"/>
+  <text x="34" y="163" font-size="11" font-weight="700" fill="#B85C38">3. Twenty people (190 pairs)</text>
+  <text x="34" y="181" font-size="11" fill="#131014">Cooperation odds drop near 0%</text>
+
+  <text x="165" y="220" text-anchor="middle" font-size="11" font-weight="700" fill="#B85C38">Flaw: Pairwise links grow as n(n−1)/2</text>
+  <text x="165" y="242" text-anchor="middle" font-size="11" fill="#5E564B">One broken link derails the group</text>
+
+  <rect x="14" y="284" width="302" height="260" rx="10" fill="#FAF3EA" stroke="#1F6B4E" stroke-width="1.5"/>
+  <text x="24" y="304" font-size="12" font-weight="700" fill="#0B3F30">SHARED CHECKABLE RECORD (97%)</text>
+
+  <rect x="24" y="316" width="282" height="44" rx="6" fill="#F3E8D8" stroke="#1F6B4E" stroke-width="1"/>
+  <text x="34" y="333" font-size="11" font-weight="700" fill="#0B3F30">1. Five people (5 checks)</text>
+  <text x="34" y="351" font-size="11" fill="#131014">Group holds together 85.9% of time</text>
+
+  <rect x="24" y="366" width="282" height="44" rx="6" fill="#F3E8D8" stroke="#1F6B4E" stroke-width="1"/>
+  <text x="34" y="383" font-size="11" font-weight="700" fill="#0B3F30">2. Ten people (10 checks)</text>
+  <text x="34" y="401" font-size="11" fill="#131014">Group holds together 73.7% of time</text>
+
+  <rect x="24" y="416" width="282" height="44" rx="6" fill="#F3E8D8" stroke="#1F6B4E" stroke-width="1"/>
+  <text x="34" y="433" font-size="11" font-weight="700" fill="#0B3F30">3. Twenty people (20 checks)</text>
+  <text x="34" y="451" font-size="11" fill="#131014">Group holds together 54.4% of time</text>
+
+  <text x="165" y="490" text-anchor="middle" font-size="11" font-weight="700" fill="#0B3F30">Assurance: Radial checks grow linearly (n)</text>
+  <text x="165" y="512" text-anchor="middle" font-size="11" fill="#5E564B">Public receipts protect private lives</text>
+</svg>
+<figcaption>As a group grows from 2 to 20 people, person-to-person pairs grow from 1 to 190. At 90% pairwise trust (dashed), a 10-person group (45 pairs) holds together just 0.9% of the time, and even raising pairwise trust to 97% only reaches 25.4% (about 30× higher). With a shared, checkable record at 97% reliability (solid), only n checks must hold, lifting a 10-person group to 73.7% and a 20-person group to 54.4%.</figcaption>
 </figure>
 
 <p>Here is a simple way to see why groups unravel as they grow. Say any two people in a group trust each other nine times out of ten. That sounds pretty solid.</p>
@@ -230,9 +259,7 @@ lede: Large groups, of people or of AI agents, struggle to cooperate when everyo
 
 <p>Small improvements make a big difference. Raise pairwise trust from nine in ten to ninety-seven in a hundred, and a ten-person project becomes about thirty times more likely to hold together. Even then, three times out of four, a ten-person group relying purely on pair-by-pair handshakes will still hit a snag.</p>
 
-<p>That is why large cooperation is rare. The number of relationships that all have to work grows much faster than the group does.</p>
-
-<div class="callout"><p class="label">What this means</p><p>Trust isn't an add-on. It sets the ceiling on how big a problem a community can take on.</p></div>
+<p>That is why large cooperation is rare. The number of relationships that all have to work grows much faster than the group does, so trust sets the practical ceiling on how big a shared task a community can take on.</p>
 
 <h2>Trusting the record instead of each other</h2>
 
@@ -250,7 +277,7 @@ lede: Large groups, of people or of AI agents, struggle to cooperate when everyo
 
 <h2>The evidence points the same way</h2>
 
-<p>Our chart above is a simple model, and real life is messier. Trust between neighbours is not independent like a coin toss, and bad rules can still be gamed. Yet across economics, sociology and organizational science, the evidence points the same way.</p>
+<p>Our chart above is a simple model, and real life is messier. Trust between neighbours is not independent like a coin toss, and bad rules can still be gamed, or physical sensors can be spoofed before they sign a reading.<sup><a href="#fn9">9</a></sup> Yet across economics, sociology and organizational science, the evidence points the same way.</p>
 
 <p>Across countries, economists have found that societies with higher trust invest more in long-term projects and grow faster over decades.<sup><a href="#fn2">2</a></sup> Where people expect contracts to be broken or records to be doctored, families keep savings hidden and businesses stay small enough to be run by relatives alone.<sup><a href="#fn2">2</a></sup></p>
 
@@ -278,13 +305,21 @@ lede: Large groups, of people or of AI agents, struggle to cooperate when everyo
 
 <p>If that coordination depends on every software vendor privately trusting every other vendor's model, the math of pairs will crush us. One silent error among a hundred and ninety agent-to-agent handshakes can derail the whole chain, leaving people to argue over whose bot dropped the ball.</p>
 
-<p>If instead every agent action leaves a checkable receipt on a shared record (showing who authorized the step, what rule was checked, and what changed) the math flips back in our favour. Receipts do more than catch mistakes after the fact. They let strangers, neighbours and communities tackle shared problems that none of us could solve alone.</p>
+<p>If instead every outward agent action leaves a checkable receipt on a public ledger, the math flips back in our favour. Each receipt shows who authorized the step, what rule was checked, and what changed, while raw household notes stay in a local memory vault.</p>
 
-<aside class="for-researchers"><details><summary>For researchers</summary><div><p>In graph-theoretic terms, unmediated multiparty coordination over an undirected complete graph $K_n$ requires $\binom{n}{2} = n(n-1)/2$ bilateral trust edges. Under an idealized independent edge-survival probability $p \in (0,1)$, the probability of full clique coherence decays quadratically in the exponent as $p^{n(n-1)/2}$, creating a steep coordination horizon as $n$ grows.</p><p>Replacing bilateral verification with a shared commitment register transforms the topology from $K_n$ to a star graph $S_n$ of $n$ radial checks, improving scaling to $p_{\text{ledger}}^n$. This formalizes Arrow's (1972) analysis of transaction-cost friction, Knack and Keefer's (1997) cross-country social capital regressions, Woolley et al.'s (2010) collective intelligence factor $c$, and Ostrom's (2009) polycentric monitoring design principles.</p><p>In our Testnet architecture, agents attach Proof-Carrying Code certificates and capability-scoped cryptographic receipts to state transitions on a shared ledger. Counterparties can then verify policy compliance in $O(1)$ local checks without exposing private user state.</p></div></details></aside>
+<p>Receipts do more than catch mistakes after the fact. They let strangers, neighbours, and communities tackle shared problems that none of us could solve alone. Read how <a href="/blog/pooling-orders-without-showing-your-books/">pooling orders without showing your books</a> and <a href="/blog/who-is-actually-acting/">who is actually acting</a> work in practice, run multi-agent stress tests in our <a href="/labs/">interactive labs</a>, or test interlocking coalition moves in <a href="/labs/shared-horizon/">Shared Horizon</a>.</p>
+
+<aside class="for-researchers"><details><summary>For researchers</summary><div><p>In graph-theoretic terms, unmediated multiparty coordination over an undirected complete graph $K_n$ requires $\binom{n}{2} = n(n-1)/2$ bilateral trust edges. Under an idealized independent edge-survival probability $p \in (0,1)$, the probability of full clique coherence decays quadratically in the exponent as $p^{n(n-1)/2}$, creating a steep coordination horizon as $n$ grows.</p><p>Replacing bilateral verification with a shared commitment register transforms the topology from $K_n$ to a star graph $S_n$ of $n$ radial checks, improving scaling to $p_{\text{ledger}}^n$. This formalizes Arrow's (1972<sup><a href="#fn1">1</a></sup>) analysis of transaction-cost friction, Knack and Keefer's (1997<sup><a href="#fn2">2</a></sup>) cross-country social capital regressions, Woolley et al.'s (2010<sup><a href="#fn3">3</a></sup>) collective intelligence factor $c$, and Ostrom's (Ostrom, 1990; Ostrom, 2010<sup><a href="#fn4">4</a></sup>) polycentric monitoring design principles.</p><p>Within our five-primitive sociotechnical architecture, heterogeneous wearable and room sensors form a multimodal egocentric and ambient perceptual sensorium fused locally in monotonic hardware <code>Device Time</code> with self-assessed observation confidence. Silicon peripheral attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, <code>IETF RATS</code> RFC 9334<sup><a href="#fn8">8</a></sup>), an optical data diode, and <code>IEC 61508</code> dead-man relays isolate physical actuators. Observations write into an append-only local <code>C2PA</code><sup><a href="#fn10">10</a></sup> and Merkle episodic memory vault (Endel Tulving; Tulving, 1972) encrypted strictly for the biological person and their personal cognitive model while obeying transduction realism (<em>Signed Is Not True</em> across the analog hole; Kevin Fu and Wenyuan Xu; Fu &amp; Xu, 2018<sup><a href="#fn9">9</a></sup>). Each person's monogamous <code>1:1</code> principal-bound personal cognitive model and cybernetic exocortex (Joscha Bach; Bach, 2009) draws on the Extended Mind thesis (Andy Clark and David Chalmers; Clark &amp; Chalmers, 1998) and the Good Regulator theorem (Conant &amp; Ashby, 1970). It applies interventional causal models <code>do(x)</code> (Pearl, 2009) and compiler-trust reflection proofs (Thompson, 1984) as a statutory information fiduciary (Jack Balkin; Balkin, 2016<sup><a href="#fn6">6</a></sup>) protecting the Private Autobiographical Ledger and preserving unassisted competence. Across the personal Markov blanket (Karl Friston; Friston, 2010; Friston, 2013<sup><a href="#fn5">5</a></sup>) and multiscale cognitive light cone (Michael Levin; Levin, 2019), external interactions attach expiring Object-Capability and capability lease grants (Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966<sup><a href="#fn7">7</a></sup>). High-risk actions pair selective zero-knowledge (<code>ZK</code>) proofs, independent-class Byzantine corroboration (<code>k &gt;= 3f + 1</code>), and signed <code>IETF SCITT</code> (<code>RFC 9943</code><sup><a href="#fn10">10</a></sup>) transparency receipts onto the Public Attestation &amp; Escrow Ledger (Public Attestation and Escrow Ledger). Those receipts couple sovereign dyads to the Wide Network Ledger for Universal Basic Services, merit-bonded commons tasks, and invisible-labor upkeep (Jacob Meluso). They combine reciprocal mutual credit (James Stodder), statutory cooperative equity (Rudolf Meidner; Meidner, 1978<sup><a href="#fn10">10</a></sup>), frontier-lab overlays (Bracale Syrnikov et al., 2026), and polycentric self-rule (Elinor Ostrom). Counterparties verify policy compliance in $O(1)$ local checks in <a href="/labs/protocol-inspector/">Protocol Inspector</a>, <a href="/labs/sensor-boundary/">Sensor Boundary</a>, and <a href="/labs/shared-horizon/">Shared Horizon</a>.</p></div></details></aside>
 
 <section class="footnotes">
 <p id="fn1">1. Kenneth J. Arrow, <a href="https://www.jstor.org/stable/2265097">"Gifts and Exchanges,"</a> <em>Philosophy &amp; Public Affairs</em>, Vol. 1, No. 4 (Summer 1972), pp. 343–362 (quote on p. 357).</p>
 <p id="fn2">2. Stephen Knack and Philip Keefer, <a href="https://doi.org/10.1162/003355300555475">"Does Social Capital Have an Economic Payoff? A Cross-Country Investigation,"</a> <em>Quarterly Journal of Economics</em>, Vol. 112, No. 4 (Nov. 1997), pp. 1251–1288.</p>
 <p id="fn3">3. Anita Williams Woolley, Christopher F. Chabris, Alex Pentland, Nada Hashmi, and Thomas W. Malone, <a href="https://doi.org/10.1126/science.1193147">"Evidence for a Collective Intelligence Factor in the Performance of Human Groups,"</a> <em>Science</em>, Vol. 330, No. 6004 (Oct. 29, 2010), pp. 686–688.</p>
-<p id="fn4">4. Elinor Ostrom, <a href="https://www.nobelprize.org/prizes/economic-sciences/2009/ostrom/lecture/">"Beyond Markets and States: Polycentric Governance of Complex Economic Systems,"</a> Nobel Prize Lecture (Dec. 8, 2009), published in <em>American Economic Review</em>, Vol. 100, No. 3 (June 2010), pp. 641–672.</p>
+<p id="fn4">4. Elinor Ostrom, <a href="https://doi.org/10.1257/aer.100.3.641">"Beyond Markets and States: Polycentric Governance of Complex Economic Systems,"</a> Nobel Prize Lecture (Dec. 8, 2009), published in <em>American Economic Review</em>, Vol. 100, No. 3 (June 2010), pp. 641–672.</p>
+<p id="fn5">5. Karl Friston, "<a href="https://doi.org/10.1098/rsif.2013.0475">Life as We Know It</a>," <em>Journal of the Royal Society Interface</em> 10, no. 86 (2013): 20130475.</p>
+<p id="fn6">6. Jack M. Balkin, "<a href="https://lawreview.law.ucdavis.edu/archives/49/4/information-fiduciaries-and-first-amendment">Information Fiduciaries and the First Amendment</a>," <em>UC Davis Law Review</em> 49, no. 4 (2016): 1183–1234.</p>
+<p id="fn7">7. Jack B. Dennis and Earl C. Van Horn, "<a href="https://doi.org/10.1145/365230.365252">Programming Semantics for Multiprogrammed Computations</a>," <em>Communications of the ACM</em> 9, no. 3 (1966): 143–155.</p>
+<p id="fn8">8. Henk Birkholz, Dave Thaler, Michael Richardson, Ned Smith, and Wei Pan, "<a href="https://www.rfc-editor.org/rfc/rfc9334">Remote ATtestation procedureS (RATS) Architecture</a>," IETF RFC 9334 (January 2023).</p>
+<p id="fn9">9. Kevin Fu and Wenyuan Xu, "<a href="https://doi.org/10.1145/3176402">Risks of Trusting the Physics of Sensors</a>," <em>Communications of the ACM</em> 61, no. 2 (2018): 20–23.</p>
+<p id="fn10">10. Coalition for Content Provenance and Authenticity, <em>C2PA Technical Specification</em>, v2.1 (2024), <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html">c2pa.org</a>; Henk Birkholz, Antoine Delignat-Lavaud, Cedric Fournet, Yogesh Deshpande, and Steve Lasker, <em>An Architecture for Trustworthy and Transparent Digital Supply Chains (SCITT)</em>, IETF RFC 9943 (2026), <a href="https://www.rfc-editor.org/rfc/rfc9943">rfc-editor.org/rfc/rfc9943</a>; and Rudolf Meidner, <em>Employee Investment Funds: An Approach to Collective Capital Formation</em> (London: George Allen &amp; Unwin, 1978), <a href="https://archive.org/details/employeeinvestme0000meid">archive.org/details/employeeinvestme0000meid</a>.</p>
 </section>

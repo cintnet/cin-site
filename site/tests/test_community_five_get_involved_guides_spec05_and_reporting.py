@@ -226,6 +226,12 @@ class CommunityFiveGetInvolvedGuidesSpec05AndReportingTests(unittest.TestCase):
             "2611.25945",
             "2611.25470",
             "2507.07955",
+            "2611.22971",
+            "2611.24025",
+            "2611.09721",
+            "2611.27095",
+            "2610.37741",
+            "2610.07510",
             "personal-intelligence-apps",
             "backblaze.com/company/privacy.html",
             "Kaiqu Liang",
@@ -242,6 +248,12 @@ class CommunityFiveGetInvolvedGuidesSpec05AndReportingTests(unittest.TestCase):
             "Qifan Wang",
             "Zihao Dan",
             "Sukjun Hwang",
+            "Yuxuan Zhou",
+            "Ziyuan Wang",
+            "David H. Yang",
+            "Sean Maxwell",
+            "Xinyan Hu",
+            "Qiusi Zhan",
         ):
             self.assertIn(cite, everyone_raw, f"everyone.html missing primary-source citation {cite!r}")
 
@@ -260,6 +272,12 @@ class CommunityFiveGetInvolvedGuidesSpec05AndReportingTests(unittest.TestCase):
             "2611.21832",
             "2608.00801",
             "2605.26079",
+            "2611.24185",
+            "2611.24491",
+            "2611.23346",
+            "2611.17460",
+            "2611.08781",
+            "2026-11-20-q4-2026-capability-update",
             "software-world-model",
             "transparency.org.au",
             "Turan",
@@ -276,6 +294,12 @@ class CommunityFiveGetInvolvedGuidesSpec05AndReportingTests(unittest.TestCase):
             "Sokolov",
             "Joshi",
             "Transparency International Australia",
+            "Ruan",
+            "Lim",
+            "Shah",
+            "Lee",
+            "Peng",
+            "Kinniment",
         ):
             self.assertIn(cite, civil_raw, f"civil-society.html missing primary-source citation {cite!r}")
 

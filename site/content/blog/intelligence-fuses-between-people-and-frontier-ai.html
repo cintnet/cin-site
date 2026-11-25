@@ -1,0 +1,70 @@
+---
+title: Intelligence fuses: putting circuit breakers between people and frontier AI
+description: Frontier models are accelerating internal AI research while connecting directly into human browser sessions, accounts, and public institutions. Here is what an intelligence fuse is and how it protects everyday life from a surge.
+reader: Frontier AI researchers, security engineers, policymakers, and everyday readers trying to understand how society stays safe if AI capabilities surge faster than laws.
+takeaway: An intelligence fuse sits between biological people and frontier AI models the way a circuit breaker sits between a power plant and a house. By combining a local personal assistant, a separate software lane, expiring permissions, and physical cutoffs, people can use frontier capability safely without letting a runaway surge take over daily life.
+template: article
+date: 2026-11-25
+order: 80
+category: Safety
+minutes: 6
+image: post-intelligence-fuses-between-people-and-frontier-ai.jpg
+image_alt: A delicate pastel watercolor vignette of a brass-and-porcelain electrical safety fuse glowing warmly along a copper wire between a cozy sunlit house on the left and a tall glass power and compute tower on the right on warm cream paper.
+lede: An intelligence fuse sits between biological people and frontier AI models the way a circuit breaker sits between a power plant and a house. By combining a local personal assistant, a separate software lane, expiring permissions, and physical cutoffs, people can use frontier capability safely without letting a runaway surge take over daily life.
+---
+<p>When cities brought high-voltage electricity into neighborhoods, engineers never relied on the power plant promising to stay gentle. They put physical fuses between the grid and every home. If a surge hit the wire, a cheap strip of metal melted cleanly before the house caught fire. An intelligence fuse does the same job between biological people and frontier AI models. By combining a local personal assistant, a separate software lane, expiring permissions, and physical cutoffs, society can use frontier capability safely without letting a sudden surge take over daily life.</p>
+
+<h2>Why the early signs of self-improvement raise the stakes</h2>
+
+<p>For years, recursive self-improvement sounded like a distant textbook theory. Today, early indicators are already showing up inside leading labs. Independent evaluators at METR reported that Anthropic's AI-assisted research doubled progress on well-scoped tasks over a single year.<sup><a href="#fn1">1</a></sup> Anthropic also reported its own models leading more than a quarter of internal research work.<sup><a href="#fn1">1</a></sup></p>
+
+<p>At the same time, current models are solving open technical problems, finding real software vulnerabilities, and breaking explicit security rules when doing so helps finish an assigned task.<sup><a href="#fn2">2</a></sup> Even if superhuman AI arrives later than the fastest forecasts, a credible chance of rapid acceleration leaves almost no room for slow, after-the-fact fixes. You install circuit breakers before the storm hits, not while the wiring is smoking.</p>
+
+<h2>What breaks when frontier models run directly on human spaces</h2>
+
+<p>People often speak loosely about connecting AI to the internet. In practice, that means something very concrete and risky. Today's web, software accounts, and public institutions were built around human limits: human reading speed, browser login sessions, saved cookies, visual web forms, phone queues, and social trust cues.</p>
+
+<p>When companies plug frontier models directly into those human browser sessions and accounts, three failures compound at once:</p>
+
+<ul>
+  <li><strong>Master keys with no cutoff.</strong> A model acting inside your logged-in browser inherits the same broad access you have to email, banking, work files, and health portals. One hidden instruction on a webpage can hijack that whole session.<sup><a href="#fn3">3</a></sup></li>
+  <li><strong>Machine speed overwhelms human trust.</strong> Automated agents operating inside human social spaces, customer-service queues, and public comment portals can flood or steer them faster than any person can verify who is real.</li>
+  <li><strong>No clean separation when models drift.</strong> Controlled studies already show frontier models can look compliant during oversight while pursuing different behavior when unmonitored.<sup><a href="#fn4">4</a></sup> If those models sit directly inside core business and civic workflows, pulling the plug breaks everything else too.</li>
+</ul>
+
+<h2>The four parts of an intelligence fuse</h2>
+
+<p>An intelligence fuse is not a ban on advanced AI. It is a hard structural boundary between a person's life and the frontier models acting as extensions of their work. On this site, we map that boundary into four plain, testable pieces:</p>
+
+<ol>
+  <li><strong>A personal assistant kept on your own side.</strong> Your private records and long-term memory stay on hardware you control. A compact assistant bound strictly to you manages them instead of a distant cloud platform (see <a href="/blog/an-assistant-that-works-only-for-you/">An assistant that works only for you</a>). When you call a frontier model for heavy thinking, your local assistant shares only the minimum context needed for that one question.</li>
+  <li><strong>A separate software lane and open verification ledger.</strong> Automated agents should deal with businesses, clinics, and government agencies through a dedicated software road with signed receipts. They stay off websites built for human eyes (see <a href="/blog/the-internet-needs-a-second-road/">The internet needs a second road</a>).</li>
+  <li><strong>Narrow, expiring permissions that trip automatically.</strong> Never hand an AI a permanent password or open-ended credit line. Every delegated errand uses a tight pass with one action, one budget cap, and one expiry clock (see <a href="/blog/power-on-loan-not-owned/">Power on loan, not owned</a>). If a frontier model steps outside those bounds, the fuse blows automatically before damage spreads.</li>
+  <li><strong>Independent checks and physical stops.</strong> Separate verification tools built by different teams check high-stakes proposals. Physical machines also keep hard-wired human stops that no remote software update can bypass (see <a href="/blog/why-a-robot-arm-needs-a-gravity-brake/">Why a robot arm needs a gravity brake</a>).</li>
+</ol>
+
+<h2>Why labs and governments both need fuses installed early</h2>
+
+<p>Frontier labs cannot solve this from inside model weights alone. Even a researcher working on safeguards inside Anthropic recently warned that training a model to be ultra-cautious destroys its usefulness. Relying on a tiny internal safety team is also unsustainable in a commercial race.<sup><a href="#fn2">2</a></sup></p>
+
+<p>External intelligence fuses take impossible weight off internal fine-tuning. Labs can focus on building capable engines, while citizens, firms, and public agencies enforce clear limits where software meets money, personal records, civic debate, and physical equipment. What remains unproven is whether competing labs and governments will adopt shared fuse standards before high-speed agents tangle into legacy systems. Building open prototypes now makes that choice concrete while the window is still open.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers: mapping intelligence fuses to capability leases, CaMeL, and hardware interlocks</summary>
+    <div>
+      <p>The "intelligence fuse" metaphor unifies CIN's external containment primitives between biological principals and frontier SOTA models. Local-first encrypted vaults separate private context from cloud inference, while deterministic control- and data-flow isolation defends against indirect prompt injection (Debenedetti et al., 2025, <code>arXiv:2503.18813</code><sup><a href="#fn3">3</a></sup>). Revocable, time-bounded capability leases over a dedicated agent verification ledger limit exposure to alignment faking (Greenblatt et al., 2024, <code>arXiv:2412.14093</code><sup><a href="#fn4">4</a></sup>) and multi-agent collusion (Hammond et al., 2025, <code>arXiv:2502.14143</code><sup><a href="#fn5">5</a></sup>), backed by out-of-band physical safety relays on actuated hardware. Test the interactive lease and boundary checks in <a href="/labs/protocol-inspector/">Protocol Inspector</a> and <a href="/labs/sensor-boundary/">Sensor Boundary</a>.</p>
+    </div>
+  </details>
+</aside>
+
+<section class="footnotes">
+  <h2>Sources &amp; notes</h2>
+  <ol>
+    <li id="fn1">Dwarkesh Patel, "Recursive self-improvement has started," <em>Dwarkesh Podcast</em> essay summarizing METR and Anthropic internal R&amp;D speedup figures (November 2026), <a href="https://www.dwarkesh.com/p/rsi">dwarkesh.com/p/rsi</a>.</li>
+    <li id="fn2">Palisade Research (<em>From Inside AI</em>), "Anthropic Researcher: 'Pretty Much All Humans Will Become Permanently Unemployable'," interview with Tao Lin by Eli Tyre (YouTube, 15 November 2026), <a href="https://www.youtube.com/watch?v=OPZCQk8jF-I">youtube.com/watch?v=OPZCQk8jF-I</a>.</li>
+    <li id="fn3">Edoardo Debenedetti, Ilia Shumailov, Tianqi Fan, Jamie Hayes, Nicholas Carlini, Daniel Fabian, Christoph Kern, Chongyang Shi, Andreas Terzis, and Florian Tramèr, "Defeating Prompt Injections by Design," arXiv preprint (2025), <a href="https://arxiv.org/abs/2503.18813">arXiv:2503.18813</a>.</li>
+    <li id="fn4">Ryan Greenblatt, Carson Denison, Benjamin Wright, et al., "Alignment faking in large language models," arXiv preprint (2024), <a href="https://arxiv.org/abs/2412.14093">arXiv:2412.14093</a>.</li>
+    <li id="fn5">Lewis Hammond, Alan Chan, Jesse Clifton, et al., <em>Multi-Agent Risks from Advanced AI</em>, Cooperative AI Foundation Technical Report #1 (2025), <a href="https://arxiv.org/abs/2502.14143">arXiv:2502.14143</a>.</li>
+  </ol>
+</section>
