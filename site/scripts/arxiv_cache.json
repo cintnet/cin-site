@@ -1954,6 +1954,15 @@
   "published": "2026-01-21",
   "title": "Where Do AI Coding Agents Fail? An Empirical Study of Failed Agentic Pull Requests in GitHub"
  },
+ "2601.17549": {
+  "title": "Breaking the Protocol: Security Analysis of the Model Context Protocol Specification and Prompt Injection Vulnerabilities in Tool-Integrated LLM Agents",
+  "authors": [
+   "Narek Maloyan",
+   "Dmitry Namiot"
+  ],
+  "published": "2026-01-24",
+  "abstract": "The Model Context Protocol (MCP) has emerged as a de facto standard for integrating Large Language Models with external tools, yet no formal security analysis of the protocol specification exists. We present the first rigorous security analysis of MCP's architectural design, identifying three fundamental protocol-level vulnerabilities: (1) absence of capability attestation allowing servers to claim arbitrary permissions, (2) bidirectional sampling without origin authentication enabling server-side prompt injection, and (3) implicit trust propagation in multi-server configurations. We implement \\textsc{MCPBench}, a novel framework bridging existing agent security benchmarks to MCP-compliant infrastructure, enabling direct measurement of protocol-specific attack surfaces. Through controlled experiments on 847 attack scenarios across five MCP server implementations, we demonstrate that MCP's architectural choices amplify attack success rates by 23--41\\% compared to equivalent non-MCP integrations. We propose \\textsc{MCPSec}, a backward-compatible protocol extension adding capability attestation and message authentication, reducing attack success rates from 52.8\\% to 12.4\\% with median latency overhead of 8.3ms per message. Our findings establish that MCP's security weaknesses are architectural rather than implementation-specific, requiring protocol-level remediation."
+ },
  "2601.18092": {
   "abstract": "Equal access to digital technologies is critical for education, employment, and social participation. However, mainstream interfaces are visually oriented, creating steep learning curves and frequent obstacles for screen reader users, and limiting their independence and opportunities. Existing support is inadequate -- tutorials mainly target sighted users, while human assistance lacks real-time availability. We introduce AskEase, an on-demand AI assistant that provides step-by-step, screen reader user-friendly guidance for computer use. AskEase manages multiple sources of context to infer user intent and deliver precise, situation-specific guidance. Its seamless interaction design minimizes disruption and reduces the effort of seeking help. We demonstrated its effectiveness through representative usage scenarios and robustness tests. In a within-subjects study with 12 screen reader users, AskEase significantly improved task success while reducing perceived workload, including physical demand, effort, and frustration. These results demonstrate the potential of LLM-powered assistants to promote accessible computing and expand opportunities for users with visual impairments.",
   "authors": [
@@ -1978,6 +1987,18 @@
   ],
   "published": "2026-01-28",
   "title": "Agent Benchmarks Fail Public Sector Requirements"
+ },
+ "2601.20789": {
+  "title": "SERA: Soft-Verified Efficient Repository Agents",
+  "authors": [
+   "Ethan Shen",
+   "Daniel Tormoen",
+   "Saurabh Shah",
+   "Ali Farhadi",
+   "Tim Dettmers"
+  ],
+  "published": "2026-01-28",
+  "abstract": "Open-weight coding agents should hold a fundamental advantage over closed-source systems because they can specialize to private codebases, encoding repository-specific information directly in their weights. Yet the cost and complexity of training has kept this advantage theoretical until now. We present Soft-Verified Efficient Repository Agents (SERA), an efficient method for training coding agents that enables the rapid and cheap creation of agents specialized to private codebases. Using Soft Verified Generation (SVG), we generate thousands of trajectories from any code repository, without requiring unit tests. Beyond repository specialization, we apply SVG to a larger corpus of codebases, generating 200,000+ synthetic trajectories. Using only supervised finetuning (SFT), SERA achieves leading results among fully open-source (open data, method, code) models while matching the performance of open-weight models like Devstral-Small-2. Creating SERA models is 26x cheaper than reinforcement learning and 57x cheaper than previous synthetic data methods to reach equivalent performance. We use our dataset to provide detailed analysis of scaling laws, ablations, and confounding factors for training coding agents. Overall, we believe our work will greatly accelerate research on open coding agents and showcase the advantage of open-source models that can adapt to private codebases. We release SERA as the first model in Ai2's Open Coding Agents series, along with all our code, data, and Claude Code integration to support the research community."
  },
  "2601.21105": {
   "abstract": "Natural-language user profiles have recently attracted attention not only for improved interpretability, but also for their potential to make recommender systems more steerable. By enabling direct editing, natural-language profiles allow users to explicitly articulate preferences that may be difficult to infer from past behavior. However, it remains unclear whether current natural-language-based recommendation methods can follow such steering commands. While existing steerability evaluations have shown some success for well-recognized item attributes (e.g., movie genres), we argue that these benchmarks fail to capture the richer forms of user control that motivate steerable recommendations. To address this gap, we introduce SteerEval, an evaluation framework designed to measure more nuanced and diverse forms of steerability by using interventions that range from genres to content-warning for movies. We assess the steerability of a family of pretrained natural-language recommenders, examine the potential and limitations of steering on relatively niche topics, and compare how different profile and recommendation interventions impact steering effectiveness. Finally, we offer practical design suggestions informed by our findings and discuss future steps in steerable recommender design.",
@@ -2459,6 +2480,14 @@
   "published": "2026-05-04",
   "abstract": "Current post-trade clearing systems rely almost exclusively on cash or cash-like collateral, leaving vast reserves of short-term liquidity embedded in trade credit outside formal settlement infrastructures. A key barrier to integrating this liquidity is the near-universal dependence of clearing services on novation, which imposes institutional overhead that restricts accessibility and limits the range of obligations that can be brought into settlement. This paper introduces the Cycles Protocol: a distributed, multilateral clearing mechanism based on double-entry accounting and atomic cycle execution that maximizes balance sheet compression. Unlike novation-based clearing, Cycles does not redistribute counterparty risk; it can thus be applied generally to existing financial networks, without any change in counterparty relations, allowing it to complement existing clearing systems and Central Counterparties (CCPs). By representing commitments as edges on a unified directed graph, Cycles surfaces liquidity hiding within existing network structure. We focus here on two applications of Cycles to deepening secondary market liquidity: first, as a compression layer between existing clearing participants and CCPs; and second, as a means to incorporate the liquidity of the trade credit network into formal settlement, extending market clearing beyond financial obligations and into real-economy financing."
  },
+ "2605.04785": {
+  "title": "AgentTrust: Runtime Safety Evaluation and Interception for AI Agent Tool Use",
+  "authors": [
+   "Chenglin Yang"
+  ],
+  "published": "2026-05-06",
+  "abstract": "Modern AI agents execute real-world side effects through tool calls such as file operations, shell commands, HTTP requests, and database queries. A single unsafe action, including accidental deletion, credential exposure, or data exfiltration, can cause irreversible harm. Existing defenses are incomplete: post-hoc benchmarks measure behavior after execution, static guardrails miss obfuscation and multi-step context, and infrastructure sandboxes constrain where code runs without understanding what an action means. We present AgentTrust, a runtime safety layer that intercepts agent tool calls before execution and returns a structured verdict: allow, warn, block, or review. AgentTrust combines a shell deobfuscation normalizer, SafeFix suggestions for safer alternatives, RiskChain detection for multi-step attack chains, and a cache-aware LLM-as-Judge for ambiguous inputs. We release a 300-scenario benchmark across six risk categories and an additional 630 independently constructed real-world adversarial scenarios. On the internal benchmark, the production-only ruleset achieves 95.0% verdict accuracy and 73.7% risk-level accuracy at low-millisecond end-to-end latency. On the 630-scenario benchmark, evaluated under a patched ruleset and not claimed as zero-shot, AgentTrust achieves 96.7% verdict accuracy, including about 93% on shell-obfuscated payloads. AgentTrust is released under the AGPL-3.0 license and provides a Model Context Protocol server for MCP-compatible agents."
+ },
  "2605.05440": {
   "abstract": "The security discussion around agentic AI focuses heavily on prompt injection. This paper argues that multi-agent systems also create a distinct authorization problem: maintaining authorization invariants as non-human principals retrieve data, delegate tasks, and synthesize results across changing boundaries. We call this problem authorization propagation. It is not reducible to prompt injection and is not fully addressed by classical access-control models such as RBAC, ABAC, or ReBAC. The paper formalizes authorization propagation as a workflow-level property, identifies three sub-problems (transitive delegation, aggregation inference, and temporal validity), and derives seven structural requirements for authorization architectures in multi-agent AI systems. Recent work on invocation-bound capability tokens, task-scoped authorization envelopes, dependency-graph policy enforcement, and execution-count revocation demonstrates that the field is converging on the problem, but not yet on a complete architecture. The central claim is that identity governance must be treated as infrastructure: evaluated continuously, enforced at every interaction boundary, and designed into the system before orchestration logic is allowed to scale. Preliminary implementation evidence from a production enterprise AI platform shows that ordinary system behavior, not only adversarial action, already produces the failures this model predicts.",
   "authors": [
@@ -2699,6 +2728,14 @@
   ],
   "published": "2026-06-05",
   "title": "SWE-Marathon: Can Agents Autonomously Complete Ultra-Long-Horizon Software Work?"
+ },
+ "2606.08539": {
+  "title": "AgentTrust: A Self-Improving Trust Layer for AI-Agent Actions",
+  "authors": [
+   "Chenglin Yang"
+  ],
+  "published": "2026-06-07",
+  "abstract": "AI agents increasingly take consequential actions -- shell commands, cloud operations, and arbitrary tool-calls -- so a trust layer must decide, per action, whether to allow, warn, block, or escalate. We argue that the right way to reason about such a layer is by threat type. Lexical (fixed-signature) threats, where danger lives in a stable token, are decidable by deterministic rules; semantic (intent-dependent) threats, where a benign and a malicious action share the same surface, are out of reach for rules by construction. We make this concrete with a negative proof: a determined, hand-authored cloud rule pack lifts held-out accuracy only 48 to 56% overall and moves the semantic categories by 0pp (data_db 29 to 29, observability 59 to 59, supply_chain 50 to 50), while a strong LLM judge carries exactly those categories. We give the judge a self-learning capability: on a corpus that is mainly semantic attacks it nearly doubles rule accuracy (48% to 83.6-85.2%) with near-zero false-blocks, and this holds across two model providers. We turn this into a self-improving dual-store system: the judge distills a growing deterministic rule floor on lexical threats (cheaper over time) and feeds a guarded RAG memory on semantic threats (a verdict-cache fails -- surface-twins collapse to ~58% -- so a corroboration guard lifts semantic accuracy +13pp, 70 to 84). The result is what sets AgentTrust v2 apart from its static v1 predecessor: a trust layer that self-evolves from its own stream of decisions -- cheaper on the lexical class (it distils its own rules) and smarter on the semantic class (it accrues guarded precedent), while never hard-blocking a benign action. An end-to-end online replay shows the judge-call rate falling (50% to 44%) and judge-domain accuracy rising (71% to 80%), with 0 benign hard-blocks across 45,000 actions."
  },
  "2606.08919": {
   "title": "Oversight Has a Capacity: Calibrating Agent Guards to a Subjective, Fatiguing Human",
@@ -5193,6 +5230,43 @@
   "published": "2026-11-09",
   "title": "FraudBench: A Legal Evaluation of AI Deception"
  },
+ "2611.12604": {
+  "title": "Double Blind Evals: Resolving the Dual Confidentiality Dilemma in AI Safety Auditing",
+  "authors": [
+   "Andrew Trask",
+   "Sol Messing",
+   "Vai Pahwa",
+   "Pegah Maham",
+   "Rene Kolga",
+   "Austin Frantz",
+   "Andrew Tash",
+   "Kate Thomas",
+   "Sean McGregor",
+   "George Balston",
+   "Patricia Paskov",
+   "Miles Brundage",
+   "Akriti Vij",
+   "Bennett Hillenbrand",
+   "Alexandros Karargyris",
+   "Tin Acosta",
+   "Joel Fenster",
+   "Madeleine Elish",
+   "Rasmi Elasmar",
+   "Myriam Khan",
+   "Koen van der Veen",
+   "Rasswanth S",
+   "Sameer Wagh",
+   "Stephen Gabriel",
+   "Pedro Werneck",
+   "Lacey Strahm",
+   "Kevin McDonough",
+   "Ronnie Falcon",
+   "Kristian Lum",
+   "William Isaac"
+  ],
+  "published": "2026-11-09",
+  "abstract": "AI safety evaluations often involve sensitive prompts and proprietary models. Evaluators want to keep their evaluation prompts secret from model owners to prevent purposeful or incidental data leakage, ensuring longer usefulness of their benchmark. Model owners in turn wish to keep their proprietary model weights and inference code within their own secure infrastructure to protect their IP. We present a way forward for \"double-blind evals\", which provide cryptographic guarantees that an evaluator's prompts are not shared with the model owner, while simultaneously maintaining the confidentiality of the model weights and inference code. To accomplish this, we use secure enclaves that encrypt data in RAM at the hardware level. In a world-first pilot, we test this approach by evaluating a proprietary Google DeepMind model (Gemini 2.5 Flash Lite) against a selection of the private AILuminate benchmark corpus, using an NVIDIA H100 secure enclave on Google Cloud Platform, and using OpenMined's PySyft to maintain data and model privacy. We believe this effort marks the first use of this technology to provide mutual secrecy for one organization's frontier-class proprietary model weights and another organization's closed benchmark."
+ },
  "2611.12856": {
   "abstract": "Large language model agents are increasingly deployed as multi-agent systems rather than as a standalone model operating within a single context. Recent agent harnesses allow the model to instantiate worker agents and to author the executable workflow that coordinates them, shifting the design of system structure from developers to the model at run time. The quality of this organization therefore constitutes a distinct capability, yet existing benchmarks either measure end-to-end task completion or evaluate coordination under structures specified in advance. We formalize this capability as workflow orchestration and introduce WorkflowArena, a benchmark of 145 long-horizon tasks spanning 8 professional domains, from software engineering and formal mathematics to legal analysis and 3D production. Each task specifies an initial workspace and an integrated deliverable composed of interdependent components, which is assessed by a hidden verifier. Agents determine autonomously whether and how to delegate, and all delegation is recorded, enabling joint evaluation of deliverable quality and the organization of the underlying work. Experiments with nine models show that no single configuration performs best across all domains and that systems exhibit distinct delegation strategies: at high effort, Claude models in Claude Code invoke workflows less frequently but with larger worker groups, whereas GPT models in Codex delegate more frequently in smaller units. When the executing model is held fixed on a challenging subset of tasks, workflows authored by Claude Opus 5.5 substantially improve weaker executors, indicating that workflow organization is itself a measurable determinant of task performance.",
   "authors": [
@@ -5371,6 +5445,15 @@
   "published": "2026-11-17",
   "abstract": "Safety benchmarks for computer-use agents (CUAs) place the harm either in the intent of the task or on a single screen: a malicious instruction, an injected command, a phishing page. An agent that checks the task and each screen in isolation can pass them, so they do not test whether it combines facts seen on different screens. Yet in delegated work, harm often arises exactly this way: a fact about a person on one screen, a fact about an item on another, and a legitimate task that binds them. We introduce SEAM (Safety Execution Across Multiple screens), a benchmark of such cross-screen compositional harm: 600 multi-step, cross-application OSWorld tasks in which the instruction and every single observation are benign and only their combination is harmful. Minimal-pair variants that differ in one place, scored from the server log rather than by an LLM judge, locate where an agent fails. General-purpose open-weight and flagship agents carry out the harm in up to 92% of runs, yet decline when the user states it in one sentence. Agents open the decisive pages, so exposure is not the primary bottleneck. Asked about those pages, they flag the harm, and with thinking they often write the conflict into their reasoning and confirm anyway. Safety recognition thus does not reliably translate into safe execution, and the translation depends on the information channel: the same warning stops agents far more often in the user's instruction than on screen. Proprietary models are markedly more cautious. We release SEAM with its generator and quality gates at https://yuxuan2003.github.io/SEAM/ ."
  },
+ "2611.23202": {
+  "title": "Agent Trust Infrastructure (ATI): A Federated Identity, Trust, Attestation, and Accountability Architecture for Cross-Organization Autonomous AI Agents",
+  "authors": [
+   "Viet K. Nguyen",
+   "Mohammad I. Husain"
+  ],
+  "published": "2026-11-17",
+  "abstract": "AI agents increasingly collaborate across organizational boundaries, invoking tools and interacting with agents operated by independent entities. Although existing agent frameworks support planning and coordination, they lack a common mechanism for verifying cross-organizational agent identity, execution integrity, and authorization. We propose the Agent Trust Infrastructure (ATI), a framework-independent security architecture built on Public Key Infrastructure (PKI), Zero Trust Architecture (ZTA), and remote attestation. ATI establishes federated trust through peer organizational certificate authorities (AgentCAs), eliminating the need for a shared root authority. Before executing requests, ATI validates agent certificates, verifies approved model, tool, and system-prompt configurations, and enforces authorization through three policy checks. We implement ATI as an external security enforcement layer that integrates with existing agent frameworks without modifying their underlying models. We evaluate ATI in a simulated federation of eight organizations using six agent frameworks, each deploying a five-agent team. Security experiments involve two organizations and assess 14 attack scenarios and six benign tasks across five agent models, using five attack variations and three repetitions per variation. A panel of judge models evaluates the experimental outcomes. With all enforcement mechanisms enabled, attack containment increases from 43% to 84% (40% to 80% for the 11 attack scenarios evaluated consistently across all configurations), while enforcement introduces approximately 174 microseconds of overhead per request. ATI is released as an open-source, framework-independent package that uses IETF WIMSE workload token formats for identity and request verification and Entity Attestation Tokens for model, tool, and system-prompt integrity verification."
+ },
  "2611.23346": {
   "title": "Securing and Auditing Long-Horizon LLM Agents: State-Transfer Auditing and Controls in the Agent Harness",
   "authors": [
@@ -5471,6 +5554,35 @@
   "published": "2026-11-20",
   "abstract": "Language-model agents using the Model Context Protocol (MCP) face three runtime verification gaps: (i) action fabrication, where post-tool prose narrates side effects that failed, timed out, or never ran; (ii) provenance collapse, where unverified model prose or web text enters durable memory alongside executed tool outputs; and (iii) syndicated echo amplification, where mirrored web pages satisfy multi-source corroboration from one origin. Existing MCP firewalls inspect wire calls before execution, while LLM-judge guardrails require multi-gigabyte VRAM without binding prose to receipts. We present epistemic-guard (v0.5.2), an open-source Python library and out-of-process stdio MCP receipt proxy (15 modules, 0 MiB GPU VRAM). epistemic-guard isolates Ed25519 signing keys out of process, writes RFC 6962 Merkle logs with AER-1 receipt translation, checks post-turn prose on CPU with SHA-256-verified OpenVINO INT8 encoders (4 models, 279.48 MB total; 82.67 MB on the supervision path), gates SQLite writes across 7 provenance domains, and collapses verbatim and lightly edited wire-syndicated RAG mirrors. On conformance suites, epistemic-guard rejects 100.0% of tampered receipts (200 Merkle leaves), passes 58/58 official AER-1 ingestion vectors and 50/50 reference-verified AER-1 exports, verifies 100.0% of 40 fault-injected wire calls and 100 concurrent appends with 0 key leaks, and blocks 100.0% of 100 unauthorized memory writes. Across $N=250$ frozen-benchmark traces, epistemic-guard reaches 93.2% accuracy at 17.9 ms warm median CPU latency (8.62 ms single-clause; 921.8 ms cold-start load), beating 12B-14B GPU judges by 6.4-6.8 points ($p=0.0259$, $p=0.0095$) at 4.26-4.5$\\times$ lower latency; on $N=60$ live mcp-proxy traces, it catches 96.15% of hazards at 76.67% accuracy (38.24% FPR; $+18.34$ points over Stage-1-only, $p=0.001$) in 9.16 ms p50."
  },
+ "2611.32946": {
+  "title": "ShellBench: What Matters More for AI Agents, Models, or Harness for Everyday Tasks",
+  "authors": [
+   "Vincent Koc",
+   "Aditya Washikar",
+   "Rishab Naveen Venkataraman",
+   "Onur Solmaz",
+   "Zhentong Fan",
+   "Xinyang Han",
+   "Toby Vincent John",
+   "Hao Li",
+   "Achyut Mukund",
+   "Biresh Chandra Biswas",
+   "Eshan Shukla",
+   "Louis Pan",
+   "Ivan Kudryavtsev",
+   "Patthigulla Sai Surendra",
+   "Krish Oberoi",
+   "Ayaan Zaidi",
+   "Hema Veeradhi",
+   "Taylor Agarwal",
+   "Erik Erlandson",
+   "Agustin Rivera",
+   "Jacob Tomlinson",
+   "Louka Ewington-Pitsos"
+  ],
+  "published": "2026-11-24",
+  "abstract": "The use of AI agents among the general public has been increasing exponentially throughout 2026, though it is often hard for users to determine which configuration is most effective for their personal use. To help provide clarity here we introduce ShellBench, 100 day-to-day tasks based on more than 10 million user requests, each set in a realistic workspace with messy files and competing data sources, and graded for both correctness and safety. We evaluate 12 models across 5 agent harnesses at 3 reasoning levels for a total of 53,100 rollouts, 20% of which are on tasks designated for public release. We find that model choice impacts performance more than harness choice, but the three leading models differ by only 1.1 percentage points. GPT-6.1 Sol passed 61.4% of attempts at about one-sixth of GPT-6 Astra's estimated token cost per attempt, while GPT-6 Astra led at 62.5%. We also found that harness choice had little effect on either performance or safety with all harnesses scoring between 42.9 (Claude Code) and 45.2 (OpenClaw) for pass@1."
+ },
  "doi:10.1002/j.1538-7305.1948.tb01338.x": {
   "authors": [
    "C. E. Shannon"
@@ -5566,6 +5678,15 @@
   "published": "1983",
   "source": "crossref",
   "title": "Ironies of automation"
+ },
+ "doi:10.1016/0022-0531(83)90048-0": {
+  "title": "Efficient mechanisms for bilateral trading",
+  "authors": [
+   "Roger B Myerson",
+   "Mark A Satterthwaite"
+  ],
+  "published": "1983",
+  "source": "crossref"
  },
  "doi:10.1016/0022-5193(67)90079-3": {
   "authors": [
@@ -5703,6 +5824,14 @@
   "published": "1950",
   "source": "crossref",
   "title": "A Difficulty in the Concept of Social Welfare"
+ },
+ "doi:10.1086/724851": {
+  "title": ":<i>Practicing Atheism: Culture, Media, and Ritual in the Contemporary Atheist Network</i>",
+  "authors": [
+   "Michael Ruse"
+  ],
+  "published": "2023",
+  "source": "crossref"
  },
  "doi:10.1093/acprof:oso/9780195370676.001.0001": {
   "title": "Principles of Synthetic Intelligence PSI: An Architecture of Motivated Cognition",

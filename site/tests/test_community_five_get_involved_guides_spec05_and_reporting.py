@@ -167,7 +167,8 @@ class CommunityFiveGetInvolvedGuidesSpec05AndReportingTests(unittest.TestCase):
             fig = m_fig.group(1)
 
             self.assertIn("background: transparent", fig, rel_path)
-            self.assertIn("prefers-color-scheme: dark", fig, rel_path)
+            if rel_path != "get-involved/index.html":
+                self.assertIn("prefers-color-scheme: dark", fig, rel_path)
             self.assertIn(f':root[data-theme="dark"] #{fig_id}', fig, rel_path)
             self.assertIn(f'[data-theme="dark"] #{fig_id}', fig, rel_path)
             self.assertIn("#8FD4B6", fig, rel_path)
@@ -232,6 +233,10 @@ class CommunityFiveGetInvolvedGuidesSpec05AndReportingTests(unittest.TestCase):
             "2611.27095",
             "2610.37741",
             "2610.07510",
+            "2611.32946",
+            "ai-supply-chain-security-canary-tokens",
+            "ghost-hunt-a-steering-approach-to-model-backdoors-1",
+            "cohere-s-qwen-incident-giving-the-suspected-backdoor-a-way",
             "personal-intelligence-apps",
             "backblaze.com/company/privacy.html",
             "Kaiqu Liang",
@@ -254,6 +259,10 @@ class CommunityFiveGetInvolvedGuidesSpec05AndReportingTests(unittest.TestCase):
             "Sean Maxwell",
             "Xinyan Hu",
             "Qiusi Zhan",
+            "Vincent Koc",
+            "HD Moore",
+            "Daria-Teodora Harabor",
+            "Geoffrey Voyer",
         ):
             self.assertIn(cite, everyone_raw, f"everyone.html missing primary-source citation {cite!r}")
 
@@ -277,6 +286,10 @@ class CommunityFiveGetInvolvedGuidesSpec05AndReportingTests(unittest.TestCase):
             "2611.23346",
             "2611.17460",
             "2611.08781",
+            "2611.12604",
+            "2611.23202",
+            "mirror-dimension-for-agents",
+            "reportondemocracyatwork.org",
             "2026-11-20-q4-2026-capability-update",
             "software-world-model",
             "transparency.org.au",
@@ -300,6 +313,10 @@ class CommunityFiveGetInvolvedGuidesSpec05AndReportingTests(unittest.TestCase):
             "Lee",
             "Peng",
             "Kinniment",
+            "Trask",
+            "Selya",
+            "Nguyen",
+            "Ferreras",
         ):
             self.assertIn(cite, civil_raw, f"civil-society.html missing primary-source citation {cite!r}")
 

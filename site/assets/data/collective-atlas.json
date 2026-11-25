@@ -1,14 +1,14 @@
 {
  "updated": "2026-11-25",
  "totals": {
-  "action_cards": 557,
-  "encounters": 421,
+  "action_cards": 559,
+  "encounters": 423,
   "institutions": 348
  },
  "by_role": {
   "general_public": {
    "label": "01 · Citizen",
-   "action_cards": 64,
+   "action_cards": 65,
    "institutions": 42,
    "sample_institutions": [
     "American Library Association (ALA)",
@@ -58,7 +58,7 @@
   },
   "civil_society": {
    "label": "06 · Civil Society & Co-ops",
-   "action_cards": 98,
+   "action_cards": 99,
    "institutions": 69,
    "sample_institutions": [
     "Access Now",
@@ -6371,6 +6371,15 @@
    "status": "verified"
   },
   {
+   "id": "card.civil_society.run-double-blind-clinic-audits-and-protect-worker-safety-voice",
+   "role": "civil_society",
+   "title": "Run double-blind enclave clinic audits and bargain for worker safety reporting",
+   "description": "Vendors often refuse community audits by calling model weights trade secrets, while browser agents can spot test links and fake compliance. Andrew Trask's Double Blind Evals used hardware enclaves to test closed weights against private safety prompts without exposing either side's files. Google's Mirror Dimension hid test cues in local proxy headers across 1,000 daily checks per engineer. Viet K. Nguyen and Mohammad I. Husain raised cross-group attack blocks from 43 to 84 percent with peer badges, and Isabelle Ferreras urged outlawing safety gag clauses.",
+   "url": "https://arxiv.org/abs/2611.12604",
+   "grade": "A",
+   "status": "verified"
+  },
+  {
    "id": "card.civil_society.safeguard-human-deliberation-from-synthetic-homogenization",
    "role": "civil_society",
    "title": "Safeguard human deliberation from synthetic homogenization and factual attrition",
@@ -7420,6 +7429,15 @@
    "title": "Run wearable health reasoning on local devices with testable personal hypotheses",
    "description": "Commercial fitness bands often stream continuous physiological readings to advertising servers while offering generic advice. Households can instead run compact language models directly on local devices over a structured personal memory store. Rather than accepting vague chat suggestions, treat personal health tracking like a small kitchen-table experiment. Log a clear hypothesis, record daily wearable measurements locally, and check whether the predicted change actually occurs.",
    "url": "https://arxiv.org/abs/2609.12322",
+   "grade": "A",
+   "status": "verified"
+  },
+  {
+   "id": "card.general_public.scope-single-errand-files-and-plant-canary-checks-against-silent-leaks",
+   "role": "general_public",
+   "title": "Copy only needed files into an errand folder and plant canary links for leaks",
+   "description": "Pointing a personal assistant at a cluttered home folder or routing prompts through cloud middlemen risks avoidable mistakes and leaks. Across 53,100 runs on 188-file folders, Vincent Koc's ShellBench showed changing wrappers barely moved pass rates, and top models failed 38 percent of everyday tasks. HD Moore's Dragos team sent two million canary prompts and caught three provider breaches plus reseller logging. Meanwhile, Ghost Hunt showed weight steering failed across 16 backdoored open models, while Geoffrey Voyer's 60 decoy-bucket runs leaked zero secrets.",
+   "url": "https://arxiv.org/abs/2611.32946",
    "grade": "A",
    "status": "verified"
   },
