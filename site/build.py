@@ -548,7 +548,7 @@ def page_shell(meta: dict, main: str) -> str:
         if re.match(r"^[a-z0-9][a-z0-9._-]*\.js$", js_name, re.I):
             extra_js_tags += f'\n<script src="/assets/js/{esc(js_name)}?v={BUILD_ID}" defer></script>'
     return f"""<!doctype html>
-<html lang="en-CA">
+<html lang="en-CA" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1148,12 +1148,17 @@ def check_interactive_elements_and_embeds(name: str, body: str) -> list[str]:
             f"(R10 zero client tracking / static HTML / head element isolation; WHATWG 4.2.3)"
         )
 
-    # Check inline <style> tags for external @import or http(s) url()
+    # Check inline <style> tags for external @import, http(s) url(), or OS dark-mode ghost-text overrides
     for style_m in re.finditer(r"<style\b[^>]*>(.*?)</style>", body, re.I | re.S):
         style_content = style_m.group(1)
         if re.search(r"@import\b|url\(\s*['\"]?(?:https?:|//)", style_content, re.I):
             errs.append(
                 f"{name}: inline <style> contains external @import or http(s)/protocol-relative url() forbidden by R10 (zero external requests / tracking defense)"
+            )
+        if re.search(r"@media\s*\(\s*prefers-color-scheme\s*:\s*dark\s*\)", style_content, re.I):
+            errs.append(
+                f"{name}: inline <style> must not use '@media (prefers-color-scheme: dark)' "
+                f"(causes washed-out light text on #FAF3EA cream paper when OS dark mode is active; use :root[data-theme='dark'] instead)"
             )
 
     # Check inline style="..." attributes for external http(s) url()

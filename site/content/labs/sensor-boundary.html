@@ -237,88 +237,6 @@ lede: A digital signature proves which chip signed a number, yet physical light 
   .sim-readout.is-warn strong {
     color: #9E4726;
   }
-  @media (prefers-color-scheme: dark) {
-    .sim-panel,
-    .sim-presets,
-    .sim-preset-btn,
-    .sim-controls,
-    .sim-field,
-    .sim-viz-col figure.explainer,
-    .sim-viz-col figure.explainer .sim-svg-bg,
-    .sim-kpis,
-    .sim-kpi,
-    .sim-readout {
-      border-color: #322E3D;
-      stroke: #322E3D;
-    }
-    .sim-preset-btn,
-    .sim-controls,
-    .sim-viz-col figure.explainer,
-    .sim-kpi {
-      background: #221F2A;
-      color: #EDE6DC;
-    }
-    .sim-preset-btn.is-active {
-      background: #1A332B;
-      border-color: #8FD4B6;
-      color: #EDE6DC;
-    }
-    .sim-presets-label,
-    .sim-field-hint,
-    .sim-kpi-label,
-    .sim-viz-col figure.explainer figcaption {
-      color: #A8A095;
-    }
-    .sim-field-top label,
-    .sim-kpi-val,
-    .sim-readout {
-      color: #EDE6DC;
-    }
-    .sim-field-top output,
-    .sim-readout strong {
-      color: #8FD4B6;
-    }
-    .sim-readout {
-      background: #26212D;
-      border-left-color: #8FD4B6;
-    }
-    .sim-readout.is-warn {
-      border-left-color: #F09D82;
-    }
-    .sim-readout.is-warn strong {
-      color: #F09D82;
-    }
-    .sim-viz-col figure.explainer .sim-dot {
-      fill: #3A3344;
-    }
-    #ex-sensor-wind-tunnel line[stroke="#E1D3C0"] {
-      stroke: #322E3D;
-    }
-    #ex-sensor-wind-tunnel line[stroke="#4D463D"] {
-      stroke: #A8A095;
-    }
-    #ex-sensor-wind-tunnel rect[fill="#0B3F30"] {
-      fill: #8FD4B6;
-    }
-    #ex-sensor-wind-tunnel rect[fill="#9E4726"],
-    #ex-sensor-wind-tunnel rect[fill="#B85C38"] {
-      fill: #F09D82;
-      stroke: #F09D82;
-    }
-    #ex-sensor-wind-tunnel text[fill="#131014"] {
-      fill: #EDE6DC;
-    }
-    #ex-sensor-wind-tunnel text[fill="#4D463D"] {
-      fill: #A8A095;
-    }
-    #ex-sensor-wind-tunnel text[fill="#0B3F30"] {
-      fill: #8FD4B6;
-    }
-    #ex-sensor-wind-tunnel text[fill="#9E4726"],
-    #ex-sensor-wind-tunnel text[fill="#B85C38"] {
-      fill: #F09D82;
-    }
-  }
   [data-theme="dark"] .sim-panel,
   [data-theme="dark"] .sim-presets,
   [data-theme="dark"] .sim-preset-btn,
@@ -464,9 +382,6 @@ lede: A digital signature proves which chip signed a number, yet physical light 
       <figure class="explainer" id="ex-sensor-wind-tunnel">
         <style>
           #ex-sensor-wind-tunnel { background: transparent; }
-          @media (prefers-color-scheme: dark) {
-            #ex-sensor-wind-tunnel { --ex-signal: #8FD4B6; --ex-warn: #F09D82; }
-          }
           :root[data-theme="dark"] #ex-sensor-wind-tunnel { --ex-signal: #8FD4B6; --ex-warn: #F09D82; }
         </style>
         <svg class="diagram-desktop" viewBox="0 0 680 296" width="100%" data-rich-viz="true" role="group" aria-labelledby="ex-sensor-wt-title ex-sensor-wt-desc">
