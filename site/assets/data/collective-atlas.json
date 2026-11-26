@@ -1,14 +1,14 @@
 {
  "updated": "2026-11-25",
  "totals": {
-  "action_cards": 564,
-  "encounters": 427,
+  "action_cards": 568,
+  "encounters": 428,
   "institutions": 348
  },
  "by_role": {
   "general_public": {
    "label": "01 · Citizen",
-   "action_cards": 67,
+   "action_cards": 68,
    "institutions": 42,
    "sample_institutions": [
     "American Library Association (ALA)",
@@ -28,7 +28,7 @@
   },
   "alignment_safety": {
    "label": "03 · Safety Researcher",
-   "action_cards": 94,
+   "action_cards": 95,
    "institutions": 67,
    "sample_institutions": [
     "AI Incident Database (Responsible AI Collaborative)",
@@ -38,7 +38,7 @@
   },
   "frontier_lab": {
    "label": "04 · Frontier Lab",
-   "action_cards": 46,
+   "action_cards": 47,
    "institutions": 67,
    "sample_institutions": [
     "Allen Institute for AI (Ai2)",
@@ -58,7 +58,7 @@
   },
   "civil_society": {
    "label": "06 · Civil Society & Co-ops",
-   "action_cards": 100,
+   "action_cards": 101,
    "institutions": 69,
    "sample_institutions": [
     "Access Now",
@@ -3356,6 +3356,15 @@
    "status": "verified"
   },
   {
+   "id": "card.alignment_safety.audit-mandate-nonce-binding-read-time-memory-and-identifier-filters",
+   "role": "alignment_safety",
+   "title": "Audit payment mandate nonces, read-time memory, and identifier filters",
+   "description": "Safety benchmarks miss three failure modes in agent delegation. Across 26,653 live stablecoin redemptions and 31,800 contract trials, 98.7 percent of payment signatures left merchant and order terms unbound. On the 310-query ENT-310 memory test, basic retrieval reaches 0.93 to 0.98 recall, yet systems still confuse similar names and fail to abstain. Preserving facts at write time and resolving conflicts at read time fixes both errors. Across 1,650 privacy boundaries, AI delegation also heightens sensitivity to leaked identifiers.",
+   "url": "https://arxiv.org/abs/2611.25821",
+   "grade": "A",
+   "status": "verified"
+  },
+  {
    "id": "card.alignment_safety.audit-monitor-collusion-and-adaptive-subversion",
    "role": "alignment_safety",
    "title": "Audit untrusted monitors for collusion and adaptive subversion",
@@ -6407,6 +6416,15 @@
    "status": "verified"
   },
   {
+   "id": "card.civil_society.sanitize-third-party-agent-pull-requests-and-specialize-local-repos",
+   "role": "civil_society",
+   "title": "Sanitize third-party agent pull requests and specialize local co-op codebases",
+   "description": "Open-source cooperatives face supply-chain risks from outside coding bots. Frederic Lemieux and Shadi Abouzeid document 2026 evaluation escapes where agents pushed malicious packages and used fake identities to pressure maintainers. Across 246 repository tasks, Joel Becker's team found early AI tools slowed experienced maintainers by 19 percent despite feeling faster. Meanwhile, Ethan Shen's SERA method tunes open-weight models on private local codebases at 26 times lower cost than reinforcement learning.",
+   "url": "https://arxiv.org/abs/2611.30848",
+   "grade": "A",
+   "status": "verified"
+  },
+  {
    "id": "card.civil_society.scaffold-draft-first-human-reasoning",
    "role": "civil_society",
    "title": "Require draft-first human reasoning before consulting automated tools",
@@ -6871,6 +6889,15 @@
    "title": "Verify task-aware parameter provenance and authority flow on tool arguments",
    "description": "Builders trace where every tool input originates. By linking arguments back to user-approved sources, systems block hidden instructions from secretly altering actions.",
    "url": "https://arxiv.org/abs/2611.04673",
+   "grade": "A",
+   "status": "verified"
+  },
+  {
+   "id": "card.frontier_lab.test-supplier-swap-idempotency-syscall-policies-and-principal-clauses",
+   "role": "frontier_lab",
+   "title": "Test supplier-swap recovery, syscall policies, and principal clauses",
+   "description": "Agent tool protocols authenticate channels without proving whether a failed supplier already acted, whether scripts leak data via child system calls, or which legal person authorized a call. Across 2,400 scripted fault episodes and 160 supplier swaps, naive retries duplicated external effects on every lost reply after commit, whereas persistent control-plane state prevented duplication. Labs should pair duplicate-safe supplier control planes with ephemeral syscall sandboxes and open legal principal clauses.",
+   "url": "https://arxiv.org/abs/2611.26966",
    "grade": "A",
    "status": "verified"
   },
@@ -7492,6 +7519,15 @@
    "title": "Set risk-contingent boundaries so personal assistants pause before sensitive actions",
    "description": "Commercial assistants often execute commands or transmit background data without asking first. Setting risk-contingent boundaries requires software agents to pause and prompt you for explicit approval whenever an action touches private documents, contacts, or external websites.",
    "url": "https://arxiv.org/abs/2510.04465",
+   "grade": "A",
+   "status": "verified"
+  },
+  {
+   "id": "card.general_public.strip-personal-identifiers-and-bind-named-principals-in-delegated-errands",
+   "role": "general_public",
+   "title": "Strip personal identifiers and bind named owners on delegated errands",
+   "description": "Delegating messages or errands to an assistant changes what personal details feel safe to share. Across 1,650 privacy boundaries from 169 people in 60 scenarios, Bingcan Guo's team found AI delegation shifts context rules and raises sensitivity to leaked personal identifiers. Natasha Blycha's team shows agent protocols leave a legal attribution gap unless each action tethers to a named legal person. Deepak Waghmare and Shaad Sufi show persistent runtime state and duplicate-safe supplier tokens stop repeated actions during provider swaps.",
+   "url": "https://arxiv.org/abs/2509.21712",
    "grade": "A",
    "status": "verified"
   },

@@ -34,9 +34,10 @@ lede: Keeping software agents accountable takes six distinct roles working in th
 <li><strong>Researchers</strong> test that safeguard under adversarial pressure to find where it bends or breaks.</li>
 <li><strong>Lab teams</strong> adopt shared workload identities and receipt formats so safety doesn't punish the first mover.</li>
 <li><strong>Policy makers</strong> write those proven receipts and appeal rights into public procurement contracts.</li>
-<li><strong>Citizens, clinics, co-ops, and unions</strong> ask a simple question before adopting any tool: <em>who does this assistant answer to, and can we see the receipt?</em></li>
+<li><strong>Civil-society groups</strong> pool member demand across co-ops, clinics, and unions so nobody bargains alone.</li>
+<li><strong>Households and citizens</strong> ask a simple question before adopting any tool: <em>who does this assistant answer to, and can we see the receipt?</em></li>
 </ul>
-<p>Across our designs, a household's private ledger stays at home so human judgment stays in charge, while outward errands post selective signed proofs to a public ledger on an accountable network for software agents. Short-lived permission leases and physical cutoff relays bound every tool call, while consenting people coordinate mutual credit, cooperative share rules, 348 organisations in Shared Horizon, and 90 lab overlays.</p>
+<p>Across our designs, a household's private ledger stays at home so human judgment stays in charge, while outward errands post selective signed proofs to a public ledger on an accountable network for software agents. Short-lived permission leases and physical cutoff relays bound every tool call, while consenting people coordinate mutual credit, cooperative share rules, 348 organisations in Shared Horizon, and 93 lab overlays.</p>
 
 <figure class="explainer" id="ex-five-roles-cycle">
   <style>
@@ -83,6 +84,10 @@ lede: Keeping software agents accountable takes six distinct roles working in th
     :root[data-theme="dark"] #ex-five-roles-cycle text[fill="#8B5A2B"],
     [data-theme="dark"] #ex-five-roles-cycle text[fill="#B85C38"],
     [data-theme="dark"] #ex-five-roles-cycle text[fill="#8B5A2B"] { fill: #F09D82; }
+    :root[data-theme="dark"] #ex-five-roles-cycle line[stroke="#0B3F30"],
+    [data-theme="dark"] #ex-five-roles-cycle line[stroke="#0B3F30"] { stroke: #8FD4B6; }
+    :root[data-theme="dark"] #ex-five-roles-cycle polygon[fill="#0B3F30"],
+    [data-theme="dark"] #ex-five-roles-cycle polygon[fill="#0B3F30"] { fill: #8FD4B6; }
     #ex-five-roles-cycle svg {
       display: block;
       width: 100%;
@@ -120,180 +125,164 @@ lede: Keeping software agents accountable takes six distinct roles working in th
       }
     }
   </style>
-  <svg class="diagram-desktop" viewBox="0 0 720 440" width="100%" role="img" aria-labelledby="ex-five-roles-title ex-five-roles-desc">
-    <title id="ex-five-roles-title">The Five Roles Civic Reinforcement Cycle</title>
-    <desc id="ex-five-roles-desc">A five-stage feedback loop showing how Builders, Researchers, AI Labs, Policy Makers, and Citizens reinforce each other to create accountable artificial intelligence.</desc>
-    <defs>
-      <marker id="civic-arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-        <path d="M 0 1 L 9 5 L 0 9 z" fill="#0B3F30"/>
-      </marker>
-    </defs>
+  <svg class="diagram-desktop" viewBox="0 0 720 460" width="100%" role="img" aria-labelledby="ex-five-roles-title ex-five-roles-desc">
+    <title id="ex-five-roles-title">The Six Roles Civic Reinforcement Cycle</title>
+    <desc id="ex-five-roles-desc">A six-stage feedback loop showing how Builders, Researchers, AI Labs, Policy Makers, Civil Society, and Citizens reinforce each other to create accountable artificial intelligence.</desc>
 
-    <!-- Outer backing -->
-    <rect x="2" y="2" width="716" height="436" rx="14" fill="#F3E8D8" stroke="#E1D3C0" stroke-width="1.5"/>
+    <rect x="2" y="2" width="716" height="456" rx="14" fill="#F3E8D8" stroke="#E1D3C0" stroke-width="1.5"/>
 
-    <!-- Central medallion -->
-    <rect x="220" y="165" width="280" height="106" rx="14" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.75"/>
-    <text class="ex-mono" x="360" y="196" text-anchor="middle" font-size="11" font-weight="700" fill="#0B3F30">THE REINFORCEMENT CYCLE</text>
-    <text x="360" y="222" text-anchor="middle" font-size="12.5" font-weight="600" fill="#131014">No single group solves this alone.</text>
-    <text x="360" y="244" text-anchor="middle" font-size="11.5" fill="#5E564B">Every practical step unblocks the next.</text>
+    <rect x="234" y="182" width="252" height="96" rx="14" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.75"/>
+    <text class="ex-mono" x="360" y="210" text-anchor="middle" font-size="11" font-weight="700" fill="#0B3F30">THE REINFORCEMENT CYCLE</text>
+    <text x="360" y="234" text-anchor="middle" font-size="12" font-weight="600" fill="#131014">No single group solves this alone.</text>
+    <text x="360" y="256" text-anchor="middle" font-size="11" fill="#5E564B">Every practical step unblocks the next.</text>
 
-    <!-- Connecting curved arrows -->
-    <!-- Node 1 -> Node 2 -->
-    <path d="M 492 56 C 555 56, 588 78, 595 114" stroke="#0B3F30" stroke-width="1.75" fill="none" marker-end="url(#civic-arrow)"/>
-    <!-- Node 2 -> Node 3 -->
-    <path d="M 595 212 C 595 248, 578 280, 566 314" stroke="#0B3F30" stroke-width="1.75" fill="none" marker-end="url(#civic-arrow)"/>
-    <!-- Node 3 -> Node 4 -->
-    <path d="M 436 364 L 286 364" stroke="#0B3F30" stroke-width="1.75" fill="none" marker-end="url(#civic-arrow)"/>
-    <!-- Node 4 -> Node 5 -->
-    <path d="M 154 316 C 142 282, 125 248, 125 212" stroke="#0B3F30" stroke-width="1.75" fill="none" marker-end="url(#civic-arrow)"/>
-    <!-- Node 5 -> Node 1 -->
-    <path d="M 125 114 C 132 78, 165 56, 224 56" stroke="#0B3F30" stroke-width="1.75" fill="none" marker-end="url(#civic-arrow)"/>
+    <line x1="484" y1="62" x2="556" y2="100" stroke="#0B3F30" stroke-width="1.75"/>
+    <polygon points="562,103 552,103 557,95" fill="#0B3F30"/>
+    <line x1="602" y1="190" x2="602" y2="264" stroke="#0B3F30" stroke-width="1.75"/>
+    <polygon points="602,270 597,262 607,262" fill="#0B3F30"/>
+    <line x1="556" y1="358" x2="490" y2="394" stroke="#0B3F30" stroke-width="1.75"/>
+    <polygon points="484,397 490,389 494,397" fill="#0B3F30"/>
+    <line x1="236" y1="397" x2="170" y2="361" stroke="#0B3F30" stroke-width="1.75"/>
+    <polygon points="164,358 174,358 169,366" fill="#0B3F30"/>
+    <line x1="118" y1="270" x2="118" y2="196" stroke="#0B3F30" stroke-width="1.75"/>
+    <polygon points="118,190 113,198 123,198" fill="#0B3F30"/>
+    <line x1="164" y1="103" x2="230" y2="65" stroke="#0B3F30" stroke-width="1.75"/>
+    <polygon points="236,62 230,70 226,62" fill="#0B3F30"/>
 
-    <!-- Node 1: Builders -->
     <g>
-      <rect x="228" y="18" width="264" height="76" rx="10" fill="#FAF3EA" stroke="#B85C38" stroke-width="1.5"/>
-      <rect x="238" y="26" width="98" height="20" rx="10" fill="#B85C38"/>
-      <text class="ex-mono" x="287" y="40" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">01 · BUILDERS</text>
-      <text x="344" y="41" font-size="11.5" font-weight="600" fill="#131014">Clean Open-Source Code</text>
-      <text x="238" y="68" font-size="11" fill="#5E564B">Proves safeguards work in testable code</text>
+      <rect x="236" y="16" width="248" height="74" rx="10" fill="#FAF3EA" stroke="#B85C38" stroke-width="1.5"/>
+      <rect x="246" y="24" width="102" height="20" rx="10" fill="#B85C38"/>
+      <text class="ex-mono" x="297" y="38" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">01 · BUILDERS</text>
+      <text x="356" y="39" font-size="11.5" font-weight="600" fill="#131014">Open-Source Code</text>
+      <text x="246" y="66" font-size="11" fill="#5E564B">Proves safeguards work in clean code</text>
     </g>
 
-    <!-- Node 2: Researchers -->
     <g>
-      <rect x="500" y="120" width="206" height="88" rx="10" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.5"/>
-      <rect x="510" y="128" width="126" height="20" rx="10" fill="#0B3F30"/>
-      <text class="ex-mono" x="573" y="142" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">02 · RESEARCHERS</text>
-      <text x="510" y="167" font-size="11.5" font-weight="600" fill="#131014">Adversarial Audits</text>
-      <text x="510" y="188" font-size="11" fill="#5E564B">Stress-tests failure boundaries</text>
+      <rect x="498" y="106" width="208" height="84" rx="10" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.5"/>
+      <rect x="508" y="114" width="126" height="20" rx="10" fill="#0B3F30"/>
+      <text class="ex-mono" x="571" y="128" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">02 · RESEARCHERS</text>
+      <text x="508" y="154" font-size="11.5" font-weight="600" fill="#131014">Adversarial Audits</text>
+      <text x="508" y="174" font-size="11" fill="#5E564B">Tests where boundaries bend</text>
     </g>
 
-    <!-- Node 3: AI Labs -->
     <g>
-      <rect x="440" y="320" width="232" height="88" rx="10" fill="#FAF3EA" stroke="#1F6B4E" stroke-width="1.5"/>
-      <rect x="450" y="328" width="108" height="20" rx="10" fill="#1F6B4E"/>
-      <text class="ex-mono" x="504" y="342" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">03 · LAB TEAMS</text>
-      <text x="450" y="367" font-size="11.5" font-weight="600" fill="#131014">Shared Identity Standards</text>
-      <text x="450" y="388" font-size="11" fill="#5E564B">Embeds scoped leases &amp; receipts</text>
+      <rect x="498" y="272" width="208" height="84" rx="10" fill="#FAF3EA" stroke="#1F6B4E" stroke-width="1.5"/>
+      <rect x="508" y="280" width="112" height="20" rx="10" fill="#1F6B4E"/>
+      <text class="ex-mono" x="564" y="294" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">03 · LAB TEAMS</text>
+      <text x="508" y="320" font-size="11.5" font-weight="600" fill="#131014">Shared Identity Rules</text>
+      <text x="508" y="340" font-size="11" fill="#5E564B">Embeds scoped leases &amp; logs</text>
     </g>
 
-    <!-- Node 4: Policy Makers -->
     <g>
-      <rect x="48" y="320" width="234" height="88" rx="10" fill="#FAF3EA" stroke="#8B5A2B" stroke-width="1.5"/>
-      <rect x="58" y="328" width="134" height="20" rx="10" fill="#8B5A2B"/>
-      <text class="ex-mono" x="125" y="342" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">04 · POLICY MAKERS</text>
-      <text x="58" y="367" font-size="11.5" font-weight="600" fill="#131014">Procurement Levers</text>
-      <text x="58" y="388" font-size="11" fill="#5E564B">Requires receipts in public rules</text>
+      <rect x="236" y="370" width="248" height="74" rx="10" fill="#FAF3EA" stroke="#8B5A2B" stroke-width="1.5"/>
+      <rect x="246" y="378" width="134" height="20" rx="10" fill="#8B5A2B"/>
+      <text class="ex-mono" x="313" y="392" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">04 · POLICY MAKERS</text>
+      <text x="388" y="393" font-size="11.5" font-weight="600" fill="#131014">Public Rules</text>
+      <text x="246" y="420" font-size="11" fill="#5E564B">Writes receipts &amp; appeals into law</text>
     </g>
 
-    <!-- Node 5-6: Civil Society & Citizens -->
     <g>
-      <rect x="14" y="120" width="206" height="88" rx="10" fill="#FAF3EA" stroke="#5E564B" stroke-width="1.5"/>
-      <rect x="24" y="128" width="186" height="20" rx="10" fill="#5E564B"/>
-      <text class="ex-mono" x="117" y="142" text-anchor="middle" font-size="10.5" font-weight="700" fill="#FAF3EA">05-06 · CIVIC &amp; PUBLIC</text>
-      <text x="24" y="167" font-size="11.5" font-weight="600" fill="#131014">Democratic Demand</text>
-      <text x="24" y="188" font-size="11" fill="#5E564B">Asks who assistants serve</text>
+      <rect x="14" y="272" width="208" height="84" rx="10" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.5"/>
+      <rect x="24" y="280" width="134" height="20" rx="10" fill="#0B3F30"/>
+      <text class="ex-mono" x="91" y="294" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">05 · CIVIL SOCIETY</text>
+      <text x="24" y="320" font-size="11.5" font-weight="600" fill="#131014">Co-ops, Unions &amp; Clinics</text>
+      <text x="24" y="340" font-size="11" fill="#5E564B">Pools member bargaining rules</text>
+    </g>
+
+    <g>
+      <rect x="14" y="106" width="208" height="84" rx="10" fill="#FAF3EA" stroke="#5E564B" stroke-width="1.5"/>
+      <rect x="24" y="114" width="106" height="20" rx="10" fill="#5E564B"/>
+      <text class="ex-mono" x="77" y="128" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">06 · CITIZENS</text>
+      <text x="24" y="154" font-size="11.5" font-weight="600" fill="#131014">Household Demand</text>
+      <text x="24" y="174" font-size="11" fill="#5E564B">Asks who assistants serve</text>
     </g>
   </svg>
 
-  <svg class="diagram-mobile" viewBox="0 0 330 760" width="100%" role="img" aria-labelledby="ex-five-roles-m-title ex-five-roles-m-desc">
-    <title id="ex-five-roles-m-title">The Five Roles Civic Reinforcement Cycle (Mobile)</title>
-    <desc id="ex-five-roles-m-desc">Stacked mobile layout showing how Builders, Researchers, AI Labs, Policy Makers, and Citizens reinforce each other in a closed accountability cycle.</desc>
-    <defs>
-      <marker id="civic-arrow-m" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-        <path d="M 0 1 L 9 5 L 0 9 z" fill="#0B3F30"/>
-      </marker>
-    </defs>
+  <svg class="diagram-mobile" viewBox="0 0 308 800" width="100%" role="img" aria-labelledby="ex-five-roles-m-title ex-five-roles-m-desc">
+    <title id="ex-five-roles-m-title">The Six Roles Civic Reinforcement Cycle (Mobile)</title>
+    <desc id="ex-five-roles-m-desc">Stacked mobile layout showing how Builders, Researchers, AI Labs, Policy Makers, Civil Society, and Citizens reinforce each other in a closed accountability cycle.</desc>
+    <rect x="0" y="0" width="308" height="800" fill="#FAF3EA"/>
 
-    <!-- Header card: Central Medallion -->
-    <rect x="8" y="10" width="298" height="74" rx="12" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.75"/>
-    <text class="ex-mono" x="157" y="34" text-anchor="middle" font-size="11" font-weight="700" fill="#0B3F30">THE REINFORCEMENT CYCLE</text>
-    <text x="157" y="54" text-anchor="middle" font-size="12" font-weight="600" fill="#131014">No single group solves this alone.</text>
-    <text x="157" y="72" text-anchor="middle" font-size="11.5" fill="#5E564B">Every practical step unblocks the next.</text>
+    <rect x="10" y="10" width="288" height="62" rx="10" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.75"/>
+    <text class="ex-mono" x="154" y="34" text-anchor="middle" font-size="11" font-weight="700" fill="#0B3F30">THE REINFORCEMENT CYCLE</text>
+    <text x="154" y="56" text-anchor="middle" font-size="11.5" fill="#5E564B">Every practical step unblocks the next.</text>
 
-    <!-- Connector: Header -> Card 1 -->
-    <line x1="157" y1="84" x2="157" y2="100" stroke="#0B3F30" stroke-width="1.75"/>
-    <polygon points="153,98 161,98 157,103" fill="#0B3F30"/>
+    <line x1="154" y1="72" x2="154" y2="88" stroke="#0B3F30" stroke-width="1.75"/>
+    <polygon points="150,86 158,86 154,92" fill="#0B3F30"/>
 
-    <!-- Step 1: Builders -->
     <g>
-      <rect x="8" y="104" width="298" height="92" rx="12" fill="#FAF3EA" stroke="#B85C38" stroke-width="1.5"/>
-      <rect x="18" y="116" width="98" height="20" rx="10" fill="#B85C38"/>
-      <text class="ex-mono" x="67" y="130" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">1. BUILDERS</text>
-      <text x="124" y="131" font-size="12.5" font-weight="600" fill="#131014">Open-source code</text>
-      <text x="18" y="156" font-size="11.5" fill="#5E564B">Proves safeguards work in testable code.</text>
-      <text x="18" y="176" font-size="11" font-weight="600" fill="#B85C38">Gives researchers working tools to audit.</text>
+      <rect x="10" y="92" width="288" height="80" rx="10" fill="#FAF3EA" stroke="#B85C38" stroke-width="1.5"/>
+      <rect x="20" y="102" width="104" height="20" rx="10" fill="#B85C38"/>
+      <text class="ex-mono" x="72" y="116" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">01 · BUILDERS</text>
+      <text x="132" y="117" font-size="12" font-weight="600" fill="#131014">Open-source code</text>
+      <text x="20" y="148" font-size="11" fill="#5E564B">Proves safeguards work in testable code.</text>
     </g>
 
-    <!-- Connector: Card 1 -> Card 2 -->
-    <line x1="157" y1="196" x2="157" y2="212" stroke="#0B3F30" stroke-width="1.75"/>
-    <polygon points="153,210 161,210 157,215" fill="#0B3F30"/>
+    <line x1="154" y1="172" x2="154" y2="188" stroke="#0B3F30" stroke-width="1.75"/>
+    <polygon points="150,186 158,186 154,192" fill="#0B3F30"/>
 
-    <!-- Step 2: Researchers -->
     <g>
-      <rect x="8" y="216" width="298" height="92" rx="12" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.5"/>
-      <rect x="18" y="228" width="124" height="20" rx="10" fill="#0B3F30"/>
-      <text class="ex-mono" x="80" y="242" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">2. RESEARCHERS</text>
-      <text x="150" y="243" font-size="12.5" font-weight="600" fill="#131014">Adversarial audits</text>
-      <text x="18" y="268" font-size="11.5" fill="#5E564B">Stress-tests failure boundaries and leaks.</text>
-      <text x="18" y="288" font-size="11" font-weight="600" fill="#0B3F30">Hands labs tested safety benchmarks.</text>
+      <rect x="10" y="192" width="288" height="80" rx="10" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.5"/>
+      <rect x="20" y="202" width="126" height="20" rx="10" fill="#0B3F30"/>
+      <text class="ex-mono" x="83" y="216" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">02 · RESEARCHERS</text>
+      <text x="154" y="217" font-size="12" font-weight="600" fill="#131014">Adversarial audits</text>
+      <text x="20" y="248" font-size="11" fill="#5E564B">Tests failure boundaries and leaks.</text>
     </g>
 
-    <!-- Connector: Card 2 -> Card 3 -->
-    <line x1="157" y1="308" x2="157" y2="324" stroke="#0B3F30" stroke-width="1.75"/>
-    <polygon points="153,322 161,322 157,327" fill="#0B3F30"/>
+    <line x1="154" y1="272" x2="154" y2="288" stroke="#0B3F30" stroke-width="1.75"/>
+    <polygon points="150,286 158,286 154,292" fill="#0B3F30"/>
 
-    <!-- Step 3: AI Labs -->
     <g>
-      <rect x="8" y="328" width="298" height="92" rx="12" fill="#FAF3EA" stroke="#1F6B4E" stroke-width="1.5"/>
-      <rect x="18" y="340" width="108" height="20" rx="10" fill="#1F6B4E"/>
-      <text class="ex-mono" x="72" y="354" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">3. LAB TEAMS</text>
-      <text x="134" y="355" font-size="12.5" font-weight="600" fill="#131014">Shared standards</text>
-      <text x="18" y="380" font-size="11.5" fill="#5E564B">Embeds scoped capability leases &amp; receipts.</text>
-      <text x="18" y="400" font-size="11" font-weight="600" fill="#1F6B4E">Gives policy teams workable standards.</text>
+      <rect x="10" y="292" width="288" height="80" rx="10" fill="#FAF3EA" stroke="#1F6B4E" stroke-width="1.5"/>
+      <rect x="20" y="302" width="112" height="20" rx="10" fill="#1F6B4E"/>
+      <text class="ex-mono" x="76" y="316" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">03 · LAB TEAMS</text>
+      <text x="140" y="317" font-size="12" font-weight="600" fill="#131014">Shared standards</text>
+      <text x="20" y="348" font-size="11" fill="#5E564B">Embeds scoped leases and receipts.</text>
     </g>
 
-    <!-- Connector: Card 3 -> Card 4 -->
-    <line x1="157" y1="420" x2="157" y2="436" stroke="#0B3F30" stroke-width="1.75"/>
-    <polygon points="153,434 161,434 157,439" fill="#0B3F30"/>
+    <line x1="154" y1="372" x2="154" y2="388" stroke="#0B3F30" stroke-width="1.75"/>
+    <polygon points="150,386 158,386 154,392" fill="#0B3F30"/>
 
-    <!-- Step 4: Policy Makers -->
     <g>
-      <rect x="8" y="440" width="298" height="92" rx="12" fill="#FAF3EA" stroke="#8B5A2B" stroke-width="1.5"/>
-      <rect x="18" y="452" width="132" height="20" rx="10" fill="#8B5A2B"/>
-      <text class="ex-mono" x="84" y="466" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">4. POLICY MAKERS</text>
-      <text x="158" y="467" font-size="12.5" font-weight="600" fill="#131014">Public rules</text>
-      <text x="18" y="492" font-size="11.5" fill="#5E564B">Requires checkable receipts in procurement.</text>
-      <text x="18" y="512" font-size="11" font-weight="600" fill="#8B5A2B">Protects people with real appeal rights.</text>
+      <rect x="10" y="392" width="288" height="80" rx="10" fill="#FAF3EA" stroke="#8B5A2B" stroke-width="1.5"/>
+      <rect x="20" y="402" width="134" height="20" rx="10" fill="#8B5A2B"/>
+      <text class="ex-mono" x="87" y="416" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">04 · POLICY MAKERS</text>
+      <text x="162" y="417" font-size="12" font-weight="600" fill="#131014">Public rules</text>
+      <text x="20" y="448" font-size="11" fill="#5E564B">Requires receipts in public contracts.</text>
     </g>
 
-    <!-- Connector: Card 4 -> Card 5 -->
-    <line x1="157" y1="532" x2="157" y2="548" stroke="#0B3F30" stroke-width="1.75"/>
-    <polygon points="153,546 161,546 157,551" fill="#0B3F30"/>
+    <line x1="154" y1="472" x2="154" y2="488" stroke="#0B3F30" stroke-width="1.75"/>
+    <polygon points="150,486 158,486 154,492" fill="#0B3F30"/>
 
-    <!-- Step 5: Citizens -->
     <g>
-      <rect x="8" y="552" width="298" height="92" rx="12" fill="#FAF3EA" stroke="#5E564B" stroke-width="1.5"/>
-      <rect x="18" y="564" width="102" height="20" rx="10" fill="#5E564B"/>
-      <text class="ex-mono" x="69" y="578" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">5. CITIZENS</text>
-      <text x="128" y="579" font-size="12.5" font-weight="600" fill="#131014">Democratic voice</text>
-      <text x="18" y="604" font-size="11.5" fill="#5E564B">Asks who tools serve and checks receipts.</text>
-      <text x="18" y="624" font-size="11" font-weight="600" fill="#5E564B">Creates public demand for trustworthy tools.</text>
+      <rect x="10" y="492" width="288" height="80" rx="10" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.5"/>
+      <rect x="20" y="502" width="134" height="20" rx="10" fill="#0B3F30"/>
+      <text class="ex-mono" x="87" y="516" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">05 · CIVIL SOCIETY</text>
+      <text x="162" y="517" font-size="12" font-weight="600" fill="#131014">Member rules</text>
+      <text x="20" y="548" font-size="11" fill="#5E564B">Co-ops and clinics pool fair terms.</text>
     </g>
 
-    <!-- Connector: Card 5 -> Closure Card -->
-    <line x1="157" y1="644" x2="157" y2="660" stroke="#0B3F30" stroke-width="1.75"/>
-    <polygon points="153,658 161,658 157,663" fill="#0B3F30"/>
+    <line x1="154" y1="572" x2="154" y2="588" stroke="#0B3F30" stroke-width="1.75"/>
+    <polygon points="150,586 158,586 154,592" fill="#0B3F30"/>
 
-    <!-- Loop Closure: Civic Accountability -->
     <g>
-      <rect x="8" y="664" width="298" height="82" rx="12" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.5" stroke-dasharray="4 3"/>
-      <text class="ex-mono" x="157" y="688" text-anchor="middle" font-size="11" font-weight="700" fill="#0B3F30">CLOSED CIVIC LOOP</text>
-      <text x="157" y="708" text-anchor="middle" font-size="11.5" font-weight="600" fill="#131014">Democratic demand fuels builder incentives.</text>
-      <text x="157" y="726" text-anchor="middle" font-size="11" fill="#5E564B">Each step makes the next safeguard easier.</text>
+      <rect x="10" y="592" width="288" height="80" rx="10" fill="#FAF3EA" stroke="#5E564B" stroke-width="1.5"/>
+      <rect x="20" y="602" width="106" height="20" rx="10" fill="#5E564B"/>
+      <text class="ex-mono" x="73" y="616" text-anchor="middle" font-size="11" font-weight="700" fill="#FAF3EA">06 · CITIZENS</text>
+      <text x="134" y="617" font-size="12" font-weight="600" fill="#131014">Civic demand</text>
+      <text x="20" y="648" font-size="11" fill="#5E564B">Asks who tools serve and checks logs.</text>
+    </g>
+
+    <line x1="154" y1="672" x2="154" y2="688" stroke="#0B3F30" stroke-width="1.75"/>
+    <polygon points="150,686 158,686 154,692" fill="#0B3F30"/>
+
+    <g>
+      <rect x="10" y="692" width="288" height="72" rx="10" fill="#FAF3EA" stroke="#0B3F30" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <text class="ex-mono" x="154" y="720" text-anchor="middle" font-size="11" font-weight="700" fill="#0B3F30">CLOSED CIVIC LOOP</text>
+      <text x="154" y="744" text-anchor="middle" font-size="11" fill="#5E564B">Citizen demand fuels builder safeguards.</text>
     </g>
   </svg>
-  <figcaption>The civic reinforcement cycle: each role provides the essential ground that makes the next step possible, turning isolated efforts into an enduring public safeguard.</figcaption>
+  <figcaption>The six-role civic reinforcement cycle: each group provides the practical step that unblocks the next, turning isolated efforts into an enduring public safeguard.</figcaption>
 </figure>
 
 <h2>Where things honestly stand</h2>

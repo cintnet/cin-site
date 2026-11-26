@@ -271,8 +271,27 @@ class CommunityFiveGetInvolvedGuidesSpec05AndReportingTests(unittest.TestCase):
             "Chaklam Cheong",
             "Sibo Liu",
             "Yuhai Long",
+            "2509.21712",
+            "2611.25985",
+            "2611.26966",
+            "Bingcan Guo",
+            "Natasha E Blycha",
+            "Deepak Waghmare",
         ):
             self.assertIn(cite, everyone_raw, f"everyone.html missing primary-source citation {cite!r}")
+
+        builders_raw = (CONTENT_DIR / "get-involved/builders.html").read_text(encoding="utf-8")
+        for cite in (
+            "2611.30848",
+            "2507.09089",
+            "2601.20789",
+            "2611.26966",
+            "Frederic Lemieux",
+            "Joel Becker",
+            "Ethan Shen",
+            "Deepak Waghmare",
+        ):
+            self.assertIn(cite, builders_raw, f"builders.html missing primary-source citation {cite!r}")
 
         civil_raw = (CONTENT_DIR / "get-involved/civil-society.html").read_text(encoding="utf-8")
         for cite in (
@@ -335,6 +354,16 @@ class CommunityFiveGetInvolvedGuidesSpec05AndReportingTests(unittest.TestCase):
             "Fujie",
             "Ding",
             "Kanchi",
+            "2611.30848",
+            "2507.09089",
+            "2601.20789",
+            "2611.25985",
+            "2611.26966",
+            "Lemieux",
+            "Becker",
+            "Shen",
+            "Blycha",
+            "Waghmare",
         ):
             self.assertIn(cite, civil_raw, f"civil-society.html missing primary-source citation {cite!r}")
 

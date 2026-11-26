@@ -1106,6 +1106,7 @@ class CrossTeamMetaRSITests(unittest.TestCase):
                     "Thirteen lessons from our sandbox",
                     "Fourteen lessons from our sandbox",
                     "Fifteen lessons from our sandbox",
+                    "Sixteen lessons from our sandbox",
                 ]
             )
         )
