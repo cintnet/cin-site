@@ -1,0 +1,226 @@
+---
+title: Why more pop-up warnings catch fewer AI mistakes
+description: Constant confirmation pop-ups wear out human reviewers and bend safety downward, while over a quarter of AI test tasks contain grading flaws. Safer oversight pauses only where human judgment changes the result, audits the test suite first, and uses two-sided human debate on disputed calls.
+reader: Alignment and safety researchers, hospital and public-agency reviewers, and workplace stewards deciding when an AI assistant should pause for a human.
+takeaway: Flooding human reviewers with confirmation pop-ups wears out attention and catches fewer real hazards. Safer oversight routes pauses to steps where a person changes the outcome, checks the grading tests first, and uses structured human debate on disputed calls.
+template: article
+date: 2026-11-17
+order: 88
+category: Seeing
+minutes: 8
+image: post-why-more-pop-up-warnings-catch-fewer-ai-mistakes.jpg
+image_alt: Soft pastel watercolor vignette on warm cream paper showing set-aside crooked terracotta rulers and silenced brass bells in a wooden tray on the left, and a single sage-green stamped paper pass beside an open linen logbook, magnifying glass, and olive sprig on the right.
+lede: Flooding human reviewers with confirmation pop-ups wears out attention and catches fewer real hazards. Safer oversight routes pauses to steps where a person changes the outcome, checks the grading tests first, and uses structured human debate on disputed calls.
+---
+<h2>Why constant approval pop-ups bend safety downward</h2>
+
+<p>Flooding human reviewers with confirmation pop-ups wears out attention and catches fewer real hazards. Safer oversight routes pauses to steps where a person changes the outcome, checks the grading tests first, and uses structured human debate on disputed calls.</p>
+
+<p>On a busy hospital night ward, bedside monitors that beep every ninety seconds for loose tape train tired nurses to mute the speaker before a real emergency strikes. Workplace software creates the same hazard when it treats human attention like an endless tap.</p>
+
+<p>Standard AI guardrails pause whenever a step looks risky and wait for a person to click "Approve." Researcher Emre Turan tested the two hidden assumptions behind that habit across 125 adversarial agent actions.<sup><a href="#fn1">1</a></sup> Human reviewers agreed only moderately on which actions counted as risky, reaching a Fleiss' kappa agreement score of 0.52.<sup><a href="#fn1">1</a></sup></p>
+
+<p>When Turan modeled how reviewers tire as alerts pile up, realized safety followed an upside-down U curve.<sup><a href="#fn1">1</a></sup> Beyond a moderate review load, sending more warnings to people made the overall system less safe.<sup><a href="#fn1">1</a></sup> Worse, an attacker could trigger a burst of minor alerts to tire the reviewer and slip a harmful command past the gate.<sup><a href="#fn1">1</a></sup></p>
+
+<h2>When a quarter of the yardsticks are bent</h2>
+
+<p>Teams often try to tune those warning gates using public AI benchmarks before launch. That backup check breaks when the yardsticks themselves contain errors.</p>
+
+<p>Junlin Wang and colleagues built an automated audit tool to inspect individual tasks across 168 modern AI benchmarks spanning nine fields.<sup><a href="#fn2">2</a></sup> They uncovered serious flaws in over 25.7 percent of the evaluated tasks, verified by expert checks and upstream bug reports.<sup><a href="#fn2">2</a></sup></p>
+
+<p>Expert-written tasks carried vague instructions, clashing software packages, and wrong answer keys that ordinary spot-checks missed.<sup><a href="#fn2">2</a></sup> Removing those broken tasks shifted model rankings and raised average scores on SWE-bench Verified by 9.9 percent and Terminal-Bench 2 by 9.6 percent.<sup><a href="#fn2">2</a></sup></p>
+
+<figure class="explainer" id="ex-popup-fatigue-vs-intervention-triage">
+  <style>
+    #ex-popup-fatigue-vs-intervention-triage {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-warn: #9E4726;
+      margin: 2.1rem 0;
+      padding: 1.35rem 0 1.15rem;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid var(--ex-rule);
+      border-bottom: 1px solid var(--ex-rule);
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--ex-ink);
+    }
+    :root[data-theme="dark"] #ex-popup-fatigue-vs-intervention-triage {
+      --ex-paper: #1C1A24;
+      --ex-slip: #262331;
+      --ex-ink: #EDE6DC;
+      --ex-muted: #C2B8AC;
+      --ex-rule: #322E3D;
+      --ex-signal: #8FD4B6;
+      --ex-warn: #F09D82;
+    }
+    :root[data-theme="light"] #ex-popup-fatigue-vs-intervention-triage {
+      --ex-paper: #FAF3EA;
+      --ex-slip: #F3E8D8;
+      --ex-ink: #131014;
+      --ex-muted: #5E564B;
+      --ex-rule: #D8C8B2;
+      --ex-signal: #0B3F30;
+      --ex-warn: #9E4726;
+    }
+    #ex-popup-fatigue-vs-intervention-triage svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    #ex-popup-fatigue-vs-intervention-triage .ex-mono {
+      font-family: ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace;
+      letter-spacing: 0.05em;
+    }
+    #ex-popup-fatigue-vs-intervention-triage .diagram-desktop { display: block; width: 100%; height: auto; }
+    #ex-popup-fatigue-vs-intervention-triage .diagram-mobile { display: none; width: 100%; height: auto; }
+    #ex-popup-fatigue-vs-intervention-triage figcaption {
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--ex-rule);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ex-muted);
+      text-align: left;
+    }
+    @media (max-width: 600px) {
+      #ex-popup-fatigue-vs-intervention-triage .diagram-desktop { display: none; }
+      #ex-popup-fatigue-vs-intervention-triage .diagram-mobile { display: block; }
+    }
+  </style>
+  <svg class="diagram-desktop" viewBox="0 0 700 336" role="img" aria-labelledby="ex-popup-triage-title ex-popup-triage-desc">
+    <title id="ex-popup-triage-title">Pop-up alarm floods and unaudited tests compared with intervention triage and pre-audited benchmarks</title>
+    <desc id="ex-popup-triage-desc">Left column shows static risk pop-ups tiring reviewers onto an inverted-U curve while 25.7 percent defective benchmark tasks skew rankings. Right column shows pre-run test audits, automatic scope stops, and intervention-value handoffs cutting interruptions from 48 to 35 percent while raising success from 37 to 45 percent.</desc>
+    <line x1="350" y1="14" x2="350" y2="322" stroke="var(--ex-rule)" stroke-width="1"/>
+    <g>
+      <rect x="16" y="18" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="30" y="24" font-size="11" font-weight="700" fill="var(--ex-warn)">FRAGILE: ALARM FLOOD &amp; BROKEN TESTS</text>
+      <text x="16" y="42" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Raw risk pop-ups plus uninspected test suites</text>
+      <line x1="16" y1="52" x2="334" y2="52" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <rect x="24" y="70" width="296" height="58" fill="none" stroke="var(--ex-warn)" stroke-width="1.5"/>
+      <text x="38" y="92" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Unchecked Benchmark Yardsticks</text>
+      <text x="38" y="110" font-size="11" fill="var(--ex-muted)">Over 25.7% of tasks hold grading or setup bugs</text>
+      <line x1="172" y1="128" x2="172" y2="138" stroke="var(--ex-warn)" stroke-width="1.4"/>
+      <polygon points="172,143 168,136 176,136" fill="var(--ex-warn)"/>
+      <text x="24" y="156" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Constant Risk-Score Pop-Ups</text>
+      <text x="24" y="174" font-size="11" fill="var(--ex-muted)">Reviewers agree moderately (kappa = 0.52)</text>
+      <line x1="172" y1="180" x2="172" y2="190" stroke="var(--ex-warn)" stroke-width="1.4"/>
+      <polygon points="172,195 168,188 176,188" fill="var(--ex-warn)"/>
+      <text x="24" y="206" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Inverted-U Reviewer Fatigue</text>
+      <text x="24" y="224" font-size="11" fill="var(--ex-muted)">Alert floods dull focus and let hazards slip</text>
+      <line x1="16" y1="274" x2="334" y2="274" stroke="var(--ex-rule)" stroke-width="1"/>
+      <text x="16" y="298" font-size="11" font-weight="700" fill="var(--ex-warn)">Result: Rubber-stamping and skewed rankings</text>
+    </g>
+    <g>
+      <rect x="366" y="18" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="380" y="24" font-size="11" font-weight="700" fill="var(--ex-signal)">BOUNDED: TRIAGE &amp; AUDITED YARDSTICKS</text>
+      <text x="366" y="42" font-size="11.5" font-weight="600" fill="var(--ex-muted)">Quarantined test bugs plus budgeted human calls</text>
+      <line x1="366" y1="52" x2="684" y2="52" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <rect x="374" y="70" width="296" height="58" fill="none" stroke="var(--ex-signal)" stroke-width="1.5"/>
+      <text x="388" y="92" font-size="12" font-weight="700" fill="var(--ex-ink)">1. Pre-Run Benchmark Defect Audit</text>
+      <text x="388" y="110" font-size="11" fill="var(--ex-muted)">Quarantine broken tasks before scoring models</text>
+      <line x1="522" y1="128" x2="522" y2="138" stroke="var(--ex-signal)" stroke-width="1.4"/>
+      <polygon points="522,143 518,136 526,136" fill="var(--ex-signal)"/>
+      <text x="374" y="156" font-size="11.5" font-weight="700" fill="var(--ex-ink)">2. Intervention-Value Routing</text>
+      <text x="374" y="174" font-size="11" fill="var(--ex-muted)">Handoffs drop 48% to 35%; success hits 45%</text>
+      <line x1="522" y1="180" x2="522" y2="190" stroke="var(--ex-signal)" stroke-width="1.4"/>
+      <polygon points="522,195 518,188 526,188" fill="var(--ex-signal)"/>
+      <text x="374" y="206" font-size="11.5" font-weight="700" fill="var(--ex-ink)">3. Weighted Human Debate on Hard Calls</text>
+      <text x="374" y="224" font-size="11" fill="var(--ex-muted)">Opposing briefs sharpen human judge accuracy</text>
+      <line x1="366" y1="274" x2="684" y2="274" stroke="var(--ex-rule)" stroke-width="1"/>
+      <text x="366" y="298" font-size="11" font-weight="700" fill="var(--ex-signal)">Outcome: Protected focus and honest scores</text>
+    </g>
+  </svg>
+  <svg class="diagram-mobile" viewBox="0 0 300 410" role="img" aria-labelledby="ex-popup-triage-m-title ex-popup-triage-m-desc">
+    <title id="ex-popup-triage-m-title">Pop-up alarm floods versus budgeted intervention triage on mobile</title>
+    <desc id="ex-popup-triage-m-desc">Stacked mobile diagram comparing alert fatigue and broken tests with pre-run benchmark audits, intervention-value pauses, and weighted human debate.</desc>
+    <rect x="2" y="2" width="296" height="406" rx="6" fill="var(--ex-paper)"/>
+    <g>
+      <rect x="10" y="16" width="6" height="6" fill="var(--ex-warn)"/>
+      <text class="ex-mono" x="22" y="22" font-size="11" font-weight="700" fill="var(--ex-warn)">ALARM FLOOD &amp; BROKEN TESTS</text>
+      <line x1="10" y1="32" x2="290" y2="32" stroke="var(--ex-warn)" stroke-width="1.25"/>
+      <text x="10" y="54" font-size="11.5" font-weight="700" fill="var(--ex-ink)">25.7% of test tasks have setup bugs</text>
+      <text x="10" y="72" font-size="11" fill="var(--ex-muted)">Moderate risk agreement (kappa = 0.52)</text>
+      <text x="10" y="92" font-size="11" fill="var(--ex-warn)">Inverted-U fatigue dulls human catch</text>
+    </g>
+    <line x1="150" y1="104" x2="150" y2="130" stroke="var(--ex-rule)" stroke-width="1.5"/>
+    <polygon points="150,136 146,129 154,129" fill="var(--ex-warn)"/>
+    <g>
+      <rect x="10" y="148" width="6" height="6" fill="var(--ex-signal)"/>
+      <text class="ex-mono" x="22" y="154" font-size="11" font-weight="700" fill="var(--ex-signal)">BUDGETED TRIAGE &amp; AUDITS</text>
+      <line x1="10" y1="164" x2="290" y2="164" stroke="var(--ex-signal)" stroke-width="1.25"/>
+      <text x="10" y="188" font-size="11.5" font-weight="700" fill="var(--ex-ink)">Quarantine broken tasks before scoring</text>
+      <text x="10" y="206" font-size="11" fill="var(--ex-muted)">Handoffs drop 48% to 35% on 300 tasks</text>
+      <text x="10" y="226" font-size="11" fill="var(--ex-muted)">Online completion climbs 37% to 45%</text>
+      <text x="10" y="246" font-size="11" fill="var(--ex-signal)">Weighted debate aids human reviewers</text>
+    </g>
+    <line x1="150" y1="258" x2="150" y2="274" stroke="var(--ex-signal)" stroke-width="1.5"/>
+    <polygon points="150,280 146,273 154,273" fill="var(--ex-signal)"/>
+    <line x1="10" y1="286" x2="290" y2="286" stroke="var(--ex-rule)" stroke-width="1"/>
+    <text x="10" y="312" font-size="11" font-weight="700" fill="var(--ex-signal)">Rule: Block out-of-bounds calls locally;</text>
+    <text x="10" y="330" font-size="11" font-weight="700" fill="var(--ex-signal)">spend human focus where step-ins help.</text>
+    <line x1="150" y1="340" x2="150" y2="356" stroke="var(--ex-signal)" stroke-width="1.5"/>
+    <polygon points="150,362 146,355 154,355" fill="var(--ex-signal)"/>
+  </svg>
+  <figcaption>Unchecked benchmark tasks and constant risk pop-ups wear out reviewers and distort scores (left). Auditing test suites up front and routing pauses by expected step-in gain cuts interruptions while catching more real errors (right).</figcaption>
+</figure>
+
+<h2>Pause where human judgment changes the result</h2>
+
+<p>We propose treating human review time as a strict daily budget protected by three rules in the surrounding software. Clear out-of-bounds actions, such as touching an unapproved bank account or patient folder, should fail automatically under expiring task passes without bothering a person.</p>
+
+<p>Second, pauses should route by whether stepping in changes the result. Chubin Zhang and colleagues showed that two situations with identical failure odds can differ sharply in how much an intervention helps.<sup><a href="#fn3">3</a></sup></p>
+
+<p>On the ALFWorld benchmark, training the router to predict intervention gain cut decision regret from 0.51 down to 0.09 while holding features fixed.<sup><a href="#fn3">3</a></sup> Across 300 unseen online tasks, that controller handed off less often, dropping from 48 percent to 35 percent, while raising task completion from 37 percent to 45 percent.<sup><a href="#fn3">3</a></sup></p>
+
+<p>Third, when a hard judgment call reaches human reviewers, hearing one confident recommendation invites rubber-stamping. Maria Victoria Carro and colleagues found that structured two-sided debate improved human judge accuracy above prior beliefs, with weighted voting scoring highest, while single-advisor consultancy brought zero comparable gain.<sup><a href="#fn4">4</a></sup></p>
+
+<h2>What safety teams, public buyers, and stewards can put in place</h2>
+
+<p>Organizations deploying workplace or civic assistants can put all three protections to work now:</p>
+
+<ol>
+<li><strong>Audit every evaluation suite before trusting its scores.</strong> Run automated defect checks across agency test sets and hold back tasks with broken grading logic or environment clashes before comparing vendors.<sup><a href="#fn2">2</a></sup></li>
+<li><strong>Cap daily pop-up rates and block out-of-scope calls automatically.</strong> Enforce hard permission boundaries in software passes, and save human prompts for moments where a step-in changes the outcome.<sup><a href="#fn1">1</a>,<a href="#fn3">3</a></sup> You can test this trade-off live in our <a href="/labs/simulations/">Simulations</a> wind tunnel.</li>
+<li><strong>Use structured two-sided briefs with human reviewers on disputed calls.</strong> Present opposing arguments to diverse human reviewers using weighted voting on high-stakes exceptions, as mapped in <a href="/labs/shared-horizon/">Shared Horizon</a> and our guide <a href="/get-involved/researchers/">for researchers</a>.<sup><a href="#fn4">4</a></sup></li>
+</ol>
+
+<h2>The strongest objection, and what remains unproven</h2>
+
+<p>A fair objection is that limiting pop-up prompts could let an unusual mistake slip past while the router stays silent. That risk stays bounded only when narrow, expiring software passes block irreversible external actions automatically before any router weighs in.</p>
+
+<p>Important limits remain open in the primary research. Turan notes that the inverted-U fatigue curve and alert-flooding attack come from mathematical models that still need a live human-subject trial.<sup><a href="#fn1">1</a></sup> Zhang and colleagues report that routing by intervention gain produced only small improvements on two pure math and logic benchmarks.<sup><a href="#fn3">3</a></sup></p>
+
+<p>Carro and colleagues also warn against replacing human reviewers with smaller automated judges.<sup><a href="#fn4">4</a></sup> Weaker language models gained little or lost accuracy during debate, and persuasive wrong arguments still swayed minority judges inside uniform groups.<sup><a href="#fn4">4</a></sup></p>
+
+<p class="muted">Related essays: <a href="/blog/why-long-running-ai-assistants-break-the-house-rules/">why long-running assistants break written house rules</a>, <a href="/blog/between-hovering-and-blind-trust/">milestone checkpoints between hovering and blind trust</a>, and <a href="/blog/five-questions-before-buying-an-ai-agent/">five tender questions before buying an AI agent</a>.</p>
+
+<aside class="for-researchers">
+  <details>
+    <summary>For researchers</summary>
+    <div>
+      <p>Endogenous reviewer fatigue under selective action classification produces an inverted-U safety curve and flooding vulnerability across 125 adversarial actions (<code>Fleiss' kappa = 0.52</code>; Turan, 2026, <code>arXiv:2606.08919</code><sup><a href="#fn1">1</a></sup>). Auto Benchmark Audit uncovers ambiguous specifications, environment conflicts, and flawed grading logic in over <code>25.7%</code> of tasks across 168 benchmarks, shifting SWE-bench Verified and Terminal-Bench 2 averages by <code>9.9%</code> and <code>9.6%</code> (Wang et al., 2026, <code>arXiv:2605.26079</code><sup><a href="#fn2">2</a></sup>). Prefix intervention-utility routing lowers ALFWorld regret from <code>0.51</code> to <code>0.09</code> and cuts online handoffs from <code>48%</code> to <code>35%</code> while lifting success from <code>37%</code> to <code>45%</code> (Zhang et al., 2026, <code>arXiv:2606.21399</code><sup><a href="#fn3">3</a></sup>), while multi-judge weighted human debate outperforms consultancy and weaker LLM supervisors (Carro et al., 2026, <code>arXiv:2610.28539</code><sup><a href="#fn4">4</a></sup>). See our paired-seed model in <code>research/ledger_sim/intervention_value_fatigue_guard_sim.py</code> on <a href="/labs/simulations/">/labs/simulations/</a>.</p>
+      <p>In our five-primitive sociotechnical architecture, capacity-budgeted oversight starts at physical capture. Wearable and trusted-room sensors form a multimodal egocentric and ambient perceptual sensorium fused locally in monotonic hardware <code>Device Time</code> with self-assessed observation confidence. Silicon peripheral attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, <code>IETF RATS</code> RFC 9334<sup><a href="#fn5">5</a></sup>), an optical data diode and optical data diodes, and <code>IEC 61508</code> dead-man relays isolate physical actuators from untrusted loops. Verified captures enter an append-only local <code>C2PA</code><sup><a href="#fn5">5</a></sup> and Merkle episodic memory vault (Endel Tulving; Tulving, 1972) bound by transduction realism (<em>Signed Is Not True</em> across the analog hole; Kevin Fu and Wenyuan Xu; Fu &amp; Xu, 2018, <code>doi:10.1145/3176402</code><sup><a href="#fn5">5</a></sup>; <a href="/labs/sensor-boundary/">/labs/sensor-boundary/</a>). A monogamous <code>1:1</code> principal-bound personal cognitive model and cybernetic exocortex (Joscha Bach; Bach, 2009) draws on the Extended Mind thesis (Andy Clark &amp; David Chalmers; Clark &amp; Chalmers, 1998), the Good Regulator theorem (Conant &amp; Ashby, 1970), interventional causal inference <code>do(x)</code> (Pearl, 2009), and compiler-trust reflection checks (Thompson, 1984) as a statutory information fiduciary (Jack Balkin; Balkin, 2016<sup><a href="#fn6">6</a></sup>) for the biological person that protects unassisted competence.</p>
+      <p>Across the personal Markov blanket (Karl Friston; Friston, 2010; Friston, 2013, <code>doi:10.1098/rsif.2013.0475</code><sup><a href="#fn6">6</a></sup>) and multiscale cognitive light cone (Michael Levin; Levin, 2019), an Object-Capability reference monitor and expiring capability lease (Jack B. Dennis and Earl C. Van Horn; Dennis &amp; Van Horn, 1966, <code>doi:10.1145/365230.365252</code><sup><a href="#fn6">6</a></sup>) separate the Private Autobiographical Ledger from the Public Attestation &amp; Escrow Ledger (Public Attestation and Escrow Ledger). External commitments emit selective zero-knowledge (<code>ZK</code>) boundary proofs and signed <code>IETF SCITT</code> (<code>RFC 9943</code><sup><a href="#fn7">7</a></sup>) receipts (<a href="/labs/protocol-inspector/">/labs/protocol-inspector/</a>) corroborated across independent sensor classes by Byzantine quorum (<code>k &gt;= 3f + 1</code>). Those attested receipts couple sovereign dyads to the Wide Network Ledger for Universal Basic Services, merit-bonded tasks, and plural upkeep valuation (Jacob Meluso; Meluso et al., 2022), alongside reciprocal mutual credit clearing (James Stodder; Stodder, 2009), statutory Meidner cooperative equity (Rudolf Meidner; Meidner, 1978<sup><a href="#fn7">7</a></sup>), frontier-lab overlays (Bracale Syrnikov et al., 2026), and polycentric local self-rule (Elinor Ostrom; Ostrom, 1990<sup><a href="#fn7">7</a></sup>; <a href="/labs/shared-horizon/">/labs/shared-horizon/</a>).</p>
+    </div>
+  </details>
+</aside>
+
+<section class="footnotes">
+  <h2>References</h2>
+  <ol>
+    <li id="fn1">Emre Turan, "Oversight Has a Capacity: Calibrating Agent Guards to a Subjective, Fatiguing Human," arXiv preprint (2026), <a href="https://arxiv.org/abs/2606.08919">arXiv:2606.08919</a>.</li>
+    <li id="fn2">Junlin Wang, Federico Bianchi, Shang Zhu, Fan Nie, Yongchan Kwon, Bhuwan Dhingra, and James Zou, "Automated Benchmark Auditing for AI Agents and Large Language Models," arXiv preprint (2026), <a href="https://arxiv.org/abs/2605.26079">arXiv:2605.26079</a>.</li>
+    <li id="fn3">Chubin Zhang, Zhenglin Wan, Xingrui Yu, Jingxuan Wu, Qi Wen, Pengfei Zhou, Wangbo Zhao, and Ivor Tsang, "Calibration Is Not Control: Intervention Value for LLM-Agent Oversight," arXiv preprint (2026), <a href="https://arxiv.org/abs/2606.21399">arXiv:2606.21399</a>.</li>
+    <li id="fn4">Maria Victoria Carro, Denise Alejandra Mester, Facundo Nieto, Oscar Agustin Stanchi, et al., "Humans Correct Their Judgments Through Debate, but Weaker AI Models Do Not," arXiv preprint (2026), <a href="https://arxiv.org/abs/2610.28539">arXiv:2610.28539</a>.</li>
+    <li id="fn5">Kevin Fu and Wenyuan Xu, "Risks of trusting the physics of sensors," <em>Communications of the ACM</em> 61, no. 2 (2018): 20 to 23, <a href="https://doi.org/10.1145/3176402">doi:10.1145/3176402</a>; Henk Birkholz, Dave Thaler, Michael Richardson, Ned Smith, and Wei Pan, <em>Remote ATtestation procedureS (RATS) Architecture</em>, IETF RFC 9334 (2023), <a href="https://www.rfc-editor.org/rfc/rfc9334">rfc-editor.org/rfc/rfc9334</a>; and Coalition for Content Provenance and Authenticity, <em>C2PA Technical Specification</em>, v2.1 (2024), <a href="https://c2pa.org/specifications/specifications/2.1/specs/C2PA_Specification.html">c2pa.org</a>.</li>
+    <li id="fn6">Jack M. Balkin, "Information Fiduciaries and the First Amendment," <em>UC Davis Law Review</em> 49, no. 4 (2016): 1183 to 1234, <a href="https://lawreview.law.ucdavis.edu/archives/49/4/information-fiduciaries-and-first-amendment">lawreview.law.ucdavis.edu</a>; Karl Friston, "Life as we know it," <em>Journal of the Royal Society Interface</em> 10, no. 86 (2013): 20130475, <a href="https://doi.org/10.1098/rsif.2013.0475">doi:10.1098/rsif.2013.0475</a>; and Jack B. Dennis and Earl C. Van Horn, "Programming semantics for multiprogrammed computations," <em>Communications of the ACM</em> 9, no. 3 (1966): 143 to 155, <a href="https://doi.org/10.1145/365230.365252">doi:10.1145/365230.365252</a>.</li>
+    <li id="fn7">Henk Birkholz, Antoine Delignat-Lavaud, Cedric Fournet, Yogesh Deshpande, and Steve Lasker, <em>An Architecture for Trustworthy and Transparent Digital Supply Chains (SCITT)</em>, IETF RFC 9943 (2026), <a href="https://www.rfc-editor.org/rfc/rfc9943">rfc-editor.org/rfc/rfc9943</a>; Rudolf Meidner, <em>Employee Investment Funds: An Approach to Collective Capital Formation</em> (London: George Allen &amp; Unwin, 1978), <a href="https://archive.org/details/employeeinvestme0000meid">archive.org/details/employeeinvestme0000meid</a>; and Elinor Ostrom, <em>Governing the Commons: The Evolution of Institutions for Collective Action</em> (Cambridge University Press, 1990), <a href="https://doi.org/10.1017/cbo9780511807763">doi:10.1017/cbo9780511807763</a>.</li>
+  </ol>
+</section>
