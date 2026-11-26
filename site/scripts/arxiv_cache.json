@@ -6047,6 +6047,14 @@
   "published": "1998",
   "source": "crossref"
  },
+ "doi:10.1093/epolic/eiae042": {
+  "title": "The simple macroeconomics of AI",
+  "authors": [
+   "Daron Acemoglu"
+  ],
+  "published": "2024",
+  "source": "crossref"
+ },
  "doi:10.1093/restud/rdaa006": {
   "authors": [
    "Erik Lindqvist",
@@ -6528,6 +6536,14 @@
   "published": "2019",
   "source": "crossref"
  },
+ "doi:10.1257/mac.20170105": {
+  "title": "Are We Approaching an Economic Singularity? Information Technology and the Future of Economic Growth",
+  "authors": [
+   "William D. Nordhaus"
+  ],
+  "published": "2021",
+  "source": "crossref"
+ },
  "doi:10.1257/pandp.20181002": {
   "authors": [
    "Steven P. Lalley",
@@ -6713,6 +6729,15 @@
    "Joseph Stiglitz"
   ],
   "published": "2017",
+  "source": "crossref"
+ },
+ "doi:10.3386/w32255": {
+  "title": "Scenarios for the Transition to AGI",
+  "authors": [
+   "Anton Korinek",
+   "Donghyun Suh"
+  ],
+  "published": "2024",
   "source": "crossref"
  },
  "doi:10.3389/fnsys.2022.768201": {

@@ -43,8 +43,11 @@
     });
   });
 
-  var initial = "cin";
-  if (window.location.hash === "#timeline-unfused") initial = "unfused";
-  else if (window.location.hash === "#timeline-compare") initial = "compare";
+  var initial = "compare";
+  var h = window.location.hash;
+  if (h === "#trajectory-a") initial = "oligopoly";
+  else if (h === "#trajectory-b") initial = "gridlock";
+  else if (h === "#trajectory-c") initial = "clearing";
+  else if (h === "#trajectory-compare") initial = "compare";
   setBranch(initial, false);
 })();
