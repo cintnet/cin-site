@@ -3338,6 +3338,16 @@
   "published": "2026-08-27",
   "title": "Sycophancy Suppression Can Impair Rational Updating: Anti-Sycophancy Should Preserve the Ability to Update"
  },
+ "2608.28945": {
+  "title": "Automated Researchers Can Mitigate Well-characterized Alignment Failures",
+  "authors": [
+   "Chen Yueh-Han",
+   "Jiaxin Wen",
+   "Jan Hendrik Kirchner"
+  ],
+  "published": "2026-08-28",
+  "abstract": "Automating alignment research may accelerate progress toward aligned AI, but whether it does is hard to measure. Luckily, many alignment failures, such as deception, sycophancy, and jailbreaks, are already measurable by public benchmarks. We study whether automated alignment researchers (AARs) can post-train to mitigate alignment failures by proposing training methods and data to simultaneously optimize multiple safety benchmarks, while largely preserving general capability. Across 10 alignment failures, the strongest AAR methods significantly reduce the targeted alignment failures and generalize to a held-out benchmark, multi-turn behavioral audits, and models up to 4.7x larger than the target model. As a human baseline, 28 experienced researchers receive up to eight hours to develop one-shot methods for the same benchmarks, but their methods underperform the best AAR methods. Using human ideas as the AARs' initial research direction does not improve performance, suggesting current AARs may not need guidance from experienced researchers. These results suggest that automating alignment research on well-characterized failures may be practical in the near term."
+ },
  "2608.30091": {
   "abstract": "Modern agent frameworks compose planners, tool agents, remote services, and shared specialists into runtime delegation graphs, but their revocation APIs still resemble token or subtree invalidation. When one delegation is withdrawn, the runtime must know which agents lose authority while independently authorized agents keep working. We study this authority consistency problem and introduce VERA (Verifiable Edge Revocation for Agents), a verifier-checkable revocation contract and API emitted by agent-runtime adapters as signed evidence. Under disjunctive authority, revoking edge e invalidates exactly T_intent(e,G) = reach(G) \\ reach(G \\ {e}), the agents whose every authorizing root path used e. Used as a contract, this target exposes two runtime failures: tree cascades over-revoke shared agents, while deployer-scoped cascades under-revoke cross-domain descendants. In a LangGraph framework-replt cells repeated 20 times yield 500compiled-framework traces and 2,000 valid signed delegation decisions; 13/25 cells contain runtime multi-parsharing and 8/25 contain cross-deployer shies 500/500 target proofs, preserves all320 alternate-parent shared-agent cases that tree cascade revokes, and rejects unauthorized signers and omission attacks. Baseline replay over 1,9that holder/node and tree-style targetscannot express this behavior. We further validate schema portability on A2A, AutoGen, and CrewAI artifacts: nine traces, including five executable Cregned delegation events that pass schema and signature checks.",
   "authors": [
