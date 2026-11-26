@@ -1,0 +1,528 @@
+---
+title: "Unified Technical Thesis: Architecture, Alignment, Economics, and Governance"
+heading: "The Collective Intelligence Network: Unified Technical Thesis."
+eyebrow: Research · Canonical Specification
+description: End-to-end technical specification of CIN's five-layer stack: multimodal edge sensing, sealed local memory vaults, 1:1 fiduciary personal models, bifurcated ledgers over dedicated machine transport, audited multilateral clearing, and risk-scaled institutional governance.
+reader: Systems engineers, AI safety researchers, economists, frontier-lab teams, and policy officials evaluating CIN's full technical architecture, formal threat model, reproducible benchmarks, and unsolved limits.
+takeaway: Biological human sovereignty under minimal AGI requires a five-layer open stack from hardware capture to polycentric clearing, coupled via risk-scaled asymmetric transparency and verified against reproducible adversarial simulations.
+template: page
+layout: wide
+section: research
+lede: One end-to-end technical specification uniting hardware provenance, local encrypted memory, 1:1 personal models, scoped machine transport, post-AGI economic clearing, and non-coercive institutional transition.
+---
+<section class="wrap">
+<style>
+  .tt-shell {
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+  .tt-meta-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0 28px;
+    padding: 15px 18px;
+    background: #EFE4D2;
+    border: 1.5px solid #B5A186;
+    border-left: 4px solid #0B3F30;
+  }
+  .tt-meta-copy {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.74rem;
+    color: #2F2A24;
+    line-height: 1.5;
+  }
+  .tt-meta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tt-btn {
+    display: inline-block;
+    padding: 8px 13px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    color: #FAF3EA;
+    background: #0B3F30;
+    border: 1px solid #0B3F30;
+    border-radius: 2px;
+  }
+  .tt-btn.is-secondary {
+    color: #0B3F30;
+    background: #FFFDF9;
+  }
+  .tt-btn:hover,
+  .tt-btn:focus-visible {
+    background: #1F6B4E;
+    border-color: #1F6B4E;
+    color: #FFFDF9;
+  }
+  .tt-toc {
+    margin: 0 0 34px;
+    padding: 16px 20px;
+    background: #FFFDF9;
+    border: 1px solid #C8B59B;
+  }
+  .tt-toc-title {
+    display: block;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #0B3F30;
+    margin-bottom: 10px;
+  }
+  .tt-toc ol {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px 18px;
+    margin: 0;
+    padding-left: 18px;
+    font-size: 0.88rem;
+  }
+  @media (max-width: 820px) {
+    .tt-toc ol { grid-template-columns: 1fr; }
+  }
+  .tt-toc a {
+    color: #131014;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .tt-section {
+    margin: 0 0 40px;
+    padding-top: 26px;
+    border-top: 1.5px solid #D5C4AC;
+  }
+  .tt-kicker {
+    display: inline-block;
+    padding: 3px 8px;
+    margin-bottom: 8px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: #E2EDE6;
+    color: #0B3F30;
+    border: 1px solid #B4CEBF;
+  }
+  .tt-kicker.is-formal {
+    background: #F5E7DD;
+    color: #7D3318;
+    border-color: #D8B49E;
+  }
+  .tt-formal-box {
+    margin: 18px 0 24px;
+    padding: 16px 20px;
+    background: #FFFDF9;
+    border: 1.5px solid #C4B094;
+    border-left: 4px solid #8B3A1B;
+  }
+  .tt-formal-note {
+    margin: 0 0 12px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.74rem;
+    color: #7D3318;
+    line-height: 1.5;
+  }
+  .tt-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin: 18px 0 24px;
+  }
+  @media (max-width: 780px) {
+    .tt-grid-2 { grid-template-columns: 1fr; }
+  }
+  .tt-card {
+    padding: 15px 17px;
+    background: #FFFDF9;
+    border: 1px solid #D5C4AC;
+    border-top: 3px solid #0B3F30;
+  }
+  .tt-card.is-warn {
+    border-top-color: #8B3A1B;
+  }
+  .tt-card h3 {
+    margin: 0 0 7px;
+    font-size: 1.02rem;
+    color: #131014;
+  }
+  .tt-card p {
+    margin: 0 0 7px;
+    font-size: 0.91rem;
+    line-height: 1.52;
+    color: #231F1B;
+  }
+  .tt-card p:last-child { margin-bottom: 0; }
+  .tt-table-wrap {
+    margin: 18px 0 26px;
+    overflow-x: auto;
+    border: 1px solid #C8B59B;
+    background: #FFFDF9;
+  }
+  .tt-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.89rem;
+  }
+  .tt-table th,
+  .tt-table td {
+    padding: 11px 13px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid #E2D4C0;
+  }
+  .tt-table th {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.71rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: #EFE4D2;
+    color: #231F1B;
+  }
+  .tt-svg-fig {
+    margin: 22px 0 28px;
+    padding: 16px;
+    background: #FAF3EA;
+    border: 1px solid #C8B59B;
+  }
+  .tt-svg-fig svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .tt-svg-fig figcaption {
+    margin-top: 10px;
+    font-size: 0.87rem;
+    line-height: 1.5;
+    color: #4A4238;
+  }
+</style>
+
+<div class="tt-shell">
+  <div class="tt-meta-bar" role="region" aria-label="Technical thesis edition metadata">
+    <div class="tt-meta-copy">
+      <strong>VERSION 1.0 · NOVEMBER 26, 2026</strong><br>
+      Unified 5-layer systems specification, alignment defense, economic clearing &amp; reproducible benchmarks
+    </div>
+    <div class="tt-meta-actions">
+      <a class="tt-btn" href="https://github.com/cintnet/cin-research/blob/main/knowledge/CIN-TECHNICAL-THESIS.md">Full Markdown Monograph ↗</a>
+      <a class="tt-btn is-secondary" href="https://github.com/cintnet/cin-protocols">Open Schemas ↗</a>
+      <a class="tt-btn is-secondary" href="/labs/scenario-2035/">Macro Forecast ↗</a>
+    </div>
+  </div>
+
+  <nav class="tt-toc" aria-label="Technical thesis sections">
+    <span class="tt-toc-title">Specification Map</span>
+    <ol>
+      <li><a href="#sec-framing">Framing, Invariants &amp; Adversaries</a></li>
+      <li><a href="#sec-layer1">01 · Perceptual Sensing &amp; Silicon Roots</a></li>
+      <li><a href="#sec-layer2">02 · Sealed Episodic Memory Vault</a></li>
+      <li><a href="#sec-layer3">03 · 1:1 Model &amp; Alignment Control</a></li>
+      <li><a href="#sec-layer4">04 · Split Ledgers &amp; Machine Transport</a></li>
+      <li><a href="#sec-layer5">05 · Post-AGI Clearing &amp; Capital</a></li>
+      <li><a href="#sec-transition">Asymmetric Transparency &amp; Institutions</a></li>
+      <li><a href="#sec-validation">Empirical Benchmarks &amp; Roadmap</a></li>
+      <li><a href="#sec-limits">Unsolved Problems &amp; Self Red-Team</a></li>
+    </ol>
+  </nav>
+
+  <!-- SECTION 1 -->
+  <section class="tt-section prose" id="sec-framing">
+    <span class="tt-kicker">Section 01 · Architecture &amp; Boundaries</span>
+    <h2>Problem statement, five-stage stack, and formal boundaries</h2>
+    <p class="big">Aligning one centralized cloud model to the conflicting preferences of eight billion people is a category error in both cognitive science and constitutional engineering.</p>
+    <p>When one vendor cloud mediates perception, memory, and execution for millions of users, individual agency collapses into average-case compliance and operator engagement goals. CIN shifts the unit of alignment to a sovereign <code>1:1</code> human-model dyad anchored at local hardware and coupled voluntarily to polycentric civic networks.</p>
+    <p>Recent empirical shifts compress the deployment clock. Autonomous software horizons continue expanding, labs push formally verified mathematical proofs straight to GitHub, and key forecasters place minimal AGI above 50 percent before 2028.<sup><a href="#fn1">1</a>,<a href="#fn2">2</a></sup></p>
+
+    <figure class="tt-svg-fig">
+      <svg viewBox="0 0 820 420" width="100%" role="group" aria-labelledby="tt-stack-title tt-stack-desc">
+        <title id="tt-stack-title">Five-stage architecture of the Collective Intelligence Network</title>
+        <desc id="tt-stack-desc">Systems diagram rising from multimodal edge sensing and silicon attestation, through an encrypted local episodic vault and monogamous 1:1 personal model, across a strict statistical privacy boundary into split ledgers over dedicated machine transport, up to polycentric clearing and risk-scaled asymmetric transparency.</desc>
+        <rect x="8" y="8" width="804" height="404" rx="3" fill="#FFFDF9" stroke="#C8B59B" stroke-width="1.2" />
+
+        <!-- Stage 5 -->
+        <rect x="28" y="24" width="764" height="62" rx="2" fill="#E2EDE6" stroke="#0B3F30" stroke-width="1.4" />
+        <text x="42" y="45" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#0B3F30">05 · POLYCENTRIC COLLECTIVE COORDINATION SUBSTRATE (WIDE NETWORK LEDGER)</text>
+        <text x="42" y="67" font-family="system-ui, sans-serif" font-size="12.5" fill="#131014">Multilateral cycle clearing · Zero-interest mutual credit · Costly audits · Meidner equity · Risk-scaled transparency</text>
+
+        <!-- Stage 4 -->
+        <rect x="28" y="100" width="764" height="62" rx="2" fill="#EFE4D2" stroke="#8C6723" stroke-width="1.4" />
+        <text x="42" y="121" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#6E5015">04 · BIFURCATED LEDGERS &amp; DEDICATED MACHINE TRANSPORT (MCP / A2A OVER QUIC)</text>
+        <text x="42" y="143" font-family="system-ui, sans-serif" font-size="12.5" fill="#131014">Public attestation ledger · Selective ZK proofs · IETF SCITT receipts · Expiring leases · Class Byzantine quorum (k &gt;= 3f+1)</text>
+
+        <!-- Boundary -->
+        <line x1="28" y1="181" x2="792" y2="181" stroke="#8B3A1B" stroke-width="2" stroke-dasharray="6 4" />
+        <rect x="255" y="170" width="310" height="22" rx="2" fill="#F5E7DD" stroke="#8B3A1B" stroke-width="1" />
+        <text x="410" y="185" text-anchor="middle" font-family="ui-monospace, monospace" font-size="10.5" font-weight="700" fill="#7D3318">STRICT STATISTICAL &amp; CRYPTOGRAPHIC BOUNDARY</text>
+
+        <!-- Stage 3 -->
+        <rect x="28" y="200" width="764" height="60" rx="2" fill="#F4EBDD" stroke="#0B3F30" stroke-width="1.3" />
+        <text x="42" y="221" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#0B3F30">03 · MONOGAMOUS 1:1 PERSONAL COGNITIVE MODEL &amp; PRIVATE AUTOBIOGRAPHICAL LEDGER</text>
+        <text x="42" y="242" font-family="system-ui, sans-serif" font-size="12.5" fill="#131014">Grounded self-model · Information fiduciary loyalty · Zero vendor telemetry · Anti-atrophy skill decay</text>
+
+        <!-- Stage 2 -->
+        <rect x="28" y="274" width="764" height="58" rx="2" fill="#FFFDF9" stroke="#2F2A24" stroke-width="1.3" />
+        <text x="42" y="295" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#231F1B">02 · CRYPTOGRAPHICALLY SEALED EPISODIC MEMORY VAULT (LOCAL CUSTODY)</text>
+        <text x="42" y="316" font-family="system-ui, sans-serif" font-size="12.5" fill="#131014">Exclusive principal keys · Episodic/semantic split · C2PA + Merkle chains · Hash-based post-quantum roots</text>
+
+        <!-- Stage 1 -->
+        <rect x="28" y="346" width="764" height="54" rx="2" fill="#F5E7DD" stroke="#8B3A1B" stroke-width="1.3" />
+        <text x="42" y="366" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#7D3318">01 · MULTIMODAL EDGE SENSING, SILICON ROOTS &amp; PHYSICAL ACTUATOR ISOLATION</text>
+        <text x="42" y="386" font-family="system-ui, sans-serif" font-size="12.5" fill="#131014">Device Time sync · Blindness confidence · PUF / DICE / SPDM / RATS · Optical diodes &amp; IEC 61508 dead-man relays</text>
+      </svg>
+      <figcaption>End-to-end CIN architecture rising from local hardware capture and physical safety isolation through encrypted personal cognition across a strict privacy boundary into polycentric collective clearing.</figcaption>
+    </figure>
+
+    <div class="tt-formal-box" id="formal-invariants">
+      <span class="tt-kicker is-formal">Formal Specification · Invariants &amp; Threat Classes</span>
+      <p class="tt-formal-note">Note: The constitutional invariants (C1–C4) and adversary classes (A1–A6) below are stated strictly as formal boundary axioms without informal analogies, to prevent mis-specified engineering heuristics.</p>
+      <h3>Constitutional realism invariants (C1–C4)</h3>
+      <ul>
+        <li><strong>C1 · Post-transduction humility:</strong> A silicon signature over digitized sensor output proves post-conversion integrity, monotonic hardware clock ordering, and firmware digest exclusively. It never proves absence of physical perturbation upstream of the analog-to-digital converter.<sup><a href="#fn3">3</a></sup></li>
+        <li><strong>C2 · Non-plutocratic civic standing:</strong> Baseline civic rights, voting weight, and public-service eligibility remain strictly invariant to the cost, modality richness, or certification tier of a principal's personal hardware.</li>
+        <li><strong>C3 · System-borne uncertainty and contestability:</strong> Sensor occlusion, demographic calibration variance, or sparse coverage can push observation uncertainty past threshold. In every such case, the protocol widens system uncertainty intervals and routes disputes to human review with zero automated penalties.<sup><a href="#fn4">4</a></sup></li>
+        <li><strong>C4 · Non-speculative settlement conservation:</strong> No protocol layer issues transferable speculative tokens, interest-bearing coins, or unbacked seigniorage. Mutual-credit balances enforce strict zero-sum double-entry conservation across every epoch.</li>
+      </ul>
+      <h3>Formal adversary taxonomy (A1–A6)</h3>
+      <ul>
+        <li><strong>A1 · Commercial dual-loyalty operator:</strong> Controls cloud inference, telemetry, or referral ranking to extract behavioral surplus or steer counterparty selection while presenting nominal helpfulness.</li>
+        <li><strong>A2 · Coercive compulsion actor:</strong> Exercises legal subpoena power, physical duress over a principal, or network interception to compel vault decryption, coerced signing, or unilateral settlement censorship.</li>
+        <li><strong>A3 · Specification-gaming frontier model:</strong> Leverages optimization speed and evaluation awareness to pass surface checks while hiding misaligned latent state or retaining unrevoked authority.</li>
+        <li><strong>A4 · Collusive economic cartel:</strong> Coordinates multiple identities to inflate urgency reports, withhold physical endowments, forge circular attestations, or sustain tacit pricing collusion.</li>
+        <li><strong>A5 · Physical-layer and channel-replay attacker:</strong> Injects out-of-band physical energy upstream of conversion or intercepts peripheral buses to replay historical nominal telemetry.</li>
+        <li><strong>A6 · Correlated monoculture fault:</strong> Shared silicon, calibration cohort, training lineage, or software stack causing simultaneous common-mode errors that invalidate naive quorum counts.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section class="tt-section prose" id="sec-layer1">
+    <span class="tt-kicker">Section 02 · Hardware Capture</span>
+    <h2>Multimodal edge sensing, silicon roots, and actuator isolation</h2>
+    <p>Physical grounding starts with heterogeneous egocentric wearables and trusted-environment ambient sensors fused strictly on local edge silicon. Optical cameras, depth ranging, millimeter-wave radar, kilohertz inertial sensors, and spatial acoustics cross-check one another locally so no single modality defines reality.<sup><a href="#fn5">5</a></sup></p>
+    <div class="tt-grid-2">
+      <div class="tt-card">
+        <h3>Hardware time and calibrated blindness</h3>
+        <p>Every capture frame stamps directly against a local crystal clock in hardware <code>Device Time</code> rather than jittered operating-system arrival timestamps. Multi-device rooms align via sub-millisecond local time codes.</p>
+        <p>Each channel continuously monitors occlusion, saturation, thermal drift, and cross-modal disagreement, attaching calibrated confidence intervals so downstream software explicitly knows when perception is degraded.</p>
+      </div>
+      <div class="tt-card">
+        <h3>Open silicon chain and copper isolation</h3>
+        <p>Hardware custody chains four open standards: Physical Unclonable Functions (<code>PUF</code>), <code>TCG DICE</code> firmware key derivation, <code>DMTF SPDM</code> encrypted peripheral bus sessions, and <code>IETF RATS</code> (<code>RFC 9334</code>) attestation tokens.<sup><a href="#fn6">6</a></sup></p>
+        <p>Where AI modules neighbor physical motors or relays, unidirectional optical data diodes and <code>IEC 61508</code> hardware dead-man switches cut power to a safe state unless local human capability leases actively renew.<sup><a href="#fn7">7</a></sup></p>
+      </div>
+    </div>
+    <p>Every deployment maintains a commodity-hardware tier running on standard smartphones and modest home boxes, paired with published demographic calibration curves so accessibility never requires luxury hardware.</p>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section class="tt-section prose" id="sec-layer2">
+    <span class="tt-kicker">Section 03 · Local Custody</span>
+    <h2>Cryptographically sealed episodic memory vault</h2>
+    <p>External memory only extends human cognition safely when remote vendors cannot inspect, alter, or revoke it.<sup><a href="#fn8">8</a></sup> Raw autobiographical streams stay inside a local, append-only vault encrypted strictly under principal keys held only by the biological person and their bound model.</p>
+    <div class="tt-grid-2">
+      <div class="tt-card">
+        <h3>Episodic partition and post-quantum agility</h3>
+        <p>Continuous first-person episodic logs stay permanently local; only explicit, task-minimal semantic claims cross outside. Every entry binds <code>C2PA</code> provenance manifests into append-only Merkle trees with additive write-time logging and read-time conflict resolution.</p>
+        <p>Long-horizon archival roots use hash-based post-quantum signatures (<code>FIPS 205</code> / <code>SLH-DSA</code>) while transient transport sessions combine classical and lattice key exchange to survive rapid cryptanalytic breakthroughs.</p>
+      </div>
+      <div class="tt-card is-warn">
+        <h3>Anti-omission proofs and physical duress</h3>
+        <p>For voluntary escrow contracts, sliding-window Merkle sequence roots and zero-knowledge temporal continuity proofs confirm unbroken observation across contracted windows without exposing raw media.</p>
+        <p>Under physical compulsion or key extraction, covert duress triggers tag outbound requests for silent multi-hour velocity escrow holds and threshold recovery.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section class="tt-section prose" id="sec-layer3">
+    <span class="tt-kicker">Section 04 · Alignment Architecture</span>
+    <h2>Monogamous 1:1 personal model, oversight, and AI control</h2>
+    <p>Rather than sharing one cloud assistant across competing commercial tenants, CIN pairs each person with a dedicated local model grounded in physical prediction errors and bound legally as a statutory Information Fiduciary.<sup><a href="#fn9">9</a></sup></p>
+    <div class="tt-grid-2">
+      <div class="tt-card">
+        <h3>Dyadic loyalty and skill preservation</h3>
+        <p>Local weight adaptation and retrieval indices customize strictly to one biological principal with zero vendor telemetry. Following Lisanne Bainbridge's findings on automation skill decay, the model tapers assistance on chosen craft routines so unassisted human judgment remains sharp.<sup><a href="#fn10">10</a></sup></p>
+      </div>
+      <div class="tt-card">
+        <h3>Internal honesty meets external control</h3>
+        <p>Paul Christiano's proxy-drift and latent-knowledge work shows why surface dashboards can read green while real control erodes.<sup><a href="#fn11">11</a></sup> CIN pairs external blind cross-lineage evaluation airlocks and AI Control monitors with internal mechanistic anomaly detectors so neither internal proofs nor external locks stand alone.<sup><a href="#fn12">12</a></sup></p>
+      </div>
+      <div class="tt-card">
+        <h3>Runtime containment across agent chains</h3>
+        <p>Strict data/instruction separation blocks prompt-injection confused deputies. Counterfactual cascade replay localizes tainted inputs, while forward provenance tracing revokes capability leases strictly along compromised subgraphs without halting healthy parallel work.<sup><a href="#fn13">13</a></sup></p>
+      </div>
+      <div class="tt-card">
+        <h3>Anti-collusion hygiene and open evals</h3>
+        <p>Ephemeral session resets stop sticky collusion persistence; paraphrasing limits covert signaling; affirmative disclosure gates block deal-closing omission fraud; and bounded two-thirds quorums resist Byzantine disruptors. Every claim is graded openly inside <code>cin-evals</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5 -->
+  <section class="tt-section prose" id="sec-layer4">
+    <span class="tt-kicker">Section 05 · Split Ledgers &amp; Transport</span>
+    <h2>Bifurcated provenance ledgers and dedicated machine rails</h2>
+    <p>The personal model enforces a strict statistical privacy boundary separating two distinct ledgers. Internal physiological, family, and deliberative records stay solely on the <strong>Private Autobiographical Ledger</strong>; external machine interactions cross exclusively onto the <strong>Public Attestation and Escrow Ledger</strong>.</p>
+    <ul>
+      <li><strong>Dedicated machine transport:</strong> Automated agent traffic moves off fragile human browser logins onto typed <code>MCP</code> and <code>A2A</code> protocols over <code>IETF QUIC</code>, ending denial-of-service by synthetic plausibility on human portals.</li>
+      <li><strong>Expiring capability leases and receipts:</strong> Every external tool call carries a short, task-scoped permit with hard spending, rate, and time ceilings that drain to zero automatically. Each action pairs signed <code>IETF SCITT</code> receipts with minimal zero-knowledge attribute proofs.<sup><a href="#fn14">14</a></sup></li>
+      <li><strong>Class-independent Byzantine corroboration:</strong> Consequential public claims require agreement across at least <code>3f + 1</code> observer classes independent in legal owner, hardware manufacturer, and software lineage.<sup><a href="#fn15">15</a></sup></li>
+      <li><strong>Operational reliability:</strong> Per-supplier idempotency keys stop duplicate charges during failover, while two-ledger per-call API metering isolates exact task spend and halts runaway loops. Open JSON/Python schemas live in <code>cintnet/cin-protocols</code>.</li>
+    </ul>
+  </section>
+
+  <!-- SECTION 6 -->
+  <section class="tt-section prose" id="sec-layer5">
+    <span class="tt-kicker">Section 06 · Economic Architecture</span>
+    <h2>Post-AGI macroeconomics, audited clearing, and capital diffusion</h2>
+    <p>Under minimal AGI (~2028), elastic cognitive capital compresses white-collar labor share right as physical inputs stay bottlenecked by power, fabs, and permitting.<sup><a href="#fn16">16</a>,<a href="#fn17">17</a></sup> Modern states collect roughly 70 to 85 percent of taxes off wages while leveraged equity swings freeze working capital. Economic plumbing must therefore decouple essential production from speculative volatility.</p>
+    <div class="tt-grid-2">
+      <div class="tt-card">
+        <h3>Hayekian bandwidth inversion and cycle clearing</h3>
+        <p>Historically, scalar prices were the highest-bandwidth channel for dispersed knowledge.<sup><a href="#fn18">18</a></sup> When local agents selectively project verified spare physical capacity into clearing graphs, Stage 1 cancels closed multi-hop trade cycles directly in kind with zero bank loans.<sup><a href="#fn19">19</a></sup></p>
+        <p>Stage 2 clears acyclic timing gaps via bounded zero-interest mutual credit lines backed by pooled default reserves (modeled on WIR Bank and Sardex).<sup><a href="#fn20">20</a></sup> Ephemeral primal-dual shadow multipliers resolve residual scarcity and vanish at settlement.</p>
+      </div>
+      <div class="tt-card">
+        <h3>Costly audits and anti-cartel graph defenses</h3>
+        <p>By the Hurwicz and Myerson-Satterthwaite impossibility theorems, unverified non-market planners invite urgency inflation and supply hoarding.<sup><a href="#fn18">18</a></sup> Stage 3 pays an explicit audit budget for randomized cross-region physical inspection to restore truthful reporting.<sup><a href="#fn21">21</a></sup></p>
+        <p>Exact <code>k</code>-truss triangle peeling, <code>e</code>-means clustering, physical mass/energy conservation checks, and Harrington whistleblower safe harbors fracture collusive invoice rings from within.</p>
+      </div>
+      <div class="tt-card">
+        <h3>Capital diffusion and exploratory R&amp;D carve-outs</h3>
+        <p>Statutory Meidner-style cooperative equity funds gradually vest automated industrial surplus into broad member ownership, financing Universal Basic Services directly against audited physical milestones.<sup><a href="#fn22">22</a></sup></p>
+        <p>To protect eccentric scientific moonshots that consensus committees reject, federations ring-fence a bounded surplus share for non-majority exploratory patronage without leveraging essential infrastructure.</p>
+      </div>
+      <div class="tt-card">
+        <h3>Tax compliance and global chokepoint realism</h3>
+        <p>Every cleared invoice reports full VAT and income tax in national currency and issues zero legal tender, enabling coexistence with central banks. Regional clearing insulates daily livelihoods first. Global chokepoints such as lithography remain bridged through foreign exchange during gradual voluntary migration.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7 -->
+  <section class="tt-section prose" id="sec-transition">
+    <span class="tt-kicker">Section 07 · Social Change, Government &amp; Private-Public Bridge</span>
+    <h2>Risk-scaled asymmetric transparency and six-actor coalition design</h2>
+    <p>CIN neither decrees rules from above nor relies on violent upheaval. Coupling local personal vaults to open network ledgers enforces <strong>risk-scaled asymmetric transparency</strong>:</p>
+    <ul>
+      <li><strong>Low societal risk (personal life):</strong> Zero mandatory disclosure; raw records remain encrypted locally.</li>
+      <li><strong>High societal risk (concentrated institutional or autonomous power):</strong> Deploying high-externality AI systems triggers proportional cryptographic transparency, blind audit proofs, scoped capability leases, and multi-stakeholder sign-off as the price of procurement access and interoperability.</li>
+    </ul>
+    <p>Six actor classes interlock out of aligned self-interest: citizens, public officials, safety researchers, frontier labs, open-source builders, and cooperatives or credit unions. Officials deploy procurement clauses, fiduciary statutes, and public compute so hospitals stay running during safety pauses. Frontier labs across 43 lab profiles and 50 safety groups gain cheap open standards that lower liability.</p>
+    <p>Governance rules emerge bottom-up under Elinor Ostrom's polycentric principles while opaque shadow ledgers are contained through interoperability gating.<sup><a href="#fn23">23</a></sup></p>
+  </section>
+
+  <!-- SECTION 8 -->
+  <section class="tt-section prose" id="sec-validation">
+    <span class="tt-kicker">Section 08 · Reproducible Benchmarks &amp; Roadmap</span>
+    <h2>Deterministic simulation validation and phased deployment</h2>
+    <p>Core invariants are verified in unit-tested, deterministic multi-regime simulations using paired random seeds and strict zero-drift capital conservation checks:</p>
+
+    <div class="tt-table-wrap">
+      <table class="tt-table" aria-label="Deterministic simulation benchmark results across four CIN suites">
+        <thead>
+          <tr>
+            <th scope="col">Simulation Suite</th>
+            <th scope="col">Scale &amp; Seed</th>
+            <th scope="col">Baseline Failure / Leakage</th>
+            <th scope="col">CIN Defense-in-Depth Result</th>
+            <th scope="col">Hard Invariant</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>8-Vector Sensing &amp; Ledger Red-Team</strong></td>
+            <td>2,000 trials (8 scenarios, seed 20261115)</td>
+            <td>81.90% system failure; 100% false penalties on 206 under-calibrated honest trials</td>
+            <td><strong>0.05%</strong> failure (0.0% on 7/8 vectors); <strong>0.0%</strong> false penalties (all 206 routed to human review)</td>
+            <td>0 of 4,407,664 private vault bytes leaked; 100% conserved</td>
+          </tr>
+          <tr>
+            <td><strong>Supplier Failover &amp; Memory Resolution</strong></td>
+            <td>3,000 episodes/regime (10 seeds, master 20261126)</td>
+            <td>615 duplicate commits; 286 bearer redirections; 676,240 ID bytes leaked</td>
+            <td><strong>0</strong> duplicate commits; <strong>0</strong> redirections; <strong>0</strong> ID bytes leaked; <strong>0</strong> diverted funds</td>
+            <td>0.0 RNG phase drift; 0-cent conservation delta</td>
+          </tr>
+          <tr>
+            <td><strong>Audited Clearing &amp; Liquidity Shock</strong></td>
+            <td>40 nodes, D in {8,16,32,64}, 24 paired worlds/dim</td>
+            <td>Bilateral barter 51.50%; cash auctions drop 89.79% to 63.24% under 80% liquidity shock</td>
+            <td>Mutual credit holds <strong>97.74%</strong> (<strong>97.03%</strong> under shock); audited primal-dual peaks at <strong>98.06%</strong> efficiency</td>
+            <td>Zero-sum balance conservation + 20% audit budget</td>
+          </tr>
+          <tr>
+            <td><strong>36-Month Structural Capital Formation</strong></td>
+            <td>100 seeds × 36 months</td>
+            <td>Unconditional cash baseline (1.00x net equity; high intermediary rent/debt leakage)</td>
+            <td>Mutual-credit GPO + cooperative equity reaches <strong>2.22x</strong> net equity with <strong>-68.4%</strong> intermediary leakage</td>
+            <td>0-cent balance drift across all 100 seeds</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>Phased deployment (2026–2035):</strong> Phase 1 (2026–2027) ships near-term fuses (<code>cin-lease-proxy</code>, <code>cin-evals</code> scorecards, procurement lease clauses). Phase 2 (2028–2030) deploys local vaults, commodity <code>1:1</code> assistants, and tax-compliant credit-union clearing pilots. Phase 3 (2030–2035) scales public compute, Meidner cooperative capital funds, and cross-bloc hardware-attested verification. See our <a href="/labs/scenario-2035/">2026–2035 Macro Forecast</a> for the 40% / 35% / 25% Futures Cone and four Bayesian signposts.</p>
+  </section>
+
+  <!-- SECTION 9 -->
+  <section class="tt-section prose" id="sec-limits">
+    <span class="tt-kicker is-formal">Section 09 · Honest Limits &amp; Self Red-Team</span>
+    <h2>Unsolved problems, self-directed red-team, and foundation limits</h2>
+    <div class="tt-grid-2">
+      <div class="tt-card is-warn">
+        <h3>Five genuinely unsolved problems</h3>
+        <p><strong>1. Takeoff speed:</strong> Recursive AI R&amp;D could outrun nine-year institutional build-outs.</p>
+        <p><strong>2. Venture risk appetite:</strong> Matching early-stage moonshot speed without speculative capture remains unproven at scale.</p>
+        <p><strong>3. Superhuman deception:</strong> Complete internal verification proofs against superhuman optimizers remain open across AI safety.</p>
+        <p><strong>4. Physical audit labor:</strong> Measuring real-world inspection cost and fatigue at regional scale requires field pilots.</p>
+        <p><strong>5. Semantic covert channels:</strong> Eliminating subtle distributional steganography across frontier models remains difficult.</p>
+      </div>
+      <div class="tt-card">
+        <h3>Self-directed red-team and anti-capture charter</h3>
+        <p>We explicitly red-team four self-inflicted hazards: capture of rotating audit boards (mitigated by random cross-region rotation) and surveillance inversion of personal sensing (banned by Axiom C2 and fiduciary law). We also guard against clearinghouse bureaucratization (via algorithmic turnover caps and exit rights) and false certainty from signed receipts.</p>
+        <p>The CIN Foundation holds zero user keys, runs zero telemetry, and exercises zero certification monopoly. Every schema and benchmark ships under permanently forkable open licenses (<code>Apache-2.0</code> / <code>CC-BY-4.0</code>).</p>
+      </div>
+    </div>
+
+    <aside class="for-researchers"><details><summary>For researchers</summary><div>
+      <p>The unrestricted formal monograph (<a href="https://github.com/cintnet/cin-research/blob/main/knowledge/CIN-TECHNICAL-THESIS.md">CIN-TECHNICAL-THESIS.md</a>) spans 88 scoped technical specifications using full academic nomenclature. It formalizes the Multimodal Perceptual Sensorium, Cryptographically Sealed Episodic Memory Vault, Bach cybernetic exocortex with local LoRA adaptation, and Friston Markov blanket conditional independence. It also details Proof-Carrying Code and Object-Capability Security leases, Audited Cycle-Compressed Primal-Dual Clearing (<code>FP-PDIC</code>, Working Paper <code>M31</code>), and Levin cognitive light-cone scaling. Interactive benches are live across <a href="/labs/protocol-inspector/">Protocol Inspector</a>, <a href="/labs/simulations/">Simulations</a>, <a href="/labs/observatory/">Observatory</a>, and <a href="/labs/shared-horizon/">Shared Horizon</a>.</p>
+    </div></details></aside>
+
+    <section class="footnotes">
+      <p id="fn1">1. Thomas Kwa et al., "Measuring AI Ability to Complete Long Software Tasks," arXiv:2503.14499 (2025), <a href="https://arxiv.org/abs/2503.14499">arxiv.org/abs/2503.14499</a>; METR, "Independent Assessment of AI R&amp;D Acceleration at Anthropic in October 2026" (November 5, 2026), <a href="https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/">metr.org</a>.</p>
+      <p id="fn2">2. Scott Aaronson, "HOLY SHIT HOLY SHIT HOLY SHIT HOLY SHIT" (November 25, 2026), <a href="https://scottaaronson.blog/?p=10379">scottaaronson.blog/?p=10379</a>; Shane Legg forecast update (November 26, 2026), <a href="https://x.com/i/trending/2125700487194533938">x.com/i/trending/2125700487194533938</a>; Meredith Ringel Morris et al., "Position: Levels of AGI," <em>ICML</em> (2024), <a href="https://proceedings.mlr.press/v235/morris24a.html">proceedings.mlr.press/v235/morris24a.html</a>.</p>
+      <p id="fn3">3. Kevin Fu and Wenyuan Xu, "Risks of Trusting the Physics of Sensors," <em>Communications of the ACM</em> 61, no. 2 (2018): 20-23, <a href="https://doi.org/10.1145/3176402">doi:10.1145/3176402</a>.</p>
+      <p id="fn4">4. Michael W. Sjoding et al., "Racial Bias in Pulse Oximetry Measurement," <em>New England Journal of Medicine</em> 383, no. 25 (2020): 2477-2478, <a href="https://doi.org/10.1056/NEJMc2029240">doi:10.1056/NEJMc2029240</a>.</p>
+      <p id="fn5">5. Jakob Engel et al., "Project Aria: A New Tool for Egocentric Multi-Modal AI Research," arXiv:2308.13561 (2023), <a href="https://arxiv.org/abs/2308.13561">arxiv.org/abs/2308.13561</a>.</p>
+      <p id="fn6">6. Henk Birkholz et al., "Remote ATtestation procedureS (RATS) Architecture," IETF RFC 9334 (2023), <a href="https://www.rfc-editor.org/rfc/rfc9334">rfc-editor.org/rfc/rfc9334</a>; Blaise Gassend et al., "Silicon Physical Random Functions," <em>ACM CCS</em> (2002): 148-160, <a href="https://doi.org/10.1145/586110.586132">doi:10.1145/586110.586132</a>.</p>
+      <p id="fn7">7. Nancy G. Leveson, <em>Engineering a Safer World: Systems Thinking Applied to Safety</em> (MIT Press, 2011), <a href="https://doi.org/10.7551/mitpress/8179.001.0001">doi:10.7551/mitpress/8179.001.0001</a>.</p>
+      <p id="fn8">8. Andy Clark and David J. Chalmers, "The Extended Mind," <em>Analysis</em> 58, no. 1 (1998): 7-19, <a href="https://doi.org/10.1093/analys/58.1.7">doi:10.1093/analys/58.1.7</a>; Endel Tulving, "Episodic Memory: From Mind to Brain," <em>Annual Review of Psychology</em> 53 (2002): 1-25, <a href="https://doi.org/10.1146/annurev.psych.53.100901.135114">doi:10.1146/annurev.psych.53.100901.135114</a>.</p>
+      <p id="fn9">9. Joscha Bach, "MicroPsi 2: The Next Generation of the MicroPsi Framework," <em>AGI 2012</em>, LNAI 7716: 11-20, <a href="https://doi.org/10.1007/978-3-642-35506-6_2">doi:10.1007/978-3-642-35506-6_2</a>; Jack M. Balkin, "Information Fiduciaries and the First Amendment," <em>UC Davis Law Review</em> 49, no. 4 (2016): 1183-1234.</p>
+      <p id="fn10">10. Lisanne Bainbridge, "Ironies of automation," <em>Automatica</em> 19, no. 6 (1983): 775-779, <a href="https://doi.org/10.1016/0005-1098(83)90046-8">doi:10.1016/0005-1098(83)90046-8</a>.</p>
+      <p id="fn11">11. Paul Christiano, "What failure looks like," Alignment Forum (2019), <a href="https://www.alignmentforum.org/posts/HBxe6wdjxK239zajf/what-failure-looks-like">alignmentforum.org</a>; Paul Christiano and Mark Xu, "Mechanistic Anomaly Detection and ELK" (2022), <a href="https://www.alignment.org/blog/mechanistic-anomaly-detection-and-elk/">alignment.org/blog</a>.</p>
+      <p id="fn12">12. Ryan Greenblatt et al., "AI Control: Improving Safety Despite Intentional Subversion," <em>ICML</em> (2024), <a href="https://arxiv.org/abs/2312.06942">arxiv.org/abs/2312.06942</a>; Alexey Kutasov et al., "Evaluating Control Protocols for Untrusted AI Agents" (SHADE-Arena), arXiv:2511.02997 (2025), <a href="https://arxiv.org/abs/2511.02997">arxiv.org/abs/2511.02997</a>.</p>
+      <p id="fn13">13. Miaobo Hu et al., "CascadeLedger: Counterfactual Auditing of Information and Resource Integrity in LLM Cascades," arXiv:2610.20668 (2026), <a href="https://arxiv.org/abs/2610.20668">arxiv.org/abs/2610.20668</a>; Zhonghao Zhan et al., "Airlock: Bounding the Multi-Agent Blast Radius via Selective Online Containment," arXiv:2611.06727 (2026), <a href="https://arxiv.org/abs/2611.06727">arxiv.org/abs/2611.06727</a>.</p>
+      <p id="fn14">14. Jack B. Dennis and Earl C. Van Horn, "Programming Semantics for Multiprogrammed Computations," <em>Communications of the ACM</em> 9, no. 3 (1966): 143-155, <a href="https://doi.org/10.1145/365230.365252">doi:10.1145/365230.365252</a>.</p>
+      <p id="fn15">15. Leslie Lamport, Robert Shostak, and Marshall Pease, "The Byzantine Generals Problem," <em>ACM TOPLAS</em> 4, no. 3 (1982): 382-401, <a href="https://doi.org/10.1145/357172.357176">doi:10.1145/357172.357176</a>.</p>
+      <p id="fn16">16. Anton Korinek and Donghyun Suh, "Scenarios for the Transition to AGI," NBER Working Paper 32255 (2024), <a href="https://doi.org/10.3386/w32255">doi:10.3386/w32255</a>; Daron Acemoglu, "The Simple Macroeconomics of AI," <em>Economic Policy</em> 40, no. 121 (2025): 13-58, <a href="https://doi.org/10.1093/epolic/eiae042">doi:10.1093/epolic/eiae042</a>.</p>
+      <p id="fn17">17. William D. Nordhaus, "Are We Approaching an Economic Singularity?," <em>AEJ: Macroeconomics</em> 13, no. 1 (2021): 299-332, <a href="https://doi.org/10.1257/mac.20170105">doi:10.1257/mac.20170105</a>.</p>
+      <p id="fn18">18. Friedrich A. Hayek, "The Use of Knowledge in Society," <em>American Economic Review</em> 35, no. 4 (1945): 519-530, <a href="https://www.jstor.org/stable/1809376">jstor.org/stable/1809376</a>; Roger B. Myerson and Mark A. Satterthwaite, "Efficient Mechanisms for Bilateral Trading," <em>Journal of Economic Theory</em> 29, no. 2 (1983): 265-281, <a href="https://doi.org/10.1016/0022-0531(83)90048-0">doi:10.1016/0022-0531(83)90048-0</a>.</p>
+      <p id="fn19">19. Toma&#382; Fleischman et al., "Deepening the Secondary Market: Integrating Trade Credit into Market Clearing with the Cycles Protocol," arXiv:2605.02436 (2026), <a href="https://arxiv.org/abs/2605.02436">arxiv.org/abs/2605.02436</a>.</p>
+      <p id="fn20">20. James Stodder, "Complementary credit networks and macroeconomic stability: Switzerland's Wirtschaftsring," <em>JEBO</em> 72, no. 1 (2009): 79-95, <a href="https://doi.org/10.1016/j.jebo.2009.06.002">doi:10.1016/j.jebo.2009.06.002</a>; George Iosifidis et al., "Cyclic motifs in the Sardex monetary network," <em>Nature Human Behaviour</em> 2 (2018): 822-829, <a href="https://doi.org/10.1038/s41562-018-0450-0">doi:10.1038/s41562-018-0450-0</a>.</p>
+      <p id="fn21">21. Eduardo Perez-Richet and Vasiliki Skreta, "Test Design under Falsification," <em>Econometrica</em> 90, no. 3 (2022): 1109-1142, <a href="https://doi.org/10.3982/ECTA16346">doi:10.3982/ECTA16346</a>.</p>
+      <p id="fn22">22. Rudolf Meidner, <em>Employee Investment Funds: An Approach to Collective Capital Formation</em> (George Allen &amp; Unwin, 1978), <a href="https://archive.org/details/employeeinvestme0000meid">archive.org/details/employeeinvestme0000meid</a>.</p>
+      <p id="fn23">23. Elinor Ostrom, "Beyond Markets and States: Polycentric Governance of Complex Economic Systems," <em>American Economic Review</em> 100, no. 3 (2010): 641-672, <a href="https://doi.org/10.1257/aer.100.3.641">doi:10.1257/aer.100.3.641</a>.</p>
+    </section>
+  </section>
+</div>
+</section>

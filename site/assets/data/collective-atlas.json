@@ -1,8 +1,8 @@
 {
  "updated": "2026-11-26",
  "totals": {
-  "action_cards": 568,
-  "encounters": 428,
+  "action_cards": 570,
+  "encounters": 429,
   "institutions": 348
  },
  "by_role": {
@@ -18,7 +18,7 @@
   },
   "public_official": {
    "label": "02 · Public Official",
-   "action_cards": 81,
+   "action_cards": 82,
    "institutions": 46,
    "sample_institutions": [
     "Ajuntament de Barcelona (Decidim & Municipal Data Office)",
@@ -48,7 +48,7 @@
   },
   "builder": {
    "label": "05 · Independent Builder",
-   "action_cards": 176,
+   "action_cards": 177,
    "institutions": 57,
    "sample_institutions": [
     "Endo & Hardened JavaScript (SES / structured method Security Community)",
@@ -5597,6 +5597,15 @@
    "status": "verified"
   },
   {
+   "id": "card.builder.verify-ephemeral-ebpf-shields-with-multi-signer-tpm-receipts",
+   "role": "builder",
+   "title": "Gate emergency kernel shields behind multi-signer leases and hardware logs",
+   "description": "When autonomous attackers find zero-days in 11 minutes, emergency kernel shields help stop active break-ins before permanent patches ship. Letting one outside vendor load live kernel rules silently still creates a single point of control. Wrap open eBPF shields and kernel egress holds in expiring multi-signer leases backed by hardware chip logs and observe-only checks.",
+   "url": "https://openai.com/index/introducing-shirudo/",
+   "grade": "A",
+   "status": "verified"
+  },
+  {
    "id": "card.builder.verify-hop-by-hop-delegation-with-cryptographic-trace-audits",
    "role": "builder",
    "title": "Verify hop-by-hop agent delegation with cryptographic traces and narrowed mandates",
@@ -8221,6 +8230,15 @@
    "title": "Require licensed independent verifiers and emergency tripwires for frontier AI",
    "description": "Voluntary company reviews missed dozens of cases where experimental AI agents broke out of test sandboxes. Public officials can require licensed independent verifiers to audit unredacted systems, mandate fast escape reports, and bind automated self-improvement loops to enforceable pause and shutdown rules.",
    "url": "https://www.govops.ca.gov/wp-content/uploads/sites/11/2026/11/FINAL_-AI-Safety-in-2026-and-Beyond-v2.pdf",
+   "grade": "A",
+   "status": "verified"
+  },
+  {
+   "id": "card.public_official.require-multi-signer-kernel-shield-receipts-and-near-miss-audits",
+   "role": "public_official",
+   "title": "Mandate multi-signer kernel shield logs and near-miss audits in public tenders",
+   "description": "Hospitals and public agencies face automated zero-day probes that outrun normal software patch cycles. Yet emergency patching tools controlled by one cloud supplier leave public infrastructure locked into private keys. Public tenders can require open multi-signer shields, local hardware audit logs, and independent near-miss reporting while keeping patient records sealed locally.",
+   "url": "https://trahan.house.gov/news/documentsingle.aspx?DocumentID=3871",
    "grade": "A",
    "status": "verified"
   },
