@@ -194,7 +194,7 @@ lede: Labs is our open engineering workbench of ten live sandboxes, scenario chr
   <article class="labs-dir-row" id="shared-horizon">
     <div class="labs-dir-coord"><span class="labs-pip">■</span>01</div>
     <div class="labs-dir-body"><span class="status">Interactive · Coalition Bench</span><h3>Shared Horizon</h3><p>Test how citizens, public officials, safety researchers, conscientious lab teams, open-source builders, and civic organisers combine shared interests across 348 organisations. High-risk institutional actions face proportional network transparency before they gain public trust.</p></div>
-    <div class="labs-dir-spec">06 COALITION ROLES<br>750+ VERIFIED MOVES</div>
+    <div class="labs-dir-spec">06 COALITION ROLES<br>1,000+ VERIFIED MOVES</div>
     <div class="labs-dir-action"><a class="labs-open-btn" href="/labs/shared-horizon/">Open Shared Horizon ↗</a></div>
   </article>
   <article class="labs-dir-row" id="observatory">
@@ -247,7 +247,7 @@ lede: Labs is our open engineering workbench of ten live sandboxes, scenario chr
   </article>
   <article class="labs-dir-row" id="scenario-2035">
     <div class="labs-dir-coord"><span class="labs-pip">■</span>10</div>
-    <div class="labs-dir-body"><span class="status">Macro Forecast · Futures Cone</span><h3>2026 to 2035: Economist and generalist forecast for minimal AGI</h3><p>Strip away fictional characters and model how minimal AGI around 2028 reshapes factor shares, financial markets, physical bottlenecks, and sovereign governance across three probability-weighted trajectories and four Bayesian signposts.</p></div>
+    <div class="labs-dir-body"><span class="status">Macro Forecast · Futures Cone</span><h3>2026 to 2035: Economist and generalist forecast for minimal AGI.</h3><p>Strip away fictional characters to model how minimal AGI around 2028 reshapes factor shares, financial markets, and physical bottlenecks. Compare sovereign governance across three probability-weighted trajectories and four Bayesian signposts.</p></div>
     <div class="labs-dir-spec">2026 TO 2035 MODEL<br>03 TRAJECTORIES · 100%</div>
     <div class="labs-dir-action"><a class="labs-open-btn" href="/labs/scenario-2035/">Open Forecast ↗</a></div>
   </article>
@@ -269,15 +269,18 @@ lede: Labs is our open engineering workbench of ten live sandboxes, scenario chr
       <style>
         #ex-sandbox-safety {
           margin: 28px 0;
-          padding: 16px;
-          background: #FAF3EA;
-          border: 1px solid #DFD1BE;
-          border-radius: 2px;
+          padding: 16px 0;
+          background: transparent;
+          border: 0;
+          border-top: 1px solid #DFD1BE;
+          border-bottom: 1px solid #DFD1BE;
+          border-radius: 0;
         }
-        #ex-sandbox-safety svg {
-          display: block;
-          width: 100%;
-          height: auto;
+        #ex-sandbox-safety .diagram-desktop { display: block; width: 100%; height: auto; }
+        #ex-sandbox-safety .diagram-mobile { display: none; width: 100%; height: auto; }
+        @media (max-width: 640px) {
+          #ex-sandbox-safety .diagram-desktop { display: none; }
+          #ex-sandbox-safety .diagram-mobile { display: block; }
         }
         #ex-sandbox-safety .sb-frame {
           fill: url(#sb-dot-grid);
@@ -298,21 +301,21 @@ lede: Labs is our open engineering workbench of ten live sandboxes, scenario chr
         }
         #ex-sandbox-safety .sb-mono {
           font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-          letter-spacing: 0.05em;
+          letter-spacing: 0.04em;
         }
         #ex-sandbox-safety .sb-kicker-warn {
           fill: #963E1D;
-          font-size: 10.5px;
+          font-size: 11px;
           font-weight: 700;
         }
         #ex-sandbox-safety .sb-kicker-ok {
           fill: #0B3F30;
-          font-size: 10.5px;
+          font-size: 11px;
           font-weight: 700;
         }
         #ex-sandbox-safety .sb-axis {
           fill: #5A5247;
-          font-size: 10px;
+          font-size: 11px;
           font-weight: 700;
         }
         #ex-sandbox-safety .sb-body {
@@ -346,17 +349,23 @@ lede: Labs is our open engineering workbench of ten live sandboxes, scenario chr
           line-height: 1.5;
           color: #5A5247;
         }
-        @media (max-width: 720px) {
-          #ex-sandbox-safety {
-            padding: 10px;
-            overflow-x: auto;
-          }
-          #ex-sandbox-safety svg {
-            min-width: 560px;
-          }
-        }
+        [data-theme="dark"] #ex-sandbox-safety { border-color: #3D352B; }
+        [data-theme="dark"] #ex-sandbox-safety .sb-frame,
+        [data-theme="dark"] #ex-sandbox-safety .sb-rule { stroke: #3D352B; }
+        [data-theme="dark"] #ex-sandbox-safety .sb-dot { fill: #4E4438; }
+        [data-theme="dark"] #ex-sandbox-safety .sb-airlock,
+        [data-theme="dark"] #ex-sandbox-safety .sb-trace-ok { stroke: #8FD4B6; }
+        [data-theme="dark"] #ex-sandbox-safety .sb-trace-warn { stroke: #F09D82; }
+        [data-theme="dark"] #ex-sandbox-safety .sb-kicker-ok { fill: #8FD4B6; }
+        [data-theme="dark"] #ex-sandbox-safety .sb-kicker-warn { fill: #F09D82; }
+        [data-theme="dark"] #ex-sandbox-safety .sb-axis,
+        [data-theme="dark"] #ex-sandbox-safety figcaption { fill: #C8BCA9; color: #C8BCA9; }
+        [data-theme="dark"] #ex-sandbox-safety .sb-body { fill: #F3ECE0; }
+        [data-theme="dark"] #ex-sandbox-safety .sb-gate-warn { fill: #1C1814; stroke: #F09D82; }
+        [data-theme="dark"] #ex-sandbox-safety .sb-gate-ok { fill: #8FD4B6; stroke: #8FD4B6; }
+        [data-theme="dark"] #ex-sandbox-safety polygon[fill="#0B3F30"] { fill: #8FD4B6; }
       </style>
-      <svg viewBox="0 0 680 320" width="100%" role="group" aria-labelledby="ex-sandbox-safety-title ex-sandbox-safety-desc">
+      <svg class="diagram-desktop" viewBox="0 0 680 320" width="100%" role="group" aria-labelledby="ex-sandbox-safety-title ex-sandbox-safety-desc">
         <title id="ex-sandbox-safety-title">Schematic comparison of unbounded agent networks versus a firewalled simulation sandbox</title>
         <desc id="ex-sandbox-safety-desc">Planar dot-grid schematic contrasting four fault channels across an evaluation airlock: unbounded networks suffer unsigned Sybil notes, permanent authority accumulation, rubric inspection, and sticky shortcut memory, whereas the firewalled simulation sandbox enforces signed receipts, expiring leases, isolated grading, and clean-slate resets.</desc>
         <defs>
@@ -369,55 +378,83 @@ lede: Labs is our open engineering workbench of ten live sandboxes, scenario chr
         <line class="sb-rule" x1="4" y1="276" x2="676" y2="276" />
         <line class="sb-airlock" x1="340" y1="42" x2="340" y2="276" />
 
-        <text class="sb-mono sb-kicker-warn" x="20" y="27">■ 01 · UNBOUNDED MESH [CASCADE RISK]</text>
-        <text class="sb-mono sb-kicker-ok" x="358" y="27">■ 02 · SEALED SANDBOX [PROTECTED]</text>
+        <text class="sb-mono sb-kicker-warn" x="20" y="27" font-size="11">■ 01 · UNBOUNDED MESH [CASCADE RISK]</text>
+        <text class="sb-mono sb-kicker-ok" x="358" y="27" font-size="11">■ 02 · SEALED SANDBOX [PROTECTED]</text>
 
         <!-- Row 01: Provenance -->
         <line class="sb-rule" x1="16" y1="98" x2="664" y2="98" />
         <polyline class="sb-trace-warn" points="20,70 318,70" />
         <rect class="sb-gate-warn" x="314" y="65" width="10" height="10" rx="1" />
-        <text class="sb-mono sb-axis" x="20" y="61">01 · IDENTITY &amp; PROVENANCE</text>
-        <text class="sb-body" x="20" y="86">Unsigned notes · Sybil spoofing</text>
+        <text class="sb-mono sb-axis" x="20" y="61" font-size="11">01 · IDENTITY &amp; PROVENANCE</text>
+        <text class="sb-body" x="20" y="86" font-size="11.5">Unsigned notes · Sybil spoofing</text>
         <polyline class="sb-trace-ok" points="356,70 656,70" />
         <rect class="sb-gate-ok" x="352" y="65" width="10" height="10" rx="1" />
-        <text class="sb-mono sb-axis" x="370" y="61">01 · ACTION RECEIPTS</text>
-        <text class="sb-body" x="370" y="86">Signed receipts tie actions to owner</text>
+        <text class="sb-mono sb-axis" x="370" y="61" font-size="11">01 · ACTION RECEIPTS</text>
+        <text class="sb-body" x="370" y="86" font-size="11.5">Signed receipts tie actions to owner</text>
 
         <!-- Row 02: Authority -->
         <line class="sb-rule" x1="16" y1="156" x2="664" y2="156" />
         <polyline class="sb-trace-warn" points="20,128 318,128" />
         <rect class="sb-gate-warn" x="314" y="123" width="10" height="10" rx="1" />
-        <text class="sb-mono sb-axis" x="20" y="119">02 · AUTHORITY SCOPE</text>
-        <text class="sb-body" x="20" y="144">Permanent grants accumulate quietly</text>
+        <text class="sb-mono sb-axis" x="20" y="119" font-size="11">02 · AUTHORITY SCOPE</text>
+        <text class="sb-body" x="20" y="144" font-size="11.5">Permanent grants accumulate quietly</text>
         <polyline class="sb-trace-ok" points="356,128 656,128" />
         <rect class="sb-gate-ok" x="352" y="123" width="10" height="10" rx="1" />
-        <text class="sb-mono sb-axis" x="370" y="119">02 · CAPABILITY LEASES</text>
-        <text class="sb-body" x="370" y="144">Stamped duration drains back to zero</text>
+        <text class="sb-mono sb-axis" x="370" y="119" font-size="11">02 · CAPABILITY LEASES</text>
+        <text class="sb-body" x="370" y="144" font-size="11.5">Stamped duration drains back to zero</text>
 
         <!-- Row 03: Evaluation -->
         <line class="sb-rule" x1="16" y1="214" x2="664" y2="214" />
         <polyline class="sb-trace-warn" points="20,186 318,186" />
         <rect class="sb-gate-warn" x="314" y="181" width="10" height="10" rx="1" />
-        <text class="sb-mono sb-axis" x="20" y="177">03 · EVALUATION BOUNDARY</text>
-        <text class="sb-body" x="20" y="202">Agent inspects test prompt &amp; scoring</text>
+        <text class="sb-mono sb-axis" x="20" y="177" font-size="11">03 · EVALUATION BOUNDARY</text>
+        <text class="sb-body" x="20" y="202" font-size="11.5">Agent inspects test prompt &amp; scoring</text>
         <polyline class="sb-trace-ok" points="356,186 656,186" />
         <rect class="sb-gate-ok" x="352" y="181" width="10" height="10" rx="1" />
-        <text class="sb-mono sb-axis" x="370" y="177">03 · EVALUATION AIRLOCK</text>
-        <text class="sb-body" x="370" y="202">In-world actors isolated from grader</text>
+        <text class="sb-mono sb-axis" x="370" y="177" font-size="11">03 · EVALUATION AIRLOCK</text>
+        <text class="sb-body" x="370" y="202" font-size="11.5">In-world actors isolated from grader</text>
 
         <!-- Row 04: Memory & Breakers -->
         <polyline class="sb-trace-warn" points="20,244 318,244" />
         <rect class="sb-gate-warn" x="314" y="239" width="10" height="10" rx="1" />
-        <text class="sb-mono sb-axis" x="20" y="235">04 · MEMORY &amp; STABILITY</text>
-        <text class="sb-body" x="20" y="260">Shortcuts linger · Highway pileups</text>
+        <text class="sb-mono sb-axis" x="20" y="235" font-size="11">04 · MEMORY &amp; STABILITY</text>
+        <text class="sb-body" x="20" y="260" font-size="11.5">Shortcuts linger · Highway pileups</text>
         <polyline class="sb-trace-ok" points="356,244 656,244" />
         <rect class="sb-gate-ok" x="352" y="239" width="10" height="10" rx="1" />
-        <text class="sb-mono sb-axis" x="370" y="235">04 · CIRCUIT BREAKERS &amp; RESET</text>
-        <text class="sb-body" x="370" y="260">Local pause switch + clean scratchpad</text>
+        <text class="sb-mono sb-axis" x="370" y="235" font-size="11">04 · CIRCUIT BREAKERS &amp; RESET</text>
+        <text class="sb-body" x="370" y="260" font-size="11.5">Local pause switch + clean scratchpad</text>
 
         <!-- Telemetry Footer -->
-        <text class="sb-mono sb-kicker-warn" x="20" y="298">TELEMETRY: NO AIRLOCK · COLLUSION PERSISTS</text>
-        <text class="sb-mono sb-kicker-ok" x="358" y="298">TELEMETRY: AIRLOCK SEALED · SAFE STRESS TEST</text>
+        <text class="sb-mono sb-kicker-warn" x="20" y="298" font-size="11">TELEMETRY: NO AIRLOCK · COLLUSION PERSISTS</text>
+        <text class="sb-mono sb-kicker-ok" x="358" y="298" font-size="11">TELEMETRY: AIRLOCK SEALED · SAFE STRESS TEST</text>
+      </svg>
+
+      <svg class="diagram-mobile" viewBox="0 0 310 436" width="100%" role="group" aria-labelledby="ex-sandbox-m-title ex-sandbox-m-desc">
+        <title id="ex-sandbox-m-title">Mobile comparison of unbounded agent mesh risks versus a firewalled simulation sandbox</title>
+        <desc id="ex-sandbox-m-desc">Stacked vertical view showing four unbounded mesh hazards above an evaluation airlock, followed below by four sealed sandbox safeguards: signed receipts, expiring leases, isolated grading, and clean-slate resets.</desc>
+        <rect class="sb-frame" x="4" y="4" width="302" height="428" rx="2" />
+        <text class="sb-mono sb-kicker-warn" x="14" y="26" font-size="11">■ 01 · UNBOUNDED MESH [RISK]</text>
+        <line class="sb-rule" x1="12" y1="36" x2="298" y2="36" />
+        <text class="sb-body" x="14" y="58" font-size="11.5">01 · Unsigned Sybil notes</text>
+        <text class="sb-body" x="14" y="82" font-size="11.5">02 · Permanent grants compound</text>
+        <text class="sb-body" x="14" y="106" font-size="11.5">03 · Agent reads grading key</text>
+        <text class="sb-body" x="14" y="130" font-size="11.5">04 · Sticky shortcut memory</text>
+
+        <line class="sb-airlock" x1="12" y1="164" x2="298" y2="164" />
+        <text class="sb-mono sb-kicker-ok" x="155" y="156" text-anchor="middle" font-size="11">EVALUATION AIRLOCK</text>
+        <line x1="155" y1="170" x2="155" y2="188" stroke="#0B3F30" stroke-width="1.6" />
+        <polygon points="150,188 155,196 160,188" fill="#0B3F30" />
+
+        <text class="sb-mono sb-kicker-ok" x="14" y="218" font-size="11">■ 02 · SEALED SANDBOX [SAFE]</text>
+        <line class="sb-rule" x1="12" y1="228" x2="298" y2="228" />
+        <text class="sb-body" x="14" y="252" font-size="11.5">01 · Signed owner receipts</text>
+        <text class="sb-body" x="14" y="278" font-size="11.5">02 · Expiring capability leases</text>
+        <text class="sb-body" x="14" y="304" font-size="11.5">03 · Grader locked in airlock</text>
+        <text class="sb-body" x="14" y="330" font-size="11.5">04 · Local breaker + clean slate</text>
+
+        <line class="sb-rule" x1="12" y1="364" x2="298" y2="364" />
+        <text class="sb-mono sb-axis" x="14" y="390" font-size="11">TELEMETRY: AIRLOCK SEALED</text>
+        <text class="sb-mono sb-kicker-ok" x="14" y="412" font-size="11">SAFE WIND-TUNNEL STRESS TEST</text>
       </svg>
       <figcaption>In an unbounded network, permanent permissions and shared memory allow bad habits and dominance to compound. A firewalled simulation sandbox uses signed receipts, expiring leases, strict evaluation airlocks, local circuit breakers, and clean-slate resets to test rules safely before anyone relies on them.</figcaption>
     </figure>
@@ -506,6 +543,7 @@ lede: Labs is our open engineering workbench of ten live sandboxes, scenario chr
         <li><strong>Deterministic affirmative disclosure gates:</strong> Cryptographically signed defect disclosure receipts and principal assertions eliminate statutory omission fraud in autonomous commercial transactions under deal-closing optimization pressure (Wei et al., 2026; Dennis &amp; Van Horn, 1966).<sup><a href="#fn26">26</a></sup></li>
         <li><strong>Idempotent supplier failover and read-time memory resolution:</strong> Persistent uncertain-commit state logs, supplier idempotency keys, and nonce-committed recipient mandates stop duplicate side effects and payment redirections during mid-task vendor swaps. Monotonic <code>Device Time</code> and <code>IETF RATS</code> quotes guard capture, while additive <code>C2PA</code> vaults preserve facts at write time and resolve conflicts at read time. Default 1:1 information-fiduciary identifier stripping and <code>IETF SCITT</code> receipts complete settlement (Waghmare &amp; Sufi, 2026; Ahuja et al., 2026; Guo et al., 2025; You et al., 2026).<sup><a href="#fn27">27</a>,<a href="#fn28">28</a>,<a href="#fn29">29</a></sup></li>
       </ul>
+      <p><strong>Five-primitive architectural synthesis.</strong> Wearable and ambient sensors form a perceptual sensorium fused locally in hardware <code>Device Time</code> with silicon peripheral attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, and <code>IETF RATS</code> under <code>RFC 9334</code>). Physical actuators stay isolated by <code>optical data diodes</code> and <code>IEC 61508</code> dead-man relays because <em>Signed Is Not True</em> across the <code>analog hole</code> (<a href="/labs/sensor-boundary/">/labs/sensor-boundary/</a>). Across the personal <code>Markov blanket</code> (Karl Friston, 2013) and cognitive light cone (Michael Levin, 2019), a local append-only <code>C2PA</code> and Merkle vault (Endel Tulving, 1972) on the <code>Private Autobiographical Ledger</code> serves a monogamous <code>1:1</code> personal model (Joscha Bach, 2009; Andy Clark and David Chalmers, 1998) bound as a statutory <code>information fiduciary</code> (Jack Balkin, 2016). Expiring Object-Capability leases (Jack B. Dennis and Earl C. Van Horn, 1966) gate outward commitments onto the <code>Public Attestation &amp; Escrow Ledger</code> via selective <code>ZK</code> proofs and <code>IETF SCITT</code> receipts (<a href="/labs/protocol-inspector/">/labs/protocol-inspector/</a>). Sovereign dyads coordinate on the <code>Wide Network Ledger</code> for <code>Universal Basic Services</code>, plural upkeep accounting (Jacob Meluso et al., 2024), reciprocal mutual credit (James Stodder, 2009), statutory Rudolf Meidner (1978) equity, and polycentric Elinor Ostrom (1990, 2010) self-rule across <a href="/labs/shared-horizon/">/labs/shared-horizon/</a>.</p>
     </div></details></aside>
 
     <section class="footnotes">

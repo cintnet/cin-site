@@ -64,7 +64,7 @@ class ResearchTitlesAndSiteCriticPolishTests(unittest.TestCase):
         """Shared Horizon status callout must reflect verified real-world moves."""
         sh_file = CONTENT_DIR / "labs" / "shared-horizon.html"
         content = sh_file.read_text(encoding="utf-8")
-        self.assertIn("over 750 verified real-world moves and encounters", content)
+        self.assertIn("over 1,000 verified real-world moves and encounters", content)
 
 
 if __name__ == "__main__":

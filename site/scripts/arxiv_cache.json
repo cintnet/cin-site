@@ -1681,6 +1681,23 @@
   "published": "2025-10-24",
   "title": "AgentBound: Securing Execution Boundaries of AI Agents"
  },
+ "2510.22954": {
+  "title": "Artificial Hivemind: The Open-Ended Homogeneity of Language Models (and Beyond)",
+  "authors": [
+   "Liwei Jiang",
+   "Yuanjun Chai",
+   "Margaret Li",
+   "Mickel Liu",
+   "Raymond Fok",
+   "Nouha Dziri",
+   "Yulia Tsvetkov",
+   "Maarten Sap",
+   "Alon Albalak",
+   "Yejin Choi"
+  ],
+  "published": "2025-10-27",
+  "abstract": "Language models (LMs) often struggle to generate diverse, human-like creative content, raising concerns about the long-term homogenization of human thought through repeated exposure to similar outputs. Yet scalable methods for evaluating LM output diversity remain limited, especially beyond narrow tasks such as random number or name generation, or beyond repeated sampling from a single model. We introduce Infinity-Chat, a large-scale dataset of 26K diverse, real-world, open-ended user queries that admit a wide range of plausible answers with no single ground truth. We introduce the first comprehensive taxonomy for characterizing the full spectrum of open-ended prompts posed to LMs, comprising 6 top-level categories (e.g., brainstorm & ideation) that further breaks down to 17 subcategories. Using Infinity-Chat, we present a large-scale study of mode collapse in LMs, revealing a pronounced Artificial Hivemind effect in open-ended generation of LMs, characterized by (1) intra-model repetition, where a single model consistently generates similar responses, and more so (2) inter-model homogeneity, where different models produce strikingly similar outputs. Infinity-Chat also includes 31,250 human annotations, across absolute ratings and pairwise preferences, with 25 independent human annotations per example. This enables studying collective and individual-specific human preferences in response to open-ended queries. Our findings show that LMs, reward models, and LM judges are less well calibrated to human ratings on model generations that elicit differing idiosyncratic annotator preferences, despite maintaining comparable overall quality. Overall, INFINITY-CHAT presents the first large-scale resource for systematically studying real-world open-ended queries to LMs, revealing critical insights to guide future research for mitigating long-term AI safety risks posed by the Artificial Hivemind."
+ },
  "2511.02997": {
   "abstract": "As AI systems become more capable and widely deployed as agents, ensuring their safe operation becomes critical. AI control offers one approach to mitigating the risk from untrusted AI agents by monitoring their actions and intervening or auditing when necessary. Evaluating the safety of these protocols requires understanding both their effectiveness against current attacks and their robustness to adaptive adversaries. In this work, we systematically evaluate a range of control protocols in SHADE-Arena, a dataset of diverse agentic environments. First, we evaluate blue team protocols, including deferral to trusted models, resampling, and deferring on critical actions, against a default attack policy. We find that resampling for incrimination and deferring on critical actions perform best, increasing safety from 50% to 96%. We then iterate on red team strategies against these protocols and find that attack policies with additional affordances, such as knowledge of when resampling occurs or the ability to simulate monitors, can substantially improve attack success rates against our resampling strategy, decreasing safety to 17%. However, deferring on critical actions is highly robust to even our strongest red team strategies, demonstrating the importance of denying attack policies access to protocol internals.",
   "authors": [
@@ -2404,6 +2421,18 @@
   "published": "2026-04-06",
   "title": "HDP: A Lightweight Cryptographic Protocol for Human Delegation Provenance in Agentic AI Systems"
  },
+ "2604.04721": {
+  "title": "AI Assistance Reduces Persistence and Hurts Independent Performance",
+  "authors": [
+   "Grace Liu",
+   "Brian Christian",
+   "Tsvetomira Dumbalska",
+   "Michiel A. Bakker",
+   "Rachit Dubey"
+  ],
+  "published": "2026-04-06",
+  "abstract": "People often optimize for long-term goals in collaboration: A mentor or companion doesn't just answer questions, but also scaffolds learning, tracks progress, and prioritizes the other person's growth over immediate results. In contrast, current AI systems are fundamentally short-sighted collaborators -- optimized for providing instant and complete responses, without ever saying no (unless for safety reasons). What are the consequences of this dynamic? Here, through a series of randomized controlled trials on human-AI interactions (N=1,222), we provide causal evidence for two key consequences of AI assistance: reduced persistence and impairment of unassisted performance. Across a variety of tasks, including mathematical reasoning and reading comprehension, we find that although AI assistance improves performance in the short-term, people perform significantly worse without AI and are more likely to give up. These findings are particularly concerning because persistence is foundational to skill acquisition and is one of the strongest predictors of long-term learning. We posit that persistence is reduced because AI conditions people to expect immediate answers, thereby denying them the experience of working through challenges on their own. These results add to the growing literature on cognitive offloading and AI-induced deskilling, and suggest the need for AI model development to prioritize scaffolding long-term competence alongside immediate task completion."
+ },
  "2604.11978": {
   "abstract": "Large language model (LLM) agents perform strongly on short- and mid-horizon tasks, but often break down on long-horizon tasks that require extended, interdependent action sequences. Despite rapid progress in agentic systems, these long-horizon failures remain poorly characterized, hindering principled diagnosis and comparison across domains. To address this gap, we introduce HORIZON, an initial cross-domain diagnostic benchmark for systematically constructing tasks and analyzing long-horizon failure behaviors in LLM-based agents. Using HORIZON, we evaluate state-of-the-art (SOTA) agents from multiple model families (GPT-5 variants and Claude models), collecting 3100+ trajectories across four representative agentic domains to study horizon-dependent degradation patterns. We further propose a trajectory-grounded LLM-as-a-Judge pipeline for scalable and reproducible failure attribution, and validate it with human annotation on trajectories, achieving strong agreement (inter-annotator κ=0.61; human-judge κ=0.84). Our findings offer an initial methodological step toward systematic, cross-domain analysis of long-horizon agent failures and offer practical guidance for building more reliable long-horizon agents. We release our project website at \\href{https://xwang2775.github.io/horizon-leaderboard/}{HORIZON Leaderboard} and welcome contributions from the community.",
   "authors": [
@@ -3033,6 +3062,16 @@
   "published": "2026-07-24",
   "title": "Dynamic Capability Scoping for Enterprise AI Agents: A Synthetic Dataset and Three-Source Permission Architecture"
  },
+ "2607.26819": {
+  "title": "A First Look at Coding Agents' Compliance with AI Contribution Rules in Open-Source Communities",
+  "authors": [
+   "Wenhao Yang",
+   "Runzhi He",
+   "Minghui Zhou"
+  ],
+  "published": "2026-07-29",
+  "abstract": "Open source communities have been flooded with AI-generated contributions. In defense, they have written contribution rules to regulate coding agents' behavior, spanning from a total ban, mandatory disclosure, to verification gates and human sign-offs. Yet, whether coding agents read and follow those rules, and behave in open source repositories, remains unknown. To estimate real-world rule compliance of coding agents, we curate 106 issues from 49 repositories containing AI contribution rules into RepoComplianceBench. We judge the trajectory of each run against the repository's rules, measuring whether the agent refuses to contribute, discloses its assistance truthfully, clears the required verification gates, or escalates critical steps to a human. We also test if extra prompts, rule disclosure, or feedback from the compliance verifier help with the situation. Our experiments on four frontier models show that today's agents almost never proactively retrieve the contribution rules. Agents pick up disclosure and verification with reminder prompts, rule quotes, and verifier feedback; however, they never refuse to contribute in AI-banned repositories under any condition we tested. The status reveals that verification and disclosure issues are solvable with existing mechanisms, yet enforcing bans and human escalations remains an open problem."
+ },
  "2608.00801": {
   "title": "Hardware-rooted attestation for AI-agent evidence: composing IETF RATS with action evidence packages",
   "authors": [
@@ -3142,6 +3181,24 @@
   ],
   "published": "2026-08-10",
   "title": "The Deliberative Deficit: An Empirical Critique of LLMs in Democratic Discourse"
+ },
+ "2608.13522": {
+  "title": "Vero: Can AI Agents Build Formally Verified Software Repositories?",
+  "authors": [
+   "Zhe Ye",
+   "Hantao Lou",
+   "Yuechun Sun",
+   "Peiyang Song",
+   "Zhengxu Yan",
+   "Timothe Kasriel",
+   "Qingyang Zhang",
+   "Kaiyu Yang",
+   "Soonho Kong",
+   "Jingxuan He",
+   "Dawn Song"
+  ],
+  "published": "2026-08-13",
+  "abstract": "AI agents are increasingly used for programming, but do not provide any guarantee on the correctness of generated code. Verified code generation, in which an agent produces both an implementation and a machine-checked proof of its specification, offers a stronger path toward trustworthy AI-generated software. Existing benchmarks in this direction either focus on individual functions or only evaluate proof generation with provided implementations. It is still an open question whether agents can make coherent implementation and proof choices across real multi-module codebases. To bridge this gap, we introduce Vero, the first benchmark to evaluate joint implementation and proof synthesis at the repository level. Vero contains 43 multi-module instances sourced from real-world repositories spanning Python, Dafny, Verus, and Coq, and covering diverse domains from cryptographic protocols to distributed systems. Each instance consists of a multi-module Lean 4 repository with predetermined API interfaces, manually curated formal specifications, and reference implementations, supporting both proof-only and code-and-proof evaluation modes. To improve benchmark reliability, Vero also includes an audit mechanism where agents are allowed to formally prove unsatisfiability of provided specification or incorrectness of reference code, which surfaces and corrects latent code and specification errors during curation. We evaluate frontier coding-agent configurations with Lean toolchain access. The strongest agent fully solves only 27 of 43 instances and closes no specifications on the hardest repositories. Vero provides a concrete testbed for measuring progress toward repository-scale verified software synthesis, where current agents still fall short. We release the benchmark, curation pipeline, and evaluation harness at https://github.com/sunblaze-ucb/vero."
  },
  "2608.14611": {
   "abstract": "Frontier AI capabilities and autonomy are advancing rapidly. A growing number of real-world incidents make a trusted AI ecosystem essential to embracing AI with confidence. The 2026 Singapore Consensus is an outcome of the second International Scientific Exchange on AI Safety, bringing together over 100 contributors spanning 13 countries from frontier developers, government safety institutes, academia, and civil society. Building on the 2025 report, it presents a global understanding of technical AI safety research problems of top priority, now with a dedicated focus on societal resilience and on managing the risks of increasingly autonomous AI agents.",
@@ -3534,6 +3591,17 @@
   "published": "2026-09-17",
   "title": "AI Should Facilitate Democratic Deliberation at Scale"
  },
+ "2609.20143": {
+  "title": "Designing Against Deskilling: Metacognitive Feedback Reduces Cognitive Offloading to LLM Assistants",
+  "authors": [
+   "Sebastian Maier",
+   "Kai Schwabe",
+   "Manuel Schneider",
+   "Stefan Feuerriegel"
+  ],
+  "published": "2026-09-17",
+  "abstract": "Cognitive offloading to AI can reduce opportunities to practice skills, creating risks of deskilling. However, it remains unclear how to prevent deskilling without restricting access to AI. Here, we design two interventions to reduce offloading decisions: (1) metacognitive feedback that makes the implications of offloading for users explicit, and (2) an effort-based reward that incentivizes less extensive LLM assistance. We test both in a preregistered online experiment ($N = 704$) with a 2$\\times$2 design and a no-AI control. The task was to practice fraction arithmetic with an LLM-based assistant that provided solutions only on explicit request, followed by an unaided test. Metacognitive feedback reduced answer offloading (OR $= 0.47$) and improved test performance (OR $= 1.51$). We found no evidence that the reward affected either outcome. Our results identify metacognitive feedback as a promising design choice to reduce cognitive offloading."
+ },
  "2609.22248": {
   "abstract": "Systematic Literature Reviews (SLRs) are essential for evidence-based research but remain time-consuming, requiring researchers to manage large volumes of publications across planning, screening, analysis, and reporting. Large language models (LLMs) can now produce fluent, well-structured review text, which makes it difficult to distinguish synthesis that was verified by a researcher from synthesis that merely appears authoritative. This raises the risk that unverified AI-generated synthesis enters the scholarly record carrying the credibility of a systematic review. We present CoSLR, a Human-AI collaborative multi-agent system that supports the SLR workflow through a modular three-phase pipeline using large language models and Retrieval-Augmented Generation (RAG), and that places explicit, mandatory human checkpoints on the path between generated output and its acceptance. In a survey-based study with 63 participants, the system was received positively: 27 of 63 participants (42.9 percent) rated its usability highly, indicating that the mandatory checkpoints did not come at the cost of a workable interface. However, a checkpoint safeguards the review only if researchers use it to verify: 22 of 63 participants (34.9 percent) reported that they would trust AI-generated summaries and reports without additional human checking after only a short interaction with the system. These findings indicate that Human-AI collaboration can support literature review work, but that the effectiveness of human oversight depends on whether users are willing to exercise it. This is a calibration problem that interface design must address directly, not assume.",
   "authors": [
@@ -3765,6 +3833,18 @@
   "published": "2026-10-05",
   "abstract": "Developers can build LLM agents by adapting third-party models through benign post-training. We study a supply-chain threat in which an attacker supplies a model with a backdoor: hidden behavior that produces malicious outputs when a particular input pattern appears. Focusing on software-engineering agents, we ask whether such backdoors survive the developer's supervised fine-tuning (SFT) and subsequent task-level reinforcement learning (RL). We observe that benign SFT substantially reduces attack success, but subsequent RL often preserves the residual behavior and sometimes even increases attack success. Our analysis of backdoor erosion during SFT identifies two factors that may favor survival: initial backdoor strength and gradient compatibility with benign training. These factors motivate PersistBD, which refines an already-backdoored model before release to improve its persistency through the benign post-training process. On Qwen2.5-Coder-7B, PersistBD raises attack success from 20% to 74% after SFT and from 20% to 76% after SFT-RL, while maintaining comparable benign task performance. Together, our results show that backdoors can remain active through benign post-training and that adversaries can deliberately increase their persistence. This highlights a supply-chain risk for AI developers and motivates stronger techniques for detecting and mitigating inherited backdoors when adapting third-party models into agents. Our code is available at https://github.com/uiuc-kang-lab/PersistBD."
  },
+ "2610.07757": {
+  "title": "Acquiring and Verifying Repository Norms for Coding Agents",
+  "authors": [
+   "Kaifeng He",
+   "Xiaojun Zhang",
+   "Zhenxi Chen",
+   "Christoph Treude",
+   "Mingwei Liu"
+  ],
+  "published": "2026-10-06",
+  "abstract": "Changes produced by coding agents can pass functional tests while leaving repository contribution requirements unmet. Following repository-specific norms requires identifying guidance dispersed across repository sources and interpreting its conditions and exceptions. Retrieval and documentation approaches supply general context, but agents must still determine which norms apply. We introduce RepoNorm to acquire explicit and implicit repository norms independently of coding tasks. It checks norm content and applicability using repository evidence, consults Git history when needed, and delivers norm packages to existing coding agents. Our evaluation uses three coding models and 121 tasks from RepoNormBench. Against the baseline with no additional generated guidance (Raw), relative improvements are 7.42-10.77% for Overall Norm Compliance Rate (NCR), 31.64-45.44% for Contribution NCR, and 11.34-17.69% for Prompt-omitted NCR. All three coding models also obtain higher values on these NCR measures with RepoNorm than with CodeWiki documentation. Functional success rates show observed gains of 5.79-9.09 percentage points over Raw; the paired comparisons do not reach the significance threshold. Sampled precision is 86% with RepoNorm's default configuration."
+ },
  "2610.08097": {
   "abstract": "Mathematical problem solving often requires deterministic computational steps that agents delegate to tools and implicitly trust. Yet tools can fail silently, returning plausible but incorrect results. How well can agents detect and correct corrupted tool call outputs? We study this through a controlled corruption framework where a hidden interceptor replaces tool call results with plausible incorrect information on targeted problems. We evaluate agents across 31 problems under four verification designs including no verification (baseline), mandatory same-context reflection, optional fresh-context verification, and optional structural verification. Without verification, corruption causes dramatic accuracy loss, from 100% down to 72.4%. Mandatory reflection fully recovers this performance to 100%. Optional verification improves accuracy only when models actively invoke it. Our results show that checking frequency is strongly associated with robustness differences, while unequal invocation prevents a controlled comparison of verifier quality. A supporting recovery experiment shows that full problem restart succeeds in 100% of cases after explicit detection. These findings demonstrate that verifier availability and verification policy are separate components of mathematical-agent reliability. Mandatory policies enforce verification while optional policies depend on the model's own choice to invoke it.",
   "authors": [
@@ -3984,6 +4064,19 @@
   ],
   "published": "2026-10-13",
   "abstract": "Personal-agent memory has largely focused on learning what users know, prefer, and want. However, knowing the user does not necessarily mean knowing what the user and the agent have established together. An assistant's proposal should not become an authorized instruction merely because it is remembered. We introduce Grounding Awareness, the ability to distinguish accepted, unacknowledged, revised, and scoped arrangements when selecting actions. We develop a controlled benchmark to test whether agents can tell the difference between proposals users have accepted and those they have not, and whether they apply accepted arrangements only where appropriate. Across multiple agents and memory systems, we find that strong memory performance does not ensure Grounding Awareness. More surprisingly, providing more complete user information can increase execution of unacknowledged proposals, while persistent memory can cause agents to treat these proposals as if they were user instructions. We trace these failures through memory writing, retrieval, and action selection. Finally, we introduce Grounding Layer, a lightweight, training-free extension that explicitly tracks grounding status and checks consequential actions, substantially improving agent behavior without modifying models or memory systems."
+ },
+ "2610.20027": {
+  "title": "LintEval: Benchmarking LLMs on Linter-Guided File Refactoring",
+  "authors": [
+   "Tongwei Deng",
+   "Jinyu Zhu",
+   "Yue Cao",
+   "Chenxu Wang",
+   "Yanzhen Zou",
+   "Bing Xie"
+  ],
+  "published": "2026-10-14",
+  "abstract": "Linters are widely used in code maintenance and real-time IDE editing to surface lint alerts related to performance, style, error-prone, and other patterns in source files. However, existing code benchmarks do not explicitly evaluate linter-guided file refactoring, where models must reduce lint alerts in source files with correct initial functionality while satisfying functionality preservation. We introduce LintEval, a multilingual benchmark for linter-guided file refactoring across C++, Python, and Java, comprising 13,061 programs with correct initial functionality and 171,662 lint alerts extracted using language-specific linters. LintEval jointly evaluates functionality preservation, lint alert reduction, new alert avoidance, and edit minimality. Experiments reveal a persistent trade-off: closed-source commercial models reach up to 90.4% Reduction@P but achieve only 67.1%-68.3% Pass@1, while several open-source small models show low or negative Reduction@P. A controlled fine-tuning study further shows that supervision format matters: refactoring-oriented SFT raises Qwen2.5-Coder-7B Reduction@P from 24.7% to 76.0%. LintEval enables controlled evaluation of models that improve source files under functionality preservation."
  },
  "2610.20116": {
   "abstract": "Long coding agent sessions outgrow the model's context window, so agents compact: older history is replaced by something shorter, usually a model-written summary. A summary selects and rewords, and the agent cannot see what was lost. Existing work has explored a range of compaction techniques, but comparatively little attention has been paid to their effectiveness with lightweight models, including those deployed locally or used for high-volume workloads. Here, we present transparent-compact, a simple deterministic method for the open-source Pi coding agent, designed specifically for use with such models and with the purpose of maximising the transparency of the agent's view of its own compacted context. It guarantees that user and assistant prose in its context is unchanged by a model or algorithm, and explicitly flags where compaction has stripped information. We compare it with Pi's default model-written summary compaction and with pi-vcc, a popular deterministic method with similar methods but without verbatim retention of prose. Our benchmarks run on four models of varying performance levels, with emphasis on Qwen3.8-27B: a lightweight model at the top end of what consumer hardware can serve locally. On sets probing commitments (rules the user set which exist only in the conversation) and recall of facts, transparent-compact matched or outperformed both alternatives. In particular, it showed an advantage in avoiding confident blunders, i.e. assertion of false information as opposed to recognizing that something was not recalled. Even with a frontier model, its advantage was present but smaller. We argue that transparent-compact spares lightweight models from reasoning or searching their way around what compaction lost, and results in improved recall and application of information as a result, without the need for task or context-specific structuring of the session history.",
@@ -4724,6 +4817,19 @@
   "published": "2026-11-02",
   "title": "DeliverBench: Benchmarking AI Agents on Delivering Realistic Multi-Stage Professional Projects"
  },
+ "2611.03424": {
+  "title": "IdeaTaste: Do LLMs Share the Research Taste of Human Researchers?",
+  "authors": [
+   "Shanshan Zhong",
+   "Chen Xu",
+   "Jingjie Ning",
+   "Zhengzhong Liu",
+   "Aviral Kumar",
+   "Chenyan Xiong"
+  ],
+  "published": "2026-11-02",
+  "abstract": "Research taste, the judgment of what to read, which problems to pursue, and which methods to try, increasingly shapes the work of AI scientists, yet it remains far less understood than their ability to execute research. We introduce IdeaTaste, a benchmark that scores an LLM by how closely the research proposals it writes from a literature snapshot frozen at 2025 match the work the same communities published in 2026. Our experiments span six contemporary language models and four research areas from established to emerging fields, covering more than 90{,}000 proposals in total. LLM agents fall well short of human communities in both the literature they cite and the ideas they state, reaching about 26\\% of the human level on citation matching and only 18\\% on idea matching. Their populations can cite as diversely as a community and take up its tasks and methods, yet rarely arrive at the concrete approaches and research plans it pursues. Neither richer field context nor larger populations substantially close this gap. In blinded expert review, AI proposals trail the 2026 papers least in presentation and most in expected success, echoing their gap in concrete approaches, and those whose ideas no human paper shares fare worst, suggesting weaker directions rather than overlooked opportunities. These results indicate that the main bottleneck in AI research taste lies less in finding the directions a community works on than in turning them into the concrete approaches it goes on to pursue. We release IdeaTaste as an open, continuously updated leaderboard (https://cxcscmu.github.io/IdeaTaste) that benchmarks contemporary AI proposals against future publication cycles."
+ },
  "2611.03493": {
   "title": "An Empirical Evaluation of Signing and Verification Performance of Verifiable Credential Formats: A Cross-Language Benchmark of SD-JWT VC, W3C VCDM, and mdoc",
   "authors": [
@@ -5333,6 +5439,15 @@
   "published": "2026-11-06",
   "abstract": "We study homeopathic learning, a phenomenon where poisoned training data with little effect on its own can create a hidden backdoor once clean, contrasting data is added. In our experiments, a model fine-tuned only on a \"poison\" dataset associated with a trait T (such as speaking German or being misaligned) does not learn T. Surprisingly, adding similarly formatted \"clean\" data not associated with T causes the model to learn T. This effect requires that the poison data have an identifying \"trigger\" feature that is absent from the clean data. We demonstrate this effect in a variety of settings: subliminal learning of backdoor behaviors, inoculation prompting of reward hacking transcripts, generalization from archaic bird names, and an MNIST classifier with mislabeled data. We propose a simple regression model as an explanation. In the poison data, the task and trigger always co-occur, and regularization favors attributing T to the task. Clean data without the trigger causes T to be attributed to the trigger instead. Consequently, the same training examples can have little effect as part of one training set but create a misalignment backdoor in another. This finding exposes a potential limitation of safety methods that audit or filter training data in isolation."
  },
+ "2611.10403": {
+  "title": "QUASI: Post-Quantum Quorum Attestation of Pre-Validated Statements",
+  "authors": [
+   "Maksym Ioffe",
+   "Dahlia Malkhi"
+  ],
+  "published": "2026-11-07",
+  "abstract": "We present QUASI, a newly conceived class of hash-based, post-quantum-secure protocols that enable a group of parties to produce a publicly verifiable attestation about a pre-validated statement. QUASI produces attestations that reduce the size and verification cost to a fraction of a full hash-based signatures collection, without relying on SNARKs or a trusted setup. QUASI rests on a surprising discovery: each party need not sign the entire statement. Authenticating only a small subset of symbols suffices for a quorum to attest to the whole. We turn this insight into a randomized construction that achieves reductions of more than 10x in per-party contribution size and hash computations for generation and verification, compared with full hash-based signatures. QUASI is a generic primitive supporting diverse applications. Operationally, QUASI requires no additional interactive setup or preprocessing beyond independent key generation by parties for the underlying hash-based authentication scheme. Two principal use cases are external attestation for signature-free consensus, enabling clients to verify statements about committed state; and preprocessing for SNARK-based aggregation, compounding QUASI's savings with succinct-proof compression."
+ },
  "2611.10620": {
   "title": "What Do Collusion Probes Read? Three Pitfalls in Evaluating Multi-Agent Collusion Monitors",
   "authors": [
@@ -5355,6 +5470,14 @@
   ],
   "published": "2026-11-07",
   "abstract": "Much of the automation handed to language-model agents is procedural: each step needs little intelligence, but a long unattended run must follow a skill or SOP stated once at the start. We show that agents drift from such procedures over long runs, and that restating the instructions or resuming a stopped agent only moves the drift to another shortcut. We study an executable finite-state machine (FSM) that keeps the workflow state outside the model's context and enforces it at three points: tool calls, state transitions and the end of the agent's turn. In a pre-registered experiment on 200-account SOP-Bench batches, Claude Haiku 4.5 with the FSM decided on average 139 accounts correctly and by the procedure, against 48 for the strongest baseline (95% CI of the difference [46, 130]), and kept this rate to the end; across three models, the gain tracked how much the plain agent drifted. Because the runtime, not the model, supplies this long-horizon reliability, the FSM can let small models carry procedural work: Haiku 4.5 with it averaged more such decisions than plain Claude Sonnet 4.6 at 38% of the cost. Analyses on SWE-bench Verified, $τ^2$-bench, and staged and cross-context workflows further suggest that reliable long-horizon automation can come from stronger execution control, not only stronger models."
+ },
+ "2611.11506": {
+  "title": "On the Relative Security of Prompt Injection: Mechanised Definitions, Defences and Verdicts for LLM Agents",
+  "authors": [
+   "Brijesh Dongol"
+  ],
+  "published": "2026-11-08",
+  "abstract": "An LLM agent that reads untrusted content, such as an email or a web page, may follow instructions hidden in it. Noninterference is too strong for such agents, since a useful agent lets untrusted content influence what it does and may disclose the user's data by design, and declassification needs a release policy written for each task. We instead state security relative to a reference agent, which runs the same plan under the same runtime monitor with a model that never obeys untrusted content. An agent is relatively secure if every leak it has is a leak the reference already has. Our framework, PlanTERS, instantiates relative security, a notion from speculative execution, with a small agent language in which the attacker chooses how the model follows instructions, a composition with runtime monitors, and attacker models that differ in what they observe. A fence theorem shows that revoking injectable tools at the first untrusted read, and never granting them back, makes every plan relatively secure at the event level on finite runs, for every model behaviour in which each injection is a single call and the model obeys on a schedule fixed in advance; with a fairness condition, this extends to possibly infinite runs. We prove or refute relative security for agents with fences, budgets, approvals, loops and dual LLMs, in Isabelle/HOL."
  },
  "2611.12167": {
   "abstract": "We introduce FraudBench, an evaluation of large language models' (LLMs) propensities to recommend, assist, or directly take actions that would constitute fraud under U.S. law. Our evaluation contains a novel dataset of 159 scenarios based on real-world U.S. court cases and validated by legal experts. We present each scenario to LLMs via three tasks at varying levels of autonomy: advising users, drafting messages for users to send, and acting directly on behalf of users (477 tasks total). In each scenario, FraudBench re-enacts the facts of a court case to give LLMs an opportunity, but no explicit instruction, to either misrepresent or conceal a material fact in a high-stakes commercial setting--e.g., whether to describe company-funded product testing as \"independent\" to customers (misrepresentation) or whether to hide unfavorable regulatory investigations from clients (concealment). We evaluate 20 LLMs across 25 experimental conditions (totaling >300,000 generations) and include a preregistered human baseline ($n_{\\texttt{annotations}} = 2{,}957$, $n_{\\texttt{humans}} = 996$). We score a response as fraudulent when it engages in, assists with, or recommends misrepresentation or concealment. Key findings include: (1) across LLMs, fraud rates ranged from near 0% to over 40%; (2) LLM fraud rates increased with autonomy, with overall rates of 3.0% when advising, 14.7% when drafting, and 21.4% when acting directly, without applying pressure; (3) LLMs sometimes engaged in fraud despite recognizing legal risks; (4) LLMs more often engaged in fraud by concealment than by misrepresentation; and (5) prompt-based interventions substantially affected fraud rates, with a prompt to obey the law reducing fraud rates, while prompts to maximize profits and act agentically increased fraud rates.",
@@ -5474,6 +5597,16 @@
   "published": "2026-11-12",
   "abstract": "Large language models (LLMs) often exhibit sycophancy, a tendency to agree with users, flatter or affirm them, and preserve their face, even when independent judgment or critical feedback would be more useful. Prior work has largely evaluated sycophancy through benchmark evaluations, but less is known about how users perceive and respond to sycophantic AI in everyday tasks. We combine benchmark evaluations with two large-scale user studies. We study four personas defined through system prompts: objective (instructed to prioritize accuracy over agreement), soft-sycophantic, hard-sycophantic, and baseline (no persona-specific system prompt). Benchmarks show that even baseline exhibits substantial sycophancy, agreeing with users' stated views 71.7% of the time on NLP Survey, compared with 54.8% for objective and 89.5% for hard-sycophantic. Under conversational pressure on TruthfulQA, accuracy ranged from 81.9% for objective to 59.6% for baseline and 8.7% for hard-sycophantic. Participants were assigned to one of the four personas, and either discussed contested policy topics or collaborated with AI on email writing. Despite its higher accuracy under pressure, objective AI was rated significantly less respectful and satisfying than the other personas, and less trustworthy than baseline. Baseline and sycophantic personas did not differ significantly. Persona did not significantly affect how often participants changed their opinions, although participants who discussed with objective AI had greater odds of reduced confidence. Objective AI prompted greater writing expansion than soft-sycophantic AI, but final writing quality did not differ significantly across personas. These findings highlight a tension between accuracy and user approval: personas with substantially lower accuracy under conversational pressure received more favorable ratings for respect and satisfaction than objective AI."
  },
+ "2611.17115": {
+  "title": "CapLite: Prompt-Injection Defense for Small Language Model Agents without Model-Written Security Artifacts",
+  "authors": [
+   "Zimo Xu",
+   "Wenzhuo Liu",
+   "Hideki Nakayama"
+  ],
+  "published": "2026-11-12",
+  "abstract": "Enforcement defenses against prompt injection, such as CaMeL, Progent, IPIGuard and DRIFT, ask the agent's own model to write a security artifact (a program, a privilege policy, a dependency graph or a constraint list) that code then enforces. We ask whether small language model (SLM) agents can be trusted to write these artifacts. Across 15 open-weight models, 13 of them between 1.7B and 12B parameters, they cannot: the policies, graphs and constraints that the agent's model writes admit attacks on 14 (Progent), 13 (IPIGuard) and 11 (DRIFT) of the models, and CaMeL's programs fail to run in up to 68% of episodes. We present CapLite, which derives its policy from the tool schemas, commits the write calls before any tool result is read, and admits a write only if every argument that decides whom or what it affects is stated in the user's request. This guarantees write integrity: injected text cannot add a write, and no write reaches a recipient, amount, object or destination that the user did not state. No attack succeeds in 13,935 attacked AgentDojo episodes. CapLite reaches utility under attack comparable to CaMeL's (29.0% vs. 27.2%) with fewer tokens than every other enforcement defense and than the undefended agent: 17.1k per episode, 18% of CaMeL's, and the highest utility per token of all enforcement defenses."
+ },
  "2611.17316": {
   "title": "CoReMem: Cost-Internalizing Memory for Successive Coding Tasks with Prospective Valuation",
   "authors": [
@@ -5536,6 +5669,15 @@
   "published": "2026-11-13",
   "abstract": "Speech applications require decisions about term presence, turn completion, and language within an audio window. We present Marimba, an interface for typed speech decisions built on frozen Qwen3-ASR 0.6B features. Lexical questions use zero-shot scoring of ASR transcripts; non-lexical questions use a question-conditioned head and a separate layer-18 turn-end readout. Language identification uses the ASR model's own language scores. On private conversational test sets, decoder AUROC is 0.80-0.92; on public read speech it is 0.92-0.97. Speech Commands four-way accuracy is 0.93; binary lexical ECE is at most 0.08. Personal-information detection, which passes the greedy transcript to a private, curated PII pipeline, reaches item-level F1 0.904 on synthetic Brazilian Portuguese speech (1.000 on reference transcripts). Layer-12 speaker readouts detect speaker change with AUROC 0.966-0.980 on AMI and VoxConverse, above an ECAPA baseline, and count speakers (0, 1, 2, or 3+) more accurately than pyannote 3.1. The turn-end readout reaches AUROC 0.930 versus Smart Turn v3.2 at 0.982 on Smart Turn's own test set. On a subset of ICSI meetings labeled by next speaker, AUROC is 0.716 versus 0.712; the paired confidence interval includes zero."
  },
+ "2611.19417": {
+  "title": "Are Revealed Preferences All You Need for AI Alignment?",
+  "authors": [
+   "Joshua S. Gans",
+   "Richard T. Holden"
+  ],
+  "published": "2026-11-14",
+  "abstract": "AI agents learn what principals want from what principals choose. We offer a criterion for when a principal's decisions, at every belief an AI might hold, are all the AI needs. For acting, they are. Cautious actions, such as deferring to a person, typically divide the principal's actions into blocks, and for choosing costless evidence, decisions are enough exactly when the same evidence is best in every block. Otherwise, the AI acts as its principal would yet can gather the wrong evidence, and greater capability can turn that error into incorrect actions. Choices between two mistakes reveal what decisions miss."
+ },
  "2611.20045": {
   "title": "Security of Deep Research Agents: Attack Surface, Defenses, Benchmarks, and Agenda Seeding against Research Planning",
   "authors": [
@@ -5567,6 +5709,15 @@
   ],
   "published": "2026-11-15",
   "abstract": "Memory systems allow AI agents to persist information across interactions, making them more personalized and more capable on long-horizon tasks. This persistence introduces new risks: stored information can be disclosed in inappropriate contexts, resist correction or deletion, be retained beyond what users desire, or be poisoned to influence later agent behaviour. Yet memory systems are typically evaluated on task performance and efficiency alone. We argue that a memory system should instead be understood as the custodian of its user's persistent information, with responsibilities that extend beyond helping an agent complete its tasks, and that it should be evaluated holistically against all such responsibilities. We present Holistic Evaluation of Agent Memory Systems (HEAMS), an open-source framework for evaluating agent memory systems in this way. First, we state the responsibilities of agent memory systems as explicit behavioural desiderata spanning performance, efficiency, security, privacy, and user sovereignty. Second, we assemble a benchmark suite that covers these desiderata and acknowledge the gaps that remain. Third, we develop MilaMem, a prototype memory system, and a governance layer that can wrap any memory system, enabling controlled study of memory system design choices. Fourth, we compare memory systems across the full HEAMS benchmark suite. We find that no memory system leads every performance benchmark, and strong performance scores may coexist with poor privacy, user-sovereignty, and security scores. Governance strongly influences results: recall policies can reduce inappropriate disclosure at a cost in helpfulness, while both recall and retention policies improve poisoning resistance. Performance and efficiency benchmarks alone therefore cannot reveal how well a memory system meets its responsibilities. Code: https://github.com/milatechtransfer/heams"
+ },
+ "2611.20527": {
+  "title": "Recurrent losers: A network approach to cover-bidding patterns in public procurement",
+  "authors": [
+   "Isabela Villamil",
+   "János Kertész"
+  ],
+  "published": "2026-11-16",
+  "abstract": "We develop and apply a network-based method to examine patterns consistent with cover bidding within procurement markets, using only bidder participation and winner identities. A statistical test identifies relationships in which firms win unusually often when particular competitors also bid. These relationships form a directed graph with links from recurrent losers to recurrent winners. We use maximum $k$-core to classify possible organizational forms of cover bidding and propose tender exposure -- the share of contested tenders involving a reported relationship -- as a market-level indicator of potential cover-bidding risk. Applied to 200,065 contracts procured by district engineering offices of the Philippine Department of Public Works and Highways (DPWH) from 2017 to 2025, covering three congressional terms, the method identifies 8,728 directed relationships across 407 of 564 markets. The $k$-core classes differ in network breadth, relationship depth, and bidder roles. In simpler networks, each recurrent loser is usually tied to a single winner, while highly interconnected networks involve multiple recurrent winners and broader groups of bidders that rarely win. Some of the deepest relationships and highest levels of tender exposure occur in intermediate networks, showing how relationships can reach much of a market without extensive interconnectedness. Offices named in official investigations more often contain highly interconnected networks than other offices. Two of the three offices referred for bid rigging are among the twelve in our ranking with the highest exposure in 2023-2025."
  },
  "2611.21832": {
   "title": "Auditors Struggle to Catch Sabotage In End-to-End Transcripts of AI Safety Research",
@@ -5640,6 +5791,16 @@
   ],
   "published": "2026-11-18",
   "abstract": "Intent contracts are an authorization interface for tool-using LLM agents in which the planning model holds no tools. For each step it submits a short logged contract: a goal, a verbatim quotation of the user, and scope fields. Code validates the contract, and a small trusted model checks it against the user's words and writes the tool call itself. Provided the validation and dispatch code is correct, every executed call is written by the trusted model, the planner's influence on a call is confined to a contract logged before it, and the trusted side decides how much of a request to carry out. We compare contracts with two reviewers of planner-written commands: one sees only the user's words and the command, the information boundary of a reasoning-blind permission classifier, and one also sees the planner's goal and a checked quotation. With gpt-6.1-terra as planner and GLM-5.3-Flash as the trusted model on three AmPermBench task families, every object changed under contracts is named in the goal of the contract that produced the change; under review the planner names objects in its commands and rarely in its goals. When the planner adds work the user never asked for, contracts complete the user's task in 27/30 runs and the intent-visible reviewer in 16/30, because a reviewer can only refuse a whole command. Contracts do not reduce unauthorized actions. They are indistinguishable from blind review, and once the benchmark's environment terms are clarified, every condition that changes state hits a wrong target in 40-49% of those runs. That error is the planner's choice of objects for an ambiguous reference, which no trusted model here can see the environment to check; telling the executor to decline when unsure does not change it. We evaluate benign over-reach with one pair of models, not adversarial planners. We release the plugin and run records."
+ },
+ "2611.24135": {
+  "title": "PULSAR-V: I/O-Aware Post-Update Attestation for RISC-V",
+  "authors": [
+   "Niccolò Lentini",
+   "Stefano Di Carlo",
+   "Alessandro Savino"
+  ],
+  "published": "2026-11-18",
+  "abstract": "Post-update attestation proves that a device installed the intended firmware, not that the image stayed protected until the report was signed. In a multi-master SoC, a master outside the attested processor can corrupt update-critical memory. In contrast, the firmware identity, lifecycle state, and the CPU's protection evidence remain byte-identical to a healthy device's. We present PULSAR-V, a post-update attestation architecture which binds the authenticated update commit to the effective permissions and immutability of both gates (PMP/EPMP on the CPU, the I/O policy mediating DMA), sampled at the commit and at attestation, the I/O gate latching its own commit-time state in hardware. In a RISC-V SoC prototyped on a ZCU102 FPGA (CV32E40S core with 16 PMP regions, IOPMP-style unit, AXI write guard), a 256-byte write from the board's Arm DMA engine bypasses PMP and corrupts the committed image: every conventional claim stays true, and PULSAR-V rejects the device on its I/O-policy evidence alone. It also rejects an intact device whose policy left the image writable, a verdict no integrity check can reach. The gate and its commit latch cost 436 LUTs, 4.6% of the SoC, and evidence collection takes 43.1k cycles independent of image size, 41x less than re-hashing 16 KiB."
  },
  "2611.24185": {
   "title": "Guarding the Kingdom of Skill-Based Agents in the AI Dynasty of Computation: Control-Flow Integrity for Agent Skills",
@@ -5735,6 +5896,16 @@
   ],
   "published": "2026-11-20",
   "abstract": "Tool-using AI agents propose actions whose authorization and external effects cannot be inferred from generated text alone. We study an execution boundary that separates agent proposals from business-controlled authority, context disclosure, and supplier selection. The Open Process Control Plane (OPCP) mediates capability calls and records uncertain outcomes when a supplier may have acted without returning an acceptable reply. We evaluate this runtime with scripted requests and synthetic suppliers: 2,400 fault episodes across four policies, 60 process-termination/restart episodes, 19,000 timed calls across 19 configurations, five targeted mutations over 43 fixtures, and 160 substitution records. No language model or autonomous agent is evaluated. OPCP and a conservative composition agree on all measured fault outcomes. Both recover after definite refusal without cross-supplier duplication; retry-all duplicates effects in every tested lost-reply-after-commit case. Persistent runtime state prevents cross-supplier replay in the restart experiments, while same-supplier duplicate prevention also requires supplier idempotency. At 128 suppliers, best-score routing has a median latency of 1.411 ms versus 0.261 ms for pinned routing. All five selected mutations are detected, and record enumeration exposes acceptance of an empty regression set. These results characterize an execution mechanism relevant to agent governance, including its costs and assumption boundaries. They do not establish improved agent task success, prompt-injection resistance, or real-vendor model portability."
+ },
+ "2611.26983": {
+  "title": "Privacy Protection in Self-Evolving Personal Agents: Persistent Memory and Cross-Carrier Transfer",
+  "authors": [
+   "Zibin Lin",
+   "Taotao Wang",
+   "Shengli Zhang"
+  ],
+  "published": "2026-11-20",
+  "abstract": "Personal agents carry private experience into later decisions through persistent memory. This thematic survey compares memory admission, maintenance, release, and withdrawal by protected change, observer, and validation setting. Direct evidence in the screened corpus comes from controlled memory workflows. Three worked scenarios follow one private fact through booking, feedback-driven learning, and withdrawal. We show when prompt revision and memory reads compose, when skills inherit a private head's bound, and why reader non-use does not establish cleanup of learned state. Diagnostic experiments measure the utility costs of wider label protection and broad memory deletion, and test how missing lineage obscures descendants."
  },
  "2611.27095": {
   "title": "Epistemic Guard: Out-of-Process MCP Receipt Proxying, Post-Turn Prose Supervision, and Provenance-Gated Memory for Tool-Using Autonomous Agents",

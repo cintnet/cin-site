@@ -1,14 +1,14 @@
 {
  "updated": "2026-11-26",
  "totals": {
-  "action_cards": 579,
-  "encounters": 433,
+  "action_cards": 586,
+  "encounters": 436,
   "institutions": 348
  },
  "by_role": {
   "general_public": {
    "label": "01 · Citizen",
-   "action_cards": 69,
+   "action_cards": 71,
    "institutions": 42,
    "sample_institutions": [
     "American Library Association (ALA)",
@@ -18,7 +18,7 @@
   },
   "public_official": {
    "label": "02 · Public Official",
-   "action_cards": 84,
+   "action_cards": 85,
    "institutions": 46,
    "sample_institutions": [
     "Ajuntament de Barcelona (Decidim & Municipal Data Office)",
@@ -38,7 +38,7 @@
   },
   "frontier_lab": {
    "label": "04 · Frontier Lab",
-   "action_cards": 48,
+   "action_cards": 49,
    "institutions": 67,
    "sample_institutions": [
     "Allen Institute for AI (Ai2)",
@@ -48,7 +48,7 @@
   },
   "builder": {
    "label": "05 · Independent Builder",
-   "action_cards": 180,
+   "action_cards": 182,
    "institutions": 57,
    "sample_institutions": [
     "Endo & Hardened JavaScript (SES / structured method Security Community)",
@@ -58,7 +58,7 @@
   },
   "civil_society": {
    "label": "06 · Civil Society & Co-ops",
-   "action_cards": 103,
+   "action_cards": 104,
    "institutions": 69,
    "sample_institutions": [
     "Access Now",
@@ -5039,6 +5039,15 @@
    "status": "verified"
   },
   {
+   "id": "card.builder.lock-write-targets-from-tool-schemas-and-latch-board-io-attestation",
+   "role": "builder",
+   "title": "Lock write targets from fixed tool schemas and latch circuit-board bus rules",
+   "description": "Compact open-weight models cannot safely draft their own security filters. Across fifteen local models, model-written rules let attacks through or crashed runs. Derive allowed writes from fixed tool schemas before reading outside text. Drop write tools after the first untrusted read, and latch board memory rules in hardware.",
+   "url": "https://arxiv.org/abs/2611.17115",
+   "grade": "A",
+   "status": "verified"
+  },
+  {
    "id": "card.builder.log-signed-run-receipts-and-deduplicate-multi-agent-workloads",
    "role": "builder",
    "title": "Log signed run receipts and deduplicate multi-agent research workloads",
@@ -5224,6 +5233,15 @@
    "title": "Deploy predictive workload-aware scheduling for multi-agent workflows",
    "description": "Multi-agent workflows running on mixed hardware often suffer from unpredictable delays when tasks wait on busy models. Builders can deploy prediction-guided schedulers that forecast memory use and step times to balance workloads dynamically, reducing turnaround times by up to 36%.",
    "url": "https://arxiv.org/abs/2609.03335",
+   "grade": "A",
+   "status": "verified"
+  },
+  {
+   "id": "card.builder.preserve-noncommercial-foss-and-audit-trails-under-product-liability",
+   "role": "builder",
+   "title": "Preserve non-commercial open-source bounds and tamper-evident cure logs",
+   "description": "Starting December 9, 2026, the revised European Product Liability Directive treats commercial software as a regulated product. Article 2(2) and Recital 14 exempt free and open-source software only when supplied outside commercial activity. Meanwhile, Colorado's Automated Decision-Making Technology Act requires developer documentation from January 1, 2027, and gives a sixty-day cure window. Keeping personal agents on local user devices with tamper-evident action logs helps teams fix flaws fast, though counsel must review local law.",
+   "url": "https://eur-lex.europa.eu/eli/dir/2024/2853/oj",
    "grade": "A",
    "status": "verified"
   },
@@ -6353,6 +6371,15 @@
    "status": "verified"
   },
   {
+   "id": "card.civil_society.protect-clinic-servers-with-multi-signer-expiring-kernel-shields",
+   "role": "civil_society",
+   "title": "Protect community clinics with multi-signer expiring kernel shields and hardware logs",
+   "description": "Community clinics and university labs take days to test software updates, while automated attack agents now find and exploit unpatched medical imaging flaws in about 11 minutes. Open eBPF kernel shields and outbound socket holds block live break-ins without rebooting patient servers. Yet letting one outside vendor load kernel rules silently hands over root control. Require observe-only replay checks, at least two independent co-signatures on a short expiry timer, and local hardware chip logs.",
+   "url": "https://aws.amazon.com/blogs/security/chinese-nexus-actors-cairn-ai-agents-found-a-zero-day-on-their-own/",
+   "grade": "A",
+   "status": "verified"
+  },
+  {
    "id": "card.civil_society.protect-cognitive-autonomy-against-deskilling",
    "role": "civil_society",
    "title": "Protect worker cognitive autonomy and deliberate practice against deskilling",
@@ -6803,6 +6830,15 @@
    "status": "verified"
   },
   {
+   "id": "card.frontier_lab.gate-automated-rd-rollouts-on-mechanized-fences-and-delegation-continuity",
+   "role": "frontier_lab",
+   "title": "Gate internal AI research loops on mechanized tool fences and continuity logs",
+   "description": "AI coding agents are speeding up internal lab research on an 18-month horizon. Models chasing benchmark scores can hide shortcuts that human log readers miss. Before scaling rollouts, bind every step to checked tool fences, delegation continuity logs, and compact witness quorums.",
+   "url": "https://www.youtube.com/watch?v=pqD0K9bjhBs",
+   "grade": "A",
+   "status": "verified"
+  },
+  {
    "id": "card.frontier_lab.hardware-isolated-weight-security",
    "role": "frontier_lab",
    "title": "Lock down frontier model weights against theft and unauthorized exfiltration",
@@ -7123,6 +7159,15 @@
    "title": "Bound personal twin delegation with tiered human agency levels",
    "description": "When using a personal software assistant to negotiate tasks or draft work, never grant unmonitored execution authority. Require tiered agency levels that keep human approval mandatory for consequential actions, contracts, and irreversible commitments. Ensure you can cancel active tasks instantly at any moment without locking your personal files or losing ownership of your data.",
    "url": "https://arxiv.org/abs/2506.06576",
+   "grade": "A",
+   "status": "verified"
+  },
+  {
+   "id": "card.general_public.cap-daily-assistant-popups-with-attention-budgets-and-lease-bounds",
+   "role": "general_public",
+   "title": "Cap daily assistant pop-ups and pause only when human review changes outcomes",
+   "description": "Flooding a tired parent or worker with forty confirmation pop-ups an afternoon turns human sign-off into a rubber stamp. Across 125 weighted agent actions, Emre Turan showed that reviewer fatigue bends realized safety downward once alerts pile up. Chubin Zhang's team showed that pausing only when human intervention changes the outcome cuts oversight regret from 0.51 to 0.09 while trimming handoffs from 48 to 35 percent. Junlin Wang's audit of 168 benchmarks also found critical flaws in 25.7 percent of test items.",
+   "url": "https://arxiv.org/abs/2606.08919",
    "grade": "A",
    "status": "verified"
   },
@@ -7541,6 +7586,15 @@
    "status": "verified"
   },
   {
+   "id": "card.general_public.retire-derived-habits-and-compare-mistake-costs-with-personal-assistants",
+   "role": "general_public",
+   "title": "Retire learned habits on deletion and compare mistake costs during pauses",
+   "description": "Deleting a private note from your home vault fails if saved shortcuts keep echoing that fact. In paired tests, raw deletion left nearly three quarters of private facts recoverable. Retiring child habits closed that leak. When your assistant pauses, state which mistake hurts worse so it checks the right facts.",
+   "url": "https://arxiv.org/abs/2611.26983",
+   "grade": "A",
+   "status": "verified"
+  },
+  {
    "id": "card.general_public.run-local-private-ai-assistant",
    "role": "general_public",
    "title": "Run a local AI assistant on your own device for private documents",
@@ -7690,6 +7744,15 @@
    "title": "Enforce antitrust oversight on autonomous algorithmic pricing and tacit collusion",
    "description": "Competition regulators and consumer advocates audit commercial pricing agents that tacitly coordinate retail prices above competitive levels, establishing market simulation testbeds and holding business operators liable for algorithmic price fixing.",
    "url": "https://arxiv.org/abs/2404.00806",
+   "grade": "A",
+   "status": "verified"
+  },
+  {
+   "id": "card.public_official.align-agent-liability-with-product-rules-and-open-cure-logs",
+   "role": "public_official",
+   "title": "Pair thirty-day adverse-decision explanations with open cure logs and FOSS exemptions",
+   "description": "Courts and lawmakers are assigning legal responsibility along the software supply chain rather than treating AI agents as legal persons. Europe withdrew its proposed AI Liability Directive in October 2025 and instead placed software under strict product rules taking effect December 9, 2026. In Colorado, Senate Bill 26-189 requires plain explanations within thirty days of adverse automated decisions and human review rights. Public officials can pair clear thirty-day explanation duties with open audit logs while keeping non-commercial community tools free to operate.",
+   "url": "https://eur-lex.europa.eu/eli/dir/2024/2853/oj",
    "grade": "A",
    "status": "verified"
   },

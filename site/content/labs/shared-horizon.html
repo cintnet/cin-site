@@ -47,9 +47,11 @@ lede: Shared Horizon walks through five practical steps from home sensors and a 
   /* Part 1: 5-Phase Process Diagram + Slideshow Details Explorer */
   #ex-horizon-phases {
     margin: 0 0 1.25rem;
-    padding: 16px 18px 14px;
-    background: #EFE4D2;
-    border: 1px solid #C5B094;
+    padding: 16px 0 14px;
+    background: transparent;
+    border: 0;
+    border-top: 1px solid #DFD1BE;
+    border-bottom: 1px solid #DFD1BE;
     border-radius: 0;
     box-shadow: none;
   }
@@ -497,12 +499,6 @@ lede: Shared Horizon walks through five practical steps from home sensors and a 
   }
 
   @media (max-width: 860px) {
-    #ex-horizon-phases {
-      overflow-x: auto;
-    }
-    #ex-horizon-phases svg {
-      min-width: 680px;
-    }
     .sh-phase-panel,
     .sh-case-tabs,
     .sh-case-arc,
@@ -527,11 +523,80 @@ lede: Shared Horizon walks through five practical steps from home sensors and a 
       border-bottom: 0;
     }
   }
+  [data-theme="dark"] .sh-intro p,
+  [data-theme="dark"] .sh-phase-main h3,
+  [data-theme="dark"] .sh-phase-main p,
+  [data-theme="dark"] .sh-case-tab,
+  [data-theme="dark"] .sh-arc-step h3,
+  [data-theme="dark"] .sh-arc-step p,
+  [data-theme="dark"] .sh-allies-heading,
+  [data-theme="dark"] .sh-ally-card h4,
+  [data-theme="dark"] .sh-ally-card p,
+  [data-theme="dark"] .sh-signpost-card h3,
+  [data-theme="dark"] .sh-signpost-card p,
+  [data-theme="dark"] .sh-atlas-bridge p {
+    color: #F3ECE0;
+  }
+  [data-theme="dark"] .sh-section {
+    border-top-color: #3D352B;
+  }
+  [data-theme="dark"] .sh-section-head p,
+  [data-theme="dark"] .sh-case-tab-sub {
+    color: #C8BCA9;
+  }
+  [data-theme="dark"] .sh-phase-deck,
+  [data-theme="dark"] .sh-case-panel,
+  [data-theme="dark"] .sh-signpost-card {
+    background: #221E18;
+    border-color: #3D352B;
+  }
+  [data-theme="dark"] .sh-phase-main {
+    border-color: #3D352B;
+  }
+  [data-theme="dark"] .sh-phase-side,
+  [data-theme="dark"] .sh-ally-card,
+  [data-theme="dark"] .sh-case-tab,
+  [data-theme="dark"] .sh-atlas-bridge {
+    background: #2A241D;
+    border-color: #3D352B;
+  }
+  [data-theme="dark"] .sh-case-tab.is-active {
+    background: #221E18;
+    border-color: #8FD4B6;
+    box-shadow: inset 0 3px 0 #8FD4B6;
+  }
+  [data-theme="dark"] .sh-case-tab.is-active .sh-case-tab-kicker,
+  [data-theme="dark"] .sh-side-label,
+  [data-theme="dark"] .sh-arc-step:last-child .sh-arc-kicker,
+  [data-theme="dark"] .sh-signpost-card.is-shift .sh-signpost-kicker {
+    color: #8FD4B6;
+  }
+  [data-theme="dark"] .sh-phase-eyebrow,
+  [data-theme="dark"] .sh-side-label--shift,
+  [data-theme="dark"] .sh-case-tab-kicker,
+  [data-theme="dark"] .sh-arc-kicker,
+  [data-theme="dark"] .sh-signpost-kicker {
+    color: #F09D82;
+  }
+  [data-theme="dark"] .sh-analogy-box,
+  [data-theme="dark"] .sh-side-item,
+  [data-theme="dark"] .sh-arc-step {
+    background: #1C1814;
+    border-color: #3D352B;
+  }
+  [data-theme="dark"] .sh-analogy-box p,
+  [data-theme="dark"] .sh-side-item p {
+    color: #E8DFD1;
+  }
+  [data-theme="dark"] .sh-signpost-card.is-shift {
+    background: #1E2823;
+    border-top-color: #8FD4B6;
+  }
 </style>
 
 <div class="sh-intro">
-  <p>Today, visibility runs upside down. Ordinary families have their clicks, locations, and habits tracked every day. Meanwhile, powerful corporations and state agencies make high-stakes AI and economic decisions behind closed doors.</p>
-  <p>Shared Horizon shows how our open architecture flips that arrangement. Personal life stays private at home, and your local AI builds whatever software you need without monopoly rent. Communities then organize naturally across shared ledgers backed by public computing power.</p>
+  <p>Shared Horizon traces five steps from private home sensors and a 1:1 personal AI to organic community self-rule and public computing, backed by our 348-organisation guidance atlas. Today, visibility runs upside down: ordinary families have their clicks, locations, and habits tracked every day while powerful corporations and state agencies make high-stakes AI decisions behind closed doors.</p>
+  <p>Our open architecture flips that arrangement. Personal life stays private at home, and your local AI builds whatever software you need without monopoly rent. Communities then organize naturally across shared ledgers backed by public computing power.</p>
 </div>
 
 <section class="sh-section" id="sh-process-section" aria-labelledby="sh-process-heading">
@@ -541,7 +606,46 @@ lede: Shared Horizon walks through five practical steps from home sensors and a 
   </div>
 
   <figure class="explainer" id="ex-horizon-phases">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 265" role="group" aria-labelledby="ex-horizon-phases-title ex-horizon-phases-desc">
+    <style>
+      #ex-horizon-phases {
+        margin: 0 0 1.25rem;
+        padding: 16px 0 14px;
+        background: transparent;
+        border: 0;
+        border-top: 1px solid #DFD1BE;
+        border-bottom: 1px solid #DFD1BE;
+        border-radius: 0;
+      }
+      #ex-horizon-phases .diagram-desktop { display: block; width: 100%; height: auto; }
+      #ex-horizon-phases .diagram-mobile { display: none; width: 100%; height: auto; }
+      @media (max-width: 680px) {
+        #ex-horizon-phases .diagram-desktop { display: none; }
+        #ex-horizon-phases .diagram-mobile { display: block; }
+      }
+      [data-theme="dark"] #ex-horizon-phases { border-color: #3D352B; }
+      [data-theme="dark"] #ex-horizon-phases .sh-zone-home { fill: #1D2823; stroke: #3E5A4C; }
+      [data-theme="dark"] #ex-horizon-phases .sh-zone-net { fill: #26211B; stroke: #4E4438; }
+      [data-theme="dark"] #ex-horizon-phases .sh-station-box { fill: #1C1814; stroke: #5E5243; }
+      [data-theme="dark"] #ex-horizon-phases .sh-zone-compute { fill: #1E2823; stroke: #8FD4B6; }
+      [data-theme="dark"] #ex-horizon-phases .sh-station-badge { fill: #2F2921; }
+      [data-theme="dark"] #ex-horizon-phases .sh-station-num { fill: #8FD4B6; }
+      [data-theme="dark"] #ex-horizon-phases .sh-svg-station:hover .sh-station-box,
+      [data-theme="dark"] #ex-horizon-phases .sh-svg-station:focus-visible .sh-station-box { stroke: #8FD4B6; }
+      [data-theme="dark"] #ex-horizon-phases .sh-svg-station.is-active .sh-station-box { fill: #26201A; stroke: #F09D82; }
+      [data-theme="dark"] #ex-horizon-phases .sh-svg-station.is-active .sh-station-badge { fill: #F09D82; }
+      [data-theme="dark"] #ex-horizon-phases .sh-svg-station.is-active .sh-station-num { fill: #131014; }
+      [data-theme="dark"] #ex-horizon-phases text[fill="#131014"] { fill: #F3ECE0; }
+      [data-theme="dark"] #ex-horizon-phases text[fill="#3F3931"],
+      [data-theme="dark"] #ex-horizon-phases text[fill="#5A4632"],
+      [data-theme="dark"] #ex-horizon-phases figcaption { fill: #C8BCA9; color: #C8BCA9; border-top-color: #3D352B; }
+      [data-theme="dark"] #ex-horizon-phases text[fill="#0B3F30"] { fill: #8FD4B6; }
+      [data-theme="dark"] #ex-horizon-phases text[fill="#963E1D"] { fill: #F09D82; }
+      [data-theme="dark"] #ex-horizon-phases line[stroke="#0B3F30"] { stroke: #8FD4B6; }
+      [data-theme="dark"] #ex-horizon-phases polygon[fill="#0B3F30"] { fill: #8FD4B6; }
+      [data-theme="dark"] #ex-horizon-phases line[stroke="#963E1D"] { stroke: #F09D82; }
+      [data-theme="dark"] #ex-horizon-phases polygon[fill="#963E1D"] { fill: #F09D82; }
+    </style>
+    <svg class="diagram-desktop" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 265" role="group" aria-labelledby="ex-horizon-phases-title ex-horizon-phases-desc">
       <title id="ex-horizon-phases-title">Five phases from personal sensors and local AI to organic community coordination and universal basic compute</title>
       <desc id="ex-horizon-phases-desc">Process diagram showing Phase 1 Sensors and Home Vault, Phase 2 Your 1:1 Local AI, crossing a Privacy Boundary into Phase 3 Two Separate Ledgers and Phase 4 Organic Communities, supported beneath by Phase 5 Public Computing and Universal Basic Compute.</desc>
 
@@ -605,6 +709,68 @@ lede: Shared Horizon walks through five practical steps from home sensors and a 
         <text class="sh-station-num" x="31" y="238" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12.5">05</text>
         <text x="68" y="231" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#131014">Public Computing &amp; Universal Basic Compute</text>
         <text x="68" y="248" font-family="system-ui, sans-serif" font-size="11.5" fill="#3F3931">Guaranteed computing power for households, clinics, co-ops, and independent safety auditors</text>
+      </g>
+    </svg>
+
+    <svg class="diagram-mobile" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 538" role="group" aria-labelledby="ex-horizon-phases-m-title ex-horizon-phases-m-desc">
+      <title id="ex-horizon-phases-m-title">Mobile five-step path from home sensors and local AI across a privacy boundary to organic communities and universal basic compute</title>
+      <desc id="ex-horizon-phases-m-desc">Stacked vertical flow: 01 Sensors and Home Vault to 02 Your 1:1 Local AI inside the private home zone, crossing the Privacy Boundary into 03 Two Separate Ledgers and 04 Organic Communities, backed by 05 Universal Basic Compute.</desc>
+
+      <rect class="sh-zone-home" x="6" y="6" width="298" height="196" />
+      <text x="16" y="25" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0B3F30">PRIVATE HOME · RAW DATA STAYS</text>
+
+      <g class="sh-svg-station is-active" data-phase-target="1" tabindex="0" role="button" aria-pressed="true" aria-label="01 Sensors &amp; Home Vault Logs life locally; flags doubt">
+        <rect class="sh-station-box" x="16" y="36" width="278" height="66" />
+        <rect class="sh-station-badge" x="16" y="36" width="34" height="66" />
+        <text class="sh-station-num" x="33" y="74" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12">01</text>
+        <text x="58" y="62" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#131014">Sensors &amp; Home Vault</text>
+        <text x="58" y="84" font-family="system-ui, sans-serif" font-size="11" fill="#3F3931">Logs life locally; flags doubt</text>
+      </g>
+
+      <line x1="155" y1="102" x2="155" y2="116" stroke="#0B3F30" stroke-width="1.8" />
+      <polygon points="150,116 155,124 160,116" fill="#0B3F30" />
+
+      <g class="sh-svg-station" data-phase-target="2" tabindex="0" role="button" aria-pressed="false" aria-label="02 Your 1:1 Local AI Loyal to you; builds custom tools">
+        <rect class="sh-station-box" x="16" y="126" width="278" height="66" />
+        <rect class="sh-station-badge" x="16" y="126" width="34" height="66" />
+        <text class="sh-station-num" x="33" y="164" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12">02</text>
+        <text x="58" y="152" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#131014">Your 1:1 Local AI</text>
+        <text x="58" y="174" font-family="system-ui, sans-serif" font-size="11" fill="#3F3931">Loyal to you; builds custom tools</text>
+      </g>
+
+      <line x1="12" y1="222" x2="298" y2="222" stroke="#963E1D" stroke-width="2" stroke-dasharray="5 4" />
+      <text x="155" y="216" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#963E1D">PRIVACY BOUNDARY</text>
+      <line x1="155" y1="192" x2="155" y2="236" stroke="#963E1D" stroke-width="1.8" />
+      <polygon points="150,236 155,244 160,236" fill="#963E1D" />
+
+      <rect class="sh-zone-net" x="6" y="244" width="298" height="196" />
+      <text x="16" y="263" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#5A4632">SHARED NETWORK · MINIMAL PROOFS</text>
+
+      <g class="sh-svg-station" data-phase-target="3" tabindex="0" role="button" aria-pressed="false" aria-label="03 Two Separate Ledgers Private stays home; proofs go out">
+        <rect class="sh-station-box" x="16" y="274" width="278" height="66" />
+        <rect class="sh-station-badge" x="16" y="274" width="34" height="66" />
+        <text class="sh-station-num" x="33" y="312" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12">03</text>
+        <text x="58" y="300" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#131014">Two Separate Ledgers</text>
+        <text x="58" y="322" font-family="system-ui, sans-serif" font-size="11" fill="#3F3931">Private stays home; proofs go out</text>
+      </g>
+
+      <line x1="155" y1="340" x2="155" y2="354" stroke="#0B3F30" stroke-width="1.8" />
+      <polygon points="150,354 155,362 160,354" fill="#0B3F30" />
+
+      <g class="sh-svg-station" data-phase-target="4" tabindex="0" role="button" aria-pressed="false" aria-label="04 Organic Communities Groups coordinate without a boss">
+        <rect class="sh-station-box" x="16" y="364" width="278" height="66" />
+        <rect class="sh-station-badge" x="16" y="364" width="34" height="66" />
+        <text class="sh-station-num" x="33" y="402" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12">04</text>
+        <text x="58" y="390" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#131014">Organic Communities</text>
+        <text x="58" y="412" font-family="system-ui, sans-serif" font-size="11" fill="#3F3931">Groups coordinate without a boss</text>
+      </g>
+
+      <g class="sh-svg-station" data-phase-target="5" tabindex="0" role="button" aria-pressed="false" aria-label="05 Universal Basic Compute Public compute for homes &amp; audits">
+        <rect class="sh-station-box sh-zone-compute" x="6" y="454" width="298" height="74" />
+        <rect class="sh-station-badge" x="6" y="454" width="38" height="74" />
+        <text class="sh-station-num" x="25" y="496" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12">05</text>
+        <text x="54" y="484" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#131014">Universal Basic Compute</text>
+        <text x="54" y="506" font-family="system-ui, sans-serif" font-size="11" fill="#3F3931">Public compute for homes &amp; audits</text>
       </g>
     </svg>
     <figcaption>Click any station from 01 to 05 to inspect how private local tools and guaranteed public computing enable bottom-up community power.</figcaption>
@@ -953,17 +1119,17 @@ lede: Shared Horizon walks through five practical steps from home sensors and a 
     </article>
   </div>
 
-  <aside class="for-researchers"><details><summary>Scenario calibration &amp; recent November 2026 signposts</summary><div><p>The three-path Futures Cone pairs directly with our deterministic scoring meters (<code>oversight</code>, <code>concentration</code>, <code>trust</code>, and <code>pace</code>). Keshav Shenoy et al. (2026, <code>arXiv:2611.21832</code>) show human transcript auditors achieve <code>0.59</code> AUROC and <code>17%</code> exact sabotage identification, motivating blinded perturbation replication (<em>experiment diffing</em>). HD Moore / Dragos (2026) seeded nearly two million canary prompts and found compromises at three providers alongside routine reseller logging, while METR's Q4 2026 capability update (Kinniment et al., 2026) measures autonomous horizons doubling every <code>3.61</code> months alongside <code>+0.2</code> model-judge inflation. Fail-closed runtime mediation (Adam Mazzocchetti, 2026, <code>arXiv:2608.16891</code>) and provenance-DAG selective containment (<code>arXiv:2611.06727</code>) ground Path 03 signposts.<sup><a href="#fn11">11</a>,<a href="#fn23">23</a>,<a href="#fn24">24</a>,<a href="#fn25">25</a></sup></p></div></details></aside>
+  <aside class="for-researchers"><details><summary>Scenario calibration, November 2026 signposts &amp; five-primitive provenance</summary><div><p>The three-path Futures Cone pairs directly with our deterministic scoring meters (<code>oversight</code>, <code>concentration</code>, <code>trust</code>, and <code>pace</code>). Keshav Shenoy et al. (2026, <code>arXiv:2611.21832</code>) show human transcript auditors achieve <code>0.59</code> AUROC and <code>17%</code> exact sabotage identification, motivating blinded perturbation replication (<em>experiment diffing</em>). HD Moore / Dragos (2026) seeded nearly two million canary prompts and found compromises at three providers alongside routine reseller logging. METR's Q4 2026 capability update (Kinniment et al., 2026) and Nathan Labenz on MTS (2026-11-26) highlight autonomous AI R&amp;D horizons doubling every <code>3.61</code> months alongside 18-month internal R&amp;D acceleration. Fail-closed runtime mediation (Adam Mazzocchetti, 2026, <code>arXiv:2608.16891</code>) pairs with schema-derived pre-read write commitments in <code>CapLite</code> (Xu, Liu &amp; Nakayama, 2026, <code>arXiv:2611.17115</code>) and Isabelle/HOL post-read tool fences in <code>PlanTERS</code> (Dongol, 2026, <code>arXiv:2611.11506</code>). Pairwise mistake-comparison elicitation (Gans &amp; Holden, 2026, <code>arXiv:2611.19417</code>), hardware-latched DMA I/O attestation in <code>PULSAR-V</code> (Lentini, Di Carlo &amp; Savino, 2026, <code>arXiv:2611.24135</code>), lineage-closed memory withdrawal on <code>AfterDeleteBench</code> (Lin, Wang &amp; Zhang, 2026, <code>arXiv:2611.26983</code>), post-quantum quorum shares in <code>QUASI</code> (Ioffe &amp; Malkhi, 2026, <code>arXiv:2611.10403</code>), and three-valued delegation continuity (<code>draft-stafordtituss-agentic-mandate-evidence-02</code>) ground Path 03 signposts.<sup><a href="#fn11">11</a>,<a href="#fn23">23</a>,<a href="#fn24">24</a>,<a href="#fn25">25</a>,<a href="#fn26">26</a></sup></p><p><strong>Five-primitive architectural synthesis.</strong> Wearable and ambient sensors form a perceptual sensorium fused locally in hardware <code>Device Time</code> with silicon peripheral attestation (<code>PUF</code>, <code>TCG DICE</code>, <code>DMTF SPDM</code>, and <code>IETF RATS</code> under <code>RFC 9334</code>). Actuators stay isolated by <code>optical data diodes</code> and <code>IEC 61508</code> dead-man relays because <em>Signed Is Not True</em> across the <code>analog hole</code> (Kevin Fu and Wenyuan Xu, 2018; <a href="/labs/sensor-boundary/">/labs/sensor-boundary/</a>). Across the personal <code>Markov blanket</code> (Karl Friston, 2013) and cognitive light cone (Michael Levin, 2019), an append-only <code>C2PA</code> and Merkle vault (Endel Tulving, 1972) on the <code>Private Autobiographical Ledger</code> serves a monogamous <code>1:1</code> personal model and cybernetic exocortex (Joscha Bach, 2009; Andy Clark and David Chalmers, 1998) bound as a statutory <code>information fiduciary</code> (Jack Balkin, 2016). Expiring Object-Capability leases (Jack B. Dennis and Earl C. Van Horn, 1966) gate outward commitments onto the <code>Public Attestation &amp; Escrow Ledger</code> via selective <code>ZK</code> proofs and <code>IETF SCITT</code> receipts (<a href="/labs/protocol-inspector/">/labs/protocol-inspector/</a>). Sovereign dyads coordinate on the <code>Wide Network Ledger</code> for <code>Universal Basic Services</code>, plural upkeep accounting (Jacob Meluso et al., 2024), reciprocal mutual credit (James Stodder, 2009), statutory Rudolf Meidner (1978) equity, and polycentric Elinor Ostrom (1990, 2010) self-rule across <a href="/labs/shared-horizon/">/labs/shared-horizon/</a>.</p></div></details></aside>
 </section>
 
 <div class="sh-atlas-bridge">
   <div>
     <h2>Explore all 348 organisations in the Institutional Atlas</h2>
-    <p>Our live repository compiles over 750 verified real-world moves and encounters across 348 AI labs, public regulators, safety institutes, open-source foundations, unions, and cooperatives. Everything on this page runs locally in your browser with zero cookies or tracking.</p>
+    <p>Our live repository compiles over 1,000 verified real-world moves and encounters across 348 AI labs, public regulators, safety institutes, open-source foundations, unions, and cooperatives. Everything on this page runs locally in your browser with zero cookies or tracking.</p>
   </div>
   <div class="sh-atlas-links">
     <a class="st-action-btn" href="/labs/institutions/">Open the 348-Organisation Institutional Atlas &#8599;</a>
-    <a class="st-action-btn" href="/labs/lab-overlays/">Compare 40 AI Labs &amp; 50 Safety Groups &#8599;</a>
+    <a class="st-action-btn" href="/labs/lab-overlays/">Compare 43 AI Labs &amp; 50 Safety Groups &#8599;</a>
     <a class="st-action-btn" href="/blog/public-computing-explained/">Read: Public computing, explained &#8599;</a>
   </div>
 </div>
@@ -992,7 +1158,8 @@ lede: Shared Horizon walks through five practical steps from home sensors and a 
   <p id="fn21">21. National Institute of Standards and Technology, <em>Artificial Intelligence Risk Management Framework (AI RMF 1.0)</em> (2023), <a href="https://doi.org/10.6028/NIST.AI.100-1">doi:10.6028/NIST.AI.100-1</a>; OECD, <em>Innovative Citizen Participation and New Democratic Institutions</em> (2020), <a href="https://doi.org/10.1787/339306da-en">doi:10.1787/339306da-en</a>.</p>
   <p id="fn22">22. Marcantonio Bracale Syrnikov and Federico Pierucci, "Institutional AI: Governing LLM Collusion in Multi-Agent Cournot Markets via Public Governance" (2026), <a href="https://arxiv.org/abs/2601.11369">arxiv.org/abs/2601.11369</a>.</p>
   <p id="fn23">23. Keshav Shenoy, Anthony Zang, Eric Gan, Jacqueline Tay, Amy Ngo, Sebastian Prasanna, Julian Stastny and Vivek Hebbar, "Auditors Struggle to Catch Sabotage in End-to-End Transcripts of AI Safety Research" (2026), <a href="https://arxiv.org/abs/2611.21832">arxiv.org/abs/2611.21832</a>.</p>
-  <p id="fn24">24. HD Moore / Dragos Threat Research, "AI Supply Chain Security: What Canary Tokens Found" (2026), <a href="https://www.dragos.com/blog/ai-supply-chain-security-canary-tokens">dragos.com/blog/ai-supply-chain-security-canary-tokens</a>; Megan Kinniment, Manish Shetty et al., "AI R&amp;D-relevant model capabilities are improving rapidly and are getting harder to measure," METR (2026-11-20), <a href="https://metr.org/blog/2026-11-20-q4-2026-capability-update/">metr.org/blog/2026-11-20-q4-2026-capability-update</a>.</p>
+  <p id="fn24">24. HD Moore / Dragos Threat Research, "AI Supply Chain Security: What Canary Tokens Found" (2026), <a href="https://www.dragos.com/blog/ai-supply-chain-security-canary-tokens">dragos.com/blog/ai-supply-chain-security-canary-tokens</a>; Megan Kinniment, Manish Shetty et al., "AI R&amp;D-relevant model capabilities are improving rapidly and are getting harder to measure," METR (2026-11-20), <a href="https://metr.org/blog/2026-11-20-q4-2026-capability-update/">metr.org/blog/2026-11-20-q4-2026-capability-update</a>; Nathan Labenz, "AI Will Accelerate AI R&amp;D Within 18 Months," MTS (2026-11-26), <a href="https://www.youtube.com/watch?v=pqD0K9bjhBs">youtube.com/watch?v=pqD0K9bjhBs</a>.</p>
   <p id="fn25">25. Adam Mazzocchetti, "Runtime Governance for Agentic AI: Action-Boundary Control with Trusted Provenance and Fail-Closed Execution" (2026), <a href="https://arxiv.org/abs/2608.16891">arxiv.org/abs/2608.16891</a>.</p>
+  <p id="fn26">26. Zimo Xu, Wenzhuo Liu and Hideki Nakayama, "CapLite: Prompt-Injection Defense for Small Language Model Agents without Model-Written Security Artifacts" (2026), <a href="https://arxiv.org/abs/2611.17115">arxiv.org/abs/2611.17115</a>; Brijesh Dongol, "On the Relative Security of Prompt Injection: Mechanised Definitions, Defences and Verdicts for LLM Agents" (2026), <a href="https://arxiv.org/abs/2611.11506">arxiv.org/abs/2611.11506</a>; Joshua S. Gans and Richard T. Holden, "Are Revealed Preferences All You Need for AI Alignment?" (2026), <a href="https://arxiv.org/abs/2611.19417">arxiv.org/abs/2611.19417</a>; Niccol&ograve; Lentini, Stefano Di Carlo and Alessandro Savino, "PULSAR-V: I/O-Aware Post-Update Attestation for RISC-V" (2026), <a href="https://arxiv.org/abs/2611.24135">arxiv.org/abs/2611.24135</a>; Zibin Lin, Taotao Wang and Shengli Zhang, "Privacy Protection in Self-Evolving Personal Agents: Persistent Memory and Cross-Carrier Transfer" (2026), <a href="https://arxiv.org/abs/2611.26983">arxiv.org/abs/2611.26983</a>; Maksym Ioffe and Dahlia Malkhi, "QUASI: Post-Quantum Quorum Attestation of Pre-Validated Statements" (2026), <a href="https://arxiv.org/abs/2611.10403">arxiv.org/abs/2611.10403</a>; Staford Titus Selvaraj, <em>Continuity Evaluation of Agent Delegation Records</em>, IETF Internet-Draft <code>draft-stafordtituss-agentic-mandate-evidence-02</code> (2026), <a href="https://datatracker.ietf.org/doc/html/draft-stafordtituss-agentic-mandate-evidence-02">datatracker.ietf.org</a>.</p>
 </section>
 </section>

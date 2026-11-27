@@ -274,9 +274,18 @@ class CommunityFiveGetInvolvedGuidesSpec05AndReportingTests(unittest.TestCase):
             "2509.21712",
             "2611.25985",
             "2611.26966",
+            "2402.08797",
+            "2606.08919",
+            "2606.21399",
+            "2605.26079",
+            "after-the-midterms-is-the-ai-industry-in-for-a-rough-two-years",
             "Bingcan Guo",
             "Natasha E Blycha",
             "Deepak Waghmare",
+            "Girish Sastry",
+            "Emre Turan",
+            "Chubin Zhang",
+            "Junlin Wang",
         ):
             self.assertIn(cite, everyone_raw, f"everyone.html missing primary-source citation {cite!r}")
 
@@ -286,10 +295,20 @@ class CommunityFiveGetInvolvedGuidesSpec05AndReportingTests(unittest.TestCase):
             "2507.09089",
             "2601.20789",
             "2611.26966",
+            "2607.26819",
+            "2610.07757",
+            "2610.20027",
+            "2608.13522",
+            "dir/2024/2853/oj",
+            "sb26-189",
             "Frederic Lemieux",
             "Joel Becker",
             "Ethan Shen",
             "Deepak Waghmare",
+            "Wenhao Yang",
+            "Kaifeng He",
+            "Tongwei Deng",
+            "Zhe Ye",
         ):
             self.assertIn(cite, builders_raw, f"builders.html missing primary-source citation {cite!r}")
 
@@ -364,6 +383,13 @@ class CommunityFiveGetInvolvedGuidesSpec05AndReportingTests(unittest.TestCase):
             "Shen",
             "Blycha",
             "Waghmare",
+            "laws-lois.justice.gc.ca/eng/acts/C-1.7/",
+            "legisquebec.gouv.qc.ca/en/document/cs/CCQ-1991",
+            "chinese-nexus-actors-cairn-ai-agents-found-a-zero-day-on-their-own",
+            "introducing-shirudo",
+            "2610.26501",
+            "Moses",
+            "Gopalakrishna",
         ):
             self.assertIn(cite, civil_raw, f"civil-society.html missing primary-source citation {cite!r}")
 
